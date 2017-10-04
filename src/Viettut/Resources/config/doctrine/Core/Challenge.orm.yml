@@ -1,0 +1,54 @@
+Viettut\Entity\Core\Challenge:
+    type: entity
+    table: viettut_challenge
+    repositoryClass: Viettut\Repository\Core\ChallengeRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+
+        timeLimit:
+            type: integer
+            nullable: true
+            options:
+                default: -1
+        total:
+            type: integer
+            nullable: false
+            options:
+                default: 0
+        published:
+            type: boolean
+            nullable: false
+            options:
+                default: false
+        token:
+            type: string
+            nullable: false
+
+        hashTag:
+            type: string
+            nullable: false
+
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+    manyToOne:
+        author:
+            targetEntity: Viettut\Bundle\UserBundle\Entity\User
+    oneToMany:
+        testCollection:
+            targetEntity: Viettut\Entity\Core\TestCollection
+            mappedBy: challenge
+            cascade: ['persist', 'remove', 'detach']

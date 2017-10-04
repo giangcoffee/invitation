@@ -1,0 +1,31 @@
+Viettut\Entity\Core\TestCollection:
+    type: entity
+    table: viettut_test_collection
+    repositoryClass: Viettut\Repository\Core\TestCollectionRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        earnedPoint:
+            type: integer
+            nullable: false
+            options:
+                default: 0
+        timeLimit:
+            type: integer
+            nullable: false
+            options:
+                default: -1
+        position:
+            type: integer
+            nullable: false
+
+    manyToOne:
+        test:
+            targetEntity: Viettut\Entity\Core\Test
+            cascade: ['persist']
+        challenge:
+            targetEntity: Viettut\Entity\Core\Challenge
+
