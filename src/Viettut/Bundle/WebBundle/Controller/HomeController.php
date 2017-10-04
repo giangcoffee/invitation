@@ -25,4 +25,54 @@ class HomeController extends Controller
     {
         return $this->render('ViettutWebBundle:Home:index.html.twig');
     }
+
+    /**
+     * @Route("/services", name="services_page")
+     * @param $request
+     * @return Response
+     */
+    public function serviceAction(Request $request)
+    {
+        return $this->render('ViettutWebBundle:Home:services.html.twig');
+    }
+
+    /**
+     * @Route("/about", name="about_page")
+     * @param $request
+     * @return Response
+     */
+    public function aboutAction(Request $request)
+    {
+        return $this->render('ViettutWebBundle:Home:about.html.twig');
+    }
+
+    /**
+     * @Route("/contact", name="contact_page")
+     * @param $request
+     * @return Response
+     */
+    public function contactAction(Request $request)
+    {
+        return $this->render('ViettutWebBundle:Home:contact.html.twig');
+    }
+
+    /**
+     * @Route("/templates", name="templates_page")
+     * @param $request
+     * @return Response
+     */
+    public function templateAction(Request $request)
+    {
+        return $this->render('ViettutWebBundle:Home:templates.html.twig');
+    }
+
+    /**
+     * @Route("/price", name="price_page")
+     * @param $request
+     * @return Response
+     */
+    public function priceAction(Request $request)
+    {
+        return $this->render('ViettutWebBundle:Home:price.html.twig');
+    }
 }

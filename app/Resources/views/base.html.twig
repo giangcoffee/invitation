@@ -39,6 +39,8 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/custom.css') }}">
 
+    {% block css %}
+    {% endblock %}
     <!-- Head Libs -->
     <script src="{{ asset('bundles/viettutweb/vendor/modernizr/modernizr.js') }}"></script>
 
@@ -98,46 +100,46 @@
                 <nav class="nav-main mega-menu">
                     <ul class="nav nav-pills nav-main" id="mainMenu">
                         {% if app.user %}
-                            <li class="dropdown">
+                            <li>
                                 <a class="dropdown-toggle" href="#">
                                     Thiết Kế
                                 </a>
                             </li>
                         {% endif %}
 
-                        <li class="dropdown active">
-                            <a class="dropdown-toggle" href="#">
+                        <li class="dropdown{{ (app.request.attributes.get('_route') == 'templates_page') ? ' active' }}">
+                            <a class="dropdown-toggle" href="{{ path('templates_page') }}">
                                 Mẫu Thiệp
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="index.html">Danh sách mẫu thiệp</a></li>
+                                <li><a href="{{ path('templates_page') }}">Danh sách mẫu thiệp</a></li>
                                 {% if app.user %}
                                     <li><a href="index-1.html">Thêm mẫu thiệp <span class="tip">hot</span></a></li>
                                 {% endif %}
                             </ul>
                         </li>
 
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">
+                        <li  {{ (app.request.attributes.get('_route') == 'about_page') ? ' class="active"' }}>
+                            <a class="dropdown-toggle" href="{{ path('about_page') }}">
                                 Giới thiệu
                             </a>
                         </li>
 
-                        <li class="dropdown mega-menu-item mega-menu-fullwidth">
-                            <a class="dropdown-toggle" href="#">
+                        <li {{ (app.request.attributes.get('_route') == 'services_page') ? ' class="active"' }}>
+                            <a class="dropdown-toggle" href="{{ path('services_page') }}">
                                 Dịch vụ
                             </a>
                         </li>
 
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">
+                        <li {{ (app.request.attributes.get('_route') == 'price_page') ? ' class="active"' }}>
+                            <a class="dropdown-toggle" href="{{ path('price_page') }}">
                                 Bảng giá
                             </a>
                         </li>
 
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">
+                        <li {{ (app.request.attributes.get('_route') == 'contact_page') ? ' class="active"' }}>
+                            <a class="dropdown-toggle" href="{{ path('contact_page') }}">
                                 Liên Hệ
                             </a>
                         </li>
@@ -321,6 +323,7 @@
 
 </script>
  -->
-
+{% block javascript %}
+{% endblock %}
 </body>
 </html>
