@@ -1,0 +1,8 @@
+.idea/
+vendor/
+app/logs/
+app/config/parameters.yml
+app/cache/
+app/bootstrap.php.cache
+web/bundles/
+bin/
