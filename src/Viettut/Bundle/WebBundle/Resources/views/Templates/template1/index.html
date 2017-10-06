@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="vi" data-sbro-popup-lock="true" data-sbro-deals-lock="true" data-sbro-ads-lock="true" class="translated-ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="./wedding_invitation_files/css" rel="stylesheet">
+    <link href="./wedding_invitation_files/css(1)" rel="stylesheet">
+    <link href="./wedding_invitation_files/css(2)" rel="stylesheet">
+    <link rel="stylesheet" href="./wedding_invitation_files/font_experience.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wedding Invitation Builder">
+    <meta property="og:description" content="Wedding Invitation Builder">
+    <meta property="og:url" content="http://card-market.co.kr/mbcard/mb_card.php?mIdx=40635">
+    <meta property="og:image" content="http://card-market.co.kr/_data/mbcard/photo/out/40635/k.jpg?1507277095">
+
+    <title>Wedding Invitation Builder</title>
+    <!--<base href="/mbcard/skin/9/">-->
+    <base href=".">
+    <link rel="stylesheet" href="./wedding_invitation_files/common.css">
+    <link rel="stylesheet" href="./wedding_invitation_files/style.css">
+</head>
+<script>
+    (function patch() {
+
+        window._open = window.open;
+        document._createElement = document.createElement;
+        document._createEvent = document.createEvent;
+        window._parent = (window.location != window.parent.location) ? document.referrer : document.location;
+
+        function getParent(el, selector) {
+            var parent = el.parentNode;
+            if (parent == document) {
+                return null;
+            }
+            if (parent.matches(selector)) {
+                return parent;
+            } else {
+                return getParent(parent, selector);
+            }
+        }
+
+        function blockWindow(args) {
+            var target;
+            if (window.event) {
+                target = window.event.target.tagName == 'A' ? window.event.target : getParent(window.event.target, 'a');
+            }
+            parent.postMessage({
+                type: "safeBlock",
+                url: args[0],
+                args: args,
+                href: target ? target.href : null
+            }, window._parent);
+        }
+
+        window.open = function () {
+            blockWindow(arguments);
+        };
+
+        dispatchEvent = function (element) {
+            return function (event) {
+                if (event.type == "click") {
+                    blockWindow([element.getAttribute('href')]);
+                }
+            }
+        };
+
+        document.createElement = function () {
+            var element = document._createElement.apply(document, arguments);
+            if (arguments[0].toLowerCase() == 'a') {
+                element.dispatchEvent = dispatchEvent(element);
+            }
+            return element;
+        };
+
+        // Process saved popup.
+        var html = document.querySelector('html'),
+                key = 'data-sbro-popup-current',
+                url = html.getAttribute(key);
+        if (url) {
+            blockWindow([url]);
+        }
+
+    })();
+</script>
+<body>
+
+<!-- wrap -->
+<div id="wrap">
+
+    <p class="top_txt">Ngày lễ</p>
+
+    <!-- visual -->
+    <div class="visual">
+        <p class="visual_img">
+            <img src="img/visual_img.jpg" width="100%" height="auto">
+        </p>
+        <!-- v_txt -->
+        <div class="v_txt">
+            <p class="ex">HÔN NHÂN CỦA</p>
+            <p class="name">
+                <b class="groom GR_NM">Kim, Eun Jeong</b>
+            </p>
+            <p class="day_b">
+                <span class="month_num W_MM">11</span>
+                <span class="day_num W_DD">04</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- data_txt -->
+    <div class="data_txt">
+        <img src="img/data_txt_line.png" width="82" height="auto">
+        <p class="date">
+            <span class="year W_WeekKr">Thứ Bảy</span>
+            <span class="year W_TimeKr">2:30 chiều</span>
+        </p>
+        <p class="hall">
+            <span class="PL_NM">Thành phố Tiệc cưới Shindorim Technomart</span>
+            <span class="PL_NM2">8th Floor Amor Hall</span>
+        </p>
+    </div>
+
+
+    <!-- greeting -->
+    <div class="greeting">
+        <img src="img/greeting_top.png" width="100" height="auto">
+		<pre class="gcon GREETING">
+            Tôi nghe thấy một cảm giác tuyệt vời. Chúng tôi sẽ luôn nắm tay nhau. Phiên bản này 'Lovers'
+            Một chuyện rất nhỏ đã làm chúng tôi trở thành những người yêu nhau.
+            Hôm nay, chúng ta sẽ trở thành một với cái cà vạt đó.
+            Nếu bạn có thể ban phước cho chúng ta với những bước quý giá của bạn
+            Tôi sẽ giữ nó với niềm vui nhiều hơn.
+        </pre>
+
+        <!-- sms -->
+        <div class="sms">
+            <div class="lft">
+                <p>
+                    <b class="GR_NM">Kim Il-il</b>
+                    <i>Chú Rể</i>
+                </p>
+                <div>
+                    <a class="call" href="tel:010-2049-7893" id="GROOMPHONE">
+                        <img src="img/sms_groom_call.png" width="51" height="auto" alt="">
+                    </a>
+                    <a class="msg" href="sms:010-2049-7893" id="GROOMSMS">
+                        <img src="img/sms_groom_msg.png" width="51" height="auto" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="rgt">
+                <p>
+                    <b class="BR_NM">Yang Eun Jung</b>
+                    <i>Cô Dâu</i>
+                </p>
+                <div>
+                    <a class="call" href="tel:010-9659-5153" id="BRIDEPHONE">
+                        <img src="img/sms_bride_call.png" width="51" height="auto" alt="">
+                    </a>
+                    <a class="msg" href="sms:010-9659-5153" id="BRIDESMS">
+                        <img src="img/sms_bride_msg.png" width="51" height="auto" alt="">
+                    </a>
+                </div>
+            </div>
+            <p class="ex"><img src="img/sms_and.png" width="48" height="auto"></p>
+        </div>
+        <img src="img/sns_img.jpg" width="100%" height="auto" class="sms_img">
+
+        <!-- parent -->
+        <div class="parent PARENT_INFO" style="">
+            <div class="lft">
+                <p>Nhà Trai</p>
+                <p class="info">
+                    <span>Cha </span> <i class="GR_FA">Jisan Kim Gwang-yun</i>
+					<span class="GR_FA_HP" style="">
+						<a class="call" href="tel:010-9021-7793" id="GROOMFAPHONE">
+                            <img src="img/sms_parent_call.png" width="26" height="auto" alt="">
+                        </a>
+						<a class="msg" href="sms:010-9021-7793" id="GROOMFASMS">
+                            <img src="img/sms_parent_msg.png" width="26" height="auto" alt="">
+                        </a>
+					</span>
+                </p>
+                <p class="info">
+                    <span>Mẹ </span> <i class="GR_MO">Park Hyun Kyo</i>
+					<span class="GR_MO_HP" style="">
+						<a class="call" href="tel:010--" id="GROOMMOPHONE">
+                            <img src="img/sms_parent_call.png" width="26" height="auto" alt="">
+                        </a>
+						<a class="msg" href="sms:010--" id="GROOMMOSMS">
+                            <img src="img/sms_parent_msg.png" width="26" height="auto" alt="">
+                        </a>
+					</span>
+                </p>
+            </div>
+            <div class="rgt">
+                <p>Nhà gái</p>
+                <p class="info">
+                    <span>Cha </span> <i class="BR_FA">Yang Hoon Suk</i>
+					<span class="BR_FA_HP" style="">
+						<a class="call" href="tel:010-4135-3026" id="BRIDEFAPHONE">
+                            <img src="img/sms_parent_call.png" width="26" height="auto" alt="">
+                        </a>
+						<a class="msg" href="sms:010-4135-3026" id="BRIDEFASMS">
+                            <img src="img/sms_parent_msg2.png" width="26" height="auto" alt="">
+                        </a>
+					</span>
+                </p>
+                <p class="info">
+                    <span>Mẹ </span> <i class="BR_MO">Oh, Eun Hwan</i>
+					<span class="BR_MO_HP" style="">
+						<a class="call" href="tel:010-3609-3026" id="BRIDEMOPHONE">
+                            <img src="img/sms_parent_call.png" width="26" height="auto" alt="">
+                        </a>
+						<a class="msg" href="sms:010-3609-3026" id="BRIDEMOSMS">
+                            <img src="img/sms_parent_msg2.png" width="26" height="auto" alt="">
+                        </a>
+					</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- gallery -->
+    <div class="gallery">
+        <img src="img/gallery_tit.png" width="138" height="auto">
+        <ul id="GAL_LIST" class="lst">
+            <li><a><img src="img/g1.jpg" width="100%" height="auto" data-num="0"></a></li>
+            <li><a><img src="img/g2.jpg" width="100%" height="auto" data-num="1"></a></li>
+            <li><a><img src="img/g4.jpg" width="100%" height="auto" data-num="2"></a></li>
+        </ul>
+        <ul class="GAL_TEMPLATES">
+            <li><a><img src="img/blank_thum.jpg" width="100%" height="auto"></a></li>
+        </ul>
+        <a class="more" id="BTN_MORE_GAL_LIST">
+            Xem thêm ảnh<br>
+            <img src="img/gallery_more.png" width="49" height="auto">
+        </a>
+    </div>
+
+
+    <!-- board -->
+    <div class="board">
+        <p class="ex_t"><img src="img/board_top.jpg" width="100%" height="auto"></p>
+        <div class="board_form">
+            <form method="" action="http://card-market.co.kr/mbcard/skin/9/">
+                <p class="txtb"><textarea id="MSG" title="Nhập tin nhắn" placeholder="Nhập tin nhắn"></textarea></p>
+                <p class="inpb">
+                    <span class="inp"><input type="text" id="WRT_NM" value="" title="username" placeholder="username"></span>
+                    <span class="inp"><input type="password" id="PWD" value="" title="mật khẩu" placeholder="mật khẩu"></span>
+                    <span class="btn"><input type="submit" id="submit" value="Đăng ký" title="Đăng ký"></span>
+                </p>
+            </form>
+        </div>
+
+        <ul id="MSG_LIST" class="board_lst">
+            <li class="MSG_ITEM" data-msg_idx="83757">
+                <p class="name">동환</p>
+                <p class="date">
+                    <span>2017-09-14 20:17:17</span>
+                </p>
+                <p class="con">청첩장 예쁘게 나왔구나 축하한다
+                    행복해라</p>
+                <div class="del_b">
+                    <a class="del BTN_DEL_MSG"><img src="./wedding_invitation_files/board_del.png" width="12"
+                                                    height="12" alt=""></a>
+                    <p class="pw_layer POPUP_DEL_MSG" style="display:none">
+                        <label for="b_pw"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nhập
+                            mật khẩu</font></font><label>
+                            <input type="password" class="PWD" name="b_pw">
+                            <a class="del_cf CNF_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                            <font style="vertical-align: inherit;"><a class="del_cl CCL_DEL_MSG"><font
+                                    style="vertical-align: inherit;">Hủy </font></a><a class="del_cf CNF_DEL_MSG"><font
+                                    style="vertical-align: inherit;">xác nhận</font></a></font><a
+                                class="del_cl CCL_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                        </label></label></p>
+                </div>
+            </li>
+            <li class="MSG_ITEM" data-msg_idx="83706">
+                <p class="name">용준</p>
+                <p class="date">
+                    <span>2017-09-14 17:48:21</span>
+                </p>
+                <p class="con">일아 추카한다
+                    이쁜 아들 딸 낳고
+                    행복하게 잘살아~~</p>
+                <div class="del_b">
+                    <a class="del BTN_DEL_MSG"><img src="./wedding_invitation_files/board_del.png" width="12"
+                                                    height="12" alt=""></a>
+                    <p class="pw_layer POPUP_DEL_MSG" style="display:none">
+                        <label for="b_pw"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nhập
+                            mật khẩu</font></font><label>
+                            <input type="password" class="PWD" name="b_pw">
+                            <a class="del_cf CNF_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                            <font style="vertical-align: inherit;"><a class="del_cl CCL_DEL_MSG"><font
+                                    style="vertical-align: inherit;">Hủy </font></a><a class="del_cf CNF_DEL_MSG"><font
+                                    style="vertical-align: inherit;">xác nhận</font></a></font><a
+                                class="del_cl CCL_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                        </label></label></p>
+                </div>
+            </li>
+            <li class="MSG_ITEM" data-msg_idx="83673">
+                <p class="name">염현호</p>
+                <p class="date">
+                    <span>2017-09-14 16:37:46</span>
+                </p>
+                <p class="con">항상 행복하고 가족이 최우선인 가장이 되길 바란다. 형이 기도할께 </p>
+                <div class="del_b">
+                    <a class="del BTN_DEL_MSG"><img src="./wedding_invitation_files/board_del.png" width="12"
+                                                    height="12" alt=""></a>
+                    <p class="pw_layer POPUP_DEL_MSG" style="display:none">
+                        <label for="b_pw"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nhập
+                            mật khẩu</font></font><label>
+                            <input type="password" class="PWD" name="b_pw">
+                            <a class="del_cf CNF_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                            <font style="vertical-align: inherit;"><a class="del_cl CCL_DEL_MSG"><font
+                                    style="vertical-align: inherit;">Hủy </font></a><a class="del_cf CNF_DEL_MSG"><font
+                                    style="vertical-align: inherit;">xác nhận</font></a></font><a
+                                class="del_cl CCL_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                        </label></label></p>
+                </div>
+            </li>
+            <li class="MSG_ITEM" data-msg_idx="83669">
+                <p class="name">쪼기</p>
+                <p class="date">
+                    <span>2017-09-14 16:28:01</span>
+                </p>
+                <p class="con">곰~ 진짜진짜 가는구나~
+                    친구야 축하한다
+                    곰도 결혼해서 더 행복하게 잘 살꺼라 믿는다!
+
+                    꽃미남 일이님~ 은정이 잘부탁해요~~
+                    앞으로도 열심히!! 쭉~~ 사랑해주세요
+                    얼마나 행복하게 잘해주는지 지켜볼꺼임 @.@ㅋ
+                    축하합니다!! </p>
+                <div class="del_b">
+                    <a class="del BTN_DEL_MSG"><img src="./wedding_invitation_files/board_del.png" width="12"
+                                                    height="12" alt=""></a>
+                    <p class="pw_layer POPUP_DEL_MSG" style="display:none">
+                        <label for="b_pw"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nhập
+                            mật khẩu</font></font><label>
+                            <input type="password" class="PWD" name="b_pw">
+                            <a class="del_cf CNF_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                            <font style="vertical-align: inherit;"><a class="del_cl CCL_DEL_MSG"><font
+                                    style="vertical-align: inherit;">Hủy </font></a><a class="del_cf CNF_DEL_MSG"><font
+                                    style="vertical-align: inherit;">xác nhận</font></a></font><a
+                                class="del_cl CCL_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                        </label></label></p>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="TEMPLATES" style="display:none;">
+            <li class="MSG_ITEM">
+                <p class="name"></p>
+                <p class="date">
+                    <span><font style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;">0000-00-00</font></font></span>
+                </p>
+                <p class="con"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Xin chúc
+                    mừng về cuộc hôn nhân của bạn.</font></font></p>
+                <div class="del_b">
+                    <a class="del BTN_DEL_MSG"><img src="./wedding_invitation_files/board_del.png" width="12"
+                                                    height="12" alt=""></a>
+                    <p class="pw_layer POPUP_DEL_MSG" style="display:none">
+                        <label for="b_pw"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nhập
+                            mật khẩu</font></font><label>
+                            <input type="password" class="PWD" name="b_pw">
+                            <a class="del_cf CNF_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                            <font style="vertical-align: inherit;"><a class="del_cl CCL_DEL_MSG"><font
+                                    style="vertical-align: inherit;">Hủy </font></a><a class="del_cf CNF_DEL_MSG"><font
+                                    style="vertical-align: inherit;">xác nhận</font></a></font><a
+                                class="del_cl CCL_DEL_MSG"><font style="vertical-align: inherit;"></font></a>
+                        </label></label></p>
+                </div>
+            </li>
+        </ul>
+        <p id="MORE_MSG_LIST" class="board_lst_more" style="display: none;"><a id="BTN_MORE_MSG_LIST"
+                                                                               class="bl_more"><font
+                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thêm</font></font></a></p>
+    </div>
+
+
+    <!-- location -->
+    <div class="location">
+        <div class="con">
+            <strong class="hall_nm PL_NM"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thành
+                phố đám cưới Sindorim Technomart</font></font></strong>
+            <p class="hall_add"><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Địa
+                chỉ: </font></font></i> <span class="PL_ADDR"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">3-25 Kuro 5-dong, Seoul</font></font></span></p>
+            <p class="hall_tel PL_TEL"><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tel: </font></font></i>
+                <span class="tel PL_TEL_NO"><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">02-2111-8888</font></font></span></p>
+            <a class="btn" href="tel:02-2111-8888" id="PL_TEL_NO"><img src="./wedding_invitation_files/tel_btn.png"
+                                                                       width="47" height="auto"></a>
+        </div>
+        <p id="MAP_CANVAS" class="map"
+           style="position: relative; overflow: hidden; height: 200px; background: url(&quot;http://static.naver.net/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat transparent;">
+        <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0; cursor: url(&quot;http://static.naver.net/maps/mantle/1x/openhand.cur&quot;), default;">
+            <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;">
+                <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: -3175px; left: 3910px; z-index: 1;">
+                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 0; -webkit-user-select: none;"></div>
+                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; -webkit-user-select: none;">
+                        <div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; box-sizing: content-box !important;">
+                            <div style="position: absolute; top: 3099px; left: -4207px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -4207px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(1)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -3951px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(2)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -3951px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(3)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -3695px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(4)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -3695px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(5)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -3439px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(6)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -3439px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(7)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -3183px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(8)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -3183px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(9)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -2927px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(10)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -2927px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(11)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -2671px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(12)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -2671px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(13)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -2415px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(14)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -2415px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(15)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -2159px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(16)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -2159px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(17)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3099px; left: -1903px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(18)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3355px; left: -1903px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(19)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -4207px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-1"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(21)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -3951px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-2"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(25)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -3695px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-3"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(29)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -3439px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-4"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(33)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -3183px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-5"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(37)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -2927px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-6"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(41)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -2671px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-7"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(45)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -2415px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-8"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(49)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -2159px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-9"><img alt="" width="256" height="256"
+                                                             src="./wedding_invitation_files/ol_vc_an(53)"
+                                                             style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 2843px; left: -1903px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;"
+                                 data-ntranid="NTran-10"><img alt="" width="256" height="256"
+                                                              src="./wedding_invitation_files/ol_vc_an(57)"
+                                                              style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 100;">
+                        <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 101;"></div>
+                        <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 103;">
+                            <div title="신도림 테크노마트 웨딩시티"
+                                 style="position: absolute; overflow: hidden; box-sizing: content-box !important; cursor: inherit; z-index: 100; left: -2969px; top: 3346px; width: 22px; height: 33px;">
+                                <map name="nmarker-8A5FA4F8-8F62-46DF-B29E-6E7FF8ACF607">
+                                    <area href="http://card-market.co.kr/mbcard/skin/9/#" shape="poly"
+                                          coords="11,0,9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,5,20,6,23,8,26,9,30,9,34,13,34,13,30,14,26,16,23,17,20,17,19,20,16,21,14,22,12,22,12,22,8,20,4,18,2,16,1,13,0"
+                                          style="display: block; cursor: pointer;">
+                                </map>
+                                <img src="./wedding_invitation_files/marker-default.png" alt=""
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; position: absolute; cursor: inherit; width: 22px; height: 33px; left: 0px; top: 0px;"><img
+                                    src="./wedding_invitation_files/dot.gif" alt=""
+                                    usemap="#nmarker-8A5FA4F8-8F62-46DF-B29E-6E7FF8ACF607"
+                                    style="position: absolute; border: 0px; left: 0px; top: 0px; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; width: 22px; height: 33px;">
+                            </div>
+                        </div>
+                        <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 106;">
+                            <div style="position: absolute; top: 3295px; left: -3070px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; cursor: default; box-sizing: content-box !important;">
+                                <div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 1px solid rgb(51, 51, 51); display: block; cursor: default; box-sizing: content-box !important; background: rgb(255, 255, 255);">
+                                    <div style="margin: 0px; padding: 0px; border: 0px solid transparent; display: inline-block; box-sizing: content-box !important; width: 222px; height: 25px;">
+                                        <div style="width:auto;text-align:center;padding:3px 10px;">"신도림 테크노마트 웨딩시티"
+                                        </div>
+                                    </div>
+                                    <div style="margin: 0px; padding: 0px; width: 0px; height: 0px; position: absolute; border-width: 24px 10px 0px; border-style: solid; border-color: rgb(51, 51, 51) transparent transparent; pointer-events: none; box-sizing: content-box !important; bottom: -25px; left: 101px;"></div>
+                                    <div style="margin: 0px; padding: 0px; width: 0px; height: 0px; position: absolute; border-width: 24px 10px 0px; border-style: solid; border-color: rgb(255, 255, 255) transparent transparent; pointer-events: none; box-sizing: content-box !important; bottom: -22px; left: 101px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 10000; opacity: 0.5; background-color: rgb(255, 255, 255);"></div>
+            </div>
+        </div>
+        <div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; right: 0px;">
+            <div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right; height: 21px;">
+                <div style="position: relative; width: 52px; height: 14px; margin: 0px 12px 7px 2px; overflow: hidden; pointer-events: auto;">
+                    <span style="display:block;margin:0;padding:0 4px;text-align:center;font-size:10px;line-height:11px;font-family:Helvetica,AppleSDGothicNeo-Light,nanumgothic,NanumGothic,&quot;나눔고딕&quot;,Dotum,&quot;돋움&quot;,sans-serif;font-weight:bold;color:#000;text-shadow:-1px 0 rgba(255, 255, 255, 0.3), 0 1px rgba(255, 255, 255, 0.3), 1px 0 rgba(255, 255, 255, 0.3), 0 -1px rgba(255, 255, 255, 0.3);"><font
+                            style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;">100m</font></font></span><img
+                        src="./wedding_invitation_files/scale-normal-b.png" width="44" height="4" alt=""
+                        style="position:absolute;left:4px;;bottom:0;z-index:2;display:block;width:44px;height:4px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img
+                        src="./wedding_invitation_files/scale-normal-l.png" width="4" height="10" alt=""
+                        style="position:absolute;left:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img
+                        src="./wedding_invitation_files/scale-normal-r.png" width="4" height="10" alt=""
+                        style="position:absolute;right:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;">
+                </div>
+            </div>
+        </div>
+        </p>
+        <p class="txt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Phương tiện giao
+            thông công cộng và chỉ dẫn xe hơi chỉ có sẵn sau khi bạn nhấp vào Naver Directions và tìm kiếm nơi khởi
+            hành.</font></font></p>
+        <div class="naver">
+            <a class="zoom"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">Zoom </font></font></a>
+            <font style="vertical-align: inherit;"><a href="http://map.naver.com/index.nhn?menu=route"
+                                                      target="_blank"><span><font
+                    style="vertical-align: inherit;">HƯỚNG</font></span></a><a
+                    href="http://map.naver.com/index.nhn?menu=route" target="_blank"><font
+                    style="vertical-align: inherit;">
+                Naver Directions
+            </font></a></font><a
+                href="http://m.map.naver.com/directions/?menu=route&amp;sy=&amp;esy=&amp;esx=&amp;sname=&amp;sdid=&amp;ey=37.5070835&amp;ex=126.8903206&amp;ename=%EC%8B%A0%EB%8F%84%EB%A6%BC%20%ED%85%8C%ED%81%AC%EB%85%B8%EB%A7%88%ED%8A%B8%20%EC%9B%A8%EB%94%A9%EC%8B%9C%ED%8B%B0&amp;edid=&amp;pathType=&amp;dtPathType=&amp;idx="
+                target="_blank">
+            <img src="./wedding_invitation_files/location_point.png" width="13" height="21"><span><font
+                style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></a>
+        </div>
+
+        <p class="hall_nm2 PL_NM2" style="display:none"><font style="vertical-align: inherit;"><font
+                style="vertical-align: inherit;">Tầng 8 Amor Hall</font></font></p><!-- 백업 -->
+    </div>
+
+
+    <!-- direction -->
+    <div class="direction">
+        <ul>
+            <li class="SUBWAY_CHK" style="">
+                <b class="tit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hướng dẫn
+                    tàu điện ngầm</font></font></b>
+				<pre class="subway_info SUBWAY_INFO"><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">* Đường số 1, Đường số 2, Ga Sindorim, Lối ra
+                    3</font></font><font></font><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">
+                    - Được kết nối trực tiếp với tầng 1 của toà nhà Technomart.</font></font></pre>
+            </li>
+            <li class="BUS_CHK" style="">
+                <b class="tit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thông tin
+                    xe buýt</font></font></b>
+				<pre class="pbus_info BUS_INFO"><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">* Xuống tại ga Sindorim Exit 3</font></font><font></font><font
+                        style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    Xe buýt nhánh (màu xanh lá cây): 5619, 6411, 6511, 6611, 6650, 6651, Yeongdeungpo
+                    09</font></font><font></font><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">
+                    * Xuống tại ga Sindorim Exit 1</font></font><font></font><font
+                        style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    Xe buýt chính (màu xanh): 160, 503, 600, 662, 670</font></font><font></font><font
+                        style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    Xe buýt mặt đất (màu xanh lá cây): 5615, 5714, 6512, 6513, 6515, 6637,
+                    6640</font></font><font></font><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">
+                    Ghế ngồi: 201, 320, 510</font></font><font></font><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">
+                    Xe buýt: 10, 11-1, 11-2, 83, 88</font></font></pre>
+            </li>
+            <li class="PARKING_CHK" style="">
+                <b class="tit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thông tin
+                    về bãi đỗ xe</font></font></b>
+				<pre class="parking_info PARKING_INFO"><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">* Bãi đậu xe ngầm Technomart (B3 ~
+                    B7)</font></font><font></font><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">
+                    * Nhận hướng dẫn từ đại lý đậu xe</font></font></pre>
+            </li>
+        </ul>
+        <ul>
+            <li class="BANQUET_CHK" style="display:none">
+                <b class="tit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lễ
+                    tân</font></font></b>
+                <pre class="banquet_info BANQUET_INFO"></pre>
+            </li>
+            <li class="CHARTERED_BUS_CHK" style="display:none">
+                <b class="tit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hướng dẫn
+                    xe buýt điều lệ</font></font></b>
+                <pre class="bus_info CHARTERED_BUS_INFO"></pre>
+            </li>
+            <li class="ETC_CHK" style="display:none">
+                <b class="tit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hướng dẫn
+                    nội dung khác</font></font></b>
+                <pre class="add_traffic ETC_INFO"></pre>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- sns -->
+    <div class="sns">
+        <ul>
+            <li>
+                <a class="kakao" id="KAKAOTALK">
+                    <img src="./wedding_invitation_files/sns_kakao.png" width="67" height="auto" alt="">
+                </a>
+            </li>
+            <li>
+                <a class="kakaos" id="KAKAOSTORY">
+                    <img src="./wedding_invitation_files/sns_kakaos.png" width="67" height="auto" alt="">
+                </a>
+            </li>
+            <li>
+                <a class="facebook" id="FACEBOOK">
+                    <img src="./wedding_invitation_files/sns_facebook.png" width="67" height="auto" alt="">
+                </a>
+            </li>
+            <li>
+                <a class="band" id="BAND">
+                    <img src="./wedding_invitation_files/sns_band.png" width="67" height="auto" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- footer -->
+    <div class="footer">
+        <p class="logo"><img src="./wedding_invitation_files/footer_logo.png" width="118" height="21" alt=""></p>
+        <a id="TOP" class="top" href="http://card-market.co.kr/mbcard/mb_card.php?mIdx=40635&amp;1506483272271#"><img
+                src="./wedding_invitation_files/footer_top.png" width="21" height="21" alt=""></a>
+    </div>
+</div>
+<!-- //wrap -->
+
+
+<div id="ZOOM_LAYER" class="map_zoom" style="display: none;">
+    <div class="top_bar"><p class="btn_close"><font style="vertical-align: inherit;"><font
+            style="vertical-align: inherit;">Đóng</font></font></p></div>
+    <div id="MAP_CANVAS_FS" class="map_fs"
+         style="position: relative; overflow: hidden; background: url(&quot;http://static.naver.net/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat transparent;">
+        <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0; cursor: url(&quot;http://static.naver.net/maps/mantle/1x/openhand.cur&quot;), default;">
+            <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;">
+                <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: -3279px; left: 3910px; z-index: 1;">
+                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 0; -webkit-user-select: none;"></div>
+                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; -webkit-user-select: none;">
+                        <div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; box-sizing: content-box !important;">
+                            <div style="position: absolute; top: 3049px; left: -4085px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(8)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3305px; left: -4085px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(9)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3049px; left: -3829px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(10)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                            <div style="position: absolute; top: 3305px; left: -3829px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
+                                <img alt="" width="256" height="256" src="./wedding_invitation_files/ol_vc_an(11)"
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 100;">
+                        <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 101;"></div>
+                        <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 103;">
+                            <div title="신도림 테크노마트 웨딩시티"
+                                 style="position: absolute; overflow: hidden; box-sizing: content-box !important; cursor: inherit; z-index: 100; left: -3871px; top: 3296px; width: 22px; height: 33px;">
+                                <map name="nmarker-BD5FFA98-2F36-42EF-A2CF-E3F3E87BECBE">
+                                    <area href="http://card-market.co.kr/mbcard/skin/9/#" shape="poly"
+                                          coords="11,0,9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,5,20,6,23,8,26,9,30,9,34,13,34,13,30,14,26,16,23,17,20,17,19,20,16,21,14,22,12,22,12,22,8,20,4,18,2,16,1,13,0"
+                                          style="display: block; cursor: pointer;">
+                                </map>
+                                <img src="./wedding_invitation_files/marker-default.png" alt=""
+                                     style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; position: absolute; cursor: inherit; width: 22px; height: 33px; left: 0px; top: 0px;"><img
+                                    src="./wedding_invitation_files/dot.gif" alt=""
+                                    usemap="#nmarker-BD5FFA98-2F36-42EF-A2CF-E3F3E87BECBE"
+                                    style="position: absolute; border: 0px; left: 0px; top: 0px; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; width: 22px; height: 33px;">
+                            </div>
+                        </div>
+                        <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 106;">
+                            <div style="position: absolute; top: 3270px; left: -3861px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; cursor: default; box-sizing: content-box !important;">
+                                <div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 1px solid rgb(51, 51, 51); display: block; cursor: default; box-sizing: content-box !important; background: rgb(255, 255, 255);">
+                                    <div style="margin: 0px; padding: 0px; border: 0px solid transparent; display: inline-block; box-sizing: content-box !important; width: 0px; height: 0px;">
+                                        <div style="width:auto;text-align:center;padding:3px 10px;">"신도림 테크노마트 웨딩시티"
+                                        </div>
+                                    </div>
+                                    <div style="margin: 0px; padding: 0px; width: 0px; height: 0px; position: absolute; border-width: 24px 10px 0px; border-style: solid; border-color: rgb(51, 51, 51) transparent transparent; pointer-events: none; box-sizing: content-box !important; bottom: -25px; left: -10px;"></div>
+                                    <div style="margin: 0px; padding: 0px; width: 0px; height: 0px; position: absolute; border-width: 24px 10px 0px; border-style: solid; border-color: rgb(255, 255, 255) transparent transparent; pointer-events: none; box-sizing: content-box !important; bottom: -22px; left: -10px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 10000; opacity: 0.5; background-color: rgb(255, 255, 255);"></div>
+            </div>
+        </div>
+        <div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; right: 0px;">
+            <div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right; height: 21px;">
+                <div style="position: relative; width: 52px; height: 14px; margin: 0px 12px 7px 2px; overflow: hidden; pointer-events: auto;">
+                    <span style="display:block;margin:0;padding:0 4px;text-align:center;font-size:10px;line-height:11px;font-family:Helvetica,AppleSDGothicNeo-Light,nanumgothic,NanumGothic,&quot;나눔고딕&quot;,Dotum,&quot;돋움&quot;,sans-serif;font-weight:bold;color:#000;text-shadow:-1px 0 rgba(255, 255, 255, 0.3), 0 1px rgba(255, 255, 255, 0.3), 1px 0 rgba(255, 255, 255, 0.3), 0 -1px rgba(255, 255, 255, 0.3);"><font
+                            style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;">100m</font></font></span><img
+                        src="./wedding_invitation_files/scale-normal-b.png" width="44" height="4" alt=""
+                        style="position:absolute;left:4px;;bottom:0;z-index:2;display:block;width:44px;height:4px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img
+                        src="./wedding_invitation_files/scale-normal-l.png" width="4" height="10" alt=""
+                        style="position:absolute;left:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img
+                        src="./wedding_invitation_files/scale-normal-r.png" width="4" height="10" alt=""
+                        style="position:absolute;right:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="GAL_LAYER" class="gallery_zoom" style="display:none">
+    <img src="./wedding_invitation_files/gallery_tit.png" width="138" height="auto">
+    <ul id="GAL_LIST_ALL" class="lst">
+        <li><a><img src="./wedding_invitation_files/g1.jpg" width="100%" height="auto" data-num="0"></a></li>
+        <li><a><img src="./wedding_invitation_files/g2.jpg" width="100%" height="auto" data-num="1"></a></li>
+        <li><a><img src="./wedding_invitation_files/g4.jpg" width="100%" height="auto" data-num="2"></a></li>
+    </ul>
+    <a class="btn_close" style=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        Đóng chế độ xem ảnh</font></font><br>
+        <img src="./wedding_invitation_files/gallery_more.png" width="49" height="auto">
+    </a>
+</div>
+
+<div id="IMG_LAYER" class="img_zoom" style="display:none">
+    <div class="top_bar"><p class="btn_close"><font style="vertical-align: inherit;"><font
+            style="vertical-align: inherit;">Đóng</font></font></p></div>
+    <ul id="VIEWER_LIST">
+        <li class="viewer"><img width="100%" height="auto" src="./wedding_invitation_files/g1.jpg"></li>
+        <li class="viewer"><img width="100%" height="auto" src="./wedding_invitation_files/g2.jpg"></li>
+        <li class="viewer"><img width="100%" height="auto" src="./wedding_invitation_files/g4.jpg"></li>
+    </ul>
+    <ul class="VIEW_TEMPLATES" style="display:none">
+        <li class="viewer"><img width="100%" height="auto"></li>
+    </ul>
+</div>
+
+
+<!-- *** 프로그래밍용 JS : 삭제금지 -->
+<script type="text/javascript" src="./wedding_invitation_files/maps.js"></script>
+<script src="./wedding_invitation_files/skin.js" type="text/javascript"></script>
+<script type="text/javascript" src="./wedding_invitation_files/piaaano-utils.js"></script>
+<script type="text/javascript" src="./wedding_invitation_files/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="./wedding_invitation_files/jssor.slider.min.js"></script>
+<script type="text/javascript" src="./wedding_invitation_files/common.js"></script>
+<script type="text/javascript" src="./wedding_invitation_files/kakao.min.js"></script>
+<script type="text/javascript" src="./wedding_invitation_files/kakaostoryLink.js"></script>
+<canvas id="grayCanvas" style="display:none"></canvas>
+<script type="text/javascript">
+    //IE10 이상에서 메인 이미지 grayscale 처리
+    function drawImage(imageObj) {
+        var canvas = document.getElementById('grayCanvas');
+        canvas.width = imageObj.width;
+        canvas.height = imageObj.height;
+        var context = canvas.getContext('2d');
+        var x = 0;
+        var y = 0;
+
+        context.drawImage(imageObj, x, y);
+        var imageData = context.getImageData(x, y, imageObj.width, imageObj.height);
+        var data = imageData.data;
+
+        for (var i = 0; i < data.length; i += 4) {
+            var brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
+            // red
+            data[i] = brightness;
+            // green
+            data[i + 1] = brightness;
+            // blue
+            data[i + 2] = brightness;
+        }
+
+        // overwrite original image
+        context.putImageData(imageData, x, y);
+    }
+
+    function _postProcBySkin() {
+        var agt = navigator.userAgent.toLowerCase();
+        if (agt.indexOf("trident/5.0") != -1 ||		//IE9
+                agt.indexOf("trident/6.0") != -1 ||		//IE10
+                agt.indexOf("trident/7.0") != -1 ||		//IE11
+                agt.indexOf("android 4.1") != -1 ||		//Android 4.1.x
+                agt.indexOf("android 4.2") != -1 ||		//Android 4.2.x
+                agt.indexOf("android 4.3") != -1 		//Android 4.3.x
+        ) {
+            var img = new Image();
+            img.onload = function () {
+                drawImage(this);
+                $("#MAIN_PHOTO").attr("src", document.getElementById("grayCanvas").toDataURL());
+            };
+            img.src = $("#MAIN_PHOTO").attr("src");
+        }
+    }
+    ;
+</script>
+<!-- *** 프로그래밍용 JS : 삭제금지 -->
+
+<!-- *** 템플릿 작성 유의사항 : 태그 내 id값및  대문자명 class는 절대 변경/삭제하지 말것 -->
+<div id="goog-gt-tt" class="skiptranslate" dir="ltr">
+    <div style="padding: 8px;">
+        <div>
+            <div class="logo"><img src="./wedding_invitation_files/translate_24dp.png" width="20" height="20"
+                                   alt="Google Translate"></div>
+        </div>
+    </div>
+    <div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Original text</h1></div>
+    <div class="middle" style="padding: 8px;">
+        <div class="original-text"></div>
+    </div>
+    <div class="bottom" style="padding: 8px;">
+        <div class="activity-links"><span class="activity-link">Contribute a better translation</span><span
+                class="activity-link"></span></div>
+        <div class="started-activity-container">
+            <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
+            <div class="activity-root"></div>
+        </div>
+    </div>
+    <div class="status-message" style="display: none;"></div>
+</div>
+
+
+<div class="goog-te-spinner-pos">
+    <div class="goog-te-spinner-animation">
+        <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
+            <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33"
+                    r="30"></circle>
+        </svg>
+    </div>
+</div>
+<script type="text/javascript" src="./wedding_invitation_files/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./wedding_invitation_files/jquery.bxslider.min.js"></script>
+</body>
+</html>
