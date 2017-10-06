@@ -75,4 +75,14 @@ class HomeController extends Controller
     {
         return $this->render('ViettutWebBundle:Home:price.html.twig');
     }
+
+    /**
+     * @Route("/templates/{id}", name="single_template_page")
+     * @param $request
+     * @return Response
+     */
+    public function singleTemplateAction(Request $request, $id)
+    {
+        return $this->render('ViettutWebBundle:Home:single_template.html.twig');
+    }
 }

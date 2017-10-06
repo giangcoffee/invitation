@@ -184,13 +184,15 @@
                                 </a>
                             </li>
                         {% endif %}
+                        {% block cart %}
+                        {% endblock %}
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <div role="main" class="main">
+    <div role="main" class="main {% block shop %}{% endblock %}">
         {% block main %}
         {% endblock %}
     </div>
