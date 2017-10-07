@@ -1,0 +1,42 @@
+Viettut\Entity\Core\Card:
+    type: entity
+    table: viettut_card
+    repositoryClass: Viettut\Repository\Core\CardRepository
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        hash:
+            type: text
+            nullable: false
+        data:
+            type: json_array
+            nullable: false
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        deletedAt:
+            type: date
+            nullable: true
+    manyToOne:
+        template:
+            targetEntity: Viettut\Entity\Core\Template
+            inversedBy: cards
+        author:
+            targetEntity: Viettut\Bundle\UserBundle\Entity\User
+    oneToMany:
+        comments:
+            targetEntity: Viettut\Entity\Core\Comment
+            mappedBy: card
+
+
+    lifecycleCallbacks: {  }

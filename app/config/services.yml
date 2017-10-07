@@ -7,11 +7,7 @@ parameters:
     jms_serializer.cache_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
 
     # voter
-    viettut.security.auth.voter.course.class: Viettut\Security\Authorization\Voter\CourseVoter
-    viettut.security.auth.voter.tutorial.class: Viettut\Security\Authorization\Voter\TutorialVoter
-    viettut.security.auth.voter.chapter.class: Viettut\Security\Authorization\Voter\ChapterVoter
-    viettut.security.auth.voter.challenge.class: Viettut\Security\Authorization\Voter\ChallengeVoter
-    viettut.security.auth.voter.test.class: Viettut\Security\Authorization\Voter\TestVoter
+    viettut.security.auth.voter.card.class: Viettut\Security\Authorization\Voter\CardVoter
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
@@ -52,32 +48,8 @@ services:
             - { name: twig.extension }
 
     # voter
-    viettut.security.auth.voter.course:
-        class:  '%viettut.security.auth.voter.course.class%'
-        public: false
-        tags:
-            - { name: security.voter }
-
-    viettut.security.auth.voter.tutorial:
-        class:  '%viettut.security.auth.voter.tutorial.class%'
-        public: false
-        tags:
-            - { name: security.voter }
-
-    viettut.security.auth.voter.chapter:
-        class:  '%viettut.security.auth.voter.chapter.class%'
-        public: false
-        tags:
-            - { name: security.voter }
-
-    viettut.security.auth.voter.challenge:
-        class:  '%viettut.security.auth.voter.challenge.class%'
-        public: false
-        tags:
-            - { name: security.voter }
-
-    viettut.security.auth.voter.test:
-        class:  '%viettut.security.auth.voter.test.class%'
+    viettut.security.auth.voter.card:
+        class:  '%viettut.security.auth.voter.card.class%'
         public: false
         tags:
             - { name: security.voter }

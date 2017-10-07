@@ -1,6 +1,0 @@
-Viettut\Entity\Core\CourseTag:
-    exclusion_policy: ALL
-    properties:
-        tag:
-            expose: true
-            groups: [coursetag.detail, coursetag.summary]

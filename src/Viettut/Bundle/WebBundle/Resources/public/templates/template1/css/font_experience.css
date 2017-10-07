@@ -1,0 +1,132 @@
+﻿@charset "utf-8";
+
+/*
+ * Hangeul Nanum Font
+ */
+@font-face {
+ font-family: 'NanumBarunpen';
+ src: url(../webfont/NanumBarunpen/NanumBarunpenR.eot);
+ src: url(../webfont/NanumBarunpen/NanumBarunpenR.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumBarunpen/NanumBarunpenR.woff) format('woff'),
+      url(../webfont/NanumBarunpen/NanumBarunpenR.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumBarunGothic';
+ src: url(../webfont/NanumBarunGothic/NanumBarunGothicWeb.eot);
+ src: url(../webfont/NanumBarunGothic/NanumBarunGothicWeb.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumBarunGothic/NanumBarunGothicWeb.woff) format('woff'),
+      url(../webfont/NanumBarunGothic/NanumBarunGothicWeb.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumBareunGothicUltraLight';
+ src: url(../webfont/NanumBarunGothicL/NanumBarunGothicWebUltraLight_11173.eot);
+ src: url(../webfont/NanumBarunGothicL/NanumBarunGothicWebUltraLight_11173.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumBarunGothicL/NanumBarunGothicWebUltraLight_11173.woff) format('woff'),
+      url(../webfont/NanumBarunGothicL/NanumBarunGothicWebUltraLight_11173.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumGothicEco';
+ src: url(../webfont/NanumEco/NanumGothicEco/NanumGothicEco.eot);
+ src: url(../webfont/NanumEco/NanumGothicEco/NanumGothicEco.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumEco/NanumGothicEco/NanumGothicEco.woff) format('woff'),
+      url(../webfont/NanumEco/NanumGothicEco/NanumGothicEco.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumMyeongjoEco';
+ src: url(../webfont/NanumEco/NanumMyeongjoEco/NanumMyeongjoEco.eot);
+ src: url(../webfont/NanumEco/NanumMyeongjoEco/NanumMyeongjoEco.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumEco/NanumMyeongjoEco/NanumMyeongjoEco.woff) format('woff'),
+      url(../webfont/NanumEco/NanumMyeongjoEco/NanumMyeongjoEco.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumBrush';
+ src: url(../webfont/NanumBrush/NanumBrush.eot);
+ src: url(../webfont/NanumBrush/NanumBrush.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumBrush/NanumBrush.woff) format('woff'),
+      url(../webfont/NanumBrush/NanumBrush.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumPen';
+ src: url(../webfont/NanumBrush/NanumPen.eot);
+ src: url(../webfont/NanumBrush/NanumPen.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumBrush/NanumPen.woff) format('woff'),
+      url(../webfont/NanumBrush/NanumPen.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumMyeongjo';
+ src: url(../webfont/NanumMyeongjo/NanumMyeongjo.eot);
+ src: url(../webfont/NanumMyeongjo/NanumMyeongjo.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumMyeongjo/NanumMyeongjo.woff) format('woff'),
+      url(../webfont/NanumMyeongjo/NanumMyeongjo.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumGothic';
+ src: url(../webfont/NanumGothic/NanumGothic.eot);
+ src: url(../webfont/NanumGothic/NanumGothic.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumGothic/NanumGothic.woff) format('woff'),
+      url(../webfont/NanumGothic/NanumGothic.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumSquare';
+ src: url(../webfont/NanumSquare/NanumSquareR.eot);
+ src: url(../webfont/NanumSquare/NanumSquareR.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquare/NanumSquareR.woff) format('woff'),
+      url(../webfont/NanumSquare/NanumSquareR.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumSquare Light';
+ src: url(../webfont/NanumSquare/NanumSquareL.eot);
+ src: url(../webfont/NanumSquare/NanumSquareL.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquare/NanumSquareL.woff) format('woff'),
+      url(../webfont/NanumSquare/NanumSquareL.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumSquare ExtraBold';
+ src: url(../webfont/NanumSquare/NanumSquareEB.eot);
+ src: url(../webfont/NanumSquare/NanumSquareEB.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquare/NanumSquareEB.woff) format('woff'),
+      url(../webfont/NanumSquare/NanumSquareEB.ttf) format('truetype');
+}
+@font-face {
+ font-family: 'NanumSquareBold';
+ src: url(../webfont/NanumSquare/NanumSquareB.eot);
+ src: url(../webfont/NanumSquare/NanumSquareB.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquare/NanumSquareB.woff) format('woff'),
+      url(../webfont/NanumSquare/NanumSquareB.ttf) format('truetype');
+}
+
+@font-face {
+ font-family: 'NanumSquareRound';
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundR.eot);
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundR.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundR.woff2) format('woff2'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundR.woff) format('woff'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundR.ttf) format('truetype');
+}
+
+@font-face {
+ font-family: 'NanumSquareRoundB';
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundB.eot);
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundB.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundB.woff2) format('woff2'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundB.woff) format('woff'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundB.ttf) format('truetype');
+}
+
+@font-face {
+ font-family: 'NanumSquareRoundEB';
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundEB.eot);
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundEB.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundEB.woff2) format('woff2'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundEB.woff) format('woff'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundEB.ttf) format('truetype');
+}
+
+@font-face {
+ font-family: 'NanumSquareRoundL';
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundL.eot);
+ src: url(../webfont/NanumSquareRound/NanumSquareRoundL.eot?#iefix) format('embedded-opentype'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundL.woff2) format("woff2"),
+      url(../webfont/NanumSquareRound/NanumSquareRoundL.woff) format('woff'),
+      url(../webfont/NanumSquareRound/NanumSquareRoundL.ttf) format('truetype');
+}

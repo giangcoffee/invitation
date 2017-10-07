@@ -1,5 +1,0 @@
-Viettut\Model\Core\CourseTag:
-    exclusion_policy: ALL
-    properties:
-        course:
-            exclude: true

@@ -9,9 +9,8 @@
 namespace Viettut\Model\Core;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Viettut\Model\User\UserEntityInterface;
 use Viettut\Model\ModelInterface;
+use Viettut\Model\User\UserEntityInterface;
 
 interface CommentInterface extends ModelInterface
 {
@@ -37,21 +36,6 @@ interface CommentInterface extends ModelInterface
     public function getContent();
 
     /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return self
-     */
-    public function setActive($active);
-
-    /**
-     * Get active
-     *
-     * @return boolean
-     */
-    public function getActive();
-
-    /**
      * Get deletedAt
      *
      * @return \DateTime
@@ -75,61 +59,13 @@ interface CommentInterface extends ModelInterface
     public function getCreatedAt();
 
     /**
-     * @return CourseInterface
+     * @return CardInterface
      */
-    public function getCourse();
+    public function getCard();
 
     /**
-     * @param CourseInterface $course
+     * @param CardInterface $card
      * @return self
      */
-    public function setCourse($course);
-
-    /**
-     * @return ChapterInterface
-     */
-    public function getChapter();
-
-    /**
-     * @param ChapterInterface $chapter
-     * @return self
-     */
-    public function setChapter($chapter);
-
-    /**
-     * @return TutorialInterface
-     */
-    public function getTutorial();
-
-    /**
-     * @param TutorialInterface $tutorial
-     * @return self
-     */
-    public function setTutorial($tutorial);
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getReplies();
-
-    /**
-     * @param ArrayCollection $replies
-     */
-    public function setReplies($replies);
-
-    /**
-     * @return CommentInterface
-     */
-    public function getReplyFor();
-
-    /**
-     * @param CommentInterface $replyFor
-     */
-    public function setReplyFor($replyFor);
-
-    /**
-     * @param CommentInterface $reply
-     * @return self
-     */
-    public function addReply(CommentInterface $reply);
+    public function setCard($card);
 }

@@ -9,7 +9,6 @@
 namespace Viettut\Model\Core;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Viettut\Model\User\UserEntityInterface;
 
 class Comment implements CommentInterface
@@ -25,39 +24,14 @@ class Comment implements CommentInterface
     protected $content;
 
     /**
-     * @var string
-     */
-    protected $active;
-
-    /**
      * @var UserEntityInterface
      */
     protected $author;
 
     /**
-     * @var CourseInterface
+     * @var CardInterface
      */
-    protected $course;
-
-    /**
-     * @var TutorialInterface
-     */
-    protected $tutorial;
-
-    /**
-     * @var ChapterInterface
-     */
-    protected $chapter;
-
-    /**
-     * @var ArrayCollection
-     */
-    protected $replies;
-
-    /**
-     * @var CommentInterface
-     */
-    protected $replyFor;
+    protected $card;
 
     /**
      * @var \DateTime
@@ -107,28 +81,6 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return self
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
-
-    /**
      * Get deletedAt
      *
      * @return \DateTime
@@ -173,106 +125,22 @@ class Comment implements CommentInterface
     }
 
     /**
-     * @return CourseInterface
+     * @return CardInterface
      */
-    public function getCourse()
+    public function getCard()
     {
-        return $this->course;
+        return $this->card;
     }
 
     /**
-     * @param CourseInterface $course
+     * @param CardInterface $card
      * @return self
      */
-    public function setCourse($course)
+    public function setCard($card)
     {
-        $this->course = $course;
+        $this->card = $card;
         return $this;
     }
-
-    /**
-     * @return ChapterInterface
-     */
-    public function getChapter()
-    {
-        return $this->chapter;
-    }
-
-    /**
-     * @param ChapterInterface $chapter
-     * @return self
-     */
-    public function setChapter($chapter)
-    {
-        $this->chapter = $chapter;
-        return $this;
-    }
-
-    /**
-     * @return TutorialInterface
-     */
-    public function getTutorial()
-    {
-        return $this->tutorial;
-    }
-
-    /**
-     * @param TutorialInterface $tutorial
-     * @return self
-     */
-    public function setTutorial($tutorial)
-    {
-        $this->tutorial = $tutorial;
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getReplies()
-    {
-        return $this->replies;
-    }
-
-    /**
-     * @param ArrayCollection $replies
-     */
-    public function setReplies($replies)
-    {
-        $this->replies = $replies;
-    }
-
-    /**
-     * @return CommentInterface
-     */
-    public function getReplyFor()
-    {
-        return $this->replyFor;
-    }
-
-    /**
-     * @param CommentInterface $replyFor
-     */
-    public function setReplyFor($replyFor)
-    {
-        $this->replyFor = $replyFor;
-    }
-
-    /**
-     * @param CommentInterface $reply
-     * @return self
-     */
-    public function addReply(CommentInterface $reply)
-    {
-        if ($this->replies === null) {
-            $this->replies = new ArrayCollection();
-        }
-
-        $this->replies->add($reply);
-
-        return $this;
-    }
-
 
     function __toString()
     {

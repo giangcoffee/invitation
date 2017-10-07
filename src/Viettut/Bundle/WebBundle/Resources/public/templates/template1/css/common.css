@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+
+.img_zoom {display:table;}
+.img_zoom .top_bar .btn_close {margin-top:5px!important;}
+.bx-wrapper {display:table-cell; height:100%; vertical-align:middle;}
+
+.direction pre {line-height:16px; font-size:13px; color:#656565; word-break:break-all; white-space:pre-line;}
+
+.bx-default-pager {position:absolute; left:0; bottom:10px; width:100%; text-align:center;}
+.bx-default-pager div {display:inline; margin:0 5px;}
+.bx-default-pager a {display:inline-block; width:8px; height:8px; font-size:0; text-indent:-9999px; background:url(/mbcard/img/mcard_intro_dot.png) no-repeat;}
+.bx-default-pager a.active {background-position:0 -8px;}
+
+
+

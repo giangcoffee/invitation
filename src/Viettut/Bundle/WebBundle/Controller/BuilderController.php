@@ -23,6 +23,6 @@ class BuilderController extends Controller
      */
     public function builderAction(Request $request, $hash)
     {
-        return $this->render('ViettutWebBundle:Builder:index.html.twig');
+        return $this->render('ViettutWebBundle:template1:index.html.twig');
     }
 }

@@ -1,0 +1,41 @@
+Viettut\Entity\Core\Template:
+    type: entity
+    table: viettut_template
+    repositoryClass: Viettut\Repository\Core\TemplateRepository
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: text
+            nullable: false
+        hash:
+            type: text
+            nullable: false
+        path:
+            type: text
+            nullable: false
+        data:
+            type: json_array
+            nullable: false
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        deletedAt:
+            type: date
+            nullable: true
+#    oneToMany:
+#        cards:
+#            targetEntity: Viettut\Entity\Core\Card
+#            mappedBy: template
+
+    lifecycleCallbacks: {  }

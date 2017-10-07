@@ -13,13 +13,8 @@ class Comment extends CommentModel
 {
     protected $id;
     protected $content;
-    protected $active;
     protected $author;
-    protected $course;
-    protected $tutorial;
-    protected $chapter;
-    protected $replies;
-    protected $replyFor;
+    protected $card;
     protected $createdAt;
     protected $deletedAt;
 

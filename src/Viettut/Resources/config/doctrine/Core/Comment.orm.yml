@@ -16,8 +16,6 @@ Viettut\Entity\Core\Comment:
         content:
             type: text
             nullable: false
-        active:
-            type: boolean
         createdAt:
             type: datetime
             gedmo:
@@ -29,21 +27,8 @@ Viettut\Entity\Core\Comment:
     manyToOne:
         author:
             targetEntity: Viettut\Bundle\UserBundle\Entity\User
-        course:
-            targetEntity: Viettut\Entity\Core\Course
+        card:
+            targetEntity: Viettut\Entity\Core\Card
             inversedBy: comments
-        tutorial:
-            targetEntity: Viettut\Entity\Core\Tutorial
-            inversedBy: comments
-        chapter:
-            targetEntity: Viettut\Entity\Core\Tutorial
-            inversedBy: comments
-        replyFor:
-            targetEntity: Viettut\Entity\Core\Comment
-            inversedBy: replies
-    oneToMany:
-        replies:
-            targetEntity: Viettut\Entity\Core\Comment
-            mappedBy: replyFor
 
     lifecycleCallbacks: {  }
