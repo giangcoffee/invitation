@@ -11,4 +11,9 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 interface CardRepositoryInterface extends ObjectRepository
 {
+    /**
+     * @param string $hash
+     * @return mixed
+     */
+    public function getCardByHash($hash);
 }

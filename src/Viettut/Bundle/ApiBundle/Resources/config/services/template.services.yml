@@ -1,0 +1,51 @@
+parameters:
+    viettut.entity.core.template.class: Viettut\Entity\Core\Template
+    viettut.form.type.template.class: Viettut\Form\Type\TemplateFormType
+services:
+    # card ######################################################
+
+    viettut_api.handler.template:
+        class: Viettut\Handler\HandlerInterface
+        factory_service: viettut.handler.handler_manager.template
+        factory_method: getHandler
+        arguments:
+            - @viettut.user_role
+
+    ###### dependencies and base classes for card handler #######
+
+    viettut.repository.template:
+        class: Viettut\Repository\Core\TemplateRepositoryInterface
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - %viettut.entity.core.template.class%
+
+    viettut.domain_manager.template:
+        class: Viettut\DomainManager\TemplateManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @viettut.repository.template
+
+    viettut.form.type.template:
+        class: %viettut.form.type.template.class%
+        arguments:
+            - @viettut.repository.template
+        tags:
+            - { name: form.type, alias: tagcade_form_template }
+
+    viettut.handler.handlers.template:
+        class: Viettut\Handler\Handlers\Core\TemplateHandler
+        parent: viettut.handler.role_handler_abstract
+        public: false
+        arguments:
+            - @viettut.form.type.template
+            - @viettut.domain_manager.template
+
+    viettut.handler.handler_manager.template:
+        class: Viettut\Handler\HandlerManager
+        arguments:
+            - %viettut.entity.core.template.class%
+            -
+                - @viettut.handler.handlers.template
+
+    # end card #####################################################

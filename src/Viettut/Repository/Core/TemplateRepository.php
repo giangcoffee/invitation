@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
 
 class TemplateRepository extends EntityRepository implements TemplateRepositoryInterface
 {
+    /**
+     * @param string $hash
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getTemplateByHash($hash)
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.hash =:hash')
+            ->setParameter('hash', $hash)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

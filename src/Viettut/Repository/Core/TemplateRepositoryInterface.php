@@ -11,4 +11,9 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 interface TemplateRepositoryInterface extends ObjectRepository
 {
+    /**
+     * @param string $hash
+     * @return mixed
+     */
+    public function getTemplateByHash($hash);
 }

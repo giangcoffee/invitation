@@ -13,11 +13,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Viettut\Entity\Core\Tag;
-use Viettut\Model\Core\TagInterface;
+use Viettut\Entity\Core\Card;
+use Viettut\Model\Core\CardInterface;
+use Viettut\Utilities\StringFactory;
 
-class TagFormType extends AbstractRoleSpecificFormType
+class CardFormType extends AbstractRoleSpecificFormType
 {
+    use StringFactory;
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -25,17 +27,17 @@ class TagFormType extends AbstractRoleSpecificFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text')
-            ->add('icon')
+            ->add('template')
+            ->add('data')
         ;
 
         $builder->addEventListener(
             FormEvents::POST_SUBMIT,
             function(FormEvent $event) {
-                /** @var TagInterface $tag */
-                $tag = $event->getData();
-                if ($tag->getId() === null) {
-                    $tag->setCount(0);
+                /** @var CardInterface $card */
+                $card = $event->getData();
+                if ($card->getId() == null) {
+                    $card->setHash(uniqid($card->getTemplate()->getName(), true));
                 }
             }
         );
@@ -45,7 +47,7 @@ class TagFormType extends AbstractRoleSpecificFormType
     {
         $resolver
             ->setDefaults([
-                'data_class' => Tag::class,
+                'data_class' => Card::class,
                 'csrf_protection'   => false
             ]);
     }
@@ -56,6 +58,6 @@ class TagFormType extends AbstractRoleSpecificFormType
      */
     public function getName()
     {
-        return 'viettut_form_tag';
+        return 'viettut_form_card';
     }
 }

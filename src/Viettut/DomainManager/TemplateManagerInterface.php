@@ -13,11 +13,11 @@ use Viettut\Model\Core\ChapterInterface;
 use Viettut\Model\Core\CourseInterface;
 use Viettut\Model\Core\TutorialInterface;
 
-interface CardManagerInterface extends ManagerInterface
+interface TemplateManagerInterface extends ManagerInterface
 {
     /**
      * @param string $hash
      * @return mixed
      */
-    public function getCardByHash($hash);
+    public function getTemplateByHash($hash);
 }

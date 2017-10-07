@@ -29,3 +29,13 @@ api_comment:
     type: rest
     resource: Viettut\Bundle\ApiBundle\Controller\CommentController
     name_prefix:  api_1_
+
+api_card:
+    type: rest
+    resource: Viettut\Bundle\ApiBundle\Controller\CardController
+    name_prefix:  api_1_
+
+api_template:
+    type: rest
+    resource: Viettut\Bundle\ApiBundle\Controller\TemplateController
+    name_prefix:  api_1_

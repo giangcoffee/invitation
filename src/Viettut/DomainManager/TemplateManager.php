@@ -7,11 +7,11 @@ namespace Viettut\DomainManager;
 use Doctrine\ORM\EntityManagerInterface;
 use ReflectionClass;
 use Viettut\Exception\InvalidArgumentException;
-use Viettut\Model\Core\CardInterface;
+use Viettut\Model\Core\TemplateInterface;
 use Viettut\Model\ModelInterface;
-use Viettut\Repository\Core\CardRepositoryInterface;
+use Viettut\Repository\Core\TemplateRepositoryInterface;
 
-class CardManager implements CardManagerInterface
+class TemplateManager implements TemplateManagerInterface
 {
     /**
      * @var EntityManagerInterface
@@ -19,7 +19,7 @@ class CardManager implements CardManagerInterface
     protected $em;
     protected $repository;
 
-    public function __construct(EntityManagerInterface $em, CardRepositoryInterface $repository)
+    public function __construct(EntityManagerInterface $em, TemplateRepositoryInterface $repository)
     {
         $this->em = $em;
         $this->repository = $repository;
@@ -34,7 +34,7 @@ class CardManager implements CardManagerInterface
      */
     public function supportsEntity($entity)
     {
-        return is_subclass_of($entity, CardInterface::class);
+        return is_subclass_of($entity, TemplateInterface::class);
     }
 
     /**
@@ -43,8 +43,8 @@ class CardManager implements CardManagerInterface
      */
     public function save(ModelInterface $entity)
     {
-        if (!$entity instanceof CardInterface) {
-            throw new InvalidArgumentException('expect an CardInterface object');
+        if (!$entity instanceof TemplateInterface) {
+            throw new InvalidArgumentException('expect an TemplateInterface object');
         }
 
         $this->em->persist($entity);
@@ -57,8 +57,8 @@ class CardManager implements CardManagerInterface
      */
     public function delete(ModelInterface $entity)
     {
-        if (!$entity instanceof CardInterface) {
-            throw new InvalidArgumentException('expect an CardInterface object');
+        if (!$entity instanceof TemplateInterface) {
+            throw new InvalidArgumentException('expect an TemplateInterface object');
         }
 
         $this->em->remove($entity);
@@ -97,8 +97,8 @@ class CardManager implements CardManagerInterface
      * @param string $hash
      * @return mixed
      */
-    public function getCardByHash($hash)
+    public function getTemplateByHash($hash)
     {
-        return $this->repository->getCardByHash($hash);
+        return $this->repository->getTemplateByHash($hash);
     }
 }

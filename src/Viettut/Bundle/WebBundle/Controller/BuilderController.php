@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Viettut\Model\Core\TemplateInterface;
 
 class BuilderController extends Controller
 {
@@ -24,5 +26,22 @@ class BuilderController extends Controller
     public function builderAction(Request $request, $hash)
     {
         return $this->render('ViettutWebBundle:template1:index.html.twig');
+    }
+
+    /**
+     * @Route("/templates/{hash}/preview", name="preview_page")
+     * @param $request
+     * @param $hash
+     * @return Response
+     */
+    public function previewTemplateAction(Request $request, $hash)
+    {
+        $template = $this->get('viettut.domain_manager.template')->getTemplateByHash($hash);
+        
+        if (!$template instanceof TemplateInterface) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
+        
+        return $this->render($template->getPath(), array('template' => $template));
     }
 }

@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="/bundles/viettutweb/templates/template1/css/style.css">
 </head>
 <body>
-
+<div class="configuration" data-config="{{ template ? template.data|json_encode|e('html_attr') : card.data|json_encode|e('html_attr') }}">
+</div>
 <!-- wrap -->
 <div id="dic_bubble" class="selection_bubble fontSize13 noSelect" style="z-index:9999; border: 1px solid #4AAEDE;fetching=false"></div><div id="wrap">
 

@@ -1,6 +1,8 @@
 imports:
     - { resource: services/comment.services.yml }
     - { resource: services/subscriber.services.yml }
+    - { resource: services/card.services.yml }
+    - { resource: services/template.services.yml }
 
 parameters:
     # jwt
