@@ -38,8 +38,8 @@
                 <b class="bride BR_NM">{% if isTemplate %} {{ data['bride_nm_eng'] }} {% endif %}</b>
             </p>
             <p class="day_b">
-                <span class="month_num W_MM">{% if isTemplate %} {{ date | date('m') }} {% endif %}</span>
                 <span class="day_num W_DD">{% if isTemplate %} {{ date | date('d') }} {% endif %}</span>
+                <span class="month_num W_MM"> Tháng {% if isTemplate %} {{ date | date('m') }} {% endif %}</span>
             </p>
         </div>
     </div>
@@ -48,12 +48,12 @@
     <div class="data_txt">
         <img src="{{ asset('bundles/viettutweb/templates/template1/img/data_txt_line.png') }}" height="auto" width="82">
         <p class="date">
-            <span class="year W_WeekKr">Thứ trong tuần</span>
-            <span class="year W_TimeKr">Thời gian trong ngày</span>
+            <span class="year W_WeekKr">{{ date | date('l') }}</span>
+            <span class="year W_TimeKr">{{ date | date('H:i A') }}</span>
         </p>
         <p class="hall">
-            <span class="PL_NM">Địa điểm tiệc cưới</span>
-            <span style="display: none;" class="PL_NM2">00000 0000 0000</span>
+            <span class="PL_NM">{% if isTemplate %} {{ data['place_nm'] }} {% endif %}</span>
+            <span class="PL_NM2">{{ data['place_addr'] }}</span>
         </p>
     </div>
 
@@ -62,29 +62,29 @@
     <div class="greeting">
         <img src="{{ asset('bundles/viettutweb/templates/template1/img/greeting_top.png') }}" height="auto" width="100">
         <pre class="gcon GREETING">
-            Lời chúc
+            {% if isTemplate %} {{ data['greeting'] }} {% endif %}
         </pre>
 
         <!-- sms -->
         <div class="sms">
             <div class="lft">
                 <p>
-                    <b class="GR_NM">Tên chú rể</b>
-                    <i>GROOM</i>
+                    <b class="GR_NM">{% if isTemplate %} {{ data['groom_nm_eng'] }} {% endif %}</b>
+                    <i>CHÚ RỂ</i>
                 </p>
                 <div>
-                    <a class="call" href="tel:" id="GROOMPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_groom_call.png') }}" alt="" height="auto" width="51"></a>
-                    <a class="msg" href="sms:" id="GROOMSMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_groom_msg.png') }}" alt="" height="auto" width="51"></a>
+                    <a class="call" href="tel:{{ data['groom_hp'] }}" id="GROOMPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_groom_call.png') }}" alt="" height="auto" width="51"></a>
+                    <a class="msg" href="sms:{{ data['groom_hp'] }}" id="GROOMSMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_groom_msg.png') }}" alt="" height="auto" width="51"></a>
                 </div>
             </div>
             <div class="rgt">
                 <p>
-                    <b class="BR_NM">Tên cô dâu</b>
-                    <i>BRIDE</i>
+                    <b class="BR_NM">{% if isTemplate %} {{ data['bride_nm_eng'] }} {% endif %}</b>
+                    <i>CÔ DÂU</i>
                 </p>
                 <div>
-                    <a class="call" href="tel:" id="BRIDEPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_bride_call.png') }}" alt="" height="auto" width="51"></a>
-                    <a class="msg" href="sms:" id="BRIDESMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_bride_msg.png') }}" alt="" height="auto" width="51"></a>
+                    <a class="call" href="tel:{{ data['bride_hp'] }}" id="BRIDEPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_bride_call.png') }}" alt="" height="auto" width="51"></a>
+                    <a class="msg" href="sms:{{ data['bride_hp'] }}" id="BRIDESMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_bride_msg.png') }}" alt="" height="auto" width="51"></a>
                 </div>
             </div>
             <p class="ex"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_and.png') }}" height="auto" width="48"></p>
@@ -96,34 +96,34 @@
             <div class="lft">
                 <p>&lt;Nhà Trai&gt;</p>
                 <p class="info">
-                    <span>Cha </span> <i class="GR_FA">Tên cha chú rể</i>
+                    <span>Cha </span> <i class="GR_FA">{{ data['groom_fa_nm'] }}</i>
 					<span class="GR_FA_HP">
-						<a class="call" href="tel:" id="GROOMFAPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
-						<a class="msg" href="sms:" id="GROOMFASMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg.png') }}" alt="" height="auto" width="26"></a>
+						<a class="call" href="tel:{{ data['groom_fa_hp'] }}" id="GROOMFAPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
+						<a class="msg" href="sms:{{ data['groom_fa_hp'] }}" id="GROOMFASMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg.png') }}" alt="" height="auto" width="26"></a>
 					</span>
                 </p>
                 <p class="info">
-                    <span>Mẹ </span> <i class="GR_MO">Tên mẹ chú rể</i>
+                    <span>Mẹ </span> <i class="GR_MO">{{ data['groom_mo_nm'] }}</i>
 					<span class="GR_MO_HP">
-						<a class="call" href="tel:" id="GROOMMOPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
-						<a class="msg" href="sms:" id="GROOMMOSMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg.png') }}" alt="" height="auto" width="26"></a>
+						<a class="call" href="tel:{{ data['groom_mo_hp'] }}" id="GROOMMOPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
+						<a class="msg" href="sms:{{ data['groom_mo_hp'] }}" id="GROOMMOSMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg.png') }}" alt="" height="auto" width="26"></a>
 					</span>
                 </p>
             </div>
             <div class="rgt">
                 <p>&lt;Nhà Gái&gt;</p>
                 <p class="info">
-                    <span>Cha </span> <i class="BR_FA">Tên cha cô dâu</i>
+                    <span>Cha </span> <i class="BR_FA">{{ data['bride_fa_nm'] }}</i>
 					<span class="BR_FA_HP">
-						<a class="call" href="tel:" id="BRIDEFAPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
-						<a class="msg" href="sms:" id="BRIDEFASMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg2.png') }}" alt="" height="auto" width="26"></a>
+						<a class="call" href="tel:{{ data['bride_fa_hp'] }}" id="BRIDEFAPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
+						<a class="msg" href="sms:{{ data['bride_fa_hp'] }}" id="BRIDEFASMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg2.png') }}" alt="" height="auto" width="26"></a>
 					</span>
                 </p>
                 <p class="info">
-                    <span>Mẹ </span> <i class="BR_MO">Tên mẹ cô dâu</i>
+                    <span>Mẹ </span> <i class="BR_MO">{{ data['bride_mo_nm'] }}</i>
 					<span class="BR_MO_HP">
-						<a class="call" href="tel:" id="BRIDEMOPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
-						<a class="msg" href="sms:" id="BRIDEMOSMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg2.png') }}" alt="" height="auto" width="26"></a>
+						<a class="call" href="tel:{{ data['bride_mo_hp'] }}" id="BRIDEMOPHONE"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_call.png') }}" alt="" height="auto" width="26"></a>
+						<a class="msg" href="sms:{{ data['bride_mo_hp'] }}" id="BRIDEMOSMS"><img src="{{ asset('bundles/viettutweb/templates/template1/img/sms_parent_msg2.png') }}" alt="" height="auto" width="26"></a>
 					</span>
                 </p>
             </div>
@@ -135,17 +135,10 @@
     <div class="gallery">
         <img src="{{ asset('bundles/viettutweb/templates/template1/img/gallery_tit.png') }}" height="auto" width="138">
         <ul id="GAL_LIST" class="lst bxslider">
-            <li><img src="{{ asset('bundles/viettutweb/img/products/product-7.jpg') }}" width="100%" height="auto" data-num="0"></li>
-            <li><img src="{{ asset('bundles/viettutweb/img/products/product-7.jpg') }}" width="100%" height="auto" data-num="0"></li>
-            <li><img src="{{ asset('bundles/viettutweb/img/products/product-7.jpg') }}" width="100%" height="auto" data-num="0"></li>
+            {% for img in gallery %}
+                <li><img src="{{ img }}"></li>
+            {% endfor %}
         </ul>
-        <ul class="GAL_TEMPLATES" style="display:none">
-            <li><a><img src="{{ asset('bundles/viettutweb/templates/template1/img/blank_thum.jpg') }}" height="auto" width="100%"></a></li>
-        </ul>
-        <a class="more" id="BTN_MORE_GAL_LIST">
-            Xem thêm<br>
-            <img src="{{ asset('bundles/viettutweb/templates/template1/img/gallery_more.png') }}" height="auto" width="49">
-        </a>
     </div>
 
     <!-- board -->
@@ -206,19 +199,18 @@
     <!-- location -->
     <div class="location">
         <div class="con">
-            <strong class="hall_nm PL_NM">Trống Đồng Palace</strong>
-            <p class="hall_add"><i>Địa chỉ : </i> <span class="PL_ADDR">Tòa nhà Hancorp Plaza – Làng quốc tế Thăng Long, 72 Trần Đăng Ninh, Cầu Giấy, Hà Nội</span></p>
-            <p style="display: none;" class="hall_tel PL_TEL"><i>tel : </i> <span class="tel PL_TEL_NO">02-0000-0001</span></p>
-            <a class="btn" href="tel:undefined" id="PL_TEL_NO"><img src="{{ asset('bundles/viettutweb/templates/template1/img/tel_btn.png') }}" height="auto" width="47"></a>
+            <strong class="hall_nm PL_NM">{{ data['place_nm'] }}</strong>
+            <p class="hall_add"><i>Địa chỉ : </i> <span class="PL_ADDR">{{ data['place_addr'] }}</span></p>
+            <p style="display: none;" class="hall_tel PL_TEL"><i>tel : </i> <span class="tel PL_TEL_NO">{{ data['place_tel'] }}</span></p>
+            <a class="btn" href="tel:{{ data['place_tel'] }}" id="PL_TEL_NO"><img src="{{ asset('bundles/viettutweb/templates/template1/img/tel_btn.png') }}" height="auto" width="47"></a>
         </div>
         <p id="MAP_CANVAS" class="map" style="height: 250px;"></p>
         <p class="txt">Gõ chính xác địa chỉ của bạn vào ô dưới đây để có hướng dẫn tốt nhất</p>
         <div class="naver">
             <form action='http://maps.google.com/maps' method='get' target='_blank'>
-                Enter your starting address:
-                <input type='text' name='saddr' placeholder="địa chỉ của bạn" />
-                <input type='hidden' name='daddr' value='Trống Đồng Palace, 72 Trần Đăng Ninh, Cầu Giấy, Hà Nội' />
-                <input type='submit' value='CHỈ ĐƯỜNG' />
+                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
+                <input type='submit' value='CHỈ ĐƯỜNG' style="height: 25px;"/>
             </form>
         </div>
 
@@ -231,15 +223,15 @@
         <ul>
             <li class="SUBWAY_CHK">
                 <b class="tit">Thông tin tàu điện ngầm</b>
-                <pre class="subway_info SUBWAY_INFO">Hướng dẫn</pre>
+                <pre class="subway_info SUBWAY_INFO">{{ data['subway_info'] }}</pre>
             </li>
             <li class="BUS_CHK">
                 <b class="tit">Thông tin xe bus</b>
-                <pre class="pbus_info BUS_INFO">Hướng dẫn</pre>
+                <pre class="pbus_info BUS_INFO">{{ data['bus_info'] }}</pre>
             </li>
             <li class="PARKING_CHK">
                 <b class="tit">Thông tin chỗ đỗ xe</b>
-                <pre class="parking_info PARKING_INFO">Hướng dẫn</pre>
+                <pre class="parking_info PARKING_INFO">{{ data['parking_info'] }}</pre>
             </li>
         </ul>
         <ul>
@@ -291,34 +283,6 @@
 </div>
 <!-- //wrap -->
 
-
-<div id="ZOOM_LAYER" class="map_zoom">
-    <div class="top_bar"><p class="btn_close">닫기</p></div>
-    <div id="MAP_CANVAS_FS" class="map_fs"></div>
-</div>
-
-<div id="GAL_LAYER" class="gallery_zoom" style="display:none">
-    <img src="{{ asset('bundles/viettutweb/templates/template1/img/gallery_tit.png') }}" height="auto" width="138">
-    <ul id="GAL_LIST_ALL" class="lst">
-    </ul>
-    <a class="btn_close" style="">
-        사진보기 닫기<br>
-        <img src="{{ asset('bundles/viettutweb/templates/template1/img/gallery_more.png') }}" height="auto" width="49">
-    </a>
-</div>
-
-<div id="IMG_LAYER" class="img_zoom" style="display:none">
-    <div class="top_bar"><p class="btn_close">닫기</p></div>
-    <ul id="VIEWER_LIST">
-    </ul>
-    <ul class="VIEW_TEMPLATES" style="display:none">
-        <li class="viewer"><img height="auto" width="100%"></li>
-    </ul>
-</div>
-
-
-
-
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery-ui.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery.bxslider.min.js') }}" type="text/javascript"></script>
@@ -340,9 +304,9 @@
 
     $(document).ready(function(){
         $('.bxslider').bxSlider({
-            infiniteLoop: false,
-            hideControlOnEnd: true,
-            mode: 'fade'
+            auto: true,
+            autoHover: true,
+            controls: false
         });
     });
 </script>
