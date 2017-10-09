@@ -4,6 +4,8 @@
 namespace Viettut\Model\Core;
 
 
+use DateTime;
+
 class Template implements TemplateInterface
 {
     /**
@@ -30,6 +32,21 @@ class Template implements TemplateInterface
      * @var array
      */
     protected $data;
+
+    /**
+     * @var string
+     */
+    protected $thumbnail;
+
+    /**
+     * @var array
+     */
+    protected $gallery;
+
+    /**
+     * @var DateTime
+     */
+    protected $weddingDate;
 
     /**
      * @var \DateTime
@@ -147,5 +164,74 @@ class Template implements TemplateInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * @param string $thumbnail
+     * @return self
+     */
+    public function setThumbnail($thumbnail)
+    {
+        $this->thumbnail = $thumbnail;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param array $gallery
+     * @return self
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
+        return $this;
+    }
+
+    /**
+     * @param $path
+     * @return $this
+     */
+    public function addImage($path)
+    {
+        if (empty($this->gallery)) {
+            $this->gallery = [];
+        }
+
+        $this->gallery[] = $path;
+
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getWeddingDate()
+    {
+        return $this->weddingDate;
+    }
+
+    /**
+     * @param DateTime $weddingDate
+     * @return self
+     */
+    public function setWeddingDate($weddingDate)
+    {
+        $this->weddingDate = $weddingDate;
+        return $this;
     }
 }

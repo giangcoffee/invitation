@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/templates/template1/css/style.css') }}">
 </head>
 <body>
-<div class="configuration" data-config="{{ template ? template.data|json_encode|e('html_attr') : card.data|json_encode|e('html_attr') }}">
-</div>
 <!-- wrap -->
 <div id="dic_bubble" class="selection_bubble fontSize13 noSelect" style="z-index:9999; border: 1px solid #4AAEDE;fetching=false"></div><div id="wrap">
 
@@ -36,12 +34,12 @@
         <div class="v_txt">
             <p class="ex">HÔN LỄ CỦA</p>
             <p class="name">
-                <b class="groom GR_NM">Tên Chú Rể</b>
-                <b class="bride BR_NM">Tên Cô Dâu</b>
+                <b class="groom GR_NM">{% if isTemplate %} {{ data['groom_nm_eng'] }} {% endif %}</b>
+                <b class="bride BR_NM">{% if isTemplate %} {{ data['bride_nm_eng'] }} {% endif %}</b>
             </p>
             <p class="day_b">
-                <span class="month_num W_MM">Tháng</span>
-                <span class="day_num W_DD">Ngày cưới</span>
+                <span class="month_num W_MM">{% if isTemplate %} {{ date | date('m') }} {% endif %}</span>
+                <span class="day_num W_DD">{% if isTemplate %} {{ date | date('d') }} {% endif %}</span>
             </p>
         </div>
     </div>
@@ -213,7 +211,7 @@
             <p style="display: none;" class="hall_tel PL_TEL"><i>tel : </i> <span class="tel PL_TEL_NO">02-0000-0001</span></p>
             <a class="btn" href="tel:undefined" id="PL_TEL_NO"><img src="{{ asset('bundles/viettutweb/templates/template1/img/tel_btn.png') }}" height="auto" width="47"></a>
         </div>
-        <p id="MAP_CANVAS" class="map"></p>
+        <p id="MAP_CANVAS" class="map" style="height: 250px;"></p>
         <p class="txt">Gõ chính xác địa chỉ của bạn vào ô dưới đây để có hướng dẫn tốt nhất</p>
         <div class="naver">
             <form action='http://maps.google.com/maps' method='get' target='_blank'>
@@ -323,25 +321,29 @@
 
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery-ui.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/viettutweb/js/lib/jquery.bxslider.min.js') }}" type="text/javascript"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
 </script>
 <script>
     function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
+        var location = {lat: 21.0384812, lng: 105.793931};
         var map = new google.maps.Map(document.getElementById('MAP_CANVAS'), {
-            zoom: 4,
-            center: uluru
+            zoom: 15,
+            center: location
         });
         var marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-            icon : '/bundles/viettutweb/templates/template1/img/location_point.png'
+            position: location,
+            map: map
         });
     }
 
     $(document).ready(function(){
-        $('.bxslider').bxSlider();
+        $('.bxslider').bxSlider({
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            mode: 'fade'
+        });
     });
 </script>
 </body>

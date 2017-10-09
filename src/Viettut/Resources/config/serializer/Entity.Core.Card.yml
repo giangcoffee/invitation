@@ -1,0 +1,21 @@
+Viettut\Entity\Core\Comment:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [card.detail, card.summary]
+        hash:
+            expose: true
+            groups: [card.detail, card.summary]
+        data:
+            expose: true
+            groups: [card.detail, card.summary]
+        author:
+            expose: true
+            groups: [card.detail, card.summary]
+        gallery:
+            expose: true
+            groups: [card.detail, card.summary]
+        createdAt:
+            expose: true
+            groups: [card.detail, card.summary]

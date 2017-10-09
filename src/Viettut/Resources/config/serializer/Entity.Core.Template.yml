@@ -1,0 +1,28 @@
+Viettut\Entity\Core\Template:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [template.detail, template.summary]
+        name:
+            expose: true
+            groups: [template.detail, template.summary]
+        data:
+            expose: true
+            groups: [template.detail, template.summary]
+        path:
+            expose: true
+            groups: [template.detail, template.summary]
+        thumbnail:
+            expose: true
+            groups: [template.detail, template.summary]
+        hash:
+            expose: true
+            groups: [template.detail, template.summary]                    
+        gallery:
+            expose: true
+            groups: [template.detail, template.summary]                    
+        createdAt:
+            expose: true
+            groups: [template.detail, template.summary]
+    

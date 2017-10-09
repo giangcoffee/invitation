@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Viettut\DomainManager\CardManagerInterface;
+use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\TemplateInterface;
 
 class BuilderController extends Controller
@@ -25,7 +27,23 @@ class BuilderController extends Controller
      */
     public function builderAction(Request $request, $hash)
     {
-        return $this->render('ViettutWebBundle:template1:index.html.twig');
+        /**
+         * @var CardManagerInterface $cardManager
+         */
+        $cardManager = $this->get('viettut.domain_manager.card');
+        $card = $cardManager->getCardByHash($hash);
+
+        if (!$card instanceof CardInterface) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
+
+        $template = $card->getTemplate();
+        return $this->render($template->getPath(), array(
+            'data' => $card->getData(),
+            'isTemplate' => false,
+            'gallery' => $card->getGallery(),
+            'date' => $card->getWeddingDate()
+        ));
     }
 
     /**
@@ -42,6 +60,11 @@ class BuilderController extends Controller
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
         
-        return $this->render($template->getPath(), array('template' => $template));
+        return $this->render($template->getPath(), array(
+            'data' => $template->getData(),
+            'isTemplate' => true,
+            'gallery' => $template->getGallery(),
+            'date' => $template->getWeddingDate()
+        ));
     }
 }

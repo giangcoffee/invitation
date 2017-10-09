@@ -11,6 +11,9 @@ class Template extends TemplateModel
     protected $hash;
     protected $path;
     protected $data;
+    protected $gallery;
+    protected $thumbnail;
+    protected $weddingDate;
     protected $createdAt;
     protected $deletedAt;
 }

@@ -19,6 +19,12 @@ Viettut\Entity\Core\Card:
         data:
             type: json_array
             nullable: false
+        gallery:
+            type: json_array
+            nullable: true
+        weddingDate:
+            type: datetime
+            nullable: false
         createdAt:
             type: datetime
             gedmo:

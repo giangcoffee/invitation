@@ -10,19 +10,7 @@ Viettut\Entity\Core\Comment:
         author:
             expose: true
             groups: [comment.detail, comment.summary]
-        course:
-            expose: true
-            groups: [comment.detail, comment.summary]
-        chapter:
-            expose: true
-            groups: [comment.detail, comment.summary]
-        tutorial:
-            expose: true
-            groups: [comment.detail, comment.summary]
-        children:
-            expose: true
-            groups: [comment.detail, comment.summary]
-        replyFor:
+        card:
             expose: true
             groups: [comment.detail, comment.summary]
         createdAt:

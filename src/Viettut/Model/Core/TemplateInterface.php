@@ -4,6 +4,7 @@
 namespace Viettut\Model\Core;
 
 
+use DateTime;
 use Viettut\Model\ModelInterface;
 
 interface TemplateInterface extends ModelInterface
@@ -69,4 +70,43 @@ interface TemplateInterface extends ModelInterface
      * @return \DateTime
      */
     public function getCreatedAt();
+
+    /**
+     * @return string
+     */
+    public function getThumbnail();
+
+    /**
+     * @param string $thumbnail
+     * @return self
+     */
+    public function setThumbnail($thumbnail);
+
+    /**
+     * @return array
+     */
+    public function getGallery();
+
+    /**
+     * @param array $gallery
+     * @return self
+     */
+    public function setGallery($gallery);
+
+    /**
+     * @param $path
+     * @return $this
+     */
+    public function addImage($path);
+
+    /**
+     * @return DateTime
+     */
+    public function getWeddingDate();
+
+    /**
+     * @param DateTime $weddingDate
+     * @return self
+     */
+    public function setWeddingDate($weddingDate);
 }

@@ -30,6 +30,8 @@ class TemplateFormType extends AbstractRoleSpecificFormType
             ->add('name')
             ->add('path')
             ->add('data')
+            ->add('gallery')
+            ->add('thumbnail')
         ;
 
         $builder->addEventListener(

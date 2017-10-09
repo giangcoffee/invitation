@@ -29,6 +29,7 @@ class CardFormType extends AbstractRoleSpecificFormType
         $builder
             ->add('template')
             ->add('data')
+            ->add('gallery')
         ;
 
         $builder->addEventListener(

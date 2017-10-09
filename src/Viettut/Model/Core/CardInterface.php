@@ -4,6 +4,7 @@
 namespace Viettut\Model\Core;
 
 
+use DateTime;
 use Viettut\Model\ModelInterface;
 use Viettut\Model\User\UserEntityInterface;
 
@@ -81,4 +82,32 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setComments($comments);
+
+    /**
+     * @return array
+     */
+    public function getGallery();
+
+    /**
+     * @param array $gallery
+     * @return self
+     */
+    public function setGallery($gallery);
+
+    /**
+     * @param $path
+     * @return $this
+     */
+    public function addImage($path);
+
+    /**
+     * @return DateTime
+     */
+    public function getWeddingDate();
+
+    /**
+     * @param DateTime $weddingDate
+     * @return self
+     */
+    public function setWeddingDate($weddingDate);
 }

@@ -9,6 +9,7 @@
 namespace Viettut\Model\Core;
 
 
+use DateTime;
 use Viettut\Model\User\UserEntityInterface;
 
 class Card implements CardInterface
@@ -37,6 +38,16 @@ class Card implements CardInterface
      * @var UserEntityInterface
      */
     protected $author;
+
+    /**
+     * @var array
+     */
+    protected $gallery;
+
+    /**
+     * @var DateTime
+     */
+    protected $weddingDate;
 
     /**
      * @var array
@@ -132,6 +143,40 @@ class Card implements CardInterface
     }
 
     /**
+     * @return array
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param array $gallery
+     * @return self
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
+        return $this;
+    }
+
+    /**
+     * @param $path
+     * @return $this
+     */
+    public function addImage($path)
+    {
+        if (empty($this->gallery)) {
+            $this->gallery = [];
+        }
+
+        $this->gallery[] = $path;
+
+        return $this;
+    }
+
+
+    /**
      * @return TemplateInterface
      */
     public function getTemplate()
@@ -182,6 +227,24 @@ class Card implements CardInterface
     public function setComments($comments)
     {
         $this->comments = $comments;
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getWeddingDate()
+    {
+        return $this->weddingDate;
+    }
+
+    /**
+     * @param DateTime $weddingDate
+     * @return self
+     */
+    public function setWeddingDate($weddingDate)
+    {
+        $this->weddingDate = $weddingDate;
         return $this;
     }
 

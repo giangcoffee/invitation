@@ -10,6 +10,8 @@ class Card extends CardModel
     protected $hash;
     protected $data;
     protected $author;
+    protected $gallery;
+    protected $weddingDate;
     protected $createdAt;
     protected $deletedAt;
 }
