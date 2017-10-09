@@ -29,7 +29,7 @@ class BuilderController extends Controller
     }
 
     /**
-     * @Route("/templates/{hash}/preview", name="preview_page")
+     * @Route("/templates/{hash}", name="template_page")
      * @param $request
      * @param $hash
      * @return Response
