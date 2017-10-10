@@ -16,6 +16,8 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Handler\HandlerInterface;
@@ -137,7 +139,29 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
      */
     public function patchAction(Request $request, $id)
     {
-        return $this->patch($request, $id);
+        /**
+         * @var CardInterface $card
+         */
+        $card = $this->one($id);
+
+        $data = $card->getData();
+        $params = $request->request->all();
+        if (!array_key_exists('name', $params) || !array_key_exists('value', $params)) {
+            throw new BadRequestHttpException('either "name" or "value" is missing');
+        }
+        
+        $name = $params['name'];
+        $value = $params['value'];
+
+        /**
+         * @var CardManagerInterface $cardManager
+         */
+        $cardManager = $this->get('viettut.domain_manager.card');
+        $data[$name] = $value;
+        $card->setData($data);
+        $cardManager->save($card);
+        
+        return new Response("", Response::HTTP_NO_CONTENT);
     }
     
     /**

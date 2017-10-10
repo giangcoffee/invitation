@@ -42,7 +42,8 @@ class BuilderController extends Controller
             'data' => $card->getData(),
             'isTemplate' => false,
             'gallery' => $card->getGallery(),
-            'date' => $card->getWeddingDate()
+            'date' => $card->getWeddingDate(),
+            'id' => $card->getId()
         ));
     }
 
@@ -64,7 +65,8 @@ class BuilderController extends Controller
             'data' => $template->getData(),
             'isTemplate' => true,
             'gallery' => $template->getGallery(),
-            'date' => $template->getWeddingDate()
+            'date' => $template->getWeddingDate(),
+            'id' => $template->getId()
         ));
     }
 
