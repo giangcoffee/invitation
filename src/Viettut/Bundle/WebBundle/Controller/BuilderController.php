@@ -52,7 +52,7 @@ class BuilderController extends Controller
      * @param $hash
      * @return Response
      */
-    public function previewTemplateAction(Request $request, $hash)
+    public function templateAction(Request $request, $hash)
     {
         $template = $this->get('viettut.domain_manager.template')->getTemplateByHash($hash);
         
@@ -65,6 +65,25 @@ class BuilderController extends Controller
             'isTemplate' => true,
             'gallery' => $template->getGallery(),
             'date' => $template->getWeddingDate()
+        ));
+    }
+
+    /**
+     * @Route("/templates/{hash}/preview", name="preview_template_page")
+     * @param $request
+     * @param $hash
+     * @return Response
+     */
+    public function previewTemplateAction(Request $request, $hash)
+    {
+        $template = $this->get('viettut.domain_manager.template')->getTemplateByHash($hash);
+
+        if (!$template instanceof TemplateInterface) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
+
+        return $this->render('ViettutWebBundle:Builder:preview.htm.twig', array(
+            'iframe_src' => sprintf('/app_dev.php/templates/%s', $hash)
         ));
     }
 }

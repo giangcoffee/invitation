@@ -1,0 +1,144 @@
+body {
+    margin:0px;
+	background:#FFF;
+	font-size:18px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+#header{
+	background-color:#fff;
+	border-bottom: #f1f1f1 3px solid;
+}
+
+#inner_wrap{
+	padding:20px;
+	min-height:346px;
+}
+
+.clear{
+	clear:both;
+}
+
+#footer{
+	margin-top:20px;
+	border-top:3px #f1f1f1 solid; 
+	padding:10px 0 10px 10px;
+	background:#FFF;
+}
+
+#container{
+	padding:0px;
+/* 	margin-left:160px; */
+	min-height:580px;
+	position:relative;
+	background:#fff;
+}
+
+.sky_ad{
+	position:absolute;
+	top:0px;
+	width:160px;
+	left:-160px;
+	overflow: hidden!important;}
+
+#noscript{
+	background-color:#F90;
+	padding:10px;
+	font-size:12px;
+	color:#fff;
+	border-bottom:#F60 1px solid;
+	}
+
+#footer a:link, #footer a:visited {
+	color:#000;
+	font-size:13px;
+	font-weight:700;
+	text-decoration:underline;
+}
+#footer a:hover {
+	text-decoration:none;
+	color:#ccc;
+}	
+
+.carbonad{
+    width:330px;
+    margin-bottom:30px;
+}
+
+.carbon-wrap{
+	display: block;
+	border:1px solid #f1f1f1;
+  	border-radius:3px;
+	padding: 10px 10px 5px 10px;
+}
+.carbon-wrap a, .carbon-poweredby{
+    display: block;
+  	border-bottom:0!important;
+}
+
+.carbon-img {
+    float: left;
+    margin-right: 10px;
+}
+
+.carbon-text {
+    font-size: 14px!important;
+    line-height: 20px;
+    min-width: 120px;
+    color: #333;
+}
+
+.carbon-poweredby {
+    color: #6e6e6e;
+    text-decoration: underline;
+    font-size: 65%;
+    font-style: italic;
+    text-align: center;
+    display: block;
+    margin: 8px 0 0 0;
+}
+
+.cf:before,.cf:after, .carbon-wrap:before, .carbon-wrap:after{content:"";display:table;}
+.cf:after, .carbon-wrap:after{clear:both;}
+.cf, .carbon-wrap{zoom:1;}
+
+
+#file-controls {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  top: 0;
+  right: 0;
+}
+
+#header-pap .button {
+	position: absolute;
+	top:10px;
+	left:10px;
+	z-index:2000;
+  display: inline-block;
+  background-color: #F36E6B;
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+  vertical-align: bottom;
+  -webkit-transition: 0.1s all;
+  transition: 0.1s all;
+}
+#header-pap .button svg {
+  fill: rgba(255, 255, 255, 0.5);
+  width: 20px;
+  height: 20px;
+  -webkit-transform: translateY(15px);
+          transform: translateY(15px);
+}
+#header-pap .button:hover {
+  background-color: #fff;
+}
+#header-pap .button:active {
+  height: 45px;
+}
+#header-pap .button:hover > svg {
+  fill: #F45C43;
+}

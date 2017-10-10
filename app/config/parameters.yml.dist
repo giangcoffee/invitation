@@ -11,7 +11,7 @@ parameters:
     mailer_host: 127.0.0.1
     secret: ea31b59727f6a11e1d8160027e80707f6d0b0ce9
     mailer_user: tut4vietcoder@gmail.com
-    mailer_password: Fuqcjd6j3U@@
+    mailer_password: W&}giStZ9n[N
     mailer_port: null
     mailer_sender: tut4vietcoder@gmail.com
     mailer_sender_name: 'ViettuT Academy'
@@ -26,13 +26,6 @@ parameters:
     google_client_id: '355171488116-rml9h7b9ivdn8ub5sgu6r6eh1vkluvav.apps.googleusercontent.com'
     google_client_secret: 'eyeBjN6tVwQwNrkG-S0XQmxa'
     google_redirect_uri: 'http://viettut.dev/app_dev.php/google/login'
-    video_width: 500
-    video_height: 300
-    cookie_domain: '.viettut.com'
+    cookie_domain: '.hoanghuydo.com'
     cookie_path: '/'
     cookie_lifetime: 3600
-
-    jobe_domain: http://192.168.33.1
-    jobe_languages_end_point: /jobe/index.php/restapi/languages
-    jobe_run_jobs_end_point: /jobe/index.php/restapi/runs
-    jobe_put_files_end_point: /jobe/index.php/restapi/fields
