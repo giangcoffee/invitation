@@ -14,6 +14,7 @@ class Template extends TemplateModel
     protected $gallery;
     protected $thumbnail;
     protected $weddingDate;
+    protected $columns;
     protected $createdAt;
     protected $deletedAt;
 }

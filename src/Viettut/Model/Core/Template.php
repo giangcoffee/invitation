@@ -49,6 +49,11 @@ class Template implements TemplateInterface
     protected $weddingDate;
 
     /**
+     * @var array
+     */
+    protected $columns;
+
+    /**
      * @var \DateTime
      */
     protected $createdAt;
@@ -199,6 +204,24 @@ class Template implements TemplateInterface
     public function setGallery($gallery)
     {
         $this->gallery = $gallery;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getColumns()
+    {
+        return $this->columns;
+    }
+
+    /**
+     * @param array $columns
+     * @return self
+     */
+    public function setColumns($columns)
+    {
+        $this->columns = $columns;
         return $this;
     }
 

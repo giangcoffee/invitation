@@ -65,7 +65,7 @@ class CommentController extends RestControllerAbstract implements ClassResourceI
      *
      * @param int $id the resource id
      *
-     * @return ChapterInterface
+     * @return CommentInterface
      * @throws NotFoundHttpException when the resource does not exist
      */
     public function getAction($id)

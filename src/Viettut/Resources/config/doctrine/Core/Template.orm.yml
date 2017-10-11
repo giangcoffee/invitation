@@ -25,6 +25,9 @@ Viettut\Entity\Core\Template:
         data:
             type: json_array
             nullable: false
+        columns:
+            type: json_array
+            nullable: false
         gallery:
             type: json_array
             nullable: true

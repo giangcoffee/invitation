@@ -94,6 +94,17 @@ interface TemplateInterface extends ModelInterface
     public function setGallery($gallery);
 
     /**
+     * @return array
+     */
+    public function getColumns();
+
+    /**
+     * @param array $columns
+     * @return self
+     */
+    public function setColumns($columns);
+
+    /**
      * @param $path
      * @return $this
      */

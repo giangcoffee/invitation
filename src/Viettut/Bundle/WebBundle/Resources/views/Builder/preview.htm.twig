@@ -1,180 +1,142 @@
-<!DOCTYPE html>
-<html data-sbro-popup-lock="true" data-sbro-deals-lock="true" data-sbro-ads-lock="true">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{% extends 'base.html.twig' %}
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/jquery.datetimepicker.min.css') }}">
+{% endblock %}
+{% block main %}
+    <div class="card-columns" data-columns="{{ columns|json_encode|e('html_attr') }}">
+    <div class="card-info" data-id="{{ id }}">
 
-    <title>Papermashup.com | UI Mobile styled iFrame</title>
-    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/bootstrap/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/fontawesome/css/font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/theme-elements.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/skins/default.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/custom.css') }}">
-
-    <link href=" {{ asset('bundles/viettutweb/css/preview/style.css') }}" rel="stylesheet" type="text/css">
-    <!-- remove this CSS FILE -->
-    <link href=" {{ asset('bundles/viettutweb/css/preview/style(1).css') }}" rel="stylesheet" type="text/css">
-    <!-- remove this CSS FILE -->
-    <link href=" {{ asset('bundles/viettutweb/css/preview/normalize.css') }}" rel="stylesheet" type="text/css">
-    <link href=" {{ asset('bundles/viettutweb/css/preview/preview.css') }}" rel="stylesheet" type="text/css">
-    <!-- remove this CSS FILE -->
-</head>
-<body>
-<div class="body">
-    <noscript>&lt;div id="noscript"&gt;You need JavaScript enabled to view most of the demos!&lt;/div&gt;</noscript>
-    <header id="header">
+    </div>
+    <section class="page-top">
         <div class="container">
-            <div class="logo">
-                <a href="{{ path('home_page') }}">
-                    <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40"
-                         src="{{ asset('bundles/viettutweb/img/logo.png') }}">
-                </a>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('home_page') }}">Home</a></li>
+                        <li class="active">Tùy chỉnh card</li>
+                    </ul>
+                </div>
             </div>
-            <div class="search">
-                <form id="searchForm" action="page-search-results.html" method="get">
-                    <div class="input-group">
-                        <input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-								</span>
-                    </div>
-                </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ name }}</h1>
+                </div>
             </div>
         </div>
-    </header>
-    <div role="main" class="main">
-        <div id="container">
-            <div id="inner_wrap">
-
-                <!--The Main Thing-->
-                <div id="wrapper" style="perspective: 1300px;">
-                    <div class="phone view_2" id="phone_1" style="width: 768px; height: 1024px;">
-                        <iframe src="{{ iframe_src }}" id="frame_1"></iframe>
+    </section>
+    <div class="container">
+        <div class="form-horizontal form-bordered">
+            {% for column,name in columns %}
+                {% if column == 'greeting' %}
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="textareaAutosize">{{ name }}</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="" >{{ data[column] }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="{{ column }}">{{ name }}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="{{ column }}" name="{{ column }}" value="{{ data[column] }}">
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d H:i') }}">
                     </div>
                 </div>
-
-                <!--Controls etc.-->
-                <div id="controls">
-                    <!--Idea by /u/aerosole-->
-                    <div>
-                        <label for="iframePerspective">Add perspective:</label>
-                        <input type="checkbox" id="iframePerspective" checked="true">
-                    </div>
-
-                </div>
-
-                <div id="phone-controls">
-
-                    <div id="views">
-                        <button value="1">Table View</button>
-                        <button value="2">Front View</button>
-                    </div>
-
-                    <div id="phones">
-                        <button value="1">iPhone 6</button>
-                        <button value="2">Samsing Galaxy Note</button>
-                        <button value="3">Microsoft Lumia 1020</button>
-                        <button value="4">HTC One</button>
-                        <button value="5">iPad Mini</button>
-                    </div>
-
-                </div>
-
-
-                <script src="{{ asset('bundles/viettutweb/js/preview.js') }}"></script>
-
-
             </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="submit()">Cập Nhật</button>
+                        <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+<button>ADD MORE</button>
+
+<ul>
+    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
+    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
+    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
+    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
+    </ul>
         </div>
     </div>
-    <footer id="footer">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-1">
-                        <a href="index.html" class="logo">
-                            <img alt="Porto Website Template" class="img-responsive"
-                                 src="{{ asset('bundles/viettutweb/img/logo-footer.png') }}">
-                        </a>
-                    </div>
-                    <div class="col-md-7">
-                        <p>© Copyright 2015. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <nav id="sub-menu">
-                            <ul>
-                                <li><a href="page-faq.html">FAQ's</a></li>
-                                <li><a href="sitemap.html">Sitemap</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
-</body>
-<script>function patch() {
-
-        window._open = window.open;
-        document._createElement = document.createElement;
-        document._createEvent = document.createEvent;
-        window._parent = (window.location != window.parent.location) ? document.referrer : document.location;
-
-        function getParent(el, selector) {
-            var parent = el.parentNode;
-            if (parent == document) {
-                return null;
+{% endblock %}
+{% block javascript %}
+    <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
+    <script>
+        function submit() {
+            var columns = $('.card-columns').data('columns');
+            var cardId = $('.card-info').data('id');
+            for (var column in columns) {
+                columns[column] = $('#' + column).val()
             }
-            if (parent.matches(selector)) {
-                return parent;
-            } else {
-                return getParent(parent, selector);
-            }
-        }
 
-        function blockWindow(args) {
-            var target;
-            if (window.event) {
-                target = window.event.target.tagName == 'A' ? window.event.target : getParent(window.event.target, 'a');
-            }
-            parent.postMessage({
-                type: "safeBlock",
-                url: args[0],
-                args: args,
-                href: target ? target.href : null
-            }, window._parent);
-        }
 
-        window.open = function () {
-            blockWindow(arguments);
-        };
+            $.post('/app_dev.php/api/v1/cards/' + cardId + '/updates', columns, function (response) {
+                var html = '<div class="alert alert-success alert-dismissable">' +
+                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                'Thông tin cập nhật thành công !'
+                + '</div>';
+                $('div.form-horizontal').before(html);
+            }, 'json')
 
-        dispatchEvent = function (element) {
-            return function (event) {
-                if (event.type == "click") {
-                    blockWindow([element.getAttribute('href')]);
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                url : '/app_dev.php/api/v1/cards/' + cardId,
+                type : 'PATCH',
+                data : JSON.stringify({weddingDate: $('#wedding_date').val()}),
+                success : function(response, textStatus, jqXhr) {
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
                 }
-            }
-        };
-
-        document.createElement = function () {
-            var element = document._createElement.apply(document, arguments);
-            if (arguments[0].toLowerCase() == 'a') {
-                element.dispatchEvent = dispatchEvent(element);
-            }
-            return element;
-        };
-
-        // Process saved popup.
-        var html = document.querySelector('html'),
-                key = 'data-sbro-popup-current',
-                url = html.getAttribute(key);
-        if (url) {
-            blockWindow([url]);
+            });
         }
 
-    }
-    patch()</script>
-</html>
+        $(document).ready(function(){
+            jQuery('#wedding_date').datetimepicker(
+                {
+                    format: 'Y-m-d H:i',
+                    lang:   'vi'
+                }
+            );
+        });
+
+        $('ul').on('click','li span:first-child', function() {
+                if($(this).parent().hasClass('selected')) {
+                    $(this).parent().removeClass('selected');
+                } else {
+                    $(this).parent().addClass('selected');
+                }
+        });
+
+        $('ul').on('click','li span:nth-child(2)', function() {
+            $(this).parent().fadeOut(300, function() {
+                $(this).remove();
+            });
+        });
+
+$('button').click(function(){
+    $('<li style="background-image: url(http://lorempixel.com/100/100/)" class="aimg"><span>SELECT</span><span>DELETE</span></li>').hide().appendTo('ul').fadeIn(300);
+});
+    </script>
+{% endblock %}

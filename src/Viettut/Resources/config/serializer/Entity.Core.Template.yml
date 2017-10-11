@@ -10,6 +10,9 @@ Viettut\Entity\Core\Template:
         data:
             expose: true
             groups: [template.detail, template.summary]
+        columns:
+            expose: true
+            groups: [template.detail, template.summary]
         path:
             expose: true
             groups: [template.detail, template.summary]

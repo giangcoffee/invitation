@@ -9,6 +9,7 @@
 namespace Viettut\Form\Type;
 
 
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -30,6 +31,9 @@ class CardFormType extends AbstractRoleSpecificFormType
             ->add('template')
             ->add('data')
             ->add('gallery')
+            ->add('weddingDate', DateTimeType::class, [
+                'widget' => 'single_text'
+            ])
         ;
 
         $builder->addEventListener(

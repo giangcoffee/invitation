@@ -9,22 +9,28 @@
 namespace Viettut\Bundle\ApiBundle\Controller;
 
 
+use DateTime;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Handler\HandlerInterface;
 use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\ChapterInterface;
 use Viettut\Model\Core\CommentInterface;
 use Viettut\Model\Core\CourseInterface;
+use Viettut\Model\User\UserEntityInterface;
 
 /**
  * @RouteResource("Card")
@@ -94,6 +100,30 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         return $this->post($request);
     }
 
+    public function postUpdateAction(Request $request, $id)
+    {
+        /**
+         * @var CardInterface $card
+         */
+        $card = $this->one($id);
+
+        $data = $card->getData();
+        $params = $request->request->all();
+        foreach ($params as $column => $value) {
+            $data[$column] = $value;
+        }
+
+        /**
+         * @var CardManagerInterface $cardManager
+         */
+        $cardManager = $this->get('viettut.domain_manager.card');
+
+        $card->setData($data);
+        $cardManager->save($card);
+
+        return new Response("", Response::HTTP_NO_CONTENT);
+    }
+
     /**
      * Update an existing card from the submitted data or create a new card
      *
@@ -139,31 +169,43 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
      */
     public function patchAction(Request $request, $id)
     {
-        /**
-         * @var CardInterface $card
-         */
-        $card = $this->one($id);
-
-        $data = $card->getData();
-        $params = $request->request->all();
-        if (!array_key_exists('name', $params) || !array_key_exists('value', $params)) {
-            throw new BadRequestHttpException('either "name" or "value" is missing');
-        }
-        
-        $name = $params['name'];
-        $value = $params['value'];
-
-        /**
-         * @var CardManagerInterface $cardManager
-         */
-        $cardManager = $this->get('viettut.domain_manager.card');
-        $data[$name] = $value;
-        $card->setData($data);
-        $cardManager->save($card);
-        
-        return new Response("", Response::HTTP_NO_CONTENT);
+        return $this->patch($request, $id);
     }
-    
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AccessDeniedException
+     * @throws BadRequestHttpException
+     */
+    public function postUploadAction(Request $request)
+    {
+        $user = $this->getUser();
+        if (!$user instanceof UserEntityInterface) {
+            throw new AccessDeniedException(
+                sprintf(
+                    'You do not have permission to view this %s or it does not exist',
+                    $this->getResourceName()
+                )
+            );
+        }
+        $today = (new DateTime())->format('Y-m-d');
+        $uploadRootDir = $this->container->getParameter('upload_root_directory');
+        $uploadDir = $this->container->getParameter('upload_directory');
+        foreach ($_FILES as $file) {
+
+            $uploadFile = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], $test = false);
+            $baseName = uniqid('', true);
+            $uploadFile->move(join('/', [$uploadRootDir, $user->getUsername(), $today]) ,
+                $baseName.substr($uploadFile->getClientOriginalName(), -4)
+            );
+
+            return new JsonResponse(join('/', array($uploadDir, $user->getUsername(), $today, $baseName . substr($uploadFile->getClientOriginalName(), -4))));
+        }
+
+        throw new BadRequestHttpException('Invalid files');
+    }
+
     /**
      * @return string
      */

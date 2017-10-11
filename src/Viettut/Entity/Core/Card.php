@@ -12,6 +12,8 @@ class Card extends CardModel
     protected $author;
     protected $gallery;
     protected $weddingDate;
+    protected $template;
+    protected $comments;
     protected $createdAt;
     protected $deletedAt;
 }

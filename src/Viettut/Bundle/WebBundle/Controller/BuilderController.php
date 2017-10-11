@@ -38,12 +38,14 @@ class BuilderController extends Controller
         }
 
         $template = $card->getTemplate();
-        return $this->render($template->getPath(), array(
+        return $this->render('ViettutWebBundle:Builder:preview.htm.twig', array(
             'data' => $card->getData(),
-            'isTemplate' => false,
+            'columns' => $template->getColumns(),
             'gallery' => $card->getGallery(),
             'date' => $card->getWeddingDate(),
-            'id' => $card->getId()
+            'id' => $card->getId(),
+            'name' => $template->getName(),
+            'hash' => $card->getHash()
         ));
     }
 
@@ -63,10 +65,36 @@ class BuilderController extends Controller
         
         return $this->render($template->getPath(), array(
             'data' => $template->getData(),
-            'isTemplate' => true,
             'gallery' => $template->getGallery(),
             'date' => $template->getWeddingDate(),
-            'id' => $template->getId()
+            'comments' => []
+        ));
+    }
+
+    /**
+     * @Route("/cards/{hash}", name="card_page")
+     * @param $request
+     * @param $hash
+     * @return Response
+     */
+    public function cardAction(Request $request, $hash)
+    {
+        /**
+         * @var CardManagerInterface $cardManager
+         */
+        $cardManager = $this->get('viettut.domain_manager.card');
+        $card = $cardManager->getCardByHash($hash);
+
+        if (!$card instanceof CardInterface) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
+
+        $template = $card->getTemplate();
+        return $this->render($template->getPath(), array(
+            'data' => $card->getData(),
+            'gallery' => $card->getGallery(),
+            'date' => $card->getWeddingDate(),
+            'comments' => $card->getComments()
         ));
     }
 

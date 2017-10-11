@@ -1,4 +1,4 @@
-Viettut\Entity\Core\Comment:
+Viettut\Entity\Core\Card:
     exclusion_policy: ALL
     properties:
         id:
@@ -8,6 +8,9 @@ Viettut\Entity\Core\Comment:
             expose: true
             groups: [card.detail, card.summary]
         data:
+            expose: true
+            groups: [card.detail, card.summary]
+        weddingDate:
             expose: true
             groups: [card.detail, card.summary]
         author:
