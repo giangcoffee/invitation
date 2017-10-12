@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block css %}
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/jquery.datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/uploadfile.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/builder.css') }}">
 {% endblock %}
 {% block main %}
     <div class="card-columns" data-columns="{{ columns|json_encode|e('html_attr') }}">
-    <div class="card-info" data-id="{{ id }}">
+    <div class="card-info" data-id="{{ id }}" data-gallery="{{ gallery|json_encode|e('html_attr') }}">
 
     </div>
     <section class="page-top">
@@ -66,77 +68,26 @@
             </div>
         </div>
         <div class="container">
-<button>ADD MORE</button>
+            <h2>Chỉnh sửa album ảnh</h2>
+            <div class="row">
+                <div id="fileuploader">Thêm Ảnh</div>
+            </div>
+            <div class="row">
+                <ul class="gallery">
+                    {% for img in gallery %}
+                        <li data-url="{{ img }}" style="background-image: url({{ img }});" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="row">
+                <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="updateAlbum()">Cập Nhật Album</button>
 
-<ul>
-    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
-    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
-    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
-    <li style="background-image: url(http://lorempixel.com/100/100/);" class="aimg"><span>SELECT</span><span>DELETE</span></li>
-    </ul>
+            </div>
         </div>
     </div>
 {% endblock %}
 {% block javascript %}
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
-    <script>
-        function submit() {
-            var columns = $('.card-columns').data('columns');
-            var cardId = $('.card-info').data('id');
-            for (var column in columns) {
-                columns[column] = $('#' + column).val()
-            }
-
-
-            $.post('/app_dev.php/api/v1/cards/' + cardId + '/updates', columns, function (response) {
-                var html = '<div class="alert alert-success alert-dismissable">' +
-                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                'Thông tin cập nhật thành công !'
-                + '</div>';
-                $('div.form-horizontal').before(html);
-            }, 'json')
-
-            $.ajax({
-                headers : {
-                    'Content-Type' : 'application/json'
-                },
-                url : '/app_dev.php/api/v1/cards/' + cardId,
-                type : 'PATCH',
-                data : JSON.stringify({weddingDate: $('#wedding_date').val()}),
-                success : function(response, textStatus, jqXhr) {
-                },
-                error : function(jqXHR, textStatus, errorThrown) {
-                },
-                complete : function() {
-                }
-            });
-        }
-
-        $(document).ready(function(){
-            jQuery('#wedding_date').datetimepicker(
-                {
-                    format: 'Y-m-d H:i',
-                    lang:   'vi'
-                }
-            );
-        });
-
-        $('ul').on('click','li span:first-child', function() {
-                if($(this).parent().hasClass('selected')) {
-                    $(this).parent().removeClass('selected');
-                } else {
-                    $(this).parent().addClass('selected');
-                }
-        });
-
-        $('ul').on('click','li span:nth-child(2)', function() {
-            $(this).parent().fadeOut(300, function() {
-                $(this).remove();
-            });
-        });
-
-$('button').click(function(){
-    $('<li style="background-image: url(http://lorempixel.com/100/100/)" class="aimg"><span>SELECT</span><span>DELETE</span></li>').hide().appendTo('ul').fadeIn(300);
-});
-    </script>
+    <script src="{{ asset('bundles/viettutweb/js/lib/jquery.uploadfile.min.js') }}"></script>
+    <script src="{{ asset('bundles/viettutweb/js/builder.js') }}"></script>
 {% endblock %}
