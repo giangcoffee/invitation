@@ -21,7 +21,7 @@ function submit() {
         columns[column] = $('#' + column).val()
     }
 
-    $.post('/api/v1/cards/' + cardId + '/updates', columns, function (response) {
+    $.post('/app_dev.php/api/v1/cards/' + cardId + '/updates', columns, function (response) {
         var html = '<div class="alert alert-success alert-dismissable">' +
             '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
             'Thông tin cập nhật thành công !'
@@ -33,7 +33,7 @@ function submit() {
         headers : {
             'Content-Type' : 'application/json'
         },
-        url : '/api/v1/cards/' + cardId,
+        url : '/app_dev.php/api/v1/cards/' + cardId,
         type : 'PATCH',
         data : JSON.stringify({weddingDate: $('#wedding_date').val()}),
         success : function(response, textStatus, jqXhr) {
@@ -51,7 +51,7 @@ function updateAlbum() {
         headers : {
             'Content-Type' : 'application/json'
         },
-        url : '/api/v1/cards/' + cardId,
+        url : '/app_dev.php/api/v1/cards/' + cardId,
         type : 'PATCH',
         data : JSON.stringify({gallery: gallery}),
         success : function(response, textStatus, jqXhr) {
@@ -72,7 +72,7 @@ $(document).ready(function(){
     );
 
     $("#fileuploader").uploadFile({
-        url:"/api/v1/cards/uploads",
+        url:"/app_dev.php/api/v1/cards/uploads",
         fileName:"myfile",
         onSuccess:function(files,data,xhr,pd) {
             $('<li data-url="'+data+'" style="background-image: url('+data+')" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul').fadeIn(300);

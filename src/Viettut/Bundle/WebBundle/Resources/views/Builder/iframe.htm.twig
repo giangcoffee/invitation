@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <title>Porto - Responsive HTML5 Template 3.7.0</title>
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Porto - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/fontawesome/css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/owlcarousel/owl.carousel.min.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/owlcarousel/owl.theme.default.min.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/magnific-popup/magnific-popup.css') }}" media="screen">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/theme-elements.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/theme-blog.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/theme-shop.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/theme-animate.css') }}">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/rs-plugin/css/settings.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/circle-flip-slideshow/css/component.css') }}" media="screen">
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/skins/default.css') }}">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/custom.css') }}">
+    <style>
+        html{
+            height:100%;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            height:100%;
+            color:#fff;
+            background: #1b1b1b!important;
+        }
+
+        #container{
+            background: #1b1b1b!important;
+        }
+
+        /*Basic Phone styling*/
+
+        .phone {
+            border: 40px solid #121212;
+            border-width: 55px 7px;
+            border-radius: 40px;
+            margin: 50px auto;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+            -moz-animation: fadein 2s; /* Firefox < 16 */
+            -ms-animation: fadein 2s; /* Internet Explorer */
+            -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+        }
+
+        .phone iframe {
+            border: 0;
+            width: 100%;
+            height: 100%;
+            background-color:#000;
+        }
+
+        /*Different Perspectives*/
+
+        /* Table View */
+        .phone.view_1 {
+            -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);
+            transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);
+            box-shadow: -3px 3px 0 #000, -6px 6px 0 #000, -9px 9px 0 #000, -12px 12px 0 #000, -14px 10px 20px #000;
+        }
+        /* Front View */
+        .phone.view_2 {
+            -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            box-shadow: 0px 3px 0 #000, 0px 4px 0 #000, 0px 5px 0 #000, 0px 7px 0 #000, 0px 10px 20px #000;
+        }
+
+        @-webkit-keyframes rotate {
+
+            0%{-webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);}
+            50%{-webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-40deg);}
+            100%{-webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);}
+        }
+
+        /* Rotate Animation */
+
+        .view_1.rotate
+        {
+            -webkit-animation-name: rotate;
+            -webkit-animation-duration: 15s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+        }
+
+        /*Controls*/
+
+        #controls {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            font-size: 0.9em;
+            color: #333;
+            width:17px;
+        }
+
+        #controls div {
+            margin: 10px;
+        }
+
+        #controls div label {
+            width: 150px;
+            display: block;
+            float: left;
+            color: #fff;
+        }
+
+        #phone-controls{
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            width: 200px;
+            font-size:14px;
+        }
+
+        #phones {
+            border-top:1px solid #fff;
+            margin-top:20px;
+            padding-top:20px;
+        }
+
+        #phones button {
+            outline: none;
+            width: 198px;
+            border: 1px solid #016aa0;
+            border-radius:5px;
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            -o-border-radius:5px;
+            background-color: #016aa0;
+            height: 40px;
+            margin: 10px 0;
+            color: #fff;
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+        #phones button:hover {
+            color: #444;
+            background-color: #eee;
+        }
+
+        #views button {
+            outline: none;
+            width: 198px;
+            border: 1px solid #00a8ff;
+            border-radius:5px;
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            -o-border-radius:5px;
+            background-color: #00a8ff;
+            height: 40px;
+            margin: 10px 0;
+            color: #fff;
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+        #views button:hover {
+            color: #444;
+            background-color: #eee;
+        }
+
+        @media (max-width:900px) {
+            #wrapper {
+                -webkit-transform: scale(0.8, 0.8);
+                transform: scale(0.8, 0.8);
+            }
+        }
+
+        @media (max-width:700px) {
+            #wrapper {
+                -webkit-transform: scale(0.6, 0.6);
+                transform: scale(0.6, 0.6);
+            }
+        }
+
+        @media (max-width:500px) {
+            #wrapper {
+                -webkit-transform: scale(0.4, 0.4);
+                transform: scale(0.4, 0.4);
+            }
+        }
+
+        /* Fade In Animation */
+
+        @keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Firefox < 16 */ @-moz-keyframes fadein { from { opacity: 0; } to { opacity: 1; } } /* Safari, Chrome and Opera > 12.1 */
+        @-webkit-keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Internet Explorer */
+        @-ms-keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Opera < 12.1 */
+        @-o-keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <!-- Head Libs -->
+    <script src="{{ asset('bundles/viettutweb/vendor/modernizr/modernizr.js') }}"></script>
+
+    <!--[if IE]>
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/ie.css') }}">
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+    <script src="{{ asset('bundles/viettutweb/vendor/respond/respond.js') }}"></script>
+    <script src="{{ asset('bundles/viettutweb/vendor/excanvas/excanvas.js') }}"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="body">
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="{{ path('home_page') }}">
+                    <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" src="{{ asset('bundles/viettutweb/img/logo.png') }}">
+                </a>
+            </div>
+            <div class="search">
+                <form id="searchForm" action="page-search-results.html" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+								</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div role="main" class="main">
+        <div id="wrapper">
+            <div class="phone view_2" id="phone_1">
+                <iframe src="{{ iframe_src }}" id="frame_1"></iframe>
+            </div>
+        </div>
+
+
+        <div id="controls">
+
+            <div>
+                <label for="iframePerspective">Add perspective:</label>
+                <input type="checkbox" id="iframePerspective" checked="true">
+            </div>
+
+        </div>
+
+
+        <div id="phone-controls">
+
+            <div id="views">
+                <button value="1">Table View</button>
+                <button value="2">Front View</button>
+            </div>
+
+            <div id="phones">
+                <button value="1">iPhone 6</button>
+                <button value="2">Samsing Galaxy Note</button>
+                <button value="3">Microsoft Lumia 1020</button>
+                <button value="4">HTC One</button>
+                <button value="5">iPad Mini</button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+                        <a href="index.html" class="logo">
+                            <img alt="Porto Website Template" class="img-responsive" src="{{ asset('bundles/viettutweb/img/logo-footer.png') }}">
+                        </a>
+                    </div>
+                    <div class="col-md-7">
+                        <p>© Copyright 2015. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <nav id="sub-menu">
+                            <ul>
+                                <li><a href="page-faq.html">FAQ's</a></li>
+                                <li><a href="sitemap.html">Sitemap</a></li>
+                                <li><a href="contact-us.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Vendor -->
+<script src="{{ asset('bundles/viettutweb/vendor/jquery/jquery.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jquery.appear/jquery.appear.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jquery.easing/jquery.easing.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jquery-cookie/jquery-cookie.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/bootstrap/bootstrap.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/common/common.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jquery.validation/jquery.validation.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jquery.stellar/jquery.stellar.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jquery.gmap/jquery.gmap.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/isotope/jquery.isotope.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/owlcarousel/owl.carousel.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/jflickrfeed/jflickrfeed.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/magnific-popup/jquery.magnific-popup.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/vide/vide.js') }}"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="{{ asset('bundles/viettutweb/js/theme.js') }}"></script>
+
+<!-- Specific Page Vendor and Views -->
+<script src="{{ asset('bundles/viettutweb/vendor/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/vendor/circle-flip-slideshow/js/jquery.flipshow.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/js/views/view.home.js') }}"></script>
+
+<!-- Theme Custom -->
+<script src="{{ asset('bundles/viettutweb/js/custom.js') }}"></script>
+
+<!-- Theme Initialization Files -->
+<script src="{{ asset('bundles/viettutweb/js/theme.init.js') }}"></script>
+
+<script>
+    /*Only needed for the controls*/
+    phone = document.getElementById("phone_1"),
+            iframe = document.getElementById("frame_1");
+
+
+    /*View*/
+    function updateView(view) {
+        if (view) {
+            phone.className = "phone view_" + view;
+        }
+    }
+
+    /*Controls*/
+    function updateIframe() {
+
+        // preload iphone width and height
+        phone.style.width = "375px";
+        phone.style.height = "667px";
+
+        /*Idea by /u/aerosole*/
+        document.getElementById("wrapper").style.perspective = (
+                document.getElementById("iframePerspective").checked ? "1300px" : "none"
+        );
+
+    }
+
+    updateIframe();
+
+    /*Events*/
+    document.getElementById("controls").addEventListener("change", function() {
+        updateIframe();
+    });
+
+    document.getElementById("views").addEventListener("click", function(evt) {
+        updateView(evt.target.value);
+    });
+
+    document.getElementById("phones").addEventListener("click", function(evt) {
+
+        if(evt.target.value == 1){
+            // iphone 6
+            width = 375;
+            height = 667;
+        }
+
+        if(evt.target.value == 2){
+            // samsung
+            width = 400;
+            height = 640;
+        }
+
+        if(evt.target.value == 3){
+            // microsoft
+            width = 320;
+            height = 480;
+        }
+
+        if(evt.target.value == 4){
+            // htc
+            width = 360;
+            height = 640;
+        }
+
+        if(evt.target.value == 5){
+            // ipad mini
+            width = 768;
+            height = 1024;
+        }
+
+        phone.style.width = width + "px";
+        phone.style.height = height + "px";
+
+    });
+
+
+    iframe = document.getElementById('frame_1');
+
+    if (iframe.attachEvent){
+        iframe.attachEvent("onload", function(){
+            afterLoading();
+        });
+    } else {
+        iframe.onload = function(){
+            afterLoading();
+        };
+    }
+
+    function afterLoading(){
+
+        setTimeout(function() {
+            phone.className = "phone view_1";
+            setTimeout(function() {
+                // do second thing
+                phone.className = "phone view_1 rotate";
+                document.getElementById('loader').style.display = 'none';
+            }, 1000);
+        }, 1000);
+
+    }
+</script>
+<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12345678-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+ -->
+</body>
+</html>

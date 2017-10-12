@@ -64,6 +64,7 @@ class BuilderController extends Controller
         }
         
         return $this->render($template->getPath(), array(
+            'columns' => $template->getColumns(),
             'data' => $template->getData(),
             'gallery' => $template->getGallery(),
             'date' => $template->getWeddingDate(),
@@ -95,6 +96,7 @@ class BuilderController extends Controller
         $template = $card->getTemplate();
         return $this->render($template->getPath(), array (
             'data' => $card->getData(),
+            'columns' => $template->getColumns(),
             'gallery' => $card->getGallery(),
             'date' => $card->getWeddingDate(),
             'comments' => $card->getComments(),
@@ -118,8 +120,9 @@ class BuilderController extends Controller
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
 
-        return $this->render('ViettutWebBundle:Builder:preview.htm.twig', array(
-            'iframe_src' => sprintf('/templates/%s', $hash)
+        return $this->render('ViettutWebBundle:Builder:iframe.htm.twig', array(
+            'columns' => $template->getColumns(),
+            'iframe_src' => sprintf('/app_dev.php/template/%s', $hash)
         ));
     }
 }
