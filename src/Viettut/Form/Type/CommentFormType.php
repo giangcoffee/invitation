@@ -29,37 +29,8 @@ class CommentFormType extends AbstractRoleSpecificFormType
     {
         $builder
             ->add('content')
-            ->add('course')
-            ->add('chapter')
-            ->add('tutorial')
-            ->add('replyFor')
+            ->add('card')
         ;
-
-        $builder->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function (FormEvent $event) {
-                /** @var CommentInterface $comment */
-                $comment = $event->getData();
-
-                if ($comment->getCourse() === null &&
-                    $comment->getTutorial() === null &&
-                    $comment->getReplyFor() === null &&
-                    $comment->getChapter() === null ) {
-                    $event->getForm()->get('course')->addError(new FormError('invalid argument'));
-                    $event->getForm()->get('chapter')->addError(new FormError('invalid argument'));
-                    $event->getForm()->get('tutorial')->addError(new FormError('invalid argument'));
-                    $event->getForm()->get('replyFor')->addError(new FormError('invalid argument'));
-                    return;
-                }
-
-                $parent = $comment->getReplyFor();
-                if ($parent instanceof CommentInterface) {
-                    $parent->addReply($comment);
-                }
-
-                $comment->setActive(true);
-            }
-        );
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

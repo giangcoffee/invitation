@@ -97,7 +97,7 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
      */
     public function postAction(Request $request)
     {
-        return $this->post($request);
+        return $this->postAndReturnEntityData($request);
     }
 
     public function postUpdateAction(Request $request, $id)

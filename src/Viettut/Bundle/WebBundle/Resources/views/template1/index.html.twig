@@ -19,11 +19,13 @@
     <!-- base href="http://card-market.co.kr/mbcard/skin/9/" -->
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/templates/template1/css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/templates/template1/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/jqueryui-editable.css') }}">
 </head>
 <body>
 <!-- wrap -->
 <div id="dic_bubble" class="selection_bubble fontSize13 noSelect" style="z-index:9999; border: 1px solid #4AAEDE;fetching=false"></div><div id="wrap">
+    {% if isCard %}
+        <div class="card-info" data-id="{{ id }}" data-gallery="{{ gallery|json_encode|e('html_attr') }}"></div>
+    {% endif %}
 
     <p class="top_txt">THIỆP MỜI</p>
 
@@ -137,7 +139,7 @@
         <img src="{{ asset('bundles/viettutweb/templates/template1/img/gallery_tit.png') }}" height="auto" width="138">
         <ul id="GAL_LIST" class="lst bxslider">
             {% for img in gallery %}
-                <li><img src="{{ img }}"></li>
+                <li><img src="{{ img }}" alt="slider image"></li>
             {% endfor %}
         </ul>
     </div>
@@ -147,15 +149,15 @@
         <p class="ex_t"><img src="{{ asset('bundles/viettutweb/templates/template1/img/board_top.jpg') }}" height="auto" width="100%"></p>
         {% if app.user %}
             <div class="board_form">
-                <form method="" action="post">
-                    <p class="txtb"><textarea id="MSG" title="nhập tin nhắn" placeholder="để lại lời chúc mừng"></textarea></p>
+                <div>
+                    <p class="txtb"><textarea id="message"  placeholder="để lại lời chúc mừng"></textarea></p>
                     <p class="inpb">
-                        <span class="inp"><input id="WRT_NM" title="nhập tên bạn" placeholder="tên bạn" type="text"></span>
-                        <span class="inp"><input id="PWD" value="" title="nhập mật khẩu" placeholder="mật khẩu" type="password"></span>
-                        <span class="btn"><input id="submit" value="đồng ý" title="Đồng ý" type="submit"></span>
+                        <span class="btn"><input value="Đăng" type="submit" onclick="addComment()" /></span>
                     </p>
-                </form>
+                </div>
             </div>
+            <br/>
+            <br/>
         {% endif %}
 
         <ul id="MSG_LIST" class="board_lst">
@@ -179,9 +181,8 @@
                     </li>
                 {% endfor %}
             {% endif %}
-
         </ul>
-        <p id="MORE_MSG_LIST" class="board_lst_more"><a id="BTN_MORE_MSG_LIST" class="bl_more">Xem thêm</a></p>
+        {#<p id="MORE_MSG_LIST" class="board_lst_more"><a id="BTN_MORE_MSG_LIST" class="bl_more">Xem thêm</a></p>#}
     </div>
 
 
@@ -279,6 +280,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
 </script>
 <script>
+    var cardId = $('.card-info').data('id');
     function initMap() {
         var location = {lat: 21.0384812, lng: 105.793931};
         var map = new google.maps.Map(document.getElementById('MAP_CANVAS'), {
@@ -298,6 +300,23 @@
             controls: false
         });
     });
+
+    function addComment() {
+        var content = $('textarea#message').val();
+        $.post('/app_dev.php/api/v1/comments', {content:content, card:cardId}, function (response) {
+            var html = '<li class="MSG_ITEM" data-msg_idx="83757">' +
+                       '    <p class="name">'+ response.author.username + '</p>' +
+                       '    <p class="date">' +
+                       '        <span>' + response.createdAt + '</span>' +
+                       '    </p>' +
+                       '    <p class="con">' + response.content + '</p>' +
+                       '    <div class="del_b">' +
+                       '        <a class="del BTN_DEL_MSG"><img src="/bundles/viettutweb/templates/template1/img/board_del.png" width="12" height="12" alt=""></a>' +
+                       '    </div>' +
+                       '</li>';
+            $(html).hide().appendTo('ul#MSG_LIST').fadeIn(300);
+        }, 'json');
+    }
 </script>
 </body>
 </html>

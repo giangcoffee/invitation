@@ -90,11 +90,13 @@ class BuilderController extends Controller
         }
 
         $template = $card->getTemplate();
-        return $this->render($template->getPath(), array(
+        return $this->render($template->getPath(), array (
             'data' => $card->getData(),
             'gallery' => $card->getGallery(),
             'date' => $card->getWeddingDate(),
-            'comments' => $card->getComments()
+            'comments' => $card->getComments(),
+            'id' => $card->getId(),
+            'isCard' => true
         ));
     }
 

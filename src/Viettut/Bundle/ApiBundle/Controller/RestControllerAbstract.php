@@ -60,6 +60,28 @@ abstract class RestControllerAbstract extends FOSRestController
 
     /**
      * @param Request $request
+     * @return array|View|null
+     */
+    protected function postAndReturnEntityData(Request $request)
+    {
+        try {
+            $newEntity = $this->getHandler()->post(
+                $request->request->all()
+            );
+
+            $routeOptions = array(
+                '_format' => $request->get('_format')
+            );
+
+            return $this->view($newEntity, Response::HTTP_CREATED, $routeOptions);
+
+        } catch (InvalidFormException $exception) {
+            return $exception->getForm();
+        }
+    }
+
+    /**
+     * @param Request $request
      * @param int $id
      * @return FormTypeInterface|View
      */
