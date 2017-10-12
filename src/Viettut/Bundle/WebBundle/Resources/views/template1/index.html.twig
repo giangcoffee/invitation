@@ -181,6 +181,41 @@
                     </li>
                 {% endfor %}
             {% endif %}
+
+            {% if isTemplate %}
+                <li class="MSG_ITEM" data-msg_idx="83757">
+                    <p class="name">Ms Elly</p>
+                    <p class="date">
+                        <span>2017-10-12 15:30</span>
+                    </p>
+                    <p class="con">Chúc mừng hai bạn, đẹp đôi quá !</p>
+                    <div class="del_b">
+                        <a class="del BTN_DEL_MSG"><img src="{{ asset('bundles/viettutweb/templates/template1/img/board_del.png') }}" width="12" height="12" alt=""></a>
+                        <p class="pw_layer POPUP_DEL_MSG" style="display:none">
+                            <label for="b_pw">Nhập mật khẩu<label>
+                                    <input type="password" class="PWD" name="b_pw">
+                                    <a class="del_cf CNF_DEL_MSG">Kiểm tra</a>
+                                    <a class="del_cl CCL_DEL_MSG">Hủy</a>
+                                </label></label></p>
+                    </div>
+                </li>
+                <li class="MSG_ITEM" data-msg_idx="83757">
+                    <p class="name">Mr Kent</p>
+                    <p class="date">
+                        <span>2017-10-12 15:30</span>
+                    </p>
+                    <p class="con">Chúc mừng hai bạn !</p>
+                    <div class="del_b">
+                        <a class="del BTN_DEL_MSG"><img src="{{ asset('bundles/viettutweb/templates/template1/img/board_del.png') }}" width="12" height="12" alt=""></a>
+                        <p class="pw_layer POPUP_DEL_MSG" style="display:none">
+                            <label for="b_pw">Nhập mật khẩu<label>
+                                    <input type="password" class="PWD" name="b_pw">
+                                    <a class="del_cf CNF_DEL_MSG">Kiểm tra</a>
+                                    <a class="del_cl CCL_DEL_MSG">Hủy</a>
+                                </label></label></p>
+                    </div>
+                </li>
+            {% endif %}
         </ul>
         {#<p id="MORE_MSG_LIST" class="board_lst_more"><a id="BTN_MORE_MSG_LIST" class="bl_more">Xem thêm</a></p>#}
     </div>
@@ -303,7 +338,7 @@
 
     function addComment() {
         var content = $('textarea#message').val();
-        $.post('/app_dev.php/api/v1/comments', {content:content, card:cardId}, function (response) {
+        $.post('/api/v1/comments', {content:content, card:cardId}, function (response) {
             var html = '<li class="MSG_ITEM" data-msg_idx="83757">' +
                        '    <p class="name">'+ response.author.username + '</p>' +
                        '    <p class="date">' +

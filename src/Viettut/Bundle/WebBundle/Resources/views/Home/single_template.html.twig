@@ -51,7 +51,7 @@
 
 {% block main %}
     <div class="container">
-
+        <div class="template-info" data-id="{{ template.id }}"></div>
         <hr class="tall">
 
         <div class="row">
@@ -108,7 +108,8 @@
                             <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                             <input type="button" class="plus" value="+">
                         </div>
-                        <button href="#" class="btn btn-primary btn-icon">Add to cart</button>
+                        <button href="#" class="btn btn-primary btn-icon" onclick="createCard()">Dùng mẫu này</button>
+                        <a href="{{ path('template_page', {'hash': template.hash}) }}" class="btn btn-primary btn-icon" target="_blank">Xem trước</a>
                     </form>
 
                     <div class="product_meta">
@@ -339,4 +340,14 @@
 
         </div>
     </div>
+{% endblock %}
+{% block javascript %}
+    <script>
+        var templateId = $('.template-info').data('id');
+        function createCard() {
+            $.post('/api/v1/templates/' + templateId + '/createcards', {}, function (response) {
+                window.location.href = '/builder/' + response;
+            }, 'json');
+        }
+    </script>
 {% endblock %}

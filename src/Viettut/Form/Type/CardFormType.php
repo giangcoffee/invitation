@@ -42,7 +42,7 @@ class CardFormType extends AbstractRoleSpecificFormType
                 /** @var CardInterface $card */
                 $card = $event->getData();
                 if ($card->getId() == null) {
-                    $card->setHash(uniqid($card->getTemplate()->getName(), true));
+                    $card->setHash(uniqid('', true));
                 }
             }
         );

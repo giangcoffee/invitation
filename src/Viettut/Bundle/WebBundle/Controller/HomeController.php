@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Viettut\Model\Core\TemplateInterface;
 
 class HomeController extends Controller
 {
@@ -83,6 +85,10 @@ class HomeController extends Controller
      */
     public function singleTemplateAction(Request $request, $id)
     {
-        return $this->render('ViettutWebBundle:Home:single_template.html.twig');
+        $template = $this->get('viettut.domain_manager.template')->find($id);
+        if (!$template instanceof TemplateInterface) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
+        return $this->render('ViettutWebBundle:Home:single_template.html.twig', array('template' => $template));
     }
 }

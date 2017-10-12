@@ -50,7 +50,7 @@ class BuilderController extends Controller
     }
 
     /**
-     * @Route("/templates/{hash}", name="template_page")
+     * @Route("/template/{hash}", name="template_page")
      * @param $request
      * @param $hash
      * @return Response
@@ -67,7 +67,10 @@ class BuilderController extends Controller
             'data' => $template->getData(),
             'gallery' => $template->getGallery(),
             'date' => $template->getWeddingDate(),
-            'comments' => []
+            'comments' => [],
+            'isCard' => false,
+            'isTemplate' => true,
+            'id' => $template->getId()
         ));
     }
 
@@ -96,7 +99,8 @@ class BuilderController extends Controller
             'date' => $card->getWeddingDate(),
             'comments' => $card->getComments(),
             'id' => $card->getId(),
-            'isCard' => true
+            'isCard' => true,
+            'isTemplate' => false
         ));
     }
 
@@ -115,7 +119,7 @@ class BuilderController extends Controller
         }
 
         return $this->render('ViettutWebBundle:Builder:preview.htm.twig', array(
-            'iframe_src' => sprintf('/app_dev.php/templates/%s', $hash)
+            'iframe_src' => sprintf('/templates/%s', $hash)
         ));
     }
 }

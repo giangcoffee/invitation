@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\DomainManager\TemplateManagerInterface;
+use Viettut\Entity\Core\Card;
 use Viettut\Handler\HandlerInterface;
 use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\ChapterInterface;
@@ -94,6 +95,25 @@ class TemplateController extends RestControllerAbstract implements ClassResource
         return $this->post($request);
     }
 
+    public function postCreatecardAction(Request $request, $id)
+    {
+        /**
+         * @var TemplateInterface $template
+         */
+        $template = $this->one($id);
+        $card = new Card();
+        $card->setTemplate($template)
+            ->setAuthor($this->getUser())
+            ->setHash(uniqid('', true))
+            ->setData($template->getData())
+            ->setGallery($template->getGallery())
+            ->setWeddingDate($template->getWeddingDate())
+            ;
+
+        $this->get('viettut.domain_manager.card')->save($card);
+
+        return $card->getHash();
+    }
     /**
      * Update an existing card from the submitted data or create a new card
      *
