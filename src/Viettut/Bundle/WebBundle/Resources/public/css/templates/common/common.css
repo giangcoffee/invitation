@@ -1,0 +1,286 @@
+@charset "utf-8";
+@import url(NanumGothic.css);
+
+/* reset */
+#skin_page {background-color:#fff; color:#000;}
+
+* {
+ margin:0;
+ padding:0;
+ -webkit-text-size-adjust:none; }
+body {
+ color:#333;
+ font-size:100%;
+ font-family: AppleSDGothicNeo-Regular, Droid sans, '나눔고딕', 'Nanum Gothic', 'NanumGothic', '돋움', Dotum, Helvetica, sans-serif;
+ line-height:1.25em;
+ word-break:break-all;
+ }
+img, fieldset { border:0 }
+ul, ol, li, dl { list-style:none; }
+h1, h2, h3, h4, h5, h6 {
+ font-size:100%;
+ font-weight:normal; }
+hr { display:none; } 
+a { color:inherit; }
+a, a:link {
+ color:#333;
+ text-decoration:none; }
+a:visited { color:#333; }
+a:hover, a:active {
+ color:#333;
+ text-decoration:none; }
+em, i, address {
+ font-style:normal;
+ font-weight:normal; }
+legend, caption {
+ display:none;
+ clear:both; }
+input, textarea, select, button, table {
+ font-size:inherit;
+ font-family:inherit;
+ line-height:inherit; }
+section, nav, article, aside, hgroup, header, footer { display:block }
+textarea, input {
+ background:url('');	/*none*/
+ -webkit-border-radius:1px;
+ -webkit-apprearance:none; }
+textarea { resize:none; }
+label { cursor:pointer; }
+
+.helv { font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }
+.verd { font-family:verdana, "돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }
+.nanum{ font-family:nanumFont,"돋움",dotum;}
+.bold { font-weight:bold; }
+.utsa { font-family:Utsaah, HelveticaNeue, Apple-Gothic; }
+
+.blind, legend {overflow:hidden; width:0; height:0; position:absolute; top:0; left:0; font-size:0; line-height:0; }
+.hidden {position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;font-size:0;line-height:0}
+
+/* text-align */
+.ta-l {text-align:left;}
+.ta-r {text-align:right;}
+.ta-c {text-align:center;}
+
+/* float */
+.fl {float:left;}
+.fr {float:right;}
+.clear {clear:both;}
+
+/* padding */
+.pt5   {padding-top:5px}
+.pt7   {padding-top:7px}
+.pt10  {padding-top:10px}
+.pt30  {padding-top:30px;}
+.pt40  {padding-top:40px;}
+.pt50  {padding-top:50px;}
+.pr20  {padding-right:20px;}
+.pad20 {padding:20px;}
+
+/* margin */
+.mt10  {margin-top:10px;}
+.mt20  {margin-top:20px;}
+.mt30  {margin-top:30px;}
+.mt70  {margin-top:70px;}
+.mt100 {margin-top:100px;}
+.mr10  {margin-right:10px;}
+.mr20  {margin-right:20px;}
+.mr40  {margin-right:40px;}
+.mb20  {margin-bottom:20px;}
+.ml20  {margin-left:20px;}
+
+/* Laout */
+.contents {position:relative; max-width:1024px; margin:0 auto;}
+
+/* movie */
+.movie1 ul li,.movie2 ul li,.movie3 ul li,.movie4 ul li{background-color:#000}
+
+/* gallery type2 */
+.gal_list2 {position:relative;max-width:980px;width:100%;margin:0 auto;padding-bottom:60px!important;box-sizing: border-box;}
+.gal_list2:after {display:block; content:''; clear:both}
+.gal_list2 a {display:block;}
+.gal_list2 .gal_frame img {display:block;width:100%;height:auto;box-sizing:border-box;}
+.gal_list2 .gal_frame {float:left; padding:0.5%; box-sizing:border-box;}
+
+.gal_list2 .gal_size,
+.gal_list2 .gal_frame {width:24.99%}
+/*@media all and (max-width: 1024px) {
+  .gal_list2 .gal_size,
+  .gal_list2 .gal_frame {width:24.99%}
+}*/
+@media all and (max-width: 768px) {
+  .gal_list2 .gal_size {width:33.33%}
+  .gal_list2 .gal_frame {width:33.33%; padding:1%}
+}
+@media all and (max-width: 480px) {
+  .gal_list2 .gal_size {width:49.99%}
+  .gal_list2 .gal_frame {width:49.99%; padding:1.5%}
+}
+.gal_list2 .gal_more {position:absolute;bottom:20px;}
+
+/* Footer */
+.ui-page-theme-a .ui-bar-inherit {background:none; border:none;}
+.footer {overflow:hidden; padding:1em; background-color:#eee;}
+.footer h4 {display:none;}
+.footer ul {overflow:hidden; padding-top:0.5em;}
+.footer ul li {float:left; width:25%; }
+.footer ul li div {width:60px; height:60px; margin:0 auto;}
+.footer ul li div span {display:block; text-indent:-9999px; overflow:hidden;}
+.footer ul li em {display:none; margin-top:.5em; font-size:1em; text-align:center; text-shadow:none;}
+.ft_sns_wrap,
+.ft_sns_wrap1 {background:url('http://dalpeng.com/dalpeng/skin/_common/img/ico_spr_snsg80_band2.png') 0 0 no-repeat; background-size:60px; opacity:.6;cursor:pointer;}
+.facebook	  {background-position:0 0}
+.twitter,
+.band	  {background-position:0 -60px}
+.kakao		  {background-position:0 -120px}
+.story		  {background-position:0 -180px}
+
+
+
+/* 640 이상 */
+@media all and (min-width: 640px) {
+	.footer h4 {display:block; float:left; padding:18px 0 0 10px}
+	.footer h4 span {display:inline-block; padding-left:.5em; line-height:2em; vertical-align:top; text-shadow:none; color:rgba(255,255,255,.5);}
+	.footer h4 img {width:22px; height:30px; opacity:.5;}
+	.footer ul {float:right; width:33%; padding-top:12px;}
+	.footer ul li {float:left; width:25%;}
+	.footer ul li div {width:40px; height:40px;}
+	.ft_sns_wrap,
+	.ft_sns_wrap1 {background:url('http://dalpeng.com/dalpeng/skin/_common/img/ico_spr_snsg80_band80.png') 0 0 no-repeat; background-size:40px; opacity:.5;cursor:pointer;}
+	.facebook	 {background-position:0 0}
+	.twitter,
+	.band	 {background-position:0 -40px}
+	.kakao		 {background-position:0 -80px}
+	.story	 	 {background-position:0 -120px}
+}
+
+.hide {display:none;}
+a.gallery_comment {color:white;}
+
+a.gallery_comment_link,
+a.gallery_comment_link:visited,
+a.gallery_comment_link:link {color:white;float:right;}
+
+.previewLine {border:1px solid red;}
+
+
+@media all and (min-width: 800px) {
+	.footer ul {float:right; width:22%}
+	.ui-section-b .footer ul,
+	.ui-section-b + .footer ul{float:right; width:33%}
+}
+
+
+@media all and (min-width: 980px) {
+	.ui-section-b .footer ul,
+	.ui-section-b + .footer ul {float:right; width:40%}
+}
+
+/* popup - navi */
+.popup_navi.popup_olleh {position:fixed;top:0;right:0;bottom:0;left:0;background-color:rgba(0,0,0,0.8);z-index:1999999999}
+.popup_navibox {position: absolute;width: 100%;top: 50%;margin-top: -145px;}
+.popup_olleh .olleh_btnbox {position:relative;width: 85%;max-width:400px;min-width:290px;margin:0 auto;background-color:#fff;border-radius:6px;padding:15px;box-sizing: border-box}
+.popup_olleh .olleh_btn {position:relative;min-height:70px;background-color:#fff;border-radius:4px;cursor:pointer}
+.popup_olleh .olleh_btn:after {clear:both;content:'';display:block}
+.popup_olleh .olleh_btn.btn1 {border:2px solid #ff3b49;margin:0 0 15px}
+.popup_olleh .olleh_btn.btn2 {border:2px solid #747474}
+
+.popup_olleh .olleh_btn .title {
+	position: relative;width:72%;margin:0;padding: 20px 0 20px 60px;box-sizing:border-box;
+	font-size:17px;letter-spacing:-1px;line-height:1.5;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+}
+.popup_olleh .olleh_btn .title strong{font-size:17px;color:#333}
+.popup_olleh .olleh_btn .title:before {position:absolute;top:50%;left:13px;margin:-20px 0 0 0;width:40px;height:40px;background:url(/dalpeng/skin/_common/img/olleh_imgs.png) no-repeat;content:'';background-size:40px auto}
+.popup_olleh .olleh_btn.btn1 .title{}
+.popup_olleh .olleh_btn.btn2 .title{}
+.popup_olleh .olleh_btn.btn1 .title:before {}
+.popup_olleh .olleh_btn.btn2 .title:before {background-position:0 -40px}
+
+.popup_olleh .olleh_btn .link {
+	position:absolute;top:0;right:0;bottom:0;width:28%;background: url(/dalpeng/skin/_common/img/olleh_arrow.png) no-repeat 50% 20px;background-size: 25px;
+	font-size:14px;letter-spacing:-1px;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+}
+.popup_olleh .olleh_btn.btn1 .link{background-color:#ff3b49}
+.popup_olleh .olleh_btn.btn2 .link{background-color:#747474}
+.popup_olleh .olleh_btn .link span{display:block;color:#fff;text-align:center;padding: 47px 0 0 0;}
+
+.popup_olleh .olleh_back {
+	position:relative;width: 85%;max-width:400px;min-width:290px;margin:0 auto;box-sizing:border-box;
+	font-size:16px;color:#fff;font-weight:bold;text-align:right;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+}
+.popup_olleh .olleh_back span{display:inline-block;padding:20px 15px 15px 26px;background:url(/dalpeng/skin/_common/img/olleh_close.png) no-repeat 0 20px;background-size:20px;cursor:pointer}
+
+@media all and (max-width: 414px) {
+	.popup_olleh .olleh_btn .title {font-size:15px;padding-left:58px}
+	.popup_olleh .olleh_btn .title strong{font-size:15px}
+	.popup_olleh .olleh_btn .link {background-size:20px}
+	.popup_olleh .olleh_btn .link span {padding-top:44px}
+}
+@media all and (max-width: 375px) {
+	.popup_olleh .olleh_btn .title {font-size:14px;padding-left:55px}
+	.popup_olleh .olleh_btn .title strong{font-size:14px}
+	.popup_olleh .olleh_btn .title:before {left:10px}
+	.popup_olleh .olleh_btnbox {width:90%;padding: 10px;}
+	.popup_olleh .olleh_btn.btn1 {margin:0 0 10px}
+	.popup_olleh .olleh_btn .link {font-size:13px}
+	.popup_olleh .olleh_back {width:90%}
+	.popup_olleh .olleh_back span{padding-right:10px}
+}
+
+
+/*naver map*/
+.lo_map {position:relative}
+
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas,
+.lo_map #fbirthday_map_canvas,
+.lo_map #ceremony_map_canvas {width:100% !important}
+
+.lo_map #interaction {
+	position:absolute;top:10px;left:10px;
+	display:inline-block;
+	margin: 0;
+	padding: 9px 6px 0 25px;
+	box-sizing:border-box;
+	border: 1px solid rgb(68,68,68);/* rgba(58,70,88,.45); */
+	cursor: pointer;
+	outline: 0 none;
+	font-size:14px;
+	line-height:1;
+	height:35px;
+	font-size:0;
+	background-color: #2780E3;
+	color: #FFF;	
+	z-index:2;
+	/* -webkit-border-radius: 5px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.5) !important;
+	-webkit-box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.5) !important; */
+}
+.lo_map #interaction.control-on {
+	background-color:#fff;
+	color: #555;
+}
+
+.lo_map #interaction:before{
+	content: '';
+    position: absolute;
+    left:8px;
+    top: 50%;
+    margin-top: -7px;
+    width: 14px;
+    height: 14px;
+    background: url(/dalpeng/skin/_common/img/ico_lock.png) no-repeat 0 100%;
+    background-size: 100%;
+}
+.lo_map #interaction.control-on:before{background-position:0 0}
+
+
+/* wedding-panel-instagram : icecreamcake 제외
+*/
+.groom-wrap ul li.ico_insta,.bride-wrap ul li.ico_insta,/*common*/
+.groom-wrap .panel_line_bg ul li.ico_insta,.bride-wrap .panel_line_bg ul li.ico_insta /*onefineday*/
+{
+	background-image: url('/bundles/viettutweb/img/templates/common/panel_insta.png');
+	background-position:50% 50%;
+	background-size:50px;
+}

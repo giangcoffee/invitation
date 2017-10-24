@@ -1,0 +1,541 @@
+@charset "utf-8";
+
+/*@import url(https://fonts.googleapis.com/css?family=Lora:400italic,700italic);*/
+/*font-family: 'Lora', serif;*/
+/*@import url(https://fonts.googleapis.com/css?family=Cookie);*/
+/*font-family: 'Cookie', cursive*/
+
+/* 임시css */
+.ui-panel-wrapper {min-height:80px}
+.ui-page-theme-a {text-shadow:none!important}
+.spacer.s0 {min-height: 1px}
+
+/* Global */
+* {box-sizing: border-box; -webkit-box-sizing: border-box}
+.ul-body   {position:relative;max-width:980px;margin: 0 auto;padding: 0 10px}
+.ul-body:after {display:block; content:''; clear:both}
+.gallery_wrap .ul-body {padding: 0 20px 40px}
+.movie_wrap .ul-body {max-width:640px;padding: 0 20px 40px}
+.location_wrap .ul-body {padding:0 0 20px;max-width: 100%}
+
+.ui-cont-a {padding: 0 1em}
+.ui-cont-b {padding: 2em 0}
+.ui-cont-c {padding-top: 2em}
+.ui-cont-d {padding-bottom: 2em}
+.btn_wrap {cursor:pointer}
+.p-r {position:relative}
+.f-l {float:left!important}
+.f-r {float:right!important}
+
+/* Layout */
+html,body {font-family:AppleSDGothicNeo-Regular,Droid sans,'NanumGothic','돋움',Dotum,Helvetica,sans-serif}
+body {font-size: 100%}
+#skin_page {z-index:10;background-color:#ffd3ce}
+.header {position:relative;width:100%;height:800px;overflow: hidden}
+.greeting_wrap {position:relative;background: #eee url('../../../img/templates/gardenwedding/bg_greeting.png') repeat 0 0}
+.gallery_wrap {position:relative;padding-top: 80px;background:#dae0aa url('../../../img/templates/gardenwedding/bg_gallery.png') repeat 0 0}
+.dday_wrap {position:relative;padding: 100px 0;background:url('../../../img/templates/gardenwedding/bg_dday.jpg') no-repeat 50% 50%;background-size:cover;text-align:center;z-index:1}
+.gallery_wrap+.dday_wrap:before {position:absolute;top:0;left:0;right:0;height:50px;background:url('../../../img/templates/gardenwedding/bg_roundbottom_green.png') no-repeat 50% 0;background-size:100% auto;content:''}
+.movie_wrap {position:relative;margin:-80px 0 0;z-index:10}
+.movie_wrap:after {content:'';position:absolute;top:0;left:0;width:100%;height: 80px;background:url('../../../img/templates/gardenwedding/bg_roundtop_pink.png') no-repeat 50% 100%;background-size: 100% auto}
+.dday_wrap+.guestbook_wrap {margin:-60px 0 0 0;z-index:10}
+.guestbook_wrap {position:relative;padding:120px 40px;overflow:hidden;background: url('../../../img/templates/gardenwedding/bg_guestbooktop.jpg') no-repeat 50% 0,url('../../../img/templates/gardenwedding/bg_guestbookbottom.jpg') no-repeat 50% 100%,#fff}
+.guestbook_wrap:after {position:absolute;top:20px;left:20px;right:20px;bottom:20px;border: 1px solid rgba(247,119,106,0.5);content:''}
+.dday_wrap+.location_wrap {margin:-60px 0 0 0;z-index:10}
+.location_wrap {position:relative;padding:120px 0 0;overflow:hidden;background:url('../../../img/templates/gardenwedding/img_guestbook.jpg') no-repeat 50% 0,url('../../../img/templates/gardenwedding/bg_gallery.png') repeat;background-size: auto 580px,auto}
+.footer {background-color:#cad28a!important}
+
+@media all and (min-width:1700px){
+  .location_wrap {background-size:100%,auto}
+}
+.lnb_mobile {display:none;position:fixed;top:0;right:0;width:60px;height:60px;padding:14px 0 0;z-index:9990;background-color: rgba(247,119,106,0.8)}
+.lnb_mobile a {display:block;height:60px}
+.lnb_mobile .bar_line{width:28px;height:4px;background-color:#fff;display:block;margin:5px auto}
+.lnb_mobile .bar_top{}
+.lnb_mobile .bar_middle{}
+.lnb_mobile .bar_bottom{}
+@media all and (max-width:320px){
+  .lnb_mobile {width:50px;height:46px;padding-top:7px}
+  .lnb_mobile .bar_line {width:24px;height:4px}
+}
+.header_img {position:relative;max-height:720px;margin:0 auto;z-index:-1}
+.header_img:before {content:'';position:absolute;top:0;left:0;right:0;bottom:0; background-color:rgba(255,255,255,0.3);z-index:-1}
+.header_img:after {content:'';position:absolute;bottom:0;height:25px;left:0;right:0;background:url('../../../img/templates/gardenwedding/bg_headerimg.png') repeat-x;background-size:auto 25px;z-index:-1}
+.header_content {position:absolute;bottom: -180px;left:0;width:100%;height: 400px;background: url('../../../img/templates/gardenwedding/header_flower.png') no-repeat;background-position: 50% 50%}
+
+.lnb {display:none;position:relative;margin:0;padding: 120px 30px 0;z-index: 100}
+.lnb ul {margin: 0 auto;width: 100%}
+.lnb li {position:relative;display:block;margin: 0 0 10px;padding: 15px 0;color:#fff;text-align:center;font-family:'Lora', serif;font-size:18px;font-style:italic;font-weight:700;border:1px solid rgba(255,255,255,0.3);-webkit-transition:0.2s background-color;transition:0.2s background-color}
+/*.lnb li.on {background-color: rgba(0,0,0,0.5);border: 1px solid rgba(255,255,255,0.3)}*/
+.lnb li.on:after {}
+
+.header_date {position:absolute;width:220px;height:220px;top:50%;left:50%;margin:-110px 0 0 -110px;padding:75px 0 0;background-color:#fff;border-radius:50%; text-align:center; color:#ec7267; font-family:'Cookie', cursive;line-height:1}
+.header_date:before {position:absolute;width:260px;height:260px;top:-20px;left:-20px;background-color:rgba(255,255,255,0.5);border-radius:50%;content:''}
+.header_date .text {position:relative;font-size:42px;margin-bottom:5px}
+.header_date .date {position:relative;font-size: 28px;color:#999;letter-spacing:0}
+.header_date .date:after {clear:both;content:'';display:block}
+.header_date .date span{display:inline-block;padding:0 6px;letter-spacing:-1px}
+.header_date .date span:last-child {}
+  
+.header_panel {position:relative;width:100%;padding:20px 30px 0}
+.header_panel:after {clear:both;content:'';display:block}
+.header_panel p {display:inline-block;width: 80px;height: 80px;font-family:'Lora',serif;font-size:1em;line-height:1;letter-spacing:0;font-style:italic;font-weight:700;text-align:center}
+.header_panel a {display:block;width:80px;height:80px;padding:10px 0 0;color: #fff!important;background-color: rgba(255,116,109,0.5);border-radius:50%;-webkit-transition:0.2s background-color;transition:0.2s background-color}
+.header_panel a .icon {display:block;margin:0 auto 0;padding:0;width:55px;height:33px;background:url('../../../img/templates/gardenwedding/pannel_icon.png') no-repeat; background-size:110px auto}
+.header_panel p.groom .icon {background-position: 0 2px}
+.header_panel p.bride .icon {background-position:100% 0}
+.header_panel p:first-child {float:left}
+.header_panel p:last-child {float:right}
+/* .header_panel.fadeOut {opacity:0} */
+@media all and (min-width:1024px){
+  .lnb li:hover,
+  .header_panel a:hover{background-color:rgba(255,116,109,0.7)}
+}
+
+div#panel_groom,div#panel_groom .ui-panel-inner,
+div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
+.ui-panel-open.ui-panel-position-right.ui-panel-display-push {border-color:#555}
+
+.groom-wrap,
+.bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing: border-box}
+.groom-wrap p,
+.groom-wrap ul li,
+.bride-wrap p,
+.bride-wrap ul li {cursor:pointer}
+.groom-wrap p, 
+.bride-wrap p {position:absolute; top:495px; right:0; width:50px; height:50px; text-shadow:none!important; background:rgba(255,116,109,0.8) url('../../../img/templates/gardenwedding/panel_icon.png') 100% 0 no-repeat; background-size:250px;
+  font-size:0; line-height:0; text-indent:-9999px}
+.groom-wrap p {right:2px}
+.groom-wrap ul,
+.bride-wrap ul {position:absolute; top:495px; left:0; width:200px; height:50px; overflow:hidden}
+
+.groom-wrap ul li,
+.bride-wrap ul li {float:left; width:50px; height:50px; margin:0; background:rgba(0,0,0,0.5) url('../../../img/templates/gardenwedding/panel_icon.png') 0 0 no-repeat; background-size:250px;
+  font-size:0; line-height:0; text-indent:-9999px}
+.groom-wrap ul li.ico5,
+.bride-wrap ul li.ico1 {background-position:0 0px}
+.groom-wrap ul li.ico6,
+.bride-wrap ul li.ico2 {background-position:-50px 0}
+.groom-wrap ul li.ico7,
+.bride-wrap ul li.ico3 {background-position:-100px 0}
+.groom-wrap ul li.ico8,
+.bride-wrap ul li.ico4 {background-position:-150px 0}
+
+@media all and (max-height: 543px) {
+.groom-wrap ul,
+.bride-wrap ul {position:fixed; top:auto; bottom:0; left:0}
+.groom-wrap p,
+.bride-wrap p {position:fixed; top:auto; bottom:0; left:221px}
+}
+
+
+/* title */
+h2.title {margin: 0 0 40px;text-align: center}
+h2.title span {font-size: 3.2em;line-height:1;color:#fff;font-family:'Cookie',cursive}
+
+.greeting_wrap h2.title {position:absolute;top: -90px;left:50%;margin:0 0 0 -150px;width:300px;height:105px;background:url('../../../img/templates/gardenwedding/tit_greeting.png') no-repeat 50% 0;background-size:100%}
+.gallery_wrap h2.title {position:relative;margin: 0 auto 30px;width:320px;height: 70px;background:url('../../../img/templates/gardenwedding/tit_gallery.png') no-repeat 50% 0;background-size:100%}
+.greeting_wrap h2.title span,
+.gallery_wrap h2.title span {font-size:0;line-height:0;text-indent:-9999px}
+.guestbook_wrap h2.title span {color:#f7776a}
+
+/* Greeting */
+.greeting_img {position:relative;padding: 30px 30px 0 30px;text-align:center}
+.greeting_img:before {content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('../../../img/templates/gardenwedding/bg_greeting.png') repeat;opacity:0.8}
+.greeting_img>img {position:relative;display:inline-block;max-width:100%;max-height: 600px;border: 15px solid rgba(255,255,255,0.8);border-bottom:0}
+
+.greeting_content {position:relative;margin: 0;padding: 60px 0;background-color:#fff;z-index: 10}
+.greeting_content:before {content:'';position:absolute;top:-50px;left:0;width:100%;height:50px;background:url('../../../img/templates/gardenwedding/bg_roundtop.png') no-repeat 50% 100%;background-size: 100% auto}
+.greeting_content:after  {content:'';position:absolute;bottom:-50px;left:0;width:100%;height:50px;background:url('../../../img/templates/gardenwedding/bg_roundbottom.png') no-repeat 50% 0;background-size: 100% auto}
+
+.greeting_text {position:relative;width:90%;max-width:480px;min-width:290px;min-height:110px;margin: 0 auto 40px;padding: 0;color:#444;font-size: 0.95em;line-height: 1.7;text-align:center;word-break: break-word;box-sizing: border-box}
+.greeting_name {margin: 40px auto 0;color:#444;width:90%;max-width:480px;min-width:290px;min-height:70px;box-sizing: border-box}
+.greeting_name:after {display:block; content:''; clear:both}
+.greeting_name li {text-align:center; width:48%; min-width:140px}
+.greeting_name li
+.greeting_name li p {padding:5px 0}
+.greeting_name li em {font-family:'Lora',serif;color:#f7776a;font-style:italic;font-weight:700;font-size: 0.8em}
+.gn_groom {float:left}
+.gn_bride {float:right}
+.gn4 {display:block;font-size: 1em}
+.gn4 strong {padding:0 0 0 5px}
+.gn_groom p.parents,
+.gn_bride p.parents {font-size: 0.8em;margin-bottom:8px}
+
+.header_loca,
+.greeting_loca {width:90%;max-width:380px;min-width:290px;margin: 40px auto 0;padding: 18px 10px;text-align:center;border: 1px solid #f7776a;color: #f7776a;line-height: 1.3;font-size:0.9em;font-weight:bold;word-break: break-word}
+.header_loca {position:absolute;width: auto;left: 30px;right: 30px;margin: 0;bottom: 10px;border: none;color:#fff;max-width: 1200px;min-width: auto;font-size: 1em}
+.header_loca p:first-child {margin: 0 0 15px}
+.header_loca p:first-child span {display:inline-block}
+.greeting_loca p:first-child {margin:0 0 10px}
+.greeting_scroll {position:absolute; bottom:30px; left:50%; margin:0 0 0 -16px; width:32px; height:32px}
+.greeting_scroll img{width:100%; height:100%}
+
+/* gallery */
+.gal_list {max-width:980px;margin:0 auto}
+.gal_list > div > a > div {float:left; border:5px solid #fff; box-sizing:border-box}
+.gal_list > div:after {content:'';display:block;clear:both}
+.gal_list .col-5 > a > div {height:400px;margin-bottom:2%}
+.gal_list .col-5 .ui-block-a {width:66%;margin-right:2%}
+.gal_list .col-5 .ui-block-b {width:32%}
+.gal_list .col-5 .ui-block-c {width:32%;margin-right:2%}
+.gal_list .col-5 .ui-block-d {width:32%;margin-right:2%}
+.gal_list .col-5 .ui-block-e {width:32%}
+
+.gal_list .col-4 > a > div {height:280px;margin-bottom:2%}
+.gal_list .col-4 .ui-block-a {width:49%;margin-right:2%}
+.gal_list .col-4 .ui-block-b {width:49%}
+.gal_list .col-4 .ui-block-c {width:49%;margin-right:2%}
+.gal_list .col-4 .ui-block-d {width:49%}
+
+.gal_more {display:block;clear:both;width:160px;height:50px;margin: 20px auto 0;cursor:pointer;font-size:0;line-height:0;text-indent:-9999px;background:url('../../../img/templates/gardenwedding/btn_more.png') no-repeat 0 0;background-size:100%}
+
+@media all and (max-width:1280px) {
+  .gal_list .col-5 > a > div {height:300px}
+  .gal_list .col-4 > a > div {height:220px}
+}
+@media all and (max-width:1024px) {
+  .gal_list .col-5 > a > div {height:360px}
+  .gal_list .col-5 .ui-block-a {width:66.17%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-b {width:32.33%}
+  .gal_list .col-5 .ui-block-c {width:32.33%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-d {width:32.33%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-e {width:32.33%}
+  .gal_list .col-4 > a > div {width:49.25%!important;height:260px}
+  .gal_list .col-4 .ui-block-a,
+  .gal_list .col-4 .ui-block-c {margin-right:1.5%}
+}
+@media all and (max-width:768px) {
+  .gal_list .col-5 > a > div {height:280px}
+  .gal_list .col-4 > a > div {height:240px}
+}
+@media all and (max-width:640px) {
+  .gallery_wrap .ul-body {padding: 0 10px 40px}
+  .gal_list .col-5 > a > div {height:330px}
+  .gal_list .col-5 .ui-block-a {width:100%;margin-right:0}
+  .gal_list .col-5 .ui-block-b {width:49.25%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-c {width:49.25%;margin-right:0}
+  .gal_list .col-5 .ui-block-d {width:49.25%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-e {width:49.25%;margin-right:0}
+  .gal_list .col-4 > a > div {height:180px}
+}
+@media all and (max-width:480px) {
+  .gal_list .col-5 > a > div {height:220px}
+  .gal_list .col-4 > a > div {height:140px}
+}
+
+
+.gal_list2 {padding-bottom: 60px!important}
+.gal_list2 .gal_frame img {border: 5px solid #fff}
+.gal_list2 .gal_more {left:50%;bottom:0;margin-left:-80px}
+.gal_list2 .gallery_msg {width:100%; height:350px!important;margin:0}
+.gal_list2 .gallery_msg img {border:none;width:80%;margin:0 auto}
+
+.gal_list2 .gal_size,
+.gal_list2 .gal_frame {width:33.33%}
+.gal_list2 .gal_frame_2 {width:66.66%}
+
+@media all and (max-width: 640px) {
+  .gal_list2 .gal_size,
+  .gal_list2 .gal_frame {width:50%}
+  .gal_list2 .gal_frame_2 {width:100%}
+
+  .gal_more {width:140px}
+  .gal_list2 .gal_more {margin-left:-70px}
+}
+
+/* dday */
+.gallery_wrap+.dday_wrap:before {position:absolute;top:0;left:0;right:0;height:50px;background:url('../../../img/templates/gardenwedding/bg_roundbottom_green.png') no-repeat 50% 0;background-size:100% auto;content:''}
+.dday_title {display:inline-block;width:320px;height: 100px;background: url('../../../img/templates/gardenwedding/txt_savethedate.png') no-repeat 50% 60%;background-size:auto 55px;font-size:0;line-height:0;text-indent:-999px;vertical-align: top}
+.dday_text {position:relative;width: 310px;height:120px;padding: 10px 0 0 0;display:inline-block;color:#fff;text-align:left;font-family:'Lora',serif;font-weight:400;font-style:italic;line-height:1.2;letter-spacing:-1px}
+.dday_text .date {display:inline-block;width:190px;font-size: 2.0em;margin:0 0 5px;text-align:center}
+.dday_text .time {display:inline-block;width:190px;font-size:1.4em;font-weight:700;text-align:center}
+.dday_text .time span:first-child {padding:0 20px 0 0}
+.dday_text .dday {position:absolute;top: 0;right:10px;display:block;width:100px;height:100px;text-align:center;line-height:95px;font-size:1.6em;font-weight:700;border-radius:50%;background-color:rgba(245,99,85,0.7);letter-spacing:0}
+
+/* Movie */
+.movie_container {position:relative;margin:0;z-index:1}
+.movie_container ul {width:100%; margin:0}
+.movie_container:after {display:block; content:''; clear:both}
+
+.movie1 ul li,
+.movie2 ul li,
+.movie3 ul li,
+.movie4 ul li {position:relative; overflow:hidden;border:8px solid #fff}
+.movie1 ul li img,
+.movie2 ul li img,
+.movie3 ul li img,
+.movie4 ul li img {position:absolute; top:50%; left:0; width:100%; height:auto; margin:-38% 0 0 0;z-index:0}
+.android_play {position:absolute; display:block; top:50%; left:50%; cursor:pointer;z-index:1;
+  background:url('../../../img/templates/common/android_play.png') no-repeat 0 0; background-size:100%; font-size:0; line-height:0; text-indent:-9999px;
+  width:80px; height:54px;margin:-27px 0 0 -40px}
+
+.movie1 ul li {width:100%;height:400px;margin:0;background-color: #000}
+
+.movie2 ul li { width:100%; height:440px; margin:0 0 2% 0}
+
+.movie3 ul li {float:left; width:49%; height:250px; margin:0}
+.movie3 ul li:first-child { width:100%; height:440px; margin:0 0 2% 0}
+.movie3 ul li:nth-child(2) {margin-right:2%}
+
+.movie4 ul li {float:left; width:49%; height:250px; margin:0 0 2% 0}
+.movie4 ul li:first-child {margin-right:2%}
+.movie4 ul li:nth-child(3) {margin-right:2%}
+
+.nomovie {background-color:#aaa!important}
+.nomovie span {position:absolute; top:50%; left:50%; margin:-8px 0 0 -100px; display:block; width:200px; text-align:center; color:#fff}
+
+@media all and (max-width: 640px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {position:relative;float:none;width:100%;height: 300px;margin:0 0 2% 0}
+  .android_play {width:60px; height:40px;margin:-20px 0 0 -30px}
+}
+@media all and (max-width: 480px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {height: 240px}
+}
+  
+/* Guestbook */
+.nopost_wrap {position:relative;margin: 10px 0 40px;padding: 80px 0 40px;}
+.nopost_wrap:before {position:absolute;top: 0;left:0;right:0;height:30px;background:url('../../../img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 0;background-size:auto 60px;opacity:0.4;content:''}
+.nopost_wrap:after {position:absolute;bottom:0;left:0;right:0;height:30px;background:url('../../../img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 100%;background-size:auto 60px;opacity:0.4;content:''}
+
+.gb_btn {position:relative; width:155px; height:40px;margin:30px auto; padding:0;background:url('../../../img/templates/gardenwedding/btn_guestbook.png') no-repeat 0 0; background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+.gb_msg {position:relative;margin: 0 0 60px}
+.nopost_wrap .gb_msg {margin-bottom:40px}
+.gb_msg span {display: block;width:270px;height:18px;margin: 0 auto;background:url('../../../img/templates/gardenwedding/txt_guestbook.png') no-repeat 50% 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+
+#div_snsbbs:after {clear:both; content:''; display:block}
+.gb_cont_box {position:relative;width:100%; padding:1em 0.8em;font-size:0.8em; color:#888; background-color:#fff; border:1px solid #ccc; box-sizing:border-box}
+.snsbbs_sections:first-child .gb_cont_box {background-color:#f9a096;color:#fff;border-color:#f9a096}
+.snsbbs_sections:first-child .gb_cont_box:after {position:absolute;top:-27px;left:0;right:0;height:26px;background:url('../../../img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 0;background-size:auto 60px;opacity:0.4;content:''}
+
+.pro_info:after {clear:both; content:''; display:block}
+.pro_info {padding:0.3em 0 0.8em 0.5em;border-bottom:1px solid #ccc}
+.pro_img {position:relative; float:left;border-radius:50%;background-color:#fff}
+.pro_img img {width:50px; height:50px;display:block;border-radius:50%;border:2px solid #ccc;overflow:hidden}
+.snsbbs_sections:first-child .pro_info {border-bottom:1px solid rgba(255,255,255,0.5)}
+.snsbbs_sections:first-child .gb_cont_box .pro_img img {border-color:#fff}
+.pro-sns {position:absolute; top:65%; left:-5px; width:20px; height:20px; background:url('../../../img/templates/gardenwedding/ico_spr_sns24.png') -20px 0 no-repeat; background-size:200%}
+.pro-sns span   {display:block; text-indent:-9999px; overflow:hidden}
+.pro-sns.facebook {background-position:   -20px   0px}
+.pro-sns.twitter  {background-position:   -20px   -20px}
+.pro-sns.kakao    {background-position:   -20px   -40px}
+.pro-sns.naver    {background-position:   -20px   -60px}
+.pro-sns.dalpeng  {background-position:   -20px   -80px}
+.pro-sns.google   {background-position:   -20px   -100px}
+.pro-sns.notmember  {background-position:   -20px   -120px}
+.pro-sns.instagram  {background-position:   -20px   -140px}
+.pro_txt {float:left;padding: 0.3em 0 0 0.7em;max-width: 70%;font-size: 1.1em}
+.pro_txt .date {font-size: 0.9em;letter-spacing:-0.5px}
+
+.gb_cont {clear:both; padding:1em 0.5em}
+.gb_cont li {margin-bottom:0}
+.gb_cont li img {max-width:100%}
+
+.gb_skip {overflow:hidden; padding:0.9em 0.5em 0 0.5em; border-top:1px solid  rgba(0,0,0,0.2);font-family:'Lora',serif;font-weight:700;font-style:italic}
+.gb_skip .gb_comm {height:13px; color:#888; font-size:1.2em; font-weight:bold; line-height:13px}
+.gb_skip .gb_comm .icon_reply {float:left; text-align:center; width:16px; height:14px; margin:0 5px 0 0;
+  font-size:0; line-height:0; text-indent:-9999px;background:url('../../../img/templates/gardenwedding/ico_reply_g.png') no-repeat; background-size:16px}
+
+.snsbbs_sections:first-child .gb_skip {border-top:1px solid  rgba(255,255,255,0.5)}
+.snsbbs_sections:first-child .gb_skip .gb_comm {color:#fff}
+.snsbbs_sections:first-child .gb_skip .gb_comm .icon_reply {background:url('../../../img/templates/gardenwedding/ico_reply_w.png') no-repeat;background-size:16px}
+
+/* Location */
+.lo_tab_wrap {min-height:40px;margin: 0 auto 20px;padding:0;text-align:center}
+.lo_tab_wrap li {position:relative;display:inline-block;width: 180px;margin: 0 10px;line-height:40px;color: #fff;text-align:center;font-size: 1em;font-weight: bold;background-color: rgba(0,0,0,0.4);cursor:pointer;border-radius: 40px;box-sizing: border-box;letter-spacing:-1px}
+.lo_tab_wrap li:last-child {}
+.lo_tab_wrap .on {background: rgba(6,150,137,0.8) url('../../../img/templates/gardenwedding/ico_pin.png') no-repeat 20px 50%;background-size: 16px;padding-left: 20px;color:#fff}
+.lo_tab_wrap .on:after {position:absolute; bottom:-9px; left:50%; margin:0 0 0 -8px; content:''; width:15px; height:8px; 
+background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0; background-size:15px 8px}
+.lo_box {padding: 0}
+.lo_box .ui-block-a {margin:0;padding:0}
+.lo_box .ui-block-b {background: url('../../../img/templates/gardenwedding/bg_gallery.png') repeat;padding: 0 50px}
+.lo_title {margin:0 50px;padding:40px;text-align:center;line-height:1;background-color:rgba(255,255,255,0.8)}
+.lo_title h3{position:relative;margin:0 0 60px;font-family:'Lora',serif;font-size: 1.5em;font-weight:700;font-style:italic;color:#069689}
+.lo_title h3:after {position:absolute;content:'';bottom:-30px;left:50%;margin:0 0 0 -45px;width:90px;height:3px;background-color:#069689}
+.lo_title .date{color:#069689;font-weight:bold;font-size:1.05em;line-height:1.5;margin: 0 0 10px}
+.lo_title .place{color:#777;font-weight:bold;font-size:0.9em;line-height:1.5}
+.lo_map {margin-bottom: 0;padding:0 50px;text-align:center;line-height:1;background:url('../../../img/templates/gardenwedding/bg_gallery.png') repeat}
+.lo_map>a.ui-link {display:block;font-size:0}
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas {border-left: 2px solid #fff;border-right: 2px solid #fff;height:400px!important;background-color: #ddd}
+.lo_map #wedding_pmap_canvas .nmap,
+.lo_map #party_pmap_canvas .nmap {width:100%!important;height:400px!important}
+.lo_map .ui-link img {height:100%}
+
+.nav-wrap {margin:0 50px}
+
+.nav-wrap ul {overflow:hidden; margin-top:10px}
+.nav-wrap ul li {float:left; margin-right:30px}
+.nav-m {margin-top:5px}
+.nav-m .nav-1 {float:left; width:50%}
+.nav-m .nav-2 {float:left; width:50%}
+.ui-icon-nav1 {background:url('../../../img/templates/gardenwedding/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
+.ui-icon-nav2 {background:url('../../../img/templates/gardenwedding/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
+.ui-btn-nav .ui-btn { font-weight:400!important}
+.ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0}
+.ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fafafa!important;padding: 12px 0}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.8em;padding: 5px 0 10px;color:#333;text-align:center}
+
+.lo_containerarea {padding:30px;background-color:#fff}
+.lo_containerarea:after {content:'';display:block;clear:both}
+.lo_container {position:relative;width:100%;border-collapse: collapse;box-sizing: border-box;background-color:#fff}
+.lo_container th {width:20%;min-width: 90px;color:#069689;font-size: 0.8em;font-family:'Lora', serif;font-weight:700;font-style:italic;letter-spacing: -1px;vertical-align:top;text-align:left;padding: 8px 0 12px 0;text-transform:uppercase}
+.lo_container td {width:80%;color:#666;padding: 10px 0 12px 10px;font-size: 0.85em;line-height:1.6em}
+.lo_container td.txt {color:#000; font-weight:bold}
+.lo_container td span {display:inline-block}
+.lo_container th span {display:inline-block;width:100%;height:25px;line-height:25px;padding: 0 0 0 27px;background:url('../../../img/templates/gardenwedding/location_icon.png') no-repeat 0 0;background-size:25px;box-sizing: border-box}
+.lo_container th.lo_date .icon    {background-position:0 0}
+.lo_container th.lo_loca .icon    {background-position:0 -25px}
+.lo_container th.lo_tel .icon     {background-position:0 -50px}
+.lo_container th.lo_info .icon    {background-position:0 -75px}
+.lo_container th.lo_bus .icon     {background-position:0 -100px}
+.lo_container th.lo_subway .icon  {background-position:0 -125px}
+
+
+
+.col-2,.col-3,.col-4 {position:relative; overflow:hidden}
+/*.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-b {float:left; width:49%}*/
+.col-2 .ui-block-a,
+.col-2 .ui-block-b {float:left; width:100%}
+    
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0}
+.col-3 .ui-block-c {width:32%}
+
+.gal_list .col-3 .ui-block-a,
+.gal_list .col-3 .ui-block-b {width:32%; margin:0 2% 2% 0}
+.gal_list .col-3 .ui-block-c {width:32%; margin:0 0 2% 0}
+.ui-body-d {margin:2%}
+
+.snsbbs_sections {float:left; width:33.333%!important}
+.snsbbs_sections {float:left; width:50%!important}
+.snsbbs_sections .ui-body-d {margin:7px}
+
+@media all and (min-width: 1024px) {
+  .lnb_mobile {display:none}
+  .header_img {min-height:650px}
+  .lnb {display:block}
+  .greeting_wrap {min-height:auto!important}
+  .greeting_loca {display:none}
+
+  .header_side {position:fixed;top:0;left:0;width:30%;bottom:0;min-height: 768px;background:url('../../../img/templates/gardenwedding/bg_wood.jpg') repeat 50% 0}
+  .header_side:after {position:absolute;content:'';top:0;left:0;right:0;height: 180px;background:url('../../../img/templates/gardenwedding/header_flower.png') no-repeat 80% 100%}
+  .header.ui-section-a {position:relative;width:70%;min-height: 800px;/* max-height: 950px; */margin:0 0 0 30%;}
+  .ui-section-b,.footer {position:relative;width:70%;margin:0 0 0 30%}
+}
+@media all and (min-width:1280px) {
+  .header.ui-section-a:after {}
+  .lo_container.lo_left {float:left;width: 48%}
+  .lo_container.lo_right {float:right;width:50%}
+}
+
+@media all and (max-width: 1023px) { 
+  .lnb_mobile {display:block}
+  .header_loca {display:none}
+  .header.ui-section-a {position:relative;width:100%;max-height: 1024px;}
+  .ui-section-b,.footer {position:relative; width:100%}
+  .header_panel {padding: 0 10px}
+  .greeting_wrap {min-height:600px!important}
+  .snsbbs_sections {float:left; width:33.3%!important}
+  .lo_title,.nav-wrap {margin:0 20px}
+  .lo_box .ui-block-b,.lo_map {padding:0 20px}  
+}
+
+@media all and (max-width: 920px) {
+  .snsbbs_sections {float:left; width:50%!important}
+}
+@media all and (max-width: 640px) {
+  .greeting_content {padding:40px 0}
+  .gallery_wrap .ul-body {padding: 0 10px 40px}
+  .movie_wrap .ul-body {padding: 0 10px 40px}
+  .guestbook_wrap {padding: 80px 10px 50px}
+  .guestbook_wrap:after {top:10px;left:10px;right:10px;bottom:10px}
+  .dday_wrap {padding: 60px 0 90px}
+  .snsbbs_sections {float:left; width:100%!important}
+  .location_wrap {padding:80px 0 0}
+  .lo_title,
+  .nav-wrap {margin:0 10px}
+  .lo_box .ui-block-b,
+  .lo_map {padding:0 10px}
+}
+
+@media (max-width: 480px) {
+  .header_content {bottom: -280px}
+  .header_panel {padding: 40px 5px 0}
+  .greeting_img {padding: 20px 20px 0 20px}
+  .greeting_img>img {border: 10px solid rgba(255,255,255,0.8);border-bottom: 0}
+  .greeting_wrap h2.title {top:-70px}
+  .greeting_content {padding-top: 55px}
+  .gb_msg span {width:250px;background-size: 240px auto;}
+  
+  .col-2 .ui-block-a,.col-2 .ui-block-b,
+  .col-3 .ui-block-a,.col-3 .ui-block-b,.col-3 .ui-block-c {float:left; width:100%}
+  .col-4 .ui-block-a,.col-4 .ui-block-b,.col-4 .ui-block-c,.col-4 .ui-block-d {width:100%}
+  .snsbbs_sections {float:left; width:100%!important}
+
+  .lo_box {padding:5px 0}
+  .lo_box .ui-block-a {}
+  .lo_tab_wrap {padding:0;width: 100%;margin-bottom:10px}
+  .lo_tab_wrap li {font-size: 0.8em;width: 45%;margin: 0 1%}
+  .lo_tab_wrap .on {background-position:9% 50%;padding-left:16px}
+  .lo_title {padding:35px 10px 20px}
+  .lo_title h3{margin:0 0 50px;font-size: 1.4em}
+  .lo_title h3:after {bottom:-25px}
+  .lo_title .date{font-size:0.9em}
+  .lo_title .place{font-size:0.8em}
+
+  .lo_containerarea {padding: 15px 8px}
+  .lo_container th{float:left;font-size: 1em;letter-spacing: 0;width:100%;text-align:left;padding: 10px 0 0 0;border:none;box-sizing: border-box}
+  .lo_container td{float:left;width:100%;padding:10px 10px 10px 27px;box-sizing: border-box}
+/*  .lo_map>a.ui-link {display:block;font-size: 0}*/
+  .lo_map #wedding_pmap_canvas,
+  .lo_map #party_pmap_canvas,
+  .lo_map #wedding_pmap_canvas .nmap,
+  .lo_map #party_pmap_canvas .nmap  {height:300px!important}
+  .lo_map .ui-link img {height:100%}
+  .nav_info {font-size:0.7em}
+
+  .nav-m .nav-1,
+  .nav-m .nav-2 {float:none; width:100%}
+}
+
+@media all and (max-width: 414px) {
+  .header {min-height:736px}
+  .header_panel {padding:55px 5px 0}
+  .header_panel p {width:55px;height:55px}
+  .header_panel a {width:55px;height:55px;padding-top:12px;font-size:0;line-height:0;text-indent:-9999px}
+  .header_panel a .icon {width:45px;background-size:90px auto}
+
+}
+@media all and (max-width: 360px) {
+  .header {min-height:640px}
+  .greeting_wrap h2.title {top: -60px;margin:0 0 0 -130px;width:260px;height:100px}
+  .gallery_wrap h2.title {width:280px;height: 55px}
+}
+@media all and (max-width: 320px) {
+  .header {min-height:568px}
+  .header_img {height:320px!important}
+  .header_content {bottom: -260px;height: 350px;background-size: auto 350px}
+  .header_date {width: 180px;height: 180px;margin: -90px 0 0 -90px;padding-top: 55px}
+  .header_date:before {width:210px;height:210px;top:-15px;left:-15px}
+  .header_date .text {font-size:36px}
+  .header_date .date {font-size: 24px}
+
+  .lo_title,.nav-wrap {margin:0}
+  .lo_box .ui-block-b,.lo_map {padding:0}
+}
+
+@media all and (max-width: 790px) and (max-height: 580px) and (orientation: landscape) {
+  .header {height: 850px!important;}
+}
