@@ -70,6 +70,7 @@ class BuilderController extends Controller
         return $this->render($template->getPath(), array(
             'columns' => $template->getColumns(),
             'data' => $template->getData(),
+            'name' => $template->getName(),
             'first' => $first,
             'second' => $second,
             'rest' => $rest,

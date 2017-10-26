@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="vi">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="http://dalpeng.com/gardenwedding"/>
-    <meta property="og:description" content="모든 것이 새로워지는 봄날,
-사랑하는 두 사람이 새 인생을 시작하려 합니다.
-바쁘시더라도 두 사람의 첫 시작을 축복해주시고
-격려해 주신다면 더 없는 기쁨이 되겠습니다."/>
+    <meta property="og:url" content="http://thiepdo.com/garden-wedding"/>
+    <meta property="og:description" content="
+    On a spring day,
+    Two loving people are about to start a new life.
+    Even if you are busy, bless the first start of the two
+    If you encourage me, I will be more joy."/>
 
-    <meta property="og:title" content="결혼식에 초대합니다^^"/>
-    <meta property="og:image" content="http://dalpeng.com/user/gardenwedding/img/7445cc41988e70ed839f0505739f50fb.jpg"/>
+    <meta property="og:title" content="{{ name }}"/>
+    <meta property="og:image" content="/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -52,7 +53,7 @@
     -->
     <script src="/bundles/viettutweb/js/lib/kakao.min.js"></script>
 
-    <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js?v2.1.2"></script>
+    <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js/"></script>
 
     <script type="text/javascript"
             src="https://openapi.map.naver.com/openapi/v3/maps.js?v=20170525&clientId=fMnBpM1lKoVaQ4njhwB1"></script>
@@ -1218,7 +1219,7 @@
                 <p class="bride"><a href="#panel_bride"><span class="icon"></span>Cô Dâu</a></p>
             </div>
             <div class="header_loca">
-                <p><span>{{ date | date(d.m.Y) }} ({{ date | date('l') }})</span> <span>{{ date | date('H:i A') }}</span></p>
+                <p><span>{{ date | date('d.m.Y') }} ({{ date | date('l') }})</span> <span>{{ date | date('H:i A') }}</span></p>
                 <p>{{ data['place'] }}</p>
             </div>
         </div>

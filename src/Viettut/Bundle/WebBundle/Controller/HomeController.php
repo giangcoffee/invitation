@@ -65,7 +65,8 @@ class HomeController extends Controller
      */
     public function templateAction(Request $request)
     {
-        return $this->render('ViettutWebBundle:Home:templates.html.twig');
+        $templates = $this->get('viettut.repository.template')->findAll();
+        return $this->render('ViettutWebBundle:Home:templates.html.twig', array('templates' => $templates));
     }
 
     /**
@@ -78,11 +79,11 @@ class HomeController extends Controller
         return $this->render('ViettutWebBundle:Home:price.html.twig');
     }
 
-    /**
-     * @Route("/templates/{id}", name="single_template_page")
-     * @param $request
-     * @return Response
-     */
+//    /**
+//     * @Route("/templates/{id}", name="single_template_page")
+//     * @param $request
+//     * @return Response
+//     */
 //    public function singleTemplateAction(Request $request, $id)
 //    {
 //        $template = $this->get('viettut.domain_manager.template')->find($id);
