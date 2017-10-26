@@ -176,17 +176,17 @@ h2.title span {font-size: 3.2em;line-height:1;color:#fff;font-family:'Cookie',cu
 .gal_list > div > a > div {float:left; border:5px solid #fff; box-sizing:border-box}
 .gal_list > div:after {content:'';display:block;clear:both}
 .gal_list .col-5 > a > div {height:400px;margin-bottom:2%}
-.gal_list .col-5 .ui-block-a {width:66%;margin-right:2%}
-.gal_list .col-5 .ui-block-b {width:32%}
-.gal_list .col-5 .ui-block-c {width:32%;margin-right:2%}
-.gal_list .col-5 .ui-block-d {width:32%;margin-right:2%}
-.gal_list .col-5 .ui-block-e {width:32%}
+.gal_list .col-5 .ui-block-1 {width:66%;margin-right:2%}
+.gal_list .col-5 .ui-block-2 {width:32%}
+.gal_list .col-5 .ui-block-3 {width:32%;margin-right:2%}
+.gal_list .col-5 .ui-block-4 {width:32%;margin-right:2%}
+.gal_list .col-5 .ui-block-5 {width:32%}
 
 .gal_list .col-4 > a > div {height:280px;margin-bottom:2%}
-.gal_list .col-4 .ui-block-a {width:49%;margin-right:2%}
-.gal_list .col-4 .ui-block-b {width:49%}
-.gal_list .col-4 .ui-block-c {width:49%;margin-right:2%}
-.gal_list .col-4 .ui-block-d {width:49%}
+.gal_list .col-4 .ui-block-1 {width:49%;margin-right:2%}
+.gal_list .col-4 .ui-block-2 {width:49%}
+.gal_list .col-4 .ui-block-3 {width:49%;margin-right:2%}
+.gal_list .col-4 .ui-block-4 {width:49%}
 
 .gal_more {display:block;clear:both;width:160px;height:50px;margin: 20px auto 0;cursor:pointer;font-size:0;line-height:0;text-indent:-9999px;background:url('../../../img/templates/gardenwedding/btn_more.png') no-repeat 0 0;background-size:100%}
 
@@ -196,14 +196,14 @@ h2.title span {font-size: 3.2em;line-height:1;color:#fff;font-family:'Cookie',cu
 }
 @media all and (max-width:1024px) {
   .gal_list .col-5 > a > div {height:360px}
-  .gal_list .col-5 .ui-block-a {width:66.17%;margin-right:1.5%}
-  .gal_list .col-5 .ui-block-b {width:32.33%}
-  .gal_list .col-5 .ui-block-c {width:32.33%;margin-right:1.5%}
-  .gal_list .col-5 .ui-block-d {width:32.33%;margin-right:1.5%}
-  .gal_list .col-5 .ui-block-e {width:32.33%}
+  .gal_list .col-5 .ui-block-1 {width:66.17%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-2 {width:32.33%}
+  .gal_list .col-5 .ui-block-3 {width:32.33%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-4 {width:32.33%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-5 {width:32.33%}
   .gal_list .col-4 > a > div {width:49.25%!important;height:260px}
-  .gal_list .col-4 .ui-block-a,
-  .gal_list .col-4 .ui-block-c {margin-right:1.5%}
+  .gal_list .col-4 .ui-block-1,
+  .gal_list .col-4 .ui-block-3 {margin-right:1.5%}
 }
 @media all and (max-width:768px) {
   .gal_list .col-5 > a > div {height:280px}
@@ -212,11 +212,11 @@ h2.title span {font-size: 3.2em;line-height:1;color:#fff;font-family:'Cookie',cu
 @media all and (max-width:640px) {
   .gallery_wrap .ul-body {padding: 0 10px 40px}
   .gal_list .col-5 > a > div {height:330px}
-  .gal_list .col-5 .ui-block-a {width:100%;margin-right:0}
-  .gal_list .col-5 .ui-block-b {width:49.25%;margin-right:1.5%}
-  .gal_list .col-5 .ui-block-c {width:49.25%;margin-right:0}
-  .gal_list .col-5 .ui-block-d {width:49.25%;margin-right:1.5%}
-  .gal_list .col-5 .ui-block-e {width:49.25%;margin-right:0}
+  .gal_list .col-5 .ui-block-1 {width:100%;margin-right:0}
+  .gal_list .col-5 .ui-block-2 {width:49.25%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-3 {width:49.25%;margin-right:0}
+  .gal_list .col-5 .ui-block-4 {width:49.25%;margin-right:1.5%}
+  .gal_list .col-5 .ui-block-5 {width:49.25%;margin-right:0}
   .gal_list .col-4 > a > div {height:180px}
 }
 @media all and (max-width:480px) {
@@ -354,8 +354,8 @@ h2.title span {font-size: 3.2em;line-height:1;color:#fff;font-family:'Cookie',cu
 .lo_tab_wrap .on:after {position:absolute; bottom:-9px; left:50%; margin:0 0 0 -8px; content:''; width:15px; height:8px; 
 background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0; background-size:15px 8px}
 .lo_box {padding: 0}
-.lo_box .ui-block-a {margin:0;padding:0}
-.lo_box .ui-block-b {background: url('../../../img/templates/gardenwedding/bg_gallery.png') repeat;padding: 0 50px}
+.lo_box .ui-block-1 {margin:0;padding:0}
+.lo_box .ui-block-2 {background: url('../../../img/templates/gardenwedding/bg_gallery.png') repeat;padding: 0 50px}
 .lo_title {margin:0 50px;padding:40px;text-align:center;line-height:1;background-color:rgba(255,255,255,0.8)}
 .lo_title h3{position:relative;margin:0 0 60px;font-family:'Lora',serif;font-size: 1.5em;font-weight:700;font-style:italic;color:#069689}
 .lo_title h3:after {position:absolute;content:'';bottom:-30px;left:50%;margin:0 0 0 -45px;width:90px;height:3px;background-color:#069689}
@@ -404,18 +404,18 @@ background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0;
 
 
 .col-2,.col-3,.col-4 {position:relative; overflow:hidden}
-/*.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
-.col-2 .ui-block-b {float:left; width:49%}*/
-.col-2 .ui-block-a,
-.col-2 .ui-block-b {float:left; width:100%}
+/*.col-2 .ui-block-1 {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-2 {float:left; width:49%}*/
+.col-2 .ui-block-1,
+.col-2 .ui-block-2 {float:left; width:100%}
     
-.col-3 .ui-block-a,
-.col-3 .ui-block-b {width:32%; margin:0 2% 0 0}
-.col-3 .ui-block-c {width:32%}
+.col-3 .ui-block-1,
+.col-3 .ui-block-2 {width:32%; margin:0 2% 0 0}
+.col-3 .ui-block-3 {width:32%}
 
-.gal_list .col-3 .ui-block-a,
-.gal_list .col-3 .ui-block-b {width:32%; margin:0 2% 2% 0}
-.gal_list .col-3 .ui-block-c {width:32%; margin:0 0 2% 0}
+.gal_list .col-3 .ui-block-1,
+.gal_list .col-3 .ui-block-2 {width:32%; margin:0 2% 2% 0}
+.gal_list .col-3 .ui-block-3 {width:32%; margin:0 0 2% 0}
 .ui-body-d {margin:2%}
 
 .snsbbs_sections {float:left; width:33.333%!important}
@@ -449,7 +449,7 @@ background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0;
   .greeting_wrap {min-height:600px!important}
   .snsbbs_sections {float:left; width:33.3%!important}
   .lo_title,.nav-wrap {margin:0 20px}
-  .lo_box .ui-block-b,.lo_map {padding:0 20px}  
+  .lo_box .ui-block-2,.lo_map {padding:0 20px}  
 }
 
 @media all and (max-width: 920px) {
@@ -466,7 +466,7 @@ background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0;
   .location_wrap {padding:80px 0 0}
   .lo_title,
   .nav-wrap {margin:0 10px}
-  .lo_box .ui-block-b,
+  .lo_box .ui-block-2,
   .lo_map {padding:0 10px}
 }
 
@@ -479,13 +479,13 @@ background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0;
   .greeting_content {padding-top: 55px}
   .gb_msg span {width:250px;background-size: 240px auto;}
   
-  .col-2 .ui-block-a,.col-2 .ui-block-b,
-  .col-3 .ui-block-a,.col-3 .ui-block-b,.col-3 .ui-block-c {float:left; width:100%}
-  .col-4 .ui-block-a,.col-4 .ui-block-b,.col-4 .ui-block-c,.col-4 .ui-block-d {width:100%}
+  .col-2 .ui-block-1,.col-2 .ui-block-2,
+  .col-3 .ui-block-1,.col-3 .ui-block-2,.col-3 .ui-block-3 {float:left; width:100%}
+  .col-4 .ui-block-1,.col-4 .ui-block-2,.col-4 .ui-block-3,.col-4 .ui-block-4 {width:100%}
   .snsbbs_sections {float:left; width:100%!important}
 
   .lo_box {padding:5px 0}
-  .lo_box .ui-block-a {}
+  .lo_box .ui-block-1 {}
   .lo_tab_wrap {padding:0;width: 100%;margin-bottom:10px}
   .lo_tab_wrap li {font-size: 0.8em;width: 45%;margin: 0 1%}
   .lo_tab_wrap .on {background-position:9% 50%;padding-left:16px}
@@ -533,7 +533,7 @@ background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0;
   .header_date .date {font-size: 24px}
 
   .lo_title,.nav-wrap {margin:0}
-  .lo_box .ui-block-b,.lo_map {padding:0}
+  .lo_box .ui-block-2,.lo_map {padding:0}
 }
 
 @media all and (max-width: 790px) and (max-height: 580px) and (orientation: landscape) {

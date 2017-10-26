@@ -62,11 +62,17 @@ class BuilderController extends Controller
         if (!$template instanceof TemplateInterface) {
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
-        
+
+        $gallery = $template->getGallery();
+        $first = array_slice($gallery, 0, 5);
+        $second = array_slice($gallery, 5, 4);
+        $rest = array_slice($gallery, 9);
         return $this->render($template->getPath(), array(
             'columns' => $template->getColumns(),
             'data' => $template->getData(),
-            'gallery' => $template->getGallery(),
+            'first' => $first,
+            'second' => $second,
+            'rest' => $rest,
             'date' => $template->getWeddingDate(),
             'comments' => [],
             'isCard' => false,

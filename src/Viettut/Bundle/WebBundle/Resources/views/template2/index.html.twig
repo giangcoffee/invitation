@@ -1031,13 +1031,13 @@
             }).css('cursor', 'pointer');
 
             $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function () {
-                var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-a cont_box3 ', '');
+                var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-1 cont_box3 ', '');
 
                 callKakaoNavi(id);
             });
 
             $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function () {
-                var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-b cont_box4 ', '');
+                var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-2 cont_box4 ', '');
 
                 callOllehNavi(id);
             });
@@ -1127,20 +1127,20 @@
          style="background:#fff url('/bundles/viettutweb/img/templates/gardenwedding/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
         <div class="groom-wrap">
             <ul>
-                <a href="tel:01000000000">
-                    <li class="ico5">신랑에게 전화하기</li>
+                <a href="tel:{{ data['groom_phone'] }}">
+                    <li class="ico5">Gọi điện</li>
                 </a>
-                <a href="sms:01000000000">
-                    <li class="ico6">신랑에게 문자하기</li>
+                <a href="sms:{{ data['groom_phone'] }}">
+                    <li class="ico6">Nhắn tin</li>
                 </a>
                 <a href="http://facebook.com/dalpeng" target="_blank">
-                    <li class="ico7">페이스북 바로가기</li>
+                    <li class="ico7">Facebook</li>
                 </a>
                 <a href="http://instagram.com/dalpeng2com" target="_blank">
-                    <li class="ico_insta">인스타그램 바로가기</li>
+                    <li class="ico_insta">Instagram</li>
                 </a>
             </ul>
-            <p class="btn_go_snsbbs">축하글 남기기</p>
+            <p class="btn_go_snsbbs">Viết lời chúc</p>
         </div>
     </div>
     <!--// panel-groom -->
@@ -1150,20 +1150,20 @@
          style="background:#fff url('/bundles/viettutweb/img/templates/gardenwedding/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;">
         <div class="bride-wrap">
             <ul>
-                <a href="tel:01000000000">
-                    <li class="ico1">신부에게 전화하기</li>
+                <a href="tel:{{ data['bride_phone'] }}">
+                    <li class="ico1">Gọi điện</li>
                 </a>
-                <a href="sms:01000000000">
-                    <li class="ico2">신부에게 문자하기</li>
+                <a href="sms:{{ data['bride_phone'] }}">
+                    <li class="ico2">Nhắn tin</li>
                 </a>
                 <a href='http://facebook.com/dalpeng' target='_blank'>
-                    <li class='ico3'>페이스북 바로가기</li>
+                    <li class='ico3'>Facebook</li>
                 </a>
                 <a href="http://instagram.com/dalpeng2com" target="_blank">
-                    <li class="ico_insta">인스타그램 바로가기</li>
+                    <li class="ico_insta">Instagram</li>
                 </a>
             </ul>
-            <p class="btn_go_snsbbs">축하글 남기기</p>
+            <p class="btn_go_snsbbs">Viết lời chúc</p>
         </div>
     </div>
     <!--// panel-bride -->
@@ -1172,12 +1172,12 @@
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider">결혼식에 초대합니다^^</li>
-                <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>GREETINGS</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>GALLERY</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_media"><span>MOVIE</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>GUESTBOOK</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_map"><span>LOCATION</span></li>
+                <li data-role="list-divider">Invitation</li>
+                <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>Lời Tựa</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>Album Ảnh</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_media"><span>Video</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Lời Chúc</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_map"><span>Địa Điểm</span></li>
             </ul>
         </div>
     </div>
@@ -1198,7 +1198,7 @@
             <div class="header_content">
                 <div class="header_date">
                     <p class="text">Save the Date</p>
-                    <p class="date"><span>2018.03.24</span><span>2:00pm</span></p>
+                    <p class="date"><span>{{ date | date('d.m.Y') }}</span><span>{{ date | date('H:i A') }}</span></p>
                 </div>
             </div>
         </div>
@@ -1206,20 +1206,20 @@
         <div class="header_side">
             <div class="lnb">
                 <ul>
-                    <li class="menu1 menu_scrolls" id="m_topinfo"><span>Greetings</span></li>
-                    <li class="menu2 menu_scrolls" id="m_gallery"><span>Wedding Gallery</span></li>
-                    <li class="menu3 menu_scrolls" id="m_media"><span>Movie</span></li>
-                    <li class="menu4 menu_scrolls" id="m_snsbbs"><span>Guestbook</span></li>
-                    <li class="menu5 menu_scrolls" id="m_map"><span>Location</span></li>
+                    <li class="menu1 menu_scrolls" id="m_topinfo"><span>Lời Tựa</span></li>
+                    <li class="menu2 menu_scrolls" id="m_gallery"><span>Album Ảnh</span></li>
+                    <li class="menu3 menu_scrolls" id="m_media"><span>Video</span></li>
+                    <li class="menu4 menu_scrolls" id="m_snsbbs"><span>Lời Chúc</span></li>
+                    <li class="menu5 menu_scrolls" id="m_map"><span>Địa Điểm</span></li>
                 </ul>
             </div>
             <div class="header_panel">
-                <p class="groom"><a href="#panel_groom"><span class="icon"></span>Groom</a></p>
-                <p class="bride"><a href="#panel_bride"><span class="icon"></span>Bride</a></p>
+                <p class="groom"><a href="#panel_groom"><span class="icon"></span>Chú Rể</a></p>
+                <p class="bride"><a href="#panel_bride"><span class="icon"></span>Cô Dâu</a></p>
             </div>
             <div class="header_loca">
-                <p>2018년 3월 24일 (토요일)</span> <span>오후 2시</p>
-                <p>더 달팽 하우스 필드</p>
+                <p><span>{{ date | date(d.m.Y) }} ({{ date | date('l') }})</span> <span>{{ date | date('H:i A') }}</span></p>
+                <p>{{ data['place'] }}</p>
             </div>
         </div>
     </div>
@@ -1233,29 +1233,35 @@
                 <img src="/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg" alt="">
             </div>
             <div class="greeting_content">
-                <h2 class="title"><span>Greetings</span></h2>
+                <h2 class="title"><span>Lời Tựa</span></h2>
 
-                <div class="greeting_text"> 모든 것이 새로워지는 봄날,<br/>
-                    사랑하는 두 사람이 새 인생을 시작하려 합니다.<br/>
-                    바쁘시더라도 두 사람의 첫 시작을 축복해주시고<br/>
-                    격려해 주신다면 더 없는 기쁨이 되겠습니다.
+                <div class="greeting_text">
+                    {{ data['greeting'] | raw }}
                 </div>
                 <ul class="greeting_name">
                     <li class="gn_groom">
-                        <p class="parents"><span class="gn1">윤하우</span><span class="gn_and">,</span><span class="gn2">조현영</span><span
-                                    class="gn3">의 차남</span></p>
-                        <p><span class="gn4"><em>Groom</em><strong>윤신랑</strong></span></p>
+                        <p class="parents">
+                            <span class="gn1">{{ data['groom_fa_name'] }}</span>
+                            <span class="gn_and">,</span>
+                            <span class="gn2">{{ data['groom_mo_name'] }}</span>
+                            {#<span class="gn3">의 차남</span>#}
+                        </p>
+                        <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                     </li>
                     <li class="gn_bride">
-                        <p class="parents"><span class="gn1">박길동</span><span class="gn_and">,</span><span class="gn2">차하나</span><span
-                                    class="gn3">의 장녀</span></p>
-                        <p><span class="gn4"><em>Bride</em><strong>박신부</strong></span></p>
+                        <p class="parents">
+                            <span class="gn1">{{ data['bride_fa_name'] }}</span>
+                            <span class="gn_and">,</span>
+                            <span class="gn2">{{ data['bride_mo_name']}}</span>
+                            {#<span class="gn3">의 장녀</span>#}
+                        </p>
+                        <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                     </li>
                 </ul>
 
                 <div class="greeting_loca">
-                    <p>2018년 3월 24일 (토요일) 오후 2시</p>
-                    <p>더 달팽 하우스 필드</p>
+                    <p>Ngày {{ date | date('d') }} Tháng {{ date | date('m') }} Năm {{ date | date('Y') }}, lúc {{ date | date('H:i A') }}</p>
+                    <p>{{ data['place'] }}</p>
                 </div>
             </div>
         </div>
@@ -1263,32 +1269,34 @@
 
         <!-- gallery -->
         <div class="gallery_wrap" id="sk_gallery">
-            <h2 class="title"><span>Wedding Gallery</span></h2>
+            <h2 class="title"><span>Album Ảnh</span></h2>
             <div class="ul-body">
                 <div class="gal_list">
                     <div class="col-5">
-                        {% for img in gallery %}
+                        {% for img in first %}
                             <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
-                                <div class="ui-block-a" style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;width:49%"></div>
+                                <div class="ui-block-{{ loop.index }}" style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;"></div>
                             </a>
                         {% endfor %}
                     </div>
-                    <a href="/bundles/viettutweb/img/templates/gardenwedding/a0a8dd2f9f5bf4a91aefe0ef070a7b0e.jpg" class="swipebox"
-                       data-ajax="false" data-size="1024X553"
-                       alt="<div class='swipebox-comment' id='gcomment_2108878' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2108878'></div>">
-                        <p class="gal_more"><span>more</span></p></a>
-                    <a href="/bundles/viettutweb/img/templates/gardenwedding/6b564693df8071b10ce329f2209d06f6.jpg" class="swipebox"
-                       data-ajax="false" data-size="1024X684"
-                       alt="<div class='swipebox-comment' id='gcomment_2108879' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2108879'></div>"></a>
-                    <a href="/bundles/viettutweb/img/templates/gardenwedding/58e52a4f80bdc17dbbe0c9f31248cac5.jpg" class="swipebox"
-                       data-ajax="false" data-size="1024X683"
-                       alt="<div class='swipebox-comment' id='gcomment_2108880' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2108880'></div>"></a>
-                    <a href="/bundles/viettutweb/img/templates/gardenwedding/3de8ca8c9971a20c9ef334d241f2411d.jpg" class="swipebox"
-                       data-ajax="false" data-size="1024X680"
-                       alt="<div class='swipebox-comment' id='gcomment_2108881' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2108881'></div>"></a>
-                    <a href="/bundles/viettutweb/img/templates/gardenwedding/18ada100f345e0ad7228a14d3c560d4e.jpg" class="swipebox"
-                       data-ajax="false" data-size="1024X684"
-                       alt="<div class='swipebox-comment' id='gcomment_2108882' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2108882'></div>"></a>
+                    {% if second | length > 0 %}
+                        <div class="col-4">
+                            {% for img in second %}
+                                <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgId="{{ loop.index + 5}}">
+                                    <div class="ui-block-{{ loop.index }}" style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;"></div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if rest | length > 0 %}
+                        {% for img in rest %}
+                            <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index + 9}}">
+                                {% if loop.index == 1 %}
+                                    <p class="gal_more"><span>more</span></p>
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -1300,8 +1308,8 @@
         <div class="dday_wrap">
             <div class="dday_title">Save The Date</div>
             <div class="dday_text">
-                <p class="date">2018.03.24</p>
-                <p class="time"><span>SAT.</span><span>2:00pm</span></p>
+                <p class="date">{{ date | date('d.m.Y') }}</p>
+                <p class="time"><span>{{ date | date('l') }}</span><span>{{ date | date('H:i A') }}</span></p>
                 <p class="dday">D-151</p></div>
         </div>
         <!--// dday -->
@@ -1314,7 +1322,7 @@
 
         <!-- movie -->
         <div class="movie_wrap" id="sk_media">
-            <h2 class="title hidden"><span>Wedding Movie</span></h2>
+            <h2 class="title hidden"><span>Video</span></h2>
             <div class="ul-body">
                 <div class="movie_container movie1">
                     <ul>
@@ -1569,14 +1577,14 @@
 
         <!-- location -->
         <div class="location_wrap" id="sk_map">
-            <h2 class="title"><span>Location</span></h2>
+            <h2 class="title"><span>Địa Điểm Tiệc Cưới</span></h2>
 
-            <div class="ul-body">
-                <ul class="lo_tab_wrap">
-                    <li class="tab_btn wh locationtabs on" id="tabs_wedding">웨딩홀 오시는 길</li>
-                    <li class="tab_btn rh locationtabs" id="tabs_party">피로연 오시는 길</li>
-                </ul>
-            </div>
+            {#<div class="ul-body">#}
+                {#<ul class="lo_tab_wrap">#}
+                    {#<li class="tab_btn wh locationtabs on" id="tabs_wedding">Hướng dẫn</li>#}
+                    {#<li class="tab_btn rh locationtabs" id="tabs_party">Thông tin liên hệ</li>#}
+                {#</ul>#}
+            {#</div>#}
 
             <div class="ul-body locationdivs" id="div_wedding">
                 <input type="hidden" id="wedding_pmap_lat" value="37.4950598"/>
@@ -1585,44 +1593,39 @@
                 <input type="hidden" id="wedding_pname" value="더 달팽 하우스 필드"/>
 
                 <div class="lo_box col-2">
-                    <div class="ui-block-a">
+                    <div class="ui-block-1">
                         <div class="lo_title">
-                            <h3>Wedding Ceremony</h3>
-                            <p class="date">2018년 3월 24일 토요일 오후 2시</p>
-                            <p class="place">더 달팽 하우스 필드</p></div>
+                            <h3>Tiệc Cưới</h3>
+                            <p class="date">{{ date | date('d.m.Y H:i A') }}</p>
+                            <p class="place">{{ data['place'] }}</p></div>
                         <div class="lo_map">
                             <div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
                         </div>
                     </div>
-                    <div class="ui-block-b">
+                    <div class="ui-block-2">
                         <div class="lo_containerarea">
                             <table class="lo_container lo_left">
                                 <tr>
-                                    <th class="lo_loca"><span class="icon">Location</span></th>
-                                    <td class="txt">서울시 송파구 중대로 135 더 달팽 하우스 필드</td>
+                                    <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
+                                    <td class="txt">{{ data['place_addr'] }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="lo_tel"><span class="icon">Tel</span></th>
-                                    <td class="txt">02-555-5555</td>
+                                    <th class="lo_tel"><span class="icon">Điện thoại</span></th>
+                                    <td class="txt">{{ data['place_phone'] }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="lo_info"><span class="icon">Info</span></th>
-                                    <td><span>♥ 주차 가능합니다. 주차 : 서경대교 주차장<br/>
-♥ 달팽역 3번출구 셔틀버스 수시 운행</span></td>
+                                    <th class="lo_info"><span class="icon">Đỗ xe</span></th>
+                                    <td><p>{{ data['parking_info'] }}</p></td>
                                 </tr>
                             </table>
                             <table class="lo_container lo_right">
                                 <tr>
-                                    <th class="lo_bus"><span class="icon">Bus</span></th>
-                                    <td><span>♥ 일반버스 : 1002, 753, 108, 마을 05<br/>
-♥ 간선버스 : 662, 5012, 2895<br/>
-♥ 광역버스 : M7987, M12, M85</span></td>
+                                    <th class="lo_bus"><span class="icon">Xe bus</span></th>
+                                    <td><p>{{ data['bus_info'] }}</p></td>
                                 </tr>
                                 <tr>
-                                    <th class="lo_subway"><span class="icon">Subway</span></th>
-                                    <td><span>♥ 5호선 여의나루역 2번 출구(도보 10분)<br/>
-♥ 10호선 달팽역 3번 출구(셔틀버스)<br/>
-</span></td>
+                                    <th class="lo_subway"><span class="icon">Tàu điện</span></th>
+                                    <td><p>{{ data['subway_info'] }}</p></td>
                                 </tr>
                             </table>
                         </div>
@@ -1644,69 +1647,69 @@
                 </div>
                 <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
             </div>
-            <div class="ul-body locationdivs hide" id="div_party">
-                <input type="hidden" id="party_pmap_lat" value="37.5194478"/>
-                <input type="hidden" id="party_pmap_lon" value="127.01922209999998"/>
-                <input type="hidden" id="party_paddr" value="서울시 강남구 신사동 504-11 달팽뷔페 2층"/>
-                <input type="hidden" id="party_pname" value="달팽 뷔페 2층"/>
-                <div class="lo_box col-2">
-                    <div class="ui-block-a">
-                        <div class="lo_title">
-                            <h3>Wedding Reception</h3>
-                            <p class="date">2018년 3월 17일 토요일 오후 4시 ~ 오후 11시</p>
-                            <p class="place">달팽 뷔페 2층</p></div>
-                        <div class="lo_map">
-                            <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
-                        </div>
-                    </div>
-                    <div class="ui-block-b">
-                        <div class="lo_containerarea">
-                            <table class="lo_container lo_left">
-                                <tr>
-                                    <th class="lo_loca"><span class="icon">Location</span></th>
-                                    <td class="txt"><span>서울시 강남구 신사동 504-11 달팽뷔페 2층</span></td>
-                                </tr>
-                                <tr>
-                                    <th class="lo_tel"><span class="icon">Tel</span></th>
-                                    <td class="txt"><span>02-2000-0000</span></td>
-                                </tr>
-                                <tr>
-                                    <th class="lo_info"><span class="icon">Info</span></th>
-                                    <td><span>♥ 주차 가능합니다.<br/>
-♥ 되도록이면 대중교통을 이용해주세요.</span></td>
-                                </tr>
-                            </table>
-                            <table class="lo_container lo_right">
-                                <tr>
-                                    <th class="lo_bus"><span class="icon">Bus</span></th>
-                                    <td><span>♥ 지선버스(초록) ; 4212, 4412, 4431<br/>
-♥ 간선버스(파랑) : 140, 142, 144, 145, 148, 240<br/>
-♥ 광역버스(빨강) : 1500, 3030, 3100, 6800, 9404</span></td>
-                                </tr>
-                                <tr>
-                                    <th class="lo_subway"><span class="icon">Subway</span></th>
-                                    <td><span>♥ 3호선 신사역 6번 출구</span></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="nav-wrap">
-                    <div class="ui-grid-a nav-m">
-                        <div class="nav-1">
-                            <div class="ui-body-d ui-btn-nav party_kimnavi">
-                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                            </div>
-                        </div>
-                        <div class="nav-2">
-                            <div class="ui-body-d ui-btn-nav party_ollehnavi">
-                                <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
-            </div>
+            {#<div class="ul-body locationdivs hide" id="div_party">#}
+                {#<input type="hidden" id="party_pmap_lat" value="37.5194478"/>#}
+                {#<input type="hidden" id="party_pmap_lon" value="127.01922209999998"/>#}
+                {#<input type="hidden" id="party_paddr" value="서울시 강남구 신사동 504-11 달팽뷔페 2층"/>#}
+                {#<input type="hidden" id="party_pname" value="달팽 뷔페 2층"/>#}
+                {#<div class="lo_box col-2">#}
+                    {#<div class="ui-block-1">#}
+                        {#<div class="lo_title">#}
+                            {#<h3>Lễ tân nhà hàng</h3>#}
+                            {#<p class="date">2018년 3월 17일 토요일 오후 4시 ~ 오후 11시</p>#}
+                            {#<p class="place">달팽 뷔페 2층</p></div>#}
+                        {#<div class="lo_map">#}
+                            {#<div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="ui-block-2">#}
+                        {#<div class="lo_containerarea">#}
+                            {#<table class="lo_container lo_left">#}
+                                {#<tr>#}
+                                    {#<th class="lo_loca"><span class="icon">Vị trí</span></th>#}
+                                    {#<td class="txt"><span>{{ data['place'] }}</span></td>#}
+                                {#</tr>#}
+                                {#<tr>#}
+                                    {#<th class="lo_tel"><span class="icon">Tel</span></th>#}
+                                    {#<td class="txt"><span>02-2000-0000</span></td>#}
+                                {#</tr>#}
+                                {#<tr>#}
+                                    {#<th class="lo_info"><span class="icon">Info</span></th>#}
+                                    {#<td><span>♥ 주차 가능합니다.<br/>#}
+{#♥ 되도록이면 대중교통을 이용해주세요.</span></td>#}
+                                {#</tr>#}
+                            {#</table>#}
+                            {#<table class="lo_container lo_right">#}
+                                {#<tr>#}
+                                    {#<th class="lo_bus"><span class="icon">Bus</span></th>#}
+                                    {#<td><span>♥ 지선버스(초록) ; 4212, 4412, 4431<br/>#}
+{#♥ 간선버스(파랑) : 140, 142, 144, 145, 148, 240<br/>#}
+{#♥ 광역버스(빨강) : 1500, 3030, 3100, 6800, 9404</span></td>#}
+                                {#</tr>#}
+                                {#<tr>#}
+                                    {#<th class="lo_subway"><span class="icon">Subway</span></th>#}
+                                    {#<td><span>♥ 3호선 신사역 6번 출구</span></td>#}
+                                {#</tr>#}
+                            {#</table>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="nav-wrap">#}
+                    {#<div class="ui-grid-a nav-m">#}
+                        {#<div class="nav-1">#}
+                            {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
+                                {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="nav-2">#}
+                            {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
+                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>#}
+            {#</div>#}
         </div>
         <!--// location  -->
     </div><!--// ui-section-b -->
