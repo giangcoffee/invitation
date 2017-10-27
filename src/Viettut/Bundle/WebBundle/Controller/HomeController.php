@@ -78,18 +78,4 @@ class HomeController extends Controller
     {
         return $this->render('ViettutWebBundle:Home:price.html.twig');
     }
-
-//    /**
-//     * @Route("/templates/{id}", name="single_template_page")
-//     * @param $request
-//     * @return Response
-//     */
-//    public function singleTemplateAction(Request $request, $id)
-//    {
-//        $template = $this->get('viettut.domain_manager.template')->find($id);
-//        if (!$template instanceof TemplateInterface) {
-//            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
-//        }
-//        return $this->render('ViettutWebBundle:Home:single_template.html.twig', array('template' => $template));
-//    }
 }

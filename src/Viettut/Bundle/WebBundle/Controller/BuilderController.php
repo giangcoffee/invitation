@@ -21,7 +21,7 @@ use Viettut\Model\Core\TemplateInterface;
 class BuilderController extends Controller
 {
     /**
-     * @Route("/builder/{hash}", name="builder_page")
+     * @Route("/cards/{hash}/edit", name="edit_card_page")
      * @param $request
      * @return Response
      */
@@ -38,7 +38,7 @@ class BuilderController extends Controller
         }
 
         $template = $card->getTemplate();
-        return $this->render('ViettutWebBundle:Builder:preview.htm.twig', array(
+        return $this->render('ViettutWebBundle:Builder:edit.htm.twig', array(
             'data' => $card->getData(),
             'columns' => $template->getColumns(),
             'gallery' => $card->getGallery(),
@@ -50,7 +50,7 @@ class BuilderController extends Controller
     }
 
     /**
-     * @Route("/template/{hash}", name="template_page")
+     * @Route("/templates/{hash}", name="template_page")
      * @param $request
      * @param $hash
      * @return Response
@@ -68,17 +68,12 @@ class BuilderController extends Controller
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
         return $this->render($template->getPath(), array(
-            'columns' => $template->getColumns(),
             'data' => $template->getData(),
             'name' => $template->getName(),
             'first' => $first,
             'second' => $second,
             'rest' => $rest,
-            'date' => $template->getWeddingDate(),
-            'comments' => [],
-            'isCard' => false,
-            'isTemplate' => true,
-            'id' => $template->getId()
+            'date' => $template->getWeddingDate()
         ));
     }
 
@@ -112,24 +107,24 @@ class BuilderController extends Controller
             'isTemplate' => false
         ));
     }
-
-    /**
-     * @Route("/templates/{hash}/preview", name="preview_template_page")
-     * @param $request
-     * @param $hash
-     * @return Response
-     */
-    public function previewTemplateAction(Request $request, $hash)
-    {
-        $template = $this->get('viettut.domain_manager.template')->getTemplateByHash($hash);
-
-        if (!$template instanceof TemplateInterface) {
-            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
-        }
-
-        return $this->render('ViettutWebBundle:Builder:iframe.htm.twig', array(
-            'columns' => $template->getColumns(),
-            'iframe_src' => sprintf('/app_dev.php/template/%s', $hash)
-        ));
-    }
+//
+//    /**
+//     * @Route("/templates/{hash}/preview", name="preview_template_page")
+//     * @param $request
+//     * @param $hash
+//     * @return Response
+//     */
+//    public function previewTemplateAction(Request $request, $hash)
+//    {
+//        $template = $this->get('viettut.domain_manager.template')->getTemplateByHash($hash);
+//
+//        if (!$template instanceof TemplateInterface) {
+//            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+//        }
+//
+//        return $this->render('ViettutWebBundle:Builder:iframe.htm.twig', array(
+//            'columns' => $template->getColumns(),
+//            'iframe_src' => sprintf('/app_dev.php/template/%s', $hash)
+//        ));
+//    }
 }

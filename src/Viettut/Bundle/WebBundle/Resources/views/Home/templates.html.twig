@@ -36,7 +36,7 @@
                         <div class="portfolio-item img-thumbnail">
                             <a href="#" class="thumb-info">
                                 <img alt="" class="img-responsive" src="{{ temp.thumbnail }}"/>
-                                    <span class="thumb-info-type">{{ temp.name }}</span>
+                                    {#<span class="thumb-info-type">{{ temp.name }}</span>#}
                                 {#<span class="thumb-info-title">#}
                                 {#</span>#}
                                 <span class="thumb-info-action">
@@ -45,8 +45,11 @@
                             </a>
                         </div>
                         <div class="portfolio-item">
+                            <div class="row col-md-12">
+                                <span class="text-primary">{{ temp.name }}</span>
+                            </div>
                             <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Preview</button>
-                            <button type="button" class="btn btn-primary pull-right">Use</button>
+                            <a href="{{ path('edit_card_page', {hash : temp.hash}) }}" class="btn btn-primary pull-right">Use</a>
                         </div>
                     </li>
                 {% endfor %}
@@ -424,12 +427,12 @@
         <div id="div_page_preview" style="display: none;">
             <div class="preview_bg"></div>
 
-            <div class="preview_content skin3 hide" id="pview_pc" style="display: none;">
+            <div class="preview_content skin3" id="pview_pc" style="display: none;">
                 <div class="preview_frame" id="div_pview_pc">
                     <iframe src="http://dalpeng.com/cottoncandy"></iframe>
                 </div>
             </div>
-            <div class="preview_content skin2 hide" id="pview_tablet" style="display: none;">
+            <div class="preview_content skin2" id="pview_tablet" style="display: none;">
                 <div class="preview_frame" id="div_pview_tablet">
                     <iframe src="http://dalpeng.com/cottoncandy"></iframe>
                 </div>
@@ -442,17 +445,13 @@
 
             <div class="preview_header">
                 <ul>
-                    <li class="view_icon1 btnPreview on" id="btn_pview_mobile">
-                        <span class="blind">Mobile</span>
+                    <li class="view_icon1 btnPreview on" id="btn_pview_mobile" title="Mobile">
                     </li>
-                    <li class="view_icon2 btnPreview" id="btn_pview_tablet">
-                        <span class="blind">Tablet</span>
+                    <li class="view_icon2 btnPreview" id="btn_pview_tablet" title="Tablet">
                     </li>
-                    <li class="view_icon3 btnPreview" id="btn_pview_pc">
-                        <span class="blind">PC</span>
+                    <li class="view_icon3 btnPreview" id="btn_pview_pc" title="PC">
                     </li>
-                    <li class="view_icon4" id="btn_page_preview_close" title="Close Preview (Esc)" style="cursor: pointer;">
-                        <span class="blind">Close</span>
+                    <li class="view_icon4" id="btn_page_preview_close" title="Close Preview (Esc)">
                     </li>
                 </ul>
             </div>
