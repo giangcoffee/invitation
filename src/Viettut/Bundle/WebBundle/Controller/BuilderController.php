@@ -73,7 +73,9 @@ class BuilderController extends Controller
             'first' => $first,
             'second' => $second,
             'rest' => $rest,
-            'date' => $template->getWeddingDate()
+            'date' => $template->getWeddingDate(),
+            'lat' => $template->getLatitude(),
+            'lon' => $template->getLongitude()
         ));
     }
 
