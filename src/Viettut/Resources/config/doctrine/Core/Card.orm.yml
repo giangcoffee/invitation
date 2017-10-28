@@ -30,6 +30,12 @@ Viettut\Entity\Core\Card:
             gedmo:
                 timestampable:
                     on: create
+        latitude:
+            type: text
+            nullable: true
+        longitude:
+            type: text
+            nullable: true
         deletedAt:
             type: date
             nullable: true

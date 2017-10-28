@@ -37,6 +37,12 @@ Viettut\Entity\Core\Template:
         weddingDate:
             type: datetime
             nullable: false
+        latitude:
+            type: text
+            nullable: true
+        longitude:
+            type: text
+            nullable: true
         createdAt:
             type: datetime
             gedmo:

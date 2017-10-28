@@ -22,3 +22,9 @@ Viettut\Entity\Core\Card:
         createdAt:
             expose: true
             groups: [card.detail, card.summary]
+        latitude:
+            expose: true
+            groups: [card.detail, card.summary]
+        longitude:
+            expose: true
+            groups: [card.detail, card.summary]

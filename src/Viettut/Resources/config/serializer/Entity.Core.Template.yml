@@ -28,4 +28,10 @@ Viettut\Entity\Core\Template:
         createdAt:
             expose: true
             groups: [template.detail, template.summary]
+        latitude:
+            expose: true
+            groups: [template.detail, template.summary]
+        longitude:
+            expose: true
+            groups: [template.detail, template.summary]
     

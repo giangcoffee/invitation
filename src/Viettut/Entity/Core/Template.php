@@ -17,4 +17,6 @@ class Template extends TemplateModel
     protected $columns;
     protected $createdAt;
     protected $deletedAt;
+    protected $latitude;
+    protected $longitude;
 }

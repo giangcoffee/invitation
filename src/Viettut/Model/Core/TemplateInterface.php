@@ -120,4 +120,26 @@ interface TemplateInterface extends ModelInterface
      * @return self
      */
     public function setWeddingDate($weddingDate);
+
+    /**
+     * @return mixed
+     */
+    public function getLongitude();
+
+    /**
+     * @param mixed $longitude
+     * @return self
+     */
+    public function setLongitude($longitude);
+
+    /**
+     * @return mixed
+     */
+    public function getLatitude();
+
+    /**
+     * @param mixed $latitude
+     * @return self
+     */
+    public function setLatitude($latitude);
 }

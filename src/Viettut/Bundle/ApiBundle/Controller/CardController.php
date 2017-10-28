@@ -14,7 +14,12 @@ use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Geocoder\Query\GeocodeQuery;
+use Geocoder\Provider\GoogleMaps\GoogleMaps;
+use Geocoder\StatefulGeocoder;
+use Http\Adapter\Guzzle6\Client;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use RestClient\CurlRestClient;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,9 +32,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Handler\HandlerInterface;
 use Viettut\Model\Core\CardInterface;
-use Viettut\Model\Core\ChapterInterface;
-use Viettut\Model\Core\CommentInterface;
-use Viettut\Model\Core\CourseInterface;
 use Viettut\Model\User\UserEntityInterface;
 
 /**
@@ -119,6 +121,22 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         $cardManager = $this->get('viettut.domain_manager.card');
 
         $card->setData($data);
+
+
+        $adapter  = new Client();
+        $provider = new GoogleMaps($adapter, null, 'AIzaSyDxhMSp7eUxSr3lJocnsQIsP4p_Wanqpnk');
+        $geocoder = new StatefulGeocoder($provider, 'vi');
+
+        $result = $geocoder->geocodeQuery(GeocodeQuery::create($data['place_addr']));
+        if (!$result->isEmpty()) {
+            $location = $result->first();
+            $coordinate = $location->getCoordinates();
+            if ($coordinate) {
+                $card->setLatitude(strval($coordinate->getLatitude()));
+                $card->setLongitude(strval($coordinate->getLongitude()));
+            }
+        }
+
         $cardManager->save($card);
 
         return new Response("", Response::HTTP_NO_CONTENT);

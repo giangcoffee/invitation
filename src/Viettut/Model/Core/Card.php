@@ -64,6 +64,11 @@ class Card implements CardInterface
      */
     protected $deletedAt;
 
+    protected $longitude;
+
+    protected $latitude;
+
+
 
     function __construct()
     {
@@ -245,6 +250,42 @@ class Card implements CardInterface
     public function setWeddingDate($weddingDate)
     {
         $this->weddingDate = $weddingDate;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param mixed $longitude
+     * @return self
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param mixed $latitude
+     * @return self
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
         return $this;
     }
 

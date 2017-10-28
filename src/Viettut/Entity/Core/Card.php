@@ -16,4 +16,7 @@ class Card extends CardModel
     protected $comments;
     protected $createdAt;
     protected $deletedAt;
+    protected $latitude;
+    protected $longitude;
+
 }
