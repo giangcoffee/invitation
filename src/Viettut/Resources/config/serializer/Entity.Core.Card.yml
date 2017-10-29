@@ -28,3 +28,6 @@ Viettut\Entity\Core\Card:
         longitude:
             expose: true
             groups: [card.detail, card.summary]
+        forGroom:
+            expose: true
+            groups: [card.detail, card.summary]

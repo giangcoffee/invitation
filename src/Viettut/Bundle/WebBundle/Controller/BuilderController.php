@@ -43,7 +43,8 @@ class BuilderController extends Controller
             'date' => $card->getWeddingDate(),
             'id' => $card->getId(),
             'name' => $template->getName(),
-            'hash' => $card->getHash()
+            'hash' => $card->getHash(),
+            'forGroom' => $card->isForGroom()
         ));
     }
 
@@ -84,7 +85,8 @@ class BuilderController extends Controller
             'rest' => $rest,
             'date' => $template->getWeddingDate(),
             'lat' => $template->getLatitude(),
-            'lon' => $template->getLongitude()
+            'lon' => $template->getLongitude(),
+            'forGroom' => $template->isForGroom()
         ));
     }
 
@@ -109,36 +111,20 @@ class BuilderController extends Controller
         $template = $card->getTemplate();
         $data = $card->getData();
         $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
+        $gallery = $card->getGallery();
+        $first = array_slice($gallery, 0, 5);
+        $second = array_slice($gallery, 5, 4);
+        $rest = array_slice($gallery, 9);
         return $this->render($template->getPath(), array (
             'data' => $data,
-            'columns' => $template->getColumns(),
-            'gallery' => $card->getGallery(),
+            'first' => $first,
+            'second' => $second,
+            'rest' => $rest,
             'date' => $card->getWeddingDate(),
-            'comments' => $card->getComments(),
-            'id' => $card->getId(),
+            'lon' => $card->getLongitude(),
+            'lat' => $card->getLatitude(),
             'name' => $name,
-            'isCard' => true,
-            'isTemplate' => false
+            'forGroom' => $card->isForGroom()
         ));
     }
-//
-//    /**
-//     * @Route("/templates/{hash}/preview", name="preview_template_page")
-//     * @param $request
-//     * @param $hash
-//     * @return Response
-//     */
-//    public function previewTemplateAction(Request $request, $hash)
-//    {
-//        $template = $this->get('viettut.domain_manager.template')->getTemplateByHash($hash);
-//
-//        if (!$template instanceof TemplateInterface) {
-//            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
-//        }
-//
-//        return $this->render('ViettutWebBundle:Builder:iframe.htm.twig', array(
-//            'columns' => $template->getColumns(),
-//            'iframe_src' => sprintf('/app_dev.php/template/%s', $hash)
-//        ));
-//    }
 }

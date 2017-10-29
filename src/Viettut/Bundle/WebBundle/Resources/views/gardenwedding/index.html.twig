@@ -126,7 +126,7 @@
              style="background:url('/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg') CENTER CENTER no-repeat; background-size:cover;">
             <div class="header_content">
                 <div class="header_date">
-                    <p class="text">Save the Date</p>
+                    <p class="text">Ngày chung đôi</p>
                     <p class="date"><span>{{ date | date('d.m.Y') }}</span><span>{{ date | date('H:i A') }}</span></p>
                 </div>
             </div>
@@ -168,24 +168,45 @@
                     {{ data['greeting'] | raw }}
                 </div>
                 <ul class="greeting_name">
-                    <li class="gn_groom">
-                        <p class="parents">
-                            <span class="gn1">{{ data['groom_fa_name'] }}</span>
-                            <span class="gn_and">,</span>
-                            <span class="gn2">{{ data['groom_mo_name'] }}</span>
-                            {#<span class="gn3">의 차남</span>#}
-                        </p>
-                        <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
-                    </li>
-                    <li class="gn_bride">
-                        <p class="parents">
-                            <span class="gn1">{{ data['bride_fa_name'] }}</span>
-                            <span class="gn_and">,</span>
-                            <span class="gn2">{{ data['bride_mo_name']}}</span>
-                            {#<span class="gn3">의 장녀</span>#}
-                        </p>
-                        <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
-                    </li>
+                    {% if forGroom %}
+                        <li class="gn_groom">
+                            <p class="parents">
+                                <span class="gn1">{{ data['groom_fa_name'] }}</span>
+                                <span class="gn_and">,</span>
+                                <span class="gn2">{{ data['groom_mo_name'] }}</span>
+                                {#<span class="gn3">의 차남</span>#}
+                            </p>
+                            <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
+                        </li>
+                        <li class="gn_bride">
+                            <p class="parents">
+                                <span class="gn1">{{ data['bride_fa_name'] }}</span>
+                                <span class="gn_and">,</span>
+                                <span class="gn2">{{ data['bride_mo_name']}}</span>
+                                {#<span class="gn3">의 장녀</span>#}
+                            </p>
+                            <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
+                        </li>
+                    {% else %}
+                        <li class="gn_groom">
+                            <p class="parents">
+                                <span class="gn1">{{ data['bride_fa_name'] }}</span>
+                                <span class="gn_and">,</span>
+                                <span class="gn2">{{ data['bride_mo_name']}}</span>
+                                {#<span class="gn3">의 장녀</span>#}
+                            </p>
+                            <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
+                        </li>
+                        <li class="gn_bride">
+                            <p class="parents">
+                                <span class="gn1">{{ data['groom_fa_name'] }}</span>
+                                <span class="gn_and">,</span>
+                                <span class="gn2">{{ data['groom_mo_name'] }}</span>
+                                {#<span class="gn3">의 차남</span>#}
+                            </p>
+                            <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
+                        </li>
+                    {% endif %}
                 </ul>
 
                 <div class="greeting_loca">
@@ -1312,7 +1333,7 @@
         var title = $('#coordinates').data('title');
         var location = {lat: lat, lng: lon};
         var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
-            zoom: 15,
+            zoom: 16,
             center: location
         });
         var marker = new google.maps.Marker({

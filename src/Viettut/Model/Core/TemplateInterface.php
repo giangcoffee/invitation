@@ -142,4 +142,14 @@ interface TemplateInterface extends ModelInterface
      * @return self
      */
     public function setLatitude($latitude);
+
+    /**
+     * @return boolean
+     */
+    public function isForGroom();
+
+    /**
+     * @param boolean $forGroom
+     */
+    public function setForGroom($forGroom);
 }

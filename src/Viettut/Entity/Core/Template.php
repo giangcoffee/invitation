@@ -19,4 +19,5 @@ class Template extends TemplateModel
     protected $deletedAt;
     protected $latitude;
     protected $longitude;
+    protected $forGroom;
 }

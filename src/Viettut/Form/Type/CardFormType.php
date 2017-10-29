@@ -31,6 +31,7 @@ class CardFormType extends AbstractRoleSpecificFormType
             ->add('template')
             ->add('data')
             ->add('gallery')
+            ->add('forGroom')
             ->add('weddingDate', DateTimeType::class, [
                 'widget' => 'single_text'
             ])
@@ -43,7 +44,7 @@ class CardFormType extends AbstractRoleSpecificFormType
                 $card = $event->getData();
                 $data = $card->getData();
                 if ($card->getId() == null) {
-                    $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
+                    $name = sprintf('%s %s %s %s %s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
                     $card->setHash($this->getUrlFriendlyString($name));
                     if (empty($card->getGallery())) {
                         $card->setGallery($card->getTemplate()->getGallery());

@@ -18,5 +18,6 @@ class Card extends CardModel
     protected $deletedAt;
     protected $latitude;
     protected $longitude;
+    protected $forGroom;
 
 }

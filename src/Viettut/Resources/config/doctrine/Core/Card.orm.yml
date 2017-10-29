@@ -36,6 +36,11 @@ Viettut\Entity\Core\Card:
         longitude:
             type: text
             nullable: true
+        forGroom:
+            type: boolean
+            nulable: false
+            options:
+                default: true
         deletedAt:
             type: date
             nullable: true

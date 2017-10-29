@@ -34,4 +34,6 @@ Viettut\Entity\Core\Template:
         longitude:
             expose: true
             groups: [template.detail, template.summary]
-    
+        forGroom:
+            expose: true
+            groups: [template.detail, template.summary]

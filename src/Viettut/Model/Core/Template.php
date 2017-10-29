@@ -59,6 +59,11 @@ class Template implements TemplateInterface
     protected $createdAt;
 
     /**
+     * @var bool
+     */
+    protected $forGroom;
+
+    /**
      * @var \DateTime
      */
     protected $deletedAt;
@@ -66,6 +71,15 @@ class Template implements TemplateInterface
     protected $longitude;
 
     protected $latitude;
+
+    /**
+     * Template constructor.
+     */
+    public function __construct()
+    {
+        $this->forGroom = true;
+    }
+
 
     /**
      * @return int
@@ -296,5 +310,21 @@ class Template implements TemplateInterface
     {
         $this->latitude = $latitude;
         return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isForGroom()
+    {
+        return $this->forGroom;
+    }
+
+    /**
+     * @param boolean $forGroom
+     */
+    public function setForGroom($forGroom)
+    {
+        $this->forGroom = $forGroom;
     }
 }

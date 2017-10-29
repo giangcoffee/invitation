@@ -69,9 +69,15 @@ class Card implements CardInterface
     protected $latitude;
 
 
+    /**
+     * @var bool
+     */
+    protected $forGroom;
+
 
     function __construct()
     {
+        $this->forGroom = true;
     }
 
     /**
@@ -287,6 +293,23 @@ class Card implements CardInterface
     {
         $this->latitude = $latitude;
         return $this;
+    }
+
+
+    /**
+     * @return boolean
+     */
+    public function isForGroom()
+    {
+        return $this->forGroom;
+    }
+
+    /**
+     * @param boolean $forGroom
+     */
+    public function setForGroom($forGroom)
+    {
+        $this->forGroom = $forGroom;
     }
 
     function __toString()

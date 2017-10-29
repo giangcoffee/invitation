@@ -16,10 +16,27 @@ Array.prototype.remByVal = function(val) {
     return this;
 };
 
+var requireColumns = ['groom_name', 'bride_name', 'groom_phone', 'bride_phone', 'place', 'place_addr', 'greeting'];
 function submit() {
+
+    $('div.has-error').removeClass('has-error');
     for (var column in columns) {
-        columns[column] = $('#' + column).val()
+        var value = $('#' + column).val();
+        if (requireColumns.indexOf(column) >=0 && value.length < 1) {
+            var html = '<div class="alert alert-danger alert-dismissable">' +
+                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                'Điền vào các ô còn thiếu'
+                + '</div>';
+            $('div.form-horizontal').before(html);
+            $('#' + column).parent().parent().addClass('has-error');
+            $('#' + column).focus();
+            return;
+        }
+
+        columns[column] = $('#' + column).val();
     }
+
+
 
     $.post('/app_dev.php/api/v1/cards/' + cardId + '/updates', columns, function (response) {
         var html = '<div class="alert alert-success alert-dismissable">' +
@@ -29,13 +46,19 @@ function submit() {
         $('div.form-horizontal').before(html);
     }, 'json');
 
+    var forGroom = false;
+    if ($('#check_id').is(":checked"))
+    {
+        forGroom = true;
+    }
+
     $.ajax({
         headers : {
             'Content-Type' : 'application/json'
         },
         url : '/app_dev.php/api/v1/cards/' + cardId,
         type : 'PATCH',
-        data : JSON.stringify({weddingDate: $('#wedding_date').val()}),
+        data : JSON.stringify({weddingDate: $('#wedding_date').val(), forGroom: forGroom}),
         success : function(response, textStatus, jqXhr) {
         },
         error : function(jqXHR, textStatus, errorThrown) {

@@ -43,6 +43,11 @@ Viettut\Entity\Core\Template:
         longitude:
             type: text
             nullable: true
+        forGroom:
+            type: boolean
+            nulable: false
+            options:
+                default: true
         createdAt:
             type: datetime
             gedmo:
