@@ -55,6 +55,11 @@ function updateAlbum() {
         type : 'PATCH',
         data : JSON.stringify({gallery: gallery}),
         success : function(response, textStatus, jqXhr) {
+            var html = '<div class="alert alert-success alert-dismissable">' +
+                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                'Thông tin cập nhật thành công !'
+                + '</div>';
+            $('div.form-horizontal').before(html);
         },
         error : function(jqXHR, textStatus, errorThrown) {
         },
@@ -75,7 +80,8 @@ $(document).ready(function(){
         url:"/app_dev.php/api/v1/cards/uploads",
         fileName:"myfile",
         onSuccess:function(files,data,xhr,pd) {
-            $('<li data-url="'+data+'" style="background-image: url('+data+')" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul').fadeIn(300);
+            var src = data['src'];
+            $('<li data-url="'+src+'" style="background-image: url('+src+')" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul.gallery').fadeIn(300);
             gallery.push(data);
         },
         uploadStr:"Thêm Ảnh"

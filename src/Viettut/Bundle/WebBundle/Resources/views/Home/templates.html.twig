@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block css %}
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/templates/common/preview.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/jquery.datetimepicker.min.css') }}">
 {% endblock %}
 {% block main %}
     <section class="page-top">
@@ -49,7 +50,7 @@
                                 <span class="text-primary">{{ temp.name }}</span>
                             </div>
                             <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Preview</button>
-                            <a href="{{ path('edit_card_page', {hash : temp.hash}) }}" class="btn btn-primary pull-right">Use</a>
+                            <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}')">Use</button>
                         </div>
                     </li>
                 {% endfor %}
@@ -429,17 +430,17 @@
 
             <div class="preview_content skin3" id="pview_pc" style="display: none;">
                 <div class="preview_frame" id="div_pview_pc">
-                    <iframe src="http://dalpeng.com/cottoncandy"></iframe>
+                    <iframe src=""></iframe>
                 </div>
             </div>
             <div class="preview_content skin2" id="pview_tablet" style="display: none;">
                 <div class="preview_frame" id="div_pview_tablet">
-                    <iframe src="http://dalpeng.com/cottoncandy"></iframe>
+                    <iframe src=""></iframe>
                 </div>
             </div>
             <div class="preview_content skin1" id="pview_mobile" style="display: block;">
                 <div class="preview_frame" id="div_pview_mobile">
-                    <iframe src="http://dalpeng.com/cottoncandy"></iframe>
+                    <iframe src=""></iframe>
                 </div>
             </div>
 
@@ -456,11 +457,130 @@
                 </ul>
             </div>
         </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-bordered" method="get">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="label_name">Mẫu sử dụng</label>
+                                <div class="col-md-6">
+                                    <input type="text" value="" id="label_name" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="groom_name">Tên chú rể</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="groom_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="bride_name">Tên cô dâu</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="bride_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control input-rounded" id="wedding_date">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" onclick="createCard()">Gửi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: none;">#}
+            {#<div class="modal-backdrop fade in" style="height: 503px;"></div>#}
+            {#<div class="modal-dialog">#}
+                {#<div class="modal-content">#}
+                    {#<div class="modal-header">#}
+                        {#<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>#}
+                        {#<h4 class="modal-title" id="myModalLabel">Tạo thiệp mời</h4>#}
+                    {#</div>#}
+                    {#<div class="modal-body">#}
+                        {#<form class="form-horizontal form-bordered" method="get">#}
+                            {#<div class="form-group">#}
+                                {#<label class="col-md-3 control-label" for="label_name">Mẫu sử dụng</label>#}
+                                {#<div class="col-md-6">#}
+                                    {#<input type="text" value="" id="label_name" class="form-control" readonly="readonly" />#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="form-group">#}
+                                {#<label class="col-md-3 control-label" for="groom_name">Tên chú rể</label>#}
+                                {#<div class="col-md-6">#}
+                                    {#<input type="text" class="form-control" id="groom_name">#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="form-group">#}
+                                {#<label class="col-md-3 control-label" for="bride_name">Tên cô dâu</label>#}
+                                {#<div class="col-md-6">#}
+                                    {#<input type="text" class="form-control" id="bride_name">#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="form-group">#}
+                                {#<label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>#}
+                                {#<div class="col-md-6">#}
+                                    {#<input type="text" class="form-control input-rounded" id="wedding_date">#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</form>#}
+                    {#</div>#}
+                    {#<div class="modal-footer">#}
+                        {#<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>#}
+                        {#<button type="button" class="btn btn-primary" onclick="createCard()">Gửi</button>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
     </div>
 {% endblock %}
 
 {% block javascript %}
+    <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
     <script type="text/javascript">
+        var id = '', name = '';
+        function createCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#wedding_date').val();
+            data['data'] = {};
+            data['data']['groom_name'] = $('#groom_name').val();
+            data['data']['bride_name'] = $('#bride_name').val();
+
+            $.post('/app_dev.php/api/v1/cards', data, function (response) {
+                var url = '/app_dev.php/cards/' + response.hash + '/edit';
+                window.location.href = url;
+            }, 'json');
+        }
+
+        function showModal(i, n) {
+            name = n;
+            id = i;
+            $('#label_name').val(n);
+            $('#myModal').modal();
+        }
+
+
+        $(document).ready(function(){
+            jQuery('#wedding_date').datetimepicker(
+                    {
+                        format: 'Y-m-d H:i',
+                        lang:   'vi'
+                    }
+            );
+        });
+
         $(function () {
             var _WSKIN = ["beautifulday", "modernwhite", "romanticpink", "GardenWedding", "OneFineDay", "FallInLove", "goldstar", "retrocity", "IceCreamCake", "dreamoflily", "innocentbride", "romanticflower", "cottoncandy", "christmaswedding", "loveblossom", "luxuryblack"];
             var _FSKIN = ["AngelCar", "mysunshine", "mrlittleman", "twinkletwinkle", "OverTheRainbow", "SweetHoneybee", "BunnysPicnic"];
@@ -485,7 +605,7 @@
             }
 
             function setPreview(sn) {
-                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', 'app_dev.php/template/' + sn);
+                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', 'app_dev.php/templates/' + sn);
             }
 
 

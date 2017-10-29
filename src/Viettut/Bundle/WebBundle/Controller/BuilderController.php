@@ -27,9 +27,7 @@ class BuilderController extends Controller
      */
     public function builderAction(Request $request, $hash)
     {
-        /**
-         * @var CardManagerInterface $cardManager
-         */
+        /** @var CardManagerInterface $cardManager */
         $cardManager = $this->get('viettut.domain_manager.card');
         $card = $cardManager->getCardByHash($hash);
 
@@ -47,6 +45,17 @@ class BuilderController extends Controller
             'name' => $template->getName(),
             'hash' => $card->getHash()
         ));
+    }
+
+    public function guestBookAction(Request $request, $hash)
+    {
+        /** @var CardManagerInterface $cardManager */
+        $cardManager = $this->get('viettut.domain_manager.card');
+        $card = $cardManager->getCardByHash($hash);
+
+        if (!$card instanceof CardInterface) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
     }
 
     /**
@@ -98,13 +107,16 @@ class BuilderController extends Controller
         }
 
         $template = $card->getTemplate();
+        $data = $card->getData();
+        $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
         return $this->render($template->getPath(), array (
-            'data' => $card->getData(),
+            'data' => $data,
             'columns' => $template->getColumns(),
             'gallery' => $card->getGallery(),
             'date' => $card->getWeddingDate(),
             'comments' => $card->getComments(),
             'id' => $card->getId(),
+            'name' => $name,
             'isCard' => true,
             'isTemplate' => false
         ));

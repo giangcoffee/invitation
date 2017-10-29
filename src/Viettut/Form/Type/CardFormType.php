@@ -41,8 +41,13 @@ class CardFormType extends AbstractRoleSpecificFormType
             function(FormEvent $event) {
                 /** @var CardInterface $card */
                 $card = $event->getData();
+                $data = $card->getData();
                 if ($card->getId() == null) {
-                    $card->setHash(uniqid('', true));
+                    $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
+                    $card->setHash($this->getUrlFriendlyString($name));
+                    if (empty($card->getGallery())) {
+                        $card->setGallery($card->getTemplate()->getGallery());
+                    }
                 }
             }
         );

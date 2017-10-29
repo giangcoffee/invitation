@@ -540,7 +540,7 @@
                                     <td class="txt">{{ data['place_addr'] }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="lo_tel"><span class="icon">Điện thoại</span></th>
+                                    <th class="lo_tel"><span class="icon">Tel</span></th>
                                     <td class="txt">{{ data['place_phone'] }}</td>
                                 </tr>
                                 <tr>
@@ -563,19 +563,24 @@
                 </div>
                 <div class="nav-wrap">
                     <div class="ui-grid-a nav-m">
+                        <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                            <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                            <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
+                            {#<input type='submit' value='CHỈ ĐƯỜNG' style="display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;"/>#}
+                        </form>
                         <div class="nav-1">
                             <div class="ui-body-d ui-btn-nav wedding_kimnavi">
-                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
+                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
                             </div>
                         </div>
-                        <div class="nav-2">
-                            <div class="ui-body-d ui-btn-nav wedding_ollehnavi">
-                                <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>
-                            </div>
-                        </div>
+                        {#<div class="nav-2">#}
+                            {#<div class="ui-body-d ui-btn-nav wedding_ollehnavi">#}
+                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>#}
+                            {#</div>#}
+                        {#</div>#}
                     </div>
                 </div>
-                <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên</div>
             </div>
             {#<div class="ul-body locationdivs hide" id="div_party">#}
                 {#<input type="hidden" id="party_pmap_lat" value="37.5194478"/>#}
@@ -1320,6 +1325,18 @@
         });
         info.open(map, marker);
     }
+
+    function getPath() {
+        var addr = $('#getPath input[name=saddr]').val();
+        if (addr.length < 3) {
+            $('#getPath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getPath").submit();
+    }
+
     //-->
 </script>
 </body>

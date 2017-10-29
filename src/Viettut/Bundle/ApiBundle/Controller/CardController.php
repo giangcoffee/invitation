@@ -211,7 +211,7 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         $uploadRootDir = $this->container->getParameter('upload_root_directory');
         $uploadDir = $this->container->getParameter('upload_directory');
         foreach ($_FILES as $file) {
-            $imageInfo = getimagesize($file['tpm_name']);
+            $imageInfo = getimagesize($file['tmp_name']);
             $uploadFile = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], $test = false);
             $baseName = uniqid('', true);
             $uploadFile->move(join('/', [$uploadRootDir, $user->getUsername(), $today]) ,
