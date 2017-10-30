@@ -25,38 +25,23 @@
     <link rel="icon" sizes="192x192" href="/img/mobileicon/dalpeng_192x192.png">
     <link rel="icon" sizes="128x128" href="/img/mobileicon/dalpeng_128x128.png">
 
-    <title>우리결혼합니다.</title>
+    <title>{{ name }}</title>
 
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/lib/jquery.mobile-1.4.3.min.css"/>
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/common/common.css"/>
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/winterwonderland/style.css"/>
-
-    <!-- 2017-07-21 테스트용 -->
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.css">
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
-
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
-
-    <!--
-    <link rel="stylesheet" type="text/css" href="/dalpeng/skin/_common/css/swipebox.css" />
-    -->
 
     <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
     <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
     <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
     <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
-
-    <!--
-    <script src="/dalpeng/skin/_common/js/jquery.swipebox.zoom.js"></script>
-    -->
     <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js/"></script>
-
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?v=20170525&clientId=fMnBpM1lKoVaQ4njhwB1"></script>
-
-    <!-- 2017-07-21 테스트용 photoswipe -->
-    <script src="/dalpeng/skin/_common/js/photoswipe.js"></script>
-    <script src="/dalpeng/skin/_common/js/photoswipe-ui-default.js"></script>
+    <script src="/bundles/viettutweb/js/templates/common/photoswipe.js"></script>
+    <script src="/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js"></script>
 
     <style type="text/css">
         #main-page * {
@@ -943,13 +928,18 @@
 <div data-role="page" id="skin_page">
     <!-- panel-menu -->
     <div class="lnb">
-        <div class="lnb_mobile"><a href="#right-panel"><img src="/dalpeng/skin/winter_wonderland/img/lnb_mobile.png" alt=""></a></div>
+        <div class="lnb_mobile"><a href="#right-panel"><img src="/bundles/viettutweb/img/templates/winterwonderland/lnb_mobile.png" alt=""></a></div>
         <div data-role="panel" id="right-panel" data-position="right" data-display="push">
             <div class="menu-wrap ui-panel-inner">
                 <ul data-role="listview" data-icon="false">
                     <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
                     <!-- <li data-role="list-divider">우리결혼합니다.</li> -->
-                    <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>우리결혼합니다.</span></li><li class="menu_scrolls" data-rel="close" id="p_gallery"><span>웨딩 갤러리</span></li><li class="menu_scrolls" data-rel="close" id="p_media"><span>웨딩 영상</span></li><li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>방명록</span></li><li class="menu_scrolls" data-rel="close" id="p_map"><span>오시는 길</span></li>				</ul>
+                    <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>우리결혼합니다.</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>웨딩 갤러리</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_media"><span>웨딩 영상</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>방명록</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_map"><span>오시는 길</span></li>
+                </ul>
             </div>
         </div>
     </div>

@@ -80,6 +80,7 @@ class BuilderController extends Controller
         return $this->render($template->getPath(), array(
             'data' => $template->getData(),
             'name' => $template->getName(),
+            'gallery' => $gallery,
             'first' => $first,
             'second' => $second,
             'rest' => $rest,
@@ -117,6 +118,7 @@ class BuilderController extends Controller
         $rest = array_slice($gallery, 9);
         return $this->render($template->getPath(), array (
             'data' => $data,
+            'gallery' => $gallery,
             'first' => $first,
             'second' => $second,
             'rest' => $rest,
