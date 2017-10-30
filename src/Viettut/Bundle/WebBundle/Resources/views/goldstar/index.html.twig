@@ -34,41 +34,25 @@
 
     <title>우리 결혼합니다.</title>
 
-    <link rel="stylesheet" type="text/css" href="/dalpeng/skin/_common/css/jquery.mobile-1.4.3.min.css" />
-    <link rel="stylesheet" type="text/css" href="/dalpeng/skin/_common/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="/dalpeng/skin/_common/css/emoticon.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/lib/jquery.mobile-1.4.3.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/common/common.css" />
 
-    <link rel="stylesheet" type="text/css" href="/dalpeng/skin/gold_star/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/dalpeng/skin/gold_star/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/goldstar/style.css" />
+    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/goldstar/app.css" />
 
     <!-- 2017-07-21 테스트용 -->
-    <link rel="stylesheet" href="/dalpeng/skin/_common/css/photoswipe.css">
-    <link rel="stylesheet" href="/dalpeng/skin/_common/css/photoswipe.skin.css">
+    <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.css">
+    <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
 
     <link href='http://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
 
-
-    <!--
-    <link rel="stylesheet" type="text/css" href="/dalpeng/skin/_common/css/swipebox.css" />
-    -->
-
-    <script src="/dalpeng/skin/_common/js/jquery-1.11.1.min.js"></script>
-    <script src="/dalpeng/skin/_common/js/jquery.mobile-1.4.3.min.js"></script>
-    <script src="/dalpeng/skin/_common/js/jquery.mobile.init.js"></script>
-    <script src="/dalpeng/skin/_common/js/masonry.pkgd.min.js"></script>
-
-    <!--
-    <script src="/dalpeng/skin/_common/js/jquery.swipebox.zoom.js"></script>
-    -->
-    <script src="/dalpeng/skin/_common/js/kakao.min.js"></script>
-
-    <script src="/dalpeng/skin/_common/js/jquery.scrollTo.min.js?v2.1.2"></script>
-
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?v=20170525&clientId=fMnBpM1lKoVaQ4njhwB1"></script>
-
-    <!-- 2017-07-21 테스트용 photoswipe -->
-    <script src="/dalpeng/skin/_common/js/photoswipe.js"></script>
-    <script src="/dalpeng/skin/_common/js/photoswipe-ui-default.js"></script>
+    <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
+    <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
+    <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
+    <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
+    <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js?v2.1.2"></script>
+    <script src="/bundles/viettutweb/js/templates/common/photoswipe.js"></script>
+    <script src="/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js"></script>
 
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
@@ -703,9 +687,9 @@
                         el: imageEl,
                     };
 
-                    wrapper.innerHTML = imageEl.getAttribute("alt");
-                    item.id = wrapper.firstChild.getAttribute("id").replace("gcomment_", "");
-
+//                    wrapper.innerHTML = imageEl.getAttribute("alt");
+//                    item.id = wrapper.firstChild.getAttribute("id").replace("gcomment_", "");
+                    item.id = imageEl.getAttribute("imgId");
                     items.push(item);
                 }
                 return items;
@@ -896,6 +880,15 @@
     </script>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1934863569863740';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
@@ -1017,8 +1010,8 @@
             <div class="gal_list2">
                 <div class="gal_size"></div>
                 {% for img in gallery %}
-                    <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}">
-                        {% if loop.index == galley | length %}
+                    <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}>
+                        {% if loop.index == gallery | length %}
                             <div class="gal_more"><span>more</span></div>
                         {% else %}
                             <div class="gal_frame "><img src="{{ img['src'] }}"></div>
