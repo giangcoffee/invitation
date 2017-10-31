@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="vi">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 
     <meta property="og:type"   content="website" />
@@ -17,7 +17,7 @@
 부디 오셔서 저희의 뜻깊은 출발을
 축복해 주시기 바랍니다." />
 
-    <meta property="og:title" content="우리 결혼합니다." />
+    <meta property="og:title" content="{{ name }}" />
     <meta property="og:image" content="http://dalpeng.com/user/goldstar/img/9b854c77bd8bd11be8cfd28c7240e73e.jpg" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -32,7 +32,7 @@
     <link rel="icon" sizes="192x192" href="/img/mobileicon/dalpeng_192x192.png">
     <link rel="icon" sizes="128x128" href="/img/mobileicon/dalpeng_128x128.png">
 
-    <title>우리 결혼합니다.</title>
+    <title>{{ name }}</title>
 
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/lib/jquery.mobile-1.4.3.min.css" />
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/common/common.css" />
@@ -179,115 +179,6 @@
 
             // -- map -- //
             function initialize(md) {
-                //try{
-                // console.log (md+' initialize');
-                // console.log (md+' initialize');
-                $('#wedding_pmap_canvas, #party_pmap_canvas,#fbirthday_map_canvas,#ceremony_map_canvas').empty();
-
-                if(md=='party'){
-                    var $map_lat = $('#party_pmap_lat').val();
-                    var $map_lon = $('#party_pmap_lon').val();
-                    var $map_canvas = $('#party_pmap_canvas');
-                }else if(md == 'wedding'){
-                    var $map_lat = $('#wedding_pmap_lat').val();
-                    var $map_lon = $('#wedding_pmap_lon').val();
-                    var $map_canvas = $('#wedding_pmap_canvas');
-                }else if(md == 'fbirthday'){
-                    var $map_lat = $('#fbirthday_map_lat').val();
-                    var $map_lon = $('#fbirthday_map_lon').val();
-                    var $map_canvas = $('#fbirthday_map_canvas');
-                }else if(md == 'ceremony'){
-                    var $map_lat = $('#ceremony_map_lat').val();
-                    var $map_lon = $('#ceremony_map_lon').val();
-                    var $map_canvas = $('#ceremony_map_canvas');
-                }
-
-                var map_width = $(window).width();
-
-                $('.lo_map').css('width','100%');
-                //alert($map_canvas.css('width'));
-                $map_canvas.css('width','100%');	// 모든 네이버 지도 가로 크기 100%
-                //alert($map_canvas.css('width'));
-
-                /*
-                 if(map_width > 500 ) map_width = 500;
-                 map_height = 400;
-                 */
-                if($map_canvas[0]){
-
-                    var zoomlv = 11;
-
-                    var markerTarget = new naver.maps.LatLng($map_lat , $map_lon);
-                    var map = new naver.maps.Map($map_canvas[0], {
-                        center: markerTarget,
-                        zoom: zoomlv,
-                        zoomControl: true,
-                        zoomControlOptions: {
-                            style: naver.maps.ZoomControlStyle.LARGE,
-                            position: naver.maps.Position.TOP_RIGHT
-                        }
-                        /*
-                         mapDataControl: true,
-                         mapDataControlOptions: {
-                         position: naver.maps.Position.BOTTOM_LEFT
-                         }
-                         */
-                    });
-
-                    var marker = new naver.maps.Marker({
-                        position: markerTarget,
-                        map: map
-                    });
-
-
-                    map.setCenter(markerTarget);		// 마커 위치 지도 센터
-                    marker.setPosition(markerTarget);
-                    marker.setMap(map);
-
-                    // 지도 인터랙션 by echos(2016-09-29)
-                    $('#interaction').remove();
-
-                    var mappos = $map_canvas.position();
-
-                    $('<div id="interaction" class="control-on"></div>').insertAfter($map_canvas[0]);
-
-                    $('#interaction').css({'top':(mappos.top+10) , 'left':(mappos.left+10) });
-
-                    // 지도 인터랙션 옵션
-                    $("#interaction").on("click", function(e) {
-                        e.preventDefault();
-
-                        if (map.getOptions("draggable")) {
-                            map.setOptions({ // 지도 잠금
-                                draggable: false,
-                                pinchZoom: false,
-                                scrollWheel: false,
-                                keyboardShortcuts: false,
-                                disableDoubleTapZoom: true,
-                                disableDoubleClickZoom: true,
-                                disableTwoFingerTapZoom: true
-                            });
-
-                            $(this).removeClass("control-on");
-                        } else {
-                            map.setOptions({ // 지도 인터랙션 켜기(잠금풀기)
-                                draggable: true,
-                                pinchZoom: true,
-                                scrollWheel: true,
-                                keyboardShortcuts: true,
-                                disableDoubleTapZoom: false,
-                                disableDoubleClickZoom: false,
-                                disableTwoFingerTapZoom: false
-                            });
-
-                            $(this).addClass("control-on");
-                        }
-                    });
-
-                }
-
-                //}catch(err){console.log("error : " + err.message);}
-
             }
 
             function callKimNavi(md){
@@ -1010,8 +901,8 @@
             <div class="gal_list2">
                 <div class="gal_size"></div>
                 {% for img in gallery %}
-                    <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}>
-                        {% if loop.index == gallery | length %}
+                    <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
+                        {% if gallery|length == loop.index  %}
                             <div class="gal_more"><span>more</span></div>
                         {% else %}
                             <div class="gal_frame"><img src="{{ img['src'] }}"></div>
