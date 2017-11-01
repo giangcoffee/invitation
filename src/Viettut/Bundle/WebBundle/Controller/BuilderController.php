@@ -137,10 +137,11 @@ class BuilderController extends Controller
             ]);
             $ac = $fb->getApp()->getAccessToken()->getValue();
             $response = $fb->get(sprintf('/%s/comments', $objectId), $ac);
-            if (!empty($response)) {
-                $response = json_decode($response, true);
-                if (is_array($response) && array_key_exists('data', $response)) {
-                    $comments = $response['data'];
+            if ($response) {
+                $body = $response->getBody();
+                $body = json_decode($body, true);
+                if (is_array($body) && array_key_exists('data', $body)) {
+                    $comments = $body['data'];
                 }
             }
         }
