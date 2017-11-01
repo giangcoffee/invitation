@@ -8,6 +8,7 @@
 
 namespace Viettut\Bundle\WebBundle\Controller;
 
+use RestClient\CurlRestClient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -109,6 +110,40 @@ class BuilderController extends Controller
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
 
+        // get object id
+        $domain = $this->getParameter('domain');
+        $url = sprintf('http://%s%s', $domain, $request->getPathInfo());
+        $url = urlencode($url);
+        $request = sprintf('https://graph.facebook.com/?id=%s', $url);
+        $curl = new CurlRestClient();
+        $objectId = null;
+        $response = $curl->executeQuery($request);
+        if (!empty($response)) {
+            $response = json_decode($response, true);
+            if (is_array($response) && array_key_exists('og_object', $response)) {
+                $objectId = $response['og_object']['id'];
+            }
+        }
+
+        $comments = [];
+        if ($objectId != null) {
+            $appId = $this->getParameter('facebook_app_id');
+            $appSecret = $this->getParameter('facebook_app_secret');
+
+            $fb = new \Facebook\Facebook([
+                'app_id' => $appId,
+                'app_secret' => $appSecret,
+                'default_graph_version' => 'v2.9',
+            ]);
+            $ac = $fb->getApp()->getAccessToken()->getValue();
+            $response = $fb->get(sprintf('/%s/comments', $objectId), $ac);
+            if (!empty($response)) {
+                $response = json_decode($response, true);
+                if (is_array($response) && array_key_exists('data', $response)) {
+                    $comments = $response['data'];
+                }
+            }
+        }
         $template = $card->getTemplate();
         $data = $card->getData();
         $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
@@ -116,6 +151,7 @@ class BuilderController extends Controller
         $first = array_slice($gallery, 0, 5);
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
+
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
@@ -126,6 +162,7 @@ class BuilderController extends Controller
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),
             'name' => $name,
+            'comments' => $comments,
             'forGroom' => $card->isForGroom()
         ));
     }
