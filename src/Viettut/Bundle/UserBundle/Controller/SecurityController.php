@@ -56,7 +56,7 @@ class SecurityController extends BaseController
         $fb = new \Facebook\Facebook([
             'app_id' => $facebookAppId,
             'app_secret' => $facebookAppSecret,
-            'default_graph_version' => 'v2.5',
+            'default_graph_version' => 'v2.9',
         ]);
 
         $helper = $fb->getRedirectLoginHelper();

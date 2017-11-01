@@ -490,6 +490,12 @@
                                     <input type="text" class="form-control input-rounded" id="wedding_date">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="for_groom"></label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" value="" checked="checked" id="for_groom"> Nhà Trai
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -554,6 +560,12 @@
             var data = {};
             data['template'] = id;
             data['weddingDate'] = $('#wedding_date').val();
+            data['forGroom'] = false;
+
+            if ($('#check_id').is(":checked")) {
+                data['forGroom'] = true;
+            }
+
             data['data'] = {};
             data['data']['groom_name'] = $('#groom_name').val();
             data['data']['bride_name'] = $('#bride_name').val();
