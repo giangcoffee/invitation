@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <section class="page-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('home_page') }}">Home</a></li>
+                        <li class="active">Câu hỏi thường gặp</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <h2>Câu hỏi <strong>thường gặp</strong></h2>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non pulvinar. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut eu risus enim, ut pulvinar lectus. Sed hendrerit nibh metus.
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="toogle" data-plugin-toggle>
+                    {% for faq in faqs %}
+                        <section class="toggle {% if loop.index = 1 %}active{% endif %}">
+                            <label>{{ faq.question }}</label>
+                            <p>{{ faq.answer }}</p>
+                        </section>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

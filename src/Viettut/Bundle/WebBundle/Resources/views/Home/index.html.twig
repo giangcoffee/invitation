@@ -453,56 +453,9 @@
                 </div>
             </div>
         </div>
-
-        <hr class="tall"/>
-
-        {#<div class="row center">#}
-            {#<div class="col-md-12">#}
-                {#<h2 class="short word-rotator-title">#}
-                    {#We're not the only ones#}
-                    {#<strong>#}
-                                {#<span class="word-rotate" data-plugin-options='{"delay": 3500, "animDelay": 400}'>#}
-                                    {#<span class="word-rotate-items">#}
-                                        {#<span>excited</span>#}
-                                        {#<span>happy</span>#}
-                                    {#</span>#}
-                                {#</span>#}
-                    {#</strong>#}
-                    {#about Porto Template...#}
-                {#</h2>#}
-                {#<h4 class="lead tall">5,500 customers in 100 countries use Porto Template. Meet our customers.</h4>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row center">#}
-            {#<div class="owl-carousel" data-plugin-options='{"items": 6, "autoplay": true, "autoplayTimeout": 3000}'>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-1.png') }}" alt="">#}
-                {#</div>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-2.png') }}" alt="">#}
-                {#</div>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-3.png') }}" alt="">#}
-                {#</div>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-4.png') }}" alt="">#}
-                {#</div>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-5.png') }}" alt="">#}
-                {#</div>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-6.png') }}" alt="">#}
-                {#</div>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-4.png') }}" alt="">#}
-                {#</div>#}
-                {#<div>#}
-                    {#<img class="img-responsive" src="{{ asset('bundles/viettutweb/img/logos/logo-2.png') }}" alt="">#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
     </div>
+
+    <hr class="tall"/>
 
     <div class="container">
         <div class="row">
@@ -600,45 +553,26 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h2><strong>What</strong> Client’s Say</h2>
+                <h2><strong>Khách hàng</strong> nói gì</h2>
                 <div class="row">
                     <div class="owl-carousel push-bottom" data-plugin-options='{"items": 1}'>
-                        <div>
-                            <div class="col-md-12">
-                                <blockquote class="testimonial">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit
-                                        vehicula est, in consequat. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Donec hendrerit vehicula est, in consequat. Donec
-                                        hendrerit vehicula est, in consequat. Donec hendrerit vehicula est, in
-                                        consequat.</p>
-                                </blockquote>
-                                <div class="testimonial-arrow-down"></div>
-                                <div class="testimonial-author">
-                                    <div class="img-thumbnail img-thumbnail-small">
-                                        <img src="{{ asset('bundles/viettutweb/img/clients/client-1.jpg') }}"
-                                             alt="">
+                        {% for testimonial in testimonials %}
+                            <div>
+                                <div class="col-md-12">
+                                    <blockquote class="testimonial">
+                                        <p>{{ testimonial.content }}</p>
+                                    </blockquote>
+                                    <div class="testimonial-arrow-down"></div>
+                                    <div class="testimonial-author">
+                                        <div class="img-thumbnail img-thumbnail-small">
+                                            <img src="{{ testimonial.image }}"
+                                                 alt="">
+                                        </div>
+                                        <p><strong>{{ testimonial.name }}</strong><span>{{ testimonial.profession }}</span></p>
                                     </div>
-                                    <p><strong>John Smith</strong><span>CEO & Founder - Okler</span></p>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="col-md-12">
-                                <blockquote class="testimonial">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit
-                                        vehicula est, in consequat. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit.</p>
-                                </blockquote>
-                                <div class="testimonial-arrow-down"></div>
-                                <div class="testimonial-author">
-                                    <div class="img-thumbnail img-thumbnail-small">
-                                        <img src="{{ asset('bundles/viettutweb/img/clients/client-1.jpg') }}"
-                                             alt="">
-                                    </div>
-                                    <p><strong>John Smith</strong><span>CEO & Founder - Okler</span></p>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

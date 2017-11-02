@@ -11,4 +11,8 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 interface PostRepositoryInterface extends ObjectRepository
 {
+    /**
+     * @return mixed
+     */
+    public function getAllPostQuery();
 }

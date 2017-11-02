@@ -25,7 +25,10 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('ViettutWebBundle:Home:index.html.twig');
+        $testimonials = $this->get('viettut.domain_manager.testimonial')->all();
+        return $this->render('ViettutWebBundle:Home:index.html.twig', array(
+            'testimonials' => $testimonials
+        ));
     }
 
     /**
@@ -77,5 +80,38 @@ class HomeController extends Controller
     public function priceAction(Request $request)
     {
         return $this->render('ViettutWebBundle:Home:price.html.twig');
+    }
+
+    /**
+     * @Route("/faq", name="faq_page")
+     * @param $request
+     * @return Response
+     */
+    public function faqAction(Request $request)
+    {
+        $faqs = $this->get('viettut.domain_manager.faq')->all();
+        return $this->render('ViettutWebBundle:Home:faq.html.twig', array(
+            'faqs' => $faqs
+        ));
+    }
+
+    /**
+     * @Route("/posts", name="posts_page")
+     * @param $request
+     * @return Response
+     */
+    public function postAction(Request $request)
+    {
+        $pageSize = $this->getParameter('page_size');
+
+        $pagination = $this->get('knp_paginator')->paginate(
+            $this->get('viettut.repository.post')->getAllPostQuery(),
+            $request->query->getInt('page', 1)/*page number*/,
+            $pageSize
+        );
+
+        return $this->render('ViettutWebBundle:Home:posts.html.twig', array(
+            "pagination" => $pagination
+        ));
     }
 }

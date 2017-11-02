@@ -11,4 +11,8 @@ use Doctrine\ORM\EntityRepository;
 
 class PostRepository extends EntityRepository implements PostRepositoryInterface
 {
+    public function getAllPostQuery()
+    {
+        return $this->createQueryBuilder('p')->getQuery();
+    }
 }
