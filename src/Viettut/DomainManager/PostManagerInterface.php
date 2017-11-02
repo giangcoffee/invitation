@@ -10,7 +10,13 @@ namespace Viettut\DomainManager;
 
 
 
+use Viettut\Model\Core\PostInterface;
+
 interface PostManagerInterface extends ManagerInterface
 {
-
+    /**
+     * @param $hash
+     * @return null|PostInterface
+     */
+    public function getByHash($hash);
 }

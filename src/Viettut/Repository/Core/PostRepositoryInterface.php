@@ -8,6 +8,7 @@
 
 namespace Viettut\Repository\Core;
 use Doctrine\Common\Persistence\ObjectRepository;
+use Viettut\Model\Core\PostInterface;
 
 interface PostRepositoryInterface extends ObjectRepository
 {
@@ -15,4 +16,10 @@ interface PostRepositoryInterface extends ObjectRepository
      * @return mixed
      */
     public function getAllPostQuery();
+
+    /**
+     * @param $hash
+     * @return null|PostInterface
+     */
+    public function getByHash($hash);
 }

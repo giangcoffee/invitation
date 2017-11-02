@@ -15,4 +15,13 @@ class PostRepository extends EntityRepository implements PostRepositoryInterface
     {
         return $this->createQueryBuilder('p')->getQuery();
     }
+
+    public function getByHash($hash)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.hash = :hash')
+            ->setParameter('hash', $hash)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

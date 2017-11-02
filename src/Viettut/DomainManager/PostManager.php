@@ -92,4 +92,9 @@ class PostManager implements PostManagerInterface
     {
         return $this->repository->findBy($criteria = [], $orderBy = null, $limit, $offset);
     }
+
+    public function getByHash($hash)
+    {
+        return $this->repository->getByHash($hash);
+    }
 }

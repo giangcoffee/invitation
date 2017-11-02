@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Viettut\Model\Core\PostInterface;
 use Viettut\Model\Core\TemplateInterface;
 
 class HomeController extends Controller
@@ -112,6 +113,25 @@ class HomeController extends Controller
 
         return $this->render('ViettutWebBundle:Home:posts.html.twig', array(
             "pagination" => $pagination
+        ));
+    }
+
+    /**
+     * @Route("/posts/{hash}", name="posts_page")
+     *
+     * @param Request $request
+     * @param $hash
+     * @return Response
+     */
+    public function singlePostAction(Request $request, $hash)
+    {
+        $post = $this->get('viettut.domain_manager.post')->getByHash($hash);
+        if (!$post instanceof PostInterface) {
+            throw new NotFoundHttpException('The resource not found or you do not have permission');
+        }
+
+        return $this->render('ViettutWebBundle:Home:single_post.html.twig', array(
+            "post" => $post
         ));
     }
 }

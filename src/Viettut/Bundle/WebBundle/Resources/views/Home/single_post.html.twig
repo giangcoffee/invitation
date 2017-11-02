@@ -1,0 +1,660 @@
+{% extends 'base.html.twig' %}
+{% block css %}
+<link href="{{ asset('bundles/viettutweb/css/preview.css') }}" rel="stylesheet">
+{% endblock %}
+{% block cart %}
+    <li class="dropdown mega-menu-item mega-menu-shop">
+        <a class="dropdown-toggle mobile-redirect" href="shop-cart.html">
+            <i class="fa fa-shopping-cart"></i> Cart (1) - $299
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="mega-menu-content">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table cellspacing="0" class="cart">
+                                <tbody>
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="shop-product-sidebar.html">
+                                            <img width="100" height="100" alt="" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/high/1.jpg') }}">
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <a href="shop-product-sidebar.html">Photo Camera<br><span class="amount"><strong>$299</strong></span></a>
+                                    </td>
+                                    <td class="product-actions">
+                                        <a title="Remove this item" class="remove" href="#">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="actions" colspan="6">
+                                        <div class="actions-continue">
+                                            <input type="submit" value="View All" class="btn btn-default">
+                                            <input type="submit" value="Proceed to Checkout →" name="proceed" class="btn pull-right btn-primary">
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block shop %}shop{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="template-info" data-id="{{ template.id }}"></div>
+        <hr class="tall">
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="owl-carousel" data-plugin-options='{"items": 1}'>
+                    <div>
+                        <div class="thumbnail">
+                            <img alt="" class="img-responsive img-rounded" src="{{ asset('bundles/viettutweb/img/templates/product/product1.jpg') }}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="thumbnail">
+                            <img alt="" class="img-responsive img-rounded" src="{{ asset('bundles/viettutweb/img/templates/product/product2.jpg') }}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="thumbnail">
+                            <img alt="" class="img-responsive img-rounded" src="{{ asset('bundles/viettutweb/img/templates/product/product3.jpg') }}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="thumbnail">
+                            <img alt="" class="img-responsive img-rounded" src="{{ asset('bundles/viettutweb/img/templates/product/product4.jpg') }}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="summary entry-summary">
+
+                    <h1 class="shorter"><strong>Blue Ladies Handbag</strong></h1>
+
+                    <div class="review_num">
+                        <span class="count" itemprop="ratingCount">2</span> reviews
+                    </div>
+
+                    <div title="Rated 5.00 out of 5" class="star-rating">
+                        <span style="width:100%"><strong class="rating">5.00</strong> out of 5</span>
+                    </div>
+
+                    <p class="price">
+                        <span class="amount">$22</span>
+                    </p>
+
+                    <p class="taller">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. </p>
+
+                    <form enctype="multipart/form-data" method="post" class="cart">
+                        <div class="quantity">
+                            <input type="button" class="minus" value="-">
+                            <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                            <input type="button" class="plus" value="+">
+                        </div>
+                        <a class="btn btn-primary btn-icon" onclick="createCard()">Dùng mẫu này</a>
+                        <a class="btn btn-primary btn-icon" onclick="showPreview()">Xem trước</a>
+                    </form>
+
+                    <div class="product_meta">
+                        <span class="posted_in">Categories: <a rel="tag" href="#">Accessories</a>, <a rel="tag" href="#">Bags</a>.</span>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabs tabs-product">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#productDescription" data-toggle="tab">Description</a></li>
+                        <li><a href="#productInfo" data-toggle="tab">Aditional Information</a></li>
+                        <li><a href="#productReviews" data-toggle="tab">Reviews (2)</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="productDescription">
+                            <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent nec tempus nibh. Donec mollis commodo metus et fringilla. Etiam venenatis, diam id adipiscing convallis, nisi eros lobortis tellus, feugiat adipiscing ante ante sit amet dolor. Vestibulum vehicula scelerisque facilisis. Sed faucibus placerat bibendum. Maecenas sollicitudin commodo justo, quis hendrerit leo consequat ac. Proin sit amet risus sapien, eget interdum dui. Proin justo sapien, varius sit amet hendrerit id, egestas quis mauris.</p>
+                        </div>
+                        <div class="tab-pane" id="productInfo">
+                            <table class="table table-striped push-top">
+                                <tbody>
+                                <tr>
+                                    <th>
+                                        Size:
+                                    </th>
+                                    <td>
+                                        Unique
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Colors
+                                    </th>
+                                    <td>
+                                        Red, Blue
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Material
+                                    </th>
+                                    <td>
+                                        100% Leather
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="productReviews">
+                            <ul class="comments">
+                                <li>
+                                    <div class="comment">
+                                        <div class="img-thumbnail">
+                                            <img class="avatar" alt="" src="img/avatar-2.jpg">
+                                        </div>
+                                        <div class="comment-block">
+                                            <div class="comment-arrow"></div>
+														<span class="comment-by">
+															<strong>John Doe</strong>
+															<span class="pull-right">
+																<div title="Rated 5.00 out of 5" class="star-rating">
+                                                                    <span style="width:100%"><strong class="rating">5.00</strong> out of 5</span>
+                                                                </div>
+															</span>
+														</span>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim ornare nisi, vitae mattis nulla ante id dui.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <hr class="tall">
+                            <h4>Add a review</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <form action="" id="submitReview" method="post">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label>Your name *</label>
+                                                    <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Your email address *</label>
+                                                    <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>Review *</label>
+                                                    <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" id="message"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <input type="submit" value="Submit Review" class="btn btn-primary" data-loading-text="Loading...">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="tall" />
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <h2>Related <strong>Products</strong></h2>
+            </div>
+
+            <ul class="products product-thumb-info-list">
+                <li class="col-sm-3 col-xs-12 product">
+                    <a href="shop-product-sidebar.html">
+                        <span class="onsale">Sale!</span>
+                    </a>
+								<span class="product-thumb-info">
+									<a href="shop-cart.html" class="add-to-cart-product">
+                                        <span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
+                                    </a>
+									<a href="shop-product-sidebar.html">
+										<span class="product-thumb-info-image">
+											<span class="product-thumb-info-act">
+												<span class="product-thumb-info-act-left"><em>View</em></span>
+												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
+											</span>
+											<img alt="" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/product/template2.jpg') }}">
+										</span>
+                                    </a>
+									<span class="product-thumb-info-content">
+										<a href="shop-product-sidebar.html">
+                                            <h4>Photo Camera</h4>
+											<span class="price">
+												<del><span class="amount">$325</span></del>
+												<ins><span class="amount">$299</span></ins>
+											</span>
+                                        </a>
+									</span>
+								</span>
+                </li>
+                <li class="col-sm-3 col-xs-12 product">
+								<span class="product-thumb-info">
+									<a href="shop-cart.html" class="add-to-cart-product">
+                                        <span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
+                                    </a>
+									<a href="shop-product-sidebar.html">
+										<span class="product-thumb-info-image">
+											<span class="product-thumb-info-act">
+												<span class="product-thumb-info-act-left"><em>View</em></span>
+												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
+											</span>
+											<img alt="" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/product/template5.jpg') }}">
+										</span>
+                                    </a>
+									<span class="product-thumb-info-content">
+										<a href="shop-product-sidebar.html">
+                                            <h4>Golf Bag</h4>
+											<span class="price">
+												<span class="amount">$72</span>
+											</span>
+                                        </a>
+									</span>
+								</span>
+                </li>
+                <li class="col-sm-3 col-xs-12 product">
+								<span class="product-thumb-info">
+									<a href="shop-cart.html" class="add-to-cart-product">
+                                        <span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
+                                    </a>
+									<a href="shop-product-sidebar.html">
+										<span class="product-thumb-info-image">
+											<span class="product-thumb-info-act">
+												<span class="product-thumb-info-act-left"><em>View</em></span>
+												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
+											</span>
+											<img alt="" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/product/template3.jpg') }}">
+										</span>
+                                    </a>
+									<span class="product-thumb-info-content">
+										<a href="shop-product-sidebar.html">
+                                            <h4>Workout</h4>
+											<span class="price">
+												<span class="amount">$60</span>
+											</span>
+                                        </a>
+									</span>
+								</span>
+                </li>
+                <li class="col-sm-3 col-xs-12 product">
+								<span class="product-thumb-info">
+									<a href="shop-cart.html" class="add-to-cart-product">
+                                        <span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
+                                    </a>
+									<a href="shop-product-sidebar.html">
+										<span class="product-thumb-info-image">
+											<span class="product-thumb-info-act">
+												<span class="product-thumb-info-act-left"><em>View</em></span>
+												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
+											</span>
+											<img alt="" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/product/template4.jpg') }}">
+										</span>
+                                    </a>
+									<span class="product-thumb-info-content">
+										<a href="shop-product-sidebar.html">
+                                            <h4>Luxury bag</h4>
+											<span class="price">
+												<span class="amount">$199</span>
+											</span>
+                                        </a>
+									</span>
+								</span>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div id="div_page_preview" style="display: none;">
+        <div class="preview_bg"></div>
+
+        <div class="preview_content skin3" id="pview_pc" style="display: none;">
+            <div class="preview_frame" id="div_pview_pc">
+                <iframe src="http://dalpeng.com/cottoncandy"></iframe>
+            </div>
+        </div>
+        <div class="preview_content skin2" id="pview_tablet" style="display: none;">
+            <div class="preview_frame" id="div_pview_tablet">
+                <iframe src="http://dalpeng.com/cottoncandy"></iframe>
+            </div>
+        </div>
+        <div class="preview_content skin1" id="pview_mobile" style="display: block;">
+            <div class="preview_frame" id="div_pview_mobile">
+                <iframe src="http://dalpeng.com/cottoncandy"></iframe>
+            </div>
+        </div>
+
+        <div class="preview_header">
+            <ul>
+                <li class="view_icon1 btnPreview on" id="btn_pview_mobile">
+                    <span class="blind">Mobile</span>
+                </li>
+                <li class="view_icon2 btnPreview" id="btn_pview_tablet">
+                    <span class="blind">Tablet</span>
+                </li>
+                <li class="view_icon3 btnPreview" id="btn_pview_pc">
+                    <span class="blind">PC</span>
+                </li>
+                <li class="view_icon4" id="btn_page_preview_close" title="Close Preview (Esc)" style="cursor: pointer;">
+                    <span class="blind">Close</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    <script>
+        var templateId = $('.template-info').data('id');
+        function createCard() {
+            $.post('/app_dev.php/api/v1/templates/' + templateId + '/createcards', {}, function (response) {
+                window.location.href = '/app_dev.php/builder/' + response;
+            }, 'json');
+        }
+    </script>
+    <script type="text/javascript">
+        var PRE_PAYMENT = "http://dalpeng.com/app/pre_payment";
+
+        function showPreview(){
+            $('#div_page_preview').css('display', 'block')
+        }
+
+        $(function () {
+            var _WSKIN = ["beautifulday", "modernwhite", "romanticpink", "GardenWedding", "OneFineDay", "FallInLove", "goldstar", "retrocity", "IceCreamCake", "dreamoflily", "innocentbride", "romanticflower", "cottoncandy", "christmaswedding", "loveblossom", "luxuryblack"];
+            var _FSKIN = ["AngelCar", "mysunshine", "mrlittleman", "twinkletwinkle", "OverTheRainbow", "SweetHoneybee", "BunnysPicnic"];
+            var _CSKIN = ["friends", "welcome", "SNOWING", "Exhibition", "ThankYou", "Crescendo", "Respect", "Invitation", "Hope", "Circle", "Poster", "Classic"];
+            var _PREV_SKIN = "";
+            var _NEXT_SKIN = "";
+
+            var wedding_skinname = 'Luxury Black';
+            var fbirthday_skinname = 'Bunny Picnic';
+            var ceremony_skinname = 'Respect';
+
+            $('body').append("<div class='ui-loader-background'> </div>");
+
+            // short key
+            $(document).keyup(function (e) {
+                if (e.keyCode == 27)    closeDiv();    // esc
+            });
+
+            function closeDiv() {
+                $('#div_page_preview').hide();
+                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', '');
+            }
+
+            function setPreview(sn) {
+                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', 'http://dalpeng.com/' + sn);
+            }
+
+
+            var now_preview_skinname;
+            $('.btn_page_preview').click(function () {
+                var id = $(this).attr('id').replace('btn_preview_', '');
+                now_preview_skinname = id;
+
+
+                setPreview(id);
+
+                $('.preview_content').hide();
+
+                $('.btnPreview').removeClass('on');
+                $('#btn_pview_mobile').addClass('on');
+                $('#pview_mobile').show();
+                $('#div_page_preview').show();
+
+                set_preview_controls(id);
+            }).mouseenter(function () {
+                var id = $(this).attr('id').replace('btn_preview_', '');
+                now_preview_skinname = id;
+
+                // setPreview(id);
+            }).css('cursor', 'pointer');
+
+
+            $('.btn_page_preview_gopay').click(function () {
+                $('#btype').val('P');
+
+                $('#LGD_PAYINFO').attr('action', '');
+                $('#LGD_PAYINFO').submit();
+            }).css('cursor', 'pointer');
+
+
+            function set_preview_controls(id) {
+                var _SKIN = '';
+                var left_hide = false;
+                var right_hide = false;
+                _PREV_SKIN = "";
+                _NEXT_SKIN = "";
+
+                if ($('#now_skin_tab').val() == 'wedding') _SKIN = _WSKIN;
+                else if ($('#now_skin_tab').val() == 'fbirthday') _SKIN = _FSKIN;
+                else if ($('#now_skin_tab').val() == 'ceremony') _SKIN = _CSKIN;
+
+                for (var i = 0; i < _SKIN.length; i++) {
+                    if (id == _SKIN[i]) {
+                        if (i == 0) {
+                            left_hide = true;
+                        } else if (i == _SKIN.length - 1) {
+                            right_hide = true;
+                        }
+
+                        if (_SKIN.length < 2) right_hide = true;
+
+                        _NEXT_SKIN = (_SKIN[i + 1] == undefined) ? "" : _SKIN[i + 1];
+                        _PREV_SKIN = (_SKIN[i - 1] == undefined) ? "" : _SKIN[i - 1];
+                    }
+                }
+
+                if (!left_hide) {
+                    $("#preview_left").css("top", ($(window).height() / 2) - 60 + "px").show();
+                } else {
+                    $("#preview_left").hide();
+                }
+                if (!right_hide) {
+                    $("#preview_right").css("top", ($(window).height() / 2) - 60 + "px").show();
+                } else {
+                    $("#preview_right").hide();
+                }
+            }
+
+            $("#preview_left").click(function () {
+                now_preview_skinname = _PREV_SKIN;
+
+                setPreview(now_preview_skinname);
+
+                $('.preview_content').hide();
+
+                $('.btnPreview').removeClass('on');
+                $('#btn_pview_mobile').addClass('on');
+                $('#pview_mobile').show();
+                $('#div_page_preview').show();
+
+                set_preview_controls(_PREV_SKIN);
+            });
+
+            $("#preview_right").click(function () {
+                now_preview_skinname = _NEXT_SKIN;
+
+                setPreview(now_preview_skinname);
+
+                $('.preview_content').hide();
+
+                $('.btnPreview').removeClass('on');
+                $('#btn_pview_mobile').addClass('on');
+                $('#pview_mobile').show();
+                $('#div_page_preview').show();
+
+                set_preview_controls(_NEXT_SKIN);
+            });
+
+            $('#btn_page_preview_close').click(function () {
+                $('#div_page_preview').hide();
+                $("#preview_left,#preview_right").hide();
+                _NEXT_SKIN = "";
+                _PREV_SKIN = "";
+            }).css('cursor', 'pointer');
+
+            $('.btnPreview').click(function () {
+                var id = $(this).attr('id').replace('btn_pview_', '');
+                $('.btnPreview').removeClass('on');
+                $(this).addClass('on');
+                $('.preview_content').hide();
+                $('#pview_' + id).show();
+                $('#div_pview_' + id).scrollTop(0);
+            });
+
+            $('.basic_type').click(function () {
+                var id = $(this).attr('id').replace('btype_', '');
+
+                if (id == 'free') alert('죄송합니다\n이미 무료형으로 신청하신 초대장이 있습니다.\n무료형 초대장은 한개만 제공됩니다.');
+            }).mouseenter(function () {
+            }).mouseleave(function () {
+                var id = $(this).attr('id');
+                if ((id == 'btype_free' && $('#btype').val() == 'P') || (id == 'btype_pay' && $('#btype').val() == 'F')) $(this).removeClass('on');
+            });
+
+            $('.skin_type').click(function () {
+                var id = $(this).attr('id').replace('stype_', '');
+
+                if ($('#btype').val() == 'F' && id == 'ceremony') {
+                    alert('행사 초대장은 유료형으로만 사용이 가능합니다.\n신청구분을 유료형 으로 선택하신뒤에 선택이 가능합니다.');
+                } else {
+                    $('.skin_type').removeClass('on');
+                    $(this).addClass('on');
+
+                    //$('.skills').removeClass('on');
+
+                    $('.skin_wedding,.skin_fbirthday,.skin_ceremony').removeClass('on');
+                    $('.skin_' + id).addClass('on');
+
+                    setSkillOption();
+
+                    $('#now_skin_type').val(id);
+                    if (id == 'wedding') $('#sk_name').val(wedding_skinname);
+                    if (id == 'fbirthday') $('#sk_name').val(fbirthday_skinname);
+                    else $('#sk_name').val(ceremony_skinname);
+                }
+            });
+
+
+            function setSkillOption() {
+
+
+                if ($('#stype_wedding').hasClass('on')) var setSkin = 'wedding';
+                else if ($('#stype_fbirthday').hasClass('on')) var setSkin = 'fbirthday';
+                else var setSkin = 'ceremony';
+
+                if ($('#btype').val() == 'P') {
+                    $('.skill_free').removeClass('on')
+                    $('.skill_pay').addClass('on');
+
+                    $('#media_desc').text('유튜브/비메오');
+
+                    $('.skin_wedding,.skin_fbirthday,.skin_ceremony').removeClass('on');
+                    $('.skin_' + setSkin).addClass('on');
+                } else {
+
+                    $('.skill_pay,.skill_event').removeClass('on');
+                    $('.skill_free').addClass('on');
+
+                    $('#media_desc').text('유튜브 지원');
+                }
+
+                if (setSkin == 'ceremony') $('.skill_event').addClass('on');
+
+            }
+
+            setSkillOption();
+
+            function scale(width, height, padding, border) {
+                var scrWidth = $(window).width() - 30,
+                        scrHeight = $(window).height() - 30,
+                        ifrPadding = 2 * padding,
+                        ifrBorder = 2 * border,
+                        ifrWidth = width + ifrPadding + ifrBorder,
+                        ifrHeight = height + ifrPadding + ifrBorder,
+                        h, w;
+
+                if (ifrWidth < scrWidth && ifrHeight < scrHeight) {
+                    w = ifrWidth;
+                    h = ifrHeight;
+                } else if (( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight )) {
+                    w = scrWidth;
+                    h = ( scrWidth / ifrWidth ) * ifrHeight;
+                } else {
+                    h = scrHeight;
+                    w = ( scrHeight / ifrHeight ) * ifrWidth;
+                }
+
+                return {
+                    'width': w - ( ifrPadding + ifrBorder ),
+                    'height': h - ( ifrPadding + ifrBorder )
+                };
+            };
+
+            $('.btnTabSkins').click(function (e) {
+                e.preventDefault();
+
+                var id = $(this).attr('id').replace('btn_', '');
+                var $obj = '';
+
+                $('.btnTabSkins').removeClass('on');
+                $(this).addClass('on');
+
+                $('#now_skin_tab').val(id);
+
+                $('#divWeddingSkins,#divFbirthdaySkins,#divCeremonySkins').hide();
+
+                if (id == 'wedding') {
+                    $('#divWeddingSkins').show();
+                    $obj = wslider;
+                } else if (id == 'fbirthday') {
+                    $('#divFbirthdaySkins').show();
+                    $obj = fslider;
+                } else {
+                    $('#divCeremonySkins').show();
+                    $obj = cslider;
+                }
+
+                $obj.reloadSlider();
+            });
+        });
+    </script>
+{% endblock %}
