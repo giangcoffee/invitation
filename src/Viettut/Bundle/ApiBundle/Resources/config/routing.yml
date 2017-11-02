@@ -39,3 +39,18 @@ api_template:
     type: rest
     resource: Viettut\Bundle\ApiBundle\Controller\TemplateController
     name_prefix:  api_1_
+
+api_testimonial:
+    type: rest
+    resource: Viettut\Bundle\ApiBundle\Controller\TestimonialController
+    name_prefix:  api_1_
+
+api_faq:
+    type: rest
+    resource: Viettut\Bundle\ApiBundle\Controller\FaqController
+    name_prefix:  api_1_
+
+api_post:
+    type: rest
+    resource: Viettut\Bundle\ApiBundle\Controller\PostController
+    name_prefix:  api_1_

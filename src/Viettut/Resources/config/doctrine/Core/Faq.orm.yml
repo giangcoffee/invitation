@@ -1,0 +1,26 @@
+Viettut\Entity\Core\Faq:
+    type: entity
+    table: viettut_faq
+    repositoryClass: Viettut\Repository\Core\FaqRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        question:
+            type: text
+            nullable: false
+
+        answer:
+            type: text
+            nullable: false
+            
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+
+    lifecycleCallbacks: {  }

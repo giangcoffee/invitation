@@ -1,0 +1,51 @@
+parameters:
+    viettut.entity.core.faq.class: Viettut\Entity\Core\Faq
+    viettut.form.type.faq.class: Viettut\Form\Type\FaqFormType
+services:
+    # faq ######################################################
+
+    viettut_api.handler.faq:
+        class: Viettut\Handler\HandlerInterface
+        factory_service: viettut.handler.handler_manager.faq
+        factory_method: getHandler
+        arguments:
+            - @viettut.user_role
+
+    ###### dependencies and base classes for faq handler #######
+
+    viettut.repository.faq:
+        class: Viettut\Repository\Core\FaqRepositoryInterface
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - %viettut.entity.core.faq.class%
+
+    viettut.domain_manager.faq:
+        class: Viettut\DomainManager\FaqManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @viettut.repository.faq
+
+    viettut.form.type.faq:
+        class: %viettut.form.type.faq.class%
+        arguments:
+            - @viettut.repository.faq
+        tags:
+            - { name: form.type, alias: tagcade_form_faq }
+
+    viettut.handler.handlers.faq:
+        class: Viettut\Handler\Handlers\Core\FaqHandler
+        parent: viettut.handler.role_handler_abstract
+        public: false
+        arguments:
+            - @viettut.form.type.faq
+            - @viettut.domain_manager.faq
+
+    viettut.handler.handler_manager.faq:
+        class: Viettut\Handler\HandlerManager
+        arguments:
+            - %viettut.entity.core.faq.class%
+            -
+                - @viettut.handler.handlers.faq
+
+    # end faq #####################################################

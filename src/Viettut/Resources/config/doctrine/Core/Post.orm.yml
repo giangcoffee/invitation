@@ -1,0 +1,60 @@
+Viettut\Entity\Core\Post:
+    type: entity
+    table: viettut_post
+    repositoryClass: Viettut\Repository\Core\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            nullable: false
+
+        content:
+            type: text
+            nullable: false
+
+        hash:
+            type: string
+            nullable: false
+
+        view:
+            type: integer
+            options:
+                default: 0
+
+        published:
+            type: boolean
+            options:
+                default: false
+
+        video:
+            type: text
+            nullable: true
+
+        hasVideo:
+            type: boolean
+            nullable: false
+            options:
+                default: false
+
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: date
+            nullable: true
+    manyToOne:
+        author:
+            targetEntity: Viettut\Bundle\UserBundle\Entity\User
+    lifecycleCallbacks: {  }

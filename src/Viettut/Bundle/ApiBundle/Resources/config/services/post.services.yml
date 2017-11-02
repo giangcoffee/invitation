@@ -1,0 +1,51 @@
+parameters:
+    viettut.entity.core.post.class: Viettut\Entity\Core\Post
+    viettut.form.type.post.class: Viettut\Form\Type\PostFormType
+services:
+    # post ######################################################
+
+    viettut_api.handler.post:
+        class: Viettut\Handler\HandlerInterface
+        factory_service: viettut.handler.handler_manager.post
+        factory_method: getHandler
+        arguments:
+            - @viettut.user_role
+
+    ###### dependencies and base classes for post handler #######
+
+    viettut.repository.post:
+        class: Viettut\Repository\Core\PostRepositoryInterface
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - %viettut.entity.core.post.class%
+
+    viettut.domain_manager.post:
+        class: Viettut\DomainManager\PostManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @viettut.repository.post
+
+    viettut.form.type.post:
+        class: %viettut.form.type.post.class%
+        arguments:
+            - @viettut.repository.post
+        tags:
+            - { name: form.type, alias: tagcade_form_post }
+
+    viettut.handler.handlers.post:
+        class: Viettut\Handler\Handlers\Core\PostHandler
+        parent: viettut.handler.role_handler_abstract
+        public: false
+        arguments:
+            - @viettut.form.type.post
+            - @viettut.domain_manager.post
+
+    viettut.handler.handler_manager.post:
+        class: Viettut\Handler\HandlerManager
+        arguments:
+            - %viettut.entity.core.post.class%
+            -
+                - @viettut.handler.handlers.post
+
+    # end post #####################################################

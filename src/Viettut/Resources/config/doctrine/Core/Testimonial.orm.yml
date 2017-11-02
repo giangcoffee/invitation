@@ -1,0 +1,34 @@
+Viettut\Entity\Core\Testimonial:
+    type: entity
+    table: viettut_testimonial
+    repositoryClass: Viettut\Repository\Core\TestimonialRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: text
+            nullable: false
+
+        profession:
+            type: text
+            nullable: false
+
+        image:
+            type: text
+            nullable: false
+
+        content:
+            type: text
+            nullable: false
+
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+
+    lifecycleCallbacks: {  }

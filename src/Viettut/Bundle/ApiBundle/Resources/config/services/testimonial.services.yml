@@ -1,0 +1,51 @@
+parameters:
+    viettut.entity.core.testimonial.class: Viettut\Entity\Core\Testimonial
+    viettut.form.type.testimonial.class: Viettut\Form\Type\TestimonialFormType
+services:
+    # testimonial ######################################################
+
+    viettut_api.handler.testimonial:
+        class: Viettut\Handler\HandlerInterface
+        factory_service: viettut.handler.handler_manager.testimonial
+        factory_method: getHandler
+        arguments:
+            - @viettut.user_role
+
+    ###### dependencies and base classes for testimonial handler #######
+
+    viettut.repository.testimonial:
+        class: Viettut\Repository\Core\TestimonialRepositoryInterface
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - %viettut.entity.core.testimonial.class%
+
+    viettut.domain_manager.testimonial:
+        class: Viettut\DomainManager\TestimonialManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @viettut.repository.testimonial
+
+    viettut.form.type.testimonial:
+        class: %viettut.form.type.testimonial.class%
+        arguments:
+            - @viettut.repository.testimonial
+        tags:
+            - { name: form.type, alias: tagcade_form_testimonial }
+
+    viettut.handler.handlers.testimonial:
+        class: Viettut\Handler\Handlers\Core\TestimonialHandler
+        parent: viettut.handler.role_handler_abstract
+        public: false
+        arguments:
+            - @viettut.form.type.testimonial
+            - @viettut.domain_manager.testimonial
+
+    viettut.handler.handler_manager.testimonial:
+        class: Viettut\Handler\HandlerManager
+        arguments:
+            - %viettut.entity.core.testimonial.class%
+            -
+                - @viettut.handler.handlers.testimonial
+
+    # end testimonial #####################################################
