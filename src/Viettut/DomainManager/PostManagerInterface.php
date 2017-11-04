@@ -19,4 +19,10 @@ interface PostManagerInterface extends ManagerInterface
      * @return null|PostInterface
      */
     public function getByHash($hash);
+
+    /**
+     * @param $pageSize
+     * @return mixed
+     */
+    public function getLatestPost($pageSize);
 }

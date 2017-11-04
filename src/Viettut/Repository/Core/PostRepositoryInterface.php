@@ -22,4 +22,10 @@ interface PostRepositoryInterface extends ObjectRepository
      * @return null|PostInterface
      */
     public function getByHash($hash);
+
+    /**
+     * @param $pageSize
+     * @return mixed
+     */
+    public function getLatestPost($pageSize);
 }

@@ -26,9 +26,12 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $pageSize = $this->getParameter('page_size');
         $testimonials = $this->get('viettut.domain_manager.testimonial')->all();
+        $posts = $this->get('viettut.domain_manager.post')->getLatestPost($pageSize);
         return $this->render('ViettutWebBundle:Home:index.html.twig', array(
-            'testimonials' => $testimonials
+            'testimonials' => $testimonials,
+            'posts' => $posts
         ));
     }
 
@@ -117,7 +120,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/posts/{hash}", name="posts_page")
+     * @Route("/posts/{hash}", name="single_post_page")
      *
      * @param Request $request
      * @param $hash

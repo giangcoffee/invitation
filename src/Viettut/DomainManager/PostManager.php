@@ -97,4 +97,9 @@ class PostManager implements PostManagerInterface
     {
         return $this->repository->getByHash($hash);
     }
+
+    public function getLatestPost($pageSize)
+    {
+        return $this->repository->getLatestPost($pageSize);
+    }
 }

@@ -24,4 +24,13 @@ class PostRepository extends EntityRepository implements PostRepositoryInterface
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function getLatestPost($pageSize)
+    {
+        return $this->createQueryBuilder('p')
+            ->addOrderBy('p.id', 'desc')
+            ->setMaxResults($pageSize)
+            ->getQuery()
+            ->getResult();
+    }
 }
