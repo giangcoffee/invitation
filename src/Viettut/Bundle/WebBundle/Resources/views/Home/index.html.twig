@@ -269,47 +269,32 @@
         </div>
     </div>
     <div class="container">
-        <h2>Sản phẩm <strong>nổi bật</strong></h2>
-        <div class="owl-carousel" data-plugin-options='{"items": 3, "autoplay": true, "autoplayTimeout": 3000}'>
+        <h2>Mẫu thiệp <strong>nổi bật</strong></h2>
+        <div class="owl-carousel" data-plugin-options='{"items": 3, "autoplay": true, "autoplayTimeout": 3000, "autoplayHoverPause": true}'>
+            {% for template in templates %}
+                <div>
+                    <a href="{{ path('template_page', {hash: template.hash}) }}" title="{{ template.name }}"><img class="img-responsive" src="{{ template.thumbnail }}" alt="{{ template.name }}"></a>
+                </div>
+            {% endfor %}
             <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/beautiful_day.png') }}" alt="">
+                <a href="{{ path('coming_soon_page') }}" title="Beautiful Day"><img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/beautiful_day.png') }}" alt=""></a>
             </div>
             <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/christmas_wedding.png') }}" alt="">
+                <a href="{{ path('coming_soon_page') }}" title="Christmas Wedding"><img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/christmas_wedding.png') }}" alt=""></a>
             </div>
             <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/circle.png') }}" alt="">
+                <a href="{{ path('coming_soon_page') }}" title="Cotton Candy"><img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/cotton_candy.png') }}" alt=""></a>
             </div>
             <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/classic.png') }}" alt="">
+                <a href="{{ path('coming_soon_page') }}" title="Innocent Bride"><img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/innocent_bride.png') }}" alt=""></a>
             </div>
             <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/cotton_candy.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/crescendo.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/dream_of_lily.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/fall_in_love.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/garden_wedding.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/gold_star.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/innocent_bride.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/love_blossom.png') }}" alt="">
+                <a href="{{ path('coming_soon_page') }}" title="Love Blossom"><img class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/love_blossom.png') }}" alt=""></a>
+
             </div>
         </div>
         <div class="row">
-            <a class="btn btn-primary pull-right">Xem thêm</a>
+            <a class="btn btn-primary pull-right" href="{{ path('templates_page') }}">Xem thêm</a>
         </div>
     </div>
     <hr class="tall"/>
@@ -461,7 +446,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="recent-posts push-bottom">
-                    <h2>Latest <strong>Blog</strong> Posts</h2>
+                    <h2><strong>Bài viết</strong> mới nhất</h2>
                     <div class="row">
                         <div class="owl-carousel" data-plugin-options='{"items": 1}'>
                             {% for post in posts %}

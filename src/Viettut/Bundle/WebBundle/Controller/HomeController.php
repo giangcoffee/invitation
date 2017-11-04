@@ -29,9 +29,11 @@ class HomeController extends Controller
         $pageSize = $this->getParameter('page_size');
         $testimonials = $this->get('viettut.domain_manager.testimonial')->all();
         $posts = $this->get('viettut.domain_manager.post')->getLatestPost($pageSize);
+        $templates = $this->get('viettut.domain_manager.template')->all(3,0);
         return $this->render('ViettutWebBundle:Home:index.html.twig', array(
             'testimonials' => $testimonials,
-            'posts' => $posts
+            'posts' => $posts,
+            'templates' => $templates
         ));
     }
 
@@ -136,5 +138,16 @@ class HomeController extends Controller
         return $this->render('ViettutWebBundle:Home:single_post.html.twig', array(
             "post" => $post
         ));
+    }
+
+    /**
+     * @Route("/coming-soon", name="coming_soon_page")
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function comingSoonAction(Request $request)
+    {
+        return $this->render('ViettutWebBundle:Home:coming_soon.html.twig');
     }
 }
