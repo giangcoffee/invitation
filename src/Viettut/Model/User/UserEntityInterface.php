@@ -72,6 +72,17 @@ interface UserEntityInterface extends ModelInterface, FOSUserInterface
     /**
      * @return string
      */
+    public function getZaloId(): string;
+
+    /**
+     * @param string $zaloId
+     * @return self
+     */
+    public function setZaloId($zaloId);
+
+    /**
+     * @return string
+     */
     public function getName();
 
     /**

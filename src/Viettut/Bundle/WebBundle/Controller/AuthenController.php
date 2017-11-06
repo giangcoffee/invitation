@@ -20,7 +20,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Viettut\Exception\RuntimeException;
 use Viettut\Model\User\UserEntityInterface;
+use Zalo\Authentication\AccessToken;
+use Zalo\Zalo;
+use Zalo\ZaloConfig;
 
 class AuthenController extends Controller
 {
@@ -144,37 +148,48 @@ class AuthenController extends Controller
     /**
      * @param Request $request
      * @Method({"POST"})
-     * @Route("/github/login", name="github_login")
+     * @Route("/zalo/login", name="zalo_login")
      */
-    public function githubLoginAction(Request $request) {
-        $client_id = '13f81c8b888c1b57cc86';
-        $client_secret = 'e54d3f4bd0a0dff1631fe0a7e29d93d11712cb2e';
-        $post = http_build_query(array(
-            'client_id' => $client_id ,
-            'redirect_uri' => $request->get('redirectUri') ,
-            'client_secret' => $client_secret,
-            'code' => $request->get('code')
-        ));
+    public function zaloLoginAction(Request $request)
+    {
+        $oauthCode = isset($_GET['code']) ? $_GET['code'] : "THIS NOT CALLBACK PAGE !!!";
+        $lecturerManager = $this->get('viettut_user.domain_manager.lecturer');
+        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
+        $helper = $zalo -> getRedirectLoginHelper();
+        try {
+            $accessToken = $helper->getAccessToken($this->getParameter('zalo_redirect_uri'));
+            if (!$accessToken instanceof AccessToken) {
+                throw new RuntimeException('Không thể xác thực bằng tài khoản Zalo. Vui lòng thực hiện lại sau');
+            }
 
-        $context = stream_context_create(array("http" => array(
-            "method" => "POST",
-            "header" => "Content-Type: application/x-www-form-urlencodedrn" .
-                "Content-Length: ". strlen($post) . "rn".
-                "Accept: application/json" ,
-            "content" => $post,
-        )));
-        $json_data = file_get_contents("https://github.com/login/oauth/access_token", false, $context);
-        $r = json_decode($json_data , true);
+            $params = ['id', 'name', 'picture', 'birthday', 'gender'];
+            $response = $zalo->get('/me', $accessToken->getValue(), $params, Zalo::API_TYPE_GRAPH);
+            $result = $response->getDecodedBody(); // result
+            $id = array_key_exists('id', $result) ? $result['id'] : null;
+            $avatar = isset($result['picture']['data']['url']) ? $result['picture']['data']['url'] : null;
+            $name = array_key_exists('name', $result) ? $result['name'] : null;
+            $user = $lecturerManager->findUserByUsernameOrEmail($id);
 
-        $access_token = $r['access_token'];
+            if (!$user instanceof UserEntityInterface) {
+                $user = $lecturerManager->createNew();
 
-        $url = "https://api.github.com/user?access_token=$access_token";
+                $user
+                    ->setEnabled(true)
+                    ->setPlainPassword($id)
+                    ->setUsername($id)
+                    ->setEmail($name)
+                    ->setName($name)
+                    ->setZaloId($id)
+                    ->setAvatar($avatar)
+                ;
+                $lecturerManager->save($user);
+            }
 
-        $data =  file_get_contents($url);
+            $token = new UsernamePasswordToken($user, $user->getPassword(), 'main', $user->getRoles());
 
-        //echo $data;
-        $user_data  = json_decode($data , true);
-
-        $username = $user_data['login'];
+            $this->get("security.token_storage")->setToken($token);
+        } catch (\Exception $ex) {
+            throw new RuntimeException('Không thể xác thực bằng tài khoản Zalo. Vui lòng thực hiện lại sau');
+        }
     }
 }

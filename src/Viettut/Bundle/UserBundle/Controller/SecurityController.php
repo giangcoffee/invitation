@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
+use Zalo\Zalo;
+use Zalo\ZaloConfig;
 
 class SecurityController extends BaseController
 {
@@ -72,12 +74,17 @@ class SecurityController extends BaseController
         $api->setRedirectUri($googleRedirectUri); // Enter your file path (Redirect Uri) that you have set to get client ID in API console
         $googleLoginUrl = $api->createAuthUrl();
 
+        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
+        $helper = $zalo -> getRedirectLoginHelper();
+        $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
+
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
-            'googleUrl' => $googleLoginUrl
+            'googleUrl' => $googleLoginUrl,
+            'zaloUrl' => $zaloLoginUrl
         ));
     }
 }

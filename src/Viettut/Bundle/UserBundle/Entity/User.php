@@ -26,64 +26,43 @@ class User extends BaseUser implements UserEntityInterface
     protected $roles;
     protected $joinDate;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $facebookId;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $googleId;
 
-    /**
-     * @var string
-     */
+    /** @var  string */
+    protected $zaloId;
+
+    /** @var string */
     protected $name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $professional;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $company;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $gender;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $phone;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $city;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $address;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $country;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $avatar;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $settings;
 
 
@@ -415,5 +394,23 @@ class User extends BaseUser implements UserEntityInterface
     public function getJoinDate()
     {
         return $this->joinDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZaloId(): string
+    {
+        return $this->zaloId;
+    }
+
+    /**
+     * @param string $zaloId
+     * @return self
+     */
+    public function setZaloId($zaloId)
+    {
+        $this->zaloId = $zaloId;
+        return $this;
     }
 }

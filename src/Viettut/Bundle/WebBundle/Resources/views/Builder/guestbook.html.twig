@@ -992,25 +992,6 @@
             $("#"+tab_id).addClass('on');
         });
 
-        $('#bt_nouser_login').click(function() {
-            var $nouser_name = $("#nouser_name");
-            var $nouser_pwd = $("#nouser_pwd");
-
-            if(!$nouser_name.val()){
-                errLoginMsg('nouser','이름을 입력해주십시요');
-                $nouser_name.focus();
-                return false;
-            }
-
-            if(!$nouser_pwd.val()){
-                errLoginMsg('nouser','비밀번호를 입력해주십시요');
-                $nouser_pwd.focus();
-                return false;
-            }
-
-            localLogin('nouser');
-        });
-
         $('#bt_dalpeng_login').click(function() {
             var $userid = $("#userid");
             var $userpwd = $("#userpwd");
