@@ -15,9 +15,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\TemplateInterface;
+use Symfony\Component\Security\Core\Security;
 
 class BuilderController extends Controller
 {
@@ -49,6 +51,11 @@ class BuilderController extends Controller
         ));
     }
 
+    /**
+     * @Route("/cards/{hash}/guest-book", name="guest_book_page")
+     * @param $request
+     * @return Response
+     */
     public function guestBookAction(Request $request, $hash)
     {
         /** @var CardManagerInterface $cardManager */
@@ -58,6 +65,47 @@ class BuilderController extends Controller
         if (!$card instanceof CardInterface) {
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
+
+        $referrer = $this->generateUrl('card_page', array('hash' => $hash));
+        $groom = $card->getData()['groom_name'];
+        $bride = $card->getData()['bride_name'];
+        $date = $card->getWeddingDate();
+
+        /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
+        $session = $request->getSession();
+
+        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $lastUsernameKey = Security::LAST_USERNAME;
+        // get the error if any (works with forward and redirect -- see below)
+        if ($request->attributes->has($authErrorKey)) {
+            $error = $request->attributes->get($authErrorKey);
+        } elseif (null !== $session && $session->has($authErrorKey)) {
+            $error = $session->get($authErrorKey);
+            $session->remove($authErrorKey);
+        } else {
+            $error = null;
+        }
+
+        if (!$error instanceof AuthenticationException) {
+            $error = null; // The value does not come from the security component.
+        }
+
+        // last username entered by the user
+        $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
+
+        $csrfToken = $this->has('security.csrf.token_manager')
+            ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
+            : null;
+
+        return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
+            'referrer' => $referrer,
+            'groom' => $groom,
+            'bride' => $bride,
+            'date' => $date,
+            'last_username' => $lastUsername,
+            'error' => $error,
+            'csrf_token' => $csrfToken,
+        ));
     }
 
     /**

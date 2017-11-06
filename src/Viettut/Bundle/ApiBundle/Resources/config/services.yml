@@ -17,3 +17,14 @@ services:
         parent : viettut.handler.handler_abstract
         arguments:
             - '@form.factory'
+
+    viettut.services.facebook_service:
+        class: Viettut\Services\FacebookService
+        arguments:
+            - '%facebook_app_id%'
+            - '%facebook_app_secret%'
+            - '%facebook_graph_default_version%'
+            - '%domain%'
+            - '%http_schema%'
+            - '%facebook_object_id_url_template%'
+            - '@viettut.domain_manager.card'

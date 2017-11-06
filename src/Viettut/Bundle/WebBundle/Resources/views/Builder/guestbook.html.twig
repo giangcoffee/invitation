@@ -84,6 +84,14 @@
     </script>
 </head>
 <body class="orange"> <!-- 방명록색상 적용 orange / blue / pink / mint -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1934863569863740';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <input type="hidden" id="dn" value="32539" />
 <input type="hidden" id="domainid" value="gardenwedding" />
 <input type="hidden" id="nowpage" value="1" />
@@ -94,7 +102,7 @@
     <div class="gnb_wrap">
         <div class="color_bg"></div>
         <h1 class="title">LƯU BÚT</h1>
-        <a href="/gardenwedding" style="display:block;"><div class="back"><span class="ico-back">Quay lại</span></div></a>
+        <a href="{{ referrer }}" style="display:block;"><div class="back"><span class="ico-back">Quay lại</span></div></a>
         <div class="menu"><span class="ico-menu">Menu</span></div>
 
         <div class="gnb_login">
@@ -104,27 +112,69 @@
 
     <!--헤더-->
     <div class="header_wrap">
-        <div class="header_area" style="background:url('//dalpeng.com/user/gardenwedding/img/S_7445cc41988e70ed839f0505739f50fb.jpg') no-repeat center center;background-size:cover">
+        <div class="header_area" style="background:url('/bundles/viettutweb/img/templates/common/S_7445cc41988e70ed839f0505739f50fb.jpg') no-repeat center center;background-size:cover">
             <div class="header_contents">
-                <div class="marrier">윤신랑 & 박신부</div>
-                <div class="message">결혼식에 초대합니다^^</div>
-                <div class="date"><span>2018.03.24 (토) 오후 2시 </span></div>
+                <div class="marrier">{{ groom }} & {{ bride }}</div>
+                <div class="message">Ngày chung đôi</div>
+                <div class="date"><span>{{ date | date('d.m.Y (l) H:i A') }} </span></div>
             </div>
-            <div class="header_write"><span class="ico-pencil">글쓰기</span></div>
+            <div class="header_write"><span class="ico-pencil">Viết</span></div>
         </div>
         <div class="recentlist_box">
             <ul class="headertab_tabs recentlist_tabs">
-                <li data-tab="hdrecent_tab1" class="on">새 글<span class="color_txt count"></span></li>
-                <li data-tab="hdrecent_tab2" class="">새 댓글<span class="color_txt count"></span></li>
+                <li data-tab="hdrecent_tab1" class="on">Facebook<span class="color_txt count"></span></li>
+                <li data-tab="hdrecent_tab2" class="">Đăng nhập<span class="color_txt count"></span></li>
             </ul>
             <div class="headertab_area recentlist_area on" id="hdrecent_tab1">
-                <ul>
-                </ul>
+                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="360" data-numposts="1"></div>
             </div>
             <div class="headertab_area recentlist_area" id="hdrecent_tab2">
-                <ul>
-                </ul>
+                <div class="login_area on" id="login_tab1">
+                    <form  method="POST" action="{{ path('fos_user_security_check') }}">
+                        <ul class="login_form">
+                            {% if csrf_token %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            {% endif %}
+                            <li class="id_area">
+                                <input type="text" id="nouser_name" name="_username" class="inp_id" placeholder="username">
+                            </li>
+                            <li class="pw_area">
+                                <input type="password" id="nouser_password" name="_password" class="inp_pw" placeholder="password">
+                                <input type="hidden" name="_target_path" value="{{ referrer }}" />
+                            </li>
+                            <li>
+                                <button class="btn_login" id="bt_nouser_login">Đăng Nhập</button>
+                            </li>
+                            <li>
+                                Chưa có tài khoản ?
+                                <a href="{{ path('fos_user_registration_register') }}">
+                                    Đăng ký
+                                </a>
+                            </li>
+                        </ul>
+                    </form>
+                    <p class="alert_info">
+                        {% if error %}
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        {% endif %}
+                    </p>
+                    {#<ul class="login_info">#}
+                        {#<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Writing is possible without membership.</font></font></li>#}
+                        {#<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Your name and password are required for deleting posts.</font></font></li>#}
+                    {#</ul>#}
+                    {#<div class="snslogin_line"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OR</font></font></span></div>#}
+                    {#<ul class="snslogin_list">#}
+                        {#<li><span id="bt_Facebook" class="ico-snslogin ico-facebook"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Facebook</font></font></span></li>#}
+                        {#<li><span id="bt_Kakao" class="ico-snslogin ico-kakaotalk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KakaoTalk</font></font></span></li>#}
+                        {#<li><span id="bt_Naver" class="ico-snslogin ico-naver"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Naver</font></font></span></li>#}
+                        {#<li><span id="bt_Instagram" class="ico-snslogin ico-instagram"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instagram</font></font></span></li>#}
+                    {#</ul>#}
+                    {#<ul class="login_info">#}
+                        {#<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sign in easily with your SNS account!</font></font></li>#}
+                    {#</ul>#}
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -141,7 +191,7 @@
 
     <!--글쓰기버튼-->
     <div class="btn_write">
-        <span class="ico-pencil">글쓰기</span>
+        <span class="ico-pencil">Viết</span>
     </div>
     <!--//글쓰기버튼-->
 
@@ -154,11 +204,11 @@
 
 <!--메뉴 오픈-->
 <div class="mypage_wrap" id="">
-    <div class="mypage_close"><span class="ico-popclose-g">닫기</span></div>
+    <div class="mypage_close"><span class="ico-popclose-g">Đóng</span></div>
     <div class="recentlist_box">
         <ul class="mypagetab_tabs recentlist_tabs">
-            <li data-tab="recent_tab1" class="on">새 글<span class="color_txt count"></span></li>
-            <li data-tab="recent_tab2" class="">새 댓글<span class="color_txt count"></span></li>
+            <li data-tab="recent_tab1" class="on">Bài viết mới<span class="color_txt count"></span></li>
+            <li data-tab="recent_tab2" class="">Nhận xét mới<span class="color_txt count"></span></li>
         </ul>
         <div class="mypagetab_area recentlist_area on" id="recent_tab1">
             <ul>
@@ -170,7 +220,7 @@
         </div>
     </div>
     <div class="mypage_btns mypage_btns1">
-        <div class="mypage_btn write color_bg"><span>글쓰기</span></div>
+        <div class="mypage_btn write color_bg"><span>Viết</span></div>
     </div>
 </div>
 <!--//메뉴 오픈-->
@@ -181,8 +231,8 @@
     <div class="popup_box">
         <div class="pop_title">
             <ul class="login_tabs">
-                <li data-tab="login_tab1" class="on">비회원 글쓰기</li>
-                <li data-tab="login_tab2" class="">달팽회원 로그인</li>
+                <li data-tab="login_tab1" class="on">Chưa đăng nhập</li>
+                <li data-tab="login_tab2" class="">Đăng nhập</li>
             </ul>
         </div>
         <div class="login_area on" id="login_tab1">
@@ -450,159 +500,6 @@
     </div>
 </div>
 <!--//팝업:프로필이미지업로드-->
-
-<script id="tmpl-recent" type="text/template">
-    <li id="{{id}}" {{#contentId}} data-content-id="{{contentId}}" {{/contentId}}>
-        <div class="recentprofile_img">
-            <img src="{{profileSrc}}{{^profileSrc}}/img/snsbbs/nouser.png{{/profileSrc}}" alt="프로필 이미지">
-        </div>
-        <div class="recentuser_name"><div class="ico-sns-small {{provider}}"></div><span>{{name}}</span></div>
-        <div class="recent_date">{{date}}</div>
-        <p {{#only_emoticon}} class="emoticon" {{/only_emoticon}}>{{{contents}}}</p>
-    </li>
-</script>
-<script id="tmpl-content" type="text/template">
-    <li id="{{id}}" class="cloak">
-        <div class="message_box">
-            <div class="message_area">
-                <div class="profile_area">
-                    <div class="profile_img">
-                        <img src="{{profileSrc}}" alt="프로필 이미지">
-                    </div>
-                    <div class="ico-sns-small {{provider}}"></div>
-                </div>
-                <div class="text_area">
-                    <div class="user_name"><span>{{name}}</span></div>
-                    <p>{{{contents}}}</p>
-                    {{#emoticon}}
-                    <div class="{{emoticon}}"></div>
-                    {{/emoticon}}
-
-                    {{#gallerySrc}}
-                    <p>
-                        <img src="{{gallerySrc}}" id="{{galleryId}}" width="300">
-                    </p>
-                    {{/gallerySrc}}
-
-                </div>
-                <div class="reply_area">
-                    <div class="reply_btn">
-                        <i class="fa fa-commenting-o fa-flip-horizontal color_txt"></i>
-                        <span class="hidden">댓글</span>
-                        <span class="reply_txt color_txt">{{commentCount}}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="del_area">
-                {{#deletable}}
-                <div class="del_btn">
-                    <span class="ico-trash">글삭제</span>
-                </div>
-                {{/deletable}}
-                <div class="info_date">
-                    <span>{{date}}</span>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="comment_box">
-            <div class="pop_emo_area">
-                <div class="pop_emo_box">
-                    <div class="pop_emo_select emo-type-d emo09" id="pop_emo_select" style="display: none; width:120px"><!--type:a,b,d 120px / type:c 176px-->
-                        <div id="bt_pop_close_selecticon" class="emo_select_close">
-                            <span class="ico-minus-w">삭제</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="write_area {{^isLogin}}not_login{{/isLogin}}">
-                <div class="write_emo">
-                    <i class="fa fa-smile-o"></i>
-                    <span class="hidden">이모티콘 선택</span>
-                </div>
-                <div class="write_input">
-                    <input type="text" id="" placeholder="{{placeholder}}" {{^isLogin}} disabled="disabled" {{/isLogin}}>
-                </div>
-                <div class="write_btn color_bg">
-                    <span class="ico-pencil">등록</span>
-                </div>
-            </div>
-            <ul class="comm_list">
-                <!-- <li class="loader">
-                    <div class="comment_loader"></div>
-                </li> -->
-            </ul>
-        </div>
-    </li>
-</script>
-
-<script id="tmpl-comment" type="text/template">
-    <li id="comm_{{id}}">
-        <div class="comm_profile_area">
-            <div class="comm_profile_img">
-                <img src="{{profileSrc}}" alt="프로필 이미지">
-            </div>
-        </div>
-        <div class="comm_text_area">
-            <div class="comm_user_name"><div class="ico-sns-small {{provider}}"></div><span>{{name}}</span></div>
-            <div class="comm_info">
-                <span class="date">{{date}}</span>
-            </div>
-            <p>{{{contents}}}</p>
-
-            {{#emoticon}}
-            <div class="{{emoticon}}"></div>
-            {{/emoticon}}
-        </div>
-        {{#deletable}}
-        <div class="comm_del_area">
-            <div class="comm_del_btn">
-                <span class="ico-trash">댓글삭제</span>
-            </div>
-        </div>
-        {{/deletable}}
-    </li>
-</script>
-
-<script id="tmpl-view-content" type="text/template">
-    <div class="message_area">
-        <div class="profile_area">
-            <div class="profile_img">
-                <img src="{{profileSrc}}" alt="프로필 이미지">
-            </div>
-            <div class="ico-sns-small {{provider}}"></div>
-        </div>
-        <div class="text_area">
-            <div class="user_name"><span>{{name}}</span></div>
-            <p>{{{contents}}}</p>
-            {{#emoticon}}
-            <div class="{{emoticon}}"></div>
-            {{/emoticon}}
-            {{#gallerySrc}}
-            <p>
-                <img src="{{gallerySrc}}" id="{{galleryId}}" width="300">
-            </p>
-            {{/gallerySrc}}
-        </div>
-        <div class="reply_area">
-            <div class="reply_btn">
-                <i class="fa fa-commenting-o fa-flip-horizontal color_txt"></i>
-                <span class="hidden">댓글</span><span class="reply_txt color_txt">{{commentCount}}</span>
-            </div>
-        </div>
-        <div class="del_area">
-            {{#deletable}}
-            <div class="del_btn">
-                <span class="ico-trash">글삭제</span>
-            </div>
-            {{/deletable}}
-            <div class="info_date">
-                <span>{{date}}</span>
-            </div>
-        </div>
-</script>
 
 <script>
     $(function() {

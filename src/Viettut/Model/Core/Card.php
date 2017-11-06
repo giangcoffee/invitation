@@ -14,66 +14,47 @@ use Viettut\Model\User\UserEntityInterface;
 
 class Card implements CardInterface
 {
-    /**
-     * @var integer
-     */
+    /** @var integer */
     protected $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $hash;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $data;
 
-    /**
-     * @var TemplateInterface
-     */
+    /** @var TemplateInterface */
     protected $template;
 
-    /**
-     * @var UserEntityInterface
-     */
+    /** @var UserEntityInterface */
     protected $author;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $gallery;
 
-    /**
-     * @var DateTime
-     */
+    /** @var DateTime */
     protected $weddingDate;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $comments;
 
-    /**
-     * @var \DateTime
-     */
+    /** @var DateTime */
     protected $createdAt;
 
-    /**
-     * @var \DateTime
-     */
+    /** @var  string */
+    protected $commentObjectId;
+
+    /** @var DateTime */
     protected $deletedAt;
 
+    /** @var DateTime */
     protected $longitude;
 
+    /** @var DateTime */
     protected $latitude;
 
-
-    /**
-     * @var bool
-     */
+    /** @var bool */
     protected $forGroom;
-
 
     function __construct()
     {
@@ -310,6 +291,24 @@ class Card implements CardInterface
     public function setForGroom($forGroom)
     {
         $this->forGroom = $forGroom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommentObjectId(): string
+    {
+        return $this->commentObjectId;
+    }
+
+    /**
+     * @param string $commentObjectId
+     * @return self
+     */
+    public function setCommentObjectId($commentObjectId)
+    {
+        $this->commentObjectId = $commentObjectId;
+        return $this;
     }
 
     function __toString()

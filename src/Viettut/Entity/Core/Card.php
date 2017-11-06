@@ -19,5 +19,5 @@ class Card extends CardModel
     protected $latitude;
     protected $longitude;
     protected $forGroom;
-
+    protected $commentObjectId;
 }

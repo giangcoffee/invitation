@@ -20,13 +20,16 @@ parameters:
     upload_directory: /uploads/images
     popular_size: 10
     page_size: 5
-    facebook_app_id: '1245562308819573'
-    facebook_app_secret: '55ea4598ddcd5707ef67aaa4d0224086'
-    facebook_redirect_uri: 'http://viettut.dev/app_dev.php/facebook/login'
+    facebook_app_id: '1934863569863740'
+    facebook_app_secret: 'd434152d2c3d913d6fb72ce9db5f9eb6'
+    facebook_redirect_uri: 'http://invitation.dev/app_dev.php/facebook/login'
+    facebook_graph_default_version: 'v2.9'
     google_client_id: '355171488116-rml9h7b9ivdn8ub5sgu6r6eh1vkluvav.apps.googleusercontent.com'
     google_client_secret: 'eyeBjN6tVwQwNrkG-S0XQmxa'
     google_redirect_uri: 'http://viettut.dev/app_dev.php/google/login'
     cookie_domain: '.thiepdo.com'
     domain: 'thiepdo.com'
+    http_schema: 'http://'
+    facebook_object_id_url_template: 'https://graph.facebook.com/?id=%s'
     cookie_path: '/'
     cookie_lifetime: 3600

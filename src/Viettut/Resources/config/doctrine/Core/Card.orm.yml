@@ -41,6 +41,9 @@ Viettut\Entity\Core\Card:
             nulable: false
             options:
                 default: true
+        commentObjectId:
+            type: string
+            nullable: true
         deletedAt:
             type: date
             nullable: true

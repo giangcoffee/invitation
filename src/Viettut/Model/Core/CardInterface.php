@@ -143,4 +143,15 @@ interface CardInterface extends ModelInterface
      * @param boolean $forGroom
      */
     public function setForGroom($forGroom);
+
+    /**
+     * @return string
+     */
+    public function getCommentObjectId(): string;
+
+    /**
+     * @param string $commentObjectId
+     * @return self
+     */
+    public function setCommentObjectId($commentObjectId);
 }
