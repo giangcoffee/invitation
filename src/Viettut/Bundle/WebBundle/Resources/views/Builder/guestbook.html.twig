@@ -26,7 +26,6 @@
     <link rel="icon" sizes="128x128" href="/img/mobileicon/dalpeng_128x128.png">
 
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/common/snsbbs.css?v=201706301332">
-    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/lib/uploadifive.css" />
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/lib/jquery.cropbox.custom.css" />
 
     <style>
@@ -39,7 +38,6 @@
     <script type="text/javascript" src="/bundles/viettutweb/js/lib/imagesloaded.pkgd.min.js"></script>
     <script type="text/javascript" src="/bundles/viettutweb/js/lib/hammer.js"></script>
     <script type="text/javascript" src="/bundles/viettutweb/js/lib/jquery.mousewheel.js"></script>
-    <script type="text/javascript" src="/bundles/viettutweb/js/lib/jquery.uploadifive.js"></script>
     <script type="text/javascript" src="/bundles/viettutweb/js/lib/jquery.cropbox.custom.js"></script>
 
     <script>
@@ -102,10 +100,10 @@
     <div class="gnb_wrap">
         <div class="color_bg"></div>
         <h1 class="title">LƯU BÚT</h1>
-        <a href="{{ referrer }}" style="display:block;"><div class="back"><span class="ico-back">Quay lại</span></div></a>
+        <a href="{{ referrer }}"><div class="back"><span class="ico-back">Quay lại</span></div></a>
         <div class="menu"><span class="ico-menu">Menu</span></div>
 
-        <div class="gnb_login">
+        <div class="gnb_login" onclick="showLoginPopup()">
             <div class="write"><span class="ico-pencil">VIẾT</span></div>
         </div>
     </div>
@@ -118,63 +116,19 @@
                 <div class="message">Ngày chung đôi</div>
                 <div class="date"><span>{{ date | date('d.m.Y (l) H:i A') }} </span></div>
             </div>
-            <div class="header_write"><span class="ico-pencil">Viết</span></div>
+            <div class="header_write" onclick="showLoginPopup()"><span class="ico-pencil">Viết</span></div>
         </div>
-        <div class="recentlist_box">
+        <div class="recentlist_box" style="top: 374px;">
             <ul class="headertab_tabs recentlist_tabs">
-                <li data-tab="hdrecent_tab1" class="on">Facebook<span class="color_txt count"></span></li>
-                <li data-tab="hdrecent_tab2" class="">Đăng nhập<span class="color_txt count"></span></li>
+                <li data-tab="hdrecent_tab1" class="on"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">New article</font></font><span class="color_txt count"></span></li>
+                <li data-tab="hdrecent_tab2" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">New comments</font></font><span class="color_txt count"></span></li>
             </ul>
             <div class="headertab_area recentlist_area on" id="hdrecent_tab1">
-                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="360" data-numposts="1"></div>
+                <ul><li id="norecent"><div class="norecent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No new posts.</font></font></div></li></ul>
             </div>
             <div class="headertab_area recentlist_area" id="hdrecent_tab2">
-                <div class="login_area on" id="login_tab1">
-                    <form  method="POST" action="{{ path('fos_user_security_check') }}">
-                        <ul class="login_form">
-                            {% if csrf_token %}
-                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                            {% endif %}
-                            <li class="id_area">
-                                <input type="text" id="nouser_name" name="_username" class="inp_id" placeholder="username">
-                            </li>
-                            <li class="pw_area">
-                                <input type="password" id="nouser_password" name="_password" class="inp_pw" placeholder="password">
-                                <input type="hidden" name="_target_path" value="{{ referrer }}" />
-                            </li>
-                            <li>
-                                <button class="btn_login" id="bt_nouser_login">Đăng Nhập</button>
-                            </li>
-                            <li>
-                                Chưa có tài khoản ?
-                                <a href="{{ path('fos_user_registration_register') }}">
-                                    Đăng ký
-                                </a>
-                            </li>
-                        </ul>
-                    </form>
-                    <p class="alert_info">
-                        {% if error %}
-                            {{ error.messageKey|trans(error.messageData, 'security') }}
-                        {% endif %}
-                    </p>
-                    {#<ul class="login_info">#}
-                        {#<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Writing is possible without membership.</font></font></li>#}
-                        {#<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Your name and password are required for deleting posts.</font></font></li>#}
-                    {#</ul>#}
-                    {#<div class="snslogin_line"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OR</font></font></span></div>#}
-                    {#<ul class="snslogin_list">#}
-                        {#<li><span id="bt_Facebook" class="ico-snslogin ico-facebook"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Facebook</font></font></span></li>#}
-                        {#<li><span id="bt_Kakao" class="ico-snslogin ico-kakaotalk"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KakaoTalk</font></font></span></li>#}
-                        {#<li><span id="bt_Naver" class="ico-snslogin ico-naver"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Naver</font></font></span></li>#}
-                        {#<li><span id="bt_Instagram" class="ico-snslogin ico-instagram"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instagram</font></font></span></li>#}
-                    {#</ul>#}
-                    {#<ul class="login_info">#}
-                        {#<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sign in easily with your SNS account!</font></font></li>#}
-                    {#</ul>#}
-                </div>
+                <ul><li id="norecent"><div class="norecent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No new comments.</font></font></div></li></ul>
             </div>
-
         </div>
 
     </div>
@@ -190,7 +144,7 @@
     <!--//리스트-->
 
     <!--글쓰기버튼-->
-    <div class="btn_write">
+    <div class="btn_write" onclick="showLoginPopup()">
         <span class="ico-pencil">Viết</span>
     </div>
     <!--//글쓰기버튼-->
@@ -227,90 +181,81 @@
 
 
 <!--팝업:로그인-->
-<div class="popup_wrap popup_login" id="popup_login">
-    <div class="popup_box">
-        <div class="pop_title">
-            <ul class="login_tabs">
-                <li data-tab="login_tab1" class="on">Chưa đăng ký</li>
-                <li data-tab="login_tab2" class="">Thành viên</li>
-            </ul>
-        </div>
-        <div class="login_area on" id="login_tab1">
-            <ul class="login_form">
-                <li class="id_area"><label for="nouser_name">이름</label><input type="text" id="nouser_name" class="inp_id"></li>
-                <li class="pw_area"><label for="nouser_pwd">비밀번호</label><input type="password" id="nouser_pwd" class="inp_pw"></li>
-                <li><button class="btn_login" id="bt_nouser_login">글쓰기</button></li>
-            </ul>
-            <p class="alert_info"></p>
-            <ul class="login_info">
-                <li>회원가입 없이 글쓰기가 가능합니다.</li>
-                <li>이름, 비밀번호는 글 삭제 시 필요합니다.</li>
-            </ul>
-            <div class="snslogin_line"><span>OR</span></div>
-            <ul class="snslogin_list">
-                <li><span id="bt_Facebook" class="ico-snslogin ico-facebook">페이스북</span></li>
-                <li><span id="bt_Kakao" class="ico-snslogin ico-kakaotalk">카카오톡</span></li>
-                <li><span id="bt_Naver" class="ico-snslogin ico-naver">네이버</span></li>
-                <li><span id="bt_Instagram" class="ico-snslogin ico-instagram">인스타그램</span></li>
-            </ul>
-            <ul class="login_info">
-                <li>SNS계정으로 간편하게 로그인하세요!</li>
-            </ul>
-        </div>
-        <div class="login_area" id="login_tab2">
-            <ul class="login_form">
-                <li class="id_area"><label for="userid">아이디(이메일)</label><input type="text" id="userid" class="inp_id"></li>
-                <li class="pw_area"><label for="userpwd">비밀번호</label><input type="password" id="userpwd" class="inp_pw"></li>
-                <li><button class="btn_login" id="bt_dalpeng_login">로그인</button></li>
-                <li><button class="btn_login btn_naver" id="bt_dpNaver">네이버아이디로 로그인</button></li>
-            </ul>
-            <p class="alert_info"></p>
-            <ul class="login_info">
-                <li>달팽회원 아이디(이메일)로 로그인하시면<br>방명록을 관리하실 수 있습니다.</li>
-            </ul>
-        </div>
+{% if app.user %}
+    <div class="popup_wrap popup_write" id="popup_login">
+        <div class="popup_box">
+            <div class="pop_title color_bg">Viết lưu bút</div>
+            <div class="pop_write">
+                <div class="profile_area">
+                    <div class="profile_img">
+                        <img src="{{ app.user.avatar }}" alt="avatar">
+                    </div>
+                    {#<div class="ico-sns-small notlogin"></div>#}
+                </div>
+                <div class="name_area">
+                    <div class="user_name"><span>{{ app.user.name }}</span></div>
+                </div>
+                <div class="text_area">
+                    <textarea class="ui-state-disabled" id="contents" placeholder="nhập nội dung"></textarea>
+                </div>
 
-        <div class="popup_close"><span class="ico-popclose-g">닫기</span></div>
+                <div class="select_area">
+
+                    <div id="div_emo_select" class="emo_select-hide" style="display:none;width:176px;">
+                        <div id="bt_close_selecticon" class="emo_select_close"><span class="ico-minus-w">Đóng</span></div>
+                    </div>
+                </div>
+
+                <div class="btn_area">
+                    <div class="write_emo"><i class="fa fa-smile-o"></i><span class="hidden">Biểu tượng</span></div><!--이모티콘선택하면 .on 추가-->
+                    <div class="write_btn color_bg"><span class="ico-pencil">Đăng</span></div>
+                </div>
+            </div>
+            <div class="popup_close"><span class="ico-popclose-w">Đóng</span></div>
+
+        </div>
     </div>
-</div>
+{% else %}
+    <div class="popup_wrap popup_login" id="popup_login">
+        <div class="popup_box">
+            <div class="pop_title">
+                <ul class="login_tabs">
+                    <li class="on">Đăng nhập</li>
+                </ul>
+            </div>
+            <div class="login_area on">
+                <div class="social-buttons">
+                    <a href="{{ facebookUrl }}" class="btn_login btn-fb">Đăng nhập Facebook</a>
+                    <a href="{{ zaloUrl }}" class="btn_login btn-zl">Đăng nhập Zalo</a>
+                </div>
+                <form  method="POST" action="{{ path('fos_user_security_check') }}">
+                    <ul class="login_form">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+                        <li class="id_area">
+                            <input type="text" id="nouser_name" name="_username" class="inp_id" placeholder="username">
+                        </li>
+                        <li class="pw_area">
+                            <input type="password" id="nouser_password" name="_password" class="inp_pw" placeholder="password">
+                            <input type="hidden" name="_target_path" value="{{ referrer }}" />
+                        </li>
+                        <li>
+                            <button class="btn_login" id="bt_nouser_login">Đăng Nhập</button>
+                        </li>
+                    </ul>
+                </form>
+                <p class="alert_info">
+                    {% if error %}
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="popup_close"><span class="ico-popclose-g">Đóng</span></div>
+        </div>
+    </div>
+{% endif %}
 <!--//팝업:로그인-->
-
-
-<!--팝업:글쓰기-->
-<div class="popup_wrap popup_write" id="popup_write">
-    <div class="popup_box">
-        <div class="pop_title color_bg">Viết lưu bút</div>
-        <div class="pop_write">
-            <div class="profile_area">
-                <div class="profile_img">
-                    <img src="/bundles/viettutweb/img/templates/common/nouser.png" alt="">
-                </div>
-                <div class="ico-sns-small notlogin"></div>
-            </div>
-            <div class="name_area">
-                <div class="user_name"><span></span></div>
-            </div>
-            <div class="text_area">
-                <textarea class="ui-state-disabled" id="contents" placeholder="nhập nội dung"></textarea>
-            </div>
-
-            <div class="select_area">
-
-                <div id="div_emo_select" class="emo_select-hide" style="display:none;width:176px;">
-                    <div id="bt_close_selecticon" class="emo_select_close"><span class="ico-minus-w">Đóng</span></div>
-                </div>
-            </div>
-
-            <div class="btn_area">
-                <div class="write_emo"><i class="fa fa-smile-o"></i><span class="hidden">Biểu tượng</span></div><!--이모티콘선택하면 .on 추가-->
-                <div class="write_btn color_bg"><span class="ico-pencil">Viết</span></div>
-            </div>
-        </div>
-        <div class="popup_close"><span class="ico-popclose-w">Đóng</span></div>
-
-    </div>
-</div>
-<!--//팝업:글쓰기-->
 
 <!--팝업:글읽기-->
 <div class="popup_wrap popup_read" id="popup_read">
@@ -475,33 +420,15 @@
 </div>
 <!--//팝업:로그아웃-->
 
-<!--팝업:프로필이미지업로드-->
-<div class="popup_wrap popup_upload" id="">
-    <div class="popup_box">
-        <div class="pop_title">프로필이미지 편집</div>
-        <div class="pop_upload">
-            <div id="upload"></div>
-            <div id="upload_queue" class="hide" style="position:absolute;width:230px;z-index:999;"></div>
-            <div class="pop_upload_img">
-                <img src="/img/snsbbs/profile_noimg.png" alt="">
-            </div>
-            <div class="pop_upload_btn color_bg"><span class="ico-upload">파일찾기</span></div>
-            <div class="pop_imgdel_btn"><span class="ico-close-w">삭제</span></div>
-            <div class="pop_pm_btn" style="display:none"><span class="ico-plus"></span><span class="ico-minus"></span></div>
-        </div>
-        <div class="pop_upload_info">
-            <p class="info1">프로필이미지 영역을 참고하시어<br>사진 위치를 조정해주세요.</p>
-        </div>
-        <div class="pop_btns pop_btns2">
-            <div class="pop_btn cancel">취소</div>
-            <div class="pop_btn ok color_bg">적용</div>
-        </div>
-        <div class="popup_close"><span class="ico-popclose-w">닫기</span></div>
-    </div>
-</div>
-<!--//팝업:프로필이미지업로드-->
-
 <script>
+    function showLoginPopup() {
+        var $body = $("body");
+        var top = $body.scrollTop() ? -($body.scrollTop()) : -($("html, body").scrollTop());
+
+        $("#popup_login").addClass("on");
+        $body.addClass("noscroll").offset({"top": top});
+    }
+
     $(function() {
         var $document = $(document);
         var grid = $(".contents_list");
@@ -618,14 +545,6 @@
             });
         }
 
-        function uploadError(queueItem, msg) {
-            queueItem.find('.fileinfo div').text("전송실패").css("color", "#FF0000");
-            queueItem.removeClass("complete");
-            queueItem.addClass("error");
-
-            alert(msg);
-        }
-
         // 팝업창에서 어두운 부분을 눌렀을 때 팝업창 닫게 처리
         $(".popup_wrap").on("click", function(e) {
             var target = e.target;
@@ -689,23 +608,11 @@
 
         $(".mypage_btn.write").on('click', function(){
             //$(".mypage_wrap").removeClass("on");
-            $(".popup_login").addClass("on");
+            $("#popup_login").addClass("on");
 
             $("body").addClass("noscroll");
         });
 
-        $(".btn_write").on('click', function(){
-            var $body = $("body");
-            var top = $body.scrollTop() ?
-                    -($body.scrollTop()) :
-                    -($("html, body").scrollTop());
-
-            //$(".mypage_wrap").removeClass("on");
-            $(".popup_login").addClass("on");
-
-            $body.addClass("noscroll");
-            $body.css("top", top);
-        });
         $(".mypage_wrap.on .recentlist_area.on").on('click', function(){
             $(".popup_read").addClass("on");
             $("body").addClass("noscroll");
@@ -1190,185 +1097,6 @@
             snsbbs.more("comment", content_id);
         });
 
-        // 글 추적
-        $document.on("click", ".headertab_area ul>li", function() {
-            var $this = $(this);
-            var id = $this.attr("id");
-            var data_content_id = $this.attr("data-content-id");
-            var recent_id = data_content_id ? data_content_id : id.replace("content_", "");
-            var result = /([a-zA-Z]+)_([0-9]+)/.exec(id);
-            var type = result[1];
-            var comment_id = result[2];
-            var content = $("#" + recent_id);
-            var comment_box = content.find(".comment_box");
-            var exist_content = content.length == 1 ? true : false;
-            var contents_list = $(".contents_list>li:not(.loader)");
-            var content_last_id = contents_list.last().attr("id");
-            var loading = '<div class="loader" style="text-align:center;">'
-                    + '<div class="contents_loader"></div>'
-                    + '</div>';
-            var request = $.Deferred();
-            var contents_wrap = $(".contents_wrap");
-            var contents_loader = $(".contents_list .loader");
-
-
-            request.resolve();
-
-            var request_data = {
-                "dn": $("#dn").val(),
-                "target": recent_id,
-                "content_last_id": content_last_id
-            }
-
-            if(!exist_content && !snsbbs.search_content) {
-                snsbbs.search_content = true; // 중복 요청 방지
-                request = snsbbs.getContent(request_data).then(function(result) {
-                    var current_page = Math.floor(((contents_list.length + result.list.length) / 10) + 1);
-
-                    $("#nowpage").val(current_page);
-                    snsbbs.makeContent(result.list, "more");
-
-                    $(".contents_list").find(".contents_loader").parent().remove();
-                    return result;
-                });
-            }
-
-            if(type === "comment") {
-                var comment_last_id, comment_list;
-                var exist_comment = false;
-                var dom_comment_count = 0;
-                var comment_waitbar = '<li class="loader">' +
-                        '<div class="comment_loader"></div>' +
-                        '</li>';
-
-                exist_comment = comment_box.find("#comm_" + comment_id).length ? true : false;
-                comment_list = comment_box.find(".comm_list li");
-                dom_comment_count = comment_list.length;
-                comment_last_id = comment_list.last().attr("id");
-
-                if(comment_last_id) {
-                    comment_last_id = comment_last_id.replace("comm_", "");
-                }
-
-                if(!exist_comment && !snsbbs.search_comment) {
-                    snsbbs.search_comment = true; // 중복 요청 방지
-                    request = request.then(function(result) {
-                        return $.ajax({
-                            type: 'post',
-                            dataType: "json",
-                            url	: '/snsbbs/getDetailList',
-                            data : {
-                                'dn': $("#dn").val(),
-                                'sn': recent_id,
-                                'target': comment_id,
-                                'dccnt': dom_comment_count,
-                                'comment_last_id': comment_last_id
-                            },
-                            beforeSend: function() {
-                                comment_box.find(".comm_prev").remove();
-
-                                /*if(dom_comment_count > 0) {
-                                 comment_box.append(comment_waitbar);
-                                 } else {
-                                 comment_box.prepend(comment_waitbar);
-                                 }*/
-                            },
-                            complete: function(ajax) {
-                                //comment_box.find(".loader").remove();
-                            },
-                            timeout: 10000
-                        })
-                    }).then(function(result) {
-                        var list_count, page;
-                        var makeType = dom_comment_count > 0 ? "more" : "refresh";
-                        var list = result.list;
-                        var content_id = result.content_id;
-                        var is_more = result.is_more;
-
-                        content = $("#" + recent_id);
-                        comment_box = content.find(".comment_box");
-                        comment_box.addClass("on");
-
-                        snsbbs.makeComment(list, content_id, is_more, makeType, "default");
-
-                        list_count = comment_box.find(".comm_list li").length;
-                        page = Math.ceil(list_count / snsbbs.COMMENT_PER_PAGE);
-
-                        if(list_count % snsbbs.COMMENT_PER_PAGE === 0) {
-                            page += 1;
-                        }
-
-                        content.data("page", page);
-
-                        return result;
-                    });
-                }
-            }
-
-            request.then(function(result) {
-                var target, offsetTop, target_height;
-                var message_box = content.find(".message_box");
-                var sorted;
-
-                if(type === "content") {
-                    target = $(".contents_list li#" + recent_id);
-                } else {
-                    target = $("#comm_" + comment_id);
-                }
-
-                if(!exist_content || (type === "comment" && !exist_comment)) {
-                    sorted = grid.imagesLoaded().always( function() {
-                        grid.masonry('initLayoutItems', grid.data('masonry').items, true);
-                    });
-                }
-
-                if(type === "content" && exist_content) {
-                    offsetTop = content[0].offsetTop - 350;
-                } else {
-                    var prev_comment_list = target.prevAll("li")
-                    var comment_height = 0;
-                    var sorted_offset;
-
-                    if(sorted != undefined) {
-                        sorted_offset = sorted.always(function() {
-                            offsetTop = $("#" +recent_id)[0].offsetTop;
-
-                            comment_height += content.find(".message_box").height();
-                            comment_height += comment_box.find(".write_area").height();
-
-                            $.each(prev_comment_list, function(k, comment) {
-                                comment_height += $(comment).height();
-                            });
-
-                            offsetTop += comment_height;
-                        });
-                    } else {
-                        offsetTop = $("#" +recent_id)[0].offsetTop;
-
-                        comment_height += content.find(".message_box").height();
-                        comment_height += comment_box.find(".write_area").height();
-
-                        $.each(prev_comment_list, function(k, comment) {
-                            comment_height += $(comment).height();
-                        });
-
-                        offsetTop += comment_height;
-                    }
-                }
-
-                if(sorted_offset != undefined) {
-                    sorted_offset.always(function() {
-                        snsbbs.scrolling(target, offsetTop);
-                    });
-                } else {
-                    snsbbs.scrolling(target, offsetTop);
-                }
-
-                snsbbs.search_content = false;
-                snsbbs.search_comment = false;
-            });
-        });
-
         // 메뉴 새 글, 새 댓글 클릭 시 상세 내용 보기
         $document.on('click', ".mypagetab_area ul li", function(){
             var $this = $(this);
@@ -1535,7 +1263,6 @@
 
             $(".popup_read").addClass("on");
         });
-
 
         // 글 보기에서 이전 글, 다음 글 보기
         $(".popup_read .ico-prev, .popup_read .ico-next").on("click", function() {
@@ -1789,10 +1516,6 @@
             $(".cropFrame .cropControls .cropZoomOut").trigger("click");
         });
 
-        // 프로필 업로드
-        $(".pop_upload_btn").on("click", function() {
-            $("#uploadifive-upload input[type=file]").last().trigger("click");
-        });
 
         $(".pop_imgdel_btn").on("click", function() {
             $(".pop_imgdel_btn").css("cursor", "").hide();
@@ -1863,75 +1586,9 @@
             }
         });
 
-        $("#upload").uploadifive({
-            method: "post",
-            formData: {
-                'mb_uid': '',
-                'token': ''
-            },
-            auto: true,
-            multi: false,
-            removeTimeout: 0,
-            buttonText: "파일 찾기",
-            fileType: "image/*",
-            fileTypeDesc: "Image Files",
-            fileTypeExts: "*.gif; *.jpg; *.png",
-            uploadScript: "/member/uploadProfile",
-            width: 0,
-            height: 0,
-            queueID: 'upload_queue',
-            onUpload: function() {
-                $('#upload_queue').slideDown();
-            },
-            onUploadComplete: function(file, data) {
-                var queueItem = file.queueItem;
-
-                if(data === "request_error") {
-                    uploadError(queueItem, "새로고침 후 다시 시도해주세요.");
-                    return false;
-                }
-
-                if(data === "filetype_error") {
-                    uploadError(queueItem, "허용되지 않는 파일 타입을 업로드하셨습니다. \nGIF, JPG, JPEG, PNG만 업로드 가능합니다.");
-                    return false;
-                }
-
-                var data = JSON.parse(data);
-                var id = data.id;
-                var email_type = data.email_type;
-                var fileinfo = data.info.split("[!$!]");
-                var width = fileinfo[2];
-                var height = fileinfo[3];
-                var filename = fileinfo[0];
-                var img = $('<img />', {
-                    id : "crop_target",
-                    src : "/user/email/" + email_type + "/" + id + "/img/" + filename,
-                    cropwidth : 240,
-                    cropheight : 240,
-                });
-
-                setTimeout(function() {
-                    $('#upload').uploadifive('clearQueue');
-                    $('#upload_queue').slideUp();
-                }, 1000);
-
-
-                $(".pop_upload_img").addClass("uploaded")
-                        .css("background-image", "none").html(img);
-
-                $(".pop_imgdel_btn").css("cursor", "pointer").show();
-
-                initCrop(width, height);
-
-                croptarget = filename;
-            },
-            onError: function(errorType) {
-            }
-        });
-
         $document.on('keyup keydown', "#contents", function (e) {
             setPopupHeight($(this));
-        })
+        });
 
         // 익스에서 여러줄의 문자열을 복사했을 때 제대로 입력되게 처리
         if (window.clipboardData) {
@@ -1944,31 +1601,9 @@
             });
         }
 
-        $(".gnb_wrap .write").on('click', function(){
-            var $body = $("body");
-            var top = $body.scrollTop() ?
-                    -($body.scrollTop()) :
-                    -($("html, body").scrollTop());
-
-            $(".popup_login").addClass("on");
-            $body.addClass("noscroll")
-                    .offset({"top": top});
-        });
-
         $document.on('click', ".nocomment_txt", function(){
             $(".popup_login").addClass("on");
             $("body").addClass("noscroll");
-        });
-
-        $document.on('click', ".header_write", function(){
-            var $body = $("body");
-            var top = $body.scrollTop() ?
-                    -($body.scrollTop()) :
-                    -($("html, body").scrollTop());
-
-            $(".popup_login").addClass("on");
-            $body.addClass("noscroll")
-                    .offset({"top": top});
         });
 
         $document.on("click", ".write_area", function() {
@@ -2043,43 +1678,6 @@
 
             $comment_box.find(".write_area input").val("");
             $comment_box.find(".pop_emo_area #bt_pop_close_selecticon").trigger("click");
-        }
-
-        snsbbs.getContent = function(request_data) {
-            var $contents_wrap = $(".contents_wrap");
-            var $contents_list = $(".contents_list");
-
-            return $.ajax({
-                type: 'post',
-                dataType: "json",
-                url	: '/snsbbs/getList',
-                data : request_data,
-                beforeSend: function () {
-                    var $loader = $(".loader");
-                    var loader_height = $loader.outerHeight(true);
-                    var loader_str_height = $loader.find(".ico-more").height();
-                    var loading = '<div class="loader" style="text-align:center;">' +
-                            '<div class="contents_loader"></div>' +
-                            '</div>';
-                    var top = 0;
-
-                    if($loader.length) {
-                        top = $loader.position().top + loader_str_height;
-                    }
-
-                    if($contents_wrap.find(".loader").length) {
-                        $contents_wrap.find(".loader").remove();
-                    }
-
-                    $contents_list.append(loading);
-
-                    $loader = $(".loader");
-                    $loader.find(".contents_loader").css({"position": "absolute", "left": "50%", "top": top });
-                },
-                complete: function(ajax){
-                },
-                timeout: 10000
-            });
         }
 
 
@@ -2698,397 +2296,6 @@
                     //grid.masonry('layout');
                 }
             });
-        }
-
-        snsbbs.write = function() {
-            var pop_select_img = $('#pop_select_img').val();
-
-            $.ajax({
-                type: 'post',
-                dataType: "json",
-                url	: '/snsbbs/swrite',
-                data : {
-                    dn: $('#dn').val(),
-                    domainid: $('#domainid').val(),
-                    contents: encodeURIComponent($('#contents').val()),
-                    icon: encodeURIComponent($('#select_icon').val()),
-                    gimg: pop_select_img
-                },
-                timeout: 10000
-            }).then(
-                    function(result) {
-                        var code = result.code;
-                        var msg = result.msg;
-                        var requests = [];
-                        var data = [];
-
-                        if(code == 200) {
-                            if(pop_select_img){
-                                location.href = "/gardenwedding/snsbbs";
-                            } else {
-                                var request_data = {
-                                    "dn": $('#dn').val(),
-                                    "np": 1,
-                                    "rm": 0,
-                                }
-
-                                $(".contents_list").html("");
-                                requests = [snsbbs.getContent(request_data), snsbbs.getRecentContent()];
-                                snsbbs.clearFormContent();
-
-                                $.when.apply($, requests).then(function() {
-                                    $.each(arguments, function(k, result) {
-                                        type = result[0]["type"];
-                                        data[type] = result[0];
-                                    });
-
-                                    if(data.content) {
-                                        snsbbs.total_list_count += 1;
-                                        snsbbs.total_page = snsbbs.total_list_count > 0 ? Math.ceil(snsbbs.total_list_count / snsbbs.CONTENT_PER_PAGE) : 0;
-
-                                        $("#nowpage").val(snsbbs.DEFAULT_PAGE);
-                                        snsbbs.makeContent(data.content.list);
-                                        $("#nowpage").val(snsbbs.DEFAULT_PAGE + 1);
-                                    }
-
-                                    if(data["recent_content"]) {
-                                        snsbbs.makeRecent(data["recent_content"]["list"], "content");
-                                    }
-
-                                    if(data.content && data.content.list_count > 0) {;
-                                        grid.imagesLoaded().always(function() {
-                                            grid.masonry('layout');
-                                            $(".contents_list").find(".contents_loader").parent().remove();
-                                        });
-                                    }
-
-                                    $(window).scrollTop(0);
-                                });
-                            }
-                        } else if(code == 203){
-                            alert(msg);
-                            location.href="/gardenwedding/snsbbs";
-                        } else {
-                            alert(msg);
-                        }
-                    },
-
-                    function(request,status,error) {
-                        alert("처리 중 내부오류가 발생했습니다. 잠시후에 시도해 주십시요.");
-                        //console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                        return false;
-                    });
-        }
-
-        snsbbs.writeComment = function(btn) {
-            var $content, $contents, $reply_count, id, tag, reply_count;
-            var icon = "";
-            var requests = [];
-            var data = {};
-            var content = $(btn).prev().find("input").val();
-            var is_popup = $(btn).parents(".pop_read").length;
-
-            if(is_popup) {
-                $content = $(btn).parents(".pop_read");
-                type = "pop_read";
-            } else {
-                $content = $(btn).parents("li");
-                type = "default";
-            }
-
-            id = $content.attr("id");
-
-            if($content.data("select_icon") !== undefined) {
-                icon = encodeURIComponent($content.data("select_icon"));
-            }
-
-            $content.data("selector", type);
-
-            if(!content && !icon) {
-                return false;
-            }
-
-            if(type === "default") {
-                $contents = $("li#" + id);
-                $reply_count = $("li#" + id).find(".reply_area .reply_txt");
-            } else {
-                id = id.replace("read_content_", "");
-                $contents = $("#read_content_" + id);
-                $reply_count = $contents.find(".reply_area .reply_txt");
-            }
-
-            reply_count = parseInt($reply_count.text());
-
-            $.ajax({
-                type: 'post',
-                dataType: "json",
-                url	: '/snsbbs/cwrite',
-                data : {
-                    dn : $('#dn').val(),
-                    sn : id,
-                    contents : encodeURIComponent(content),
-                    icon : icon
-                },
-                complete: function() {},
-                timeout: 10000
-
-            }).then(
-                    function(result) {
-                        if(result.code == 200) {
-                            var $li = $("li#" + id);
-                            var $li_reply_count = $li.find(".reply_area .reply_txt");
-                            var $read_content = $("#read_content_" + id);
-                            var $read_reply_count = $read_content.find(".reply_area .reply_txt");
-
-                            snsbbs.clearFormComment(id, type);
-
-                            $contents.data("page", 1);
-                            $li_reply_count.text(reply_count + 1);
-
-                            if(type === "pop_read") {
-                                $read_reply_count.text(reply_count + 1)
-                            }
-
-                            $content.removeData("select_icon");
-
-                            requests = [snsbbs.getComment("refresh", id, type), snsbbs.getRecentComment()];
-
-                            $.when.apply($, requests).then(function() {
-                                var $comment_box = $content.find(".comm_list");
-                                $comment_box.find(".loader").remove();
-
-                                $.each(arguments, function(k, result) {
-                                    type = result[0]["type"];
-
-                                    data[type] = {};
-                                    data[type] = result[0];
-                                });
-
-                                if(data.comment) {
-                                    snsbbs.makeComment(data.comment.list, data.comment.content_id, data.comment.is_more);
-
-                                    grid.imagesLoaded().always(function() {
-                                        grid.masonry('layout');
-                                    });
-                                }
-
-                                if(data["recent_comment"]) {
-                                    snsbbs.makeRecent(data["recent_comment"]["list"], "comment");
-                                }
-
-                                $content.removeData("selector");
-                            });
-
-                        } else if(result.code == 203){
-                            alert(result.msg);
-                            $(".popup_login").addClass("on");
-                            //location.href="/gardenwedding/snsbbs";
-                        } else {
-                            if(result.hasOwnProperty("init") && result.init) {
-                                snsbbs.init();
-                            }
-
-                            if(type === "pop_read") {
-                                $("#popup_read").removeClass("on");
-                                snsbbs.clearFormComment(id, type);
-                            }
-
-                            alert(result.msg);
-                        }
-                    },
-
-                    function(request,status,error) {
-                        alert("처리 중 내부오류가 발생했습니다. 잠시후에 시도해 주십시요.");
-                        //console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                        return;
-                    }
-
-            );
-        }
-
-        snsbbs.deleteContent = function(target) {
-            var requests = [];
-            var data = {};
-
-            $.ajax({
-                type: 'post',
-                dataType: "json",
-                url	: '/snsbbs/delSnsContent',
-                data : { 'sn': target },
-                timeout: 10000
-            }).then(
-                    function(result) {
-                        if(result.code == 200) {
-                            var $recent_comment_tab, $target_comment, recent_comment_count, target_comment_length, tab;
-                            var $content_tab = $("[data-tab=hdrecent_tab1]").find(".color_txt")
-                            var count = parseInt($content_tab.text());
-                            var tabs = ["hdrecent_tab2", "recent_tab2"];
-
-                            for(key in tabs) {
-                                tab = tabs[key];
-
-                                $recent_comment_tab = $("li[data-tab=" + tab + "] .color_txt");
-                                recent_comment_count  = parseInt($recent_comment_tab.text());
-                                $target_comment = $("#" + tab + " li[data-content-id=" + target + "]");
-                                target_comment_count = parseInt($target_comment.length);
-
-                                if(recent_comment_count - target_comment_count > 0) {
-                                    $recent_comment_tab.text(recent_comment_count - target_comment_count);
-                                } else {
-                                    $recent_comment_tab.text("");
-                                }
-
-                                $target_comment.remove();
-                            }
-
-                            var request_data = {
-                                "dn": $('#dn').val(),
-                                "np": 1,
-                                "rm": 0,
-                            }
-
-                            $(".contents_list").html("");
-                            requests = [snsbbs.getContent(request_data), snsbbs.getRecentContent()]; //snsbbs.getContent("init")
-
-                            $.when.apply($, requests).then(function() {
-                                $.each(arguments, function(k, result) {
-                                    type = result[0]["type"];
-                                    data[type] = result[0];
-                                });
-
-                                if(data.content) {
-                                    snsbbs.total_list_count -= 1;//data.content.list_count ? data.content.list_count : 0;
-                                    snsbbs.total_page = snsbbs.total_list_count > 0 ? Math.ceil(snsbbs.total_list_count / snsbbs.CONTENT_PER_PAGE) : 0;
-
-                                    $("#nowpage").val(snsbbs.DEFAULT_PAGE);
-                                    snsbbs.makeContent(data.content.list);
-                                    $("#nowpage").val(snsbbs.DEFAULT_PAGE + 1);
-                                }
-
-                                if(data["recent_content"]) {
-                                    snsbbs.makeRecent(data["recent_content"]["list"], "content");
-                                }
-
-                                if(data.content && data.content.list_count > 0) {
-                                    grid.imagesLoaded().always(function() {
-                                        grid.masonry('layout');
-                                    });
-                                }
-
-                                $(window).scrollTop(0);
-                            });
-                        } else if(result.code == 209){
-                            //chaverows = false;
-                            //cprocessing = false;
-                        } else {
-                            alert(result.msg);
-                        }
-                    },
-
-                    function(request, status, error) {
-                        alert("처리 중 내부오류가 발생했습니다. 잠시후에 시도해 주십시요.");
-                        //console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                        return;
-                    }
-            );
-        }
-
-        snsbbs.deleteComment = function(id, comm_id) {
-            var $content, $reply_count, reply_count;
-            var requests = [];
-            var data = {};
-            var type = $(".popup_comment_del").data("type");
-
-            if(type === "default") {
-                $content = $("#" + id);
-            } else {
-                $content = $("#read_content_" + id);
-
-            }
-
-            $reply_count = $content.find(".reply_area .reply_txt");
-            reply_count = parseInt($reply_count.text());
-            $content.data("selector", type);
-
-            $.ajax({
-                type: 'post',
-                dataType: "json",
-                url	: '/snsbbs/delSnsComment',
-                data : {
-                    'sn': comm_id,
-                    'sb': id
-                },
-                timeout: 10000
-            }).then(
-                    function(result) {
-                        if(result.code == 200) {
-                            var $comment, $pop_comment, $comment, data_type;
-                            var $comment_tab = $("[data-tab=hdrecent_tab" + snsbbs.COMMENT_TAB + "]").find(".color_txt")
-                            var count = parseInt($comment_tab.text());
-                            var $li = $("li#" + id);
-                            var $li_reply_count = $li.find(".reply_area .reply_txt");
-                            var $read_content = $("#read_content_" + id);
-                            var $read_reply_count = $read_content.find(".reply_area .reply_txt");
-
-                            $content.data("page", snsbbs.DEFAULT_PAGE);
-                            requests = [snsbbs.getComment("refresh", id, type), snsbbs.getRecentComment()];
-
-                            $.when.apply($, requests).then(function() {
-                                var $comment_box = $content.find(".comm_list");
-                                $comment_box.find(".loader").remove();
-
-                                $.each(arguments, function(k, result) {
-                                    if(result[0]["code"]) {
-                                        data["cnt"] = result[0]["rcnt"];
-
-                                        return;
-                                    }
-
-                                    data_type = result[0]["type"];
-                                    data[data_type] = result[0];
-                                });
-
-                                if(data.comment) {
-                                    snsbbs.makeComment(data.comment.list, data.comment.content_id, data.comment.is_more);
-                                } else if(data["cnt"] === 0) {
-                                    $pop_comment = $("#popup_read #comm_" + comm_id);
-                                    $comment = $(".comm_list #comm_" + comm_id);
-
-                                    if($comment.length) {
-                                        $comment.remove();
-                                    }
-                                    if($pop_comment.length) {
-                                        $pop_comment.remove();
-                                    }
-                                }
-
-                                if(data["recent_comment"]) {
-                                    snsbbs.makeRecent(data["recent_comment"]["list"], "comment");
-                                }
-
-                                $li_reply_count.text(reply_count - 1);
-                                if(type === "pop_read") {
-                                    $read_reply_count.text(reply_count - 1)
-                                }
-
-                                grid.imagesLoaded().always(function() {
-                                    grid.masonry('layout');
-                                });
-                            });
-                        } else if(result.code == 209) {
-                            //chaverows = false;
-                            //cprocessing = false;
-                        } else {
-                            alert(result.msg);
-                        }
-                    },
-
-                    function(request,status,error) {
-                        alert("처리 중 내부오류가 발생했습니다. 잠시후에 시도해 주십시요.");
-                        //console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                        return;
-                    }
-            );
         }
 
         snsbbs.scrolling = function(target, offsetTop) {

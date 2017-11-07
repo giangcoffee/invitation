@@ -21,6 +21,8 @@ use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\TemplateInterface;
 use Symfony\Component\Security\Core\Security;
 use Viettut\Model\User\UserEntityInterface;
+use Zalo\Zalo;
+use Zalo\ZaloConfig;
 
 class BuilderController extends Controller
 {
@@ -64,6 +66,10 @@ class BuilderController extends Controller
      */
     public function guestBookAction(Request $request, $hash)
     {
+        if (!$this->getUser() instanceof UserEntityInterface) {
+            $this->container->get('session')->set('_security.main.target_path', $this->generateUrl('guest_book_page', array('hash' => $hash)));
+        }
+
         /** @var CardManagerInterface $cardManager */
         $cardManager = $this->get('viettut.domain_manager.card');
         $card = $cardManager->getCardByHash($hash);
@@ -103,6 +109,22 @@ class BuilderController extends Controller
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
+        $facebookAppId = $this->getParameter('facebook_app_id');
+        $facebookAppSecret = $this->getParameter('facebook_app_secret');
+        $facebookRedirectUri = $this->getParameter('facebook_redirect_uri');
+        $fb = new \Facebook\Facebook([
+            'app_id' => $facebookAppId,
+            'app_secret' => $facebookAppSecret,
+            'default_graph_version' => 'v2.9',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['email', 'user_likes']; // optional
+        $facebookLoginUrl = $helper->getLoginUrl($facebookRedirectUri, $permissions);
+
+        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
+        $helper = $zalo -> getRedirectLoginHelper();
+        $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
             'referrer' => $referrer,
             'groom' => $groom,
@@ -111,6 +133,8 @@ class BuilderController extends Controller
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
+            'facebookUrl' => $facebookLoginUrl,
+            'zaloUrl' => $zaloLoginUrl
         ));
     }
 

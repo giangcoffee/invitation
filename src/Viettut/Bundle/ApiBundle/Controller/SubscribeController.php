@@ -15,8 +15,10 @@ use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Viettut\Entity\Core\Subscriber;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Viettut\Exception\InvalidArgumentException;
 use Viettut\Model\Core\SubscriberInterface;
 
 /**
@@ -37,21 +39,24 @@ class SubscribeController extends FOSRestController
      *
      * @param Request $request the request object
      *
-     * @return FormTypeInterface|View
+     * @return mixed
      */
     public function postAction(Request $request)
     {
         $params = $request->request->all();
         if (!array_key_exists('email', $params)) {
-            return false;
+            throw new InvalidArgumentException('email should not be missing');
         }
+
         $subscriber = $this->get('viettut.repository.subscriber')->getByEmail($params['email']);
+
         if (!$subscriber instanceof SubscriberInterface) {
             $subscriber = new Subscriber();
             $subscriber->setEmail($params['email']);
             $this->getDoctrine()->getEntityManager()->persist($subscriber);
             $this->getDoctrine()->getEntityManager()->flush();
         }
-        return true;
+
+        return new Response("", Response::HTTP_NO_CONTENT);
     }
 }
