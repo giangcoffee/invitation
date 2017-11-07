@@ -56,6 +56,12 @@ interface LecturerManagerInterface
     public function findUserByUsernameOrEmail($usernameOrEmail);
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function findUserByZaloId($id);
+
+    /**
      * Updates a user.
      *
      * @param UserEntityInterface $token

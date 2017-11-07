@@ -24,6 +24,9 @@ Viettut\Bundle\UserBundle\Entity\User:
         googleId:
             type: string
             nullable: true
+        zaloId:
+            type: string
+            nullable: true
         name:
             type: string
             nullable: true

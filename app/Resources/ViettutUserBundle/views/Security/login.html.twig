@@ -24,7 +24,17 @@
                             {{ error.messageKey|trans(error.messageData, 'security') }}
                         </div>
                     {% endif %}
-
+                    <div class="row">
+                        <div class="col-md-1">&nbsp;</div>
+                        <div class="col-md-10">
+                            <div class="social-buttons">
+                                <a href="{{ facebookUrl }}" class="btn btn-primary btn-fb">Đăng nhập Facebook</a>
+                                <a href="{{ zaloUrl }}" class="btn btn-primary btn-zl">Đăng nhập Zalo</a>
+                            </div>
+                        </div>
+                        <div class="col-md-1">&nbsp;</div>
+                    </div>
+                    <hr class="tall"/>
                     <form class="form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
                         {% if csrf_token %}
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -52,14 +62,6 @@
                             <div class="col-sm-4">&nbsp;</div>
                             <div class="col-sm-4 controls">
                                 <input class="btn btn-lg btn-primary" type="submit" id="_submit" name="_submit" value="Đăng Nhập" />
-                            </div>
-                            <div class="col-sm-4">&nbsp;</div>
-                        </div>
-                        <div style="margin-top:10px" class="form-group">
-                            <div class="col-sm-4">&nbsp;</div>
-                            <div class="col-sm-4 controls" style="border-top: 1px solid#888; padding-top:15px;">
-                                <a class="fa fa-facebook fa-2x" title="Login with Facebook" style="margin-right:8px;" href="{{ facebookUrl }}"></a>
-                                <a class="fa fa-google-plus-square fa-2x" title="Login with Google" style="margin-right:8px;" href="{{ googleUrl }}"></a>
                             </div>
                             <div class="col-sm-4">&nbsp;</div>
                         </div>

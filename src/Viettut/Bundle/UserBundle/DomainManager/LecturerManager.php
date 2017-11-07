@@ -81,6 +81,11 @@ class LecturerManager implements LecturerManagerInterface
         return $this->FOSUserManager->findUserByUsernameOrEmail($usernameOrEmail);
     }
 
+    public function findUserByZaloId($id)
+    {
+        return $this->FOSUserManager->findUserBy(array('zaloId' => $id));
+    }
+
     /**
      * @inheritdoc
      */

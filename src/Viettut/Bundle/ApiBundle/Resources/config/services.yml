@@ -28,3 +28,8 @@ services:
             - '%http_schema%'
             - '%facebook_object_id_url_template%'
             - '@viettut.domain_manager.card'
+
+    viettut.services.username_service:
+        class: Viettut\Services\UsernameService
+        arguments:
+            - '@viettut_user.domain_manager.lecturer'

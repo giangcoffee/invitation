@@ -2,7 +2,6 @@
 
 namespace Viettut\Bundle\UserBundle\Controller;
 
-use Google_Client;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\SecurityController as BaseController;
@@ -25,9 +24,6 @@ class SecurityController extends BaseController
         $facebookAppId = $this->getParameter('facebook_app_id');
         $facebookAppSecret = $this->getParameter('facebook_app_secret');
         $facebookRedirectUri = $this->getParameter('facebook_redirect_uri');
-        $googleClientId = $this->getParameter('google_client_id');
-        $googleClientSecret = $this->getParameter('google_client_secret');
-        $googleRedirectUri = $this->getParameter('google_redirect_uri');
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
 
@@ -65,15 +61,6 @@ class SecurityController extends BaseController
         $permissions = ['email', 'user_likes']; // optional
         $facebookLoginUrl = $helper->getLoginUrl($facebookRedirectUri, $permissions);
 
-        $api = new Google_Client();
-        $api->setApplicationName("Viettut Academy"); // Set Application name
-        $api->setClientId($googleClientId); // Set Client ID
-        $api->setClientSecret($googleClientSecret); //Set client Secret
-        $api->addScope('email');
-        $api->addScope('profile');
-        $api->setRedirectUri($googleRedirectUri); // Enter your file path (Redirect Uri) that you have set to get client ID in API console
-        $googleLoginUrl = $api->createAuthUrl();
-
         $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
         $helper = $zalo -> getRedirectLoginHelper();
         $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
@@ -83,7 +70,6 @@ class SecurityController extends BaseController
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
-            'googleUrl' => $googleLoginUrl,
             'zaloUrl' => $zaloLoginUrl
         ));
     }
