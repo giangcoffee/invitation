@@ -64,7 +64,6 @@ class SecurityController extends BaseController
         $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
         $helper = $zalo -> getRedirectLoginHelper();
         $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
-
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,

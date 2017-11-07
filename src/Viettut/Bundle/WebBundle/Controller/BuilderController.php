@@ -20,6 +20,7 @@ use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\TemplateInterface;
 use Symfony\Component\Security\Core\Security;
+use Viettut\Model\User\UserEntityInterface;
 
 class BuilderController extends Controller
 {
@@ -30,6 +31,11 @@ class BuilderController extends Controller
      */
     public function builderAction(Request $request, $hash)
     {
+        if (!$this->getUser() instanceof UserEntityInterface) {
+            $this->container->get('session')->set('_security.main.target_path', $this->generateUrl('edit_card_page', array('hash' => $hash)));
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         /** @var CardManagerInterface $cardManager */
         $cardManager = $this->get('viettut.domain_manager.card');
         $card = $cardManager->getCardByHash($hash);
