@@ -18,12 +18,10 @@ api_reset_password_reset:
     defaults: { _controller: ViettutApiBundle:ResetPassword:reset }
     methods: [POST]
 
-
 api_subscribe:
     type: rest
     resource: Viettut\Bundle\ApiBundle\Controller\SubscribeController
     name_prefix:  api_1_
-
 
 api_comment:
     type: rest

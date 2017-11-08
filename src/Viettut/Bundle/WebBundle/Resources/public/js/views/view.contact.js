@@ -4,102 +4,63 @@ Written by: 	Okler Themes - (http://www.okler.net)
 Version: 		3.7.0
 */
 
-(function($) {
+function sendMessage() {
+	var email = $('form#contactForm input#email').val();
+	var pattern = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/g);
 
-	'use strict';
+	$('#contactMessage').remove();
+	if (!pattern.test(email)) {
+		$('form#contactForm input#email').parent().addClass('has-error');
+		$('form#contactForm input#email').focus();
+		error('form#contactForm', 'Email không hợp lệ!');
+		return;
+	}
 
-	/*
-	Contact Form: Basic
-	*/
-	$('#contactForm:not([data-type=advanced])').validate({
-		submitHandler: function(form) {
+	var name = $('form#contactForm input#name').val();
+	if (name.length < 1) {
+		$('form#contactForm input#name').parent().addClass('has-error');
+		$('form#contactForm input#name').focus();
+		error('form#contactForm', 'Tên không hợp lệ!');
+		return;
+	}
 
-			var $form = $(form),
-				$messageSuccess = $('#contactSuccess'),
-				$messageError = $('#contactError'),
-				$submitButton = $(this.submitButton);
+	var subject = $('form#contactForm input#subject').val();
+	if (subject.length < 1) {
+		$('form#contactForm input#subject').parent().addClass('has-error');
+		$('form#contactForm input#subject').focus();
+		error('form#contactForm', 'Tiêu đề quá ngắn!');
+		return;
+	}
 
-			$submitButton.button('loading');
+	var message = $('form#contactForm input#message').val();
+	if (message.length < 1) {
+		$('form#contactForm input#message').parent().addClass('has-error');
+		$('form#contactForm input#message').focus();
+		error('form#contactForm', 'Nội dung quá ngắn!');
+		return;
+	}
 
-			// Ajax Submit
-			$.ajax({
-				type: 'POST',
-				url: $form.attr('action'),
-				data: {
-					name: $form.find('#name').val(),
-					email: $form.find('#email').val(),
-					subject: $form.find('#subject').val(),
-					message: $form.find('#message').val()
-				},
-				dataType: 'json',
-				complete: function(data) {
-				
-					if (typeof data.responseJSON === 'object') {
-						if (data.responseJSON.response == 'success') {
+	var data = {'name': name, 'email': email, 'subject': subject, 'message': message};
+	$('form#contactForm button').html("<i class='fa fa-spinner fa-spin'></i>");
+	$.post('/app_dev.php/contact', data, function (response) {
+		info('form#contactForm', 'Thông tin cập nhật thành công !');
+		$('form#contactForm input[type=email]').val('');
+		$('form#contactForm button').html("Gửi");
+	}, 'json');
+}
 
-							$messageSuccess.removeClass('hidden');
-							$messageError.addClass('hidden');
+function error(anchor, message) {
+	var html = '<div class="alert alert-danger alert-dismissable" id="contactMessage">' +
+		'    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+		message +
+		'</div>';
+	$(anchor).before(html);
+}
 
-							// Reset Form
-							$form.find('.form-control')
-								.val('')
-								.blur()
-								.parent()
-								.removeClass('has-success')
-								.removeClass('has-error')
-								.find('label.error')
-								.remove();
-
-							if (($messageSuccess.offset().top - 80) < $(window).scrollTop()) {
-								$('html, body').animate({
-									scrollTop: $messageSuccess.offset().top - 80
-								}, 300);
-							}
-
-							$submitButton.button('reset');
-							
-							return;
-
-						}
-					}
-
-					$messageError.removeClass('hidden');
-					$messageSuccess.addClass('hidden');
-
-					if (($messageError.offset().top - 80) < $(window).scrollTop()) {
-						$('html, body').animate({
-							scrollTop: $messageError.offset().top - 80
-						}, 300);
-					}
-
-					$form.find('.has-success')
-						.removeClass('has-success');
-						
-					$submitButton.button('reset');
-
-				}
-			});
-		}
-	});
-
-	/*
-	Contact Form: Advanced
-	*/
-	$('#contactFormAdvanced, #contactForm[data-type=advanced]').validate({
-		onkeyup: false,
-		onclick: false,
-		onfocusout: false,
-		rules: {
-			'captcha': {
-				captcha: true
-			},
-			'checkboxes[]': {
-				required: true
-			},
-			'radios': {
-				required: true
-			}
-		}
-	});
-
-}).apply(this, [jQuery]);
+function info(anchor, message) {
+	var html = '<div class="alert alert-success alert-dismissable" id="contactMessage">' +
+		'    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+		message +
+		'</div>';
+	$(anchor).before(html);
+}

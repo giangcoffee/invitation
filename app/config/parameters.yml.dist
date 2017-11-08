@@ -8,13 +8,13 @@ parameters:
     database_user: test
     database_password: 12345678
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    secret: ea31b59727f6a11e1d8160027e80707f6d0b0ce9
-    mailer_user: tut4vietcoder@gmail.com
+    mailer_host: thiepdo.com
+    mailer_user: noreply@thiepdo.com
     mailer_password: W&}giStZ9n[N
-    mailer_port: null
-    mailer_sender: tut4vietcoder@gmail.com
-    mailer_sender_name: 'ViettuT Academy'
+    mailer_port: 465
+    mailer_sender: noreply@thiepdo.com
+    mailer_sender_name: 'Thiệp Đỏ'
+    secret: ea31b59727f6a11e1d8160027e80707f6d0b0ce9
     password_resetting_link: 'http://localhost:9010/#/reset/changePassword'
     upload_root_directory: /var/www/api.server.dev/web/uploads/images
     upload_directory: /uploads/images

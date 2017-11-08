@@ -4,10 +4,10 @@
 
     <!-- Basic -->
     <meta charset="utf-8">
-    <title>Porto - Responsive HTML5 Template 3.7.0</title>
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Porto - Responsive HTML5 Template">
-    <meta name="author" content="okler.net">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="keywords" content="thiệp mời; thiệp mừng; thiệp cưới; thiệp điện tử; in thiệp cưới; ảnh cưới; đám cưới; trăng mật; du lịch;" />
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="author" content="Giang Coffee">
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,22 +67,19 @@
                 <form id="searchForm" action="page-search-results.html" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-								</span>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
                     </div>
                 </form>
             </div>
             <nav>
                 <ul class="nav nav-pills nav-top">
                     <li>
-                        <a href="about-us.html"><i class="fa fa-angle-right"></i>Giới Thiệu</a>
-                    </li>
-                    <li>
-                        <a href="contact-us.html"><i class="fa fa-angle-right"></i>Liên Hệ</a>
+                        <a href="contact-us.html"><i class="fa fa-angle-right"></i>Góp Ý</a>
                     </li>
                     <li class="phone">
-                        <span><i class="fa fa-phone"></i>(123) 456-7890</span>
+                        <span><i class="fa fa-phone"></i>0961614387</span>
                     </li>
                 </ul>
             </nav>
@@ -204,50 +201,35 @@
         <div class="container">
             <div class="row">
                 <div class="footer-ribbon">
-                    <span>Get in Touch</span>
+                    <span>Liên hệ</span>
                 </div>
                 <div class="col-md-3">
                     <div class="newsletter">
-                        <h4>Newsletter</h4>
-                        <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
-
-                        <div class="alert alert-success hidden" id="newsletterSuccess">
-                            <strong>Success!</strong> You've been added to our email list.
-                        </div>
-
-                        <div class="alert alert-danger hidden" id="newsletterError"></div>
-
-                        <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
+                        <h4>Nhận tin mới</h4>
+                        <p>Đăng ký để nhận những mẫu thiệp mới nhất qua email</p>
+                        <form name="subscribeForm" id="subscribeForm">
                             <div class="input-group">
-                                <input class="form-control" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">Go!</button>
-										</span>
-                            </div>
-                        </form>
-                        <form name="subscribeForm">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Email Address" ng-model="email" type="email" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+                                <input class="form-control" placeholder="email" type="email" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
                                 <span class="input-group-btn">
-                                    <button id="subscribeButton" class="btn btn-default" ng-click="subscribe()" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" type="button">Go!</button>
+                                    <button id="subscribeButton" class="btn btn-default" onclick="subscribe()" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" type="button">Go!</button>
                                 </span>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <h4>Latest Tweets</h4>
+                    <h4>Blog mới nhất</h4>
                     <div id="tweet" class="twitter" data-plugin-tweets data-plugin-options='{"username": "", "count": 2}'>
-                        <p>Please wait...</p>
+                        <p>Đang load ...</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="contact-details">
-                        <h4>Contact Us</h4>
+                        <h4>Góp ý</h4>
                         <ul class="contact">
                             <li><p><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</p></li>
-                            <li><p><i class="fa fa-phone"></i> <strong>Phone:</strong> (123) 456-7890</p></li>
-                            <li><p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></p></li>
+                            <li><p><i class="fa fa-phone"></i> <strong>Phone:</strong> 0961614387</p></li>
+                            <li><p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:support@thiepdo.com">support@thiepdo.com</a></p></li>
                         </ul>
                     </div>
                 </div>

@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Viettut\Exception\RuntimeException;
 use Viettut\Model\Core\PostInterface;
 use Viettut\Model\Core\TemplateInterface;
 
@@ -59,12 +60,39 @@ class HomeController extends Controller
 
     /**
      * @Route("/contact", name="contact_page")
+     * @Method({"GET"})
      * @param $request
      * @return Response
      */
     public function contactAction(Request $request)
     {
         return $this->render('ViettutWebBundle:Home:contact.html.twig');
+    }
+
+    /**
+     * @Route("/contact")
+     * @Method({"POST"})
+     * @param $request
+     * @return Response
+     */
+    public function receiveMessageAction(Request $request)
+    {
+        $mailer = $this->get('mailer');
+        $body = $request->request->get('message', 'message');
+        $subject = $request->request->get('subject', 'subject');
+        $from = $request->request->get('email', 'email');
+        $message = (new \Swift_Message($subject))
+            ->setFrom($this->getParameter('mailer_sender'))
+            ->setTo('giang.fet.hut@gmail.com')
+            ->setBody($body, 'text/plain')
+        ;
+        try {
+            $mailer->send($message);
+        } catch (\Exception $ex) {
+            throw new RuntimeException('Can not send email');
+        }
+
+        return new Response("", Response::HTTP_NO_CONTENT);
     }
 
     /**

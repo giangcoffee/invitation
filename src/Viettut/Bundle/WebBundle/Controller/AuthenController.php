@@ -9,16 +9,11 @@
 namespace Viettut\Bundle\WebBundle\Controller;
 
 
-use FOS\UserBundle\Model\UserInterface;
-use Google_Client;
-use Google_Service_Oauth2;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Viettut\Exception\RuntimeException;
 use Viettut\Model\User\UserEntityInterface;
