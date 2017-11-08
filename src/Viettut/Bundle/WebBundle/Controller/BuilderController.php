@@ -170,7 +170,8 @@ class BuilderController extends Controller
             'date' => $template->getWeddingDate(),
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
-            'forGroom' => $template->isForGroom()
+            'forGroom' => $template->isForGroom(),
+            'isTemplate' => true
         ));
     }
 
@@ -192,41 +193,7 @@ class BuilderController extends Controller
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
 
-        // get object id
-        $domain = $this->getParameter('domain');
-        $url = sprintf('http://%s%s', $domain, $request->getPathInfo());
-        $url = urlencode($url);
-        $request = sprintf('https://graph.facebook.com/?id=%s', $url);
-        $curl = new CurlRestClient();
-        $objectId = null;
-        $response = $curl->executeQuery($request);
-        if (!empty($response)) {
-            $response = json_decode($response, true);
-            if (is_array($response) && array_key_exists('og_object', $response)) {
-                $objectId = $response['og_object']['id'];
-            }
-        }
-
-        $comments = [];
-        if ($objectId != null) {
-            $appId = $this->getParameter('facebook_app_id');
-            $appSecret = $this->getParameter('facebook_app_secret');
-
-            $fb = new \Facebook\Facebook([
-                'app_id' => $appId,
-                'app_secret' => $appSecret,
-                'default_graph_version' => 'v2.9',
-            ]);
-            $ac = $fb->getApp()->getAccessToken()->getValue();
-            $response = $fb->get(sprintf('/%s/comments', $objectId), $ac);
-            if ($response) {
-                $body = $response->getBody();
-                $body = json_decode($body, true);
-                if (is_array($body) && array_key_exists('data', $body)) {
-                    $comments = $body['data'];
-                }
-            }
-        }
+        $comments = $card->getComments();
         $template = $card->getTemplate();
         $data = $card->getData();
         $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
@@ -246,7 +213,8 @@ class BuilderController extends Controller
             'lat' => $card->getLatitude(),
             'name' => $name,
             'comments' => $comments,
-            'forGroom' => $card->isForGroom()
+            'forGroom' => $card->isForGroom(),
+            'isTemplate' => false
         ));
     }
 }

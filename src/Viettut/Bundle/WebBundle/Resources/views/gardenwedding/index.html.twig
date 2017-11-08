@@ -39,14 +39,6 @@
 
 </head>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1934863569863740';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
@@ -93,7 +85,6 @@
             </ul>
             <p class="btn_go_snsbbs">Viết lời chúc</p>
         </div>
-            <div class="fb-comments" data-href="http://invitation.dev/templates/garden-wedding" data-numposts="5" style="position:relative;bottom:0;right:0;"></div>
     </div>
     <!--// panel-bride -->
     <!-- panel-menu -->
@@ -291,258 +282,221 @@
 
         <!-- guestbook -->
         <div class="guestbook_wrap" id="sk_snsbbs">
-            <h2 class="title"><span>Guestbook</span></h2>
+            <h2 class="title"><span>Sổ lưu bút</span></h2>
 
             <div class="ul-body col-3">
-                <div class="gb_msg"><span>신랑♥신부에게 축하메시지를 남겨주세요</span></div>
+                <div class="gb_msg"><span>Để lại lời chúc mừng cho cô dâu, chú rể</span></div>
                 <div id="div_snsbbs" style='z-index:999;'>
-                    <div class="fb-comments" data-href="http://invitation.dev/templates/garden-wedding" data-numposts="5"></div>
-                    {#<div class="snsbbs_sections  ">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="http://graph.facebook.com/505843759549611/picture?width=150&height=150"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns facebook"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>살다</strong></p>#}
-                                        {#<p class="date">2017-07-14 17:45</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p></p>#}
-                                        {#<div class="emo-type-c emo11"></div>#}
-                                    {#</li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="snsbbs_sections  ">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns notmember"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>박철수</strong></p>#}
-                                        {#<p class="date">2017-07-14 17:45</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p>결혼 축하합니다~<br/>#}
-                                            {#오래오래 행복하게 사세요!!!</p>#}
-                                        {#<div class="emo-type-b emo02"></div>#}
-                                    {#</li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="snsbbs_sections  ">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns notmember"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>ssuny</strong></p>#}
-                                        {#<p class="date">2017-07-14 17:43</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p>모야 너무예뿌잖아>.<<br/>#}
-                                            {#잘살거야!!!</p>#}
-                                        {#<div class="emo-type-b emo20"></div>#}
-                                    {#</li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>1</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="snsbbs_sections  ">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="http://mud-kage.kakao.co.kr/14/dn/btqfDUdt46a/AAlNKP8zV7B5v5JPsGk3Ak/o.jpg"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns kakao"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>현일</strong></p>#}
-                                        {#<p class="date">2017-07-14 17:43</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p>환불,a/s 불가 </p>#}
-                                        {#<img src="/bundles/viettutweb/img/templates/gardenwedding/0bbe8f94d7b4e1876b3c6423308b9084.jpg"#}
-                                             {#height="150" alt="댓글단 사진"/></li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>1</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="snsbbs_sections  mobile_hide">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns notmember"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>theday</strong></p>#}
-                                        {#<p class="date">2017-07-14 17:43</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p>우와 정말 축하한다.<br/>#}
-                                            {#꼭 참석해서 너의 행복한 날 함께하며,<br/>#}
-                                            {#축하해 줄께 ^^</p>#}
-                                        {#<div class="emo-type-a emo02"></div>#}
-                                    {#</li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="snsbbs_sections  mobile_hide">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="/bundles/viettutweb/img/templates/gardenwedding/crop_c14f8a35bc8180f7cbf516f097919e03.jpg"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns dalpeng"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>이정현</strong></p>#}
-                                        {#<p class="date">2017-07-14 17:42</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p>3월의 신부님이네 >_<<br/>#}
-                                            {#웨딩드레스 입으니까 더 예쁘네!!!!!!!<br/>#}
-                                            {#내 사랑 결혼식에 꼭 갈께 >_< 아고아고!!!!</p>#}
-                                        {#<div class="emo-type-a emo08"></div>#}
-                                    {#</li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="snsbbs_sections  mobile_hide">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns notmember"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>im_mi_ya</strong></p>#}
-                                        {#<p class="date">2017-07-03 15:04</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p>결혼축하해!!! 꼭 갈게ㅋㅋ<br/>#}
-                                            {#기대된당♥<br/>#}
-                                        {#</p>#}
-                                        {#<div class="emo-type-a emo06"></div>#}
-                                    {#</li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="snsbbs_sections  mobile_hide">#}
-                        {#<div class="ui-body-d">#}
-                            {#<div class="gb_cont_box btn_go_snsbbs">#}
-                                {#<div class="pro_info">#}
-                                    {#<div class="pro_img">#}
-                                        {#<img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png"#}
-                                             {#alt="프로필사진">#}
-                                        {#<div class="pro-sns notmember"><span></span></div>#}
-                                    {#</div>#}
-                                    {#<div class="pro_txt">#}
-                                        {#<p><strong>songsong2</strong></p>#}
-                                        {#<p class="date">2017-07-03 15:02</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<ul class="gb_cont btn_go_snsbbs">#}
-                                    {#<li class="comm_txt">#}
-                                        {#<p>너무 예쁘다>.< 추카행~!!!</p>#}
-                                    {#</li>#}
-                                {#</ul>#}
-                                {#<div class="gb_skip btn_go_snsbbs">#}
-                                    {#<p class="gb_comm fl">more</p>#}
-                                    {#<p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
+                    {% if isTemplate %}
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Michael</strong></p>
+                                        <p class="date">2017-07-14 17:45</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p></p>
+                                        <div class="emo-type-c emo11"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Giang Minh</strong></p>
+                                        <p class="date">2017-07-14 17:45</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Chúc mừng cô dâu chú rể nhé. </p>
+                                        <div class="emo-type-b emo02"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Sunny</strong></p>
+                                        <p class="date">2017-07-14 17:43</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Trăm năm hạnh phúc nha !</p>
+                                        <div class="emo-type-b emo20"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Windy</strong></p>
+                                        <p class="date">2017-07-14 17:43</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Ôi bao giờ mới đến lượt mình đây :((</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections  mobile_hide">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Sweet Corn</strong></p>
+                                        <p class="date">2017-07-14 17:43</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>
+                                            Wow, thực sự chúc mừng. <br/>
+                                            Hãy đến và tham gia vào ngày hạnh phúc của bạn <br/>
+                                            Xin chúc mừng ^^
+                                        </p>
+                                        <div class="emo-type-a emo02"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections  mobile_hide">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/crop_c14f8a35bc8180f7cbf516f097919e03.jpg" alt="profile picture" />
+                                        <div class="pro-sns dalpeng"><span></span></div>
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Thích thì nhích</strong></p>
+                                        <p class="date">2017-07-14 17:42</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Chúc mừng đôi trẻ !</p>
+                                        <div class="emo-type-a emo08"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections  mobile_hide">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                        <div class="pro-sns notmember"><span></span></div>
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>im_mi_ya</strong></p>
+                                        <p class="date">2017-07-03 15:04</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>
+                                            Chúc mừng đám cưới của bạn! Tôi sẽ đến sớm!
+                                        </p>
+                                        <div class="emo-type-a emo06"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections  mobile_hide">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                        <div class="pro-sns notmember"><span></span></div>
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>songsong2</strong></p>
+                                        <p class="date">2017-07-03 15:02</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Tuyệt đẹp !!!</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                        {% for comment in comments %}
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="{{ comment.author.avatar }}" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>{{ comment.author.name }}</strong></p>
+                                                <p class="date">{{ comment.createdAt | date('d-m-Y H:i') }}</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>{{ comment.content }}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
-            <div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Write</span></div>
+            <div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Viết</span></div>
         </div>
         <!--// guestbook -->
 
         <!-- location -->
         <div class="location_wrap" id="sk_map">
-            <h2 class="title"><span>Địa Điểm Tiệc Cưới</span></h2>
-
-            {#<div class="ul-body">#}
-                {#<ul class="lo_tab_wrap">#}
-                    {#<li class="tab_btn wh locationtabs on" id="tabs_wedding">Hướng dẫn</li>#}
-                    {#<li class="tab_btn rh locationtabs" id="tabs_party">Thông tin liên hệ</li>#}
-                {#</ul>#}
-            {#</div>#}
-
+            <h2 class="title"><span>Hôn lễ được tổ chức tại</span></h2>
             <div class="ul-body locationdivs" id="div_wedding">
-                <input type="hidden" id="wedding_pmap_lat" value="37.4950598"/>
-                <input type="hidden" id="wedding_pmap_lon" value="127.12241160000008"/>
-                <input type="hidden" id="wedding_paddr" value="서울시 송파구 중대로 135 더 달팽 하우스 필드"/>
-                <input type="hidden" id="wedding_pname" value="더 달팽 하우스 필드"/>
-
                 <div class="lo_box col-2">
                     <div class="ui-block-1">
                         <div class="lo_title">
@@ -587,85 +541,16 @@
                         <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
                             <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
                             <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
-                            {#<input type='submit' value='CHỈ ĐƯỜNG' style="display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;"/>#}
                         </form>
                         <div class="nav-1">
                             <div class="ui-body-d ui-btn-nav wedding_kimnavi">
                                 <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
                             </div>
                         </div>
-                        {#<div class="nav-2">#}
-                            {#<div class="ui-body-d ui-btn-nav wedding_ollehnavi">#}
-                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>#}
-                            {#</div>#}
-                        {#</div>#}
                     </div>
                 </div>
                 <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên</div>
             </div>
-            {#<div class="ul-body locationdivs hide" id="div_party">#}
-                {#<input type="hidden" id="party_pmap_lat" value="37.5194478"/>#}
-                {#<input type="hidden" id="party_pmap_lon" value="127.01922209999998"/>#}
-                {#<input type="hidden" id="party_paddr" value="서울시 강남구 신사동 504-11 달팽뷔페 2층"/>#}
-                {#<input type="hidden" id="party_pname" value="달팽 뷔페 2층"/>#}
-                {#<div class="lo_box col-2">#}
-                    {#<div class="ui-block-1">#}
-                        {#<div class="lo_title">#}
-                            {#<h3>Lễ tân nhà hàng</h3>#}
-                            {#<p class="date">2018년 3월 17일 토요일 오후 4시 ~ 오후 11시</p>#}
-                            {#<p class="place">달팽 뷔페 2층</p></div>#}
-                        {#<div class="lo_map">#}
-                            {#<div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="ui-block-2">#}
-                        {#<div class="lo_containerarea">#}
-                            {#<table class="lo_container lo_left">#}
-                                {#<tr>#}
-                                    {#<th class="lo_loca"><span class="icon">Vị trí</span></th>#}
-                                    {#<td class="txt"><span>{{ data['place'] }}</span></td>#}
-                                {#</tr>#}
-                                {#<tr>#}
-                                    {#<th class="lo_tel"><span class="icon">Tel</span></th>#}
-                                    {#<td class="txt"><span>02-2000-0000</span></td>#}
-                                {#</tr>#}
-                                {#<tr>#}
-                                    {#<th class="lo_info"><span class="icon">Info</span></th>#}
-                                    {#<td><span>♥ 주차 가능합니다.<br/>#}
-{#♥ 되도록이면 대중교통을 이용해주세요.</span></td>#}
-                                {#</tr>#}
-                            {#</table>#}
-                            {#<table class="lo_container lo_right">#}
-                                {#<tr>#}
-                                    {#<th class="lo_bus"><span class="icon">Bus</span></th>#}
-                                    {#<td><span>♥ 지선버스(초록) ; 4212, 4412, 4431<br/>#}
-{#♥ 간선버스(파랑) : 140, 142, 144, 145, 148, 240<br/>#}
-{#♥ 광역버스(빨강) : 1500, 3030, 3100, 6800, 9404</span></td>#}
-                                {#</tr>#}
-                                {#<tr>#}
-                                    {#<th class="lo_subway"><span class="icon">Subway</span></th>#}
-                                    {#<td><span>♥ 3호선 신사역 6번 출구</span></td>#}
-                                {#</tr>#}
-                            {#</table>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="nav-wrap">#}
-                    {#<div class="ui-grid-a nav-m">#}
-                        {#<div class="nav-1">#}
-                            {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
-                                {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>#}
-                            {#</div>#}
-                        {#</div>#}
-                        {#<div class="nav-2">#}
-                            {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
-                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>#}
-            {#</div>#}
         </div>
         <!--// location  -->
     </div><!--// ui-section-b -->
