@@ -125,6 +125,8 @@ class BuilderController extends Controller
         $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
         $helper = $zalo -> getRedirectLoginHelper();
         $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
+
+        $comments = $card->getComments();
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
             'referrer' => $referrer,
             'groom' => $groom,
@@ -134,7 +136,9 @@ class BuilderController extends Controller
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
-            'zaloUrl' => $zaloLoginUrl
+            'zaloUrl' => $zaloLoginUrl,
+            'id' => $card->getId(),
+            'comments' => $comments
         ));
     }
 
