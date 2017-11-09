@@ -171,7 +171,8 @@ class BuilderController extends Controller
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
             'forGroom' => $template->isForGroom(),
-            'isTemplate' => true
+            'isTemplate' => true,
+            'hash' => $hash
         ));
     }
 
@@ -214,7 +215,8 @@ class BuilderController extends Controller
             'name' => $name,
             'comments' => $comments,
             'forGroom' => $card->isForGroom(),
-            'isTemplate' => false
+            'isTemplate' => false,
+            'hash' => $hash
         ));
     }
 }

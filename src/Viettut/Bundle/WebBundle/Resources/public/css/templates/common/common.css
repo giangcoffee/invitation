@@ -126,13 +126,10 @@ label { cursor:pointer; }
 .footer ul li div {width:60px; height:60px; margin:0 auto;}
 .footer ul li div span {display:block; text-indent:-9999px; overflow:hidden;}
 .footer ul li em {display:none; margin-top:.5em; font-size:1em; text-align:center; text-shadow:none;}
-.ft_sns_wrap,
-.ft_sns_wrap1 {background:url('http://dalpeng.com/dalpeng/skin/_common/img/ico_spr_snsg80_band2.png') 0 0 no-repeat; background-size:60px; opacity:.6;cursor:pointer;}
-.facebook	  {background-position:0 0}
-.twitter,
-.band	  {background-position:0 -60px}
-.kakao		  {background-position:0 -120px}
-.story		  {background-position:0 -180px}
+.facebook {background:url('../../../img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.twitter {background:url('../../../img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.zalo {background:url('../../../img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.instagram	{background:url('../../../img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
 
 
 
@@ -144,13 +141,10 @@ label { cursor:pointer; }
 	.footer ul {float:right; width:33%; padding-top:12px;}
 	.footer ul li {float:left; width:25%;}
 	.footer ul li div {width:40px; height:40px;}
-	.ft_sns_wrap,
-	.ft_sns_wrap1 {background:url('http://dalpeng.com/dalpeng/skin/_common/img/ico_spr_snsg80_band80.png') 0 0 no-repeat; background-size:40px; opacity:.5;cursor:pointer;}
-	.facebook	 {background-position:0 0}
-	.twitter,
-	.band	 {background-position:0 -40px}
-	.kakao		 {background-position:0 -80px}
-	.story	 	 {background-position:0 -120px}
+	.facebook {background:url('../../../img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.twitter {background:url('../../../img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.zalo {background:url('../../../img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.instagram	{background:url('../../../img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
 }
 
 .hide {display:none;}

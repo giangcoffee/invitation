@@ -17,12 +17,9 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link href="/img/mobileicon/dalpeng_152x152.png" sizes="152x152" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_120x120.png" sizes="120x120" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_76x76.png" sizes="76x76" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_60x60.png" sizes="60x60" rel="apple-touch-icon">
-    <link rel="icon" sizes="192x192" href="/img/mobileicon/dalpeng_192x192.png">
-    <link rel="icon" sizes="128x128" href="/img/mobileicon/dalpeng_128x128.png">
+    <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
+    <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
+    <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
 
     <title>{{ name }}</title>
 
@@ -258,8 +255,7 @@
 
         <iframe id="movie" width="100%"
                 data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" height="1"
-                frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
+                frameborder="0" allowfullscreen></iframe>
 
         <!-- movie -->
         <div class="movie_wrap" id="sk_media">
@@ -270,10 +266,9 @@
                         <li>
                             <iframe id="movie" width="100%"
                                     data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
-                                    height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                                    height="100%" frameborder="0"
                                     allowfullscreen></iframe>
                         </li>
-                        <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
                     </ul>
                 </div>
             </div>
@@ -555,68 +550,46 @@
         <!--// location  -->
     </div><!--// ui-section-b -->
     <!-- footer -->
-    <div class="footer" id="sk_snslink">
+    <div class="footer">
         <div class="contents">
-            <h4><a href="http://dalpeng.com" target="_blank"><img
-                            src="/bundles/viettutweb/img/templates/gardenwedding/footer_logo.png" alt="로고"
-                            title="달팽 초대장 :: dalpeng.com"/></a><span></span></h4>
+            <h4>
+                <a href="http://thiepdo.com" target="_blank">
+                    <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
+                </a>
+                <span></span>
+            </h4>
             <ul>
-                <li>
-                    <a target="_blank"
-                       href="http://www.facebook.com/sharer/sharer.php?u=http://dalpeng.com/gardenwedding">
-                        <div class="ft_sns_wrap1 fasebook"><span>facebook logo</span></div>
-                    </a>
-                    <em>facebook</em>
-                </li>
-                <!-- 네이버 밴드 추가용 by echos(2014-12-08) -->
-                <li>
-                    <a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/gardenwedding">
-                        <div class="ft_sns_wrap1 band"><span>band logo</span></div>
-                    </a>
-                    <em>naver band</em>
-                </li>
-                <!--
-                <li>
-                    <a target="_blank" href="http://twitter.com/share?text=달팽초대장::윤신랑♥박신부&url=http://dalpeng.com/gardenwedding"><div class="ft_sns_wrap1 twitter"><span>twitter logo</span></div></a>
-                    <em>twitter</em>
-                </li>-->
-                <li id="sk_kakao">
-                    <div class="ft_sns_wrap1 kakao btn_send_kakao" id="btn_kakao_talk"><span>KAKAOTALK</span></div>
-                    <em>KAKAOTALK</em>
-                </li>
-                <!-- https://story.kakao.com/share?url=http%3A%2F%2Fdalpeng.com%2Fgardenwedding -->
-                <li>
-                    <a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/gardenwedding">
-                        <div class="ft_sns_wrap1 story" id="btn_kakao_story"><span>KAKAOSTORY</span></div>
-                    </a>
-                    <em>KAKAOSTORY</em>
-                </li>
+                <div class="addthis_inline_share_toolbox"></div>
+                {#<li>#}
+                    {#<a target="_blank" title="Chia sẻ trên Facebook"#}
+                       {#href="http://www.facebook.com/sharer/sharer.php?u=http://thiepdo.com{% if isTemplate %}{{ path('template_page', {hash: hash}) }}{% else %}{{ path('card_page', {hash: hash}) }}{% endif %}">#}
+                        {#<div class="facebook"><span>facebook logo</span></div>#}
+                    {#</a>#}
+                    {#<em>Facebook</em>#}
+                {#</li>#}
+                {#<li>#}
+                    {#<a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/gardenwedding" title="Chia sẻ trên Zalo">#}
+                        {#<div class="zalo"><span>zalo logo</span></div>#}
+                    {#</a>#}
+                    {#<em>Zalo</em>#}
+                {#</li>#}
+                {#<li>#}
+                    {#<a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/gardenwedding" title="Chia sẻ trên Twitter">#}
+                        {#<div class="twitter"><span>twitter logo</span></div>#}
+                    {#</a>#}
+                    {#<em>Twitter</em>#}
+                {#</li>#}
+                {#<li>#}
+                    {#<a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/gardenwedding" title="Chia sẻ trên Instagram">#}
+                        {#<div class="instagram"><span>instagram logo</span></div>#}
+                    {#</a>#}
+                    {#<em>Instagram</em>#}
+                {#</li>#}
             </ul>
-        </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
         </div>
     </div>
     <!--// footer -->
 </div><!--//skin_page-->
-
-<div class="popup_navi popup_olleh" style="display:none;">
-    <div class="popup_navibox">
-        <div class="olleh_btnbox">
-            <div class="olleh_btn btn1" id="android_go_olleh">
-                <p class="title">이미 KT내비앱을<br><strong>사용 중이신 경우</strong></p>
-                <p class="link"><span>바로 길안내</span></p>
-            </div>
-            <div class="olleh_btn btn2" id="android_install_olleh">
-                <p class="title">KT내비 앱이<br><strong>없으신 경우</strong></p>
-                <p class="link"><span>앱 설치하기</span></p>
-            </div>
-        </div>
-        <div class="olleh_back">
-            <span id="popOllehClose">닫기</span>
-        </div>
-    </div>
-</div>
 
 <!-- photoswipe -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -1245,5 +1218,6 @@
 
     //-->
 </script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
 </body>
 </html>
