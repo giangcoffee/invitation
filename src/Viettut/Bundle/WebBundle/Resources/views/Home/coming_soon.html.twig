@@ -8,9 +8,9 @@
     </div>
     <div class="row">
         <div class="col-md-12 center">
-            <h1 class="short small">OUR WEBSITE IS COMING SOON</h1>
-            <p class="short lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+            <h1 class="short small">MẪU HIỆN TẠI CHƯA HOÀN THÀNH !</h1>
+            <p class="short lead">Chúng tôi đang gấp rút hoàn thành mẫu này. Bạn vui lòng quay lại sau hoặc <a href="{{ path('contact_page') }}">liên hệ</a> để biết thêm chi tiết</p>
+            {#<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>#}
         </div>
     </div>
     <div class="row">
@@ -21,20 +21,20 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="newsletter">
-                <h5>Let me know when the site is done</h5>
+                <h5>Đăng ký nhận tin mới</h5>
 
-                <div class="alert alert-success hidden" id="newsletterSuccess">
-                    <strong>Success!</strong> You've been added to our email list.
-                </div>
+                {#<div class="alert alert-success hidden" id="newsletterSuccess">#}
+                    {#<strong>Success!</strong> You've been added to our email list.#}
+                {#</div>#}
 
-                <div class="alert alert-danger hidden" id="newsletterError"></div>
+                {#<div class="alert alert-danger hidden" id="newsletterError"></div>#}
 
-                <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
+                <form id="subscribeForm">
                     <div class="input-group">
-                        <input class="form-control" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
+                        <input class="form-control" placeholder="Email" name="email" type="email">
                         <span class="input-group-btn">
-											<button class="btn btn-default" type="submit">Subscribe Now</button>
-										</span>
+                                <button class="btn btn-default" id="subscribeButton" type="submit" onclick="subscribe()">Đăng ký ngay</button>
+                        </span>
                     </div>
                 </form>
             </div>
