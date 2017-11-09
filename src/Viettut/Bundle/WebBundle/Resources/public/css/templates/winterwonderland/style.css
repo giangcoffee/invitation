@@ -1,0 +1,478 @@
+@charset "utf-8";
+/* 임시css */
+.snsbbs_sections {float:left; width:25%;}
+.ui-panel-wrapper {min-height:80px;}
+.ui-page-theme-a {text-shadow:none!important}
+.spacer.s0 {min-height: 1px;}
+
+/* Global */
+.ul-body   {position:relative; max-width: 980px; margin: 0 auto; padding:0 10px}
+.ul-body:after {display:block; content:''; clear:both;}
+.ui-cont-a {padding: 0    1em}
+.ui-cont-b {padding: 2em  0}
+.ui-cont-c {padding-top: 2em}
+.ui-cont-d {padding-bottom: 2em}
+.btn_wrap {cursor:pointer;}
+.p-r {position:relative}
+.f-r {float:right!important;}
+
+/* Layout */
+html,body {width:100%; height:100%;}
+body {font-size: 100%;}
+#skin_page {z-index:10; background:#fefaef url(../../../img/templates/winterwonderland/couple_bg.png) repeat 50% 0;}
+/*img  {max-width:100%;}*/
+.header {position:relative; min-height:100%; z-index:-1;}
+.greeting_wrap {position:relative; z-index:10; background:rgba(34,34,34,0.8); overflow:hidden}
+.couple_wrap {position:relative; z-index:10; min-height:300px; padding:50px 0; background:#fefaef url(../../../img/templates/winterwonderland/couple_bg.png) repeat 50% 0; overflow:hidden}
+.gallery_wrap {position:relative; z-index:10; padding:50px 0 0 0; background:#777 url(../../../img/templates/winterwonderland/gal_snow.png) repeat-x 50% 10px; overflow:hidden}
+.guestbook_wrap {position: relative; z-index:10; padding: 50px 0;  background-color:#fff; overflow: hidden;}
+.movie_wrap {position:relative; z-index:10; margin:0; padding:100px 0; 
+  background:url(../../../img/templates/winterwonderland/movie_bgtop.png), url(../../../img/templates/winterwonderland/movie_bgbottom.png), url(../../../img/templates/winterwonderland/movie_bg.png);
+  background-repeat:repeat-x, repeat-x, repeat;
+  background-position:center top, center bottom, center top; 
+}
+.location_wrap {position:relative; padding:50px 0; background:#626265 url(../../../img/templates/winterwonderland/gal_snow.png) repeat-x 50% 10px; z-index:10; overflow:hidden}
+.location_wrap:after {display:block; content:''; clear:both;}
+.footer {}
+
+.lnb {position:fixed; top:0; right:0; z-index:9999}
+.lnb_mobile {width:60px; height:60px; background-color:#e0c387}
+.lnb_mobile img {width:60px; height:60px}
+
+h2.title {text-align:center; margin:0 0 50px 0;}
+h2.title img {height:55px;}
+
+.header_bg {position:fixed; width:100%; height:800px; z-index:-1; background-attachment: fixed;}
+.header_title {position:relative; width:100%; height:800px; top:0; left:0; z-index:999; background-color:rgba(0,0,0,0.5); color:#fff}
+.hd_title {position:absolute; top:50%; left:0; width:100%; height:120px; margin:-60px 0 0 0; font-family:' Apple SD Gothic Neo','NanumGothic'; text-align:center; font-size:3em; line-height:1;}
+.hd_title span {display:block; width:155px; margin:0 auto 30px; padding:15px 0 0 0; font-family: 'Oswald', sans-serif; font-size:22px; color:#e0c387; border-top:5px solid #e0c387}
+.hd_title strong {font-weight:bold; margin:0 5px}
+.hd_date {position:absolute; bottom:10px; left:0; width:100%; text-align:center;}
+.hd_date img {width:35px; margin-top:10px;}
+.hd_date p {font-size:1.1em; margin:0 0 5px 0; color:#e0c387;}
+.hd_date p:first-child {font-family: 'Oswald', sans-serif; color:#fff;}
+
+
+@media all and (max-height: 350px) {
+  .hd_title {margin:-100px 0 0 0;}
+}
+/* Greeting */
+.greeting_wrap .col-2 {z-index:10; 
+  background:url(../../../img/templates/winterwonderland/greeting_heart.png) no-repeat 42% 1px; background-size:19px;
+  /*background-image:url(../img/greeting_heart.png), url(../img/greeting_bg.gif);
+  background-repeat: no-repeat, repeat;
+  background-position: 42% 0, 0 0;
+  background-size: 19px, auto;*/ }
+/*.greeting_wrap .col-2.sticky {position:fixed;top:700px;}*/
+.greeting_wrap .col-2 .ui-block-a {float:left; width:40%; min-height:220px; margin-right:0; padding:50px 0;}
+.greeting_wrap .col-2 .ui-block-a .greeting_date {width:40%;}
+.greeting_wrap .col-2 .ui-block-b {float:right; width:56%; padding:50px 0;}
+.greeting_wrap h2 {font-family: 'Oswald', sans-serif; color:#9cbaae; text-align:right; font-size:1.2em}
+.greeting_wrap h2 span {display:block; margin:5px 0 0 0;color:#fff; font-family:'NanumGothic'; font-size:0.9em;}
+
+.greeting_date {position:absolute; bottom:50px; font-family:'Oswald', sans-serif; color:#e0c387; text-align:right}
+.greeting_date p {font-size:0.9em; color:#fff}
+.greeting_textbox {max-width:550px; font-size:1em; line-height:1.6em;color:#fff}
+.greeting_name {margin:50px 0 0 0; border-collapse: collapse; table-layout:fixed; color:#fff}
+.greeting_name thead {display:none}
+.gn1 span {padding:0 0.2em; float:right;}
+.gn1 {padding:0.5em 0; font-size:0.9em; line-height:1}
+.gn2 {padding:0.5em 0.3em 0.5em 0; font-size:0.9em; line-height:1}
+.gn3 {min-width:60px; padding:0.5em 0.5em 0.5em 0; font-size:0.9em; line-height:1}
+.gn4 {min-width:70px; padding:0.5em 0; font-size:1.1em; font-weight:bold; line-height:1}
+.gn3 span {display:block; text-align:right; padding-right:0.5em; color:#fff;}
+
+/* couple */
+.couple_container {position:relative; width:500px; margin:0 auto; background:url(../../../img/templates/winterwonderland/couple_heart.png) no-repeat 50% 80px; background-size:40px}
+.couple_container:after {content:''; display:block; clear:both}
+.couple_groom {float:left; width:200px}
+.couple_bride {float:right; width:200px}
+.couple_photo {width:200px; height:200px; border-radius:100%; border:5px solid #9CBAAE; background-position:50% 50%!important; background-size:100%!important; box-sizing:border-box; -webkit-box-sizing:border-box;}
+.couple_name {text-align:center;margin:10px 0; font-size:1.2em; color:#333; font-weight:bold}
+.couple_name span {font-family: 'Oswald', sans-serif; font-size:0.6em; margin:0 5px 0 0; font-weight:normal}
+.couple_container .groom-wrap,
+.couple_container .bride-wrap{font-size:0; line-height:0; text-indent:-9999px}
+.groom-wrap ul,
+.bride-wrap ul {padding-left:11px}
+.groom-wrap li,
+.bride-wrap li {float:left; width:40px; height:40px; background:#e0c387 url(../../../img/templates/winterwonderland/couple_icon.png) no-repeat 0 0; background-size:160px; margin:0 8px 0 0; border-radius:40px}
+.groom-wrap li.ico1,
+.bride-wrap li.ico1 {background-position:0 0}
+.groom-wrap li.ico2,
+.bride-wrap li.ico2 {background-position:-40px 0}
+.groom-wrap li.ico3,
+.bride-wrap li.ico3 {background-position:-80px 0}
+.groom-wrap li.ico4,
+.bride-wrap li.ico4 {background-position:-120px 0; margin:0;}
+.groom-wrap a:last-child li,
+.bride-wrap a:last-child li{margin-right:0!important}
+
+/* gallery */
+.gal_list > div {overflow:hidden;}
+.gal_list > div > a > div,
+.gal_list > div > div {float:left; width:30%; height:280px; border:4px solid; border-color:rgba(255,255,255,0.8); box-sizing:border-box;}
+.gal_list > div > div {position:relative; border:none;}
+.gal_date {background:url(../../../img/templates/winterwonderland/gallery_text.png) no-repeat 50% 40%; background-size:90%}
+.gal_date span {position:absolute; left:50%; top:60%; display:block; width:210px; margin:0 0 0 -105px; padding:5px 0;background-color:#969598; color:#fff; font-family:'Oswald', sans-serif; letter-spacing:1px; text-align:center}
+
+.gal_bottom {position:relative; width:100%; height:160px;}
+.gal_bottom div {position:absolute; top:0; left:0; width:100%; height:160px; }
+.gal_ob1 {background:url(../../../img/templates/winterwonderland/gal_obj1.png) no-repeat 50% 0; z-index:30; background-size:auto 100%}
+.gal_ob2 {background:url(../../../img/templates/winterwonderland/gal_obj2.png) no-repeat 45% 0; z-index:20; background-size:auto 100%}
+.gal_ob3 {background:url(../../../img/templates/winterwonderland/gal_obj3.png) no-repeat 50% 0; z-index:10; background-size:auto 100%}
+
+.gal_more {position:relative; float:right; width: 200px; height: 36px; margin: 10px auto 0; padding: 0 10px 0 0; border-radius: 0px; box-sizing: border-box; cursor: pointer;
+background-color:#999; background:rgba(255,255,255,0.2) url("../../../img/templates/winterwonderland/gal_more_w.png") no-repeat scroll 91% 50% ;background-size: 13px auto; border: 2px solid rgba(255,255,255,0.7);
+font-family:'Oswald'; color: #fff; text-align: center; line-height: 30px; font-size: 1em; font-weight: normal; font-style: normal;text-shadow:none!important }
+
+.gal_list2 {padding-bottom:60px!important;}
+.gal_list2 .gal_frame img {border: 4px solid rgba(255,255,255,.8)}
+.gal_list2 .gal_more {left:50%;bottom:0;margin-left:-100px;}
+@media all and (max-width:480px){
+  .gal_list2 .gal_more {left:0;margin-left:0;}
+  .gal_list2 .gal_frame_2 {width:100%}
+}
+
+/* Guestbook */
+.gb_btn {position:relative; line-height:40px; margin:30px auto; font-size:0.9em; font-weight:bold; color:#000; border:3px solid #e0c387; border-radius:10px; text-align:center; box-sizing:border-box; -webkit-box-sizing:border-box;}
+.gb_btn .ico {position:absolute; top:-10px; right:-10px; display:block; width:30px; height:30px; background:url('../../../img/templates/winterwonderland/guestbook_btn.png') no-repeat 0 0; background-size:30px;}
+
+#div_snsbbs {}
+.gb_cont_box {width:100%; padding:1em 0; font-size:0.85em; color:#666; background-color:#f6ead2; border-radius:10px; box-sizing:border-box;
+background-image:url(../../../img/templates/winterwonderland/guestbook_bgtop.png);
+background-repeat: repeat-x;
+background-position:100% 0;
+background-size:auto;}
+.snsbbs_sections:nth-child(odd) .gb_cont_box {background-position:0 0;}
+
+.snsbbs_sections.no_post {position:relative!important; width:100%; text-align:center}
+.snsbbs_sections.no_post .gb_cont_box {padding:2em 0; font-size:1em; color:#8a661b;}
+
+.pro_info {padding:0 1em;}
+.pro_img {position:relative; float:left;}
+.pro_img img {width:50px; height:50px; border-radius:50px}
+.pro-sns {position:absolute; top:65%; left:-5px; width:20px; height:20px; background:url('../../../img/templates/winterwonderland/ico_spr_sns24.png') -20px 0 no-repeat; background-size:200%;}
+.pro-sns span   {display:block; text-indent:-9999px; overflow:hidden;}
+.pro-sns.facebook {background-position:   -20px   0px;}
+.pro-sns.twitter  {background-position:   -20px   -20px;}
+.pro-sns.kakao    {background-position:   -20px   -40px;}
+.pro-sns.naver    {background-position:   -20px   -60px;}
+.pro-sns.dalpeng  {background-position:   -20px   -80px;}
+.pro-sns.google   {background-position:   -20px   -100px;}
+.pro-sns.notmember  {background-position:   -20px   -120px;}
+.pro-sns.instagram  {background-position:   -20px   -140px;}
+.pro_txt {float:left; padding:0.3em 0 0 1em; max-width:60%}
+.pro_txt .date {font-size:0.8em; letter-spacing:-0.5px}
+
+.gb_cont {clear:both; padding:1em;}
+.gb_cont li {margin-bottom:1em;}
+.gb_cont li img {max-width:100%;}
+
+.gb_skip {overflow:hidden; padding:0 1em;}
+.gb_skip .gb_comm {width:30px; height:26px; background:url('../../../img/templates/winterwonderland/guestbook_reply.png') no-repeat; background-size:30px; color:#fff; font-size:0.95em; font-weight:bold }
+.gb_skip .gb_comm span {display:block; text-align:center; line-height:22px}
+
+/* Guestbook :: 글없을때 */
+.gb_default_box {width:100%; height:auto;}
+.gb_default_box .comm-cont {padding:5em 0; text-align:center;}
+.gb_default_box .comm-cont p {margin-bottom:2em; font-size:1em; color:#666; text-shadow:none; text-shadow:0 1px 1px rgba(255,255,255,.5);}
+.gb_default_box .comm-cont span {display:block;}
+.btn_write {max-width:350px; padding:.5em 1em; margin:0 auto; text-align:center; cursor:pointer; background:rgba(0,0,0,0.7)}
+.btn_write span {color:#fff;}
+.btn_write span em {}
+.btn_write span:hover em {}
+
+.btn-snsbbs {max-width:1024px; margin:0 auto;}
+.btn-snsbbs .btn_go_snsbbs { margin:0 15px; float:right; display:inline-block; padding:10px 0; background:#66afb5 url('../../../img/templates/winterwonderland/btn_arrow_w.png') no-repeat 98% 50%;
+background-size:22px 22px; border-radius:5px; color:#fff;text-shadow:none; font-weight:bold; text-align:center}
+.btn-snsbbs .btn_go_snsbbs span {padding:0 60px}
+
+
+/* Movie */
+
+.movie_container {}
+.movie_container ul {width:100%; margin:0}
+.movie_container:after {display:block; content:''; clear:both}
+.movie1 ul li,
+.movie2 ul li,
+.movie3 ul li,
+.movie4 ul li {position:relative; overflow:hidden}
+.movie1 ul li img,
+.movie2 ul li img,
+.movie3 ul li img,
+.movie4 ul li img {position:absolute; top:50%; left:0; width:100%; height:auto; margin:-38% 0 0 0;z-index:0}
+.android_play {position:absolute; display:block; top:50%; left:50%; cursor:pointer;z-index:1;
+  background:url('../../../img/templates/winterwonderland/android_play.png') no-repeat 0 0; background-size:100%; font-size:0; line-height:0; text-indent:-9999;
+  width:80px; height:54px;margin:-27px 0 0 -40px}
+
+.movie1 ul li { width:100%; height:480px; margin:0;}
+
+.movie2 ul li { width:100%; height:480px; margin:0 0 2% 0;}
+
+.movie3 ul li {float:left; width:49%; height:250px; margin:0;}
+.movie3 ul li:first-child { width:100%; height:480px; margin:0 0 2% 0;}
+.movie3 ul li:nth-child(2) {margin-right:2%}
+
+.movie4 ul li {float:left; width:49%; height:250px; margin:0 0 2% 0;}
+.movie4 ul li:first-child {margin-right:2%}
+.movie4 ul li:nth-child(3) {margin-right:2%}
+
+.nomovie {background-color:#ccc}
+.nomovie span {position:absolute; top:50%; left:50%; margin:0 0 0 -100px; display:block; width:200px; text-align:center; color:#fff}
+
+@media all and (max-width: 640px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {position:relative; float:none; width:100%; height:240px; margin:0 0 2% 0}
+  .android_play {width:60px; height:40px;margin:-20px 0 0 -30px}
+}
+@media all and (max-width: 480px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {height:220px}
+}
+
+/* Location */
+.lo_tab_wrap {width:100%; height:40px; overflow:hidden;}
+.lo_tab_wrap li {float:left; width:40%; margin:0 1% 0 0; line-height:40px; border-radius:8px 8px 0 0;
+color:#888; text-align:center; font-size:1em; background-color:#ddd}
+.lo_tab_wrap li.on {width:40%; color:#865f0e; line-height:40px; margin-top:0; background-color:#E0C387}
+.lo_tab_wrap li:last-child {margin-right:0}
+
+.lo_map {margin-bottom:1em; background-color:#E0C387; border:4px solid #E0C387; text-align:center; line-height:1;box-sizing:border-box}
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas {height:400px!important;}
+.lo_map .ui-link img {height:100%;}
+
+.nav-wrap {}
+.nav-wrap ul {overflow:hidden; margin-top:10px;}
+.nav-wrap ul li {float:left; margin-right:30px;}
+.nav-m {margin-top:5px;}
+.nav-m .nav-1 {float:left; width:50%;}
+.nav-m .nav-2 {float:left; width:50%;}
+.ui-icon-nav1 {background:url('../../../img/templates/winterwonderland/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
+.ui-icon-nav2 {background:url('../../../img/templates/winterwonderland/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
+.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.5)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;}
+.ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.5)!important;background-color:#fafafa!important;padding: 12px 0;}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none;}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.8em; color:#fff}
+
+.lo_title {font-size:1.2em; color:#E0C387; font-weight:bold; padding:10px 0;}
+.lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; border-top:3px solid #444}
+.lo_container th {width:13%; min-width:65px; height:45px; position:relative; color:#E0C387; font-size:0.8em; border-bottom:1px solid #444;}
+.lo_container td {width:87%; min-height:35px; border-bottom:1px solid #444; color:#fff ;margin:0 0 0 10%; padding:5px 0 5px 5px; font-size:0.8em; line-height:1.6em}
+
+.col-2,
+.col-3,
+.col-4 {position:relative; overflow:hidden;}
+
+.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-b {float:left; width:49%;}
+
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0 }
+.col-3 .ui-block-c {width:32%;}
+
+.gallery_wrap .col-3 .ui-block-a,
+.gallery_wrap .col-3 .ui-block-b {margin:0 2% 2% 0}
+.gallery_wrap .col-3 .ui-block-c {margin:0 0 2% 0}
+
+.col-2g {position:relative;}
+.col-2g .ui-block-a {float:left; width:49%; margin:0 0 2% 0;}
+.col-2g .ui-block-b {float:right; width:49%; margin:0 0 15px 0;}
+.col-2g .gallery_snowbox {position:absolute; bottom:0; left:49%; margin: 0 0 15px -60px}
+
+.col-3g {margin:-75px 0 0 0}
+.col-3g .ui-block-a {width:40.8%; height:360px; margin:0 2% 2% 0}
+.col-3g .ui-block-b {width:28.2%; margin:80px 0 2% 0}
+.col-3g .ui-block-c {float:right; width:27%; margin:80px 0 2% 0}
+
+.ui-body-d {margin:2%;}
+.snsbbs_sections .ui-body-d {margin:7px;}
+
+
+@media all and (max-width: 1024px) {
+  .header_bg, .header_title {height:768px}
+}
+/* 980 이하 */
+@media all and (max-width: 980px) {
+  .title {margin:0 0 30px 0}
+  .movie_wrap {padding:50px 0;}
+}
+
+
+@media all and (max-width: 850px) {
+  .nav-m .nav-1,
+  .nav-m .nav-2 {float:none; width:100%;}
+}
+/* 800 이하 */
+@media all and (max-width: 800px) {  
+  .lo_tab_wrap li { font-size:1.2em;}
+	.nav_info {font-size:0.7em; text-align:center; margin:0 0 4% 0}
+  .gal_date {background-size:100%;}
+  .gal_bottom,
+  .gal_bottom div {height:120px}
+  .location_wrap .col-2 .ui-block-a, 
+  .location_wrap .col-2 .ui-block-b {float:left; width:100%;}
+  .lo_title {text-align:center;}
+}
+
+@media all and (max-width: 640px) {
+  .col-2 .ui-block-a,
+  .col-2 .ui-block-b {float:left; width:100%;}
+  .hd_title {font-size:2.5em;}
+  .hd_title span {font-size:20px; width:140px;}
+  .hd_date p {font-size:1em; margin:0 0 2px 0}
+  h2.title img {height:50px;}
+  h2.title {margin-bottom:10px;}
+  .greeting_wrap {}
+  .greeting_wrap h2 {text-align:center;font-size:1.2em}
+  .greeting_wrap h2 span {margin:5px 0 0 0;font-size:0.9em;}
+  .greeting_textbox {text-align:center; margin:30px auto; padding:0 20px;}
+  .greeting_date {position:absolute; bottom:30px; font-family:'Oswald', sans-serif; color:#e0c387; text-align:center}
+  .greeting_name {margin:0 auto 30px}
+  .greeting_wrap .col-2 {padding:30px 0 60px;background:none;}
+  .greeting_wrap .col-2 .ui-block-a {float:left; width:100%; min-height:70px; margin-right:0; padding:10px 0}
+  .greeting_wrap .col-2 .ui-block-a .greeting_date {width:100%;}
+  .greeting_wrap .col-2 .ui-block-b {float:right; width:100%; padding:10px 0;}
+  .couple_wrap,
+  .guestbook_wrap {padding:30px 0;}
+	.gal_list .col-3 .ui-block-a {float:left; width:49%; margin:0 2% 2% 0;}  
+	.gal_list .col-3 .ui-block-b {float:left; width:49%; margin:0 0 2% 0;} 
+	.gal_list .col-3 .ui-block-c {float:left; width:100%; margin:0 0 2% 0;}
+  .gal_bottom,
+  .gal_bottom div {height:100px}
+
+	.gn1 {padding:0.5em 0; font-size:0.8em; line-height:1}
+	.gn2 {padding:0.5em 0.2em 0.5em 0; font-size:0.8em; line-height:1}
+	.gn3 {min-width:45px; padding:0.5em 0.1em 0.5em 0; font-size:0.8em; line-height:1}
+	.gn4 {min-width:50px; font-size:1em; font-weight:bold; line-height:1}
+
+	.btn_write {max-width:90%; background:transparent;}
+	.btn_write span {color:#000;}
+
+  .movie_wrap {padding:30px 0;}
+	.movie_container ul {width:100%; margin:0}
+	.lo_tab_wrap li { font-size:1.1em;}
+
+}
+
+/* for-couple_wrap */
+@media all and (max-width: 520px) {
+  .couple_container {width:100%; background-image:none;}
+  .couple_groom,.couple_bride {float:none; height:300px; margin:0 auto;}
+  .couple_name {margin:0; padding:5px 0;}
+  .groom-wrap,.bride-wrap {height:50px;}
+
+}
+
+/* grid 모바일용 */
+@media all and (max-width: 480px) {
+  .lnb_mobile,
+  .lnb_mobile img {width:45px; height:45px}
+	.col-2 .ui-block-a, 
+	.col-2 .ui-block-b {float:left; width:100%;}
+	.gal_list .col-3 .ui-block-a, .col-3 .ui-block-a, 
+	.gal_list .col-3 .ui-block-b, .col-3 .ui-block-b, 
+	.gal_list .col-3 .ui-block-c, .col-3 .ui-block-c {float:left; width:100%; margin:0 0 2% 0;}
+	.col-4 .ui-block-a,
+	.col-4 .ui-block-b,
+	.col-4 .ui-block-c, 
+	.col-4 .ui-block-d  {width:100%;}
+
+	.gal_list > div > a > div {height:220px!important}
+  .gal_list > div > div {height:200px;}
+  .gal_date span {top:70%;}
+  .gal_more {width:100%; background-position:95%}
+
+  h2.title img {max-width:110%!important; width:110%; height:auto; margin:0 0 0 -5%;}
+  
+  .hd_date p {font-size:0.9em}
+  .lo_tab_wrap li {font-size:1em;}
+  .lo_container th {width:20%; min-width:70px;}
+  .lo_container td {width:80%;}
+  .gal_bottom,
+  .gal_bottom div {height:80px}
+
+  .lo_map #wedding_pmap_canvas,
+  .lo_map #party_pmap_canvas {height:300px!important;}
+  .lo_map .ui-link img {height:100%;}
+}
+
+
+/* grid 모바일용 */
+@media all and (max-width: 320px) {
+  h2.title img {max-width:150%!important; width:150%; height:auto; margin:0 0 0 -25%;}
+  .hd_title {font-size:2em;}
+  .hd_title span {font-size:15px; width:110px; margin-bottom:15px; padding-top:5px;}
+  .greeting_textbox {font-size:0.8em; padding:0;}
+  .gal_list > div > div {height:180px;}
+  .gal_date span {top:65%;}
+  .snsbbs_sections.no_post .gb_cont_box {padding:1.5em 0; font-size:0.8em;}
+}
+
+
+/* slideUp */
+.slideUp{
+  animation: slideUp 1s ease forwards;
+  -webkit-animation: slideUp 1s ease forwards;
+}
+
+@keyframes slideUp {
+  0%    {transform: translateY(0%); opacity:1;} 
+  100%    {transform: translateY(-100%); opacity:0;} 
+}
+@-webkit-keyframes slideUp {
+  0%    {transform: translateY(0%); opacity:1;} 
+  100%    {transform: translateY(-100%); opacity:0;} 
+}
+
+
+/* snow */
+.snow{
+  background: none;
+  background-image: url('../../../img/templates/winterwonderland/snow1.png'), url('../../../img/templates/winterwonderland/snow2.png'), url('../../../img/templates/winterwonderland/snow3.png');
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index:-1;
+  -webkit-animation: snow 30s linear infinite;
+  -moz-animation: snow 30s linear infinite;
+  -ms-animation: snow 30s linear infinite;
+  animation: snow 30s linear infinite;
+}
+@keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 450px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 900px 1000px, 200px 400px, -200px 300px;}
+}
+@-webkit-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 450px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 900px 1000px, 200px 400px, -200px 300px;}
+}
+@-moz-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 450px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 900px 1000px, 200px 400px, -200px 300px;}
+}
+@-ms-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 450px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 900px 1000px, 200px 400px, -200px 300px;}
+}
+/*
+@media all and (max-width: 640px) {
+  .snow {height:115px;}
+  }
+
+@media all and (max-width: 480px) {
+  .snow {height:120px;}
+  }*/

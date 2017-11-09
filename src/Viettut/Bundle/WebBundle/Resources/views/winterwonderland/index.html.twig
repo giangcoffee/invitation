@@ -18,12 +18,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="robots" content="noindex" />
 
-    <link href="/img/mobileicon/dalpeng_152x152.png" sizes="152x152" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_120x120.png" sizes="120x120" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_76x76.png" sizes="76x76" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_60x60.png" sizes="60x60" rel="apple-touch-icon">
-    <link rel="icon" sizes="192x192" href="/img/mobileicon/dalpeng_192x192.png">
-    <link rel="icon" sizes="128x128" href="/img/mobileicon/dalpeng_128x128.png">
+    <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
+    <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
+    <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
 
     <title>{{ name }}</title>
 
@@ -39,7 +36,7 @@
     <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
     <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
     <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
-    <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js/"></script>
+    <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js"></script>
     <script src="/bundles/viettutweb/js/templates/common/photoswipe.js"></script>
     <script src="/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js"></script>
 
@@ -148,7 +145,9 @@
         .absolute { position:absolute !important; }
 
     </style>
-
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
+    </script>
     <script type="text/javascript">
         <!--
 
@@ -217,140 +216,7 @@
 
             // -- map -- //
             function initialize(md) {
-                //try{
-                // console.log (md+' initialize');
-                // console.log (md+' initialize');
-                $('#wedding_pmap_canvas, #party_pmap_canvas,#fbirthday_map_canvas,#ceremony_map_canvas').empty();
 
-                if(md=='party'){
-                    var $map_lat = $('#party_pmap_lat').val();
-                    var $map_lon = $('#party_pmap_lon').val();
-                    var $map_canvas = $('#party_pmap_canvas');
-                }else if(md == 'wedding'){
-                    var $map_lat = $('#wedding_pmap_lat').val();
-                    var $map_lon = $('#wedding_pmap_lon').val();
-                    var $map_canvas = $('#wedding_pmap_canvas');
-                }else if(md == 'fbirthday'){
-                    var $map_lat = $('#fbirthday_map_lat').val();
-                    var $map_lon = $('#fbirthday_map_lon').val();
-                    var $map_canvas = $('#fbirthday_map_canvas');
-                }else if(md == 'ceremony'){
-                    var $map_lat = $('#ceremony_map_lat').val();
-                    var $map_lon = $('#ceremony_map_lon').val();
-                    var $map_canvas = $('#ceremony_map_canvas');
-                }
-
-                var map_width = $(window).width();
-
-                $('.lo_map').css('width','100%');
-                //alert($map_canvas.css('width'));
-                $map_canvas.css('width','100%');	// 모든 네이버 지도 가로 크기 100%
-                //alert($map_canvas.css('width'));
-
-                /*
-                 if(map_width > 500 ) map_width = 500;
-                 map_height = 400;
-                 */
-                if($map_canvas[0]){
-
-                    var zoomlv = 11;
-
-                    var markerTarget = new naver.maps.LatLng($map_lat , $map_lon);
-                    var map = new naver.maps.Map($map_canvas[0], {
-                        center: markerTarget,
-                        zoom: zoomlv,
-                        zoomControl: true,
-                        zoomControlOptions: {
-                            style: naver.maps.ZoomControlStyle.LARGE,
-                            position: naver.maps.Position.TOP_RIGHT
-                        }
-                        /*
-                         mapDataControl: true,
-                         mapDataControlOptions: {
-                         position: naver.maps.Position.BOTTOM_LEFT
-                         }
-                         */
-                    });
-
-                    var marker = new naver.maps.Marker({
-                        position: markerTarget,
-                        map: map
-                    });
-
-
-                    map.setCenter(markerTarget);		// 마커 위치 지도 센터
-                    marker.setPosition(markerTarget);
-                    marker.setMap(map);
-
-                    // 지도 인터랙션 by echos(2016-09-29)
-                    $('#interaction').remove();
-
-                    var mappos = $map_canvas.position();
-
-                    $('<div id="interaction" class="control-on"></div>').insertAfter($map_canvas[0]);
-
-                    $('#interaction').css({'top':(mappos.top+10) , 'left':(mappos.left+10) });
-
-                    // 지도 인터랙션 옵션
-                    $("#interaction").on("click", function(e) {
-                        e.preventDefault();
-
-                        if (map.getOptions("draggable")) {
-                            map.setOptions({ // 지도 잠금
-                                draggable: false,
-                                pinchZoom: false,
-                                scrollWheel: false,
-                                keyboardShortcuts: false,
-                                disableDoubleTapZoom: true,
-                                disableDoubleClickZoom: true,
-                                disableTwoFingerTapZoom: true
-                            });
-
-                            $(this).removeClass("control-on");
-                        } else {
-                            map.setOptions({ // 지도 인터랙션 켜기(잠금풀기)
-                                draggable: true,
-                                pinchZoom: true,
-                                scrollWheel: true,
-                                keyboardShortcuts: true,
-                                disableDoubleTapZoom: false,
-                                disableDoubleClickZoom: false,
-                                disableTwoFingerTapZoom: false
-                            });
-
-                            $(this).addClass("control-on");
-                        }
-                    });
-
-                }
-
-                //}catch(err){console.log("error : " + err.message);}
-
-            }
-
-            function callKimNavi(md){
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-            function callKakaoNavi(md){
-                var $map_addr, $map_lat, $map_lon
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-
-            var $map_addr=''
-            var $map_lat=''
-            var $map_lon='';
-
-            function callOllehNavi(md){
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-
-            function callTmapNavi(md){
-                //console.log(md);
-
-                alert('모바일기기에서만 가능합니다.');
             }
 
             $('#div_snsbbs').masonry({
@@ -729,8 +595,8 @@
                         el: imageEl,
                     };
 
-                    wrapper.innerHTML = imageEl.getAttribute("alt");
-                    item.id = wrapper.firstChild.getAttribute("id").replace("gcomment_", "");
+                    item.id = imageEl.getAttribute("imgId");
+                    items.push(item);
 
                     items.push(item);
                 }
@@ -907,23 +773,44 @@
             });
 
             $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
-
-            // 페이지 로딩 후 동영상 로딩 처리
-            var $iframe = $("#sk_media iframe");
-            if($iframe.length) {
-                $.each($iframe, function() {
-                    var src = $(this).attr("data-src");
-                    this.src = src.replace("http://", "https://");
-                });
-            }
         });
+
+        function initMap() {
+            var lat = $('#coordinates').data('lat');
+            var lon = $('#coordinates').data('lon');
+            var title = $('#coordinates').data('title');
+            var location = {lat: lat, lng: lon};
+            var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+                zoom: 16,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            var info = new google.maps.InfoWindow({
+                content: '<h4>' + title + '</h4>'
+            });
+            info.open(map, marker);
+        }
+
+        function getPath() {
+            var addr = $('#getPath input[name=saddr]').val();
+            if (addr.length < 3) {
+                $('#getPath input[name=saddr]').focus();
+                alert('Nhập địa chỉ của bạn một cách chính xác!');
+                return;
+            }
+
+            document.getElementById("getPath").submit();
+        }
 
         //-->
     </script>
 </head>
 <body>
-<input type="hidden" id="now_lon"/>
-<input type="hidden" id="now_lat"/>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
 <!-- Start of first page: #one -->
 <div data-role="page" id="skin_page">
     <!-- panel-menu -->
@@ -932,9 +819,9 @@
         <div data-role="panel" id="right-panel" data-position="right" data-display="push">
             <div class="menu-wrap ui-panel-inner">
                 <ul data-role="listview" data-icon="false">
-                    <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                    <li data-icon="delete"><a href="#" data-rel="close">Đóng</a></li>
                     <!-- <li data-role="list-divider">우리결혼합니다.</li> -->
-                    <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>우리결혼합니다.</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>JUST MARRIED !</span></li>
                     <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>웨딩 갤러리</span></li>
                     <li class="menu_scrolls" data-rel="close" id="p_media"><span>웨딩 영상</span></li>
                     <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>방명록</span></li>
@@ -945,14 +832,16 @@
     </div>
     <!--// panel-menu -->
     <div id="sk_topinfo" class="header">
-        <div class="header_bg" style="background:url('/user/WinterWonderland/img/3c329ef94de4851a82a2bbde4a744348.jpg') center center no-repeat; background-size:cover;"></div>
+        <div class="header_bg" style="background:url('/bundles/viettutweb/img/templates/winterwonderland/3c329ef94de4851a82a2bbde4a744348.jpg') center center no-repeat; background-size:cover;"></div>
         <div class="header_title">
             <h1 class="hd_title">
-                <span>THE MARRIAGE OF</span>김정우<strong>&amp;</strong>정효진
+                <span>HÔN LỄ CỦA</span>{{ data['groom_name'] }}<strong>&amp;</strong>{{ data['bride_name'] }}
             </h1>
 
             <div class="hd_date">
-                <p>2018/04/28 Sat. 2:00 pm</p><p>수아비스 아모르홀</p>				<p><img src="/dalpeng/skin/winter_wonderland/img/header_down.png" alt="아래로"/></p>
+                <p>{{ date | date('d-m-Y H:i A (l)') }}</p>
+                <p>{{ data['place'] }}</p>
+                <p><img src="/bundles/viettutweb/img/templates/winterwonderland/header_down.png" alt="down"/></p>
             </div>
 
         </div>
@@ -962,43 +851,36 @@
             <div class="col-2">
                 <div class="ui-block-a">
                     <h2>WEDDING <strong>INVITATION</strong><span>여러분을 초대합니다.</span></h2>
-                    <div class="greeting_date"><p>Please save the date</p>2018/04/28 <strong> 2:00 pm</strong></div>
-
-                    <span class="greeting_date"></span>			</div>
+                    <div class="greeting_date">
+                        <p>Ngày chung đôi</p> {{ date | date('d-m-Y') }} <strong> {{ date | date('H:i A') }}</strong>
+                    </div>
+                    <span class="greeting_date"></span>
+                </div>
 
                 <div class="ui-block-b">
-                    <div class="greeting_textbox"> 우연히 시작된 작은 인연이<br />
-                        다시는 없을 큰 인연으로 되기까지<br />
-                        그리 길지 않은 시간이 걸렸습니다.<br />
-                        <br />
-                        우연을 운명으로 만드는<br />
-                        그 시작의 자리에 <br />
-                        소중한 분들을 모시고 싶습니다.<br />
-                        <br />
-                        부디 오셔서 저희의 뜻깊은 출발을<br />
-                        축복해 주시기 바랍니다.</div>
+                    <div class="greeting_textbox">{{ data['greeting'] }}</div>
                     <table class="greeting_name">
                         <thead>
                         <tr>
-                            <th>아버님</th>
-                            <th>어머님</th>
-                            <th>관계</th>
-                            <th>이름</th>
+                            <th>Cha</th>
+                            <th>Mẹ</th>
+                            <th>&nbsp;</th>
+                            <th>Con</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="gn1">김연규<span>·</span></td>
-                            <td class="gn2">이여진</td>
-                            <td class="gn3">의 장남 </td>
-                            <td class="gn4">김정우</td>
-                        </tr>
-                        <tr>
-                            <td class="gn1">정철진<span>·</span></td>
-                            <td class="gn2">김경숙</td>
-                            <td class="gn3">의 장녀 </td>
-                            <td class="gn4">정효진</td>
-                        </tr>
+                            <tr>
+                                <td class="gn1">{{ data['groom_fa_name'] }} - </td>
+                                <td class="gn2">{{ data['groom_mo_name'] }}</td>
+                                <td class="gn3">chú rể</td>
+                                <td class="gn4">{{ data['groom_name'] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="gn1">{{ data['bride_fa_name'] }}</td>
+                                <td class="gn2">{{ data['bride_mo_name'] }}</td>
+                                <td class="gn3">cô dâu</td>
+                                <td class="gn4">{{ data['bride_name'] }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1007,22 +889,30 @@
     </div>
     <!--// greeting -->
     <div class="couple_wrap">
-        <h2 class="title"><img src="/dalpeng/skin/winter_wonderland/img/title_couple.png" alt="우리 결혼합니다"></h2>
+        <h2 class="title"><img src="/bundles/viettutweb/img/templates/winterwonderland/title_couple.png" alt="couple title"></h2>
         <div class="couple_container">
             <ul class="couple_groom">
-                <li class="couple_photo" style="background: url('/dalpeng/skin/winter_wonderland/img/default_groom.jpg') 50% 50% no-repeat;"></li>
-                <li class="couple_name"><span>Groom</span>김정우</li>
+                <li class="couple_photo" style="background: url('/bundles/viettutweb/img/templates/winterwonderland/default_groom.jpg') 50% 50% no-repeat;"></li>
+                <li class="couple_name"><span>Chú rể</span>{{ data['groom_name'] }}</li>
                 <li class="groom-wrap">
                     <ul>
-                        <a href="tel:01000000000"><li class="ico1">신랑에게 전화하기</li></a><a href="sms:01000000000"><li class="ico2">신랑에게 문자하기</li></a><a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">페이스북 바로가기</li></a><a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">인스타그램 바로가기</li></a>					</ul>
+                        <a href="tel:{{ data['groom_phone'] }}"><li class="ico1">신랑에게 전화하기</li></a>
+                        <a href="sms:{{ data['groom_phone'] }}"><li class="ico2">신랑에게 문자하기</li></a>
+                        <a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a>
+                        <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
+                    </ul>
                 </li>
             </ul>
             <ul class="couple_bride">
-                <li class="couple_photo" style="background: url('/dalpeng/skin/winter_wonderland/img/default_bride.jpg') 50% 50% no-repeat;"></li>
-                <li class="couple_name"><span>Bride</span>정효진</li>
+                <li class="couple_photo" style="background: url('/bundles/viettutweb/img/templates/winterwonderland/default_bride.jpg') 50% 50% no-repeat;"></li>
+                <li class="couple_name"><span>Cô dâu</span>{{ data['bride_name'] }}</li>
                 <li class="bride-wrap">
                     <ul>
-                        <a href="tel:01000000000"><li class="ico1">신부에게 전화하기</li></a><a href="sms:01000000000"><li class="ico2">신부에게 문자하기</li></a><a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">페이스북 바로가기</li></a><a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">인스타그램 바로가기</li></a>					</ul>
+                        <a href="tel:{{ data['bride_phone'] }}"><li class="ico1">신부에게 전화하기</li></a>
+                        <a href="sms:{{ data['bride_phone'] }}"><li class="ico2">신부에게 문자하기</li></a>
+                        <a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a>
+                        <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -1030,44 +920,54 @@
 
     <!-- gallery -->
     <div class="gallery_wrap ui-cont-b" id="sk_gallery">
-        <div class="snow"></div>		<h2 class="title"><img src="/dalpeng/skin/winter_wonderland/img/title_gallery.png" alt="웨딩 갤러리"></h2>
+        <div class="snow"></div>
+        <h2 class="title"><img src="/bundles/viettutweb/img/templates/winterwonderland/title_gallery.png" alt="gallery"></h2>
         <div class="ul-body">
             <div class="gal_list2">
                 <div class="gal_size"></div>
-                <a href="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196178' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196178'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196179' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196179'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196180' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196180'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196181' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196181'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196182' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196182'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg"></div>
-                </a>
-                <!--<div class="gal_frame gal_frame_2 gal_date" style="height:200px"><span>2018/04/28 Sat <strong>2:00 pm</strong></span></div>-->
-                <a href="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196183' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196183'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196184' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196184'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196185' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196185'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg" class="swipebox" data-ajax="false" data-size="1024X588" alt="<div class='swipebox-comment' id='gcomment_2196186' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196186'></div>">
-                    <div class="gal_frame "><img src="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg"></div>
-                </a>
-                <a href="/user/WinterWonderland/img/683b92e86a2efcbe38e6aa50c725a2c3.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196187' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196187'></div>">
-                    <div class="gal_more"><span>more</span></div>
-                </a>
-                <a href="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg" class="swipebox" data-ajax="false" data-size="482X768" alt="<div class='swipebox-comment' id='gcomment_2196188' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196188'></div>">
-                    <div class="gal_frame hide"><img src="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg"></div>
-                </a>
+                {% for img in gallery %}
+                    <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
+                        {% if gallery|length == loop.index  %}
+                            <div class="gal_more"><span>more</span></div>
+                        {% else %}
+                            <div class="gal_frame"><img src="{{ img['src'] }}"></div>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+                {#<a href="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196178' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196178'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196179' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196179'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196180' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196180'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196181' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196181'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196182' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196182'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg"></div>#}
+                {#</a>#}
+                {#<!--<div class="gal_frame gal_frame_2 gal_date" style="height:200px"><span>2018/04/28 Sat <strong>2:00 pm</strong></span></div>-->#}
+                {#<a href="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196183' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196183'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196184' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196184'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196185' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196185'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg" class="swipebox" data-ajax="false" data-size="1024X588" alt="<div class='swipebox-comment' id='gcomment_2196186' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196186'></div>">#}
+                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg"></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/683b92e86a2efcbe38e6aa50c725a2c3.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196187' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196187'></div>">#}
+                    {#<div class="gal_more"><span>more</span></div>#}
+                {#</a>#}
+                {#<a href="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg" class="swipebox" data-ajax="false" data-size="482X768" alt="<div class='swipebox-comment' id='gcomment_2196188' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196188'></div>">#}
+                    {#<div class="gal_frame hide"><img src="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg"></div>#}
+                {#</a>#}
             </div>
         </div>
 
@@ -1081,361 +981,299 @@
 
     <!-- guestbook -->
     <div class="guestbook_wrap" id="sk_snsbbs">
-        <h2 class="title"><img src="/dalpeng/skin/winter_wonderland/img/title_guestbook.png" alt="방명록"></h2>
+        <h2 class="title"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/title_guestbook.png') }}" alt="guest book"></h2>
 
         <div class="ul-body col-3 ui-cont-a">
             <div id="div_snsbbs">
-                <div class="snsbbs_sections ">
+                {% if isTemplate %}
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
                                 <div class="pro_img">
-                                    <img src="https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-19/s150x150/11375134_799616980151358_191488437_a.jpg" alt="프로필사진">
-                                    <div class="pro-sns instagram"><span></span></div>
+                                    <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                 </div>
                                 <div class="pro_txt">
-                                    <p><strong>달팽</strong></p>
+                                    <p><strong>Sunny</strong></p>
                                     <p class="date">2015-08-12 09:25</p>
                                 </div>
                             </div>
                             <ul class="gb_cont btn_go_snsbbs">
                                 <li class="comm_txt">
-                                    <p>행복해 보이네요~결혼을 축하드립니다!!!! 오래오래 행복하게 살아요!!</p>
-                                    <img src="/user/WinterWonderland/img/53c95e300a146fbb61746663b92b2a7b.jpg" height="150" alt="댓글단 사진"/>								</li>
+                                    <p>Chúc mừng đám cưới của bạn !!!! Sống hạnh phúc mãi mãi nha!</p>
+                                </li>
                             </ul>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="snsbbs_sections ">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
                                 <div class="pro_img">
-                                    <img src="https://phinf.pstatic.net/contactthumb.phinf/22/2015/4/20/dalpengcom_1429496656026.jpg?type=s160" alt="프로필사진">
-                                    <div class="pro-sns naver"><span></span></div>
+                                    <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                 </div>
                                 <div class="pro_txt">
-                                    <p><strong>달팽</strong></p>
+                                    <p><strong>Yến Hoàng</strong></p>
                                     <p class="date">2015-08-07 13:35</p>
                                 </div>
                             </div>
                             <ul class="gb_cont btn_go_snsbbs">
                                 <li class="comm_txt">
-                                    <p>결혼을 축하드립니다~</p>
-                                    <div class="emo-type-a emo02"></div>								</li>
+                                    <p>Chúc mừng hai bạn !</p>
+                                    <div class="emo-type-a emo02"></div>
+                                </li>
                             </ul>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="snsbbs_sections ">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
                                 <div class="pro_img">
-                                    <img src="/dalpeng/skin/winter_wonderland/img/img_profile.png" alt="프로필사진">
-                                    <div class="pro-sns notmember"><span></span></div>
+                                    <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                 </div>
                                 <div class="pro_txt">
-                                    <p><strong>지홍</strong></p>
+                                    <p><strong>Giang Giang</strong></p>
                                     <p class="date">2015-01-15 17:35</p>
                                 </div>
                             </div>
                             <ul class="gb_cont btn_go_snsbbs">
                                 <li class="comm_txt">
-                                    <p>축하드려요 지홍이에요<br />
-                                        <br />
-                                        가끔 얼굴 뵌거같은데 벌써 결혼하시네요.<br />
-                                        <br />
-                                        오래오래 행복하세요^^<br />
+                                    <p>Đây là điều tuyệt vời nhất tôi từng biết.
                                     </p>
-                                    <div class="emo-type-a emo17"></div>								</li>
+                                    <div class="emo-type-a emo17"></div>
+                                </li>
                             </ul>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="snsbbs_sections ">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
                                 <div class="pro_img">
-                                    <img src="/dalpeng/skin/winter_wonderland/img/img_profile.png" alt="프로필사진">
-                                    <div class="pro-sns notmember"><span></span></div>
+                                    <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                 </div>
                                 <div class="pro_txt">
-                                    <p><strong>이정효</strong></p>
+                                    <p><strong>Nam Vũ</strong></p>
                                     <p class="date">2015-01-15 17:33</p>
                                 </div>
                             </div>
                             <ul class="gb_cont btn_go_snsbbs">
                                 <li class="comm_txt">
-                                    <p>결혼 축하한다!<br />
-                                        지금부터 하루하루가 행복하길 바란다!<br />
-                                        결혼식에 가고싶은 마음은 크지만...<br />
-                                        이해해줘ㅋㅋㅋ</p>
+                                    <p>Thật hạnh phúc quá</p>
                                 </li>
                             </ul>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="snsbbs_sections mobile_hide">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
                                 <div class="pro_img">
-                                    <img src="/dalpeng/skin/winter_wonderland/img/img_profile.png" alt="프로필사진">
-                                    <div class="pro-sns notmember"><span></span></div>
+                                    <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                 </div>
                                 <div class="pro_txt">
-                                    <p><strong>세꽁</strong></p>
+                                    <p><strong>Liên Hương</strong></p>
                                     <p class="date">2015-01-15 17:33</p>
                                 </div>
                             </div>
                             <ul class="gb_cont btn_go_snsbbs">
                                 <li class="comm_txt">
-                                    <p>냥 ♡ <br />
-                                        <br />
-                                        니가 결혼한다니 나는 아직도 <br />
-                                        믿겨 지지가 않아 <br />
-                                        <br />
-                                        결혼식을 보면 실감이 날까? ^^ <br />
-                                        정말정말 축하해~<br />
-                                        행복하자~~!!!</p>
+                                    <p>Nhất định tôi sẽ đến sớm</p>
                                 </li>
                             </ul>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="snsbbs_sections mobile_hide">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
                                 <div class="pro_img">
-                                    <img src="/dalpeng/skin/winter_wonderland/img/img_profile.png" alt="프로필사진">
-                                    <div class="pro-sns notmember"><span></span></div>
+                                    <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                 </div>
                                 <div class="pro_txt">
-                                    <p><strong>지은</strong></p>
+                                    <p><strong>Phương Phạm</strong></p>
                                     <p class="date">2015-01-15 17:32</p>
                                 </div>
                             </div>
                             <ul class="gb_cont btn_go_snsbbs">
                                 <li class="comm_txt">
-                                    <p>오빠 추카해:) 신부님 넘 미인이시다 호호<br />
-                                        평생 감사하며 살길..ㅋㅋㅋㅋㅋㅋㅋ</p>
-                                    <div class="emo-type-a emo04"></div>								</li>
+                                    <p>Cứ tưởng là mày ế rồi cơ :)</p>
+                                    <div class="emo-type-a emo04"></div>
+                                </li>
                             </ul>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="snsbbs_sections mobile_hide">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
                                 <div class="pro_img">
-                                    <img src="/dalpeng/skin/winter_wonderland/img/img_profile.png" alt="프로필사진">
-                                    <div class="pro-sns notmember"><span></span></div>
+                                    <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                 </div>
                                 <div class="pro_txt">
-                                    <p><strong>현~♥</strong></p>
+                                    <p><strong>Trường Sơn</strong></p>
                                     <p class="date">2015-01-15 17:30</p>
                                 </div>
                             </div>
                             <ul class="gb_cont btn_go_snsbbs">
                                 <li class="comm_txt">
-                                    <p>웨딩사진 넘 자연스럽고 이쁘게 잘 찍었다.^^ <br />
-                                        진심으로 축하해!<br />
-                                        <br />
-                                        결혼식날 보자^^</p>
-                                    <div class="emo-type-a emo06"></div>								</li>
+                                    <p>Cuối cùng thì ngày này cũng đến ^^</p>
+                                    <div class="emo-type-a emo06"></div>
+                                </li>
                             </ul>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
+                {% else %}
+                    {% for comment in comments %}
+                        <div class="snsbbs_sections">
+                            <div class="ui-body-d">
+                                <div class="gb_cont_box btn_go_snsbbs">
+                                    <div class="pro_info">
+                                        <div class="pro_img">
+                                            <img src="{{ comment.author.avatar }}" alt="profile picture">
+                                        </div>
+                                        <div class="pro_txt">
+                                            <p><strong>{{ comment.author.name }}</strong></p>
+                                            <p class="date">{{ comment.createdAt | date('d-m-Y H:i') }}</p>
+                                        </div>
+                                    </div>
+                                    <ul class="gb_cont btn_go_snsbbs">
+                                        <li class="comm_txt">
+                                            <p>{{ comment.content }}</p>
+                                            <div class="emo-type-a emo06"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
         <div class="ul-body ui-cont-a">
             <div class="snsbbs_sections f-r">
                 <div class="ui-body-d">
-                    <div class="gb_btn btn_go_snsbbs"><span>축하글 쓰기</span><span class="ico"></span></div>
+                    <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span><span class="ico"></span></div></a>
                 </div>
             </div>
         </div>
     </div>
     <!--// guestbook -->
 
-    <!-- movie -->
-    <div class="movie_wrap" id="sk_media">
-        <h2 class="blind">웨딩 영상</h2>
-        <div class="ul-body">
-            <div class="movie_container movie1">
-                <ul>
-                    <li><iframe id="movie" width="100%" data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>
-                    <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
-                </ul>
+    {% if isTemplate %}
+        <!-- movie -->
+        <div class="movie_wrap" id="sk_media">
+            <h2 class="blind">Video</h2>
+            <div class="ul-body">
+                <div class="movie_container movie1">
+                    <ul>
+                        <li>
+                            <iframe
+                                    id="movie"
+                                    width="100%"
+                                    src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                    height="100%"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <!--// movie -->
+        <!--// movie -->
+    {% else %}
+        {% if video %}
+            <!-- movie -->
+            <div class="movie_wrap" id="sk_media">
+                <h2 class="blind">Video</h2>
+                <div class="ul-body">
+                    <div class="movie_container movie1">
+                        <ul>
+                            <li>
+                                <iframe
+                                        id="movie"
+                                        width="100%"
+                                        src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                        height="100%"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--// movie -->
+        {% endif %}
+    {% endif %}
+
 
     <!-- location -->
     <div class="location_wrap" id="sk_map">
-        <h2 class="title"><img src="/dalpeng/skin/winter_wonderland/img/title_location.png" alt="오시는 길"></h2>
+        <h2 class="title"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/title_location.png') }}" alt="location"></h2>
         <div class="ul-body">
             <div class="col-2">
                 <div class="ui-block-a">
                     <ul class="lo_tab_wrap">
                         <li class="tab_btn wh locationtabs on" id="tabs_wedding"><strong>웨딩홀</strong>안내</li>
-                        <li class="tab_btn rh locationtabs" id="tabs_party"><strong>피로연장</strong>안내</li>					</ul>
+                    </ul>
                 </div>
             </div>
 
             <div class="col-2 locationdivs" id="div_wedding">
-                <input type="hidden" id="wedding_pmap_lat" value="37.5194478" />
-                <input type="hidden" id="wedding_pmap_lon" value="127.01922209999998" />
-                <input type="hidden" id="wedding_paddr" value="서울시 강남구 신사동 504-11" />
-                <input type="hidden" id="wedding_pname" value="수아비스 아모르홀" />
                 <div class="ui-block-a">
                     <div class="lo_map">
                         <div id="wedding_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
                     </div>
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
+                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
+                            </form>
                             <div class="nav-1">
                                 <div class="ui-body-d ui-btn-nav wedding_kimnavi">
-                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                                </div>
-                            </div>
-                            <div class="nav-2">
-                                <div class="ui-body-d ui-btn-nav wedding_ollehnavi">
-                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                    <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
                 </div>
                 <div class="ui-block-b">
-                    <h3 class="lo_title">수아비스 아모르홀</h3>					<table class="lo_container">
+                    <h3 class="lo_title">{{ data['place'] }}</h3>
+                    <table class="lo_container">
                         <tr>
-                            <th>예식일자</th>
-                            <td>2018년 4월 28일 토요일 오후 2시</td>
+                            <th>Thời gian</th>
+                            <td>{{ date | date('d.m.Y H:i A') }}</td>
                         </tr>
                         <tr>
-                            <th>예식장소</th>
-                            <td>서울시 강남구 신사동 504-11</td>
+                            <th>Địa chỉ</th>
+                            <td>{{ data['place_addr'] }}</td>
                         </tr>
                         <tr>
-                            <th>전화번호</th>
-                            <td>02-543-9500</td>
+                            <th>Liên hệ</th>
+                            <td>{{ data['place_phone'] }}</td>
                         </tr>
                         <tr>
-                            <th>기타안내</th>
-                            <td>한남대교 방향 도보 5분거리내</td>
+                            <th>Đỗ xe</th>
+                            <td>{{ data['parking_info'] }}</td>
                         </tr>
                         <tr>
-                            <th>버스안내</th>
-                            <td>지선버스 (초록) : 4212, 4412,4431<br />
-                                간선버스(파랑) : 140, 142, 144, 145, 148, 240<br />
-                                광역버스(빨강) : 1500, 3030, 3100, 6800, 9404<br />
+                            <th>Xe bus</th>
+                            <td>{{ data['bus_info'] }}
                             </td>
                         </tr>
                         <tr>
-                            <th>지하철안내</th>
-                            <td>3호선 신사역 6번출구</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="col-2 locationdivs hide" id="div_party">
-                <input type="hidden" id="party_pmap_lat" value="37.4950598" />
-                <input type="hidden" id="party_pmap_lon" value="127.12241160000008" />
-                <input type="hidden" id="party_paddr" value="서울시 송파구 중대로 135" />
-                <input type="hidden" id="party_pname" value="달팽 뷔페 7층" />
-                <div class="ui-block-a">
-                    <div class="lo_map">
-                        <div id="party_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
-                    </div>
-                    <div class="nav-wrap">
-                        <div class="ui-grid-a nav-m">
-                            <div class="nav-1">
-                                <div class="ui-body-d ui-btn-nav party_kimnavi">
-                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                                </div>
-                            </div>
-                            <div class="nav-2">
-                                <div class="ui-body-d ui-btn-nav party_ollehnavi">
-                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
-                </div>
-                <div class="ui-block-b">
-                    <h3 class="lo_title">달팽 뷔페 7층</h3>					<table class="lo_container">
-                        <tr>
-                            <th>피로연일자</th>
-                            <td>2018.04.21  오후 2시 ~ 오후5시</td>
-                        </tr>
-                        <tr>
-                            <th>피로연장소</th>
-                            <td>서울시 송파구 중대로 135</td>
-                        </tr>
-                        <tr>
-                            <th>전화번호</th>
-                            <td>02-559-1004</td>
-                        </tr>
-                        <tr>
-                            <th>기타안내</th>
-                            <td>주차 150대 가능</td>
-                        </tr>
-                        <tr>
-                            <th>버스안내</th>
-                            <td>지선버스(초록) ; 4212, 4412, 4431<br />
-                                간선버스(파랑) : 140, 142, 144, 145, 148, 240<br />
-                                광역버스(빨강) : 1500, 3030, 3100, 6800, 9404<br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>지하철안내</th>
-                            <td>3호선 경찰병원역 1번출구<br />
-                                8호선 가락시장역 4번출구</td>
+                            <th>Tàu điện ngầm</th>
+                            <td>{{ data['subway_info'] }}</td>
                         </tr>
                     </table>
                 </div>
@@ -1447,37 +1285,14 @@
     <!-- footer -->
     <div class="footer"  id="sk_snslink">
         <div class="contents">
-            <h4><a href="http://dalpeng.com" target="_blank"><img src="/dalpeng/skin/winter_wonderland/img/footer_logo.png" alt="로고" title="달팽 초대장 :: dalpeng.com" /></a><span></span></h4>
+            <h4>
+                <a href="http://thiepdo.com" target="_blank">
+                    <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
+                </a>
+                <span></span>
+            </h4>
             <ul>
-                <li>
-                    <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://dalpeng.com/WinterWonderland">
-                        <div class="ft_sns_wrap1 fasebook"><span>facebook logo</span></div>
-                    </a>
-                    <em>facebook</em>
-                </li>
-                <!-- 네이버 밴드 추가용 by echos(2014-12-08) -->
-                <li>
-                    <a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/WinterWonderland"><div class="ft_sns_wrap1 band"><span>band logo</span></div></a>
-                    <em>naver band</em>
-                </li>
-                <!--
-                <li>
-                    <a target="_blank" href="http://twitter.com/share?text=달팽초대장::김정우♥정효진&url=http://dalpeng.com/WinterWonderland"><div class="ft_sns_wrap1 twitter"><span>twitter logo</span></div></a>
-                    <em>twitter</em>
-                </li>-->
-                <li id="sk_kakao">
-                    <div class="ft_sns_wrap1 kakao btn_send_kakao" id="btn_kakao_talk"><span>KAKAOTALK</span></div>
-                    <em>KAKAOTALK</em>
-                </li>
-                <!-- https://story.kakao.com/share?url=http%3A%2F%2Fdalpeng.com%2FWinterWonderland -->
-                <li>
-                    <a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/WinterWonderland"><div class="ft_sns_wrap1 story" id="btn_kakao_story"><span>KAKAOSTORY</span></div></a>
-                    <em>KAKAOSTORY</em>
-                </li>
-                <!-- <li>
-                    <div class="ft_sns_wrap1 band" id="btn_line"><span>LINE</span></div>
-                    <em>LINE</em>
-                </li> -->
+                <div class="addthis_inline_share_toolbox"></div>
             </ul>
         </div>
         <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
@@ -1486,36 +1301,6 @@
     </div>
     <!--// footer -->
 </div><!--//skin_page-->
-
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-55160879-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-
-</script>
-
-<div class="popup_navi popup_olleh" style="display:none;">
-    <div class="popup_navibox">
-        <div class="olleh_btnbox">
-            <div class="olleh_btn btn1" id="android_go_olleh">
-                <p class="title">이미 KT내비앱을<br><strong>사용 중이신 경우</strong></p>
-                <p class="link"><span>바로 길안내</span></p>
-            </div>
-            <div class="olleh_btn btn2" id="android_install_olleh">
-                <p class="title">KT내비 앱이<br><strong>없으신 경우</strong></p>
-                <p class="link"><span>앱 설치하기</span></p>
-            </div>
-        </div>
-        <div class="olleh_back">
-            <span id="popOllehClose">닫기</span>
-        </div>
-    </div>
-</div>
 
 <!-- photoswipe -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -1560,5 +1345,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
 </body>
 </html>

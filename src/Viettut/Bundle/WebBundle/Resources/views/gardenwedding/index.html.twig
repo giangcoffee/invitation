@@ -253,14 +253,6 @@
         <!--// dday -->
         {% if isTemplate %}
             <!-- movie -->
-            {#<iframe#}
-                    {#id="movie"#}
-                    {#width="100%"#}
-                    {#src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"#}
-                    {#height="1"#}
-                    {#frameborder="0"#}
-                    {#allowfullscreen>#}
-            {#</iframe>#}
             <div class="movie_wrap" id="sk_media">
                 <h2 class="title hidden"><span>Video</span></h2>
                 <div class="ul-body">
@@ -284,14 +276,6 @@
         {% else %}
             {% if video | length > 0 %}
                 <!-- movie -->
-                {#<iframe#}
-                        {#id="movie"#}
-                        {#width="100%"#}
-                        {#data-src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"#}
-                        {#height="1"#}
-                        {#frameborder="0"#}
-                        {#allowfullscreen>#}
-                {#</iframe>#}
                 <div class="movie_wrap" id="sk_media">
                     <h2 class="title hidden"><span>Video</span></h2>
                     <div class="ul-body">
@@ -301,7 +285,7 @@
                                     <iframe
                                             id="movie"
                                             width="100%"
-                                            data-src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                            src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"
                                             height="100%"
                                             frameborder="0"
                                             allowfullscreen>
@@ -524,7 +508,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Viết</span></div>
+            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
         </div>
         <!--// guestbook -->
 
@@ -584,7 +568,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên</div>
+                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
             </div>
         </div>
         <!--// location  -->
@@ -600,31 +584,6 @@
             </h4>
             <ul>
                 <div class="addthis_inline_share_toolbox"></div>
-                {#<li>#}
-                    {#<a target="_blank" title="Chia sẻ trên Facebook"#}
-                       {#href="http://www.facebook.com/sharer/sharer.php?u=http://thiepdo.com{% if isTemplate %}{{ path('template_page', {hash: hash}) }}{% else %}{{ path('card_page', {hash: hash}) }}{% endif %}">#}
-                        {#<div class="facebook"><span>facebook logo</span></div>#}
-                    {#</a>#}
-                    {#<em>Facebook</em>#}
-                {#</li>#}
-                {#<li>#}
-                    {#<a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/gardenwedding" title="Chia sẻ trên Zalo">#}
-                        {#<div class="zalo"><span>zalo logo</span></div>#}
-                    {#</a>#}
-                    {#<em>Zalo</em>#}
-                {#</li>#}
-                {#<li>#}
-                    {#<a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/gardenwedding" title="Chia sẻ trên Twitter">#}
-                        {#<div class="twitter"><span>twitter logo</span></div>#}
-                    {#</a>#}
-                    {#<em>Twitter</em>#}
-                {#</li>#}
-                {#<li>#}
-                    {#<a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/gardenwedding" title="Chia sẻ trên Instagram">#}
-                        {#<div class="instagram"><span>instagram logo</span></div>#}
-                    {#</a>#}
-                    {#<em>Instagram</em>#}
-                {#</li>#}
             </ul>
         </div>
     </div>
@@ -914,50 +873,12 @@
             });
 
             gallery.listen('close', function () {
-                /* 슬라이드
-                 var slide_show = document.getElementById("slide-show");
 
-                 if(slide_show.checked) {
-                 var event = document.createEvent('Event');
-
-                 event.initEvent('change', true, true);
-
-                 slide_show.checked = false;
-                 slide_show.dispatchEvent(event);
-                 }
-                 */
 
 
             });
 
-            /* 슬라이드
-             $("#slide-show").on("change", function(e) {
-             var next;
-             var index;
-             var last = gallery.items.length - 1;
 
-             if($(this).is(":checked")) {
-             gallery.show = setInterval(function() {
-             index = gallery.getCurrentIndex();
-
-             if(index == 0) {
-             next = true;
-             } else if(index == last) {
-             next = false;
-             }
-
-             if(next) {
-             gallery.next();
-             } else {
-             gallery.prev();
-             }
-             }, 3000);
-             } else {
-             clearInterval(gallery.show);
-             delete gallery.show;
-             }
-             });
-             */
         }
 
         var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
@@ -1089,8 +1010,6 @@
                     el: imageEl,
                 };
 
-//                    wrapper.innerHTML = imageEl.getAttribute("imgId");
-//                    item.id = wrapper.firstChild.getAttribute("id").replace("gcomment_", "");
                 item.id = imageEl.getAttribute("imgId");
                 items.push(item);
             }
