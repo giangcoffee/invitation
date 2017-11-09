@@ -1133,17 +1133,6 @@
         setLocationInfoHeight();
     });
 
-    $(window).load(function () {
-        // 페이지 로딩 후 동영상 로딩 처리
-        var $iframe = $("#sk_media iframe");
-        if ($iframe.length) {
-            $.each($iframe, function () {
-                var src = $(this).attr("data-src");
-                this.src = src.replace("http://", "https://");
-            });
-        }
-    });
-
     function initMap() {
         var lat = $('#coordinates').data('lat');
         var lon = $('#coordinates').data('lon');
