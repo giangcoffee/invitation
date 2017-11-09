@@ -64,7 +64,7 @@
                 </a>
             </div>
             <div class="search">
-                <form id="searchForm" action="page-search-results.html" method="get">
+                <form id="searchForm">
                     <div class="input-group">
                         <input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>
                         <span class="input-group-btn">
@@ -96,13 +96,13 @@
                 </ul>
                 <nav class="nav-main mega-menu">
                     <ul class="nav nav-pills nav-main" id="mainMenu">
-                        {% if app.user %}
-                            <li>
-                                <a class="dropdown-toggle" href="#">
-                                    Thiết Kế
-                                </a>
-                            </li>
-                        {% endif %}
+                        {#{% if app.user %}#}
+                            {#<li>#}
+                                {#<a class="dropdown-toggle" href="#">#}
+                                    {#Thiết Kế#}
+                                {#</a>#}
+                            {#</li>#}
+                        {#{% endif %}#}
 
                         <li class="dropdown{{ (app.request.attributes.get('_route') == 'templates_page') ? ' active' }}">
                             <a class="dropdown-toggle" href="{{ path('templates_page') }}">
@@ -117,11 +117,17 @@
                             </ul>
                         </li>
 
-                        <li  {{ (app.request.attributes.get('_route') == 'about_page') ? ' class="active"' }}>
-                            <a class="dropdown-toggle" href="{{ path('about_page') }}">
-                                Giới thiệu
+                        <li {{ (app.request.attributes.get('_route') == 'cards_page') ? ' class="active"' }}>
+                            <a class="dropdown-toggle" href="{{ path('cards_page') }}">
+                                Sản phẩm
                             </a>
                         </li>
+
+                        {#<li  {{ (app.request.attributes.get('_route') == 'about_page') ? ' class="active"' }}>#}
+                            {#<a class="dropdown-toggle" href="{{ path('about_page') }}">#}
+                                {#Giới thiệu#}
+                            {#</a>#}
+                        {#</li>#}
 
                         <li {{ (app.request.attributes.get('_route') == 'services_page') ? ' class="active"' }}>
                             <a class="dropdown-toggle" href="{{ path('services_page') }}">
@@ -129,9 +135,9 @@
                             </a>
                         </li>
 
-                        <li {{ (app.request.attributes.get('_route') == 'price_page') ? ' class="active"' }}>
-                            <a class="dropdown-toggle" href="{{ path('price_page') }}">
-                                Bảng giá
+                        <li {{ (app.request.attributes.get('_route') == 'faq_page') ? ' class="active"' }}>
+                            <a class="dropdown-toggle" href="{{ path('faq_page') }}">
+                                Hỏi đáp
                             </a>
                         </li>
 
@@ -168,7 +174,7 @@
                                                             <a href="#">Profile</a>
                                                         </li>
                                                         <li>
-                                                            <a href="{{ path('fos_user_security_logout') }}">Log Out</a>
+                                                            <a href="{{ path('fos_user_security_logout') }}">Thoát</a>
                                                         </li>
                                                     </ul>
                                                 </div>

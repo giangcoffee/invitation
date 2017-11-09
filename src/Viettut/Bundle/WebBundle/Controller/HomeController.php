@@ -107,6 +107,17 @@ class HomeController extends Controller
     }
 
     /**
+     * @Route("/cards", name="cards_page")
+     * @param $request
+     * @return Response
+     */
+    public function cardsAction(Request $request)
+    {
+        $cards = $this->get('viettut.repository.card')->findAll();
+        return $this->render('ViettutWebBundle:Home:cards.html.twig', array('cards' => $cards));
+    }
+
+    /**
      * @Route("/price", name="price_page")
      * @param $request
      * @return Response
