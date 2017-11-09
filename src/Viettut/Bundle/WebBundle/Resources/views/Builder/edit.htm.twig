@@ -1,4 +1,8 @@
 {% extends 'base.html.twig' %}
+{% block title %}Tủy chỉnh thiệp{% endblock %}
+{% block description %}
+    Những sản phẩm được tạo ra từ dịch vụ của Thiệp Đỏ
+{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/jquery.datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/uploadfile.css') }}">
@@ -6,7 +10,7 @@
 {% endblock %}
 {% block main %}
     <div class="card-columns" data-columns="{{ columns|json_encode|e('html_attr') }}">
-    <div class="card-info" data-id="{{ id }}" data-gallery="{{ gallery|json_encode|e('html_attr') }}">
+    <div class="card-info" data-id="{{ id }}" data-gallery="{{ gallery|json_encode|e('html_attr') }}" data-video="{{ video }}">
 
     </div>
     <section class="page-top">
@@ -30,87 +34,104 @@
     <div class="tabs">
         <ul class="nav nav-tabs">
             <li class="active">
-                <a href="#popular" data-toggle="tab">Thông tin chung</a>
+                <a href="#general" data-toggle="tab">Thông tin chung</a>
             </li>
             <li>
-                <a href="#recent" data-toggle="tab">Album ảnh</a>
+                <a href="#album" data-toggle="tab">Album ảnh</a>
+            </li>
+            <li>
+                <a href="#video" data-toggle="tab">Video</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div id="popular" class="tab-pane active">
+            <div id="general" class="tab-pane active">
                 <div class="form-horizontal form-bordered">
-            {% for column,name in columns %}
-                {% if column == 'greeting' %}
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="textareaAutosize">{{ name }}</label>
-                            <div class="col-md-6">
-                                <textarea class="form-control" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">
-                                {% if data[column] is defined %}
-                                    {{ data[column] }}
-                                {% endif %}
-                                </textarea>
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="{{ column }}">{{ name }}</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control input-rounded" id="{{ column }}" name="{{ column }}" value="{% if data[column] is defined %}{{ data[column] }}{% endif %}">
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-            <div class="row">
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d H:i') }}">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="inputSuccess">&nbsp;</label>
-                    <div class="col-md-6">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="" {% if forGroom %}checked="checked"{% endif %} id="for_groom">
-                                Nhà Trai
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-6">
-                        <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="submit()">Cập Nhật</button>
-                        <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-            </div>
-            <div id="recent" class="tab-pane">
+                    {% for column,name in columns %}
+                        {% if column == 'greeting' %}
                             <div class="row">
-                <div id="fileuploader">Thêm Ảnh</div>
-            </div>
-            <div class="row">
-                <ul class="gallery">
-                    {% for img in gallery %}
-                        <li data-url="{{ img['src'] }}" style="background-image: url({{ img['src'] }});" class="aimg"><span><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></li>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="textareaAutosize">{{ name }}</label>
+                                    <div class="col-md-6">
+                                        <textarea class="form-control" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">
+                                        {% if data[column] is defined %}
+                                            {{ data[column] }}
+                                        {% endif %}
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="{{ column }}">{{ name }}</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-rounded" id="{{ column }}" name="{{ column }}" value="{% if data[column] is defined %}{{ data[column] }}{% endif %}">
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
                     {% endfor %}
-                </ul>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d H:i') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputSuccess">&nbsp;</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" {% if forGroom %}checked="checked"{% endif %} id="for_groom">
+                                        Nhà Trai
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="submit()">Cập Nhật</button>
+                                <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="updateAlbum()">Cập Nhật Album</button>
-
+            <div id="album" class="tab-pane">
+                <div class="row">
+                    <div id="fileuploader">Thêm Ảnh</div>
+                </div>
+                <div class="row">
+                    <ul class="gallery">
+                        {% for img in gallery %}
+                            <li data-url="{{ img['src'] }}" style="background-image: url({{ img['src'] }});" class="aimg"><span><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="updateAlbum()">Cập Nhật Album</button>
+                    <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
+                </div>
             </div>
+            <div id="video" class="tab-pane">
+                <div class="row" id="videoForm">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Link Youtube</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control input-rounded" id="video_link" value="{{ video }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="updateVideo()">Cập Nhật Video</button>
+                    <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
+                </div>
             </div>
         </div>
     </div>

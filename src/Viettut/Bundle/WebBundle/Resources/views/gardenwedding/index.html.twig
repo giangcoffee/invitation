@@ -251,29 +251,69 @@
                 <p class="dday">D-151</p></div>
         </div>
         <!--// dday -->
-
-
-        <iframe id="movie" width="100%"
-                data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" height="1"
-                frameborder="0" allowfullscreen></iframe>
-
-        <!-- movie -->
-        <div class="movie_wrap" id="sk_media">
-            <h2 class="title hidden"><span>Video</span></h2>
-            <div class="ul-body">
-                <div class="movie_container movie1">
-                    <ul>
-                        <li>
-                            <iframe id="movie" width="100%"
-                                    data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
-                                    height="100%" frameborder="0"
-                                    allowfullscreen></iframe>
-                        </li>
-                    </ul>
+        {% if isTemplate %}
+            <!-- movie -->
+            {#<iframe#}
+                    {#id="movie"#}
+                    {#width="100%"#}
+                    {#src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"#}
+                    {#height="1"#}
+                    {#frameborder="0"#}
+                    {#allowfullscreen>#}
+            {#</iframe>#}
+            <div class="movie_wrap" id="sk_media">
+                <h2 class="title hidden"><span>Video</span></h2>
+                <div class="ul-body">
+                    <div class="movie_container movie1">
+                        <ul>
+                            <li>
+                                <iframe
+                                        id="movie"
+                                        width="100%"
+                                        src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                        height="100%"
+                                        frameborder="0"
+                                        allowfullscreen>
+                                </iframe>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--// movie -->
+            <!--// movie -->
+        {% else %}
+            {% if video | length > 0 %}
+                <!-- movie -->
+                {#<iframe#}
+                        {#id="movie"#}
+                        {#width="100%"#}
+                        {#data-src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"#}
+                        {#height="1"#}
+                        {#frameborder="0"#}
+                        {#allowfullscreen>#}
+                {#</iframe>#}
+                <div class="movie_wrap" id="sk_media">
+                    <h2 class="title hidden"><span>Video</span></h2>
+                    <div class="ul-body">
+                        <div class="movie_container movie1">
+                            <ul>
+                                <li>
+                                    <iframe
+                                            id="movie"
+                                            width="100%"
+                                            data-src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                            height="100%"
+                                            frameborder="0"
+                                            allowfullscreen>
+                                    </iframe>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--// movie -->
+            {% endif %}
+        {% endif %}
 
         <!-- guestbook -->
         <div class="guestbook_wrap" id="sk_snsbbs">

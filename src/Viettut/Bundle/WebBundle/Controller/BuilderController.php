@@ -55,7 +55,8 @@ class BuilderController extends Controller
             'id' => $card->getId(),
             'name' => $template->getName(),
             'hash' => $card->getHash(),
-            'forGroom' => $card->isForGroom()
+            'forGroom' => $card->isForGroom(),
+            'video' => $card->getVideo()
         ));
     }
 
@@ -216,7 +217,8 @@ class BuilderController extends Controller
             'comments' => $comments,
             'forGroom' => $card->isForGroom(),
             'isTemplate' => false,
-            'hash' => $hash
+            'hash' => $hash,
+            'video' => $card->getVideo()
         ));
     }
 }

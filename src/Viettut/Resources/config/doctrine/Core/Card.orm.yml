@@ -25,6 +25,13 @@ Viettut\Entity\Core\Card:
         weddingDate:
             type: datetime
             nullable: false
+        video:
+            type: string
+            nullable: true
+        validVideo:
+            type: boolean
+            options:
+                default: false
         createdAt:
             type: datetime
             gedmo:

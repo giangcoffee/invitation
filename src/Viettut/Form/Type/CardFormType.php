@@ -11,6 +11,7 @@ namespace Viettut\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -32,6 +33,7 @@ class CardFormType extends AbstractRoleSpecificFormType
             ->add('data')
             ->add('gallery')
             ->add('forGroom')
+            ->add('video')
             ->add('weddingDate', DateTimeType::class, [
                 'widget' => 'single_text'
             ])
@@ -56,6 +58,15 @@ class CardFormType extends AbstractRoleSpecificFormType
                     if (empty($card->getGallery())) {
                         $card->setGallery($card->getTemplate()->getGallery());
                     }
+                }
+
+                $video = $card->getVideo();
+                if (preg_match('/https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)/', $video, $matches)) {
+                    $card->setValidVideo(true);
+                    $card->setVideo($matches[1]);
+                } else {
+                    $event->getForm()->get('video')->addError(new FormError(sprintf('%s is a invalid video link')));
+                    return;
                 }
             }
         );

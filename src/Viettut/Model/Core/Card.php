@@ -56,6 +56,12 @@ class Card implements CardInterface
     /** @var bool */
     protected $forGroom;
 
+    /** @var  string */
+    protected $video;
+
+    /** @var  bool */
+    protected $validVideo;
+
     function __construct()
     {
         $this->forGroom = true;
@@ -308,6 +314,46 @@ class Card implements CardInterface
     public function setCommentObjectId($commentObjectId)
     {
         $this->commentObjectId = $commentObjectId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideo(): string
+    {
+        if ($this->video === null) {
+            return '';
+        }
+
+        return $this->video;
+    }
+
+    /**
+     * @param string $video
+     * @return self
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isValidVideo(): bool
+    {
+        return $this->validVideo;
+    }
+
+    /**
+     * @param boolean $validVideo
+     * @return self
+     */
+    public function setValidVideo($validVideo)
+    {
+        $this->validVideo = $validVideo;
         return $this;
     }
 

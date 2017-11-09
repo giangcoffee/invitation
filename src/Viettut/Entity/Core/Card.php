@@ -20,4 +20,6 @@ class Card extends CardModel
     protected $longitude;
     protected $forGroom;
     protected $commentObjectId;
+    protected $validVideo;
+    protected $video;
 }

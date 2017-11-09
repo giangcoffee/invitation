@@ -4,18 +4,13 @@
 <html lang="vi">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 
-    <meta property="og:type"   content="website" />
-    <meta property="og:url" content="http://dalpeng.com/goldstar" />
-    <meta property="og:description" content="우연히 시작된 작은 인연이
-다시는 없을 큰 인연으로 되기까지
-그리 길지 않은 시간이 걸렸습니다.
-
-우연을 운명으로 만드는
-그 시작의 자리에
-소중한 분들을 모시고 싶습니다.
-
-부디 오셔서 저희의 뜻깊은 출발을
-축복해 주시기 바랍니다." />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://thiepdo.com/gold-star"/>
+    <meta property="og:description" content="
+    On a spring day,
+    Two loving people are about to start a new life.
+    Even if you are busy, bless the first start of the two
+    If you encourage me, I will be more joy."/>
 
     <meta property="og:title" content="{{ name }}" />
     <meta property="og:image" content="http://dalpeng.com/user/goldstar/img/9b854c77bd8bd11be8cfd28c7240e73e.jpg" />
@@ -25,12 +20,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="robots" content="noindex" />
 
-    <link href="/img/mobileicon/dalpeng_152x152.png" sizes="152x152" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_120x120.png" sizes="120x120" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_76x76.png" sizes="76x76" rel="apple-touch-icon">
-    <link href="/img/mobileicon/dalpeng_60x60.png" sizes="60x60" rel="apple-touch-icon">
-    <link rel="icon" sizes="192x192" href="/img/mobileicon/dalpeng_192x192.png">
-    <link rel="icon" sizes="128x128" href="/img/mobileicon/dalpeng_128x128.png">
+    <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
+    <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
+    <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
 
     <title>{{ name }}</title>
 
@@ -906,28 +898,70 @@
     </div>
     <!--// gallery -->
 
-    <!-- movie -->
-    <div class="movie_wrap ui-cont-b" id="sk_media">
-        <h2 class="title hidden">VIDEO</h2>
-        <div class="ul-body">
-            <div class="movie_container movie1">
-                <ul>
-                    <li><iframe id="movie" width="100%" data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>
-                    <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
-                </ul>
-            </div>
+    {% if isTemplate %}
+        <!-- movie -->
+        <div class="movie_wrap ui-cont-b">
+            <h2 class="title hidden">VIDEO</h2>
+            <div class="ul-body">
+                <div class="movie_container movie1">
+                    <ul>
+                        <li>
+                            <iframe
+                                    id="movie"
+                                    width="100%"
+                                    src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                    height="100%"
+                                    frameborder="0"
+                                    allowfullscreen>
+                            </iframe>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="lovestory">
-                <p class="lovestory_img"><img src="/bundles/viettutweb/img/templates/goldstar/movie_text3.png" alt="Love Story"></p>
-                <p class="lovestory_txt">Now at last they were beginning Chapter One<br>
-                    of the Great Story no one on earth has ever read.<br>
-                    which goes on forever :<br>
-                    in which every chapter is better than the one before.</p>
+                <div class="lovestory">
+                    <p class="lovestory_img"><img src="/bundles/viettutweb/img/templates/goldstar/movie_text3.png" alt="Love Story"></p>
+                    <p class="lovestory_txt">Now at last they were beginning Chapter One<br>
+                        of the Great Story no one on earth has ever read.<br>
+                        which goes on forever :<br>
+                        in which every chapter is better than the one before.</p>
+                </div>
             </div>
-
         </div>
-    </div>
-    <!--// movie -->
+        <!--// movie -->
+    {% else %}
+        {% if video is not empty %}
+            <!-- movie -->
+            <div class="movie_wrap ui-cont-b">
+                <h2 class="title hidden">VIDEO</h2>
+                <div class="ul-body">
+                    <div class="movie_container movie1">
+                        <ul>
+                            <li>
+                                <iframe
+                                        id="movie"
+                                        width="100%"
+                                        src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                        height="100%"
+                                        frameborder="0"
+                                        allowfullscreen>
+                                </iframe>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="lovestory">
+                        <p class="lovestory_img"><img src="/bundles/viettutweb/img/templates/goldstar/movie_text3.png" alt="Love Story"></p>
+                        <p class="lovestory_txt">Now at last they were beginning Chapter One<br>
+                            of the Great Story no one on earth has ever read.<br>
+                            which goes on forever :<br>
+                            in which every chapter is better than the one before.</p>
+                    </div>
+                </div>
+            </div>
+            <!--// movie -->
+        {% endif %}
+    {% endif %}
+
 
     <!-- guestbook -->
     <div class="guestbook_wrap ui-cont-b" id="sk_snsbbs">
@@ -955,11 +989,6 @@
                                     </p>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>
@@ -981,11 +1010,6 @@
                                     <div class="emo-type-a emo08"></div>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>
@@ -1007,11 +1031,6 @@
                                     <p>Xin chúc mừng về hôn nhân !! </p>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>
@@ -1033,11 +1052,6 @@
                                     <div class="emo-type-a emo02"></div>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>
@@ -1058,11 +1072,6 @@
                                     <p>Tuyệt vời quá đẹp</p>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>
@@ -1084,11 +1093,6 @@
                                     <div class="emo-type-a emo08"></div>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>
@@ -1110,11 +1114,6 @@
                                     <div class="emo-type-b emo04"></div>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>
@@ -1135,11 +1134,6 @@
                                     <p>Sống thật hạnh phúc nhé bạn của tôi</p>
                                 </li>
                             </ul>
-                            {#<div class="gb_skip btn_go_snsbbs">#}
-                                {#<p class="gb_comm fr">#}
-                                    {#<span class="btn_wrap">0</span>#}
-                                {#</p>#}
-                            {#</div>#}
                         </div>
                     </div>
                 </div>

@@ -91,6 +91,29 @@ function updateAlbum() {
     });
 }
 
+function updateVideo() {
+    var video = $('input#video_link').val();
+    $.ajax({
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        url : '/app_dev.php/api/v1/cards/' + cardId,
+        type : 'PATCH',
+        data : JSON.stringify({video: video}),
+        success : function(response, textStatus, jqXhr) {
+            var html = '<div class="alert alert-success alert-dismissable">' +
+                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                'Thông tin cập nhật thành công !'
+                + '</div>';
+            $('div#videoForm').before(html);
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+        },
+        complete : function() {
+        }
+    });
+}
+
 $(document).ready(function(){
     jQuery('#wedding_date').datetimepicker(
         {
