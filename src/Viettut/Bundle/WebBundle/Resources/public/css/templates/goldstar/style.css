@@ -509,7 +509,7 @@ background: url(../../../img/templates/goldstar/lo_titlepin.png) no-repeat 10px 
   .header_photo p {width:280px; height:280px; margin:9px; border:6px solid #fff;}
   .header_title {position:absolute; top:0; left:50%; width:300px; height:auto; margin:0 0 0 -150px; padding:85px 0 0 0;
     background-position:50% 20px; background-size:200px auto;}
-  .hd_name {padding:0; border:none; height:28px; font-size:30px; line-height:30px;}
+  .hd_name {padding:0; border:none; height:30px; font-size:28px; line-height:30px;}
   .hd_name span {background:url(../../../img/templates/goldstar/header_and.png) no-repeat 0 1px; background-size:20px; width:20px; height:25px; margin:0 3px;}
   .hd_date {font-size:1.1em; margin:320px 0 5px 0; line-height:25px; height:25px;}
   .hd_loca {font-size:0.8em;}

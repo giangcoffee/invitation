@@ -151,10 +151,6 @@
     <script type="text/javascript">
         <!--
 
-
-        var swipe_exception = false;
-
-
         $(function(){
 
             $(".header_bg, .header_title").css("height",$(window).height());
@@ -169,41 +165,6 @@
 
             $(window).scroll(function() { return; headerAnimate(); });
 
-
-
-            function initGeolocation() {
-                if (navigator && navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                } else {
-                    console.log('위치정보가 지원되지 않는 기기입니다.\n해당기기에서는 네비게이션 연결이 원할하지 않을 수 있습니다.');
-                }
-            }
-
-            function errorCallback() {
-                switch(error.code)
-                {
-                    case error.PERMISSION_DENIED: alert("위치정보가 꺼져있습니다.\n정상적인 네비게이션 연결을 위해서는 반드시 활성화 되어야 합니다.");
-                        break;
-
-                    case error.POSITION_UNAVAILABLE: alert("현재 위치 정보를 확인 할 수 없습니다.");
-                        break;
-
-                    case error.TIMEOUT: alert("위처정보 요청시간이 초과 되었습니다.\n잠시후에 다시 시도해 주십시요.");
-                        break;
-
-                    default: alert("위치정보 요청중 기타 오류");
-                        break;
-                }
-            }
-
-            function successCallback(position) {
-                $('#now_lat').val(position.coords.latitude);
-                $('#now_lon').val(position.coords.longitude);
-                // alert($('#now_lat').val()+" | | "+$('#now_lon').val());
-            }
-
-
-            // 네이버 지도시 스마트폰 회전 감지하여 지도 초기화(마커 위치 센터)
             $(window).on("orientationchange",function(){
                 callMapInitializeAfterResize();
             });
@@ -417,53 +378,11 @@
                 });
 
                 gallery.listen('close', function() {
-                    /* 슬라이드
-                     var slide_show = document.getElementById("slide-show");
-
-                     if(slide_show.checked) {
-                     var event = document.createEvent('Event');
-
-                     event.initEvent('change', true, true);
-
-                     slide_show.checked = false;
-                     slide_show.dispatchEvent(event);
-                     }
-                     */
-
                     setTimeout(function() {
                         $(".snow-off").removeClass("snow-off").addClass("snow");
                     }, this.options.hideAnimationDuration + 45);
 
                 });
-
-                /* 슬라이드
-                 $("#slide-show").on("change", function(e) {
-                 var next;
-                 var index;
-                 var last = gallery.items.length - 1;
-
-                 if($(this).is(":checked")) {
-                 gallery.show = setInterval(function() {
-                 index = gallery.getCurrentIndex();
-
-                 if(index == 0) {
-                 next = true;
-                 } else if(index == last) {
-                 next = false;
-                 }
-
-                 if(next) {
-                 gallery.next();
-                 } else {
-                 gallery.prev();
-                 }
-                 }, 3000);
-                 } else {
-                 clearInterval(gallery.show);
-                 delete gallery.show;
-                 }
-                 });
-                 */
             }
 
             var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
@@ -524,14 +443,12 @@
                     var url = "WinterWonderland/snsbbs/w/" + id;
                     var kakaoInApp = gallery.options.kakaoInApp;
 
-                    /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
-                     (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
                     if(!kakaoInApp) {
                         window.location = url;
                     } else {
                         window.open(url);
                     }
-                }
+                };
 
                 psBeforeInitAddEvent();
                 gallery.init();
@@ -657,36 +574,6 @@
                 }
             });
 
-            /*$( '.swipebox' ).swipebox({
-             hideBarsOnMobile : false, // false will show the caption and navbar on mobile devices
-             });*/
-            /*
-
-
-
-             $( '.swipebox' ).swipebox( {
-             useCSS : true, // false will force the use of jQuery for animations
-             useSVG : true, // false to force the use of png for buttons
-             initialIndexOnArray : 0, // which image index to init when a array is passed
-             hideCloseButtonOnMobile : false, // true will hide the close button on mobile devices
-             removeBarsOnMobile : false, // false will show top bar on mobile devices
-             hideBarsDelay : 3000, // delay before hiding bars on desktop
-             videoMaxWidth : 1140, // videos max width
-             beforeOpen: function() {}, // called before opening
-             afterOpen: null, // called after opening
-             afterClose: function() {}, // called after closing
-             loopAtEnd: false // true will return to the first image after the last image is reached
-             } );
-             */
-
-            /*
-             $('body').on('click','.swipebox-write, swipebox-comment',function(){
-             var id = $(this).attr('id').replace('gcomment_','').replace('gwrite_','');
-             if($(this).attr('class') == 'swipebox-write') location.href = "/WinterWonderland/snsbbs/w/"+id;
-             else location.href = "/WinterWonderland/snsbbs/c/"+id;
-             });
-             */
-
             $('.locationtabs').click(function(){
                 var id = $(this).attr('id').replace('tabs_','');
                 $('.locationtabs').removeClass('on');
@@ -699,23 +586,6 @@
 
                 initialize(id);
             }).css('cursor','pointer');
-
-            $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function(){
-                var id = $(this).attr('class').replace('nav_btn nav_kimnavi ','').replace('_kimnavi','').replace('btn_','').replace('ui-body-d ui-btn-nav ','').replace('ui-block-a cont_box3 ','');
-
-                callKakaoNavi(id);
-            });
-
-            $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function(){
-                var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ','').replace('_ollehnavi','').replace('btn_','').replace('ui-body-d ui-btn-nav ','').replace('ui-block-b cont_box4 ','');
-
-                callOllehNavi(id);
-            });
-
-            $('.ceremony_tmapnavi').click(function(){
-                callTmapNavi('ceremony');
-            });
-
 
             $('#div_snsbbs').masonry('bindResize');
 
@@ -760,8 +630,6 @@
                 transitionDuration: '0.2s',
                 percentPosition: true
             });
-
-            $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
         });
 
         function initMap() {
@@ -839,7 +707,7 @@
         <div class="greeting_wrap" id="sk_basicinfo">
             <div class="col-2">
                 <div class="ui-block-a">
-                    <h2>WEDDING <strong>INVITATION</strong><span>여러분을 초대합니다.</span></h2>
+                    <h2>WEDDING <strong>INVITATION</strong></h2>
                     <div class="greeting_date">
                         <p>Ngày chung đôi</p> {{ date | date('d-m-Y') }} <strong> {{ date | date('H:i A') }}</strong>
                     </div>
@@ -938,40 +806,6 @@
                         {% endif %}
                     </a>
                 {% endfor %}
-                {#<a href="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196178' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196178'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196179' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196179'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196180' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196180'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196181' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196181'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196182' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196182'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg"></div>#}
-                {#</a>#}
-                {#<!--<div class="gal_frame gal_frame_2 gal_date" style="height:200px"><span>2018/04/28 Sat <strong>2:00 pm</strong></span></div>-->#}
-                {#<a href="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196183' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196183'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196184' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196184'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196185' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196185'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg" class="swipebox" data-ajax="false" data-size="1024X588" alt="<div class='swipebox-comment' id='gcomment_2196186' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196186'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/683b92e86a2efcbe38e6aa50c725a2c3.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196187' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196187'></div>">#}
-                    {#<div class="gal_more"><span>more</span></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg" class="swipebox" data-ajax="false" data-size="482X768" alt="<div class='swipebox-comment' id='gcomment_2196188' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196188'></div>">#}
-                    {#<div class="gal_frame hide"><img src="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg"></div>#}
-                {#</a>#}
             </div>
         </div>
 
@@ -1223,14 +1057,6 @@
     <div class="location_wrap" id="sk_map">
         <h2 class="title"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/title_location.png') }}" alt="location"></h2>
         <div class="ul-body">
-            <div class="col-2">
-                <div class="ui-block-a">
-                    <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding"><strong>웨딩홀</strong>안내</li>
-                    </ul>
-                </div>
-            </div>
-
             <div class="col-2 locationdivs" id="div_wedding">
                 <div class="ui-block-a">
                     <div class="lo_map">
@@ -1299,9 +1125,9 @@
                 <div class="addthis_inline_share_toolbox"></div>
             </ul>
         </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
-        </div>
+        {#<div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">#}
+            {#<iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>#}
+        {#</div>#}
     </div>
     <!--// footer -->
 </div><!--//skin_page-->

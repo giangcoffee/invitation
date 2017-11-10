@@ -124,7 +124,7 @@ fos_user:
     firewall_name: main
     user_class: Viettut\Bundle\UserBundle\Entity\User
     from_email:
-        address:        noreply@viettut.com
+        address:        noreply@thiepdo.com
         sender_name:    Viettut Academy
     service:
         mailer: fos_user.mailer.twig_swift

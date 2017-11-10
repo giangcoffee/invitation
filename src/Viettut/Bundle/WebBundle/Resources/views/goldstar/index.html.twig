@@ -632,36 +632,6 @@
                 }
             });
 
-            /*$( '.swipebox' ).swipebox({
-             hideBarsOnMobile : false, // false will show the caption and navbar on mobile devices
-             });*/
-            /*
-
-
-
-             $( '.swipebox' ).swipebox( {
-             useCSS : true, // false will force the use of jQuery for animations
-             useSVG : true, // false to force the use of png for buttons
-             initialIndexOnArray : 0, // which image index to init when a array is passed
-             hideCloseButtonOnMobile : false, // true will hide the close button on mobile devices
-             removeBarsOnMobile : false, // false will show top bar on mobile devices
-             hideBarsDelay : 3000, // delay before hiding bars on desktop
-             videoMaxWidth : 1140, // videos max width
-             beforeOpen: function() {}, // called before opening
-             afterOpen: null, // called after opening
-             afterClose: function() {}, // called after closing
-             loopAtEnd: false // true will return to the first image after the last image is reached
-             } );
-             */
-
-            /*
-             $('body').on('click','.swipebox-write, swipebox-comment',function(){
-             var id = $(this).attr('id').replace('gcomment_','').replace('gwrite_','');
-             if($(this).attr('class') == 'swipebox-write') location.href = "/goldstar/snsbbs/w/"+id;
-             else location.href = "/goldstar/snsbbs/c/"+id;
-             });
-             */
-
             $('.locationtabs').click(function(){
                 var id = $(this).attr('id').replace('tabs_','');
                 $('.locationtabs').removeClass('on');
@@ -675,32 +645,9 @@
                 initialize(id);
             }).css('cursor','pointer');
 
-            $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function(){
-                var id = $(this).attr('class').replace('nav_btn nav_kimnavi ','').replace('_kimnavi','').replace('btn_','').replace('ui-body-d ui-btn-nav ','').replace('ui-block-a cont_box3 ','');
-
-                callKakaoNavi(id);
-            });
-
-            $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function(){
-                var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ','').replace('_ollehnavi','').replace('btn_','').replace('ui-body-d ui-btn-nav ','').replace('ui-block-b cont_box4 ','');
-
-                callOllehNavi(id);
-            });
-
-            $('.ceremony_tmapnavi').click(function(){
-                callTmapNavi('ceremony');
-            });
 
 
             $('#div_snsbbs').masonry('bindResize');
-
-            $('#btn_line').click(function(){
-                alert('모바일 기기에서만 사용 가능한 기능입니다.');
-            });
-
-            $('.btn_send_kakao').click(function(){
-                alert('모바일 기기에서만 사용 가능한 기능입니다.');
-            });
 
             function setLocationInfoHeight(){
             }
