@@ -719,17 +719,6 @@
 
             $('#div_snsbbs').masonry('bindResize');
 
-            $('.btn_go_snsbbs').click(function(){
-                location.href= "/WinterWonderland/snsbbs";
-            }).css('cursor','pointer');
-
-            $('#btn_line').click(function(){
-                alert('모바일 기기에서만 사용 가능한 기능입니다.');
-            });
-
-            $('.btn_send_kakao').click(function(){
-                alert('모바일 기기에서만 사용 가능한 기능입니다.');
-            });
 
             function setLocationInfoHeight(){
             }
@@ -821,11 +810,11 @@
                 <ul data-role="listview" data-icon="false">
                     <li data-icon="delete"><a href="#" data-rel="close">Đóng</a></li>
                     <!-- <li data-role="list-divider">우리결혼합니다.</li> -->
-                    <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>JUST MARRIED !</span></li>
-                    <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>웨딩 갤러리</span></li>
-                    <li class="menu_scrolls" data-rel="close" id="p_media"><span>웨딩 영상</span></li>
-                    <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>방명록</span></li>
-                    <li class="menu_scrolls" data-rel="close" id="p_map"><span>오시는 길</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>Lời Tựa</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>Album Ảnh</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_media"><span>Video</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Sổ Lưu Bút</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_map"><span>Chỉ Đường</span></li>
                 </ul>
             </div>
         </div>
@@ -859,30 +848,45 @@
 
                 <div class="ui-block-b">
                     <div class="greeting_textbox">{{ data['greeting'] }}</div>
-                    <table class="greeting_name">
-                        <thead>
-                        <tr>
-                            <th>Cha</th>
-                            <th>Mẹ</th>
-                            <th>&nbsp;</th>
-                            <th>Con</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    {% if forGroom %}
+                        <table class="greeting_name">
+                            <thead>
                             <tr>
-                                <td class="gn1">{{ data['groom_fa_name'] }} - </td>
-                                <td class="gn2">{{ data['groom_mo_name'] }}</td>
-                                <td class="gn3">chú rể</td>
-                                <td class="gn4">{{ data['groom_name'] }}</td>
+                                <th>Nhà Trai</th>
+                                <th>Nhà Gái</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <tr>
+                                <td class="gn2">{{ data['groom_fa_name'] }}</td>
                                 <td class="gn1">{{ data['bride_fa_name'] }}</td>
-                                <td class="gn2">{{ data['bride_mo_name'] }}</td>
-                                <td class="gn3">cô dâu</td>
-                                <td class="gn4">{{ data['bride_name'] }}</td>
                             </tr>
-                        </tbody>
-                    </table>
+                            <tr>
+                                <td class="gn2">{{ data['groom_mo_name'] }}</td>
+                                <td class="gn1">{{ data['bride_mo_name'] }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <table class="greeting_name">
+                            <thead>
+                            <tr>
+                                <th>Nhà Gái</th>
+                                <th>Nhà Trai</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="gn2">{{ data['bride_fa_name'] }}</td>
+                                <td class="gn1">{{ data['groom_fa_name'] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="gn2">{{ data['bride_mo_name'] }}</td>
+                                <td class="gn1">{{ data['groom_mo_name'] }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -896,8 +900,8 @@
                 <li class="couple_name"><span>Chú rể</span>{{ data['groom_name'] }}</li>
                 <li class="groom-wrap">
                     <ul>
-                        <a href="tel:{{ data['groom_phone'] }}"><li class="ico1">신랑에게 전화하기</li></a>
-                        <a href="sms:{{ data['groom_phone'] }}"><li class="ico2">신랑에게 문자하기</li></a>
+                        <a href="tel:{{ data['groom_phone'] }}"><li class="ico1">Gọi điện</li></a>
+                        <a href="sms:{{ data['groom_phone'] }}"><li class="ico2">Nhắn tin</li></a>
                         <a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a>
                         <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
                     </ul>
@@ -908,8 +912,8 @@
                 <li class="couple_name"><span>Cô dâu</span>{{ data['bride_name'] }}</li>
                 <li class="bride-wrap">
                     <ul>
-                        <a href="tel:{{ data['bride_phone'] }}"><li class="ico1">신부에게 전화하기</li></a>
-                        <a href="sms:{{ data['bride_phone'] }}"><li class="ico2">신부에게 문자하기</li></a>
+                        <a href="tel:{{ data['bride_phone'] }}"><li class="ico1">Gọi điện</li></a>
+                        <a href="sms:{{ data['bride_phone'] }}"><li class="ico2">Nhắn tin</li></a>
                         <a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a>
                         <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
                     </ul>
@@ -1252,7 +1256,7 @@
                     <table class="lo_container">
                         <tr>
                             <th>Thời gian</th>
-                            <td>{{ date | date('d.m.Y H:i A') }}</td>
+                            <td>{{ date | date('d-m-Y H:i A') }}</td>
                         </tr>
                         <tr>
                             <th>Địa chỉ</th>

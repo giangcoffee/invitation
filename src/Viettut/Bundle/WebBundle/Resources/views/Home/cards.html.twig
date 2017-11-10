@@ -33,7 +33,7 @@
                 {% for card in cards %}
                     <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular">
                         <div class="portfolio-item img-thumbnail">
-                            <a href="#" class="thumb-info">
+                            <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank" class="thumb-info">
                                 <img alt="thumbnail image" class="img-responsive" src="{{ card.template.thumbnail }}"/>
                                     {#<span class="thumb-info-type">{{ temp.name }}</span>#}
                                 {#<span class="thumb-info-title">#}
@@ -48,7 +48,7 @@
                                 <span class="text-primary">{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }}</span>
                             </div>
                             {#<button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>#}
-                            <a class="btn btn-primary pull-right" href="{{ path('card_page', {hash: card.hash}) }}">Xem</a>
+                            <a class="btn btn-primary pull-right" href="{{ path('card_page', {hash: card.hash}) }}" target="_blank">Xem</a>
                         </div>
                     </li>
                 {% endfor %}

@@ -304,7 +304,7 @@
             <h2 class="title"><span>Sổ lưu bút</span></h2>
 
             <div class="ul-body col-3">
-                <div class="gb_msg"><span>Để lại lời chúc mừng cho cô dâu, chú rể</span></div>
+                {#<div class="gb_msg"><span>Để lại lời chúc mừng cho cô dâu, chú rể</span></div>#}
                 <div id="div_snsbbs" style='z-index:999;'>
                     {% if isTemplate %}
                     <div class="snsbbs_sections">
@@ -321,7 +321,7 @@
                                 </div>
                                 <ul class="gb_cont btn_go_snsbbs">
                                     <li class="comm_txt">
-                                        <p></p>
+                                        <p>Quá tuyệt vời !</p>
                                         <div class="emo-type-c emo11"></div>
                                     </li>
                                 </ul>
@@ -508,7 +508,7 @@
                     {% endif %}
                 </div>
             </div>
-            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
+            <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
         </div>
         <!--// guestbook -->
 
@@ -1099,13 +1099,6 @@
 
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/gardenwedding/snsbbs";
-        }).css('cursor', 'pointer');
-
-        $('.btn_send_kakao').click(function () {
-            alert('모바일 기기에서만 사용 가능한 기능입니다.');
-        });
 
         function setLocationInfoHeight() {
         }

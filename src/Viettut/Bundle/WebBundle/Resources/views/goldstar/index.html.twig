@@ -694,10 +694,6 @@
 
             $('#div_snsbbs').masonry('bindResize');
 
-            $('.btn_go_snsbbs').click(function(){
-                location.href= "/goldstar/snsbbs";
-            }).css('cursor','pointer');
-
             $('#btn_line').click(function(){
                 alert('모바일 기기에서만 사용 가능한 기능입니다.');
             });
@@ -839,31 +835,45 @@
         <div class="greeting_textbox">
             <h2 class="title"><img src="/bundles/viettutweb/img/templates/goldstar/greeting_title.png" alt="WEDDING INVITATION"></h2>
             <p>{{ data['greeting'] }}</p>
-
-            <table class="greeting_name">
-                <thead>
-                <tr>
-                    <th>Cha</th>
-                    <th>Mẹ</th>
-                    <th>&nbsp;</th>
-                    <th>Con</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="gn1">{{ data['groom_fa_name'] }} - </td>
-                    <td class="gn2">{{ data['groom_mo_name'] }}</td>
-                    <td class="gn3">chú rể</td>
-                    <td class="gn4">{{ data['groom_name'] }}</td>
-                </tr>
-                <tr>
-                    <td class="gn1">{{ data['bride_fa_name'] }}</td>
-                    <td class="gn2">{{ data['bride_mo_name'] }}</td>
-                    <td class="gn3">cô dâu</td>
-                    <td class="gn4">{{ data['bride_name'] }}</td>
-                </tr>
-                </tbody>
-            </table>
+            {% if forGroom %}
+                <table class="greeting_name">
+                    <thead>
+                    <tr>
+                        <th>Nhà Trai</th>
+                        <th>Nhà Gái</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="gn2">{{ data['groom_fa_name'] }}</td>
+                        <td class="gn1">{{ data['bride_fa_name'] }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gn2">{{ data['groom_mo_name'] }}</td>
+                        <td class="gn1">{{ data['bride_mo_name'] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            {% else %}
+                <table class="greeting_name">
+                    <thead>
+                    <tr>
+                        <th>Nhà Gái</th>
+                        <th>Nhà Trai</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="gn2">{{ data['bride_fa_name'] }}</td>
+                        <td class="gn1">{{ data['groom_fa_name'] }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gn2">{{ data['bride_mo_name'] }}</td>
+                        <td class="gn1">{{ data['groom_mo_name'] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            {% endif %}
         </div>
     </div>
     <!--// greeting -->
@@ -1161,16 +1171,16 @@
     <!-- location -->
     <div class="location_wrap ui-cont-b" id="sk_map">
         <h2 class="title title_gold"><span>Hôn lễ tổ chức tại</span></h2>
-        <div class="ul-body">
-            <div class="col-2">
-                <div class="ui-block-a">
-                    <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding">웨딩홀 안내</li>
+        {#<div class="ul-body">#}
+            {#<div class="col-2">#}
+                {#<div class="ui-block-a">#}
+                    {#<ul class="lo_tab_wrap">#}
+                        {#<li class="tab_btn wh locationtabs on" id="tabs_wedding">웨딩홀 안내</li>#}
                         {#<li class="tab_btn rh locationtabs" id="tabs_party">피로연장 안내</li>					#}
-                    </ul>
-                </div>
-            </div>
-        </div>
+                    {#</ul>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
 
         <div class="ul-body locationdivs" id="div_wedding">
             <div class="lo_box col-2">
