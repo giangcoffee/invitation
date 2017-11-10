@@ -250,7 +250,7 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd}
 .nav-wrap ul {overflow:hidden; margin-top:10px;}
 .nav-wrap ul li {float:left; margin-right:30px;}
 .nav-m {margin-top:5px;}
-.nav-m .nav-1 {float:left; width:50%;}
+.nav-m .nav-1 {float:left; width:100%;}
 .nav-m .nav-2 {float:left; width:50%;}
 .ui-icon-nav1 {background:url('../../../img/templates/winterwonderland/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
 .ui-icon-nav2 {background:url('../../../img/templates/winterwonderland/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
@@ -292,7 +292,6 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd}
 .col-3g .ui-block-b {width:28.2%; margin:80px 0 2% 0}
 .col-3g .ui-block-c {float:right; width:27%; margin:80px 0 2% 0}
 
-.ui-body-d {margin:2%;}
 .snsbbs_sections .ui-body-d {margin:7px;}
 
 

@@ -57,7 +57,11 @@
                     <li class="ico_insta">Instagram</li>
                 </a>
             </ul>
-            <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% if isTemplate %}
+                <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% else %}
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+            {% endif %}
         </div>
     </div>
     <!--// panel-groom -->
@@ -80,7 +84,11 @@
                     <li class="ico_insta">Instagram</li>
                 </a>
             </ul>
-            <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% if isTemplate %}
+                <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% else %}
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+            {% endif %}
         </div>
     </div>
     <!--// panel-bride -->
@@ -93,7 +101,7 @@
                 <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>Lời Tựa</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>Album Ảnh</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_media"><span>Video</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Lời Chúc</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Sổ Lưu Bút</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_map"><span>Địa Điểm</span></li>
             </ul>
         </div>
@@ -508,7 +516,11 @@
                     {% endif %}
                 </div>
             </div>
-            <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
+            {% if isTemplate %}
+                <div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div>
+            {% else %}
+                <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
+            {% endif %}
         </div>
         <!--// guestbook -->
 

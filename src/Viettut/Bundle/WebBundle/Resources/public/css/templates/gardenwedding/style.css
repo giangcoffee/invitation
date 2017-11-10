@@ -44,6 +44,7 @@ body {font-size: 100%}
 .dday_wrap+.location_wrap {margin:-60px 0 0 0;z-index:10}
 .location_wrap {position:relative;padding:120px 0 0;overflow:hidden;background:url('../../../img/templates/gardenwedding/img_guestbook.jpg') no-repeat 50% 0,url('../../../img/templates/gardenwedding/bg_gallery.png') repeat;background-size: auto 580px,auto}
 .footer {background-color:#cad28a!important}
+.btn_go_snsbbs {cursor:pointer;}
 
 @media all and (min-width:1700px){
   .location_wrap {background-size:100%,auto}
@@ -131,7 +132,7 @@ div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
 
 /* title */
 h2.title {margin: 0 0 40px;text-align: center}
-h2.title span {font-size: 3.2em;line-height:1;color:#fff;font-family:'Cookie',cursive}
+h2.title span {font-size: 2.1em;line-height:1;color:#fff;font-family:'Georgia',cursive}
 
 .greeting_wrap h2.title {position:absolute;top: -90px;left:50%;margin:0 0 0 -150px;width:300px;height:105px;background:url('../../../img/templates/gardenwedding/tit_greeting.png') no-repeat 50% 0;background-size:100%}
 .gallery_wrap h2.title {position:relative;margin: 0 auto 30px;width:320px;height: 70px;background:url('../../../img/templates/gardenwedding/tit_gallery.png') no-repeat 50% 0;background-size:100%}
@@ -416,7 +417,6 @@ background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0;
 .gal_list .col-3 .ui-block-1,
 .gal_list .col-3 .ui-block-2 {width:32%; margin:0 2% 2% 0}
 .gal_list .col-3 .ui-block-3 {width:32%; margin:0 0 2% 0}
-.ui-body-d {margin:2%}
 
 .snsbbs_sections {float:left; width:33.333%!important}
 .snsbbs_sections {float:left; width:50%!important}

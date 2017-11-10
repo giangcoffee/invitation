@@ -1111,7 +1111,11 @@
                 {% endif %}
             </div>
         </div>
-        <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span></div></a>
+        {% if isTemplate %}
+            <div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span></div>
+        {% else %}
+            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span></div></a>
+        {% endif %}
     </div>
     <!--// guestbook -->
 

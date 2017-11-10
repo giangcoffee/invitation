@@ -265,10 +265,10 @@ background-size:25px 110px, 25px 110px}
 .btn_write span:hover em {}
 
 .btn-snsbbs {max-width:1024px; margin:0 auto;}
-.btn-snsbbs .btn_go_snsbbs { margin:0 15px; float:right; display:inline-block; padding:10px 0; background:#66afb5 url(../img/btn_arrow_w.png) no-repeat 98% 50%; 
+.btn-snsbbs .btn_go_snsbbs { margin:0 15px; float:right; display:inline-block; padding:10px 0; background:#66afb5 url(../img/btn_arrow_w.png) no-repeat 98% 50%;
 background-size:22px 22px; border-radius:5px; color:#fff;text-shadow:none; font-weight:bold; text-align:center}
-.btn-snsbbs .btn_go_snsbbs span {padding:0 60px}*/
-
+.btn-snsbbs .btn_go_snsbbs span {padding:0 60px} */
+.btn_go_snsbbs {cursor:pointer;}
 /* Location */
 .lo_tab_wrap {margin:0; padding:0 0 0 2%; overflow:hidden;}
 .lo_tab_wrap li {float:left; width:49%; margin:0 2% 0 0; line-height:40px; border-radius:5px 5px 0 0;
@@ -291,7 +291,7 @@ background: url(../../../img/templates/goldstar/lo_titlepin.png) no-repeat 10px 
 .nav-wrap ul {overflow:hidden; margin-top:10px;}
 .nav-wrap ul li {float:left; margin-right:30px;}
 .nav-m {margin-top:5px;}
-.nav-m .nav-1 {float:left; width:50%;}
+.nav-m .nav-1 {float:left; width:100%;}
 .nav-m .nav-2 {float:left; width:50%;}
 .ui-icon-nav1 {background:url('../../../img/templates/goldstar/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
 .ui-icon-nav2 {background:url('../../../img/templates/goldstar/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
@@ -326,7 +326,6 @@ background: url(../../../img/templates/goldstar/lo_titlepin.png) no-repeat 10px 
 .gal_list .col-3 .ui-block-b {width:32%; margin:0 2% 2% 0 }
 .gal_list .col-3 .ui-block-c {width:32%; margin:0 0 2% 0}
 
-.ui-body-d {margin:2%;}
 .snsbbs_sections .ui-body-d {margin:7px;}
 
 
