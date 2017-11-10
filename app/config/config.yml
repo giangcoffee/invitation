@@ -125,7 +125,7 @@ fos_user:
     user_class: Viettut\Bundle\UserBundle\Entity\User
     from_email:
         address:        noreply@thiepdo.com
-        sender_name:    Viettut Academy
+        sender_name:    ThiepDo Digital
     service:
         mailer: fos_user.mailer.twig_swift
     registration:

@@ -234,7 +234,7 @@
                                 <table cellpadding="0" cellspacing="0" width="600" class="w320">
                                     <tr>
                                         <td class="pull-left mobile-header-padding-left" style="vertical-align: middle;">
-                                            <a href="https://viettut.com"><img width="137" height="47" src="http://viettut.com/img/viettut.png" alt="logo"></a>
+                                            <a href="https://thiepdo.com"><img width="137" height="47" src="http://thiepdo.com/bundles/viettutweb/img/logo1_default.png" alt="logo"></a>
                                         </td>
                                         <td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;">
                                             <a href="https://www.facebook.com/viettutacademy/"><img width="44" height="47" src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" /></a>
@@ -261,21 +261,14 @@
                     <tr>
                         <td class="header-lg">
                             {% autoescape false %}
-                            {{ 'registration.email.subject'|trans({'%username%': user.username}) }}
+                            Chào mừng {{ user.username }}
                             {% endautoescape %}
                         </td>
                     </tr>
                     <tr>
                         <td class="free-text">
                             {% autoescape false %}
-                            {{ 'registration.email.message1'|trans({'%username%': user.username}) }}
-                            {% endautoescape %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="free-text">
-                            {% autoescape false %}
-                            {{ 'registration.email.message2'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+                            Để hoàn tất kích hoạt tài khoản của bạn - vui lòng truy cập đường link sau.
                             {% endautoescape %}
                         </td>
                     </tr>
@@ -289,7 +282,7 @@
                     <tr>
                         <td class="free-text">
                             {% autoescape false %}
-                            {{ 'registration.email.message3'|trans }}
+                            Cảm ơn !
                             {% endautoescape %}
                         </td>
                     </tr>
@@ -317,7 +310,7 @@
                             <table cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="header-md">
-                                        <a href="http://viettut.com/tutorials/all">Check out our newest courses!</a>
+                                        <a href="http://thiepdo.com/templates">Mẫu thiệp mới nhất !</a>
                                     </td>
                                 </tr>
                             </table>
@@ -333,9 +326,9 @@
                 <table cellspacing="0" cellpadding="0" width="600" class="w320">
                     <tr>
                         <td style="padding: 25px 0 25px">
-                            <strong>Viettut Academy</strong><br />
-                            <a href="mailto:support@viettut.com" target="_top">Send Us Email</a>
-                            mailto:support@viettut.com <br />
+                            <strong>ThiepDo Digital</strong><br />
+                            <a href="mailto:support@thiepdo.com" target="_top">Send Us Email</a>
+                            mailto:support@thiepdo.com <br />
                             Hotline: 0961.61.4387 <br /><br />
                         </td>
                     </tr>
