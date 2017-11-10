@@ -37,7 +37,7 @@
 </head>
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
-<div data-role="page" id="skin_page">
+<div data-role="page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push"
          data-position-fixed="true" data-swipe-close="true" data-theme="b"
@@ -162,7 +162,6 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
-                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -171,7 +170,6 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
-                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -181,7 +179,6 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
-                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -190,7 +187,6 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
-                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -304,7 +300,7 @@
             <h2 class="title"><span>Sổ lưu bút</span></h2>
 
             <div class="ul-body col-3">
-                <div class="gb_msg"><span>Để lại lời chúc mừng cho cô dâu, chú rể</span></div>
+                {#<div class="gb_msg"><span>Để lại lời chúc mừng cho cô dâu, chú rể</span></div>#}
                 <div id="div_snsbbs" style='z-index:999;'>
                     {% if isTemplate %}
                     <div class="snsbbs_sections">
@@ -321,7 +317,7 @@
                                 </div>
                                 <ul class="gb_cont btn_go_snsbbs">
                                     <li class="comm_txt">
-                                        <p></p>
+                                        <p>Quá tuyệt vời</p>
                                         <div class="emo-type-c emo11"></div>
                                     </li>
                                 </ul>
@@ -508,7 +504,7 @@
                     {% endif %}
                 </div>
             </div>
-            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
+            <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
         </div>
         <!--// guestbook -->
 
@@ -1071,41 +1067,8 @@
         });
 
 
-        $('.locationtabs').click(function () {
-            var id = $(this).attr('id').replace('tabs_', '');
-            $('.locationtabs').removeClass('on');
-            $(this).addClass('on');
-            $('.locationdivs').removeClass('hide');
-            $('.locationdivs').addClass('hide');
-            $('#div_' + id).removeClass('hide');
-
-            setLocationInfoHeight();
-
-            initialize(id);
-        }).css('cursor', 'pointer');
-
-        $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-1 cont_box3 ', '');
-
-            callKakaoNavi(id);
-        });
-
-        $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-2 cont_box4 ', '');
-
-            callOllehNavi(id);
-        });
-
-
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/gardenwedding/snsbbs";
-        }).css('cursor', 'pointer');
-
-        $('.btn_send_kakao').click(function () {
-            alert('모바일 기기에서만 사용 가능한 기능입니다.');
-        });
 
         function setLocationInfoHeight() {
         }

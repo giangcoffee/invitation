@@ -74,10 +74,10 @@ h2.title img {height:55px;}
 .greeting_date p {font-size:0.9em; color:#fff}
 .greeting_textbox {max-width:550px; font-size:1em; line-height:1.6em;color:#fff}
 .greeting_name {margin:50px 0 0 0; border-collapse: collapse; table-layout:fixed; color:#fff}
-.greeting_name thead {display:none}
+.greeting_name thead {text-align:center;}
 .gn1 span {padding:0 0.2em; float:right;}
 .gn1 {padding:0.5em 0; font-size:0.9em; line-height:1}
-.gn2 {padding:0.5em 0.3em 0.5em 0; font-size:0.9em; line-height:1}
+.gn2 {padding:0.5em 0.3em 0.5em 0; font-size:0.9em; line-height:1;float:left;}
 .gn3 {min-width:60px; padding:0.5em 0.5em 0.5em 0; font-size:0.9em; line-height:1}
 .gn4 {min-width:70px; padding:0.5em 0; font-size:1.1em; font-weight:bold; line-height:1}
 .gn3 span {display:block; text-align:right; padding-right:0.5em; color:#fff;}
@@ -135,7 +135,7 @@ font-family:'Oswald'; color: #fff; text-align: center; line-height: 30px; font-s
 
 /* Guestbook */
 .gb_btn {position:relative; line-height:40px; margin:30px auto; font-size:0.9em; font-weight:bold; color:#000; border:3px solid #e0c387; border-radius:10px; text-align:center; box-sizing:border-box; -webkit-box-sizing:border-box;}
-.gb_btn .ico {position:absolute; top:-10px; right:-10px; display:block; width:30px; height:30px; background:url('../../../img/templates/winterwonderland/guestbook_btn.png') no-repeat 0 0; background-size:30px;}
+.gb_btn .ico {position:absolute; top:-5px; right:-5px; display:block; width:30px; height:30px; background:url('../../../img/templates/winterwonderland/guestbook_btn.png') no-repeat 0 0; background-size:30px;}
 
 #div_snsbbs {}
 .gb_cont_box {width:100%; padding:1em 0; font-size:0.85em; color:#666; background-color:#f6ead2; border-radius:10px; box-sizing:border-box;
@@ -325,7 +325,7 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd}
 @media all and (max-width: 640px) {
   .col-2 .ui-block-a,
   .col-2 .ui-block-b {float:left; width:100%;}
-  .hd_title {font-size:2.5em;}
+  .hd_title {font-size:1.7em;}
   .hd_title span {font-size:20px; width:140px;}
   .hd_date p {font-size:1em; margin:0 0 2px 0}
   h2.title img {height:50px;}

@@ -304,7 +304,7 @@ h2.title span {font-size: 3.2em;line-height:1;color:#fff;font-family:'Cookie',cu
 .nopost_wrap:before {position:absolute;top: 0;left:0;right:0;height:30px;background:url('../../../img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 0;background-size:auto 60px;opacity:0.4;content:''}
 .nopost_wrap:after {position:absolute;bottom:0;left:0;right:0;height:30px;background:url('../../../img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 100%;background-size:auto 60px;opacity:0.4;content:''}
 
-.gb_btn {position:relative; width:155px; height:40px;margin:30px auto; padding:0;background:url('../../../img/templates/gardenwedding/btn_guestbook.png') no-repeat 0 0; background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+.gb_btn {position:relative; width:155px; height:40px;margin:30px auto; padding:0;background:url('../../../img/templates/gardenwedding/pencil_40.png') no-repeat 0 0; background-size:25%;font-size:0;line-height:0;text-indent:-9999px}
 .gb_msg {position:relative;margin: 0 0 60px}
 .nopost_wrap .gb_msg {margin-bottom:40px}
 .gb_msg span {display: block;width:270px;height:18px;margin: 0 auto;background:url('../../../img/templates/gardenwedding/txt_guestbook.png') no-repeat 50% 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
