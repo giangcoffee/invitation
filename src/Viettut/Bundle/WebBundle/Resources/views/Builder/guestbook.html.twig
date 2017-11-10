@@ -423,6 +423,16 @@
             itemSelector: 'li',
             columnWidth: 200
         });
+
+        $(".popup_close").on("click", function(){
+            $('#popup_login').removeClass('on');
+
+            if(!$("#popup_write, .mypage_wrap").hasClass("on")) {
+                top = -($body.offset().top);
+                $body.removeClass("noscroll").css("top", "");
+                $("html, body").scrollTop(top);
+            }
+        });
     });
 
 
