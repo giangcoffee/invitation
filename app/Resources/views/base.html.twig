@@ -104,17 +104,17 @@
                             {#</li>#}
                         {#{% endif %}#}
 
-                        <li class="dropdown{{ (app.request.attributes.get('_route') == 'templates_page') ? ' active' }}">
+                        <li class="{{ (app.request.attributes.get('_route') == 'templates_page') ? ' active' }}">
                             <a class="dropdown-toggle" href="{{ path('templates_page') }}">
                                 Mẫu Thiệp
-                                <i class="fa fa-angle-down"></i>
+                                {#<i class="fa fa-angle-down"></i>#}
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ path('templates_page') }}">Danh sách mẫu thiệp</a></li>
-                                {% if app.user %}
-                                    <li><a href="index-1.html">Thêm mẫu thiệp <span class="tip">hot</span></a></li>
-                                {% endif %}
-                            </ul>
+                            {#<ul class="dropdown-menu">#}
+                                {#<li><a href="{{ path('templates_page') }}">Danh sách mẫu thiệp</a></li>#}
+                                {#{% if app.user %}#}
+                                    {#<li><a href="index-1.html">Thêm mẫu thiệp <span class="tip">hot</span></a></li>#}
+                                {#{% endif %}#}
+                            {#</ul>#}
                         </li>
 
                         <li {{ (app.request.attributes.get('_route') == 'cards_page') ? ' class="active"' }}>
@@ -190,15 +190,13 @@
                                 </a>
                             </li>
                         {% endif %}
-                        {% block cart %}
-                        {% endblock %}
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <div role="main" class="main {% block shop %}{% endblock %}">
+    <div role="main" class="main">
         {% block main %}
         {% endblock %}
     </div>
