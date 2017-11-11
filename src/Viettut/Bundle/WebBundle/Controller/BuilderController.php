@@ -127,7 +127,7 @@ class BuilderController extends Controller
         $helper = $zalo -> getRedirectLoginHelper();
         $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
 
-        $comments = $card->getComments();
+        $comments = $this->get('viettut.repository.comment')->getByCard($card);
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
             'referrer' => $referrer,
             'groom' => $groom,

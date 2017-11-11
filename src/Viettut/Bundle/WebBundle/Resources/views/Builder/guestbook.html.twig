@@ -11,10 +11,10 @@
     <meta property="og:type"   content="website" />
     <meta property="og:url" content="{{ path('guest_book_page', {hash: hash}) }}" />
     <meta property="og:description" content="Sổ lưu bút" />
-    <meta property="og:title" content="Sổ lưu bút {{ data['groom_name'] }} - {{ data['bride_name'] }}" />
+    <meta property="og:title" content="Sổ lưu bút {{ groom }} - {{ bride }}" />
     <meta property="og:image" content="/bundles/viettutweb/img/templates/gardenwedding/img/S_7445cc41988e70ed839f0505739f50fb.jpg" />
 
-    <title>Sổ lưu bút {{ data['groom_name'] }} - {{ data['bride_name'] }}</title>
+    <title>Sổ lưu bút {{ groom }} - {{ bride }}</title>
     <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
     <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
     <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
@@ -411,6 +411,7 @@
 <!--//팝업:이모티콘-->
 
 <script>
+    var $body = $("body");
     $(document).ready(function(){
         $('.contents_list').masonry({
             // options
@@ -422,7 +423,7 @@
             $('#popup_login').removeClass('on');
 
             if(!$("#popup_write, .mypage_wrap").hasClass("on")) {
-                top = -($body.offset().top);
+                var top = -($body.offset().top);
                 $body.removeClass("noscroll").css("top", "");
                 $("html, body").scrollTop(top);
             }
@@ -482,8 +483,9 @@
         }
         var data = {'card': $('#cardId').data('id'), 'content': content};
         $.post('/app_dev.php/api/v1/comments', data, function (response) {
-            addComment(content);
+//            addComment(content);
             $('#popup_login').removeClass('on');
+            location.reload();
         }, 'json');
     }
 </script>
