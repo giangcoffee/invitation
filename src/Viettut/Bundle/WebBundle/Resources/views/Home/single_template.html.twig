@@ -384,8 +384,8 @@
     <script>
         var templateId = $('.template-info').data('id');
         function createCard() {
-            $.post('/app_dev.php/api/v1/templates/' + templateId + '/createcards', {}, function (response) {
-                window.location.href = '/app_dev.php/builder/' + response;
+            $.post('/api/v1/templates/' + templateId + '/createcards', {}, function (response) {
+                window.location.href = '/builder/' + response;
             }, 'json');
         }
     </script>

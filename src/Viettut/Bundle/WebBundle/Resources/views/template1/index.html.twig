@@ -338,7 +338,7 @@
 
     function addComment() {
         var content = $('textarea#message').val();
-        $.post('/app_dev.php/api/v1/comments', {content:content, card:cardId}, function (response) {
+        $.post('/api/v1/comments', {content:content, card:cardId}, function (response) {
             var html = '<li class="MSG_ITEM" data-msg_idx="83757">' +
                        '    <p class="name">'+ response.author.username + '</p>' +
                        '    <p class="date">' +

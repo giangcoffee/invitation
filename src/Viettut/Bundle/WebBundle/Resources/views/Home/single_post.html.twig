@@ -18,7 +18,7 @@
                 <div class="blog-posts single-post">
                     <article class="post post-large blog-single-post">
                         <div class="post-date">
-                            <span class="day">{{ post.createdAt | date('d') }}</span>
+                            <span class="day">{{ post.createdAt | date('d/m') }}</span>
                             <span class="month">{{ post.createdAt | date('l') }}</span>
                         </div>
                         <div class="post-content">
@@ -27,7 +27,8 @@
                                 <span><i class="fa fa-user"></i> By <a href="#">{{ post.author.name }}</a> </span>
                                 <span><i class="fa fa-tag"></i> <a href="#">Blog</a>, <a href="#">News</a> </span>
                             </div>
-                            <p>{{ post.content }}</p>
+                            <hr class="tall"/>
+                            <p>{{ post.content | raw }}</p>
                         </div>
                     </article>
                 </div>

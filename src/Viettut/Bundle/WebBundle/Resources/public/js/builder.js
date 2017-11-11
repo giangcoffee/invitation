@@ -38,7 +38,7 @@ function submit() {
 
 
 
-    $.post('/app_dev.php/api/v1/cards/' + cardId + '/updates', columns, function (response) {
+    $.post('/api/v1/cards/' + cardId + '/updates', columns, function (response) {
         var html = '<div class="alert alert-success alert-dismissable">' +
             '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
             'Thông tin cập nhật thành công !'
@@ -56,7 +56,7 @@ function submit() {
         headers : {
             'Content-Type' : 'application/json'
         },
-        url : '/app_dev.php/api/v1/cards/' + cardId,
+        url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
         data : JSON.stringify({weddingDate: $('#wedding_date').val(), forGroom: forGroom}),
         success : function(response, textStatus, jqXhr) {
@@ -74,7 +74,7 @@ function updateAlbum() {
         headers : {
             'Content-Type' : 'application/json'
         },
-        url : '/app_dev.php/api/v1/cards/' + cardId,
+        url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
         data : JSON.stringify({gallery: gallery}),
         success : function(response, textStatus, jqXhr) {
@@ -97,7 +97,7 @@ function updateVideo() {
         headers : {
             'Content-Type' : 'application/json'
         },
-        url : '/app_dev.php/api/v1/cards/' + cardId,
+        url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
         data : JSON.stringify({video: video}),
         success : function(response, textStatus, jqXhr) {
@@ -123,7 +123,7 @@ $(document).ready(function(){
     );
 
     $("#fileuploader").uploadFile({
-        url:"/app_dev.php/api/v1/cards/uploads",
+        url:"/api/v1/cards/uploads",
         fileName:"myfile",
         onSuccess:function(files,data,xhr,pd) {
             var src = data['src'];

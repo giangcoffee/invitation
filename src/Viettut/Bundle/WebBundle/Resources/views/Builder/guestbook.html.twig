@@ -482,7 +482,7 @@
             return;
         }
         var data = {'card': $('#cardId').data('id'), 'content': content};
-        $.post('/app_dev.php/api/v1/comments', data, function (response) {
+        $.post('/api/v1/comments', data, function (response) {
 //            addComment(content);
             $('#popup_login').removeClass('on');
             location.reload();
