@@ -13,7 +13,7 @@
     If you encourage me, I will be more joy."/>
 
     <meta property="og:title" content="{{ name }}" />
-    <meta property="og:image" content="http://dalpeng.com/user/goldstar/img/9b854c77bd8bd11be8cfd28c7240e73e.jpg" />
+    <meta property="og:image" content="/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="format-detection" content="telephone=no" />
@@ -1122,17 +1122,6 @@
     <!-- location -->
     <div class="location_wrap ui-cont-b" id="sk_map">
         <h2 class="title title_gold"><span>Hôn lễ tổ chức tại</span></h2>
-        {#<div class="ul-body">#}
-            {#<div class="col-2">#}
-                {#<div class="ui-block-a">#}
-                    {#<ul class="lo_tab_wrap">#}
-                        {#<li class="tab_btn wh locationtabs on" id="tabs_wedding">웨딩홀 안내</li>#}
-                        {#<li class="tab_btn rh locationtabs" id="tabs_party">피로연장 안내</li>					#}
-                    {#</ul>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
         <div class="ul-body locationdivs" id="div_wedding">
             <div class="lo_box col-2">
                 <div class="ui-block-a">
@@ -1145,18 +1134,12 @@
                             <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
                                 <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
                                 <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
-                                {#<input type='submit' value='CHỈ ĐƯỜNG' style="display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;"/>#}
                             </form>
                             <div class="nav-1">
                                 <div class="ui-body-d ui-btn-nav wedding_kimnavi">
                                     <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">CHỈ ĐƯỜNG</span>
                                 </div>
                             </div>
-                            {#<div class="nav-2">#}
-                                {#<div class="ui-body-d ui-btn-nav wedding_ollehnavi">#}
-                                    {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>#}
-                                {#</div>#}
-                            {#</div>#}
                         </div>
                     </div>
                     <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
@@ -1178,19 +1161,19 @@
                         </tr>
                         {% if data['parking_info'] is not empty %}
                             <tr>
-                                <th class="lo_info">Information</th>
+                                <th class="lo_info">Đỗ xe</th>
                                 <td>{{ data['parking_info'] }}</td>
                             </tr>
                         {% endif %}
                         {% if data['bus_info'] is not empty %}
                             <tr>
-                                <th class="lo_bus">Bus Info</th>
+                                <th class="lo_bus">Xe Bus</th>
                                 <td>{{ data['bus_info'] }}</td>
                             </tr>
                         {% endif %}
                         {% if data['subway_info'] is not empty %}
                             <tr>
-                                <th class="lo_subway">Subway Info</th>
+                                <th class="lo_subway">Tàu điện ngầm</th>
                                 <td>{{ data['subway_info'] }}</td>
                             </tr>
                         {% endif %}

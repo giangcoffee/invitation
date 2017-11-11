@@ -139,7 +139,8 @@ class BuilderController extends Controller
             'facebookUrl' => $facebookLoginUrl,
             'zaloUrl' => $zaloLoginUrl,
             'id' => $card->getId(),
-            'comments' => $comments
+            'comments' => $comments,
+            'hash' => $card->getHash()
         ));
     }
 

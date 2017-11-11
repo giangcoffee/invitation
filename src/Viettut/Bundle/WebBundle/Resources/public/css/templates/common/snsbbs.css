@@ -808,3 +808,13 @@ body.mint .comment_box.on{background-color: #f3ffff}
 @media(max-width:360px){
 	.snsbbs_tip{margin-left:0;margin-right:0;border-left:0;border-right:0}
 }
+
+@media all and (max-width: 640px) {
+	.social-login {margin-left:40%;}
+}
+
+.social-login {margin-left:40%;}
+
+@media all and (max-width: 480px) {
+	.social-login {margin-left:35%;}
+}
