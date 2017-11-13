@@ -61,11 +61,11 @@ class CardFormType extends AbstractRoleSpecificFormType
                 }
 
                 $video = $card->getVideo();
-                if (preg_match('/https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)/', $video, $matches)) {
+                if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $video, $matches)) {
                     $card->setValidVideo(true);
                     $card->setVideo($matches[1]);
                 } else {
-                    $event->getForm()->get('video')->addError(new FormError(sprintf('%s is a invalid video link')));
+                    $event->getForm()->get('video')->addError(new FormError(sprintf('%s is a invalid video link', $video)));
                     return;
                 }
             }
