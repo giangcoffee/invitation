@@ -59,6 +59,9 @@ class Card implements CardInterface
     /** @var  string */
     protected $video;
 
+    /** @var  string */
+    protected $videoId;
+
     /** @var  bool */
     protected $validVideo;
 
@@ -336,6 +339,24 @@ class Card implements CardInterface
     public function setVideo($video)
     {
         $this->video = $video;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoId(): string
+    {
+        return $this->videoId;
+    }
+
+    /**
+     * @param string $videoId
+     * @return self
+     */
+    public function setVideoId($videoId)
+    {
+        $this->videoId = $videoId;
         return $this;
     }
 

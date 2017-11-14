@@ -176,4 +176,15 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setValidVideo($validVideo);
+
+    /**
+     * @return string
+     */
+    public function getVideoId(): string;
+
+    /**
+     * @param string $videoId
+     * @return self
+     */
+    public function setVideoId($videoId);
 }

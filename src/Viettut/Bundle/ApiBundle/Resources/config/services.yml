@@ -33,3 +33,10 @@ services:
         class: Viettut\Services\UsernameService
         arguments:
             - '@viettut_user.domain_manager.lecturer'
+
+    viettut.event_listener.update_video_id_listener:
+        class: Viettut\Bundle\ApiBundle\EventListener\UpdateVideoIdListener
+        arguments:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

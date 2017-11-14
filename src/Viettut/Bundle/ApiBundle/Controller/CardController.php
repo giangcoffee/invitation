@@ -210,6 +210,7 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         $today = (new DateTime())->format('Y-m-d');
         $uploadRootDir = $this->container->getParameter('upload_root_directory');
         $uploadDir = $this->container->getParameter('upload_directory');
+        $images = [];
         foreach ($_FILES as $file) {
             $imageInfo = getimagesize($file['tmp_name']);
             $uploadFile = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], $test = false);
@@ -218,15 +219,15 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
                 $baseName.substr($uploadFile->getClientOriginalName(), -4)
             );
 
-            return new JsonResponse(
-                array(
-                    'src' => join('/', array($uploadDir, $user->getUsername(), $today, $baseName . substr($uploadFile->getClientOriginalName(), -4))),
-                    'size' => sprintf('%sX%s', $imageInfo[0], $imageInfo[1])
-                )
+            $images[] = array(
+                'src' => join('/', array($uploadDir, $user->getUsername(), $today, $baseName . substr($uploadFile->getClientOriginalName(), -4))),
+                'size' => sprintf('%sX%s', $imageInfo[0], $imageInfo[1])
             );
         }
 
-        throw new BadRequestHttpException('Invalid files');
+        return new JsonResponse($images);
+
+//        throw new BadRequestHttpException('Invalid files');
     }
 
     /**

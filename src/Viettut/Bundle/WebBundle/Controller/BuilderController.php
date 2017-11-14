@@ -219,7 +219,7 @@ class BuilderController extends Controller
             'forGroom' => $card->isForGroom(),
             'isTemplate' => false,
             'hash' => $hash,
-            'video' => $card->getVideo()
+            'video' => $card->getVideoId()
         ));
     }
 }

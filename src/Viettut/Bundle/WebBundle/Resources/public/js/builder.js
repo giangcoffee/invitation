@@ -129,10 +129,16 @@ $(document).ready(function(){
     $("#fileuploader").uploadFile({
         url:"/api/v1/cards/uploads",
         fileName:"myfile",
+        maxFileSize: 2097152,
+        multiple: true,
+        maxFileCount: 5,
+        showProgress: true,
         onSuccess:function(files,data,xhr,pd) {
-            var src = data['src'];
-            $('<li data-url="'+src+'" style="background-image: url('+src+')" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul.gallery').fadeIn(300);
-            gallery.push(data);
+            data.forEach(function(element) {
+                var src = element['src'];
+                $('<li data-url="'+src+'" style="background-image: url('+src+')" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul.gallery').fadeIn(300);
+                gallery.push(element);
+            });
         },
         uploadStr:"Thêm Ảnh"
     });

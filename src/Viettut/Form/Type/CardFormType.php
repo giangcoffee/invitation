@@ -44,30 +44,30 @@ class CardFormType extends AbstractRoleSpecificFormType
             function(FormEvent $event) {
                 /** @var CardInterface $card */
                 $card = $event->getData();
-                $data = $card->getData();
-                if ($card->getId() == null) {
-                    $name = sprintf('%s %s %s thang %s nam %s %s',
-                        $data['groom_name'],
-                        $data['bride_name'],
-                        $card->getWeddingDate()->format('d'),
-                        $card->getWeddingDate()->format('m'),
-                        $card->getWeddingDate()->format('Y'),
-                        uniqid('')
-                    );
-                    $card->setHash($this->getUrlFriendlyString($name));
-                    if (empty($card->getGallery())) {
-                        $card->setGallery($card->getTemplate()->getGallery());
-                    }
-                }
-
-                $video = $card->getVideo();
-                if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $video, $matches)) {
-                    $card->setValidVideo(true);
-                    $card->setVideo($matches[1]);
-                } else {
-                    $event->getForm()->get('video')->addError(new FormError(sprintf('%s is a invalid video link', $video)));
-                    return;
-                }
+//                $data = $card->getData();
+//                if ($card->getId() == null) {
+//                    $name = sprintf('%s %s %s thang %s nam %s %s',
+//                        $data['groom_name'],
+//                        $data['bride_name'],
+//                        $card->getWeddingDate()->format('d'),
+//                        $card->getWeddingDate()->format('m'),
+//                        $card->getWeddingDate()->format('Y'),
+//                        uniqid('')
+//                    );
+//                    $card->setHash($this->getUrlFriendlyString($name));
+//                    if (empty($card->getGallery())) {
+//                        $card->setGallery($card->getTemplate()->getGallery());
+//                    }
+//                }
+//
+//                $video = $card->getVideo();
+//                if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $video, $matches)) {
+//                    $card->setValidVideo(true);
+//                    $card->setVideo($matches[1]);
+//                } else {
+//                    $event->getForm()->get('video')->addError(new FormError(sprintf('%s is a invalid video link', $video)));
+//                    return;
+//                }
             }
         );
     }

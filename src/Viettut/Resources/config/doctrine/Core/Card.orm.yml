@@ -28,6 +28,9 @@ Viettut\Entity\Core\Card:
         video:
             type: string
             nullable: true
+        videoId:
+            type: string
+            nullable: true
         validVideo:
             type: boolean
             options:
