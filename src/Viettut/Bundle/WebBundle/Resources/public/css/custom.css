@@ -14,3 +14,20 @@
 .btn-fb {
     background-color: #3b5998 !important;
 }
+
+.temp-margin {
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.temp-margin .pull-right {
+    margin-right:10px;
+}
+
+.temp-margin .pull-left {
+    margin-left:10px;
+}
+
+.temp-margin .text-primary {
+    font-size:1.2em;
+}

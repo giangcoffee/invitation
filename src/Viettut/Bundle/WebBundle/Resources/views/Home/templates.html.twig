@@ -27,7 +27,7 @@
             <li data-option-value="*" class="active"><a href="#">Tất cả</a></li>
             <li data-option-value=".new"><a href="#">Sản phẩm mới</a></li>
             <li data-option-value=".popular"><a href="#">Phổ biến</a></li>
-            <li data-option-value=".coming-soon"><a href="#"><span class="tip">hot</span> Coming Soon</a></li>
+            <li data-option-value=".coming-soon"><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> Coming Soon</a></li>
         </ul>
 
         <hr />
@@ -40,20 +40,17 @@
                         <div class="portfolio-item img-thumbnail">
                             <a href="{{ path('template_page', {hash: temp.hash}) }}" class="thumb-info">
                                 <img alt="" class="img-responsive" src="{{ temp.thumbnail }}"/>
-                                    {#<span class="thumb-info-type">{{ temp.name }}</span>#}
-                                {#<span class="thumb-info-title">#}
-                                {#</span>#}
                                 <span class="thumb-info-action">
                                     <span title="{{ temp.name }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                                 </span>
                             </a>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="row col-md-12">
+                            <div class="row col-md-12 temp-margin">
                                 <span class="text-primary">{{ temp.name }}</span>
                             </div>
-                            <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>
-                            <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}')">Dùng mẫu này</button>
+                            <div class="row col-md-12 temp-margin">
+                                <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>
+                                <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}')">Dùng mẫu này</button>
+                            </div>
                         </div>
                     </li>
                 {% endfor %}
@@ -65,13 +62,13 @@
                                 <span title="Angel Car" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Angel Car</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -82,13 +79,13 @@
                                 <span title="Beautiful Day" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Beautiful Day</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -99,13 +96,13 @@
                                 <span title="Bunny Picnic" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Bunny Picnic</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -116,13 +113,13 @@
                                 <span title="Christmas Wedding" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Christmas Wedding</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -133,13 +130,13 @@
                                 <span title="Circle" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Circle</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -150,13 +147,13 @@
                                 <span title="Classic" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Classic</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -167,13 +164,13 @@
                                 <span title="Cotton Candy" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Cotton Candy</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -184,13 +181,13 @@
                                 <span title="Crescendo" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Crescendo</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -201,13 +198,13 @@
                                 <span title="Dream of Lily" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Dream of Lily</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -218,13 +215,13 @@
                                 <span title="Exhibition" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Exhibition</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -235,13 +232,13 @@
                                 <span title="Friends" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Friends</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -252,13 +249,13 @@
                                 <span title="Hope" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Hope</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -269,13 +266,13 @@
                                 <span title="Icecream Cake" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Icecream Cake</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -286,13 +283,13 @@
                                 <span title="Innocent Bride" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Innocent Bride</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -303,13 +300,13 @@
                                 <span title="Invitation" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Invitation</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -320,13 +317,13 @@
                                 <span title="Love blossom" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Love blossom</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -337,13 +334,13 @@
                                 <span title="Luxury Black" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Luxury Black</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -354,13 +351,13 @@
                                 <span title="Modern White" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Modern White</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -371,13 +368,13 @@
                                 <span title="One Fine Day" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">One Fine Day</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -388,13 +385,13 @@
                                 <span title="Over The Rainbow" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Over The Rainbow</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -405,13 +402,13 @@
                                 <span title="Poster" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Poster</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -422,13 +419,13 @@
                                 <span title="Respect" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Respect</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -439,13 +436,13 @@
                                 <span title="Retro City" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Retro City</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -456,13 +453,13 @@
                                 <span title="Romantic Flower" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Romantic Flower</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -473,13 +470,13 @@
                                 <span title="Romantic Pink" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Romantic Pink</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -490,13 +487,13 @@
                                 <span title="Sweet Honeybee" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Sweet Honeybee</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -507,13 +504,13 @@
                                 <span title="Thank You" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Thank You</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -524,13 +521,13 @@
                                 <span title="Twinkle Twinkle" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Twinkle Twinkle</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
@@ -541,13 +538,13 @@
                                 <span title="Welcome" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12 temp-margin">
                             <span class="text-primary">Welcome</span>
                         </div>
-                        <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                        <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        <div class="row col-md-12 temp-margin">
+                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
+                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                        </div>
                     </div>
                 </li>
             </ul>
