@@ -687,14 +687,7 @@
         }
 
         function getPath() {
-            var addr = '';
-            var inputs = $('#getPath input[name=saddr]');
-            inputs.each(function() {
-                var val = $(this).val();
-                if (val.length > 3) {
-                    addr = val;
-                }
-            });
+            var addr = $('#getPath input[name=saddr]').val();
 
             if (addr.length < 3) {
                 $('#getPath input[name=saddr]').focus();
@@ -705,6 +698,18 @@
             document.getElementById("getPath").submit();
         }
 
+
+        function getHomePath() {
+            var addr = $('#getHomePath input[name=saddr]').val();
+
+            if (addr.length < 3) {
+                $('#getHomePath input[name=saddr]').focus();
+                alert('Nhập địa chỉ của bạn một cách chính xác!');
+                return;
+            }
+
+            document.getElementById("getHomePath").submit();
+        }
         //-->
     </script>
 </head>
@@ -1119,13 +1124,13 @@
                     </div>
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
-                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getHomePath">
                                 <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
                                 <input type='hidden' name='daddr' value='{{ data['home'] }}' />
                             </form>
                             <div class="nav-1">
                                 <div class="ui-body-d ui-btn-nav wedding_kimnavi">
-                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getHomePath()">CHỈ ĐƯỜNG</span>
                                 </div>
                             </div>
                         </div>
