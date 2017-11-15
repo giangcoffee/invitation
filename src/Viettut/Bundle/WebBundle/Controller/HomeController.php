@@ -17,6 +17,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Viettut\Exception\RuntimeException;
 use Viettut\Model\Core\PostInterface;
 use Viettut\Model\Core\TemplateInterface;
+use Viettut\Model\User\UserEntityInterface;
 
 class HomeController extends Controller
 {
@@ -67,6 +68,23 @@ class HomeController extends Controller
     public function contactAction(Request $request)
     {
         return $this->render('ViettutWebBundle:Home:contact.html.twig');
+    }
+
+    /**
+     * @Route("/my-cards", name="my_card_page")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function myCardsAction(Request $request)
+    {
+        $user = $this->getUser();
+        if (!$user instanceof UserEntityInterface) {
+            $this->container->get('session')->set('_security.main.target_path', $this->generateUrl('my_card_page'));
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+        $cards = $this->get('viettut.repository.card')->getCardByUser($user);
+        return $this->render('ViettutWebBundle:Home:my_cards.html.twig', array('cards' => $cards));
     }
 
     /**

@@ -53,11 +53,18 @@ class Card implements CardInterface
     /** @var DateTime */
     protected $latitude;
 
+    protected $homeLongitude;
+
+    protected $homeLatitude;
+
     /** @var bool */
     protected $forGroom;
 
     /** @var  string */
     protected $video;
+
+    /** @var  string */
+    protected $videoId;
 
     /** @var  bool */
     protected $validVideo;
@@ -282,6 +289,41 @@ class Card implements CardInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getHomeLongitude()
+    {
+        return $this->homeLongitude;
+    }
+
+    /**
+     * @param mixed $homeLongitude
+     * @return self
+     */
+    public function setHomeLongitude($homeLongitude)
+    {
+        $this->homeLongitude = $homeLongitude;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHomeLatitude()
+    {
+        return $this->homeLatitude;
+    }
+
+    /**
+     * @param mixed $homeLatitude
+     * @return self
+     */
+    public function setHomeLatitude($homeLatitude)
+    {
+        $this->homeLatitude = $homeLatitude;
+        return $this;
+    }
 
     /**
      * @return boolean
@@ -336,6 +378,24 @@ class Card implements CardInterface
     public function setVideo($video)
     {
         $this->video = $video;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoId(): string
+    {
+        return $this->videoId;
+    }
+
+    /**
+     * @param string $videoId
+     * @return self
+     */
+    public function setVideoId($videoId)
+    {
+        $this->videoId = $videoId;
         return $this;
     }
 

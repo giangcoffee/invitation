@@ -20,4 +20,6 @@ class Template extends TemplateModel
     protected $latitude;
     protected $longitude;
     protected $forGroom;
+    protected $homeLatitude;
+    protected $homeLongitude;
 }

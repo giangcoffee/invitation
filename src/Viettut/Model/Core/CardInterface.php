@@ -133,6 +133,27 @@ interface CardInterface extends ModelInterface
      */
     public function setLatitude($latitude);
 
+    /**
+     * @return mixed
+     */
+    public function getHomeLongitude();
+
+    /**
+     * @param mixed $homeLongitude
+     * @return self
+     */
+    public function setHomeLongitude($homeLongitude);
+
+    /**
+     * @return mixed
+     */
+    public function getHomeLatitude();
+
+    /**
+     * @param mixed $homeLatitude
+     * @return self
+     */
+    public function setHomeLatitude($homeLatitude);
 
     /**
      * @return boolean
@@ -176,4 +197,15 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setValidVideo($validVideo);
+
+    /**
+     * @return string
+     */
+    public function getVideoId(): string;
+
+    /**
+     * @param string $videoId
+     * @return self
+     */
+    public function setVideoId($videoId);
 }

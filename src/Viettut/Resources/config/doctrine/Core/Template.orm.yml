@@ -43,6 +43,12 @@ Viettut\Entity\Core\Template:
         longitude:
             type: text
             nullable: true
+        homeLatitude:
+            type: text
+            nullable: true
+        homeLongitude:
+            type: text
+            nullable: true
         forGroom:
             type: boolean
             nulable: false

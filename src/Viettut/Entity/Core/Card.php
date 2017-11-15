@@ -22,4 +22,7 @@ class Card extends CardModel
     protected $commentObjectId;
     protected $validVideo;
     protected $video;
+    protected $videoId;
+    protected $homeLatitude;
+    protected $homeLongitude;
 }

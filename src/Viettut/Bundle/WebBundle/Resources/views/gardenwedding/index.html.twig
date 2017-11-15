@@ -36,8 +36,9 @@
 
 </head>
 <body>
-<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
-<div data-role="page">
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
+     data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push"
          data-position-fixed="true" data-swipe-close="true" data-theme="b"
@@ -57,7 +58,11 @@
                     <li class="ico_insta">Instagram</li>
                 </a>
             </ul>
-            <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% if isTemplate %}
+                <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% else %}
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+            {% endif %}
         </div>
     </div>
     <!--// panel-groom -->
@@ -80,7 +85,11 @@
                     <li class="ico_insta">Instagram</li>
                 </a>
             </ul>
-            <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% if isTemplate %}
+                <p class="btn_go_snsbbs">Viết lời chúc</p>
+            {% else %}
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+            {% endif %}
         </div>
     </div>
     <!--// panel-bride -->
@@ -93,7 +102,7 @@
                 <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>Lời Tựa</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>Album Ảnh</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_media"><span>Video</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Lời Chúc</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Sổ Lưu Bút</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_map"><span>Địa Điểm</span></li>
             </ul>
         </div>
@@ -162,6 +171,7 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
+                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -170,6 +180,7 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
+                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -179,6 +190,7 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
+                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -187,6 +199,7 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
+                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -317,7 +330,7 @@
                                 </div>
                                 <ul class="gb_cont btn_go_snsbbs">
                                     <li class="comm_txt">
-                                        <p>Quá tuyệt vời</p>
+                                        <p>Quá tuyệt vời !</p>
                                         <div class="emo-type-c emo11"></div>
                                     </li>
                                 </ul>
@@ -504,22 +517,87 @@
                     {% endif %}
                 </div>
             </div>
-            <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
+            {% if isTemplate %}
+                <div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div>
+            {% else %}
+                <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
+            {% endif %}
         </div>
         <!--// guestbook -->
 
         <!-- location -->
         <div class="location_wrap" id="sk_map">
-            <h2 class="title"><span>Hôn lễ được tổ chức tại</span></h2>
+            <h2 class="title"><span>Địa điểm</span></h2>
+            <div class="ul-body">
+                <ul class="lo_tab_wrap">
+                    <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Lễ cưới</li>
+                    <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
+                </ul>
+            </div>
             <div class="ul-body locationdivs" id="div_wedding">
                 <div class="lo_box col-2">
                     <div class="ui-block-1">
                         <div class="lo_title">
-                            <h3>Tiệc Cưới</h3>
+                            <h3>Lễ Cưới tổ chức tại {% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3>
+                            <p class="date">{{ weddingDate | date('d.m.Y H:i A') }}</p>
+                            <p class="place">{{ data['home'] }}</p></div>
+                        <div class="lo_map">
+                            <div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
+                        </div>
+                    </div>
+                    <div class="ui-block-2">
+                        <div class="lo_containerarea">
+                            <table class="lo_container lo_left">
+                                <tr>
+                                    <th class="lo_loca"><span class="icon">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</span></th>
+                                    <td class="txt">{{ data['home'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="lo_tel"><span class="icon">Tel</span></th>
+                                    <td class="txt">{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</td>
+                                </tr>
+                                {#<tr>#}
+                                    {#<th class="lo_info"><span class="icon">Đỗ xe</span></th>#}
+                                    {#<td><p>{{ data['parking_info'] }}</p></td>#}
+                                {#</tr>#}
+                            </table>
+                            {#<table class="lo_container lo_right">#}
+                                {#<tr>#}
+                                    {#<th class="lo_bus"><span class="icon">Xe bus</span></th>#}
+                                    {#<td><p>{{ data['bus_info'] }}</p></td>#}
+                                {#</tr>#}
+                                {#<tr>#}
+                                    {#<th class="lo_subway"><span class="icon">Tàu điện</span></th>#}
+                                    {#<td><p>{{ data['subway_info'] }}</p></td>#}
+                                {#</tr>#}
+                            {#</table>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-wrap">
+                    <div class="ui-grid-a nav-m">
+                        <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                            <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                            <input type='hidden' name='daddr' value='{{ data['home'] }}' />
+                        </form>
+                        <div class="nav-1">
+                            <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+            </div>
+            <div class="ul-body locationdivs" id="div_party" style="display:none;">
+                <div class="lo_box col-2">
+                    <div class="ui-block-1">
+                        <div class="lo_title">
+                            <h3>Tiệc Cưới tổ chức tại</h3>
                             <p class="date">{{ date | date('d.m.Y H:i A') }}</p>
                             <p class="place">{{ data['place'] }}</p></div>
                         <div class="lo_map">
-                            <div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
+                            <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
                         </div>
                     </div>
                     <div class="ui-block-2">
@@ -668,8 +746,8 @@
         });
 
         function callMapInitializeAfterResize() {
-            if ($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
-            else initialize('party');
+//            if ($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
+//            else initialize('party');
         }
 
         $('#div_snsbbs').masonry({
@@ -1067,11 +1145,37 @@
         });
 
 
+//        $('.locationtabs').click(function () {
+//            var id = $(this).attr('id').replace('tabs_', '');
+//            $('.locationtabs').removeClass('on');
+//            $(this).addClass('on');
+//            $('.locationdivs').removeClass('hide');
+//            $('.locationdivs').addClass('hide');
+//            $('#div_' + id).removeClass('hide');
+//
+//            setLocationInfoHeight();
+//
+//            initialize(id);
+//        }).css('cursor', 'pointer');
+
+        $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function () {
+            var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-1 cont_box3 ', '');
+
+            callKakaoNavi(id);
+        });
+
+        $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function () {
+            var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-2 cont_box4 ', '');
+
+            callOllehNavi(id);
+        });
+
+
         $('#div_snsbbs').masonry('bindResize');
 
-
-        function setLocationInfoHeight() {
-        }
+//
+//        function setLocationInfoHeight() {
+//        }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
@@ -1091,16 +1195,36 @@
             }
         }).css('cursor', 'pointer');
 
+        $('#tabs_wedding').click(function() {
+            $('#tabs_wedding').addClass('on');
+            $('#tabs_party').removeClass('on');
+            $('#div_wedding').css('display', 'block');
+            $('#div_party').css('display', 'none');
+        }).css('cursor', 'pointer');
 
-        initialize('wedding');
-        setLocationInfoHeight();
+        $('#tabs_party').click(function() {
+            $('#tabs_party').addClass('on');
+            $('#tabs_wedding').removeClass('on');
+            $('#div_wedding').css('display', 'none');
+            $('#div_party').css('display', 'block');
+        }).css('cursor', 'pointer');
+
+//        initialize('wedding');
+//        setLocationInfoHeight();
     });
 
     function initMap() {
         var lat = $('#coordinates').data('lat');
         var lon = $('#coordinates').data('lon');
         var title = $('#coordinates').data('title');
+
+        var homeLat = $('#coordinates').data('home-lat');
+        var homeLon = $('#coordinates').data('home-lon');
+        var homeTitle = $('#coordinates').data('home-title');
+
         var location = {lat: lat, lng: lon};
+        var homeLocation = {lat: homeLat, lng: homeLon};
+
         var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
             zoom: 16,
             center: location
@@ -1114,6 +1238,20 @@
             content: '<h4>' + title + '</h4>'
         });
         info.open(map, marker);
+
+        var homeMap = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
+            zoom: 16,
+            center: homeLocation
+        });
+        var homeMarker = new google.maps.Marker({
+            position: homeLocation,
+            map: homeMap
+        });
+
+        var homeInfo = new google.maps.InfoWindow({
+            content: '<h4>' + homeTitle + '</h4>'
+        });
+        homeInfo.open(homeMap, homeMarker);
     }
 
     function getPath() {

@@ -9,6 +9,10 @@
     <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="author" content="Giang Coffee">
 
+    <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
+    <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
+    <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
+
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -104,17 +108,17 @@
                             {#</li>#}
                         {#{% endif %}#}
 
-                        <li class="dropdown{{ (app.request.attributes.get('_route') == 'templates_page') ? ' active' }}">
+                        <li class="{{ (app.request.attributes.get('_route') == 'templates_page') ? ' active' }}">
                             <a class="dropdown-toggle" href="{{ path('templates_page') }}">
                                 Mẫu Thiệp
-                                <i class="fa fa-angle-down"></i>
+                                {#<i class="fa fa-angle-down"></i>#}
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ path('templates_page') }}">Danh sách mẫu thiệp</a></li>
-                                {% if app.user %}
-                                    <li><a href="index-1.html">Thêm mẫu thiệp <span class="tip">hot</span></a></li>
-                                {% endif %}
-                            </ul>
+                            {#<ul class="dropdown-menu">#}
+                                {#<li><a href="{{ path('templates_page') }}">Danh sách mẫu thiệp</a></li>#}
+                                {#{% if app.user %}#}
+                                    {#<li><a href="index-1.html">Thêm mẫu thiệp <span class="tip">hot</span></a></li>#}
+                                {#{% endif %}#}
+                            {#</ul>#}
                         </li>
 
                         <li {{ (app.request.attributes.get('_route') == 'cards_page') ? ' class="active"' }}>
@@ -146,7 +150,6 @@
                                 Liên Hệ
                             </a>
                         </li>
-
                         {% if app.user %}
                             <li class="dropdown mega-menu-item mega-menu-signin signin logged" id="headerAccount">
                                 <a class="dropdown-toggle" href="#">
@@ -174,6 +177,11 @@
                                                             <a href="#">Profile</a>
                                                         </li>
                                                         <li>
+                                                            <a class="dropdown-toggle" href="{{ path('my_card_page') }}">
+                                                                Thiệp của tôi
+                                                            </a>
+                                                        </li>
+                                                        <li>
                                                             <a href="{{ path('fos_user_security_logout') }}">Thoát</a>
                                                         </li>
                                                     </ul>
@@ -190,15 +198,13 @@
                                 </a>
                             </li>
                         {% endif %}
-                        {% block cart %}
-                        {% endblock %}
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <div role="main" class="main {% block shop %}{% endblock %}">
+    <div role="main" class="main">
         {% block main %}
         {% endblock %}
     </div>

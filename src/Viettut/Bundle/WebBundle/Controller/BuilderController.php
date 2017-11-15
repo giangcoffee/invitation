@@ -8,7 +8,6 @@
 
 namespace Viettut\Bundle\WebBundle\Controller;
 
-use RestClient\CurlRestClient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -127,7 +126,7 @@ class BuilderController extends Controller
         $helper = $zalo -> getRedirectLoginHelper();
         $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
 
-        $comments = $card->getComments();
+        $comments = $this->get('viettut.repository.comment')->getByCard($card);
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
             'referrer' => $referrer,
             'groom' => $groom,
@@ -139,7 +138,8 @@ class BuilderController extends Controller
             'facebookUrl' => $facebookLoginUrl,
             'zaloUrl' => $zaloLoginUrl,
             'id' => $card->getId(),
-            'comments' => $comments
+            'comments' => $comments,
+            'hash' => $card->getHash()
         ));
     }
 
@@ -161,6 +161,7 @@ class BuilderController extends Controller
         $first = array_slice($gallery, 0, 5);
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
+        $weddingDate = $template->getWeddingDate()->modify('-1 hour');
         return $this->render($template->getPath(), array(
             'data' => $template->getData(),
             'name' => $template->getName(),
@@ -169,8 +170,11 @@ class BuilderController extends Controller
             'second' => $second,
             'rest' => $rest,
             'date' => $template->getWeddingDate(),
+            'weddingDate' => $weddingDate,
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
+            'homeLon' => $template->getHomeLongitude(),
+            'homeLat' => $template->getHomeLatitude(),
             'forGroom' => $template->isForGroom(),
             'isTemplate' => true,
             'hash' => $hash
@@ -204,6 +208,7 @@ class BuilderController extends Controller
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
 
+        $weddingDate = $card->getWeddingDate()->modify('-1 hour');
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
@@ -211,14 +216,17 @@ class BuilderController extends Controller
             'second' => $second,
             'rest' => $rest,
             'date' => $card->getWeddingDate(),
+            'weddingDate' => $weddingDate,
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),
+            'homeLon' => $card->getHomeLongitude(),
+            'homeLat' => $card->getHomeLatitude(),
             'name' => $name,
             'comments' => $comments,
             'forGroom' => $card->isForGroom(),
             'isTemplate' => false,
             'hash' => $hash,
-            'video' => $card->getVideo()
+            'video' => $card->getVideoId()
         ));
     }
 }

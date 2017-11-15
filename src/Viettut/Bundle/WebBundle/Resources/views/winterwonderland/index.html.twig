@@ -31,6 +31,15 @@
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
+
+    <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
+    <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
+    <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
+    <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
+    <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js"></script>
+    <script src="/bundles/viettutweb/js/templates/common/photoswipe.js"></script>
+    <script src="/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js"></script>
+
     <style type="text/css">
         #main-page * {
             -webkit-user-select: none;
@@ -136,6 +145,526 @@
         .absolute { position:absolute !important; }
 
     </style>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
+    </script>
+    <script type="text/javascript">
+        <!--
+
+        $(function(){
+
+            $(".header_bg, .header_title").css("height",$(window).height());
+            $(window).bind("orientationchange, resize", function(e) { $(".header_bg, .header_title").css("height",$(window).height()); });
+
+            var headerTitle = $('.header_title').offset().top;
+            var headerAnimate = function(){
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > headerTitle+100) $('.header_title').addClass('slideUp');
+                else $('.header_title').removeClass('slideUp');
+            };
+
+            $(window).scroll(function() { return; headerAnimate(); });
+
+            $(window).on("orientationchange",function(){
+                callMapInitializeAfterResize();
+            });
+
+            function callMapInitializeAfterResize(){
+                if($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
+                else initialize('party');
+            }
+
+
+            // -- map -- //
+            function initialize(md) {
+
+            }
+
+            $('#div_snsbbs').masonry({
+                //columnWidth: .snsbbs_sections,
+                //isFitWidth : true,
+                itemSelector: '.snsbbs_sections'
+            }).on( 'layoutComplete', function() {
+                return true;
+            });
+
+            var closest = function closest(el, fn) {
+                return el && (fn(el) ? el : closest(el.parentNode, fn));
+            };
+
+            var photoswipeParseHash = function() {
+                var hash = window.location.hash.substring(1),
+                        params = {};
+
+                if (hash.length < 5) {
+                    return params;
+                }
+
+                var vars = hash.split('&');
+                for (var i = 0; i < vars.length; i++) {
+                    if (!vars[i]) {
+                        continue;
+                    }
+                    var pair = vars[i].split('=');
+                    if (pair.length < 2) {
+                        continue;
+                    }
+                    params[pair[0]] = pair[1];
+                }
+
+                if (params.gid) {
+                    params.gid = parseInt(params.gid, 10);
+                }
+
+                return params;
+            };
+
+            function getGallery($el) {
+                var el = [];
+                var aTag = Array.prototype.slice.call($el.find("a"));
+
+                $.merge(el, aTag);
+
+                return el;
+            }
+
+            function onThumbnailsClick(e) {
+                e = e || window.event;
+                e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+                var eTarget = e.target || e.srcElement;
+                var clickedListItem = closest(eTarget, function(el) {
+                    var tagName = el.tagName.toUpperCase();
+                    return (tagName && tagName === 'A');
+                });
+
+                if (!clickedListItem) {
+                    return;
+                }
+
+                if (clickedListItem.className.indexOf("swipebox") == -1) {
+                    return false;
+                }
+
+                var childNodes = el,
+                        numChildNodes = el.length,
+                        nodeIndex = 0,
+                        index = 0;
+
+                var no_image_count = 0;
+                for (var i = 0; i < numChildNodes; i++) {
+                    if (el[i].className.indexOf("swipebox") == -1) {
+                        no_image_count++;
+                    }
+
+                    if (el[i] == clickedListItem) {
+                        index = i - no_image_count;
+
+                        break;
+                    }
+                }
+
+                if (index >= 0) {
+                    openPhotoSwipe(index, el);
+                }
+
+                return false;
+            }
+
+            var gallery;
+
+            function getPrefix(prop) {
+                var style = document.body.style;
+                var prefix = ['Webkit', 'ms', 'moz', 'o'];
+                var prefix_len = prefix.length;
+
+                if(style[prop] == '') {
+                    return prop;
+                }
+
+                prop = prop[0].toUpperCase() + prop.slice(1);
+
+                for(var i = 0; i < prefix_len; i++) {
+                    if(style[prefix[i] + prop] == '') {
+                        return prefix[i] + prop;
+                    }
+                }
+            }
+
+            function getTranslate(transform) {
+                var regex;
+
+                if(transform.indexOf('translate3d') == -1) {
+                    regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
+                } else {
+                    regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
+                }
+
+                var matched = transform.match(regex);
+                var coordinate = {};
+
+                coordinate.x = matched[1];
+                coordinate.y = matched[2];
+
+                if(matched[3]) {
+                    coordinate.z = matched[3];
+                }
+
+                return coordinate;
+            }
+
+            function getScale(transform) {
+                var regex = /scale\(([0-9.]+)\)/;
+                var matched = transform.match(regex);
+
+                return matched[1];
+            }
+
+            function psBeforeInitAddEvent() {
+                gallery.listen('gettingData', function(index, item) {
+                    var size = item.el.getAttribute("data-size").split("X");
+
+                    item.w = size[0];
+                    item.h = size[1];
+                });
+
+                gallery.listen('arrowUpdate', function() {
+                    var $nextBtn = $('.pswp__button--arrow--right');
+                    var $prevBtn = $('.pswp__button--arrow--left');
+                    var loop = this.options.loop;
+                    var index = this.getCurrentIndex();
+
+                    $nextBtn.toggle(loop || index < this.items.length - 1);
+                    $prevBtn.toggle(loop || index > 0);
+                });
+
+                gallery.listen('initialZoomIn', function() {
+                    $(".snow").removeClass("snow").addClass("snow-off");
+
+                });
+            }
+
+            function psAfterInitAddEvent() {
+                gallery.listen('initialZoomOut', function() {
+                    var item = this.currItem;
+                    var container_style = item.container.style;
+                    var transform = getPrefix('transform');
+                    var transition = getPrefix('transition');
+
+                    if(!transform || !transition) {
+                        return;
+                    }
+
+                    var container_transform = container_style[getPrefix('transform')];
+                    var scale = getScale(container_transform);
+                    var coordinate = getTranslate(container_transform);
+                    var initTransY = item.initialPosition.y;
+                    var currTransY = coordinate.y;
+                    var size = item.el.getAttribute("data-size").split("X");
+                    var transX = item.initialPosition.x;
+                    var transY;
+
+                    if(initTransY > currTransY) {
+                        transY = -(size[1]);
+                    } else {
+                        transY = window.screen.availHeight;
+                    }
+
+                    container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
+
+                    if(!this.isGestureClose() && this.isVerticalDrag()){
+                        container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
+                    }
+                });
+
+                gallery.listen('close', function() {
+                    setTimeout(function() {
+                        $(".snow-off").removeClass("snow-off").addClass("snow");
+                    }, this.options.hideAnimationDuration + 45);
+
+                });
+            }
+
+            var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                var pswpElement = document.querySelector('.pswp'),
+                        options, items, kakaoInApp;
+
+                items = parseThumbnailElements(galleryElement);
+
+                if(/KAKAOTALK/.test(navigator.userAgent)) {
+                    kakaoInApp = true;
+                }
+
+                options = {
+                    useZoom: true,
+                    arrowKeys: false,
+                    hideAnimationDuration: 200,
+                    showAnimationDuration: 100,
+                    loop: false,
+                    imageEl: true,
+                    galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
+                    showHideOpacity: true,
+                    getThumbBoundsFn: false,
+                    closeOnScroll: false,
+                    kakaoInApp: kakaoInApp,
+                };
+
+                if (fromURL) {
+                    if (options.galleryPIDs) {
+
+                        for (var j = 0; j < items.length; j++) {
+                            if (items[j].pid == index) {
+                                options.index = j;
+                                break;
+                            }
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+
+                if (isNaN(options.index)) {
+                    return;
+                }
+
+                if (disableAnimation) {
+                    options.showAnimationDuration = 0;
+                }
+
+                gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                gallery.useAniNum = false;
+
+                // 방명록 글쓰기에 이미지 첨부
+                gallery.includeImage = function() {
+                    var id = gallery.currItem.id
+                    var url = "WinterWonderland/snsbbs/w/" + id;
+                    var kakaoInApp = gallery.options.kakaoInApp;
+
+                    if(!kakaoInApp) {
+                        window.location = url;
+                    } else {
+                        window.open(url);
+                    }
+                };
+
+                psBeforeInitAddEvent();
+                gallery.init();
+                psAfterInitAddEvent();
+            };
+
+            var parseThumbnailElements = function(el) {
+                var imageElements = el,
+                        numNodes = imageElements.length,
+                        items = [],
+                        size,
+                        item;
+                var wrapper = document.createElement('div');
+                var imageEl,
+                        thumbEl;
+
+                for (var i = 0; i < numNodes; i++) {
+                    imageEl = imageElements[i];
+
+                    if (imageEl.nodeType !== 1) {
+                        continue;
+                    }
+
+                    var img_el = imageEl.getElementsByTagName("img");
+                    var exist_img = img_el.length > 0 ? true : false;
+                    var src = imageEl.href;
+                    var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
+                    var msrc;
+                    var $imageEl = $(imageEl);
+
+                    if(!is_swipe_image) {
+                        continue;
+                    }
+
+                    if(!exist_img) {
+                        thumbEl = imageEl.getElementsByTagName("div")[0];
+
+                        if(thumbEl) {
+                            msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                        } else {
+                            var piece = src.split("/");
+                            var pieceCount = piece.length;
+                            var file = piece[pieceCount - 1]
+
+                            piece[pieceCount - 1] = "S_" + file;
+
+                            msrc = piece.join("/");
+                        }
+                    } else {
+                        if($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
+                            msrc = img_el[0].parentNode.href;
+                        } else {
+                            thumbEl = img_el[0];
+                            msrc = thumbEl.src;
+                        }
+                    }
+
+                    item = {
+                        src: src,
+                        msrc: msrc,
+                        el: imageEl,
+                    };
+
+                    item.id = imageEl.getAttribute("imgId");
+                    items.push(item);
+
+                    items.push(item);
+                }
+                return items;
+            };
+
+            var $my_gallery = $("#sk_gallery");
+            var my_gallery_count = $my_gallery.length;
+            var el = getGallery($my_gallery);
+            var $el = $(el);
+            var hashData = photoswipeParseHash();
+
+            $el.on("click", onThumbnailsClick);
+
+            for (var i = 0; i < my_gallery_count; i++) {
+                $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
+            }
+
+            if (hashData.pid && hashData.gid) {
+                openPhotoSwipe(hashData.pid - 1, el, true, true);
+            }
+
+            $(document).on("keydown keyup", function(e) {
+                var hidden = $(".pswp").attr("aria-hidden") == "true";
+
+                if(hidden) {
+                    return;
+                }
+
+                var keydownAction = '';
+                var index = gallery.getCurrentIndex();
+                var gallery_len = gallery.items.length;
+
+                if(e.type == "keydown") {
+                    if(e.keyCode === 37 && index != 0) {
+                        keydownAction = 'prev';
+                    } else if(e.keyCode === 39 && index != (gallery_len - 1)) {
+                        keydownAction = 'next';
+                    }
+                } else if(e.type == "keyup") {
+                    if(e.keyCode === 37 && index == 0) {
+                        keydownAction = 'prev';
+                    } else if(e.keyCode === 39 && index == (gallery_len - 1)) {
+                        keydownAction = 'next';
+                    }
+                }
+
+                if(keydownAction) {
+                    if( !e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey ) {
+                        if(e.preventDefault) {
+                            e.preventDefault();
+                        } else {
+                            e.returnValue = false;
+                        }
+
+                        gallery[keydownAction]();
+                    }
+                }
+            });
+
+            $('.locationtabs').click(function(){
+                var id = $(this).attr('id').replace('tabs_','');
+                $('.locationtabs').removeClass('on');
+                $(this).addClass('on');
+                $('.locationdivs').removeClass('hide');
+                $('.locationdivs').addClass('hide');
+                $('#div_'+id).removeClass('hide');
+
+                setLocationInfoHeight();
+
+                initialize(id);
+            }).css('cursor','pointer');
+
+            $('#div_snsbbs').masonry('bindResize');
+
+
+            function setLocationInfoHeight(){
+            }
+
+            function setPosition(id){
+                var $obj = $('#sk_'+id);
+                // console.log(id);
+
+                $('body').scrollTo($obj, 500);
+            }
+
+            $('.menu_scrolls').click(function(){
+                try{
+                    if($(this).attr('id')){
+
+
+                        var id = $(this).attr('id').replace('p_','').replace('m_','');
+
+                        //console.log(id);
+
+                        setPosition(id);
+                    }
+                }catch(e){
+                    //console.log(e);
+                }
+            }).css('cursor','pointer');
+
+
+            initialize('wedding');
+            setLocationInfoHeight();
+        });
+
+        $( window ).load(function() {
+
+
+            $('.gal_list2').masonry({
+                itemSelector: '.gal_frame',
+                columnWidth: '.gal_size',
+                transitionDuration: '0.2s',
+                percentPosition: true
+            });
+        });
+
+        function initMap() {
+            var lat = $('#coordinates').data('lat');
+            var lon = $('#coordinates').data('lon');
+            var title = $('#coordinates').data('title');
+            var location = {lat: lat, lng: lon};
+            var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+                zoom: 16,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            var info = new google.maps.InfoWindow({
+                content: '<h4>' + title + '</h4>'
+            });
+            info.open(map, marker);
+        }
+
+        function getPath() {
+            var addr = $('#getPath input[name=saddr]').val();
+            if (addr.length < 3) {
+                $('#getPath input[name=saddr]').focus();
+                alert('Nhập địa chỉ của bạn một cách chính xác!');
+                return;
+            }
+
+            document.getElementById("getPath").submit();
+        }
+
+        //-->
+    </script>
 </head>
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
@@ -178,7 +707,7 @@
         <div class="greeting_wrap" id="sk_basicinfo">
             <div class="col-2">
                 <div class="ui-block-a">
-                    <h2>WEDDING <strong>INVITATION</strong><span>여러분을 초대합니다.</span></h2>
+                    <h2>WEDDING <strong>INVITATION</strong></h2>
                     <div class="greeting_date">
                         <p>Ngày chung đôi</p> {{ date | date('d-m-Y') }} <strong> {{ date | date('H:i A') }}</strong>
                     </div>
@@ -197,10 +726,12 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td class="gn2">{{ data['groom_fa_name'] }}</td><td class="gn1">{{ data['bride_fa_name'] }}</td>
+                                <td class="gn2">{{ data['groom_fa_name'] }}</td>
+                                <td class="gn1">{{ data['bride_fa_name'] }}</td>
                             </tr>
                             <tr>
-                                <td class="gn2">{{ data['groom_mo_name'] }}</td><td class="gn1">{{ data['bride_mo_name'] }}</td>
+                                <td class="gn2">{{ data['groom_mo_name'] }}</td>
+                                <td class="gn1">{{ data['bride_mo_name'] }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -214,38 +745,16 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td class="gn2">{{ data['bride_fa_name'] }}</td><td class="gn1">{{ data['groom_fa_name'] }}</td>
+                                <td class="gn2">{{ data['bride_fa_name'] }}</td>
+                                <td class="gn1">{{ data['groom_fa_name'] }}</td>
                             </tr>
                             <tr>
-                                <td class="gn2">{{ data['bride_mo_name'] }}</td><td class="gn1">{{ data['groom_mo_name'] }}</td>
+                                <td class="gn2">{{ data['bride_mo_name'] }}</td>
+                                <td class="gn1">{{ data['groom_mo_name'] }}</td>
                             </tr>
                             </tbody>
                         </table>
                     {% endif %}
-                    {#<table class="greeting_name">#}
-                        {#<thead>#}
-                        {#<tr>#}
-                            {#<th>Cha</th>#}
-                            {#<th>Mẹ</th>#}
-                            {#<th>&nbsp;</th>#}
-                            {#<th>Con</th>#}
-                        {#</tr>#}
-                        {#</thead>#}
-                        {#<tbody>#}
-                            {#<tr>#}
-                                {#<td class="gn1">{{ data['groom_fa_name'] }} - </td>#}
-                                {#<td class="gn2">{{ data['groom_mo_name'] }}</td>#}
-                                {#<td class="gn3">chú rể</td>#}
-                                {#<td class="gn4">{{ data['groom_name'] }}</td>#}
-                            {#</tr>#}
-                            {#<tr>#}
-                                {#<td class="gn1">{{ data['bride_fa_name'] }}</td>#}
-                                {#<td class="gn2">{{ data['bride_mo_name'] }}</td>#}
-                                {#<td class="gn3">cô dâu</td>#}
-                                {#<td class="gn4">{{ data['bride_name'] }}</td>#}
-                            {#</tr>#}
-                        {#</tbody>#}
-                    {#</table>#}
                 </div>
             </div>
         </div>
@@ -297,48 +806,14 @@
                         {% endif %}
                     </a>
                 {% endfor %}
-                {#<a href="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196178' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196178'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/7892d3cbc86fce6fc3ac9c71d6fdc4aa.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196179' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196179'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/501afc5fe8ad239e69e441d9da746d68.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg" class="swipebox" data-ajax="false" data-size="512X768" alt="<div class='swipebox-comment' id='gcomment_2196180' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196180'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/89955810a68368397d704f67dbc2bb89.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196181' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196181'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/a23e4e27f02be930a07fb845656205cc.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196182' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196182'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/117f593060ac5277e51487f232732134.jpg"></div>#}
-                {#</a>#}
-                {#<!--<div class="gal_frame gal_frame_2 gal_date" style="height:200px"><span>2018/04/28 Sat <strong>2:00 pm</strong></span></div>-->#}
-                {#<a href="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196183' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196183'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/f2f60a2db630356033a647402ef9da8d.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg" class="swipebox" data-ajax="false" data-size="1024X680" alt="<div class='swipebox-comment' id='gcomment_2196184' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196184'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/7ef372e6e6ff0c4429bf9472dc790cc7.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196185' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196185'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/4457d2e35e96f790ec9e7a545711e63a.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg" class="swipebox" data-ajax="false" data-size="1024X588" alt="<div class='swipebox-comment' id='gcomment_2196186' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196186'></div>">#}
-                    {#<div class="gal_frame "><img src="/user/WinterWonderland/img/5f40c12c709212093b679df45d46fb2b.jpg"></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/683b92e86a2efcbe38e6aa50c725a2c3.jpg" class="swipebox" data-ajax="false" data-size="1024X683" alt="<div class='swipebox-comment' id='gcomment_2196187' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196187'></div>">#}
-                    {#<div class="gal_more"><span>more</span></div>#}
-                {#</a>#}
-                {#<a href="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg" class="swipebox" data-ajax="false" data-size="482X768" alt="<div class='swipebox-comment' id='gcomment_2196188' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2196188'></div>">#}
-                    {#<div class="gal_frame hide"><img src="/user/WinterWonderland/img/3325d03bc3c08985b20eeafa9f510bfe.jpg"></div>#}
-                {#</a>#}
             </div>
         </div>
 
-        <div class="gal_bottom">
-            <div class="gal_ob1"></div>
-            <div class="gal_ob2"></div>
-            <div class="gal_ob3"></div>
-        </div>
+        {#<div class="gal_bottom">#}
+            {#<div class="gal_ob1"></div>#}
+            {#<div class="gal_ob2"></div>#}
+            {#<div class="gal_ob3"></div>#}
+        {#</div>#}
     </div>
     <!--// gallery -->
 
@@ -524,7 +999,11 @@
         <div class="ul-body ui-cont-a">
             <div class="snsbbs_sections f-r">
                 <div class="ui-body-d">
-                    <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span><span class="ico"></span></div></a>
+                    {% if isTemplate %}
+                        <div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span><span class="ico"></span></div>
+                    {% else %}
+                        <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span><span class="ico"></span></div></a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -582,14 +1061,6 @@
     <div class="location_wrap" id="sk_map">
         <h2 class="title"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/title_location.png') }}" alt="location"></h2>
         <div class="ul-body">
-            {#<div class="col-2">#}
-                {#<div class="ui-block-a">#}
-                    {#<ul class="lo_tab_wrap">#}
-                        {#<li class="tab_btn wh locationtabs on" id="tabs_wedding"><strong>웨딩홀</strong>안내</li>#}
-                    {#</ul>#}
-                {#</div>#}
-            {#</div>#}
-
             <div class="col-2 locationdivs" id="div_wedding">
                 <div class="ui-block-a">
                     <div class="lo_map">
@@ -615,7 +1086,7 @@
                     <table class="lo_container">
                         <tr>
                             <th>Thời gian</th>
-                            <td>{{ date | date('d.m.Y H:i A') }}</td>
+                            <td>{{ date | date('d-m-Y H:i A') }}</td>
                         </tr>
                         <tr>
                             <th>Địa chỉ</th>
@@ -658,9 +1129,9 @@
                 <div class="addthis_inline_share_toolbox"></div>
             </ul>
         </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
-        </div>
+        {#<div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">#}
+            {#<iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>#}
+        {#</div>#}
     </div>
     <!--// footer -->
 </div><!--//skin_page-->
@@ -708,533 +1179,6 @@
         </div>
     </div>
 </div>
-<script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
-<script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
-<script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
-<script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
-<script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js"></script>
-<script src="/bundles/viettutweb/js/templates/common/photoswipe.js"></script>
-<script src="/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js"></script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
-</script>
-<script type="text/javascript">
-    <!--
-    $(function(){
-
-        $(".header_bg, .header_title").css("height",$(window).height());
-        $(window).bind("orientationchange, resize", function(e) { $(".header_bg, .header_title").css("height",$(window).height()); });
-
-        var headerTitle = $('.header_title').offset().top;
-        var headerAnimate = function(){
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > headerTitle+100) $('.header_title').addClass('slideUp');
-            else $('.header_title').removeClass('slideUp');
-        };
-
-        $(window).scroll(function() { return; headerAnimate(); });
-
-        $(window).on("orientationchange",function(){
-            callMapInitializeAfterResize();
-        });
-
-        function callMapInitializeAfterResize(){
-            if($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
-            else initialize('party');
-        }
-
-
-        // -- map -- //
-        function initialize(md) {
-
-        }
-
-        $('#div_snsbbs').masonry({
-            //columnWidth: .snsbbs_sections,
-            //isFitWidth : true,
-            itemSelector: '.snsbbs_sections'
-        }).on( 'layoutComplete', function() {
-            return true;
-        });
-
-        var closest = function closest(el, fn) {
-            return el && (fn(el) ? el : closest(el.parentNode, fn));
-        };
-
-        var photoswipeParseHash = function() {
-            var hash = window.location.hash.substring(1),
-                    params = {};
-
-            if (hash.length < 5) {
-                return params;
-            }
-
-            var vars = hash.split('&');
-            for (var i = 0; i < vars.length; i++) {
-                if (!vars[i]) {
-                    continue;
-                }
-                var pair = vars[i].split('=');
-                if (pair.length < 2) {
-                    continue;
-                }
-                params[pair[0]] = pair[1];
-            }
-
-            if (params.gid) {
-                params.gid = parseInt(params.gid, 10);
-            }
-
-            return params;
-        };
-
-        function getGallery($el) {
-            var el = [];
-            var aTag = Array.prototype.slice.call($el.find("a"));
-
-            $.merge(el, aTag);
-
-            return el;
-        }
-
-        function onThumbnailsClick(e) {
-            e = e || window.event;
-            e.preventDefault ? e.preventDefault() : e.returnValue = false;
-
-            var eTarget = e.target || e.srcElement;
-            var clickedListItem = closest(eTarget, function(el) {
-                var tagName = el.tagName.toUpperCase();
-                return (tagName && tagName === 'A');
-            });
-
-            if (!clickedListItem) {
-                return;
-            }
-
-            if (clickedListItem.className.indexOf("swipebox") == -1) {
-                return false;
-            }
-
-            var childNodes = el,
-                    numChildNodes = el.length,
-                    nodeIndex = 0,
-                    index = 0;
-
-            var no_image_count = 0;
-            for (var i = 0; i < numChildNodes; i++) {
-                if (el[i].className.indexOf("swipebox") == -1) {
-                    no_image_count++;
-                }
-
-                if (el[i] == clickedListItem) {
-                    index = i - no_image_count;
-
-                    break;
-                }
-            }
-
-            if (index >= 0) {
-                openPhotoSwipe(index, el);
-            }
-
-            return false;
-        }
-
-        var gallery;
-
-        function getPrefix(prop) {
-            var style = document.body.style;
-            var prefix = ['Webkit', 'ms', 'moz', 'o'];
-            var prefix_len = prefix.length;
-
-            if(style[prop] == '') {
-                return prop;
-            }
-
-            prop = prop[0].toUpperCase() + prop.slice(1);
-
-            for(var i = 0; i < prefix_len; i++) {
-                if(style[prefix[i] + prop] == '') {
-                    return prefix[i] + prop;
-                }
-            }
-        }
-
-        function getTranslate(transform) {
-            var regex;
-
-            if(transform.indexOf('translate3d') == -1) {
-                regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
-            } else {
-                regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
-            }
-
-            var matched = transform.match(regex);
-            var coordinate = {};
-
-            coordinate.x = matched[1];
-            coordinate.y = matched[2];
-
-            if(matched[3]) {
-                coordinate.z = matched[3];
-            }
-
-            return coordinate;
-        }
-
-        function getScale(transform) {
-            var regex = /scale\(([0-9.]+)\)/;
-            var matched = transform.match(regex);
-
-            return matched[1];
-        }
-
-        function psBeforeInitAddEvent() {
-            gallery.listen('gettingData', function(index, item) {
-                var size = item.el.getAttribute("data-size").split("X");
-
-                item.w = size[0];
-                item.h = size[1];
-            });
-
-            gallery.listen('arrowUpdate', function() {
-                var $nextBtn = $('.pswp__button--arrow--right');
-                var $prevBtn = $('.pswp__button--arrow--left');
-                var loop = this.options.loop;
-                var index = this.getCurrentIndex();
-
-                $nextBtn.toggle(loop || index < this.items.length - 1);
-                $prevBtn.toggle(loop || index > 0);
-            });
-
-            gallery.listen('initialZoomIn', function() {
-                $(".snow").removeClass("snow").addClass("snow-off");
-
-            });
-        }
-
-        function psAfterInitAddEvent() {
-            gallery.listen('initialZoomOut', function() {
-                var item = this.currItem;
-                var container_style = item.container.style;
-                var transform = getPrefix('transform');
-                var transition = getPrefix('transition');
-
-                if(!transform || !transition) {
-                    return;
-                }
-
-                var container_transform = container_style[getPrefix('transform')];
-                var scale = getScale(container_transform);
-                var coordinate = getTranslate(container_transform);
-                var initTransY = item.initialPosition.y;
-                var currTransY = coordinate.y;
-                var size = item.el.getAttribute("data-size").split("X");
-                var transX = item.initialPosition.x;
-                var transY;
-
-                if(initTransY > currTransY) {
-                    transY = -(size[1]);
-                } else {
-                    transY = window.screen.availHeight;
-                }
-
-                container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
-
-                if(!this.isGestureClose() && this.isVerticalDrag()){
-                    container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
-                }
-            });
-
-            gallery.listen('close', function() {
-                setTimeout(function() {
-                    $(".snow-off").removeClass("snow-off").addClass("snow");
-                }, this.options.hideAnimationDuration + 45);
-
-            });
-        }
-
-        var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-            var pswpElement = document.querySelector('.pswp'),
-                    options, items, kakaoInApp;
-
-            items = parseThumbnailElements(galleryElement);
-
-            if(/KAKAOTALK/.test(navigator.userAgent)) {
-                kakaoInApp = true;
-            }
-
-            options = {
-                useZoom: true,
-                arrowKeys: false,
-                hideAnimationDuration: 200,
-                showAnimationDuration: 100,
-                loop: false,
-                imageEl: true,
-                galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
-                showHideOpacity: true,
-                getThumbBoundsFn: false,
-                closeOnScroll: false,
-                kakaoInApp: kakaoInApp,
-            };
-
-            if (fromURL) {
-                if (options.galleryPIDs) {
-
-                    for (var j = 0; j < items.length; j++) {
-                        if (items[j].pid == index) {
-                            options.index = j;
-                            break;
-                        }
-                    }
-                } else {
-                    options.index = parseInt(index, 10);
-                }
-            } else {
-                options.index = parseInt(index, 10);
-            }
-
-            if (isNaN(options.index)) {
-                return;
-            }
-
-            if (disableAnimation) {
-                options.showAnimationDuration = 0;
-            }
-
-            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-
-            gallery.useAniNum = false;
-
-            // 방명록 글쓰기에 이미지 첨부
-            gallery.includeImage = function() {
-                var id = gallery.currItem.id
-                var url = "WinterWonderland/snsbbs/w/" + id;
-                var kakaoInApp = gallery.options.kakaoInApp;
-
-                /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
-                 (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
-                if(!kakaoInApp) {
-                    window.location = url;
-                } else {
-                    window.open(url);
-                }
-            }
-
-            psBeforeInitAddEvent();
-            gallery.init();
-            psAfterInitAddEvent();
-        };
-
-        var parseThumbnailElements = function(el) {
-            var imageElements = el,
-                    numNodes = imageElements.length,
-                    items = [],
-                    size,
-                    item;
-            var wrapper = document.createElement('div');
-            var imageEl,
-                    thumbEl;
-
-            for (var i = 0; i < numNodes; i++) {
-                imageEl = imageElements[i];
-
-                if (imageEl.nodeType !== 1) {
-                    continue;
-                }
-
-                var img_el = imageEl.getElementsByTagName("img");
-                var exist_img = img_el.length > 0 ? true : false;
-                var src = imageEl.href;
-                var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
-                var msrc;
-                var $imageEl = $(imageEl);
-
-                if(!is_swipe_image) {
-                    continue;
-                }
-
-                if(!exist_img) {
-                    thumbEl = imageEl.getElementsByTagName("div")[0];
-
-                    if(thumbEl) {
-                        msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-                    } else {
-                        var piece = src.split("/");
-                        var pieceCount = piece.length;
-                        var file = piece[pieceCount - 1]
-
-                        piece[pieceCount - 1] = "S_" + file;
-
-                        msrc = piece.join("/");
-                    }
-                } else {
-                    if($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
-                        msrc = img_el[0].parentNode.href;
-                    } else {
-                        thumbEl = img_el[0];
-                        msrc = thumbEl.src;
-                    }
-                }
-
-                item = {
-                    src: src,
-                    msrc: msrc,
-                    el: imageEl,
-                };
-
-                item.id = imageEl.getAttribute("imgId");
-                items.push(item);
-
-                items.push(item);
-            }
-            return items;
-        };
-
-        var $my_gallery = $("#sk_gallery");
-        var my_gallery_count = $my_gallery.length;
-        var el = getGallery($my_gallery);
-        var $el = $(el);
-        var hashData = photoswipeParseHash();
-
-        $el.on("click", onThumbnailsClick);
-
-        for (var i = 0; i < my_gallery_count; i++) {
-            $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
-        }
-
-        if (hashData.pid && hashData.gid) {
-            openPhotoSwipe(hashData.pid - 1, el, true, true);
-        }
-
-        $(document).on("keydown keyup", function(e) {
-            var hidden = $(".pswp").attr("aria-hidden") == "true";
-
-            if(hidden) {
-                return;
-            }
-
-            var keydownAction = '';
-            var index = gallery.getCurrentIndex();
-            var gallery_len = gallery.items.length;
-
-            if(e.type == "keydown") {
-                if(e.keyCode === 37 && index != 0) {
-                    keydownAction = 'prev';
-                } else if(e.keyCode === 39 && index != (gallery_len - 1)) {
-                    keydownAction = 'next';
-                }
-            } else if(e.type == "keyup") {
-                if(e.keyCode === 37 && index == 0) {
-                    keydownAction = 'prev';
-                } else if(e.keyCode === 39 && index == (gallery_len - 1)) {
-                    keydownAction = 'next';
-                }
-            }
-
-            if(keydownAction) {
-                if( !e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey ) {
-                    if(e.preventDefault) {
-                        e.preventDefault();
-                    } else {
-                        e.returnValue = false;
-                    }
-
-                    gallery[keydownAction]();
-                }
-            }
-        });
-
-
-        $('.locationtabs').click(function(){
-            var id = $(this).attr('id').replace('tabs_','');
-            $('.locationtabs').removeClass('on');
-            $(this).addClass('on');
-            $('.locationdivs').removeClass('hide');
-            $('.locationdivs').addClass('hide');
-            $('#div_'+id).removeClass('hide');
-
-            setLocationInfoHeight();
-
-            initialize(id);
-        }).css('cursor','pointer');
-
-
-        $('#div_snsbbs').masonry('bindResize');
-
-        function setLocationInfoHeight(){
-        }
-
-        function setPosition(id){
-            var $obj = $('#sk_'+id);
-            // console.log(id);
-
-            $('body').scrollTo($obj, 500);
-        }
-
-        $('.menu_scrolls').click(function(){
-            try{
-                if($(this).attr('id')){
-
-
-                    var id = $(this).attr('id').replace('p_','').replace('m_','');
-
-                    //console.log(id);
-
-                    setPosition(id);
-                }
-            }catch(e){
-                //console.log(e);
-            }
-        }).css('cursor','pointer');
-
-
-        initialize('wedding');
-        setLocationInfoHeight();
-    });
-
-    $( window ).load(function() {
-        $('.gal_list2').masonry({
-            itemSelector: '.gal_frame',
-            columnWidth: '.gal_size',
-            transitionDuration: '0.2s',
-            percentPosition: true
-        });
-    });
-
-    function initMap() {
-        var lat = $('#coordinates').data('lat');
-        var lon = $('#coordinates').data('lon');
-        var title = $('#coordinates').data('title');
-        var location = {lat: lat, lng: lon};
-        var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
-            zoom: 16,
-            center: location
-        });
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
-
-        var info = new google.maps.InfoWindow({
-            content: '<h4>' + title + '</h4>'
-        });
-        info.open(map, marker);
-    }
-
-    function getPath() {
-        var addr = $('#getPath input[name=saddr]').val();
-        if (addr.length < 3) {
-            $('#getPath input[name=saddr]').focus();
-            alert('Nhập địa chỉ của bạn một cách chính xác!');
-            return;
-        }
-
-        document.getElementById("getPath").submit();
-    }
-
-    //-->
-</script>
 </body>
 </html>

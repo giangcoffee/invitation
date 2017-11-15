@@ -14,16 +14,10 @@ use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Geocoder\Query\GeocodeQuery;
-use Geocoder\Provider\GoogleMaps\GoogleMaps;
-use Geocoder\StatefulGeocoder;
-use Http\Adapter\Guzzle6\Client;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use RestClient\CurlRestClient;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -104,9 +98,7 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
 
     public function postUpdateAction(Request $request, $id)
     {
-        /**
-         * @var CardInterface $card
-         */
+        /** @var CardInterface $card */
         $card = $this->one($id);
 
         $data = $card->getData();
@@ -115,28 +107,10 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
             $data[$column] = $value;
         }
 
-        /**
-         * @var CardManagerInterface $cardManager
-         */
+        /** @var CardManagerInterface $cardManager */
         $cardManager = $this->get('viettut.domain_manager.card');
 
         $card->setData($data);
-
-
-        $adapter  = new Client();
-        $provider = new GoogleMaps($adapter, null, 'AIzaSyDxhMSp7eUxSr3lJocnsQIsP4p_Wanqpnk');
-        $geocoder = new StatefulGeocoder($provider, 'vi');
-
-        $result = $geocoder->geocodeQuery(GeocodeQuery::create($data['place_addr']));
-        if (!$result->isEmpty()) {
-            $location = $result->first();
-            $coordinate = $location->getCoordinates();
-            if ($coordinate) {
-                $card->setLatitude(strval($coordinate->getLatitude()));
-                $card->setLongitude(strval($coordinate->getLongitude()));
-            }
-        }
-
         $cardManager->save($card);
 
         return new Response("", Response::HTTP_NO_CONTENT);
@@ -207,9 +181,12 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
                 )
             );
         }
+
         $today = (new DateTime())->format('Y-m-d');
         $uploadRootDir = $this->container->getParameter('upload_root_directory');
         $uploadDir = $this->container->getParameter('upload_directory');
+        $images = [];
+
         foreach ($_FILES as $file) {
             $imageInfo = getimagesize($file['tmp_name']);
             $uploadFile = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], $test = false);
@@ -218,15 +195,13 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
                 $baseName.substr($uploadFile->getClientOriginalName(), -4)
             );
 
-            return new JsonResponse(
-                array(
-                    'src' => join('/', array($uploadDir, $user->getUsername(), $today, $baseName . substr($uploadFile->getClientOriginalName(), -4))),
-                    'size' => sprintf('%sX%s', $imageInfo[0], $imageInfo[1])
-                )
+            $images[] = array(
+                'src' => join('/', array($uploadDir, $user->getUsername(), $today, $baseName . substr($uploadFile->getClientOriginalName(), -4))),
+                'size' => sprintf('%sX%s', $imageInfo[0], $imageInfo[1])
             );
         }
 
-        throw new BadRequestHttpException('Invalid files');
+        return new JsonResponse($images);
     }
 
     /**

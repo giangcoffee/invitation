@@ -18,42 +18,24 @@
     </section>
 
     <div class="container">
-
-        {#<ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter">#}
-            {#<li data-option-value="*" class="active"><a href="#">Tất cả</a></li>#}
-            {#<li data-option-value=".new"><a href="#">Sản phẩm mới</a></li>#}
-            {#<li data-option-value=".popular"><a href="#">Phổ biến</a></li>#}
-            {#<li data-option-value=".coming-soon"><a href="#"><span class="tip">hot</span> Coming Soon</a></li>#}
-        {#</ul>#}
-
-        {#<hr />#}
-
         <div class="row">
             <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
                 {% for card in cards %}
                     <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular">
                         <div class="portfolio-item img-thumbnail">
-                            <a href="{{ path('card_page', {hash: card.hash}) }}" class="thumb-info" target="_blank">
+                            <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank" class="thumb-info">
                                 <img alt="thumbnail image" class="img-responsive" src="{{ card.template.thumbnail }}"/>
-                                    {#<span class="thumb-info-type">{{ temp.name }}</span>#}
-                                {#<span class="thumb-info-title">#}
-                                {#</span>#}
                                 <span class="thumb-info-action">
                                     <span title="{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                                 </span>
                             </a>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="row col-md-12">
-                                <span class="text-primary">{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }}</span>
+                            <div class="row col-md-12 temp-margin">
+                                <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank"><span class="text-primary">{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }} - {{ card.weddingDate | date('d-m-Y') }}</span></a>
                             </div>
-                            {#<button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>#}
-                            <a class="btn btn-primary pull-right" href="{{ path('card_page', {hash: card.hash}) }}" target="_blank">Xem</a>
                         </div>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-
     </div>
 {% endblock %}

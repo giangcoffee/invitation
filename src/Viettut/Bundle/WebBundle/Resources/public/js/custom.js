@@ -22,7 +22,7 @@ function subscribe() {
     }
     var data = {'email': email};
     $('form#subscribeForm button').html("<i class='fa fa-spinner fa-spin'></i>");
-    $.post('/app_dev.php/subscribe', data, function (response) {
+    $.post('/subscribe', data, function (response) {
         info('form#subscribeForm', 'Thông tin cập nhật thành công !');
         $('form#subscribeForm input[type=email]').val('');
         $('form#subscribeForm button').html("Go!");

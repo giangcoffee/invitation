@@ -28,6 +28,9 @@ Viettut\Entity\Core\Card:
         video:
             type: string
             nullable: true
+        videoId:
+            type: string
+            nullable: true
         validVideo:
             type: boolean
             options:
@@ -41,6 +44,12 @@ Viettut\Entity\Core\Card:
             type: text
             nullable: true
         longitude:
+            type: text
+            nullable: true
+        homeLatitude:
+            type: text
+            nullable: true
+        homeLongitude:
             type: text
             nullable: true
         forGroom:

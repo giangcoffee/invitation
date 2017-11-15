@@ -42,7 +42,7 @@ function sendMessage() {
 
 	var data = {'name': name, 'email': email, 'subject': subject, 'message': message};
 	$('form#contactForm button').html("<i class='fa fa-spinner fa-spin'></i>");
-	$.post('/app_dev.php/contact', data, function (response) {
+	$.post('/contact', data, function (response) {
 		info('form#contactForm', 'Thông tin cập nhật thành công !');
 		$('form#contactForm input[type=email]').val('');
 		$('form#contactForm button').html("Gửi");

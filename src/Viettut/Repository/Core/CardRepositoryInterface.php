@@ -8,6 +8,7 @@
 
 namespace Viettut\Repository\Core;
 use Doctrine\Common\Persistence\ObjectRepository;
+use Viettut\Model\User\UserEntityInterface;
 
 interface CardRepositoryInterface extends ObjectRepository
 {
@@ -16,4 +17,10 @@ interface CardRepositoryInterface extends ObjectRepository
      * @return mixed
      */
     public function getCardByHash($hash);
+
+    /**
+     * @param UserEntityInterface $user
+     * @return mixed
+     */
+    public function getCardByUser(UserEntityInterface $user);
 }
