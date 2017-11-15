@@ -574,18 +574,18 @@
                 }
             });
 
-            $('.locationtabs').click(function(){
-                var id = $(this).attr('id').replace('tabs_','');
-                $('.locationtabs').removeClass('on');
-                $(this).addClass('on');
-                $('.locationdivs').removeClass('hide');
-                $('.locationdivs').addClass('hide');
-                $('#div_'+id).removeClass('hide');
-
-                setLocationInfoHeight();
-
-                initialize(id);
-            }).css('cursor','pointer');
+//            $('.locationtabs').click(function(){
+//                var id = $(this).attr('id').replace('tabs_','');
+//                $('.locationtabs').removeClass('on');
+//                $(this).addClass('on');
+//                $('.locationdivs').removeClass('hide');
+//                $('.locationdivs').addClass('hide');
+//                $('#div_'+id).removeClass('hide');
+//
+//                setLocationInfoHeight();
+//
+//                initialize(id);
+//            }).css('cursor','pointer');
 
             $('#div_snsbbs').masonry('bindResize');
 
@@ -616,8 +616,21 @@
                 }
             }).css('cursor','pointer');
 
+            $('#tabs_wedding').click(function() {
+                $('#tabs_wedding').addClass('on');
+                $('#tabs_party').removeClass('on');
+                $('#div_wedding').css('display', 'block');
+                $('#div_party').css('display', 'none');
+            }).css('cursor', 'pointer');
 
-            initialize('wedding');
+            $('#tabs_party').click(function() {
+                $('#tabs_party').addClass('on');
+                $('#tabs_wedding').removeClass('on');
+                $('#div_wedding').css('display', 'none');
+                $('#div_party').css('display', 'block');
+            }).css('cursor', 'pointer');
+
+//            initialize('wedding');
             setLocationInfoHeight();
         });
 
@@ -636,8 +649,15 @@
             var lat = $('#coordinates').data('lat');
             var lon = $('#coordinates').data('lon');
             var title = $('#coordinates').data('title');
+
+            var homeLat = $('#coordinates').data('home-lat');
+            var homeLon = $('#coordinates').data('home-lon');
+            var homeTitle = $('#coordinates').data('home-title');
+
             var location = {lat: lat, lng: lon};
-            var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+            var homeLocation = {lat: homeLat, lng: homeLon};
+
+            var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
                 zoom: 16,
                 center: location
             });
@@ -650,10 +670,32 @@
                 content: '<h4>' + title + '</h4>'
             });
             info.open(map, marker);
+
+            var homeMap = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+                zoom: 16,
+                center: homeLocation
+            });
+            var homeMarker = new google.maps.Marker({
+                position: homeLocation,
+                map: homeMap
+            });
+
+            var homeInfo = new google.maps.InfoWindow({
+                content: '<h4>' + homeTitle + '</h4>'
+            });
+            homeInfo.open(homeMap, homeMarker);
         }
 
         function getPath() {
-            var addr = $('#getPath input[name=saddr]').val();
+            var addr = '';
+            var inputs = $('#getPath input[name=saddr]');
+            inputs.each(function() {
+                var val = $(this).val();
+                if (val.length > 3) {
+                    addr = val;
+                }
+            });
+
             if (addr.length < 3) {
                 $('#getPath input[name=saddr]').focus();
                 alert('Nhập địa chỉ của bạn một cách chính xác!');
@@ -667,7 +709,8 @@
     </script>
 </head>
 <body>
-<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
+     data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
 <!-- Start of first page: #one -->
 <div data-role="page" id="skin_page">
     <!-- panel-menu -->
@@ -1061,10 +1104,56 @@
     <div class="location_wrap" id="sk_map">
         <h2 class="title"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/title_location.png') }}" alt="location"></h2>
         <div class="ul-body">
+            <div class="col-2">
+                <div class="ui-block-a">
+                    <ul class="lo_tab_wrap">
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;"><strong>{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</strong></li>
+                        <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;"><strong>Tiệc Cưới</strong></li>
+                    </ul>
+                </div>
+            </div>
             <div class="col-2 locationdivs" id="div_wedding">
                 <div class="ui-block-a">
                     <div class="lo_map">
                         <div id="wedding_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
+                    </div>
+                    <div class="nav-wrap">
+                        <div class="ui-grid-a nav-m">
+                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                <input type='hidden' name='daddr' value='{{ data['home'] }}' />
+                            </form>
+                            <div class="nav-1">
+                                <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+                </div>
+                <div class="ui-block-b">
+                    <h3 class="lo_title">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3>
+                    <table class="lo_container">
+                        <tr>
+                            <th>Thời gian</th>
+                            <td>{{ date | date('d-m-Y H:i A') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td>{{ data['home'] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Liên hệ</th>
+                            <td>{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-2 locationdivs" id="div_party" style="display:none;">
+                <div class="ui-block-a">
+                    <div class="lo_map">
+                        <div id="party_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
                     </div>
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">

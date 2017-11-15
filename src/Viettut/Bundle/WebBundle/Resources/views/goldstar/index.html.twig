@@ -56,8 +56,15 @@
             var lat = $('#coordinates').data('lat');
             var lon = $('#coordinates').data('lon');
             var title = $('#coordinates').data('title');
+
+            var homeLat = $('#coordinates').data('home-lat');
+            var homeLon = $('#coordinates').data('home-lon');
+            var homeTitle = $('#coordinates').data('home-title');
+
             var location = {lat: lat, lng: lon};
-            var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+            var homeLocation = {lat: homeLat, lng: homeLon};
+
+            var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
                 zoom: 16,
                 center: location
             });
@@ -70,6 +77,20 @@
                 content: '<h4>' + title + '</h4>'
             });
             info.open(map, marker);
+
+            var homeMap = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+                zoom: 16,
+                center: homeLocation
+            });
+            var homeMarker = new google.maps.Marker({
+                position: homeLocation,
+                map: homeMap
+            });
+
+            var homeInfo = new google.maps.InfoWindow({
+                content: '<h4>' + homeTitle + '</h4>'
+            });
+            homeInfo.open(homeMap, homeMarker);
         }
 
         function getPath() {
@@ -124,78 +145,11 @@
                 bool_click_menu = false;
             });
 
-
-
-            function initGeolocation() {
-                if (navigator && navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                } else {
-                    console.log('위치정보가 지원되지 않는 기기입니다.\n해당기기에서는 네비게이션 연결이 원할하지 않을 수 있습니다.');
-                }
-            }
-
-            function errorCallback() {
-                switch(error.code)
-                {
-                    case error.PERMISSION_DENIED: alert("위치정보가 꺼져있습니다.\n정상적인 네비게이션 연결을 위해서는 반드시 활성화 되어야 합니다.");
-                        break;
-
-                    case error.POSITION_UNAVAILABLE: alert("현재 위치 정보를 확인 할 수 없습니다.");
-                        break;
-
-                    case error.TIMEOUT: alert("위처정보 요청시간이 초과 되었습니다.\n잠시후에 다시 시도해 주십시요.");
-                        break;
-
-                    default: alert("위치정보 요청중 기타 오류");
-                        break;
-                }
-            }
-
-            function successCallback(position) {
-                $('#now_lat').val(position.coords.latitude);
-                $('#now_lon').val(position.coords.longitude);
-                // alert($('#now_lat').val()+" | | "+$('#now_lon').val());
-            }
-
-
-            // 네이버 지도시 스마트폰 회전 감지하여 지도 초기화(마커 위치 센터)
             $(window).on("orientationchange",function(){
                 callMapInitializeAfterResize();
             });
 
             function callMapInitializeAfterResize(){
-                if($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
-                else initialize('party');
-            }
-
-
-            // -- map -- //
-            function initialize(md) {
-            }
-
-            function callKimNavi(md){
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-            function callKakaoNavi(md){
-                var $map_addr, $map_lat, $map_lon
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-
-            var $map_addr=''
-            var $map_lat=''
-            var $map_lon='';
-
-            function callOllehNavi(md){
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-
-            function callTmapNavi(md){
-                //console.log(md);
-
-                alert('모바일기기에서만 가능합니다.');
             }
 
             $('#div_snsbbs').masonry({
@@ -632,18 +586,18 @@
                 }
             });
 
-            $('.locationtabs').click(function(){
-                var id = $(this).attr('id').replace('tabs_','');
-                $('.locationtabs').removeClass('on');
-                $(this).addClass('on');
-                $('.locationdivs').removeClass('hide');
-                $('.locationdivs').addClass('hide');
-                $('#div_'+id).removeClass('hide');
-
-                setLocationInfoHeight();
-
-                initialize(id);
-            }).css('cursor','pointer');
+//            $('.locationtabs').click(function(){
+//                var id = $(this).attr('id').replace('tabs_','');
+//                $('.locationtabs').removeClass('on');
+//                $(this).addClass('on');
+//                $('.locationdivs').removeClass('hide');
+//                $('.locationdivs').addClass('hide');
+//                $('#div_'+id).removeClass('hide');
+//
+//                setLocationInfoHeight();
+//
+//                initialize(id);
+//            }).css('cursor','pointer');
 
 
 
@@ -675,8 +629,21 @@
                 }
             }).css('cursor','pointer');
 
+            $('#tabs_wedding').click(function() {
+                $('#tabs_wedding').addClass('on');
+                $('#tabs_party').removeClass('on');
+                $('#div_wedding').css('display', 'block');
+                $('#div_party').css('display', 'none');
+            }).css('cursor', 'pointer');
 
-            initialize('wedding');
+            $('#tabs_party').click(function() {
+                $('#tabs_party').addClass('on');
+                $('#tabs_wedding').removeClass('on');
+                $('#div_wedding').css('display', 'none');
+                $('#div_party').css('display', 'block');
+            }).css('cursor', 'pointer');
+
+//            initialize('wedding');
             setLocationInfoHeight();
         });
 
@@ -697,7 +664,8 @@
     </script>
 </head>
 <body>
-<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
+     data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
@@ -1121,13 +1089,65 @@
 
     <!-- location -->
     <div class="location_wrap ui-cont-b" id="sk_map">
-        <h2 class="title title_gold"><span>Hôn lễ tổ chức tại</span></h2>
+        <h2 class="title title_gold"><span>Địa điểm</span></h2>
+        <div class="ul-body">
+            <div class="col-2">
+                <div class="ui-block-a">
+                    <ul class="lo_tab_wrap">
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</li>
+                        <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="ul-body locationdivs" id="div_wedding">
+            <div class="lo_box col-2">
+                <div class="ui-block-a">
+                    <h3 class="lo_title">{{ data['home'] }}</h3>
+                    <div class="lo_map">
+                        <div id="wedding_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
+                    </div>
+                    <div class="nav-wrap">
+                        <div class="ui-grid-a nav-m">
+                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                <input type='hidden' name='daddr' value='{{ data['home'] }}' />
+                            </form>
+                            <div class="nav-1">
+                                <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">CHỈ ĐƯỜNG</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+                </div>
+                <div class="ui-block-b">
+
+                    <table class="lo_container">
+                        <tr>
+                            <th class="lo_date">Thời gian</th>
+                            <td class="txt">{{ date | date('d-m-Y H:i A') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_loca">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</th>
+                            <td class="txt">{{ data['home'] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_tel">Tel</th>
+                            <td class="txt">{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="ul-body locationdivs" id="div_party" style="display:none;">
             <div class="lo_box col-2">
                 <div class="ui-block-a">
                     <h3 class="lo_title">{{ data['place'] }}</h3>
                     <div class="lo_map">
-                        <div id="wedding_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
+                        <div id="party_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
                     </div>
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
@@ -1152,7 +1172,7 @@
                             <td class="txt">{{ date | date('d-m-Y H:i A') }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_loca">Địa chỉ</th>
+                            <th class="lo_loca">Tiệc cưới</th>
                             <td class="txt">{{ data['place_addr'] }}</td>
                         </tr>
                         <tr>
@@ -1181,76 +1201,6 @@
                 </div>
             </div>
         </div>
-
-        {#<div class="ul-body locationdivs hide" id="div_party">#}
-            {#<input type="hidden" id="party_pmap_lat" value="37.4950598" />#}
-            {#<input type="hidden" id="party_pmap_lon" value="127.12241160000008" />#}
-            {#<input type="hidden" id="party_paddr" value="서울시 송파구 중대로 135" />#}
-            {#<input type="hidden" id="party_pname" value="달팽 웨딩홀" />#}
-            {#<div class="lo_box col-2">#}
-                {#<div class="ui-block-a">#}
-                    {#<h3 class="lo_title">{{ data['place'] }}</h3>#}
-                    {#<div class="lo_map">#}
-                        {#<div id="party_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>#}
-                    {#</div>#}
-                    {#<div class="nav-wrap">#}
-                        {#<div class="ui-grid-a nav-m">#}
-                            {#<form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">#}
-                                {#<input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>#}
-                                {#<input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />#}
-                                {#<input type='submit' value='CHỈ ĐƯỜNG' style="display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;"/>#}
-                            {#</form>#}
-                            {#<div class="nav-1">#}
-                                {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
-                                    {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">CHỈ ĐƯỜNG</span>#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="nav-2">#}
-                                {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
-                                    {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên</div>#}
-                {#</div>#}
-                {#<div class="ui-block-b">#}
-
-                    {#<table class="lo_container">#}
-                        {#<tr>#}
-                            {#<th class="lo_date">Thời gian</th>#}
-                            {#<td class="txt">{{ date | date('d-m-Y H:i A') }}</td>#}
-                        {#</tr>#}
-                        {#<tr>#}
-                            {#<th class="lo_loca">Địa chỉ</th>#}
-                            {#<td class="txt">{{ data['place_addr'] }}</td>#}
-                        {#</tr>#}
-                        {#<tr>#}
-                            {#<th class="lo_tel">Tel</th>#}
-                            {#<td class="txt">{{ data['place_phone'] }}</td>#}
-                        {#</tr>#}
-                        {#{% if data['parking_info'] is not empty %}#}
-                            {#<tr>#}
-                                {#<th class="lo_info">Information</th>#}
-                                {#<td>{{ data['parking_info'] }}</td>#}
-                            {#</tr>#}
-                        {#{% endif %}#}
-                        {#{% if data['bus_info'] is not empty %}#}
-                            {#<tr>#}
-                                {#<th class="lo_bus">Bus Info</th>#}
-                                {#<td>{{ data['bus_info'] }}</td>#}
-                            {#</tr>#}
-                        {#{% endif %}#}
-                        {#{% if data['subway_info'] is not empty %}#}
-                            {#<tr>#}
-                                {#<th class="lo_subway">Subway Info</th>#}
-                                {#<td>{{ data['subway_info'] }}</td>#}
-                            {#</tr>#}
-                        {#{% endif %}#}
-                    {#</table>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
     </div>
 
     <!-- footer -->

@@ -530,7 +530,7 @@
             <h2 class="title"><span>Địa điểm</span></h2>
             <div class="ul-body">
                 <ul class="lo_tab_wrap">
-                    <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Lễ cưới</li>
+                    <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</li>
                     <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
                 </ul>
             </div>
@@ -538,7 +538,7 @@
                 <div class="lo_box col-2">
                     <div class="ui-block-1">
                         <div class="lo_title">
-                            <h3>Lễ Cưới tổ chức tại {% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3>
+                            <h3>Lễ Cưới tổ chức tại</h3>
                             <p class="date">{{ weddingDate | date('d.m.Y H:i A') }}</p>
                             <p class="place">{{ data['home'] }}</p></div>
                         <div class="lo_map">
@@ -556,21 +556,7 @@
                                     <th class="lo_tel"><span class="icon">Tel</span></th>
                                     <td class="txt">{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</td>
                                 </tr>
-                                {#<tr>#}
-                                    {#<th class="lo_info"><span class="icon">Đỗ xe</span></th>#}
-                                    {#<td><p>{{ data['parking_info'] }}</p></td>#}
-                                {#</tr>#}
                             </table>
-                            {#<table class="lo_container lo_right">#}
-                                {#<tr>#}
-                                    {#<th class="lo_bus"><span class="icon">Xe bus</span></th>#}
-                                    {#<td><p>{{ data['bus_info'] }}</p></td>#}
-                                {#</tr>#}
-                                {#<tr>#}
-                                    {#<th class="lo_subway"><span class="icon">Tàu điện</span></th>#}
-                                    {#<td><p>{{ data['subway_info'] }}</p></td>#}
-                                {#</tr>#}
-                            {#</table>#}
                         </div>
                     </div>
                 </div>
@@ -1225,7 +1211,7 @@
         var location = {lat: lat, lng: lon};
         var homeLocation = {lat: homeLat, lng: homeLon};
 
-        var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+        var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
             zoom: 16,
             center: location
         });
@@ -1239,7 +1225,7 @@
         });
         info.open(map, marker);
 
-        var homeMap = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
+        var homeMap = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
             zoom: 16,
             center: homeLocation
         });
