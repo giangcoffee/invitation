@@ -123,19 +123,29 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         $card->setData($data);
 
 
-        $adapter  = new Client();
-        $provider = new GoogleMaps($adapter, null, 'AIzaSyDxhMSp7eUxSr3lJocnsQIsP4p_Wanqpnk');
-        $geocoder = new StatefulGeocoder($provider, 'vi');
-
-        $result = $geocoder->geocodeQuery(GeocodeQuery::create($data['place_addr']));
-        if (!$result->isEmpty()) {
-            $location = $result->first();
-            $coordinate = $location->getCoordinates();
-            if ($coordinate) {
-                $card->setLatitude(strval($coordinate->getLatitude()));
-                $card->setLongitude(strval($coordinate->getLongitude()));
-            }
-        }
+//        $adapter  = new Client();
+//        $provider = new GoogleMaps($adapter, null, 'AIzaSyDxhMSp7eUxSr3lJocnsQIsP4p_Wanqpnk');
+//        $geocoder = new StatefulGeocoder($provider, 'vi');
+//
+//        $result = $geocoder->geocodeQuery(GeocodeQuery::create($data['place_addr']));
+//        if (!$result->isEmpty()) {
+//            $location = $result->first();
+//            $coordinate = $location->getCoordinates();
+//            if ($coordinate) {
+//                $card->setLatitude(strval($coordinate->getLatitude()));
+//                $card->setLongitude(strval($coordinate->getLongitude()));
+//            }
+//        }
+//
+//        $result = $geocoder->geocodeQuery(GeocodeQuery::create($data['home']));
+//        if (!$result->isEmpty()) {
+//            $location = $result->first();
+//            $coordinate = $location->getCoordinates();
+//            if ($coordinate) {
+//                $card->setHomeLatitude(strval($coordinate->getLatitude()));
+//                $card->setHomeLongitude(strval($coordinate->getLongitude()));
+//            }
+//        }
 
         $cardManager->save($card);
 
