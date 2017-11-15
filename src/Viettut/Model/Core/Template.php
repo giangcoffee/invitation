@@ -72,6 +72,10 @@ class Template implements TemplateInterface
 
     protected $latitude;
 
+    protected $homeLongitude;
+
+    protected $homeLatitude;
+
     /**
      * Template constructor.
      */
@@ -309,6 +313,42 @@ class Template implements TemplateInterface
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHomeLongitude()
+    {
+        return $this->homeLongitude;
+    }
+
+    /**
+     * @param mixed $homeLongitude
+     * @return self
+     */
+    public function setHomeLongitude($homeLongitude)
+    {
+        $this->homeLongitude = $homeLongitude;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHomeLatitude()
+    {
+        return $this->homeLatitude;
+    }
+
+    /**
+     * @param mixed $homeLatitude
+     * @return self
+     */
+    public function setHomeLatitude($homeLatitude)
+    {
+        $this->homeLatitude = $homeLatitude;
         return $this;
     }
 

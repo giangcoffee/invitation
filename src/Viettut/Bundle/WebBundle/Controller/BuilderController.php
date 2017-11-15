@@ -162,6 +162,7 @@ class BuilderController extends Controller
         $first = array_slice($gallery, 0, 5);
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
+        $weddingDate = $template->getWeddingDate()->modify('-1 hour');
         return $this->render($template->getPath(), array(
             'data' => $template->getData(),
             'name' => $template->getName(),
@@ -170,8 +171,11 @@ class BuilderController extends Controller
             'second' => $second,
             'rest' => $rest,
             'date' => $template->getWeddingDate(),
+            'weddingDate' => $weddingDate,
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
+            'homeLon' => $template->getHomeLongitude(),
+            'homeLat' => $template->getHomeLatitude(),
             'forGroom' => $template->isForGroom(),
             'isTemplate' => true,
             'hash' => $hash
@@ -205,6 +209,7 @@ class BuilderController extends Controller
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
 
+        $weddingDate = $card->getWeddingDate()->modify('-1 hour');
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
@@ -212,8 +217,11 @@ class BuilderController extends Controller
             'second' => $second,
             'rest' => $rest,
             'date' => $card->getWeddingDate(),
+            'weddingDate' => $weddingDate,
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),
+            'homeLon' => $card->getHomeLongitude(),
+            'homeLat' => $card->getHomeLatitude(),
             'name' => $name,
             'comments' => $comments,
             'forGroom' => $card->isForGroom(),

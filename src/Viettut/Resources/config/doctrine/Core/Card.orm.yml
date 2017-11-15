@@ -46,6 +46,12 @@ Viettut\Entity\Core\Card:
         longitude:
             type: text
             nullable: true
+        homeLatitude:
+            type: text
+            nullable: true
+        homeLongitude:
+            type: text
+            nullable: true
         forGroom:
             type: boolean
             nulable: false
