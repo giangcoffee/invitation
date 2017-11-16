@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/uploadfile.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/builder.css') }}">
 {% endblock %}
+{% block facebook %}
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '1934863569863740',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.11'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+{% endblock %}
 {% block main %}
     <div class="card-columns" data-columns="{{ columns|json_encode|e('html_attr') }}">
     <div class="card-info" data-id="{{ id }}" data-gallery="{{ gallery|json_encode|e('html_attr') }}" data-video="{{ video }}">
@@ -104,6 +124,24 @@
                 </div>
             </div>
             <div id="album" class="tab-pane">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-lg push-top push-bottom" onclick="facebookAlbum()" id="fetchAlbums">Tải Từ Facebook</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="selectAlbums" style="display:none;">
+                        <label class="col-md-2 control-label" for="albums">Chọn một album</label>
+                        <div class="col-md-3">
+                            <select class="form-control mb-md" id="albums">
+                                <option selected="selected" value="0">-- chọn album --</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" onclick="downloadAlbum()" id="downloadAlbum">Download</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div id="fileuploader">Thêm Ảnh</div>
                 </div>

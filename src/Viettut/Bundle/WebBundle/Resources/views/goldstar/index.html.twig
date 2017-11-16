@@ -32,7 +32,6 @@
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/goldstar/style.css" />
     <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/goldstar/app.css" />
 
-    <!-- 2017-07-21 테스트용 -->
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.css">
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
 
@@ -116,12 +115,7 @@
             document.getElementById("getHomePath").submit();
         }
 
-        var swipe_exception = false;
-
-
         $(function(){
-
-
             var bool_click_menu = false;
 
             try{
@@ -129,7 +123,6 @@
                 var pos_gallery		= $('#sk_gallery').position().top;  var pos_media		= $('#sk_media').position().top;  var pos_snsbbs		= $('#sk_snsbbs').position().top;  var pos_map			= $('#sk_map').position().top;
                 $(window).scroll(function(e) {
                     var newScroll = $(document).scrollTop();
-                    //console.log(newScroll);
                     if(!bool_click_menu){
                         if(newScroll > pos_greeting) setMenu('#m_topinfo');
                         if(newScroll > pos_gallery) setMenu('#m_gallery');  if(newScroll > pos_media) setMenu('#m_media');  if(newScroll > pos_snsbbs - 60) setMenu('#m_snsbbs');  if(newScroll > pos_map - 60) setMenu('#m_map'); 			}
@@ -137,7 +130,6 @@
             }catch(e){}
 
             function setMenu(id){
-                //console.log(bool_click_menu);
                 $('.menu_scrolls').removeClass('on');
                 $(id).addClass('on');
             }
@@ -157,12 +149,6 @@
                 bool_click_menu = false;
             });
 
-            $(window).on("orientationchange",function(){
-                callMapInitializeAfterResize();
-            });
-
-            function callMapInitializeAfterResize(){
-            }
 
             $('#div_snsbbs').masonry({
                 //columnWidth: .snsbbs_sections,
@@ -361,50 +347,7 @@
                 });
 
                 gallery.listen('close', function() {
-                    /* 슬라이드
-                     var slide_show = document.getElementById("slide-show");
-
-                     if(slide_show.checked) {
-                     var event = document.createEvent('Event');
-
-                     event.initEvent('change', true, true);
-
-                     slide_show.checked = false;
-                     slide_show.dispatchEvent(event);
-                     }
-                     */
-
-
                 });
-
-                /* 슬라이드
-                 $("#slide-show").on("change", function(e) {
-                 var next;
-                 var index;
-                 var last = gallery.items.length - 1;
-
-                 if($(this).is(":checked")) {
-                 gallery.show = setInterval(function() {
-                 index = gallery.getCurrentIndex();
-
-                 if(index == 0) {
-                 next = true;
-                 } else if(index == last) {
-                 next = false;
-                 }
-
-                 if(next) {
-                 gallery.next();
-                 } else {
-                 gallery.prev();
-                 }
-                 }, 3000);
-                 } else {
-                 clearInterval(gallery.show);
-                 delete gallery.show;
-                 }
-                 });
-                 */
             }
 
             var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
@@ -459,20 +402,17 @@
 
                 gallery.useAniNum = false;
 
-                // 방명록 글쓰기에 이미지 첨부
                 gallery.includeImage = function() {
                     var id = gallery.currItem.id
                     var url = "goldstar/snsbbs/w/" + id;
                     var kakaoInApp = gallery.options.kakaoInApp;
 
-                    /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
-                     (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
                     if(!kakaoInApp) {
                         window.location = url;
                     } else {
                         window.open(url);
                     }
-                }
+                };
 
                 psBeforeInitAddEvent();
                 gallery.init();
@@ -536,8 +476,6 @@
                         el: imageEl,
                     };
 
-//                    wrapper.innerHTML = imageEl.getAttribute("alt");
-//                    item.id = wrapper.firstChild.getAttribute("id").replace("gcomment_", "");
                     item.id = imageEl.getAttribute("imgId");
                     items.push(item);
                 }
@@ -598,25 +536,7 @@
                 }
             });
 
-//            $('.locationtabs').click(function(){
-//                var id = $(this).attr('id').replace('tabs_','');
-//                $('.locationtabs').removeClass('on');
-//                $(this).addClass('on');
-//                $('.locationdivs').removeClass('hide');
-//                $('.locationdivs').addClass('hide');
-//                $('#div_'+id).removeClass('hide');
-//
-//                setLocationInfoHeight();
-//
-//                initialize(id);
-//            }).css('cursor','pointer');
-
-
-
             $('#div_snsbbs').masonry('bindResize');
-
-            function setLocationInfoHeight(){
-            }
 
             function setPosition(id){
                 var $obj = $('#sk_'+id);
@@ -626,18 +546,13 @@
             }
 
             $('.menu_scrolls').click(function(){
-                try{
+                try {
                     if($(this).attr('id')){
-
-
                         var id = $(this).attr('id').replace('p_','').replace('m_','');
-
-                        //console.log(id);
-
                         setPosition(id);
                     }
-                }catch(e){
-                    //console.log(e);
+                } catch(e) {
+                    console.log(e);
                 }
             }).css('cursor','pointer');
 
@@ -654,14 +569,9 @@
                 $('#div_wedding').css('display', 'none');
                 $('#div_party').css('display', 'block');
             }).css('cursor', 'pointer');
-
-//            initialize('wedding');
-            setLocationInfoHeight();
         });
 
         $( window ).load(function() {
-
-
             $('.gal_list2').masonry({
                 itemSelector: '.gal_frame',
                 columnWidth: '.gal_size',
@@ -814,7 +724,7 @@
                 <div class="gal_size"></div>
                 {% for img in gallery %}
                     <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
-                        {% if gallery|length == loop.index  %}
+                        {% if (gallery|length == loop.index) or (loop.index >= 10)  %}
                             <div class="gal_more"><span>more</span></div>
                         {% else %}
                             <div class="gal_frame"><img src="{{ img['src'] }}"></div>
@@ -1269,16 +1179,18 @@
             <div class="pswp__caption">
                 <div class="pswp__caption__center">Image caption 1</div>
             </div>
-
-            <!-- 슬라이드
-            <div class="pswp__slide">
-                <label for="slide-show">자동 슬라이드</label>
-                <input type="checkbox" name="slideShow" id="slide-show" data-role="none">
-            </div>
-            -->
         </div>
     </div>
 </div>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109753132-1');
+</script>
 </body>
 </html>

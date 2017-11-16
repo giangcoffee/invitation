@@ -4,19 +4,28 @@
 namespace Viettut\Services;
 
 
-use Viettut\Model\Core\CardInterface;
-
 interface FacebookServiceInterface
 {
     /**
-     * @param CardInterface $card
-     * @return array
+     * @param $token
+     * @return mixed
      */
-    public function getCommentsForCard(CardInterface $card);
+    public function getUserAlbums($token);
 
     /**
-     * @param CardInterface $card
-     * @return null|string
+     * @param $token
+     * @param $albumId
+     * @return mixed
      */
-    public function getGraphObjectIdForCard(CardInterface $card);
+    public function getAlbumPhotos($token, $albumId);
+
+    /**
+     * @return mixed
+     */
+    public function getLoginUrl();
+
+    /**
+     * @return mixed
+     */
+    public function getAlbumUrl();
 }

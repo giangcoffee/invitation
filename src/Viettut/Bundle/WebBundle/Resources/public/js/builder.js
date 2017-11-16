@@ -90,7 +90,7 @@ function updateAlbum() {
         },
         url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
-        data : JSON.stringify({gallery: gallery}),
+        data : JSON.stringify({libraryCard: {gallery: gallery}}),
         success : function(response, textStatus, jqXhr) {
             var html = '<div class="alert alert-success alert-dismissable">' +
                 '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
@@ -115,7 +115,7 @@ function updateVideo() {
         },
         url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
-        data : JSON.stringify({video: video}),
+        data : JSON.stringify({libraryCard: {video: video}}),
         success : function(response, textStatus, jqXhr) {
             var html = '<div class="alert alert-success alert-dismissable">' +
                 '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
@@ -131,6 +131,54 @@ function updateVideo() {
     });
 }
 
+function facebookAlbum(){
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            getAlbums();
+        }
+        else {
+            FB.login(function(){
+                getAlbums();
+            }, {scope: 'user_photos'});
+        }
+    });
+}
+
+function getAlbums() {
+    FB.api('/me/albums', function(response) {
+        var data = response.data;
+        data.forEach(function(album){
+            var option = '<option value="' + album['id'] + '">' + album['name'] + '</option>';
+            $('select#albums').append(option);
+        });
+        $('div#selectAlbums').css('display', 'block');
+    });
+}
+
+function downloadAlbum() {
+    var selected = $('select#albums :selected').val();
+    if (selected == '0') {
+        alert('Chọn một album khác !');
+        return;
+    }
+
+    $('ul.gallery').html('');
+    gallery = [];
+    $('button#downloadAlbum').html('<i class="fa fa-spinner fa-spin"></i> Download');
+    FB.api('/' + selected + '/photos?fields=images', function(response) {
+        var data = response.data;
+        data.forEach(function(chunk){
+            var images = chunk['images'];
+            var image = images[0];
+            var src = image['source'];
+            var li = '<li data-url="' + src + '" style="background-image: url('+ src + ');" class="aimg"><span><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></li>';
+            $('ul.gallery').append(li);
+            gallery.push({"src": src, "size": image['width'] + 'X' + image['height']})
+        });
+        $('button#downloadAlbum').html('Download');
+    });
+}
+
 $(document).ready(function(){
     jQuery('#wedding_date').datetimepicker(
         {
@@ -142,7 +190,7 @@ $(document).ready(function(){
     $("#fileuploader").uploadFile({
         url:"/api/v1/cards/uploads",
         fileName:"myfile",
-        maxFileSize: 2097152,
+        maxFileSize: 524288,
         multiple: true,
         maxFileCount: 5,
         showProgress: true,

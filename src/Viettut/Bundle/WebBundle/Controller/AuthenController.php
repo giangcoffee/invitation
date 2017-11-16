@@ -28,18 +28,68 @@ class AuthenController extends Controller
      */
     public function facebookLoginAction(Request $request)
     {
-        $appId = $this->getParameter('facebook_app_id');
-        $appSecret = $this->getParameter('facebook_app_secret');
         $lecturerManager = $this->get('viettut_user.domain_manager.lecturer');
-        $fb = new \Facebook\Facebook([
-            'app_id' => $appId,
-            'app_secret' => $appSecret,
-            'default_graph_version' => 'v2.5',
-        ]);
+        $fb = $this->get('viettut.services.facebook_service')->getFacebookApp();
 
         $helper = $fb->getRedirectLoginHelper();
         try {
             $accessToken = $helper->getAccessToken();
+            $fb->setDefaultAccessToken($accessToken);
+            $response = $fb->get('/me?fields=id,name,email', $fb->getDefaultAccessToken());
+            $userNode = $response->getGraphUser();
+            $email = $userNode->getEmail();
+            $avatar = sprintf('http://graph.facebook.com/%s/picture?type=normal', $userNode->getId());
+            $user = $lecturerManager->findUserByUsernameOrEmail($email);
+
+            if (!$user instanceof UserEntityInterface) {
+                $user = $lecturerManager->createNew();
+
+                $user
+                    ->setEnabled(true)
+                    ->setPlainPassword($userNode->getEmail())
+                    ->setUsername($userNode->getEmail())
+                    ->setEmail($userNode->getEmail())
+                    ->setName($userNode->getName())
+                    ->setFacebookId($userNode->getId())
+                    ->setAvatar($avatar)
+                ;
+                $lecturerManager->save($user);
+            } else {
+                if (!$user->getGoogleId()) {
+                    $user->setAvatar($avatar);
+                }
+
+                $user->setFacebookId($userNode->getId());
+                $lecturerManager->save($user);
+            }
+
+            $token = new UsernamePasswordToken($user, $user->getPassword(), 'main', $user->getRoles());
+
+            $this->get("security.token_storage")->setToken($token);
+        } catch(\Facebook\Exceptions\FacebookResponseException $e) {
+            // When Graph returns an error
+            echo 'Graph returned an error: ' . $e->getMessage();
+        } catch(\Facebook\Exceptions\FacebookSDKException $e) {
+            // When validation fails or other local issues
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        }
+
+        return $this->redirect($this->generateUrl('home_page'));
+    }
+
+    /**
+     * @Route("/facebook/album", name="facebook_album")
+     */
+    public function facebookAlbumAction(Request $request)
+    {
+        $lecturerManager = $this->get('viettut_user.domain_manager.lecturer');
+        $facebookService = $this->get('viettut.services.facebook_service');
+        $fb = $facebookService->getFacebookApp();
+
+        $helper = $fb->getRedirectLoginHelper();
+        try {
+            $accessToken = $helper->getAccessToken();
+            $facebookService->getUserAlbums($accessToken);
             $fb->setDefaultAccessToken($accessToken);
             $response = $fb->get('/me?fields=id,name,email', $fb->getDefaultAccessToken());
             $userNode = $response->getGraphUser();
@@ -134,4 +184,6 @@ class AuthenController extends Controller
 
         return $this->redirect($this->generateUrl('home_page'));
     }
+
+
 }

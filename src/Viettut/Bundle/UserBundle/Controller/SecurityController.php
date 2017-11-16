@@ -21,9 +21,6 @@ class SecurityController extends BaseController
      */
     public function loginAction(Request $request)
     {
-        $facebookAppId = $this->getParameter('facebook_app_id');
-        $facebookAppSecret = $this->getParameter('facebook_app_secret');
-        $facebookRedirectUri = $this->getParameter('facebook_redirect_uri');
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
 
@@ -51,15 +48,7 @@ class SecurityController extends BaseController
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
-        $fb = new \Facebook\Facebook([
-            'app_id' => $facebookAppId,
-            'app_secret' => $facebookAppSecret,
-            'default_graph_version' => 'v2.9',
-        ]);
-
-        $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['email', 'user_likes']; // optional
-        $facebookLoginUrl = $helper->getLoginUrl($facebookRedirectUri, $permissions);
+        $facebookLoginUrl = $this->get('viettut.services.facebook_service')->getLoginUrl();
 
         $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
         $helper = $zalo -> getRedirectLoginHelper();

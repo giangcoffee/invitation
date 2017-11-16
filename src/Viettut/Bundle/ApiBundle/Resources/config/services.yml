@@ -23,11 +23,9 @@ services:
         arguments:
             - '%facebook_app_id%'
             - '%facebook_app_secret%'
+            - '%facebook_redirect_uri%'
+            - '%facebook_album_redirect_uri%'
             - '%facebook_graph_default_version%'
-            - '%domain%'
-            - '%http_schema%'
-            - '%facebook_object_id_url_template%'
-            - '@viettut.domain_manager.card'
 
     viettut.services.username_service:
         class: Viettut\Services\UsernameService

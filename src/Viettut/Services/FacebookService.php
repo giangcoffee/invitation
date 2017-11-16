@@ -4,6 +4,7 @@
 namespace Viettut\Services;
 
 
+use Facebook\Facebook;
 use RestClient\CurlRestClient;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Model\Core\CardInterface;
@@ -20,48 +21,90 @@ class FacebookService implements FacebookServiceInterface
     private $defaultGraphVersion;
 
     /** @var  string */
-
-    private $domain;
-
-    /** @var  string */
-    private $httpSchema;
+    private $loginRedirectUrl;
 
     /** @var  string */
-    private $objectIdUrlTemplate;
-
-    /** @var  CardManagerInterface */
-    protected $cardManager;
+    private $getAlbumRedirectUrl;
 
     /**
      * FacebookService constructor.
      * @param string $appId
      * @param string $appSecret
+     * @param $loginRedirectUrl
+     * @param $getAlbumRedirectUrl
      * @param string $defaultGraphVersion
-     * @param string $domain
-     * @param string $httpSchema
-     * @param string $objectIdUrlTemplate
-     * @param CardManagerInterface $cardManager
      */
-    public function __construct($appId, $appSecret, $defaultGraphVersion, $domain, $httpSchema, $objectIdUrlTemplate, CardManagerInterface $cardManager)
+    public function __construct($appId, $appSecret, $loginRedirectUrl, $getAlbumRedirectUrl, $defaultGraphVersion)
     {
         $this->appId = $appId;
         $this->appSecret = $appSecret;
         $this->defaultGraphVersion = $defaultGraphVersion;
-        $this->domain = $domain;
-        $this->httpSchema = $httpSchema;
-        $this->objectIdUrlTemplate = $objectIdUrlTemplate;
-        $this->cardManager = $cardManager;
+        $this->loginRedirectUrl = $loginRedirectUrl;
+        $this->getAlbumRedirectUrl = $getAlbumRedirectUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAppId(): string
+    {
+        return $this->appId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAppSecret(): string
+    {
+        return $this->appSecret;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultGraphVersion(): string
+    {
+        return $this->defaultGraphVersion;
     }
 
 
-    /**
-     * @param CardInterface $card
-     * @return array|mixed
-     */
-    public function getCommentsForCard(CardInterface $card)
+    public function getFacebookApp()
     {
-        $graphObjectId = $this->getGraphObjectIdForCard($card);
-        $comments = [];
+        return new Facebook([
+            'app_id' => self::getAppId(),
+            'app_secret' => self::getAppSecret(),
+            'default_graph_version' => self::getDefaultGraphVersion(),
+        ]);
+    }
+
+    public function getUserAlbums($token)
+    {
+        $albums = [];
+        try {
+            $fb = new Facebook([
+                'app_id' => $this->appId,
+                'app_secret' => $this->appSecret,
+                'default_graph_version' => $this->defaultGraphVersion,
+            ]);
+
+            $response = $fb->get('/me/albums', $token);
+            if ($response) {
+                $body = $response->getBody();
+                $body = json_decode($body, true);
+                if (is_array($body) && array_key_exists('data', $body)) {
+                    $albums = $body['data'];
+                }
+            }
+            return $albums;
+        } catch (\Exception $ex) {
+        } finally {
+            return $albums;
+        }
+    }
+
+    public function getAlbumPhotos($token, $albumId)
+    {
+        $photos = [];
         try {
             $fb = new \Facebook\Facebook([
                 'app_id' => $this->appId,
@@ -69,46 +112,39 @@ class FacebookService implements FacebookServiceInterface
                 'default_graph_version' => $this->defaultGraphVersion,
             ]);
 
-            $ac = $fb->getApp()->getAccessToken()->getValue();
-            $response = $fb->get(sprintf('/%s/comments', $graphObjectId), $ac);
+            $response = $fb->get(sprintf('/%s/photos?fields=images', $albumId) , $token);
             if ($response) {
                 $body = $response->getBody();
                 $body = json_decode($body, true);
                 if (is_array($body) && array_key_exists('data', $body)) {
-                    $comments = $body['data'];
+                    $body = $body['data'];
+                    if (is_array($body) && array_key_exists('images', $body)) {
+                        $photos = $body['images'];
+                    }
                 }
             }
-            return $comments;
+            return $photos;
         } catch (\Exception $ex) {
         } finally {
-            return $comments;
+            return $photos;
         }
     }
 
-    /**
-     * @param CardInterface $card
-     * @return null
-     */
-    public function getGraphObjectIdForCard(CardInterface $card)
+    public function getLoginUrl()
     {
-        if (!empty($card->getCommentObjectId())) {
-            return $card->getCommentObjectId();
-        }
+        $fb = $this->getFacebookApp();
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['email', 'user_likes']; // optional
 
-        $url = sprintf('%s%s/cards/%s', $this->httpSchema, $this->domain, $card->getHash());
-        $request = sprintf($this->objectIdUrlTemplate, urlencode($url));
-        $curl = new CurlRestClient();
-        $objectId = null;
-        $response = $curl->executeQuery($request);
-        if (!empty($response)) {
-            $response = json_decode($response, true);
-            if (is_array($response) && array_key_exists('og_object', $response)) {
-                $objectId = $response['og_object']['id'];
-                $card->setCommentObjectId($objectId);
-                $this->cardManager->save($card);
-            }
-        }
+        return $helper->getLoginUrl($this->loginRedirectUrl, $permissions);
+    }
 
-        return $objectId;
+    public function getAlbumUrl()
+    {
+        $fb = $this->getFacebookApp();
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['email', 'user_likes', 'user_photos']; // optional
+
+        return $helper->getLoginUrl($this->getAlbumRedirectUrl, $permissions);
     }
 }

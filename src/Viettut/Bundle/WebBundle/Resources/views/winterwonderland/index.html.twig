@@ -437,7 +437,6 @@
 
                 gallery.useAniNum = false;
 
-                // 방명록 글쓰기에 이미지 첨부
                 gallery.includeImage = function() {
                     var id = gallery.currItem.id
                     var url = "WinterWonderland/snsbbs/w/" + id;
@@ -574,24 +573,7 @@
                 }
             });
 
-//            $('.locationtabs').click(function(){
-//                var id = $(this).attr('id').replace('tabs_','');
-//                $('.locationtabs').removeClass('on');
-//                $(this).addClass('on');
-//                $('.locationdivs').removeClass('hide');
-//                $('.locationdivs').addClass('hide');
-//                $('#div_'+id).removeClass('hide');
-//
-//                setLocationInfoHeight();
-//
-//                initialize(id);
-//            }).css('cursor','pointer');
-
             $('#div_snsbbs').masonry('bindResize');
-
-
-            function setLocationInfoHeight(){
-            }
 
             function setPosition(id){
                 var $obj = $('#sk_'+id);
@@ -603,16 +585,10 @@
             $('.menu_scrolls').click(function(){
                 try{
                     if($(this).attr('id')){
-
-
                         var id = $(this).attr('id').replace('p_','').replace('m_','');
-
-                        //console.log(id);
-
                         setPosition(id);
                     }
                 }catch(e){
-                    //console.log(e);
                 }
             }).css('cursor','pointer');
 
@@ -629,14 +605,9 @@
                 $('#div_wedding').css('display', 'none');
                 $('#div_party').css('display', 'block');
             }).css('cursor', 'pointer');
-
-//            initialize('wedding');
-            setLocationInfoHeight();
         });
 
         $( window ).load(function() {
-
-
             $('.gal_list2').masonry({
                 itemSelector: '.gal_frame',
                 columnWidth: '.gal_size',
@@ -847,7 +818,7 @@
                 <div class="gal_size"></div>
                 {% for img in gallery %}
                     <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
-                        {% if gallery|length == loop.index  %}
+                        {% if (gallery|length == loop.index) or (loop.index >= 10)  %}
                             <div class="gal_more"><span>more</span></div>
                         {% else %}
                             <div class="gal_frame"><img src="{{ img['src'] }}"></div>
@@ -857,11 +828,6 @@
             </div>
         </div>
 
-        {#<div class="gal_bottom">#}
-            {#<div class="gal_ob1"></div>#}
-            {#<div class="gal_ob2"></div>#}
-            {#<div class="gal_ob3"></div>#}
-        {#</div>#}
     </div>
     <!--// gallery -->
 
@@ -1223,9 +1189,6 @@
                 <div class="addthis_inline_share_toolbox"></div>
             </ul>
         </div>
-        {#<div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">#}
-            {#<iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>#}
-        {#</div>#}
     </div>
     <!--// footer -->
 </div><!--//skin_page-->
@@ -1263,16 +1226,18 @@
             <div class="pswp__caption">
                 <div class="pswp__caption__center">Image caption 1</div>
             </div>
-
-            <!-- 슬라이드
-            <div class="pswp__slide">
-                <label for="slide-show">자동 슬라이드</label>
-                <input type="checkbox" name="slideShow" id="slide-show" data-role="none">
-            </div>
-            -->
         </div>
     </div>
 </div>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109753132-1');
+</script>
 </body>
 </html>
