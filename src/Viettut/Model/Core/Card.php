@@ -29,9 +29,6 @@ class Card implements CardInterface
     /** @var UserEntityInterface */
     protected $author;
 
-    /** @var array */
-    protected $gallery;
-
     /** @var DateTime */
     protected $weddingDate;
 
@@ -40,9 +37,6 @@ class Card implements CardInterface
 
     /** @var DateTime */
     protected $createdAt;
-
-    /** @var  string */
-    protected $commentObjectId;
 
     /** @var DateTime */
     protected $deletedAt;
@@ -60,14 +54,8 @@ class Card implements CardInterface
     /** @var bool */
     protected $forGroom;
 
-    /** @var  string */
-    protected $video;
-
-    /** @var  string */
-    protected $videoId;
-
-    /** @var  bool */
-    protected $validVideo;
+    /** @var  LibraryCardInterface */
+    protected $libraryCard;
 
     function __construct()
     {
@@ -83,7 +71,6 @@ class Card implements CardInterface
         $this->id = $id;
         return $this;
     }
-
 
     /**
      * Get deletedAt
@@ -152,7 +139,11 @@ class Card implements CardInterface
      */
     public function getGallery()
     {
-        return $this->gallery;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getGallery();
+        }
+
+        return [];
     }
 
     /**
@@ -161,25 +152,13 @@ class Card implements CardInterface
      */
     public function setGallery($gallery)
     {
-        $this->gallery = $gallery;
-        return $this;
-    }
-
-    /**
-     * @param $path
-     * @return $this
-     */
-    public function addImage($path)
-    {
-        if (empty($this->gallery)) {
-            $this->gallery = [];
+        if (!$this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard = new LibraryCard();
         }
 
-        $this->gallery[] = $path;
-
+        $this->libraryCard->setGallery($gallery);
         return $this;
     }
-
 
     /**
      * @return TemplateInterface
@@ -341,34 +320,17 @@ class Card implements CardInterface
         $this->forGroom = $forGroom;
     }
 
-    /**
-     * @return string
-     */
-    public function getCommentObjectId(): string
-    {
-        return $this->commentObjectId;
-    }
-
-    /**
-     * @param string $commentObjectId
-     * @return self
-     */
-    public function setCommentObjectId($commentObjectId)
-    {
-        $this->commentObjectId = $commentObjectId;
-        return $this;
-    }
 
     /**
      * @return string
      */
     public function getVideo(): string
     {
-        if ($this->video === null) {
-            return '';
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getVideo();
         }
 
-        return $this->video;
+        return '';
     }
 
     /**
@@ -377,7 +339,10 @@ class Card implements CardInterface
      */
     public function setVideo($video)
     {
-        $this->video = $video;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setVideo($video);
+        }
+
         return $this;
     }
 
@@ -386,7 +351,11 @@ class Card implements CardInterface
      */
     public function getVideoId(): string
     {
-        return $this->videoId;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getVideoId();
+        }
+
+        return null;
     }
 
     /**
@@ -395,7 +364,10 @@ class Card implements CardInterface
      */
     public function setVideoId($videoId)
     {
-        $this->videoId = $videoId;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setVideoId($videoId);
+        }
+
         return $this;
     }
 
@@ -404,7 +376,11 @@ class Card implements CardInterface
      */
     public function isValidVideo(): bool
     {
-        return $this->validVideo;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->isValidVideo();
+        }
+
+        return false;
     }
 
     /**
@@ -413,7 +389,28 @@ class Card implements CardInterface
      */
     public function setValidVideo($validVideo)
     {
-        $this->validVideo = $validVideo;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setValidVideo($validVideo);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return LibraryCardInterface|null
+     */
+    public function getLibraryCard()
+    {
+        return $this->libraryCard;
+    }
+
+    /**
+     * @param LibraryCardInterface $libraryCard
+     * @return self
+     */
+    public function setLibraryCard($libraryCard)
+    {
+        $this->libraryCard = $libraryCard;
         return $this;
     }
 

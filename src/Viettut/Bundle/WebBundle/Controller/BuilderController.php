@@ -32,7 +32,8 @@ class BuilderController extends Controller
      */
     public function builderAction(Request $request, $hash)
     {
-        if (!$this->getUser() instanceof UserEntityInterface) {
+        $user = $this->getUser();
+        if (!$user instanceof UserEntityInterface) {
             $this->container->get('session')->set('_security.main.target_path', $this->generateUrl('edit_card_page', array('hash' => $hash)));
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
@@ -42,6 +43,10 @@ class BuilderController extends Controller
         $card = $cardManager->getCardByHash($hash);
 
         if (!$card instanceof CardInterface) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
+
+        if ($card->getAuthor()->getId() != $user->getId()) {
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
 

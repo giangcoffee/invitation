@@ -9,14 +9,14 @@
 namespace Viettut\Form\Type;
 
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Viettut\Entity\Core\Card;
-use Viettut\Model\Core\CardInterface;
+use Viettut\Entity\Core\LibraryCard;
 use Viettut\Utilities\StringFactory;
 
 class CardFormType extends AbstractRoleSpecificFormType
@@ -31,43 +31,30 @@ class CardFormType extends AbstractRoleSpecificFormType
         $builder
             ->add('template')
             ->add('data')
-            ->add('gallery')
             ->add('forGroom')
-            ->add('video')
+            ->add('libraryCard', 'entity', array(
+                'class' => LibraryCard::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('libCard')->select('libCard');
+                }
+            ))
+//            ->add('libraryCard', new LibraryCardFormType())
             ->add('weddingDate', DateTimeType::class, [
                 'widget' => 'single_text'
             ])
         ;
 
         $builder->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function(FormEvent $event) {
-                /** @var CardInterface $card */
+            FormEvents::PRE_SUBMIT,
+            function (FormEvent $event) {
+                $form = $event->getForm();
                 $card = $event->getData();
-//                $data = $card->getData();
-//                if ($card->getId() == null) {
-//                    $name = sprintf('%s %s %s thang %s nam %s %s',
-//                        $data['groom_name'],
-//                        $data['bride_name'],
-//                        $card->getWeddingDate()->format('d'),
-//                        $card->getWeddingDate()->format('m'),
-//                        $card->getWeddingDate()->format('Y'),
-//                        uniqid('')
-//                    );
-//                    $card->setHash($this->getUrlFriendlyString($name));
-//                    if (empty($card->getGallery())) {
-//                        $card->setGallery($card->getTemplate()->getGallery());
-//                    }
-//                }
-//
-//                $video = $card->getVideo();
-//                if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $video, $matches)) {
-//                    $card->setValidVideo(true);
-//                    $card->setVideo($matches[1]);
-//                } else {
-//                    $event->getForm()->get('video')->addError(new FormError(sprintf('%s is a invalid video link', $video)));
-//                    return;
-//                }
+
+                //create new Library
+                if (array_key_exists('libraryCard', $card) && is_array($card['libraryCard'])) {
+                    $form->remove('libraryCard');
+                    $form->add('libraryCard', new LibraryCardFormType());
+                }
             }
         );
     }

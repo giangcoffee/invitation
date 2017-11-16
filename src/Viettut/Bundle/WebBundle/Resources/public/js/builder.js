@@ -37,14 +37,27 @@ function submit() {
     }
 
     $('button#updateButton').html('<i class="fa fa-spinner fa-spin"></i> Cập Nhật');
-    $.post('/api/v1/cards/' + cardId + '/updates', columns, function (response) {
-        var html = '<div class="alert alert-success alert-dismissable">' +
-            '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-            'Thông tin cập nhật thành công !'
-            + '</div>';
-        $('div.form-horizontal').before(html);
-        $('button#updateButton').html('Cập Nhật');
-    }, 'json');
+
+    $.ajax({
+        headers : {
+            'Content-Type' : 'application/json; charset=utf-8'
+        },
+        url : '/api/v1/cards/' + cardId + '/updates',
+        type : 'POST',
+        data : JSON.stringify(columns),
+        success : function(response, textStatus, jqXhr) {
+            var html = '<div class="alert alert-success alert-dismissable">' +
+                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                'Thông tin cập nhật thành công !'
+                + '</div>';
+            $('div.form-horizontal').before(html);
+            $('button#updateButton').html('Cập Nhật');
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+        },
+        complete : function() {
+        }
+    });
 
     var forGroom = false;
     if ($('#check_id').is(":checked"))
@@ -54,7 +67,7 @@ function submit() {
 
     $.ajax({
         headers : {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json; charset=utf-8'
         },
         url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
@@ -73,7 +86,7 @@ function updateAlbum() {
     $('button#updateAlbumButton').html('<i class="fa fa-spinner fa-spin"></i> Cập Nhật Album');
     $.ajax({
         headers : {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json; charset=utf-8'
         },
         url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
@@ -98,7 +111,7 @@ function updateVideo() {
     var video = $('input#video_link').val();
     $.ajax({
         headers : {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json; charset=utf-8'
         },
         url : '/api/v1/cards/' + cardId,
         type : 'PATCH',

@@ -95,12 +95,6 @@ interface CardInterface extends ModelInterface
     public function setGallery($gallery);
 
     /**
-     * @param $path
-     * @return $this
-     */
-    public function addImage($path);
-
-    /**
      * @return DateTime
      */
     public function getWeddingDate();
@@ -168,17 +162,6 @@ interface CardInterface extends ModelInterface
     /**
      * @return string
      */
-    public function getCommentObjectId(): string;
-
-    /**
-     * @param string $commentObjectId
-     * @return self
-     */
-    public function setCommentObjectId($commentObjectId);
-
-    /**
-     * @return string
-     */
     public function getVideo(): string;
 
     /**
@@ -208,4 +191,15 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setVideoId($videoId);
+
+    /**
+     * @return LibraryCardInterface|null
+     */
+    public function getLibraryCard();
+
+    /**
+     * @param LibraryCardInterface $libraryCard
+     * @return self
+     */
+    public function setLibraryCard($libraryCard);
 }

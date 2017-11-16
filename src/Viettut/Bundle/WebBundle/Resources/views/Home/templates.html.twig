@@ -687,7 +687,8 @@
             var data = {};
             data['template'] = id;
             data['weddingDate'] = $('#wedding_date').val();
-            data['forGroom'] = false;
+            data['forGroom'] = true;
+            data['libraryCard'] = {'gallery': [], 'video': ''};
 
             if ($('#check_id').is(":checked")) {
                 data['forGroom'] = true;
@@ -697,10 +698,22 @@
             data['data']['groom_name'] = $('#groom_name').val();
             data['data']['bride_name'] = $('#bride_name').val();
 
-            $.post('/api/v1/cards', data, function (response) {
-                var url = '/cards/' + response.hash + '/edit';
-                window.location.href = url;
-            }, 'json');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
         }
 
         function showModal(i, n) {

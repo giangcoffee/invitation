@@ -19,10 +19,7 @@ class Card extends CardModel
     protected $latitude;
     protected $longitude;
     protected $forGroom;
-    protected $commentObjectId;
-    protected $validVideo;
-    protected $video;
-    protected $videoId;
+    protected $libraryCard;
     protected $homeLatitude;
     protected $homeLongitude;
 }

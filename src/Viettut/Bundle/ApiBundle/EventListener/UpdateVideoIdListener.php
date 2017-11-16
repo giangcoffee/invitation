@@ -24,25 +24,39 @@ class UpdateVideoIdListener
             return;
         }
         $data = $entity->getData();
-        $name = sprintf('%s %s %s thang %s nam %s %s',
-            $data['groom_name'],
-            $data['bride_name'],
-            $entity->getWeddingDate()->format('d'),
-            $entity->getWeddingDate()->format('m'),
-            $entity->getWeddingDate()->format('Y'),
-            uniqid('')
-        );
+        if ($entity->isForGroom()) {
+            $name = sprintf('%s %s %s thang %s nam %s %s',
+                $data['groom_name'],
+                $data['bride_name'],
+                $entity->getWeddingDate()->format('d'),
+                $entity->getWeddingDate()->format('m'),
+                $entity->getWeddingDate()->format('Y'),
+                uniqid('')
+            );
+        } else {
+            $name = sprintf('%s %s %s thang %s nam %s %s',
+                $data['bride_name'],
+                $data['groom_name'],
+                $entity->getWeddingDate()->format('d'),
+                $entity->getWeddingDate()->format('m'),
+                $entity->getWeddingDate()->format('Y'),
+                uniqid('')
+            );
+        }
 
         $entity->setHash($this->getUrlFriendlyString($name));
         if (empty($entity->getGallery())) {
             $entity->setGallery($entity->getTemplate()->getGallery());
         }
 
-        if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $entity->getVideo(), $matches)) {
-            $entity->setValidVideo(true);
-            $entity->setVideoId($matches[1]);
-        } else {
-            throw new InvalidArgumentException(sprintf('%s is not a valid Youtube link', $entity->getVideo()));
+        $video = $entity->getVideo();
+        if (!empty($video)) {
+            if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $video, $matches)) {
+                $entity->setValidVideo(true);
+                $entity->setVideoId($matches[1]);
+            } else {
+                throw new InvalidArgumentException(sprintf('%s is not a valid Youtube link', $video));
+            }
         }
     }
 
@@ -60,11 +74,14 @@ class UpdateVideoIdListener
             return;
         }
 
-        if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $entity->getVideo(), $matches)) {
-            $entity->setValidVideo(true);
-            $entity->setVideoId($matches[1]);
-        } else {
-            throw new InvalidArgumentException(sprintf('%s is not a valid Youtube link', $entity->getVideo()));
+        $video = $entity->getVideo();
+        if (!empty($video)) {
+            if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $video, $matches)) {
+                $entity->setValidVideo(true);
+                $entity->setVideoId($matches[1]);
+            } else {
+                throw new InvalidArgumentException(sprintf('%s is not a valid Youtube link', $video));
+            }
         }
     }
 }
