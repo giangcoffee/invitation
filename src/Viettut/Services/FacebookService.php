@@ -134,7 +134,7 @@ class FacebookService implements FacebookServiceInterface
     {
         $fb = $this->getFacebookApp();
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['email', 'user_likes']; // optional
+        $permissions = ['email', 'user_likes', 'user_photos']; // optional
 
         return $helper->getLoginUrl($this->loginRedirectUrl, $permissions);
     }

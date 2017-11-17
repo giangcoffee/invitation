@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block title %}Danh sách sản phẩm{% endblock %}
+{% block title %}Danh sách thiệp của tôi{% endblock %}
 {% block description %}
-    Những sản phẩm được tạo ra từ dịch vụ của Thiệp Đỏ
+    Tất cả thiệp của tôi được tạo ra từ dịch vụ của Thiệp Đỏ
 {% endblock %}
 {% block main %}
     <section class="page-top">
@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="{{ path('home_page') }}">Home</a></li>
-                        <li class="active">Sản phẩm</li>
+                        <li class="active">Thiệp của tôi</li>
                     </ul>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                                 <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank"><span class="text-primary">{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }} - {{ card.weddingDate | date('d-m-Y') }}</span></a>
                             </div>
                             <div class="row col-md-12 temp-margin">
-                                {#<button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>#}
+                                <a href="{{ path('edit_card_page', {hash: card.hash}) }}" class="btn btn-primary pull-left btn_page_preview">Chỉnh sửa</a>
                                 <button class="btn btn-primary pull-right" onclick="copyCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['groom_name'] }}', '{{ card.data['bride_name'] }}', {% if card.forGroom %}false{% else %}true{% endif %})">Copy Thiệp</button>
                             </div>
                         </div>
