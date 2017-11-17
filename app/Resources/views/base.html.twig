@@ -95,31 +95,16 @@
         <div class="navbar-collapse nav-main-collapse collapse">
             <div class="container">
                 <ul class="social-icons">
-                    <li class="facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook">Facebook</a></li>
+                    <li class="facebook"><a href="http://www.facebook.com/thiepdodigital" target="_blank" title="Facebook">Facebook</a></li>
                     <li class="twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter">Twitter</a></li>
                     <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin">Linkedin</a></li>
                 </ul>
                 <nav class="nav-main mega-menu">
                     <ul class="nav nav-pills nav-main" id="mainMenu">
-                        {#{% if app.user %}#}
-                            {#<li>#}
-                                {#<a class="dropdown-toggle" href="#">#}
-                                    {#Thiết Kế#}
-                                {#</a>#}
-                            {#</li>#}
-                        {#{% endif %}#}
-
                         <li class="{{ (app.request.attributes.get('_route') == 'templates_page') ? ' active' }}">
                             <a class="dropdown-toggle" href="{{ path('templates_page') }}">
                                 Mẫu Thiệp
-                                {#<i class="fa fa-angle-down"></i>#}
                             </a>
-                            {#<ul class="dropdown-menu">#}
-                                {#<li><a href="{{ path('templates_page') }}">Danh sách mẫu thiệp</a></li>#}
-                                {#{% if app.user %}#}
-                                    {#<li><a href="index-1.html">Thêm mẫu thiệp <span class="tip">hot</span></a></li>#}
-                                {#{% endif %}#}
-                            {#</ul>#}
                         </li>
 
                         <li {{ (app.request.attributes.get('_route') == 'cards_page') ? ' class="active"' }}>
@@ -127,12 +112,6 @@
                                 Sản phẩm
                             </a>
                         </li>
-
-                        {#<li  {{ (app.request.attributes.get('_route') == 'about_page') ? ' class="active"' }}>#}
-                            {#<a class="dropdown-toggle" href="{{ path('about_page') }}">#}
-                                {#Giới thiệu#}
-                            {#</a>#}
-                        {#</li>#}
 
                         <li {{ (app.request.attributes.get('_route') == 'services_page') ? ' class="active"' }}>
                             <a class="dropdown-toggle" href="{{ path('services_page') }}">
@@ -250,7 +229,7 @@
                     <h4>Follow Us</h4>
                     <div class="social-icons">
                         <ul class="social-icons">
-                            <li class="facebook"><a href="http://www.facebook.com/" target="_blank" data-placement="bottom" data-tooltip title="Facebook">Facebook</a></li>
+                            <li class="facebook"><a href="http://www.facebook.com/thiepdodigital" target="_blank" data-placement="bottom" data-tooltip title="Facebook">Facebook</a></li>
                             <li class="twitter"><a href="http://www.twitter.com/" target="_blank" data-placement="bottom" data-tooltip title="Twitter">Twitter</a></li>
                             <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" data-placement="bottom" data-tooltip title="Linkedin">Linkedin</a></li>
                         </ul>
@@ -316,21 +295,14 @@
 <!-- Theme Initialization Files -->
 <script src="{{ asset('bundles/viettutweb/js/theme.init.js') }}"></script>
 
-<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
-<script type="text/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-12345678-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
+    gtag('config', 'UA-109753132-1');
 </script>
- -->
 {% block javascript %}
 {% endblock %}
 </body>

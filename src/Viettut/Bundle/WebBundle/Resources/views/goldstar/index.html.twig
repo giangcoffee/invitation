@@ -550,6 +550,8 @@
                     if($(this).attr('id')){
                         var id = $(this).attr('id').replace('p_','').replace('m_','');
                         setPosition(id);
+                    } else {
+                        window.location.href = '/';
                     }
                 } catch(e) {
                     console.log(e);
@@ -619,7 +621,7 @@
     <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
-                <li data-icon="delete"><a href="http://thiepdo.com"><span>TRANG CHỦ</span></a></li>
+                <li data-icon="delete"><a href="{{ path('home_page') }}"><span>TRANG CHỦ</span></a></li>
                 {#<li data-role="list-divider">JUST MARRIED!</li>#}
                 <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>LỜI TỰA</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>ALBUM ẢNH</span></li>
@@ -634,7 +636,7 @@
     <div class="lnb slideDown">
         <div class="lnb_title">JUST MARRIED!</div>
         <ul>
-            {#<li class="menu1 menu_scrolls"><a href="http://thiepdo.com"><span>TRANG CHỦ</span></a></li>#}
+            <li class="menu1 menu_scrolls"><span>TRANG CHỦ</span></li>
             <li class="menu1 menu_scrolls on" id="m_topinfo"><span>LỜI TỰA</span></li>
             <li class="menu2 menu_scrolls" id="m_gallery"><span>ALBUM ẢNH</span></li>
             <li class="menu3 menu_scrolls" id="m_media"><span>VIDEO</span></li>
@@ -744,7 +746,7 @@
             <div class="ul-body">
                 <div class="movie_container movie1">
                     <ul>
-                        <li>
+                        <li class="iframe-container">
                             <iframe
                                     id="movie"
                                     width="100%"
@@ -777,14 +779,6 @@
                         <ul>
                             <li class="iframe-container">
                                 {{ embed | raw }}
-                                {#<iframe#}
-                                        {#id="movie"#}
-                                        {#width="100%"#}
-                                        {#src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"#}
-                                        {#height="100%"#}
-                                        {#frameborder="0"#}
-                                        {#allowfullscreen>#}
-                                {#</iframe>#}
                             </li>
                         </ul>
                     </div>
@@ -1131,7 +1125,7 @@
     <div class="footer"  id="sk_snslink">
         <div class="contents">
             <h4>
-                <a href="http://thiepdo.com" target="_blank">
+                <a href="{{ path('home_page') }}" target="_blank">
                     <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
                 </a>
                 <span></span>

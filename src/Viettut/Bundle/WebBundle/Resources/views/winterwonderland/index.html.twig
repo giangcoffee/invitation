@@ -1032,7 +1032,7 @@
             <div class="ul-body">
                 <div class="movie_container movie1">
                     <ul>
-                        <li>
+                        <li class="iframe-container">
                             <iframe
                                     id="movie"
                                     width="100%"
@@ -1056,13 +1056,6 @@
                         <ul>
                             <li class="iframe-container">
                                 {{ embed | raw }}
-                                {#<iframe#}
-                                        {#id="movie"#}
-                                        {#width="100%"#}
-                                        {#src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"#}
-                                        {#height="100%"#}
-                                        {#frameborder="0"#}
-                                        {#allowfullscreen></iframe>#}
                             </li>
                         </ul>
                     </div>
@@ -1182,7 +1175,7 @@
     <div class="footer"  id="sk_snslink">
         <div class="contents">
             <h4>
-                <a href="http://thiepdo.com" target="_blank">
+                <a href="{{ path('home_page') }}" target="_blank">
                     <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
                 </a>
                 <span></span>
