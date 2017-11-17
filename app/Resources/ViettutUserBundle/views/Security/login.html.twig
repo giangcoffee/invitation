@@ -17,7 +17,7 @@
                     <div class="text-right-top"><a href="{{ path('fos_user_resetting_request') }}">Quên mật khẩu?</a></div>
                 </div>
 
-                <div style="padding-top:30px" class="panel-body" >
+                <div class="panel-body" >
 
                     {% if error %}
                         <div class="alert alert-danger col-sm-12">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-md-1">&nbsp;</div>
                     </div>
-                    <hr class="tall"/>
+                    <hr />
                     <form class="form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
                         {% if csrf_token %}
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
