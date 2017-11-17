@@ -122,4 +122,15 @@ interface PostInterface extends ModelInterface
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime;
+
+    /**
+     * @return string
+     */
+    public function getSummary(): string;
+
+    /**
+     * @param string $summary
+     * @return self
+     */
+    public function setSummary($summary);
 }

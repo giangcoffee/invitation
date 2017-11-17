@@ -17,6 +17,10 @@ Viettut\Entity\Core\Post:
             type: text
             nullable: false
 
+        summary:
+            type: text
+            nullable: false
+
         hash:
             type: string
             nullable: false

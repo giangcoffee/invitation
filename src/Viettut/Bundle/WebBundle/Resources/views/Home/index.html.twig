@@ -172,15 +172,15 @@
             <div class="row">
                 <div class="col-md-8">
                     <p>
-                        Cách nhanh nhất để gửi <em>lời mời</em> đến những người bạn ở xa.
-                        <span>Cùng khám phá những tính năng của <em>Thiệp Đỏ</em></span>
+                        Cách nhanh nhất để gửi thiệp mời đến những người bạn ở xa.
+                        <span>Cùng khám phá những tính năng của Thiệp Đỏ</span>
                     </p>
                 </div>
                 <div class="col-md-4">
                     <div class="get-started">
                         <a href="{{ path('fos_user_registration_register') }}" class="btn btn-lg btn-primary">Đăng Ký
                             Ngay</a>
-                        <div class="learn-more">or <a href="{{ path('services_page') }}">tìm hiểu thêm</a></div>
+                        <div class="learn-more">hoặc <a href="{{ path('services_page') }}">tìm hiểu thêm</a></div>
                     </div>
                 </div>
             </div>
@@ -252,9 +252,6 @@
                                 </li>
                                 <li><a href="portfolio-single-project.html"><img class="img-responsive"
                                                                                  src="{{ asset('bundles/viettutweb/img/logos/instagram-circle_icon.jpg') }}"/></a>
-                                </li>
-                                <li><a href="portfolio-single-project.html"><img class="img-responsive"
-                                                                                 src="{{ asset('bundles/viettutweb/img/logos/google_plus_circle_icon.png') }}"/></a>
                                 </li>
                             </ul>
                         </div>
@@ -460,8 +457,8 @@
                                         </div>
                                         <h4><a href="{{ path('single_post_page', {hash:post.hash}) }}">{{ post.title }}</a></h4>
                                         <p>
-                                            {{ post.content }}
-                                            <a href="/" class="read-more">read more <i class="fa fa-angle-right"></i></a>
+                                            {{ post.summary | raw }}
+                                            <a href="{{ path('single_post_page', {hash:post.hash}) }}" class="read-more">đọc thêm <i class="fa fa-angle-right"></i></a>
                                         </p>
                                     </article>
                                 </div>

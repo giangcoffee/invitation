@@ -33,6 +33,9 @@ class Post implements PostInterface
      */
     protected $content;
 
+    /** @var  string */
+    protected $summary;
+
     /**
      * @var int
      */
@@ -168,6 +171,24 @@ class Post implements PostInterface
     public function setContent($content)
     {
         $this->content = $content;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummary(): string
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param string $summary
+     * @return self
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
         return $this;
     }
 

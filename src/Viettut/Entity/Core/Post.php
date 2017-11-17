@@ -18,4 +18,5 @@ class Post extends PostModel
     protected $updatedAt;
     protected $published;
     protected $createdAt;
+    protected $summary;
 }

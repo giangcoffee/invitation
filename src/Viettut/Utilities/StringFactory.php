@@ -6,6 +6,9 @@
  * Time: 11:31 AM
  */
 namespace Viettut\Utilities;
+use DOMDocument;
+use DOMXPath;
+
 trait StringFactory {
     /**
      * generate dash-separated string which is url-friendly
@@ -27,8 +30,13 @@ trait StringFactory {
      */
     protected function getFirstParagraph($string)
     {
-        $string = substr($string,0, strpos($string, "\n"));
-        return $string. '...';
+        $dom = new DOMDocument();
+        $dom->loadHTML($string);
+        $xp = new DOMXPath($dom);
+
+        $res = $xp->query('//p');
+
+        return $res[0]->nodeValue;
     }
 
     protected function convertViToEn($str)
