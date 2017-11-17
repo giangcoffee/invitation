@@ -8,30 +8,24 @@
 .btn-zl {background-color: #55acee !important; }
 .btn-fb {background-color: #3b5998 !important;}
 .social-login {display:none;}
+
 @media all and (max-width: 640px) {
     .social-buttons {display:none;}
     .social-login {display:block;}
-    .social-login a {width:30%;}
-    .social-login .btn-fb {float:left;margin-left:30px;}
-    .social-login .btn-zl {float:right;margin-right:30px;}
+    .social-login a {width:20%;}
+    .social-login .btn-fb {float:left;margin-left:60px;}
+    .social-login .btn-zl {float:right;margin-right:65px;}
     .btn-zl, .btn-fb {background-color: transparent !important;}
-    .btn-zl img {width:43px;height:43px;}
-    .btn-fb img {width:48px;height:48px;}
+    .btn-zl img {width:44px;}
+    .btn-fb img {width:48px;}
 }
 
-.temp-margin {
-    margin-top:20px;
-    margin-bottom:10px;
-}
+.temp-margin {margin-top:20px;margin-bottom:10px;}
 
-.temp-margin .pull-right {
-    margin-right:10px;
-}
+.temp-margin .pull-right {margin-right:10px;}
 
-.temp-margin .pull-left {
-    margin-left:10px;
-}
+.temp-margin .pull-left {margin-left:10px;}
 
-.temp-margin .text-primary {
-    font-size:1.2em;
-}
+.temp-margin .text-primary {font-size:1.2em;}
+
+.button-center {text-align: center;}

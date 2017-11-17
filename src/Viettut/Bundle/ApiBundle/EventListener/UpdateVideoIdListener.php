@@ -12,6 +12,7 @@ use Viettut\Utilities\StringFactory;
 
 class UpdateVideoIdListener
 {
+    const TEMPLATE = '<iframe id="movie" width="100%" src="http://www.youtube.com/embed/$$VIDEO_ID$$?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" allowfullscreen></iframe>';
     use StringFactory;
 
     /**
@@ -50,10 +51,11 @@ class UpdateVideoIdListener
         }
 
         $video = $entity->getVideo();
-        if (!empty($video)) {
+        if (!empty($video) && empty($entity->getEmbedded())) {
             if (preg_match('#https?://(?:www\.)?youtube\.com/watch\?v=([^&]+)#', $video, $matches)) {
                 $entity->setValidVideo(true);
                 $entity->setVideoId($matches[1]);
+                $entity->setEmbedded(str_replace('$$VIDEO_ID$$', $matches[1], self::TEMPLATE));
             } else {
                 throw new InvalidArgumentException(sprintf('%s is not a valid Youtube link', $video));
             }

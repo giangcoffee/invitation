@@ -13,4 +13,5 @@ class LibraryCard extends LibraryCardModel
     protected $videoId;
     protected $validVideo;
     protected $cards;
+    protected $embedded;
 }

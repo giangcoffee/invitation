@@ -34,6 +34,8 @@ class LibraryCard implements LibraryCardInterface
 
     protected $cards;
 
+    protected $embedded;
+
     function __construct()
     {
         $this->gallery = [];
@@ -156,6 +158,24 @@ class LibraryCard implements LibraryCardInterface
     public function setValidVideo($validVideo)
     {
         $this->validVideo = $validVideo;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmbedded()
+    {
+        return $this->embedded;
+    }
+
+    /**
+     * @param mixed $embedded
+     * @return self
+     */
+    public function setEmbedded($embedded)
+    {
+        $this->embedded = $embedded;
         return $this;
     }
 

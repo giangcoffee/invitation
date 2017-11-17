@@ -158,11 +158,37 @@
                 </div>
             </div>
             <div id="video" class="tab-pane">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-lg push-top push-bottom" onclick="facebookVideos()" id="fetchVideos">Tải Từ Facebook</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="selectVideos" style="display:none;">
+                        <label class="col-md-2 control-label" for="albums">Chọn một video</label>
+                        <div class="col-md-3">
+                            <select class="form-control mb-md" id="videos">
+                                <option selected="selected" value="0">-- chọn video --</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" onclick="downloadVideo()" id="downloadVideo">Download</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="row" id="videoForm">
                     <div class="form-group">
                         <label class="col-md-3 control-label">Link Youtube</label>
                         <div class="col-md-6">
                             <input type="text" class="form-control input-rounded" id="video_link" value="{{ video }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="embedded">Mã nhúng</label>
+                        <div class="col-md-6">
+                            <textarea class="form-control mb-md" id="embedded">{{ embed }}</textarea>
                         </div>
                     </div>
                 </div>

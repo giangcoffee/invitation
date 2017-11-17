@@ -414,6 +414,25 @@ class Card implements CardInterface
         return $this;
     }
 
+    public function getEmbedded()
+    {
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getEmbedded();
+        }
+
+        return null;
+    }
+
+    public function setEmbedded($embedded)
+    {
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setEmbedded($embedded);
+        }
+
+        return $this;
+    }
+
+
     function __toString()
     {
         return 'card_' . $this->id;

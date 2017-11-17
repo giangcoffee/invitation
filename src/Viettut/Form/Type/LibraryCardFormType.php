@@ -26,6 +26,7 @@ class LibraryCardFormType extends AbstractRoleSpecificFormType
         $builder
             ->add('gallery')
             ->add('video')
+            ->add('embedded')
         ;
     }
 

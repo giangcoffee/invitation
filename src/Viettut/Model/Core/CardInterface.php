@@ -202,4 +202,15 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setLibraryCard($libraryCard);
+
+    /**
+     * @return mixed
+     */
+    public function getEmbedded();
+
+    /**
+     * @param mixed $embedded
+     * @return self
+     */
+    public function setEmbedded($embedded);
 }

@@ -68,4 +68,15 @@ interface LibraryCardInterface extends ModelInterface
      * @return self
      */
     public function setVideoId($videoId);
+
+    /**
+     * @return mixed
+     */
+    public function getEmbedded();
+
+    /**
+     * @param mixed $embedded
+     * @return self
+     */
+    public function setEmbedded($embedded);
 }

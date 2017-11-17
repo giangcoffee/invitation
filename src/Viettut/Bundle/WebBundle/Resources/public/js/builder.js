@@ -2,6 +2,7 @@
  * Created by giangle on 12/10/2017.
  */
 var gallery = $('.card-info').data('gallery');
+var videos = {};
 var columns = $('.card-columns').data('columns');
 var cardId = $('.card-info').data('id');
 
@@ -109,13 +110,14 @@ function updateAlbum() {
 function updateVideo() {
     $('button#updateVideoButton').html('<i class="fa fa-spinner fa-spin"></i> Cập Nhật');
     var video = $('input#video_link').val();
+    var embedded = $('textarea#embedded').val();
     $.ajax({
         headers : {
             'Content-Type' : 'application/json; charset=utf-8'
         },
-        url : '/api/v1/cards/' + cardId,
+        url : '/app_dev.php/api/v1/cards/' + cardId + '?XDEBUG_SESSION_START=1',
         type : 'PATCH',
-        data : JSON.stringify({libraryCard: {video: video}}),
+        data : JSON.stringify({libraryCard: {video: video, embedded: embedded}}),
         success : function(response, textStatus, jqXhr) {
             var html = '<div class="alert alert-success alert-dismissable">' +
                 '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
@@ -139,8 +141,38 @@ function facebookAlbum(){
         else {
             FB.login(function(){
                 getAlbums();
-            }, {scope: 'user_photos'});
+            }, {scope: 'user_photos,user_videos'});
         }
+    });
+}
+
+function facebookVideos() {
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            getVideos();
+        }
+        else {
+            FB.login(function(){
+                getVideos();
+            }, {scope: 'user_photos,user_videos'});
+        }
+    });
+}
+
+function getVideos() {
+    FB.api('/me/videos?fields=created_time,embed_html,description&type=uploaded', function(response) {
+        var data = response.data;
+        data.forEach(function(video){
+            var id = video['id'];
+            var name = 'video';
+            if( video["description"] !== undefined ) {
+                name = video['description'];
+            }
+            var option = '<option value="' + video['id'] + '">' + name + '</option>';
+            $('select#videos').append(option);
+            videos[id] = video['embed_html'];
+        });
+        $('div#selectVideos').css('display', 'block');
     });
 }
 
@@ -153,6 +185,18 @@ function getAlbums() {
         });
         $('div#selectAlbums').css('display', 'block');
     });
+}
+
+function downloadVideo() {
+    var selected = $('select#videos :selected').val();
+    if (selected == '0') {
+        alert('Chọn một video khác !');
+        return;
+    }
+
+    if( videos[selected] !== undefined ) {
+        $('textarea#embedded').html(videos[selected]);
+    }
 }
 
 function downloadAlbum() {

@@ -60,7 +60,8 @@ class BuilderController extends Controller
             'name' => $template->getName(),
             'hash' => $card->getHash(),
             'forGroom' => $card->isForGroom(),
-            'video' => $card->getVideo()
+            'video' => $card->getVideo(),
+            'embed' => $card->getEmbedded()
         ));
     }
 
@@ -219,7 +220,7 @@ class BuilderController extends Controller
             'forGroom' => $card->isForGroom(),
             'isTemplate' => false,
             'hash' => $hash,
-            'video' => $card->getVideoId()
+            'embed' => $card->getEmbedded()
         ));
     }
 }

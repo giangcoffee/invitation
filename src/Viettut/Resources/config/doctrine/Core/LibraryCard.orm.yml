@@ -15,6 +15,9 @@ Viettut\Entity\Core\LibraryCard:
         video:
             type: string
             nullable: true
+        embedded:
+            type: text
+            nullable: true
         videoId:
             type: string
             nullable: true

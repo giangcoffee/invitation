@@ -1047,7 +1047,7 @@
         </div>
         <!--// movie -->
     {% else %}
-        {% if video %}
+        {% if embed %}
             <!-- movie -->
             <div class="movie_wrap" id="sk_media">
                 <h2 class="blind">Video</h2>
@@ -1055,13 +1055,14 @@
                     <div class="movie_container movie1">
                         <ul>
                             <li>
-                                <iframe
-                                        id="movie"
-                                        width="100%"
-                                        src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"
-                                        height="100%"
-                                        frameborder="0"
-                                        allowfullscreen></iframe>
+                                {{ embed | raw }}
+                                {#<iframe#}
+                                        {#id="movie"#}
+                                        {#width="100%"#}
+                                        {#src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"#}
+                                        {#height="100%"#}
+                                        {#frameborder="0"#}
+                                        {#allowfullscreen></iframe>#}
                             </li>
                         </ul>
                     </div>
