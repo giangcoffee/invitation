@@ -287,7 +287,7 @@ a.gallery_comment_link:link {color:white;float:right;}
 	overflow: hidden;
 }
 
-.iframe-container iframe {
+.iframe-container iframe, .iframe-container object, .iframe-container embed {
 	position: absolute;
 	top:0;
 	left: 0;

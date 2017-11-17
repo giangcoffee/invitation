@@ -224,15 +224,15 @@ background-size:22px 22px; border-radius:5px; color:#fff;text-shadow:none; font-
   .movie1 ul li,.movie1 ul li:first-child,
   .movie2 ul li,.movie2 ul li:first-child,
   .movie3 ul li,.movie3 ul li:first-child,
-  .movie4 ul li,.movie4 ul li:first-child {position:relative; float:none; width:100%; height:240px; margin:0 0 2% 0}
+  .movie4 ul li,.movie4 ul li:first-child {position:relative; float:none; width:100%; margin:0 0 2% 0}
   .android_play {width:60px; height:40px;margin:-20px 0 0 -30px}
 }
-@media all and (max-width: 480px) {
-  .movie1 ul li,.movie1 ul li:first-child,
-  .movie2 ul li,.movie2 ul li:first-child,
-  .movie3 ul li,.movie3 ul li:first-child,
-  .movie4 ul li,.movie4 ul li:first-child {height:220px}
-}
+/*@media all and (max-width: 480px) {*/
+  /*.movie1 ul li,.movie1 ul li:first-child,*/
+  /*.movie2 ul li,.movie2 ul li:first-child,*/
+  /*.movie3 ul li,.movie3 ul li:first-child,*/
+  /*.movie4 ul li,.movie4 ul li:first-child {height:220px}*/
+/*}*/
 
 /* Location */
 .lo_tab_wrap {width:100%; height:40px; overflow:hidden;}
