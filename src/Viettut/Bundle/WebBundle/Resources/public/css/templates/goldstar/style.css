@@ -564,7 +564,7 @@ background: url(../../../img/templates/goldstar/lo_titlepin.png) no-repeat 10px 
   .header_photo p {width:260px; height:260px; margin:10px; border:5px solid #fff;}
   .header_title {padding: 98px 0 0 0;background-position: 50% 30px;}
   .header .scroll {display: none}
-  .hd_name {width: 100%; font-size:29px; line-height:29px; height:29px;}
+  .hd_name {width: 100%; font-size:27px; line-height:29px; height:29px;}
   .hd_date {margin:300px 0 0 0;}
   .hd_loca {font-size:0.75em}
   .greeting_textbox {background-size:150px; }

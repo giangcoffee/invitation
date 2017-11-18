@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="lead">
-                    Chúng tôi luôn luôn lắng nghe các chia sẻ, góp ý của quý khách. Vấn đề quý khách thắc mắc không nằm trong danh sách dưới đây hay <a href="{{ path('contact_page') }}">liên hệ</a> với chúng tôi để có câu trả lời chi tiết hơn.
+                    Chúng tôi luôn luôn lắng nghe các chia sẻ, góp ý của quý khách. Nếu vấn đề quý khách thắc mắc không nằm trong danh sách dưới đây hãy <a href="{{ path('contact_page') }}">liên hệ</a> với chúng tôi để có câu trả lời chi tiết hơn.
                 </p>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="col-md-12">
                 <div class="toogle" data-plugin-toggle>
                     {% for faq in faqs %}
-                        <section class="toggle {% if loop.index = 1 %}active{% endif %}">
+                        <section class="toggle {% if loop.index == 1 %}active{% endif %}">
                             <label>{{ faq.question }}</label>
                             <p>{{ faq.answer }}</p>
                         </section>
