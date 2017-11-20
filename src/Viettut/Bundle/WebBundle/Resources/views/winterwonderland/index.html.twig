@@ -790,8 +790,24 @@
                     <ul>
                         <a href="tel:{{ data['groom_phone'] }}"><li class="ico1">Gọi điện</li></a>
                         <a href="sms:{{ data['groom_phone'] }}"><li class="ico2">Nhắn tin</li></a>
-                        <a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a>
-                        <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
+                        {% if 'groom_facebook' in data|keys %}
+                            <a href="{{ data['groom_facebook'] }}" target="_blank" title="Facebook">
+                                <li class="ico3">Facebook</li>
+                            </a>
+                        {% else %}
+                            <a href="http://facebook.com/thiepdodigital" target="_blank" title="Facebook">
+                                <li class="ico3">Facebook</li>
+                            </a>
+                        {% endif %}
+                        {% if 'groom_instagram' in data|keys %}
+                            <a href="{{ data['groom_instagram'] }}" target="_blank" title="Instagram">
+                                <li class="ico_insta">Instagram</li>
+                            </a>
+                        {% else %}
+                            <a href="http://instagram.com/thiepdodigital" target="_blank" title="Instagram">
+                                <li class="ico_insta">Instagram</li>
+                            </a>
+                        {% endif %}
                     </ul>
                 </li>
             </ul>
@@ -802,8 +818,26 @@
                     <ul>
                         <a href="tel:{{ data['bride_phone'] }}"><li class="ico1">Gọi điện</li></a>
                         <a href="sms:{{ data['bride_phone'] }}"><li class="ico2">Nhắn tin</li></a>
-                        <a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a>
-                        <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
+                        {% if 'bride_facebook' in data|keys %}
+                            <a href="{{ data['bride_facebook'] }}" target="_blank" title="Facebook">
+                                <li class="ico3">Facebook</li>
+                            </a>
+                        {% else %}
+                            <a href="http://facebook.com/thiepdodigital" target="_blank" title="Facebook">
+                                <li class="ico3">Facebook</li>
+                            </a>
+                        {% endif %}
+                        {#<a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a>#}
+                        {#<a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>#}
+                        {% if 'bride_instagram' in data|keys %}
+                            <a href="{{ data['bride_instagram'] }}" target="_blank" title="Instagram">
+                                <li class="ico_insta">Instagram</li>
+                            </a>
+                        {% else %}
+                            <a href="http://instagram.com/thiepdodigital" target="_blank" title="Instagram">
+                                <li class="ico_insta">Instagram</li>
+                            </a>
+                        {% endif %}
                     </ul>
                 </li>
             </ul>
