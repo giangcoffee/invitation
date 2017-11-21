@@ -1,0 +1,51 @@
+parameters:
+    viettut.entity.core.status.class: Viettut\Entity\Core\Status
+    viettut.form.type.status.class: Viettut\Form\Type\StatusFormType
+services:
+    # status ######################################################
+
+    viettut_api.handler.status:
+        class: Viettut\Handler\HandlerInterface
+        factory_service: viettut.handler.handler_manager.status
+        factory_method: getHandler
+        arguments:
+            - @viettut.user_role
+
+    ###### dependencies and base classes for status handler #######
+
+    viettut.repository.status:
+        class: Viettut\Repository\Core\StatusRepositoryInterface
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - %viettut.entity.core.status.class%
+
+    viettut.domain_manager.status:
+        class: Viettut\DomainManager\StatusManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @viettut.repository.status
+
+    viettut.form.type.status:
+        class: %viettut.form.type.status.class%
+        arguments:
+            - @viettut.repository.status
+        tags:
+            - { name: form.type, alias: tagcade_form_status }
+
+    viettut.handler.handlers.status:
+        class: Viettut\Handler\Handlers\Core\StatusHandler
+        parent: viettut.handler.role_handler_abstract
+        public: false
+        arguments:
+            - @viettut.form.type.status
+            - @viettut.domain_manager.status
+
+    viettut.handler.handler_manager.status:
+        class: Viettut\Handler\HandlerManager
+        arguments:
+            - %viettut.entity.core.status.class%
+            -
+                - @viettut.handler.handlers.status
+
+    # end status #####################################################

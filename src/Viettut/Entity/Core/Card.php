@@ -22,4 +22,7 @@ class Card extends CardModel
     protected $libraryCard;
     protected $homeLatitude;
     protected $homeLongitude;
+    protected $views;
+    protected $status;
+    protected $partyDate;
 }

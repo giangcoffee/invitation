@@ -10,6 +10,10 @@ use Viettut\Model\User\UserEntityInterface;
 
 interface CardInterface extends ModelInterface
 {
+    const STATUS_GOING = 1;
+    const STATUS_NOT_GOING = 2;
+    const STATUS_NOT_SURE = 3;
+
     /**
      * @param $id
      * @return $this
@@ -213,4 +217,26 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setEmbedded($embedded);
+
+    /**
+     * @return int
+     */
+    public function getViews(): int;
+
+    /**
+     * @param int $views
+     * @return self
+     */
+    public function setViews($views);
+
+    /**
+     * @return DateTime
+     */
+    public function getPartyDate(): DateTime;
+
+    /**
+     * @param DateTime $partyDate
+     * @return self
+     */
+    public function setPartyDate($partyDate);
 }

@@ -38,8 +38,10 @@ class CardFormType extends AbstractRoleSpecificFormType
                     return $er->createQueryBuilder('libCard')->select('libCard');
                 }
             ))
-//            ->add('libraryCard', new LibraryCardFormType())
             ->add('weddingDate', DateTimeType::class, [
+                'widget' => 'single_text'
+            ])
+            ->add('partyDate', DateTimeType::class, [
                 'widget' => 'single_text'
             ])
         ;

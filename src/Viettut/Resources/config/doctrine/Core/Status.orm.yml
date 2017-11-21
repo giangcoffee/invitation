@@ -1,0 +1,30 @@
+Viettut\Entity\Core\Status:
+    type: entity
+    table: viettut_status
+    repositoryClass: Viettut\Repository\Core\StatusRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        status:
+            type: smallint
+            nullable: false
+            options:
+                default: 0
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        uniqueUser:
+            type: string
+            nullable: false
+    manyToOne:
+        card:
+            targetEntity: Viettut\Entity\Core\Card
+            inversedBy: status
+
+    lifecycleCallbacks: {  }

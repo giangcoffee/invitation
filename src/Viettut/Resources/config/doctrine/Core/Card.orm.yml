@@ -19,22 +19,12 @@ Viettut\Entity\Core\Card:
         data:
             type: json_array
             nullable: false
-#        gallery:
-#            type: json_array
-#            nullable: true
+        partyDate:
+            type: datetime
+            nullable: false
         weddingDate:
             type: datetime
             nullable: false
-#        video:
-#            type: string
-#            nullable: true
-#        videoId:
-#            type: string
-#            nullable: true
-#        validVideo:
-#            type: boolean
-#            options:
-#                default: false
         createdAt:
             type: datetime
             gedmo:
@@ -57,9 +47,11 @@ Viettut\Entity\Core\Card:
             nulable: false
             options:
                 default: true
-#        commentObjectId:
-#            type: string
-#            nullable: true
+        views:
+            type: integer
+            nullable: false
+            options:
+                default: 0
         deletedAt:
             type: date
             nullable: true
@@ -76,6 +68,9 @@ Viettut\Entity\Core\Card:
     oneToMany:
         comments:
             targetEntity: Viettut\Entity\Core\Comment
+            mappedBy: card
+        status:
+            targetEntity: Viettut\Entity\Core\Status
             mappedBy: card
 
 

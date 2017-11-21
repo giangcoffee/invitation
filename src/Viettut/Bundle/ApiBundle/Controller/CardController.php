@@ -164,6 +164,36 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         return $this->patch($request, $id);
     }
 
+    public function patchGoingAction(Request $request, $id)
+    {
+        /** @var CardInterface $card */
+        $card = $this->one($id);
+        $card->setGoing($card->getGoing() + 1);
+        $this->get('viettut.domain_manager.card')->save($card);
+
+        return new Response("", Response::HTTP_NO_CONTENT);
+    }
+
+    public function patchNotgoingAction(Request $request, $id)
+    {
+        /** @var CardInterface $card */
+        $card = $this->one($id);
+        $card->setNotGoing($card->getNotGoing() + 1);
+        $this->get('viettut.domain_manager.card')->save($card);
+
+        return new Response("", Response::HTTP_NO_CONTENT);
+    }
+
+    public function patchNotsureAction(Request $request, $id)
+    {
+        /** @var CardInterface $card */
+        $card = $this->one($id);
+        $card->setNotSure($card->getNotSure() + 1);
+        $this->get('viettut.domain_manager.card')->save($card);
+
+        return new Response("", Response::HTTP_NO_CONTENT);
+    }
+
     /**
      * @param Request $request
      * @return JsonResponse

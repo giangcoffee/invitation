@@ -6,6 +6,7 @@ imports:
     - { resource: services/faq.services.yml }
     - { resource: services/post.services.yml }
     - { resource: services/testimonial.services.yml }
+    - { resource: services/status.services.yml }
 
 services:
 

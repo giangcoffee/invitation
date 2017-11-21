@@ -202,16 +202,20 @@ class BuilderController extends Controller
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
 
-        $weddingDate = clone $card->getWeddingDate();
-        $weddingDate->modify('-1 hour');
+        $card->setViews($card->getViews() + 1);
+        $cardManager->save($card);
+        if (!array_key_exists('user_unique_id', $_COOKIE)) {
+            setcookie("user_unique_id", uniqid('user', true), time() + 604800); //cookie expire in 7 day
+        }
+
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
             'first' => $first,
             'second' => $second,
             'rest' => $rest,
-            'date' => $card->getWeddingDate(),
-            'weddingDate' => $weddingDate,
+            'date' => $card->getPartyDate(),
+            'weddingDate' => $card->getWeddingDate(),
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),
             'homeLon' => $card->getHomeLongitude(),

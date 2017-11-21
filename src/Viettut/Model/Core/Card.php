@@ -57,9 +57,19 @@ class Card implements CardInterface
     /** @var  LibraryCardInterface */
     protected $libraryCard;
 
+    /** @var  int */
+    protected $views;
+
+    /** @var  DateTime */
+    protected $partyDate;
+
     function __construct()
     {
         $this->forGroom = true;
+        $this->views = 0;
+        $this->going = 0;
+        $this->notGoing = 0;
+        $this->notSure = 0;
     }
 
     /**
@@ -432,6 +442,41 @@ class Card implements CardInterface
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getViews(): int
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param int $views
+     * @return self
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getPartyDate(): DateTime
+    {
+        return $this->partyDate;
+    }
+
+    /**
+     * @param DateTime $partyDate
+     * @return self
+     */
+    public function setPartyDate($partyDate)
+    {
+        $this->partyDate = $partyDate;
+        return $this;
+    }
 
     function __toString()
     {
