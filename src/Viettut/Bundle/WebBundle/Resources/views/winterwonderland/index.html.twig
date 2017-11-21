@@ -712,7 +712,11 @@
         <div class="header_bg" style="background:url('/bundles/viettutweb/img/templates/winterwonderland/3c329ef94de4851a82a2bbde4a744348.jpg') center center no-repeat; background-size:cover;"></div>
         <div class="header_title">
             <h1 class="hd_title">
-                <span>HÔN LỄ CỦA</span>{{ data['groom_name'] }}<strong>&amp;</strong>{{ data['bride_name'] }}
+                {% if forGroom %}
+                    <span>HÔN LỄ CỦA</span>{{ data['groom_name'] }}<strong>&amp;</strong>{{ data['bride_name'] }}
+                {% else %}
+                    <span>HÔN LỄ CỦA</span>{{ data['bride_name'] }}<strong>&amp;</strong>{{ data['groom_name'] }}
+                {% endif %}
             </h1>
 
             <div class="hd_date">
@@ -783,7 +787,7 @@
     <div class="couple_wrap">
         <h2 class="title"><img src="/bundles/viettutweb/img/templates/winterwonderland/title_couple.png" alt="couple title"></h2>
         <div class="couple_container">
-            <ul class="couple_groom">
+            <ul class="{% if forGroom %}couple_groom{% else %}couple_bride{% endif %}">
                 <li class="couple_photo" style="background: url('/bundles/viettutweb/img/templates/winterwonderland/default_groom.jpg') 50% 50% no-repeat;"></li>
                 <li class="couple_name"><span>Chú rể</span>{{ data['groom_name'] }}</li>
                 <li class="groom-wrap">
@@ -811,7 +815,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="couple_bride">
+            <ul class="{% if forGroom %}couple_bride{% else %}couple_groom{% endif %}">
                 <li class="couple_photo" style="background: url('/bundles/viettutweb/img/templates/winterwonderland/default_bride.jpg') 50% 50% no-repeat;"></li>
                 <li class="couple_name"><span>Cô dâu</span>{{ data['bride_name'] }}</li>
                 <li class="bride-wrap">

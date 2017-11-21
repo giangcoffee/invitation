@@ -687,15 +687,24 @@
             </div>
             <div class="header_title">
                 <p class="hd_name">
-                    {{ data['groom_name'] }}<span>và</span>{{ data['bride_name'] }}
+                    {% if forGroom %}
+                        {{ data['groom_name'] }}<span>và</span>{{ data['bride_name'] }}
+                    {% else %}
+                        {{ data['bride_name'] }}<span>và</span>{{ data['groom_name'] }}
+                    {% endif %}
                 </p>
 
                 <p class="hd_date">{{ date | date('d/m/Y l H:i A') }}</p>
                 <p class="hd_loca">{{ data['place'] }}</p>
             </div>
             <div class="header_panel">
-                <p class="groom slideLeft"><a href="#panel_groom">CHÚ RỂ</a></p>
-                <p class="bride slideRight"><a href="#panel_bride">CÔ DÂU</a></p>
+                {% if forGroom %}
+                    <p class="groom slideLeft"><a href="#panel_groom">CHÚ RỂ</a></p>
+                    <p class="bride slideRight"><a href="#panel_bride">CÔ DÂU</a></p>
+                {% else %}
+                    <p class="bride slideRight"><a href="#panel_groom">CHÚ RỂ</a></p>
+                    <p class="groom slideLeft"><a href="#panel_bride">CÔ DÂU</a></p>
+                {% endif %}
             </div>
         </div>
         <div class="scroll slideUp"><span>Trượt xuống</span></div>
