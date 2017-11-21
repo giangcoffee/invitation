@@ -115,7 +115,7 @@ function updateVideo() {
         headers : {
             'Content-Type' : 'application/json; charset=utf-8'
         },
-        url : '/app_dev.php/api/v1/cards/' + cardId + '?XDEBUG_SESSION_START=1',
+        url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
         data : JSON.stringify({libraryCard: {video: video, embedded: embedded}}),
         success : function(response, textStatus, jqXhr) {

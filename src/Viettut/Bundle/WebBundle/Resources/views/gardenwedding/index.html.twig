@@ -31,7 +31,10 @@
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
     <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lora:400italic,700italic' rel='stylesheet' type='text/css'>
-
+    {% if isTemplate == false %}
+        <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    {% endif %}
 
 
 </head>
@@ -714,7 +717,27 @@
         </div>
     </div>
 </div>
+
+<div id="signup" class="signup">
+    <div class="container">
+        <div class="row">
+            <i>Chúng tôi sẽ không lưu bất cứ thông tin cá nhân nào của bạn</i>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" href="#">Sẽ đến</button> &nbsp;
+            <button class="btn btn-warning" href="#">Cân nhắc</button> &nbsp;
+            <button class="btn btn-danger" href="#">Không thể đến</button>
+        </div>
+        {#<p class="text-center">#}
+        {#</p>#}
+        <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
+    </div>
+</div>
+
 <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
+{% if isTemplate == false %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endif %}
 <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
 <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
 <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
@@ -726,6 +749,33 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
 </script>
 <script type="text/javascript">
+
+    {% if isTemplate == false %}
+        (function($) {
+            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
+                var $this = this;
+                $(document).scroll(function() {
+                    var y = $(this).scrollTop();
+                    if (y >= $this.position().top) {
+                        if (focusInFn) focusInFn();
+                    } else {
+                        if (focusOutFn) focusOutFn();
+                    }
+                });
+            }
+        })(jQuery);
+
+        $('.movie_wrap').onScrollTo(function() {
+            $('#signup').addClass('show');
+        }, function() {
+            $('#signup').removeClass('show');
+        });
+
+        $('#signup').on('click', '.close', function(e) {
+            e.preventDefault();
+            $('#signup').removeClass('show');
+        });
+    {% endif %}
     $(function () {
 
         $(".header").css("height", $(window).height());

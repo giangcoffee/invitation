@@ -202,7 +202,8 @@ class BuilderController extends Controller
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
 
-        $weddingDate = $card->getWeddingDate()->modify('-1 hour');
+        $weddingDate = clone $card->getWeddingDate();
+        $weddingDate->modify('-1 hour');
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
