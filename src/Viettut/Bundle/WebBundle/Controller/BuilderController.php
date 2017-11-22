@@ -172,7 +172,8 @@ class BuilderController extends Controller
             'forGroom' => $template->isForGroom(),
             'isTemplate' => true,
             'hash' => $hash,
-            'id' => $template->getId()
+            'id' => $template->getId(),
+            'voted' => true
         ));
     }
 
@@ -205,8 +206,13 @@ class BuilderController extends Controller
 
         $card->setViews($card->getViews() + 1);
         $cardManager->save($card);
+        $userVoted = false;
         if (!array_key_exists('user_unique_id', $_COOKIE)) {
             setcookie("user_unique_id", uniqid('user', true), time() + 604800); //cookie expire in 7 day
+        }
+
+        if (array_key_exists('user_voted', $_COOKIE)) {
+            $userVoted = true;
         }
 
         return $this->render($template->getPath(), array (
@@ -227,7 +233,8 @@ class BuilderController extends Controller
             'isTemplate' => false,
             'hash' => $hash,
             'embed' => $card->getEmbedded(),
-            'id' => $card->getId()
+            'id' => $card->getId(),
+            'voted' => $userVoted
         ));
     }
 }

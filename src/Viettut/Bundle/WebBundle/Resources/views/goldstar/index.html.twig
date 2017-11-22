@@ -34,10 +34,16 @@
 
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.css">
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
-
+    {% if isTemplate == false %}
+        <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    {% endif %}
     <link href='http://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
 
     <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
+    {% if isTemplate == false %}
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endif %}
     <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
     <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
     <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
@@ -48,8 +54,24 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
     </script>
+    <script src="/bundles/viettutweb/js/templates/common/popup.js"></script>
     <script type="text/javascript">
         <!--
+        {% if isTemplate == false %}
+        (function($) {
+            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
+                var $this = this;
+                $(document).scroll(function() {
+                    var y = $(this).scrollTop();
+                    if (y >= $this.position().top) {
+                        if (focusInFn) focusInFn();
+                    } else {
+                        if (focusOutFn) focusOutFn();
+                    }
+                });
+            }
+        })(jQuery);
+        {% endif %}
 
         function initMap() {
             var lat = $('#coordinates').data('lat');
@@ -582,6 +604,16 @@
             });
 
             $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+            $('.movie_wrap').onScrollTo(function() {
+                $('#signup').addClass('show');
+            }, function() {
+                $('#signup').removeClass('show');
+            });
+
+            $('#signup').on('click', '.close', function(e) {
+                e.preventDefault();
+                $('#signup').removeClass('show');
+            });
         });
 
         //-->
@@ -590,7 +622,7 @@
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
-<div id="card_id" data-id"{{ id }}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
@@ -814,7 +846,7 @@
     {% else %}
         {% if embed | length > 0 %}
             <!-- movie -->
-            <div class="movie_wrap ui-cont-b">
+            <div class="movie_wrap">
                 <h2 class="title hidden">VIDEO</h2>
                 <div class="ul-body">
                     <div class="movie_container movie1">
@@ -846,7 +878,7 @@
         <div class="ul-body col-3">
             <div id="div_snsbbs">
                 {% if isTemplate %}
-                <div class="snsbbs_sections ">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
@@ -1220,7 +1252,7 @@
         </div>
     </div>
 </div>
-
+{% if voted == false %}
 <div id="signup" class="signup">
     <div class="container">
         <div class="row">
@@ -1236,7 +1268,7 @@
         <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
     </div>
 </div>
-
+{% endif %}
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>

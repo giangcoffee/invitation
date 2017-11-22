@@ -15,6 +15,7 @@ use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -125,7 +126,15 @@ class StatusController extends RestControllerAbstract implements ClassResourceIn
         }
 
         $this->get('viettut.domain_manager.status')->save($statusEntity);
-        return new Response("", Response::HTTP_NO_CONTENT);
+        if (!array_key_exists('user_voted', $_COOKIE)) {
+            setcookie("user_voted", 1, time() + 604800); //cookie expire in 7 day
+        }
+
+        $response = new Response("", Response::HTTP_NO_CONTENT);
+        $cookie = new Cookie('user_voted', true, time() + 604800);
+        $response->headers->setCookie($cookie);
+
+        return $response;
     }
 
     /**
