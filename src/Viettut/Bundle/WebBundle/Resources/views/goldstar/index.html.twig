@@ -590,6 +590,7 @@
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id"{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
@@ -1053,7 +1054,7 @@
             <div class="col-2">
                 <div class="ui-block-a">
                     <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</li>
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Lễ Thành Hôn</li>
                         <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
                     </ul>
                 </div>
@@ -1219,6 +1220,23 @@
         </div>
     </div>
 </div>
+
+<div id="signup" class="signup">
+    <div class="container">
+        <div class="row">
+            <i>Vui lòng cho biết dự định của bạn !</i>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+            <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+            <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
+        </div>
+        {#<p class="text-center">#}
+        {#</p>#}
+        <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
+    </div>
+</div>
+
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>

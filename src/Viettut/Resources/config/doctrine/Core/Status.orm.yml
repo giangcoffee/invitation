@@ -25,6 +25,6 @@ Viettut\Entity\Core\Status:
     manyToOne:
         card:
             targetEntity: Viettut\Entity\Core\Card
-            inversedBy: status
+            inversedBy: statuses
 
     lifecycleCallbacks: {  }

@@ -63,13 +63,12 @@ class Card implements CardInterface
     /** @var  DateTime */
     protected $partyDate;
 
+    protected $statuses;
+
     function __construct()
     {
         $this->forGroom = true;
         $this->views = 0;
-        $this->going = 0;
-        $this->notGoing = 0;
-        $this->notSure = 0;
     }
 
     /**
@@ -476,6 +475,37 @@ class Card implements CardInterface
     {
         $this->partyDate = $partyDate;
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatuses()
+    {
+        $going = 0;
+        $notSure = 0;
+        $notGoing = 0;
+        if ($this->statuses != null) {
+            /** @var StatusInterface $status */
+            foreach ($this->statuses as $status) {
+                switch ($status->getStatus()) {
+                    case CardInterface::STATUS_GOING:
+                        $going++;
+                        break;
+                    case CardInterface::STATUS_NOT_SURE:
+                        $notSure++;
+                        break;
+                    case CardInterface::STATUS_NOT_GOING:
+                        $notGoing++;
+                        break;
+                }
+            }
+        }
+        return array(
+            'going' => $going,
+            'notSure' => $notSure,
+            'notGoing' => $notGoing
+        );
     }
 
     function __toString()

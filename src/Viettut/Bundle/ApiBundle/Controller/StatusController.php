@@ -107,10 +107,7 @@ class StatusController extends RestControllerAbstract implements ClassResourceIn
             throw new InvalidArgumentException('Card "%s" is not found or you do not have permission', $cardId);
         }
 
-        $uniqueUser = null;
-        if (array_key_exists('user_unique_id', $_COOKIE)) {
-            $uniqueUser = $_COOKIE['user_unique_id'];
-        }
+        $uniqueUser = $request->request->get('uniqueUser', null);
 
         if ($uniqueUser == null) {
             return new Response("", Response::HTTP_NO_CONTENT);
@@ -118,8 +115,9 @@ class StatusController extends RestControllerAbstract implements ClassResourceIn
 
         /** @var StatusRepositoryInterface $statusRepository */
         $statusRepository = $this->get('viettut.repository.status');
-        $statusEntity = $statusRepository->checkUniqueUserForCard($card, $uniqueUser);
-        if ($statusEntity instanceof StatusInterface) {
+        $statusEntities = $statusRepository->checkUniqueUserForCard($card, $uniqueUser);
+        if (count($statusEntities) > 0) {
+            $statusEntity = $statusEntities[0];
             $statusEntity->setStatus($status);
         } else {
             $statusEntity = new Status();

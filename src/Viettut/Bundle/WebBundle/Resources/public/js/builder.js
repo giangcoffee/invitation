@@ -52,7 +52,6 @@ function submit() {
                 'Thông tin cập nhật thành công !'
                 + '</div>';
             $('div.form-horizontal').before(html);
-            $('button#updateButton').html('Cập Nhật');
         },
         error : function(jqXHR, textStatus, errorThrown) {
         },
@@ -72,10 +71,12 @@ function submit() {
         },
         url : '/api/v1/cards/' + cardId,
         type : 'PATCH',
-        data : JSON.stringify({weddingDate: $('#wedding_date').val(), forGroom: forGroom}),
+        data : JSON.stringify({partyDate: $('#party_date').val(), weddingDate: $('#wedding_date').val(), forGroom: forGroom}),
         success : function(response, textStatus, jqXhr) {
+            $('button#updateButton').html('Cập Nhật');
         },
         error : function(jqXHR, textStatus, errorThrown) {
+            $('button#updateButton').html('Cập Nhật');
         },
         complete : function() {
         }

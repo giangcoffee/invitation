@@ -41,6 +41,7 @@
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push"
@@ -552,7 +553,7 @@
             <h2 class="title"><span>Địa điểm</span></h2>
             <div class="ul-body">
                 <ul class="lo_tab_wrap">
-                    <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</li>
+                    <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Lễ Thành Hôn</li>
                     <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
                 </ul>
             </div>
@@ -560,7 +561,7 @@
                 <div class="lo_box col-2">
                     <div class="ui-block-1">
                         <div class="lo_title">
-                            <h3>Lễ Cưới tổ chức tại</h3>
+                            <h3>{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3>
                             <p class="date">{{ weddingDate | date('d.m.Y H:i A') }}</p>
                             <p class="place">{{ data['home'] }}</p></div>
                         <div class="lo_map">
@@ -571,7 +572,7 @@
                         <div class="lo_containerarea">
                             <table class="lo_container lo_left">
                                 <tr>
-                                    <th class="lo_loca"><span class="icon">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</span></th>
+                                    <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
                                     <td class="txt">{{ data['home'] }}</td>
                                 </tr>
                                 <tr>
@@ -601,7 +602,7 @@
                 <div class="lo_box col-2">
                     <div class="ui-block-1">
                         <div class="lo_title">
-                            <h3>Tiệc Cưới tổ chức tại</h3>
+                            <h3>Tiệc Cưới</h3>
                             <p class="date">{{ date | date('d.m.Y H:i A') }}</p>
                             <p class="place">{{ data['place'] }}</p></div>
                         <div class="lo_map">
@@ -724,9 +725,9 @@
             <i>Vui lòng cho biết dự định của bạn !</i>
         </div>
         <div class="row">
-            <button class="btn btn-success" href="#">Sẽ đến</button> &nbsp;
-            <button class="btn btn-warning" href="#">Cân nhắc</button> &nbsp;
-            <button class="btn btn-danger" href="#">Không đến</button>
+            <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+            <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+            <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
         </div>
         {#<p class="text-center">#}
         {#</p>#}
@@ -748,6 +749,7 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
 </script>
+<script src="/bundles/viettutweb/js/templates/common/popup.js"></script>
 <script type="text/javascript">
 
     {% if isTemplate == false %}

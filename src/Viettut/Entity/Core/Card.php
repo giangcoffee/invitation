@@ -25,4 +25,5 @@ class Card extends CardModel
     protected $views;
     protected $status;
     protected $partyDate;
+    protected $statuses;
 }

@@ -18,6 +18,39 @@
     </section>
 
     <div class="container">
+        <h2>Thống kê số lượng đến dự</h2>
+        <table class="table table-bordered table-striped table-condensed mb-none">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th class="text-right">Tên</th>
+                <th class="text-right">Ngày cưới</th>
+                <th class="text-right">Lượt view</th>
+                <th class="text-right">Sẽ đến</th>
+                <th class="text-right">Đang cân nhắc</th>
+                <th class="text-right">Không đến</th>
+                <th class="text-right">Ghi chú</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for card in cards %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }}</td>
+                    <td class="text-right">{{ card.weddingDate | date('d-m-Y') }}</td>
+                    <td class="text-right">{{ card.views }}</td>
+                    <td class="text-right">{{ card.statuses['going'] }}</td>
+                    <td class="text-right">{{ card.statuses['notSure'] }}</td>
+                    <td class="text-right">{{ card.statuses['notGoing'] }}</td>
+                    <td class="text-right">{% if card.forGroom == true %}Nhà Trai{% else %}Nhà Gái{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <hr class="tall"/>
+    <div class="container">
+        <h2>Danh sách thiệp</h2>
         <div class="row">
             <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
                 {% for card in cards %}
@@ -41,7 +74,6 @@
                 {% endfor %}
             </ul>
         </div>
-
     </div>
 {% endblock %}
 {% block javascript %}

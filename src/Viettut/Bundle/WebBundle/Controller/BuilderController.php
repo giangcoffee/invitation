@@ -56,6 +56,7 @@ class BuilderController extends Controller
             'columns' => $template->getColumns(),
             'gallery' => $card->getGallery(),
             'date' => $card->getWeddingDate(),
+            'partyDate' => $card->getPartyDate(),
             'id' => $card->getId(),
             'name' => $template->getName(),
             'hash' => $card->getHash(),
@@ -155,7 +156,6 @@ class BuilderController extends Controller
         $first = array_slice($gallery, 0, 5);
         $second = array_slice($gallery, 5, 4);
         $rest = array_slice($gallery, 9);
-        $weddingDate = $template->getWeddingDate()->modify('-1 hour');
         return $this->render($template->getPath(), array(
             'data' => $template->getData(),
             'name' => $template->getName(),
@@ -164,14 +164,15 @@ class BuilderController extends Controller
             'second' => $second,
             'rest' => $rest,
             'date' => $template->getWeddingDate(),
-            'weddingDate' => $weddingDate,
+            'weddingDate' => $template->getWeddingDate(),
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
             'homeLon' => $template->getHomeLongitude(),
             'homeLat' => $template->getHomeLatitude(),
             'forGroom' => $template->isForGroom(),
             'isTemplate' => true,
-            'hash' => $hash
+            'hash' => $hash,
+            'id' => $template->getId()
         ));
     }
 
@@ -225,7 +226,8 @@ class BuilderController extends Controller
             'forGroom' => $card->isForGroom(),
             'isTemplate' => false,
             'hash' => $hash,
-            'embed' => $card->getEmbedded()
+            'embed' => $card->getEmbedded(),
+            'id' => $card->getId()
         ));
     }
 }
