@@ -726,7 +726,8 @@
                     {% endif %}
                 </p>
 
-                <p class="hd_date">{{ date | date('d/m/Y l H:i A') }}</p>
+                <p class="hd_date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                <p class="hd_loca">(tức {{ dateAl }})</p>
                 <p class="hd_loca">{{ data['place'] }}</p>
             </div>
             <div class="header_panel">
@@ -1118,7 +1119,7 @@
                     <table class="lo_container">
                         <tr>
                             <th class="lo_date">Thời gian</th>
-                            <td class="txt">{{ weddingDate | date('d-m-Y H:i A') }}</td>
+                            <td class="txt">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th class="lo_loca">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</th>
@@ -1160,7 +1161,7 @@
                     <table class="lo_container">
                         <tr>
                             <th class="lo_date">Thời gian</th>
-                            <td class="txt">{{ date | date('d-m-Y H:i A') }}</td>
+                            <td class="txt">{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th class="lo_loca">Tiệc cưới</th>

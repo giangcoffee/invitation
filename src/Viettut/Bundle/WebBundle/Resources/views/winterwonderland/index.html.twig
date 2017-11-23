@@ -752,7 +752,8 @@
             </h1>
 
             <div class="hd_date">
-                <p>{{ date | date('d-m-Y H:i A (l)') }}</p>
+                <p>{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                <p>(tức {{ dateAl }})</p>
                 <p>{{ data['place'] }}</p>
                 <p><img src="/bundles/viettutweb/img/templates/winterwonderland/header_down.png" alt="down"/></p>
             </div>
@@ -1173,7 +1174,7 @@
                     <table class="lo_container">
                         <tr>
                             <th>Thời gian</th>
-                            <td>{{ weddingDate | date('d-m-Y H:i A') }}</td>
+                            <td>{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th>Địa chỉ</th>
@@ -1211,7 +1212,7 @@
                     <table class="lo_container">
                         <tr>
                             <th>Thời gian</th>
-                            <td>{{ date | date('d-m-Y H:i A') }}</td>
+                            <td>{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th>Địa chỉ</th>

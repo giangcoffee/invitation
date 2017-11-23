@@ -20,11 +20,13 @@ use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\TemplateInterface;
 use Symfony\Component\Security\Core\Security;
 use Viettut\Model\User\UserEntityInterface;
+use Viettut\Utilities\DateUtil;
 use Zalo\Zalo;
 use Zalo\ZaloConfig;
 
 class BuilderController extends Controller
 {
+    use DateUtil;
     /**
      * @Route("/cards/{hash}/edit", name="edit_card_page")
      * @param $request
@@ -222,6 +224,7 @@ class BuilderController extends Controller
             'second' => $second,
             'rest' => $rest,
             'date' => $card->getPartyDate(),
+            'dateAl' => $this->getLunarDateString($card->getPartyDate()),
             'weddingDate' => $card->getWeddingDate(),
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),

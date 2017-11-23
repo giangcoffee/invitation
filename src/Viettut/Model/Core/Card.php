@@ -11,9 +11,12 @@ namespace Viettut\Model\Core;
 
 use DateTime;
 use Viettut\Model\User\UserEntityInterface;
+use Viettut\Utilities\DateUtil;
 
 class Card implements CardInterface
 {
+    use DateUtil;
+
     /** @var integer */
     protected $id;
 
@@ -506,6 +509,15 @@ class Card implements CardInterface
             'notSure' => $notSure,
             'notGoing' => $notGoing
         );
+    }
+
+    public function getWeddingDateString()
+    {
+        if ($this->weddingDate instanceof \DateTime) {
+            return $this->getDateString($this->weddingDate);
+        }
+
+        return '';
     }
 
     function __toString()
