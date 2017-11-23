@@ -155,16 +155,21 @@ class BuilderController extends Controller
         }
 
         $gallery = $template->getGallery();
-        $first = array_slice($gallery, 0, 5);
-        $second = array_slice($gallery, 5, 4);
-        $rest = array_slice($gallery, 9);
+        $data = $template->getData();
+        $description = "
+            On a spring day,
+            Two loving people are about to start a new life.
+            Even if you are busy, bless the first start of the two
+            If you encourage me, I will be more joy.";
+
+        if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
+            $description = $data['greeting'];
+        }
+
         return $this->render($template->getPath(), array(
-            'data' => $template->getData(),
+            'data' => $data,
             'name' => $template->getName(),
             'gallery' => $gallery,
-            'first' => $first,
-            'second' => $second,
-            'rest' => $rest,
             'date' => $template->getWeddingDate(),
             'dateAl' => $this->getLunarDateString($template->getWeddingDate()),
             'weddingDate' => $template->getWeddingDate(),
@@ -176,7 +181,8 @@ class BuilderController extends Controller
             'isTemplate' => true,
             'hash' => $hash,
             'id' => $template->getId(),
-            'voted' => true
+            'voted' => true,
+            'description' => $description
         ));
     }
 
@@ -201,12 +207,18 @@ class BuilderController extends Controller
         $comments = $card->getComments();
         $template = $card->getTemplate();
         $data = $card->getData();
-        $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
-        $gallery = $card->getGallery();
-        $first = array_slice($gallery, 0, 5);
-        $second = array_slice($gallery, 5, 4);
-        $rest = array_slice($gallery, 9);
+        $description = "
+            On a spring day,
+            Two loving people are about to start a new life.
+            Even if you are busy, bless the first start of the two
+            If you encourage me, I will be more joy.";
 
+        if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
+            $description = $data['greeting'];
+        }
+
+        $name = sprintf('Hôn lễ của %s và %s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('d-m-Y'));
+        $gallery = $card->getGallery();
         $card->setViews($card->getViews() + 1);
         $cardManager->save($card);
         $userVoted = false;
@@ -221,9 +233,6 @@ class BuilderController extends Controller
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
-            'first' => $first,
-            'second' => $second,
-            'rest' => $rest,
             'date' => $card->getPartyDate(),
             'dateAl' => $this->getLunarDateString($card->getPartyDate()),
             'weddingDate' => $card->getWeddingDate(),
@@ -238,7 +247,8 @@ class BuilderController extends Controller
             'hash' => $hash,
             'embed' => $card->getEmbedded(),
             'id' => $card->getId(),
-            'voted' => $userVoted
+            'voted' => $userVoted,
+            'description' => $description
         ));
     }
 }

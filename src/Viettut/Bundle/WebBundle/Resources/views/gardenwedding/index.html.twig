@@ -4,11 +4,7 @@
 
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="http://thiepdo.com/garden-wedding"/>
-    <meta property="og:description" content="
-    On a spring day,
-    Two loving people are about to start a new life.
-    Even if you are busy, bless the first start of the two
-    If you encourage me, I will be more joy."/>
+    <meta property="og:description" content="{{ description }}"/>
 
     <meta property="og:title" content="{{ name }}"/>
     <meta property="og:image" content="/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg"/>
@@ -153,7 +149,6 @@
                 <div class="header_date">
                     <p class="text">Ngày chung đôi</p>
                     <p class="date"><span>{{ date | date('d-m-Y') }}</span><span>{{ date | date('H:i A') }}</span></p>
-                    {#<p class="date"><span>{{ date | long_date }}</span></p>#}
                 </div>
             </div>
         </div>
@@ -174,7 +169,6 @@
                 <p class="bride"><a href="#panel_bride"><span class="icon"></span>Cô Dâu</a></p>
             </div>
             <div class="header_loca">
-                {#<p><span>{{ date | date('d.m.Y') }} ({{ date | date('l') }})</span> <span>{{ date | date('H:i A') }}</span></p>#}
                 <p><span>{{ date | long_time }}</span></p>
                 <p>{{ data['place'] }}</p>
             </div>
@@ -202,7 +196,6 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
-                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -211,7 +204,6 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
-                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -221,7 +213,6 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
-                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -230,7 +221,6 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
-                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -238,7 +228,6 @@
                 </ul>
 
                 <div class="greeting_loca">
-                    {#<p>Ngày {{ date | date('d') }} Tháng {{ date | date('m') }} Năm {{ date | date('Y') }}, lúc {{ date | date('H:i A') }}</p>#}
                     <p>{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
                     <p>(tức {{ dateAl }})</p>
                     <p>{{ data['place'] }}</p>
@@ -253,23 +242,23 @@
             <div class="ul-body">
                 <div class="gal_list">
                     <div class="col-5">
-                        {% for img in first %}
+                        {% for img in gallery[0:5] %}
                             <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
                                 <div class="ui-block-{{ loop.index }}" style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;"></div>
                             </a>
                         {% endfor %}
                     </div>
-                    {% if second | length > 0 %}
+                    {% if gallery | length > 5 %}
                         <div class="col-4">
-                            {% for img in second %}
+                            {% for img in gallery[5:4] %}
                                 <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgId="{{ loop.index + 5}}">
                                     <div class="ui-block-{{ loop.index }}" style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;"></div>
                                 </a>
                             {% endfor %}
                         </div>
                     {% endif %}
-                    {% if rest | length > 0 %}
-                        {% for img in rest %}
+                    {% if gallery | length > 9 %}
+                        {% for img in gallery[9:] %}
                             <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index + 9}}">
                                 {% if loop.index == 1 %}
                                     <p class="gal_more"><span>more</span></p>
@@ -755,7 +744,6 @@
 </script>
 <script src="/bundles/viettutweb/js/templates/common/popup.js"></script>
 <script type="text/javascript">
-
     {% if isTemplate == false %}
         (function($) {
             $.fn.onScrollTo = function(focusInFn, focusOutFn) {
@@ -782,6 +770,7 @@
             $('#signup').removeClass('show');
         });
     {% endif %}
+
     $(function () {
 
         $(".header").css("height", $(window).height());
@@ -1205,43 +1194,10 @@
             }
         });
 
-
-//        $('.locationtabs').click(function () {
-//            var id = $(this).attr('id').replace('tabs_', '');
-//            $('.locationtabs').removeClass('on');
-//            $(this).addClass('on');
-//            $('.locationdivs').removeClass('hide');
-//            $('.locationdivs').addClass('hide');
-//            $('#div_' + id).removeClass('hide');
-//
-//            setLocationInfoHeight();
-//
-//            initialize(id);
-//        }).css('cursor', 'pointer');
-
-        $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-1 cont_box3 ', '');
-
-            callKakaoNavi(id);
-        });
-
-        $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-2 cont_box4 ', '');
-
-            callOllehNavi(id);
-        });
-
-
         $('#div_snsbbs').masonry('bindResize');
-
-//
-//        function setLocationInfoHeight() {
-//        }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
@@ -1254,7 +1210,6 @@
                     window.location.href = '/';
                 }
             } catch (e) {
-                //console.log(e);
             }
         }).css('cursor', 'pointer');
 
