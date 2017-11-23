@@ -608,6 +608,8 @@
                     if($(this).attr('id')){
                         var id = $(this).attr('id').replace('p_','').replace('m_','');
                         setPosition(id);
+                    } else {
+                        window.location.href = '/';
                     }
                 }catch(e){
                 }

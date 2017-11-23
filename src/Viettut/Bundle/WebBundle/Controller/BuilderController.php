@@ -166,6 +166,7 @@ class BuilderController extends Controller
             'second' => $second,
             'rest' => $rest,
             'date' => $template->getWeddingDate(),
+            'dateAl' => $this->getLunarDateString($template->getWeddingDate()),
             'weddingDate' => $template->getWeddingDate(),
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
