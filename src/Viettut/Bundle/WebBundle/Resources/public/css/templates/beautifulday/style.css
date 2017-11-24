@@ -463,18 +463,18 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 .nav_info {font-size:0.75em;font-family:sans-serif;padding: 5px 0 20px;color:#333;text-align:center;}
 
 .col-2,.col-3,.col-4 {position:relative; overflow:hidden}
-/*.col-2 .ui-block-1 {float:left; width:49%;margin-right:2%}
-.col-2 .ui-block-2 {float:left; width:49%}*/
-.col-2 .ui-block-1,
-.col-2 .ui-block-2 {float:left; width:100%}
-    
-.col-3 .ui-block-1,
-.col-3 .ui-block-2 {width:32%; margin:0 2% 0 0}
-.col-3 .ui-block-3 {width:32%}
+/*.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-b {float:left; width:49%}*/
+.col-2 .ui-block-a,
+.col-2 .ui-block-b {float:left; width:100%}
 
-.gal_list .col-3 .ui-block-1,
-.gal_list .col-3 .ui-block-2 {width:32%; margin:0 2% 2% 0}
-.gal_list .col-3 .ui-block-3 {width:32%; margin:0 0 2% 0}
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0}
+.col-3 .ui-block-c {width:32%}
+
+.gal_list .col-3 .ui-block-a,
+.gal_list .col-3 .ui-block-b {width:32%; margin:0 2% 2% 0}
+.gal_list .col-3 .ui-block-c {width:32%; margin:0 0 2% 0}
 .ui-body-d {margin:2%}
 
 .snsbbs_sections .ui-body-d {/* margin:7px; */}

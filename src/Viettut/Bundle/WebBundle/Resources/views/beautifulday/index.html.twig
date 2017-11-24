@@ -862,13 +862,13 @@
             $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
 
             // 페이지 로딩 후 동영상 로딩 처리
-            var $iframe = $("#sk_media iframe");
-            if ($iframe.length) {
-                $.each($iframe, function () {
-                    var src = $(this).attr("data-src");
-                    this.src = src.replace("http://", "https://");
-                });
-            }
+//            var $iframe = $("#sk_media iframe");
+//            if ($iframe.length) {
+//                $.each($iframe, function () {
+//                    var src = $(this).attr("data-src");
+//                    this.src = src.replace("http://", "https://");
+//                });
+//            }
 
             $('#tabs_wedding').click(function() {
                 $('#tabs_wedding').addClass('on');
@@ -894,8 +894,8 @@
             var homeLon = $('#coordinates').data('home-lon');
             var homeTitle = $('#coordinates').data('home-title');
 
-            var location = {lat: lat, lng: lon};
-            var homeLocation = {lat: homeLat, lng: homeLon};
+            var location = new google.maps.LatLng(lat, lon);
+            var homeLocation = new google.maps.LatLng(homeLat, homeLon);
 
             var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
                 zoom: 16,
@@ -924,6 +924,9 @@
                 content: '<h4>' + homeTitle + '</h4>'
             });
             homeInfo.open(homeMap, homeMarker);
+
+            $('#wedding_pmap_canvas').css('width','100%');
+            $('#party_pmap_canvas').css('width','100%');
         }
 
         function getPath() {
@@ -951,70 +954,7 @@
 
         //-->
     </script>
-    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./beautiful_day_files/translateelement.css">
 </head>
-<script>function patch() {
-
-        window._open = window.open;
-        document._createElement = document.createElement;
-        document._createEvent = document.createEvent;
-        window._parent = (window.location != window.parent.location) ? document.referrer : document.location;
-
-        function getParent(el, selector) {
-            var parent = el.parentNode;
-            if (parent == document) {
-                return null;
-            }
-            if (parent.matches(selector)) {
-                return parent;
-            } else {
-                return getParent(parent, selector);
-            }
-        }
-
-        function blockWindow(args) {
-            var target;
-            if (window.event) {
-                target = window.event.target.tagName == 'A' ? window.event.target : getParent(window.event.target, 'a');
-            }
-            parent.postMessage({
-                type: "safeBlock",
-                url: args[0],
-                args: args,
-                href: target ? target.href : null
-            }, window._parent);
-        }
-
-        window.open = function () {
-            blockWindow(arguments);
-        };
-
-        dispatchEvent = function (element) {
-            return function (event) {
-                if (event.type == "click") {
-                    blockWindow([element.getAttribute('href')]);
-                }
-            }
-        };
-
-        document.createElement = function () {
-            var element = document._createElement.apply(document, arguments);
-            if (arguments[0].toLowerCase() == 'a') {
-                element.dispatchEvent = dispatchEvent(element);
-            }
-            return element;
-        };
-
-        // Process saved popup.
-        var html = document.querySelector('html'),
-                key = 'data-sbro-popup-current',
-                url = html.getAttribute(key);
-        if (url) {
-            blockWindow([url]);
-        }
-
-    }
-    patch()</script>
 <body class="ui-mobile-viewport ui-overlay-a">
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
@@ -1151,21 +1091,15 @@
             <div class="home_wrap">
                 <div class="home_content">
                     <div class="couple_list">
-                        <div class="name"><p><strong><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">Bae Ki-hyun</font></font></strong></p>
+                        <div class="name"><p><strong>{{ data['groom_name'] }}</strong></p>
                         </div>
-                        <div class="and"><p><strong><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">And</font></font></strong></p></div>
-                        <div class="name"><p><strong><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">Park Yoo-hyun</font></font></strong>
+                        <div class="and"><p><strong>Và</strong></p></div>
+                        <div class="name"><p><strong>{{ data['bride_name'] }}</strong>
                             </p></div>
                     </div>
                     <div class="home_loca">
-                        <div class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">October
-                                    6, 2018 (Sat) 11:45 am</font></font></div>
-                        <div class="place"><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">Dagup Wedding Hall Crystal Hole</font></font>
-                        </div>
+                        <div class="date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</div>
+                        <div class="place">{{ data['place'] }}</div>
                     </div>
                     <div class="home_dday">
                         <!--<p>D<span>-</span>317</p>-->
@@ -1183,62 +1117,27 @@
 
                 <div class="invite_content">
                     <!-- 초대글 -->
-                    <h2 class="title"><span>GREETINGS</span></h2>
-                    <div class="invite_img"><span><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">We are married.</font></font></span></div>
+                    <h2 class="title"><span>LỜI CẢM ƠN</span></h2>
+                    <div class="invite_img"><span>We are married.</span></div>
 
-                    <div class="invite_text"><font style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">Long-awaited love </font></font><br><font
-                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                balhyeoseo in the snow </font></font><br>
-                        <br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                through the story </font></font><br><font style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">
-                                Love began </font></font><br>
-                        <br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                a memorable one another to </font></font><br><font
-                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                want to be one of the flowers.</font></font></div>
+                    <div class="invite_text">{{ data['greeting'] }}</div>
                     <ul class="invite_name">
                         <li class="in_groom">
-                            <p class="parents"><span class="in1"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">Bu Byeong </font></font></span><font
-                                        style="vertical-align: inherit;"><span class="in2"><font
-                                                style="vertical-align: inherit;">- </font></span><span class="in1"><font
-                                                style="vertical-align: inherit;">sik </font></span></font><span
-                                        class="in_and"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">, </font></font></span><font
-                                        style="vertical-align: inherit;"><span class="in3"><font
-                                                style="vertical-align: inherit;">the eldest son </font></span></font><span
-                                        class="in2"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">of Kim Hyun-joo</font></font></span><span
-                                        class="in3"><font style="vertical-align: inherit;"></font></span></p>
-                            <p><span class="in4"><em><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">Groom </font></font></em><strong><font
-                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">baegihyeon</font></font></strong></span>
-                            </p>
+                            <p class="parents"><span class="in1">{{ data['groom_fa_name'] }}</span><span class="in_and">,</span><span class="in2">{{ data['groom_mo_name'] }}</span><span class="in3"></span></p>
+                            <p><span class="in4"><em>Chú rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
                         <li class="in_bride">
-                            <p class="parents"><span class="in1"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">Part bakbyeonghyeon </font></font></span><span
-                                        class="in_and"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">, </font></font></span><span
-                                        class="in2"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">Mo gojuhui </font></font></span><span
-                                        class="in3"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">chanyeo of</font></font></span></p>
-                            <p><span class="in4"><em><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">Bride </font></font></em><strong><font
-                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Park Yuhyeon</font></font></strong></span>
-                            </p>
+                            <p class="parents"><span class="in1">{{ data['bride_fa_name'] }}</span><span class="in_and">,</span><span class="in2">{{ data['bride_mo_name'] }}</span><span class="in3"></span></p>
+                            <p><span class="in4"><em>Cô dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
                     </ul>
+
                 </div>
             </div>
 
             <!-- gallery -->
             <div class="gallery_wrap" id="sk_gallery" data-pswp-uid="1">
-                <h2 class="title"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WEDDING GALLERY</font></font></span>
+                <h2 class="title"><span>ALBUM ẢNH</span>
                 </h2>
                 <div class="ul-body">
                     <div class="gal_list">
@@ -1281,678 +1180,309 @@
 
 
             <!-- movie -->
-            <div class="movie_wrap" id="sk_media">
-                <h2 class="title"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WEDDING MOVIE</font></font></span>
-                </h2>
-                <div class="ul-body">
-                    <div class="movie_container movie1">
-                        <ul>
-                            <li>
-                                <iframe id="movie" width="100%"
-                                        data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&amp;autohide=1&amp;rel=0&amp;vq=hd1080"
-                                        height="100%" frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""
-                                        allowfullscreen="" src="./beautiful_day_files/Q9aUb6FJdhk.html"></iframe>
-                            </li>
-                            <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
-                        </ul>
+            {#<div class="movie_wrap" id="sk_media">#}
+                {#<h2 class="title"><span>WEDDING MOVIE</span>#}
+                {#</h2>#}
+                {#<div class="ul-body">#}
+                    {#<div class="movie_container movie1">#}
+                        {#<ul>#}
+                            {#<li>#}
+                                {#<iframe id="movie" width="100%"#}
+                                        {#data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&amp;autohide=1&amp;rel=0&amp;vq=hd1080"#}
+                                        {#height="100%" frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""#}
+                                        {#allowfullscreen="" src="./beautiful_day_files/Q9aUb6FJdhk.html"></iframe>#}
+                            {#</li>#}
+                            {#<!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->#}
+                        {#</ul>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+            {% if isTemplate %}
+                <!-- movie -->
+                <div class="movie_wrap" id="sk_media">
+                    <h2 class="title hidden"><span>Video</span></h2>
+                    <div class="ul-body">
+                        <div class="movie_container movie1">
+                            <ul>
+                                <li class="iframe-container">
+                                    <iframe
+                                            id="movie"
+                                            width="100%"
+                                            src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                            height="100%"
+                                            frameborder="0"
+                                            allowfullscreen>
+                                    </iframe>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <!--// movie -->
+            {% else %}
+                {% if embed | length > 0 %}
+                    <!-- movie -->
+                    <div class="movie_wrap" id="sk_media">
+                        <h2 class="title hidden"><span>Video</span></h2>
+                        <div class="ul-body">
+                            <div class="movie_container movie1">
+                                <ul>
+                                    <li class="iframe-container">
+                                        {{ embed | raw }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// movie -->
+                {% endif %}
+            {% endif %}
             <!--// movie -->
 
             <!-- guestbook -->
             <div class="guestbook_wrap" id="sk_snsbbs">
-                <h2 class="title"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WEDDING GUESTBOOK</font></font></span>
+                <h2 class="title"><span>WEDDING GUESTBOOK</span>
                 </h2>
-                <!--글 있을때-->
                 <div class="ul-body col-3">
-                    <div class="gb_msg"><span><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">Leave a congratulatory message to the groom ♥ Bride</font></font></span>
+                    <div class="gb_msg"><span>Leave a congratulatory message to the groom ♥ Bride</span>
                     </div>
                     <div id="div_snsbbs" style="position: relative; height: 971.157px;">
-                        <div class="snsbbs_sections " style="position: absolute; left: 0px; top: 0px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/wickeln2_1438665585229.jpg" alt="">
-                                            <div class="pro-sns naver"></div>
+                        {% if isTemplate %}
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Michael</strong></p>
+                                                <p class="date">2017-07-14 17:45</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Konjong</font></font></strong>
-                                            </p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-11-08
-                                                        18:01</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Yuhyeonah sincere
-                                                        congratulations </font></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-                                                        healthy and bright living hard ~~ ♡</font></font></p>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Quá tuyệt vời !</p>
+                                                <div class="emo-type-c emo11"></div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="snsbbs_sections " style="position: absolute; left: 334px; top: 0px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/img_profile.png" alt="">
-                                            <div class="pro-sns notmember"></div>
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Giang Minh</strong></p>
+                                                <p class="date">2017-07-14 17:45</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Get
-                                                            married</font></font></strong></p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-10-17
-                                                        14:47</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">I congratulate the marriage
-                                                        of two people ^^</font></font></p>
-                                            <div class="emo-type-a emo05"></div>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Chúc mừng cô dâu chú rể nhé. </p>
+                                                <div class="emo-type-b emo02"></div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="snsbbs_sections " style="position: absolute; left: 669px; top: 0px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/oePKO9m5_bigger.jpg" alt="">
-                                            <div class="pro-sns twitter"></div>
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Sunny</strong></p>
+                                                <p class="date">2017-07-14 17:43</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Snail</font></font></strong>
-                                            </p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-04-07
-                                                        15:29</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Wow .. I admire your
-                                                        brother. It is so beautiful. </font><font
-                                                            style="vertical-align: inherit;">Thank you for taking me to
-                                                        the lack of Ji Hyun !!!!! </font><font
-                                                            style="vertical-align: inherit;">I am looking forward to the
-                                                        second generation of visual couples.</font></font></p>
-                                            <div class="emo-type-a emo08"></div>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Trăm năm hạnh phúc nha !</p>
+                                                <div class="emo-type-b emo20"></div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="snsbbs_sections " style="position: absolute; left: 0px; top: 203px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/o.jpg" alt="">
-                                            <div class="pro-sns kakao"></div>
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Windy</strong></p>
+                                                <p class="date">2017-07-14 17:43</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Snail</font></font></strong>
-                                            </p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-04-07
-                                                        15:26</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">congratulation for the
-                                                        wedding! </font><font style="vertical-align: inherit;">My
-                                                        brother and Yoo Hyun are so pretty and I was tearful. ㅠㅠ
-                                                        ㅠㅠ</font></font></p>
-                                            <div class="emo-type-a emo06"></div>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Ôi bao giờ mới đến lượt mình đây :((</p>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="snsbbs_sections mobile_hide" style="position: absolute; left: 334px; top: 353px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/img_profile.png" alt="">
-                                            <div class="pro-sns notmember"></div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Sweet Corn</strong></p>
+                                                <p class="date">2017-07-14 17:43</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Kim
-                                                            Won-hye</font></font></strong></p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-04-07
-                                                        15:25</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">I would like to
-                                                        congratulate you on your </font></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-                                                        wedding day </font><font style="vertical-align: inherit;">~
-                                                        ~ </font><font style="vertical-align: inherit;">~
-                                                        You </font></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-                                                        two look so pretty!</font></font></p>
-                                            <div class="emo-type-a emo08"></div>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>
+                                                    Wow, thực sự chúc mừng. <br/>
+                                                                                                Hãy đến và tham gia vào ngày hạnh phúc của bạn <br/>
+                                                    Xin chúc mừng ^^
+                                                </p>
+                                                <div class="emo-type-a emo02"></div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="snsbbs_sections mobile_hide" style="position: absolute; left: 669px; top: 393px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/img_profile.png" alt="">
-                                            <div class="pro-sns notmember"></div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/crop_c14f8a35bc8180f7cbf516f097919e03.jpg" alt="profile picture" />
+                                                <div class="pro-sns dalpeng"><span></span></div>
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Thích thì nhích</strong></p>
+                                                <p class="date">2017-07-14 17:42</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Choi,
-                                                            Hyunsoo</font></font></strong></p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-04-07
-                                                        15:25</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">I congratulate you on your
-                                                        marriage </font></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-                                                        . </font></font><br><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-                                                        There was such a beautiful sister! </font><font
-                                                            style="vertical-align: inherit;">Congratulations on your
-                                                        marriage ~</font></font></p>
-                                            <div class="emo-type-c emo08"></div>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Chúc mừng đôi trẻ !</p>
+                                                <div class="emo-type-a emo08"></div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="snsbbs_sections mobile_hide" style="position: absolute; left: 0px; top: 577px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/picture" alt="">
-                                            <div class="pro-sns facebook"></div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                                <div class="pro-sns notmember"><span></span></div>
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>im_mi_ya</strong></p>
+                                                <p class="date">2017-07-03 15:04</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Snail</font></font></strong>
-                                            </p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-04-07
-                                                        15:24</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Congratulations
-                                                        Congratulations ~ ~ Congratulations on your wedding ~ ~ </font></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-                                                        Pretty pictures are pretty! </font><font
-                                                            style="vertical-align: inherit;">People are pretty and
-                                                        beautiful too ~</font></font></p>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>
+                                                    Chúc mừng đám cưới của bạn! Tôi sẽ đến sớm!
+                                                </p>
+                                                <div class="emo-type-a emo06"></div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="snsbbs_sections mobile_hide" style="position: absolute; left: 334px; top: 727px;">
-                            <div class="ui-body-d">
-                                <div class="gb_cont_box btn_go_snsbbs" style="cursor: pointer;">
-                                    <div class="pro_info">
-                                        <div class="pro_img">
-                                            <img src="/bundles/viettutweb/img/templates/beautifulday/img_profile.png" alt="">
-                                            <div class="pro-sns dalpeng"></div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                                <div class="pro-sns notmember"><span></span></div>
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>songsong2</strong></p>
+                                                <p class="date">2017-07-03 15:02</p>
+                                            </div>
                                         </div>
-                                        <div class="pro_txt">
-                                            <p><strong><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">Lee Jung
-                                                            Hyun</font></font></strong></p>
-                                            <p class="date"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">2017-04-07
-                                                        15:22</font></font></p>
-                                        </div>
-                                    </div>
-                                    <ul class="gb_cont btn_go_snsbbs" style="cursor: pointer;">
-                                        <li class="comm_txt">
-                                            <p><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Aka Cha - Ki
-                                                        Hyeon-ah! </font><font style="vertical-align: inherit;">Yoo Hyun
-                                                        is very pretty, </font></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-                                                        Yoo Hyun Lee lives happily with Kee Hyun ~ ~</font></font></p>
-                                        </li>
-                                    </ul>
-                                    <div class="gb_skip btn_go_snsbbs" style="cursor: pointer;">
-                                        <p class="gb_comm fl"><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">more</font></font></p>
-                                        <p class="gb_comm fr"><span class="icon_reply"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Reply:</font></font></span><font
-                                                    style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"> 0</font></font></p>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Tuyệt đẹp !!!</p>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {% else %}
+                            {% for comment in comments %}
+                                <div class="snsbbs_sections">
+                                    <div class="ui-body-d">
+                                        <div class="gb_cont_box btn_go_snsbbs">
+                                            <div class="pro_info">
+                                                <div class="pro_img">
+                                                    <img src="{{ comment.author.avatar }}" alt="profile picture" />
+                                                </div>
+                                                <div class="pro_txt">
+                                                    <p><strong>{{ comment.author.name }}</strong></p>
+                                                    <p class="date">{{ comment.createdAt | date('d-m-Y H:i') }}</p>
+                                                </div>
+                                            </div>
+                                            <ul class="gb_cont btn_go_snsbbs">
+                                                <li class="comm_txt">
+                                                    <p>{{ comment.content }}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
-                <div class="gb_btn btn_go_snsbbs" style="cursor: pointer;"><span><font style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">Congratulatory Writing</font></font></span></div>
+                <div class="gb_btn btn_go_snsbbs" style="cursor: pointer;"><span>Congratulatory Writing</span></div>
                 <!--// 글 있을때-->
             </div>
             <!--// guestbook -->
 
             <!-- location -->
             <div class="location_wrap" id="sk_map">
-                <h2 class="title"><span>WEDDING LOCATION</span></h2>
+                <h2 class="title"><span>ĐỊA ĐIỂM</span></h2>
 
+                {#<div class="ul-body">#}
+                    {#<ul class="lo_tab_wrap">#}
+                        {#<li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;"><span>Lễ Thành Hôn</span></li>#}
+                        {#<li class="tab_btn rh locationtabs " id="tabs_party" style="cursor: pointer;"><span>Tiệc Cưới</span></li>#}
+                    {#</ul>#}
+                {#</div>#}
                 <div class="ul-body">
                     <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;"><span><font
-                                        style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wedding Hall</font></font></span><font
-                                    style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                    Information</font></font></li>
-                        <li class="tab_btn rh locationtabs " id="tabs_party" style="cursor: pointer;"><span><font
-                                        style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reception</font></font></span><font
-                                    style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                    Guide</font></font></li>
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding"><span>Lễ Thành Hôn</span></li>
+                        <li class="tab_btn rh locationtabs " id="tabs_party"><span>Tiệc Cưới</span></li>
                     </ul>
                 </div>
 
+
                 <div class="ul-body locationdivs " id="div_wedding">
-                    <input type="hidden" id="wedding_pmap_lat" value="37.4950598">
-                    <input type="hidden" id="wedding_pmap_lon" value="127.12241160000008">
-                    <input type="hidden" id="wedding_paddr" value="서울시 송파구 중대로 135">
-                    <input type="hidden" id="wedding_pname" value="달팽웨딩홀 크리스탈홀">
                     <div class="lo_box col-2">
                         <div class="ui-block-a">
                             <div class="lo_title">
-                                <p class="tit"><span><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">WEDDING CEREMONY </font></font></span><strong><font
-                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wedding
-                                                Hall Access Map</font></font></strong></p>
-                                <p class="date"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">Saturday, October 6, 2018 11:45
-                                            am</font></font></p>
-                                <p class="place"><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">Dagup Wedding Hall Crystal Hole</font></font>
-                                </p></div>
-                            <div class="lo_map" style="width: 100%;">
-                                <div id="wedding_pmap_canvas" class="not_view_panel"
-                                     style="width: 100%; height: 500px; position: relative; overflow: hidden; background: url(&quot;http://static.naver.net/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat transparent;">
-                                    <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0; cursor: url(&quot;http://static.naver.net/maps/mantle/1x/openhand.cur&quot;), default;">
-                                        <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;">
-                                            <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1;">
-                                                <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 0; -webkit-user-select: none;"></div>
-                                                <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 1; -webkit-user-select: none;">
-                                                    <div style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 0px; height: 0px; overflow: visible; box-sizing: content-box !important;">
-                                                        <div style="position: absolute; top: -289px; left: 529px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 479px; left: 273px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(1)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -33px; left: 529px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(2)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 223px; left: 273px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(3)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 223px; left: 529px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(4)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -33px; left: 273px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(5)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 479px; left: 529px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(6)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -289px; left: 273px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(7)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -289px; left: 785px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(8)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 479px; left: 17px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(9)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -33px; left: 785px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(10)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 223px; left: 17px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(11)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 223px; left: 785px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(12)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -33px; left: 17px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(13)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 479px; left: 785px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(14)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -289px; left: 17px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(15)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -289px; left: 1041px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(16)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 479px; left: -239px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(17)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -33px; left: 1041px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(18)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 223px; left: -239px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(19)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 223px; left: 1041px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(20)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -33px; left: -239px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(21)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: 479px; left: 1041px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(22)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                        <div style="position: absolute; top: -289px; left: -239px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; box-sizing: content-box !important; opacity: 1; width: 256px; height: 256px;">
-                                                            <img alt="" width="256" height="256"
-                                                                 src="/bundles/viettutweb/img/templates/beautifulday/ol_vc_an(23)"
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; opacity: 1; position: absolute; left: 0px; top: 0px; z-index: 0; width: 256px; height: 256px;">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 100;">
-                                                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 101;"></div>
-                                                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 103;">
-                                                        <div title=""
-                                                             style="position: absolute; overflow: hidden; box-sizing: content-box !important; cursor: inherit; left: 501px; top: 167px; width: 22px; height: 33px;">
-                                                            <map name="nmarker-5B568CC6-181F-4CE7-BFD7-5EB02589157A">
-                                                                <area href="http://dalpeng.com/beautifulday#"
-                                                                      shape="poly"
-                                                                      coords="11,0,9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,5,20,6,23,8,26,9,30,9,34,13,34,13,30,14,26,16,23,17,20,17,19,20,16,21,14,22,12,22,12,22,8,20,4,18,2,16,1,13,0"
-                                                                      style="display: block; cursor: pointer;">
-                                                            </map>
-                                                            <img src="/bundles/viettutweb/img/templates/beautifulday/marker-default.png" alt=""
-                                                                 style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; position: absolute; cursor: inherit; width: 22px; height: 33px; left: 0px; top: 0px;"><img
-                                                                    src="/bundles/viettutweb/img/templates/beautifulday/dot.gif" alt=""
-                                                                    usemap="#nmarker-5B568CC6-181F-4CE7-BFD7-5EB02589157A"
-                                                                    style="position: absolute; border: 0px; left: 0px; top: 0px; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important; -webkit-user-select: none; width: 22px; height: 33px;">
-                                                        </div>
-                                                    </div>
-                                                    <div style="overflow: visible; width: 100%; height: 0px; position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; z-index: 106;"></div>
-                                                </div>
-                                            </div>
-                                            <div style="position: absolute; display: none; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 10000; opacity: 0.5; background-color: rgb(255, 255, 255);"></div>
-                                        </div>
-                                    </div>
-                                    <div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; right: 0px;">
-                                        <div style="border: 0px none; margin: -4px 0px 0px; padding: 0px; pointer-events: none; float: right; height: 21px;">
-                                            <div style="position: relative; width: 52px; height: 14px; margin: 0px 12px 7px 2px; overflow: hidden; pointer-events: auto;">
-                                                <span style="display:block;margin:0;padding:0 4px;text-align:center;font-size:10px;line-height:11px;font-family:Helvetica,AppleSDGothicNeo-Light,nanumgothic,NanumGothic,&quot;나눔고딕&quot;,Dotum,&quot;돋움&quot;,sans-serif;font-weight:bold;color:#000;text-shadow:-1px 0 rgba(255, 255, 255, 0.3), 0 1px rgba(255, 255, 255, 0.3), 1px 0 rgba(255, 255, 255, 0.3), 0 -1px rgba(255, 255, 255, 0.3);">100m</span><img
-                                                        src="/bundles/viettutweb/img/templates/beautifulday/scale-normal-b.png" width="44"
-                                                        height="4" alt=""
-                                                        style="position:absolute;left:4px;;bottom:0;z-index:2;display:block;width:44px;height:4px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img
-                                                        src="/bundles/viettutweb/img/templates/beautifulday/scale-normal-l.png" width="4"
-                                                        height="10" alt=""
-                                                        style="position:absolute;left:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"><img
-                                                        src="/bundles/viettutweb/img/templates/beautifulday/scale-normal-r.png" width="4"
-                                                        height="10" alt=""
-                                                        style="position:absolute;right:0;bottom:0;z-index:2;display:block;width:4px;height:10px;overflow:hidden;margin:0;padding:0;border:0 none;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;">
-                                            </div>
-                                        </div>
-                                        <div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right;">
-                                            <a href="http://map.naver.com/" target="_blank"
-                                               style="display: block; width: 43px; height: 10px; overflow: hidden; margin: 0px 5px 7px 0px; pointer-events: auto;"><img
-                                                        src="/bundles/viettutweb/img/templates/beautifulday/naver-normal.png" width="43"
-                                                        height="10" alt="NAVER"
-                                                        style="display:block;width:43px;height:10px;overflow:hidden;border:0 none;margin:0;padding:0;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;"></a>
-                                        </div>
-                                    </div>
-                                    <div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; bottom: 0px; left: 0px;">
-                                        <div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: left; height: 19px;">
-                                            <div class="map_copyright"
-                                                 style="margin: 0px; padding: 0px 0px 2px 10px; height: 19px; line-height: 19px; color: rgb(68, 68, 68); font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; font-size: 11px; clear: both; white-space: nowrap; pointer-events: none;">
-                                                <div style="float: left;"><span
-                                                            style="white-space: pre; color: rgb(68, 68, 68);">© NAVER Corp.</span>
-                                                </div>
-                                                <a href="http://dalpeng.com/beautifulday#"
-                                                   style="font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; font-size: 11px; line-height: 19px; margin: 0px 0px 0px 5px; padding: 0px; color: rgb(68, 68, 68); float: left; pointer-events: auto; text-decoration: underline; display: none;">더보기</a>
-                                                <div style="float: left;"><a target="_blank"
-                                                                             href="http://www.openstreetmap.org/copyright"
-                                                                             style="pointer-events: auto; white-space: pre; display: none; color: rgb(68, 68, 68);">
-                                                        /OpenStreetMap</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="border: 1px solid rgb(41, 41, 48); padding: 15px; color: rgb(51, 51, 51); position: absolute; font-size: 11px; line-height: 1.5; clear: both; display: none; max-width: 350px !important; max-height: 300px !important; background: rgb(255, 255, 255);">
-                                        <h5 style="font-size: 12px; margin-top: 0px; margin-bottom: 10px;">지도 데이터</h5><a
-                                                href="http://dalpeng.com/beautifulday#"
-                                                style="position: absolute; top: 8px; right: 8px; width: 14px; height: 14px; font-size: 14px; line-height: 14px; display: block; overflow: hidden; color: rgb(68, 68, 68); text-decoration: none; font-weight: bold; text-align: center;">╳</a>
-                                        <div><span style="white-space: pre; color: rgb(68, 68, 68); float: left;">© NAVER Corp.</span><a
-                                                    target="_blank" href="http://www.openstreetmap.org/copyright"
-                                                    style="pointer-events: auto; white-space: pre; color: rgb(68, 68, 68); float: left; display: none;">
-                                                /OpenStreetMap</a></div>
-                                    </div>
-                                    <div style="position: absolute; z-index: 100; margin: 0px; padding: 0px; pointer-events: none; top: 0px; right: 0px;">
-                                        <div style="border: 0px none; margin: 0px; padding: 0px; pointer-events: none; float: right;">
-                                            <div style="position: relative; z-index: 12; pointer-events: auto;">
-                                                <div style="position: relative; z-index: 0; width: 28px; margin: 10px; border: 1px solid rgb(68, 68, 68); box-sizing: content-box !important; -webkit-user-select: none;">
-                                                    <a href="http://dalpeng.com/beautifulday#"
-                                                       style="position: relative; z-index: 2; width: 28px; height: 22px; cursor: pointer; display: block; overflow: hidden; border-bottom: 1px solid rgb(202, 205, 209); box-sizing: content-box !important;"><img
-                                                                src="/bundles/viettutweb/img/templates/beautifulday/zoom-in-large-normal.png"
-                                                                width="28" height="22" alt="지도 확대"
-                                                                style="margin:0;padding:0;border:solid 0 transparent;display:block;box-sizing:content-box !important;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;width:28px;height:22px;"></a>
-                                                    <div style="position: relative; width: 28px; height: 156px; overflow: hidden; margin: 0px; padding: 7px 0px; cursor: pointer; box-sizing: content-box !important; display: block; background-color: rgb(255, 255, 255);">
-                                                        <div style="position: absolute; top: 7px; bottom: 7px; left: 12px; width: 4px; height: 156px; display: block; background-color: rgb(47, 135, 236);"></div>
-                                                        <div style="position: absolute; top: 7px; bottom: 7px; left: 12px; width: 4px; height: 34px; display: block; background-color: rgb(202, 205, 209);"></div>
-                                                        <a href="http://dalpeng.com/beautifulday#"
-                                                           style="position: absolute; left: 4px; width: 18px; height: 10px; top: 34px; border: 1px solid rgb(68, 68, 68); cursor: move; display: block; overflow: hidden; box-sizing: content-box !important;"><img
-                                                                    src="/bundles/viettutweb/img/templates/beautifulday/zoom-handle.png"
-                                                                    width="18" height="10" alt="지도 확대/축소 슬라이더"
-                                                                    style="margin:0;padding:0;border:solid 0 transparent;display:block;box-sizing:content-box !important;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;width:18px;height:10px;"></a>
-                                                    </div>
-                                                    <a href="http://dalpeng.com/beautifulday#"
-                                                       style="position: relative; z-index: 2; width: 28px; height: 22px; cursor: pointer; display: block; overflow: hidden; border-top: 1px solid rgb(202, 205, 209); box-sizing: content-box !important;"><img
-                                                                src="/bundles/viettutweb/img/templates/beautifulday/zoom-out-large-normal.png"
-                                                                width="28" height="22" alt="지도 축소"
-                                                                style="margin:0;padding:0;border:solid 0 transparent;display:block;box-sizing:content-box !important;max-width:none !important;max-height:none !important;min-width:0 !important;min-height:0 !important;width:28px;height:22px;"></a>
-                                                    <div style="position: absolute; top: 22px; width: 44px; height: 0px; overflow: visible; display: none; left: -51px;">
-                                                        <div style="display: block; margin: 0px; padding: 0px;"><h4
-                                                                    style="visibility:hidden;width:0;height:0;overflow:hidden;margin:0;padding:0;">
-                                                                지도 컨트롤러 범례</h4>
-                                                            <div style="position: absolute; top: 13px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; overflow: hidden; box-sizing: content-box !important; visibility: visible;">
-                                                                <img src="/bundles/viettutweb/img/templates/beautifulday/zoom-legend-left-on.png"
-                                                                     alt=""
-                                                                     style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important;"><span
-                                                                        style="margin: 0px; border: 0px solid transparent; display: block; font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; position: relative; z-index: 2; line-height: 17px; color: rgb(255, 255, 255); font-size: 11px; padding: 0px 4px 0px 0px; text-align: center; letter-spacing: -1px; box-sizing: content-box !important;">부동산</span>
-                                                            </div>
-                                                            <div style="position: absolute; top: 33px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; overflow: hidden; box-sizing: content-box !important; visibility: visible;">
-                                                                <img src="/bundles/viettutweb/img/templates/beautifulday/zoom-legend-left-normal.png"
-                                                                     alt=""
-                                                                     style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important;"><span
-                                                                        style="margin: 0px; border: 0px solid transparent; display: block; font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; position: relative; z-index: 2; line-height: 17px; color: rgb(255, 255, 255); font-size: 11px; padding: 0px 4px 0px 0px; text-align: center; letter-spacing: -1px; box-sizing: content-box !important;">거리</span>
-                                                            </div>
-                                                            <div style="position: absolute; top: 53px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; overflow: hidden; box-sizing: content-box !important; visibility: visible;">
-                                                                <img src="/bundles/viettutweb/img/templates/beautifulday/zoom-legend-left-normal.png"
-                                                                     alt=""
-                                                                     style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important;"><span
-                                                                        style="margin: 0px; border: 0px solid transparent; display: block; font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; position: relative; z-index: 2; line-height: 17px; color: rgb(255, 255, 255); font-size: 11px; padding: 0px 4px 0px 0px; text-align: center; letter-spacing: -1px; box-sizing: content-box !important;">읍,면,동</span>
-                                                            </div>
-                                                            <div style="position: absolute; top: 83px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; overflow: hidden; box-sizing: content-box !important; visibility: visible;">
-                                                                <img src="/bundles/viettutweb/img/templates/beautifulday/zoom-legend-left-normal.png"
-                                                                     alt=""
-                                                                     style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important;"><span
-                                                                        style="margin: 0px; border: 0px solid transparent; display: block; font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; position: relative; z-index: 2; line-height: 17px; color: rgb(255, 255, 255); font-size: 11px; padding: 0px 4px 0px 0px; text-align: center; letter-spacing: -1px; box-sizing: content-box !important;">시,군,구</span>
-                                                            </div>
-                                                            <div style="position: absolute; top: 113px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; overflow: hidden; box-sizing: content-box !important; visibility: visible;">
-                                                                <img src="/bundles/viettutweb/img/templates/beautifulday/zoom-legend-left-normal.png"
-                                                                     alt=""
-                                                                     style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important;"><span
-                                                                        style="margin: 0px; border: 0px solid transparent; display: block; font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; position: relative; z-index: 2; line-height: 17px; color: rgb(255, 255, 255); font-size: 11px; padding: 0px 4px 0px 0px; text-align: center; letter-spacing: -1px; box-sizing: content-box !important;">시,도</span>
-                                                            </div>
-                                                            <div style="position: absolute; top: 133px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; overflow: hidden; box-sizing: content-box !important; visibility: visible;">
-                                                                <img src="/bundles/viettutweb/img/templates/beautifulday/zoom-legend-left-normal.png"
-                                                                     alt=""
-                                                                     style="position: absolute; top: 0px; left: 0px; z-index: 0; margin: 0px; padding: 0px; border: 0px solid transparent; display: block; width: 44px; height: 17px; box-sizing: content-box !important; max-width: none !important; max-height: none !important; min-width: 0px !important; min-height: 0px !important;"><span
-                                                                        style="margin: 0px; border: 0px solid transparent; display: block; font-family: Helvetica, AppleSDGothicNeo-Light, nanumgothic, NanumGothic, 나눔고딕, Dotum, 돋움, sans-serif; position: relative; z-index: 2; line-height: 17px; color: rgb(255, 255, 255); font-size: 11px; padding: 0px 4px 0px 0px; text-align: center; letter-spacing: -1px; box-sizing: content-box !important;">국가</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <p class="tit"><strong>{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</strong></p>
+                                <p class="date">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</p>
+                                <p class="place">{{ data['home'] }}</p>
+                            </div>
+                            <div class="lo_map">
+                                <div id="wedding_pmap_canvas" class="not_view_panel" style="width: 100%; height: 500px;">
                                 </div>
-                                <div id="interaction" class="control-on" style="top: 10px; left: 10px;"></div>
                             </div>
                         </div>
 
@@ -1961,136 +1491,90 @@
                                 <table class="lo_container lo_left">
                                     <tbody>
                                     <tr>
-                                        <th class="lo_loca"><span class="icon"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Location</font></font></span>
-                                        </th>
-                                        <td class="txt"><span><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">135, Songpa-gu, Seoul, Korea</font></font></span>
-                                        </td>
+                                        <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
+                                        <td class="txt"><span>{{ data['home'] }}</span></td>
                                     </tr>
                                     <tr>
-                                        <th class="lo_tel"><span class="icon"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Wire</font></font></span>
-                                        </th>
-                                        <td class="txt"><span><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">(02) 559-1004</font></font></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="lo_info"><span class="icon"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Info</font></font></span>
-                                        </th>
-                                        <td><span><font style="vertical-align: inherit;"></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-Car </font><font style="vertical-align: inherit;">parking: 1 ~ 5th floor underground hall of </font><font
-                                                            style="vertical-align: inherit;">Wageningen </font><font
-                                                            style="vertical-align: inherit;">Hall </font><font
-                                                            style="vertical-align: inherit;">shuttle:</font></font></span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <table class="lo_container lo_right">
-                                    <tbody>
-                                    <tr>
-                                        <th class="lo_bus"><span class="icon"><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Bus</font></font></span>
-                                        </th>
-                                        <td>
-                                            <span><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Public Bus: 1002, 753, 108, Village 02 </font></font><br><font
-                                                        style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-Main Line Bus: 662, 5012, 2895 </font></font><br><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">
-Bus: M7987, M12, M84</font></font></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="lo_subway"><span class="icon"><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">Subway</font></font></span>
-                                        </th>
-                                        <td>
-                                            <span>5호선 여의나루역 2번 출구<br>
-10호선 달팽역 3번 출구</span>
-                                        </td>
+                                        <th class="lo_tel"><span class="icon">Tel</span></th>
+                                        <td class="txt"><span>{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <div class="nav-wrap">
                                     <div class="ui-grid-a nav-m">
                                         <div class="nav-1">
+                                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                                <input type='hidden' name='daddr' value='{{ data['home'] }}' />
+                                            </form>
                                             <div class="ui-body-d ui-btn-nav wedding_kimnavi">
-                                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                                            </div>
-                                        </div>
-                                        <div class="nav-2">
-                                            <div class="ui-body-d ui-btn-nav wedding_ollehnavi">
-                                                <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
+                                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+                                {#<div class="nav-wrap">#}
+                                    {#<div class="ui-grid-a nav-m">#}
+                                        {#<div class="nav-1">#}
+                                            {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
+                                                {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="nav-2">#}
+                                            {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
+                                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>#}
+
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="ul-body locationdivs hide" id="div_party">
-                    <input type="hidden" id="party_pmap_lat" value="37.5194478">
-                    <input type="hidden" id="party_pmap_lon" value="127.01922209999998">
-                    <input type="hidden" id="party_paddr" value="서울시 강남구 신사동 504-11">
-                    <input type="hidden" id="party_pname" value="LOVE TOP">
                     <div class="lo_box col-2">
                         <div class="ui-block-a">
                             <div class="lo_title">
-                                <p class="tit"><span>WEDDING RECEPTION</span><strong>피로연 오시는 길</strong></p>
-                                <p class="date">2018년 9월 29일 토요일 오후 6시 ~ 오후 10시</p>
-                                <p class="place">LOVE TOP</p></div>
-                            <div class="lo_map" style="width: 100%;">
-                                <div id="party_pmap_canvas" class="not_view_panel"
-                                     style="width:100%;height:337px;"></div>
+                                <p class="tit"><span>TIỆC CƯỚI</span></p>
+                                <p class="date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                                <p class="place">{{ data['place'] }}</p>
+                            </div>
+                            <div class="lo_map">
+                                <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:337px;"></div>
                             </div>
                         </div>
                         <div class="ui-block-b">
                             <div class="lo_containerarea">
                                 <table class="lo_container lo_left">
                                     <tbody>
-                                    <tr>
-                                        <th class="lo_loca"><span class="icon">Location</span></th>
-                                        <td class="txt"><span>서울시 강남구 신사동 504-11</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="lo_tel"><span class="icon">Tel</span></th>
-                                        <td class="txt"><span>(02) 1599-0000 </span></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="lo_info"><span class="icon">Info</span></th>
-                                        <td><span>주차 : 달팽 웨딩홀 지하 1~5층<br>
-셔틀 : 달팽역 3번출구 수시 운행</span></td>
-                                    </tr>
+                                        <tr>
+                                            <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
+                                            <td class="txt"><span>{{ data['place_addr'] }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="lo_tel"><span class="icon">Tel</span></th>
+                                            <td class="txt"><span>{{ data['place_phone'] }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="lo_info"><span class="icon">Đỗ xe</span></th>
+                                            <td><span>{{ data['parking_info'] }}</span></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <table class="lo_container lo_right">
                                     <tbody>
                                     <tr>
-                                        <th class="lo_bus"><span class="icon">Bus</span></th>
-                                        <td>
-                                            <span>일반버스 : 1002, 753, 108, 마을02<br>
-간선버스 : 662, 5012, 2895<br>
-광역버스 : M7987, M12, M84</span>
-                                        </td>
+                                        <th class="lo_bus"><span class="icon">Xe Bus</span></th>
+                                        <td><span>{{ data['bus_info'] }}</span></td>
                                     </tr>
                                     <tr>
-                                        <th class="lo_subway"><span class="icon">Subway</span></th>
+                                        <th class="lo_subway"><span class="icon">Tàu điện</span></th>
                                         <td>
-                                            <span>3호선 신사역 6번 출구</span>
+                                            <span>{{ data['subway_info'] }}</span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -2098,18 +1582,33 @@ Bus: M7987, M12, M84</font></font></span>
                                 <div class="nav-wrap">
                                     <div class="ui-grid-a nav-m">
                                         <div class="nav-1">
-                                            <div class="ui-body-d ui-btn-nav party_kimnavi">
-                                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                                            </div>
-                                        </div>
-                                        <div class="nav-2">
-                                            <div class="ui-body-d ui-btn-nav party_ollehnavi">
-                                                <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
+                                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                                <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
+                                            </form>
+                                            <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+                                {#<div class="nav-wrap">#}
+                                    {#<div class="ui-grid-a nav-m">#}
+                                        {#<div class="nav-1">#}
+                                            {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
+                                                {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="nav-2">#}
+                                            {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
+                                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>#}
+
                             </div>
                         </div>
                     </div>
@@ -2121,93 +1620,19 @@ Bus: M7987, M12, M84</font></font></span>
     <!-- footer -->
     <div class="footer" id="sk_snslink">
         <div class="contents">
-            <h4><a href="http://dalpeng.com/" target="_blank" class="ui-link"><img
-                            src="/bundles/viettutweb/img/templates/beautifulday/footer_logo.png" alt="로고"
-                            title="달팽 초대장 :: dalpeng.com"></a><span></span></h4>
+            <h4>
+                <a href="{{ path('home_page') }}" target="_blank">
+                    <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
+                </a>
+                <span></span>
+            </h4>
             <ul>
-                <li>
-                    <a target="_blank"
-                       href="http://www.facebook.com/sharer/sharer.php?u=http://dalpeng.com/beautifulday"
-                       class="ui-link">
-                        <div class="ft_sns_wrap1 fasebook"><span>facebook logo</span></div>
-                    </a>
-                    <em>facebook</em>
-                </li>
-                <!-- 네이버 밴드 추가용 by echos(2014-12-08) -->
-                <li>
-                    <a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/beautifulday"
-                       class="ui-link">
-                        <div class="ft_sns_wrap1 band"><span>band logo</span></div>
-                    </a>
-                    <em>naver band</em>
-                </li>
-                <!--
-                <li>
-                    <a target="_blank" href="http://twitter.com/share?text=달팽초대장::배기현♥박유현&url=http://dalpeng.com/beautifulday"><div class="ft_sns_wrap1 twitter"><span>twitter logo</span></div></a>
-                    <em>twitter</em>
-                </li>-->
-                <li id="sk_kakao">
-                    <div class="ft_sns_wrap1 kakao btn_send_kakao" id="btn_kakao_talk"><span>KAKAOTALK</span></div>
-                    <em>KAKAOTALK</em>
-                </li>
-                <!-- https://story.kakao.com/share?url=http%3A%2F%2Fdalpeng.com%2Fbeautifulday -->
-                <li>
-                    <a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/beautifulday"
-                       class="ui-link">
-                        <div class="ft_sns_wrap1 story" id="btn_kakao_story"><span>KAKAOSTORY</span></div>
-                    </a>
-                    <em>KAKAOSTORY</em>
-                </li>
-                <!-- <li>
-                    <div class="ft_sns_wrap1 band" id="btn_line"><span>LINE</span></div>
-                    <em>LINE</em>
-                </li> -->
+                <div class="addthis_inline_share_toolbox"></div>
             </ul>
-        </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"
-                    src="./beautiful_day_files/saved_resource.html"></iframe>
         </div>
     </div>
     <!--// footer -->
 </div><!--//skin_page-->
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-55160879-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-
-</script>
-
-<div class="popup_wrap popup_olleh" style="display:none;">
-    <div class="popup_navibox">
-        <div class="olleh_btnbox">
-            <div class="olleh_btn btn1" id="android_go_olleh">
-                <p class="title">이미 원내비앱을<br><strong>사용 중이신 경우</strong></p>
-                <p class="link"><span>바로 길안내</span></p>
-            </div>
-            <div class="olleh_btn btn2" id="android_install_olleh">
-                <p class="title">원내비앱이<br><strong>없으신 경우</strong></p>
-                <p class="link"><span>앱 설치하기</span></p>
-            </div>
-        </div>
-        <div class="popup_back olleh_back">
-            <span id="popOllehClose">닫기</span>
-        </div>
-    </div>
-</div>
 
 <!-- photoswipe -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -2255,39 +1680,32 @@ Bus: M7987, M12, M84</font></font></span>
     </div>
 </div>
 
-<div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span>
-    <h1>loading</h1></div>
-<div class="ui-panel-dismiss"></div>
-<div class="ui-panel-dismiss"></div>
-<div id="goog-gt-tt" class="skiptranslate" dir="ltr">
-    <div style="padding: 8px;">
-        <div>
-            <div class="logo"><img src="/bundles/viettutweb/img/templates/beautifulday/translate_24dp.png" width="20" height="20"
-                                   alt="Google Translate"></div>
+{% if voted == false %}
+    <div id="signup" class="signup">
+        <div class="container">
+            <div class="row">
+                <i>Vui lòng cho biết dự định của bạn !</i>
+            </div>
+            <div class="row">
+                <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+                <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+                <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
+            </div>
+            {#<p class="text-center">#}
+            {#</p>#}
+            <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
         </div>
     </div>
-    <div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Original text</h1></div>
-    <div class="middle" style="padding: 8px;">
-        <div class="original-text"></div>
-    </div>
-    <div class="bottom" style="padding: 8px;">
-        <div class="activity-links"><span class="activity-link">Contribute a better translation</span><span
-                    class="activity-link"></span></div>
-        <div class="started-activity-container">
-            <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
-            <div class="activity-root"></div>
-        </div>
-    </div>
-    <div class="status-message" style="display: none;"></div>
-</div>
-<div class="ui-panel-dismiss"></div>
-<div class="goog-te-spinner-pos">
-    <div class="goog-te-spinner-animation">
-        <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
-            <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33"
-                    r="30"></circle>
-        </svg>
-    </div>
-</div>
+{% endif %}
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109753132-1');
+</script>
 </body>
 </html>
