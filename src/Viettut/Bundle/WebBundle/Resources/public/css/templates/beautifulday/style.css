@@ -361,7 +361,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 /* Guestbook */
 .gb_msg {position:relative;padding: 30px 0;text-align:center;color:#444;}
 .gb_msg span{display:inline-block;padding:8px 0;line-height:1;font-weight:bold;}
-.gb_btn {position:relative;width:150px;height:40px;margin: 30px auto 0;padding:0;background: url(../../../img/templates/beautifulday/btn_write.png) no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+.gb_btn {position:relative;width:150px;height:45px;margin: 30px auto 0;padding:0;background: url(../../../img/templates/beautifulday/btn_write_1.png) no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
 
 .nopost_wrap {position:relative;width:98%;max-width: 450px;margin: 30px auto 0;padding: 25px 0 50px;background-color: rgba(245,245,245,0.8);}
 .nopost_wrap .gb_msg{padding-bottom:0px}
@@ -448,7 +448,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 .lo_container th.lo_bus .icon     {background-position:0 -100px}
 .lo_container th.lo_subway .icon  {background-position:0 -125px}
 
-.nav-wrap {clear:both;position:relative;max-width:560px;width:90%;margin: 0 auto;padding:20px 0 0;}
+.nav-wrap {clear:both;position:relative;max-width:560px;width:100%;margin: 0 auto;padding:20px 0 0;}
 .nav-wrap ul {overflow:hidden; margin-top:10px}
 .nav-wrap ul li {float:left; margin-right:30px}
 .nav-m .nav-1,
@@ -475,7 +475,6 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 .gal_list .col-3 .ui-block-a,
 .gal_list .col-3 .ui-block-b {width:32%; margin:0 2% 2% 0}
 .gal_list .col-3 .ui-block-c {width:32%; margin:0 0 2% 0}
-.ui-body-d {margin:2%}
 
 .snsbbs_sections .ui-body-d {/* margin:7px; */}
 .snsbbs_sections {float:left; width:33.33%!important}
@@ -599,5 +598,68 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 	.ui-section-b {z-index:30}
 }
 
+.gb-button {
+	float:left;
+	margin-left:40%;
+	margin-top:35px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	padding: 12px 24px;
+	border: 1px solid #a08d9e;
+	border-radius: 26px;
+	background: ##e5c9e1;
+	background: -webkit-gradient(linear, left top, left bottom, from(##e5c9e1), to(#a08d9e));
+	background: -moz-linear-gradient(top, ##e5c9e1, #a08d9e);
+	background: linear-gradient(to bottom, ##e5c9e1, #a08d9e);
+	text-shadow: #ffffff 1px 1px 1px;
+	font: normal normal bold 18px arial;
+	color: #111111;
+	text-decoration: none;
+}
 
+.gb-button:hover,
+.gb-button:focus {
+	background: #fff1ff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff1ff), to(#c0a9be));
+	background: -moz-linear-gradient(top, #fff1ff, #c0a9be);
+	background: linear-gradient(to bottom, #fff1ff, #c0a9be);
+	color: #111111;
+	text-decoration: none;
+}
+
+.gb-button:active {
+	background: #a08d9e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#a08d9e), to(#a08d9e));
+	background: -moz-linear-gradient(top, #a08d9e, #a08d9e);
+	background: linear-gradient(to bottom, #a08d9e, #a08d9e);
+}
+
+.gb-button:before{
+	content:  "\0000a0";
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	line-height: 24px;
+	margin: 0 4px -6px -4px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACzUlEQVRIiaXVP2idVRjH8c8TS5FSRC8Xh+rQtZcgDtFIaipSQox0sL4XwcFFcBB5L7RObxYJhbw4OJhXnHQXe99u9iYUQSEV7SAlhGRxEHEopcTgUJxyHO6t5v+/nvU8fH+/8zy/c054zJV1ioakwlt4iC/T0MbMjc8/3YAnHgfe7hTNSOaD1/A1HuDDEM+1Rsd7q78sbhxboN0pGphPDCOrq3KuNTp+HUMRcUVy5txLF747lkA7L5qYT6GFdl2VN2H1zqLVO4s/nHv51SFcibBx4qjwLC+aSfSEEdJ6RNzfpewTtPDR0NHg0w2ih2EpfSBZk/SyTjGyua6uSriP04cWyPLpJhYGzrK6Kr/CxSStEwvtzvTI/7XFJbyPG3EYeLtTNFPSC4aTyOpq9uYm2FncEp6WTOFZ1BGWNlKaOlCg3c/5gkFauoOBbj1dcRbfo4Eng2VhsjtXru2bonanaErmE63g7W5V9narW72zuN4aHX8o4p0Id4WJ7lz5F+x5gnY+3UxSb+D8cl2V83vVZnnxJmosBVPdqlx7tLerQDufbmAhSY8u0Y62bINfJ1YwWVeza5v3d6Sof4nSAqk1cL4f/NLA+QomtsN3nCAbOI++88vdQ7YFU/WmtuwqkOXFCdzCK7FHWrbBrwcricm94LD5qbiGC3jvAPilAXwZE3VVru9Vy2AGWV68gKv4B78dwvlSYrJ7APw/AbwLwT302vnWt2ULPGI57dPzHQJv5DmM4Ve8HqwlbmX5jreljn4UJw4Lh6FTTp/Ci/i5W5V/YCJ4QFrI8mIsy4urfeeW+td/9sC2bBEIWhHxlHAbulX5Oy7q/68/hvgMN1My1Z3bmfOD1gmMSWkDf2Z50cb5xFhwJnEvRfp4+JmT38zMzByV3RcIzusP+3aIIdLfuJuYkXxRV+VafSz0QCDxPL7F7ST9FKxE4+TD7jEdb1//AjuvHhmkF32aAAAAAElFTkSuQmCC") no-repeat left center transparent;
+	background-size: 100% 100%;
+}
+
+@media all and (max-width: 320px) {
+	.gb-button {
+		margin-left:20%;
+		margin-top:20px;
+	}
+}
+
+@media all and (max-width: 480px) {
+	.gb-button {
+		margin-left:35%;
+		margin-top:25px;
+	}
+}
 /* beautiful_day */

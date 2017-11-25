@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <!-- saved from url=(0031)http://dalpeng.com/beautifulday -->
-<html lang="ko" data-sbro-popup-lock="true" data-sbro-deals-lock="true" data-sbro-ads-lock="true"
+<html lang="vi" data-sbro-popup-lock="true" data-sbro-deals-lock="true" data-sbro-ads-lock="true"
       class="ui-mobile translated-ltr">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!--<base href="http://dalpeng.com/beautifulday">-->
     <base href=".">
-
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://dalpeng.com/beautifulday">
-    <meta property="og:description" content="오랫동안 기다린 사랑
-눈에 밟혀서
+    <meta property="og:url" content="http://thiepdo.com/beautiful-day">
+    <meta property="og:description" content="{{ description }}">
 
-이야기가 통해서
-시작된 사랑
-
-서로에게 잊혀지지 않은
-하나의 꽃이 되고 싶습니다.">
-
-    <meta property="og:title" content="저희 결혼합니다">
-    <meta property="og:image" content="http://dalpeng.com/user/beautifulday/img/e8ed2466288448704a423d134bc229e2.jpg">
+    <meta property="og:title" content="{{ name }}">
+    <meta property="og:image" content="/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="robots" content="noindex">
 
-    <link href="http://dalpeng.com/img/mobileicon/dalpeng_152x152.png" sizes="152x152" rel="apple-touch-icon">
-    <link href="http://dalpeng.com/img/mobileicon/dalpeng_120x120.png" sizes="120x120" rel="apple-touch-icon">
-    <link href="http://dalpeng.com/img/mobileicon/dalpeng_76x76.png" sizes="76x76" rel="apple-touch-icon">
-    <link href="http://dalpeng.com/img/mobileicon/dalpeng_60x60.png" sizes="60x60" rel="apple-touch-icon">
-    <link rel="icon" sizes="192x192" href="http://dalpeng.com/img/mobileicon/dalpeng_192x192.png">
-    <link rel="icon" sizes="128x128" href="http://dalpeng.com/img/mobileicon/dalpeng_128x128.png">
-
-    <title>저희 결혼합니다</title>
+    <title>{{ name }}</title>
 
     <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
     <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
@@ -1449,8 +1433,11 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="gb_btn btn_go_snsbbs" style="cursor: pointer;"><span>Congratulatory Writing</span></div>
-                <!--// 글 있을때-->
+                {% if isTemplate %}
+                    <div class="btn_go_snsbbs" style='z-index:999;'><a class="gb-button" href="#" title="Để lại lời chúc">Chúc mừng</a></div>
+                {% else %}
+                    <div class="btn_go_snsbbs" style="cursor: pointer;"><a class="gb-button" href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc">Chúc mừng</a></div>
+                {% endif %}
             </div>
             <!--// guestbook -->
 
@@ -1458,12 +1445,6 @@
             <div class="location_wrap" id="sk_map">
                 <h2 class="title"><span>ĐỊA ĐIỂM</span></h2>
 
-                {#<div class="ul-body">#}
-                    {#<ul class="lo_tab_wrap">#}
-                        {#<li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;"><span>Lễ Thành Hôn</span></li>#}
-                        {#<li class="tab_btn rh locationtabs " id="tabs_party" style="cursor: pointer;"><span>Tiệc Cưới</span></li>#}
-                    {#</ul>#}
-                {#</div>#}
                 <div class="ul-body">
                     <ul class="lo_tab_wrap">
                         <li class="tab_btn wh locationtabs on" id="tabs_wedding"><span>Lễ Thành Hôn</span></li>
@@ -1514,22 +1495,6 @@
                                     </div>
                                 </div>
                                 <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
-                                {#<div class="nav-wrap">#}
-                                    {#<div class="ui-grid-a nav-m">#}
-                                        {#<div class="nav-1">#}
-                                            {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
-                                                {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                        {#<div class="nav-2">#}
-                                            {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
-                                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>#}
-
                             </div>
                         </div>
                     </div>
@@ -1593,22 +1558,6 @@
                                     </div>
                                 </div>
                                 <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
-                                {#<div class="nav-wrap">#}
-                                    {#<div class="ui-grid-a nav-m">#}
-                                        {#<div class="nav-1">#}
-                                            {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
-                                                {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                        {#<div class="nav-2">#}
-                                            {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
-                                                {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>#}
-
                             </div>
                         </div>
                     </div>
@@ -1669,13 +1618,6 @@
             <div class="pswp__caption">
                 <div class="pswp__caption__center">Image caption 1</div>
             </div>
-
-            <!-- 슬라이드
-            <div class="pswp__slide">
-                <label for="slide-show">자동 슬라이드</label>
-                <input type="checkbox" name="slideShow" id="slide-show" data-role="none">
-            </div>
-            -->
         </div>
     </div>
 </div>
@@ -1691,12 +1633,11 @@
                 <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
                 <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
             </div>
-            {#<p class="text-center">#}
-            {#</p>#}
             <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
         </div>
     </div>
 {% endif %}
+
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>

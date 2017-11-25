@@ -7,6 +7,7 @@
     <meta property="og:description" content="{{ description }}"/>
 
     <meta property="og:title" content="{{ name }}"/>
+    <meta name="description" content="{{ description }}"/>
     <meta property="og:image" content="/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -72,9 +73,9 @@
 
             </ul>
             {% if isTemplate %}
-                <p class="btn_go_snsbbs">Viết lời chúc</p>
+                <p class="btn_go_snsbbs">Chúc mừng</p>
             {% else %}
-                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Chúc mừng</p></a>
             {% endif %}
         </div>
     </div>
@@ -111,9 +112,9 @@
                 {% endif %}
             </ul>
             {% if isTemplate %}
-                <p class="btn_go_snsbbs">Viết lời chúc</p>
+                <p class="btn_go_snsbbs">Chúc mừng</p>
             {% else %}
-                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Chúc mừng</p></a>
             {% endif %}
         </div>
     </div>
@@ -278,7 +279,7 @@
             <div class="dday_title">Save The Date</div>
             <div class="dday_text">
                 <p class="date">{{ date | date('d-m-Y') }}</p>
-                <p class="time"><span>{{ date | full_day }}</span><span>{{ date | date('H:i A') }}</span></p>
+                <p class="time"><span>{{ date | full_day }}</span><span>{{ date | date('H:i') }}</span></p>
                 <p class="dday">D-151</p></div>
         </div>
         <!--// dday -->
