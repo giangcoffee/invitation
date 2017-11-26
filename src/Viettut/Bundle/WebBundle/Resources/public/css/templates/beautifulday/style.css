@@ -574,7 +574,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 
 	.lo_containerarea {padding: 20px 0 0;margin: 0 10px;border: 0;}
 	.lo_container th.lo_bus,
-	.lo_container th.lo_subway{width: 35px;padding-left:0}
+	.lo_container th.lo_subway{width: 25%;padding-left:0}
 
 	.lo_map #wedding_pmap_canvas,
 	.lo_map #party_pmap_canvas,

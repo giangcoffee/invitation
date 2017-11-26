@@ -465,7 +465,7 @@ class Card implements CardInterface
     /**
      * @return DateTime
      */
-    public function getPartyDate(): DateTime
+    public function getPartyDate()
     {
         return $this->partyDate;
     }

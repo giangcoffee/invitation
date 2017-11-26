@@ -72,11 +72,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="textareaAutosize">{{ name }}</label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">
-                                        {% if data[column] is defined %}
-                                            {{ data[column] }}
-                                        {% endif %}
-                                        </textarea>
+                                        <textarea class="form-control" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">{% if data[column] is defined %}{{ data[column] }}{% endif %}</textarea>
                                     </div>
                                 </div>
                             </div>

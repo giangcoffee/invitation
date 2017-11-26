@@ -232,7 +232,7 @@ interface CardInterface extends ModelInterface
     /**
      * @return DateTime
      */
-    public function getPartyDate(): DateTime;
+    public function getPartyDate();
 
     /**
      * @param DateTime $partyDate
