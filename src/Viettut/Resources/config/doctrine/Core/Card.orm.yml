@@ -69,7 +69,7 @@ Viettut\Entity\Core\Card:
         comments:
             targetEntity: Viettut\Entity\Core\Comment
             mappedBy: card
-        status:
+        statuses:
             targetEntity: Viettut\Entity\Core\Status
             mappedBy: card
 

@@ -20,11 +20,13 @@ use Viettut\Model\Core\CardInterface;
 use Viettut\Model\Core\TemplateInterface;
 use Symfony\Component\Security\Core\Security;
 use Viettut\Model\User\UserEntityInterface;
+use Viettut\Utilities\DateUtil;
 use Zalo\Zalo;
 use Zalo\ZaloConfig;
 
 class BuilderController extends Controller
 {
+    use DateUtil;
     /**
      * @Route("/cards/{hash}/edit", name="edit_card_page")
      * @param $request
@@ -56,6 +58,7 @@ class BuilderController extends Controller
             'columns' => $template->getColumns(),
             'gallery' => $card->getGallery(),
             'date' => $card->getWeddingDate(),
+            'partyDate' => $card->getPartyDate(),
             'id' => $card->getId(),
             'name' => $template->getName(),
             'hash' => $card->getHash(),
@@ -152,26 +155,34 @@ class BuilderController extends Controller
         }
 
         $gallery = $template->getGallery();
-        $first = array_slice($gallery, 0, 5);
-        $second = array_slice($gallery, 5, 4);
-        $rest = array_slice($gallery, 9);
-        $weddingDate = $template->getWeddingDate()->modify('-1 hour');
+        $data = $template->getData();
+        $description = "
+            On a spring day,
+            Two loving people are about to start a new life.
+            Even if you are busy, bless the first start of the two
+            If you encourage me, I will be more joy.";
+
+        if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
+            $description = $data['greeting'];
+        }
+
         return $this->render($template->getPath(), array(
-            'data' => $template->getData(),
+            'data' => $data,
             'name' => $template->getName(),
             'gallery' => $gallery,
-            'first' => $first,
-            'second' => $second,
-            'rest' => $rest,
             'date' => $template->getWeddingDate(),
-            'weddingDate' => $weddingDate,
+            'dateAl' => $this->getLunarDateString($template->getWeddingDate()),
+            'weddingDate' => $template->getWeddingDate(),
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
             'homeLon' => $template->getHomeLongitude(),
             'homeLat' => $template->getHomeLatitude(),
             'forGroom' => $template->isForGroom(),
             'isTemplate' => true,
-            'hash' => $hash
+            'hash' => $hash,
+            'id' => $template->getId(),
+            'voted' => true,
+            'description' => $description
         ));
     }
 
@@ -196,25 +207,34 @@ class BuilderController extends Controller
         $comments = $card->getComments();
         $template = $card->getTemplate();
         $data = $card->getData();
-        $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
-        $gallery = $card->getGallery();
-        $first = array_slice($gallery, 0, 5);
-        $second = array_slice($gallery, 5, 4);
-        $rest = array_slice($gallery, 9);
+        $description = "
+            On a spring day,
+            Two loving people are about to start a new life.
+            Even if you are busy, bless the first start of the two
+            If you encourage me, I will be more joy.";
 
+        if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
+            $description = $data['greeting'];
+        }
+
+        $name = sprintf('Hôn lễ của %s và %s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('d-m-Y'));
+        $gallery = $card->getGallery();
         $card->setViews($card->getViews() + 1);
         $cardManager->save($card);
+        $userVoted = false;
         if (!array_key_exists('user_unique_id', $_COOKIE)) {
             setcookie("user_unique_id", uniqid('user', true), time() + 604800); //cookie expire in 7 day
+        }
+
+        if (array_key_exists('user_voted', $_COOKIE)) {
+            $userVoted = true;
         }
 
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
-            'first' => $first,
-            'second' => $second,
-            'rest' => $rest,
             'date' => $card->getPartyDate(),
+            'dateAl' => $this->getLunarDateString($card->getPartyDate()),
             'weddingDate' => $card->getWeddingDate(),
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),
@@ -225,7 +245,10 @@ class BuilderController extends Controller
             'forGroom' => $card->isForGroom(),
             'isTemplate' => false,
             'hash' => $hash,
-            'embed' => $card->getEmbedded()
+            'embed' => $card->getEmbedded(),
+            'id' => $card->getId(),
+            'voted' => $userVoted,
+            'description' => $description
         ));
     }
 }

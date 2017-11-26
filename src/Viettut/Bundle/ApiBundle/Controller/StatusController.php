@@ -15,6 +15,7 @@ use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -107,10 +108,7 @@ class StatusController extends RestControllerAbstract implements ClassResourceIn
             throw new InvalidArgumentException('Card "%s" is not found or you do not have permission', $cardId);
         }
 
-        $uniqueUser = null;
-        if (array_key_exists('user_unique_id', $_COOKIE)) {
-            $uniqueUser = $_COOKIE['user_unique_id'];
-        }
+        $uniqueUser = $request->request->get('uniqueUser', null);
 
         if ($uniqueUser == null) {
             return new Response("", Response::HTTP_NO_CONTENT);
@@ -118,8 +116,9 @@ class StatusController extends RestControllerAbstract implements ClassResourceIn
 
         /** @var StatusRepositoryInterface $statusRepository */
         $statusRepository = $this->get('viettut.repository.status');
-        $statusEntity = $statusRepository->checkUniqueUserForCard($card, $uniqueUser);
-        if ($statusEntity instanceof StatusInterface) {
+        $statusEntities = $statusRepository->checkUniqueUserForCard($card, $uniqueUser);
+        if (count($statusEntities) > 0) {
+            $statusEntity = $statusEntities[0];
             $statusEntity->setStatus($status);
         } else {
             $statusEntity = new Status();
@@ -127,7 +126,15 @@ class StatusController extends RestControllerAbstract implements ClassResourceIn
         }
 
         $this->get('viettut.domain_manager.status')->save($statusEntity);
-        return new Response("", Response::HTTP_NO_CONTENT);
+        if (!array_key_exists('user_voted', $_COOKIE)) {
+            setcookie("user_voted", 1, time() + 604800, sprintf('/cards/%s', $card->getHash()), $this->getParameter('domain')); //cookie expire in 7 day
+        }
+
+        $response = new Response("", Response::HTTP_NO_CONTENT);
+        $cookie = new Cookie('user_voted', true, time() + 604800, sprintf('/cards/%s', $card->getHash()), $this->getParameter('domain'));
+        $response->headers->setCookie($cookie);
+
+        return $response;
     }
 
     /**

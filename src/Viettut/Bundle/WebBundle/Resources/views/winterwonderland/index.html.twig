@@ -4,11 +4,7 @@
 
     <meta property="og:type"   content="website" />
     <meta property="og:url" content="http://thiepdo.com/winter-wonderland" />
-    <meta property="og:description" content="
-    On a spring day,
-    Two loving people are about to start a new life.
-    Even if you are busy, bless the first start of the two
-    If you encourage me, I will be more joy."/>
+    <meta property="og:description" content="{{ description }}"/>
 
     <meta property="og:title" content="Winter Wonderland" />
     <meta property="og:image" content="/bundles/viettutweb/img/templates/winter-wonderland/3c329ef94de4851a82a2bbde4a744348.jpg" />
@@ -30,9 +26,15 @@
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.css">
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-
+    {% if isTemplate == false %}
+        <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    {% endif %}
 
     <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
+    {% if isTemplate == false %}
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endif %}
     <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
     <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
     <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
@@ -148,9 +150,24 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
     </script>
+    <script src="/bundles/viettutweb/js/templates/common/popup.js"></script>
     <script type="text/javascript">
         <!--
-
+        {% if isTemplate == false %}
+            (function($) {
+                $.fn.onScrollTo = function(focusInFn, focusOutFn) {
+                    var $this = this;
+                    $(document).scroll(function() {
+                        var y = $(this).scrollTop();
+                        if (y >= $this.position().top) {
+                            if (focusInFn) focusInFn();
+                        } else {
+                            if (focusOutFn) focusOutFn();
+                        }
+                    });
+                }
+            })(jQuery);
+        {% endif %}
         $(function(){
 
             $(".header_bg, .header_title").css("height",$(window).height());
@@ -513,9 +530,8 @@
 
                     item.id = imageEl.getAttribute("imgId");
                     items.push(item);
-
-                    items.push(item);
                 }
+
                 return items;
             };
 
@@ -587,6 +603,8 @@
                     if($(this).attr('id')){
                         var id = $(this).attr('id').replace('p_','').replace('m_','');
                         setPosition(id);
+                    } else {
+                        window.location.href = '/';
                     }
                 }catch(e){
                 }
@@ -613,6 +631,17 @@
                 columnWidth: '.gal_size',
                 transitionDuration: '0.2s',
                 percentPosition: true
+            });
+
+            $('.movie_wrap').onScrollTo(function() {
+                $('#signup').addClass('show');
+            }, function() {
+                $('#signup').removeClass('show');
+            });
+
+            $('#signup').on('click', '.close', function(e) {
+                e.preventDefault();
+                $('#signup').removeClass('show');
             });
         });
 
@@ -681,12 +710,14 @@
 
             document.getElementById("getHomePath").submit();
         }
+
         //-->
     </script>
 </head>
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
 <!-- Start of first page: #one -->
 <div data-role="page" id="skin_page">
     <!-- panel-menu -->
@@ -695,14 +726,12 @@
         <div data-role="panel" id="right-panel" data-position="right" data-display="push">
             <div class="menu-wrap ui-panel-inner">
                 <ul data-role="listview" data-icon="false">
-                    <li data-icon="delete"><a href="http://thiepdo.com"><span>Trang Chủ</span></a></li>
-                    <!-- <li data-role="list-divider">우리결혼합니다.</li> -->
-                    {#<li class="menu_scrolls"><a href="http://thiepdo.com"><span>Trang Chủ</span></a></li>#}
+                    <li class="menu_scrolls" data-rel="close"><span>Trang Chủ</span></li>
                     <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>Lời Tựa</span></li>
                     <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>Album Ảnh</span></li>
                     <li class="menu_scrolls" data-rel="close" id="p_media"><span>Video</span></li>
                     <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Sổ Lưu Bút</span></li>
-                    <li class="menu_scrolls" data-rel="close" id="p_map"><span>Chỉ Đường</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_map"><span>Địa Điểm</span></li>
                 </ul>
             </div>
         </div>
@@ -720,7 +749,8 @@
             </h1>
 
             <div class="hd_date">
-                <p>{{ date | date('d-m-Y H:i A (l)') }}</p>
+                <p>{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                <p>(tức {{ dateAl }})</p>
                 <p>{{ data['place'] }}</p>
                 <p><img src="/bundles/viettutweb/img/templates/winterwonderland/header_down.png" alt="down"/></p>
             </div>
@@ -1111,7 +1141,7 @@
             <div class="col-2">
                 <div class="ui-block-a">
                     <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;"><strong>{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</strong></li>
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;"><strong>Lễ Thành Hôn</strong></li>
                         <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;"><strong>Tiệc Cưới</strong></li>
                     </ul>
                 </div>
@@ -1141,7 +1171,7 @@
                     <table class="lo_container">
                         <tr>
                             <th>Thời gian</th>
-                            <td>{{ weddingDate | date('d-m-Y H:i A') }}</td>
+                            <td>{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th>Địa chỉ</th>
@@ -1179,7 +1209,7 @@
                     <table class="lo_container">
                         <tr>
                             <th>Thời gian</th>
-                            <td>{{ date | date('d-m-Y H:i A') }}</td>
+                            <td>{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th>Địa chỉ</th>
@@ -1262,6 +1292,25 @@
         </div>
     </div>
 </div>
+
+{% if voted == false %}
+<div id="signup" class="signup">
+    <div class="container">
+        <div class="row">
+            <i>Vui lòng cho biết dự định của bạn !</i>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+            <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+            <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
+        </div>
+        {#<p class="text-center">#}
+        {#</p>#}
+        <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
+    </div>
+</div>
+{% endif %}
+
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>

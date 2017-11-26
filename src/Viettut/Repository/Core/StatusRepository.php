@@ -60,9 +60,9 @@ class StatusRepository extends EntityRepository implements StatusRepositoryInter
         return $this->createQueryBuilder('st')
             ->where('st.card = :card')
             ->andWhere('st.uniqueUser = :uniqueUser')
-            ->setParameter('card', $card->getId(), TYPE::INTEGER)
-            ->setParameter('uniqueUser', $uniqueUser, TYPE::INTEGER)
+            ->setParameter('card', $card)
+            ->setParameter('uniqueUser', $uniqueUser)
             ->getQuery()
-            ->getFirstResult();
+            ->getResult();
     }
 }

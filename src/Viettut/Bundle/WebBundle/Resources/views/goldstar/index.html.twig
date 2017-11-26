@@ -6,11 +6,7 @@
 
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="http://thiepdo.com/gold-star"/>
-    <meta property="og:description" content="
-    On a spring day,
-    Two loving people are about to start a new life.
-    Even if you are busy, bless the first start of the two
-    If you encourage me, I will be more joy."/>
+    <meta property="og:description" content="{{ description }}"/>
 
     <meta property="og:title" content="{{ name }}" />
     <meta property="og:image" content="/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg" />
@@ -34,10 +30,16 @@
 
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.css">
     <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
-
+    {% if isTemplate == false %}
+        <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    {% endif %}
     <link href='http://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
 
     <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
+    {% if isTemplate == false %}
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endif %}
     <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
     <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
     <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
@@ -48,8 +50,24 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
     </script>
+    <script src="/bundles/viettutweb/js/templates/common/popup.js"></script>
     <script type="text/javascript">
         <!--
+        {% if isTemplate == false %}
+        (function($) {
+            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
+                var $this = this;
+                $(document).scroll(function() {
+                    var y = $(this).scrollTop();
+                    if (y >= $this.position().top) {
+                        if (focusInFn) focusInFn();
+                    } else {
+                        if (focusOutFn) focusOutFn();
+                    }
+                });
+            }
+        })(jQuery);
+        {% endif %}
 
         function initMap() {
             var lat = $('#coordinates').data('lat');
@@ -582,6 +600,16 @@
             });
 
             $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+            $('.movie_wrap').onScrollTo(function() {
+                $('#signup').addClass('show');
+            }, function() {
+                $('#signup').removeClass('show');
+            });
+
+            $('#signup').on('click', '.close', function(e) {
+                e.preventDefault();
+                $('#signup').removeClass('show');
+            });
         });
 
         //-->
@@ -590,6 +618,7 @@
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
@@ -653,8 +682,7 @@
     <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
-                <li data-icon="delete"><a href="{{ path('home_page') }}"><span>TRANG CHỦ</span></a></li>
-                {#<li data-role="list-divider">JUST MARRIED!</li>#}
+                <li class="menu_scrolls" data-rel="close"><span>TRANG CHỦ</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>LỜI TỰA</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>ALBUM ẢNH</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_media"><span>VIDEO</span></li>
@@ -694,7 +722,8 @@
                     {% endif %}
                 </p>
 
-                <p class="hd_date">{{ date | date('d/m/Y l H:i A') }}</p>
+                <p class="hd_date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                <p class="hd_loca">(tức {{ dateAl }})</p>
                 <p class="hd_loca">{{ data['place'] }}</p>
             </div>
             <div class="header_panel">
@@ -845,7 +874,7 @@
         <div class="ul-body col-3">
             <div id="div_snsbbs">
                 {% if isTemplate %}
-                <div class="snsbbs_sections ">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
@@ -1053,7 +1082,7 @@
             <div class="col-2">
                 <div class="ui-block-a">
                     <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</li>
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Lễ Thành Hôn</li>
                         <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
                     </ul>
                 </div>
@@ -1086,7 +1115,7 @@
                     <table class="lo_container">
                         <tr>
                             <th class="lo_date">Thời gian</th>
-                            <td class="txt">{{ weddingDate | date('d-m-Y H:i A') }}</td>
+                            <td class="txt">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th class="lo_loca">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</th>
@@ -1128,7 +1157,7 @@
                     <table class="lo_container">
                         <tr>
                             <th class="lo_date">Thời gian</th>
-                            <td class="txt">{{ date | date('d-m-Y H:i A') }}</td>
+                            <td class="txt">{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th class="lo_loca">Tiệc cưới</th>
@@ -1219,6 +1248,23 @@
         </div>
     </div>
 </div>
+{% if voted == false %}
+<div id="signup" class="signup">
+    <div class="container">
+        <div class="row">
+            <i>Vui lòng cho biết dự định của bạn !</i>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+            <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+            <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
+        </div>
+        {#<p class="text-center">#}
+        {#</p>#}
+        <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
+    </div>
+</div>
+{% endif %}
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>

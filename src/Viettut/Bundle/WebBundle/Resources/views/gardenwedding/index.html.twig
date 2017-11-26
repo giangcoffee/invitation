@@ -4,13 +4,10 @@
 
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="http://thiepdo.com/garden-wedding"/>
-    <meta property="og:description" content="
-    On a spring day,
-    Two loving people are about to start a new life.
-    Even if you are busy, bless the first start of the two
-    If you encourage me, I will be more joy."/>
+    <meta property="og:description" content="{{ description }}"/>
 
     <meta property="og:title" content="{{ name }}"/>
+    <meta name="description" content="{{ description }}"/>
     <meta property="og:image" content="/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -41,6 +38,7 @@
 <body>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push"
@@ -75,9 +73,9 @@
 
             </ul>
             {% if isTemplate %}
-                <p class="btn_go_snsbbs">Viết lời chúc</p>
+                <p class="btn_go_snsbbs">Chúc mừng</p>
             {% else %}
-                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Chúc mừng</p></a>
             {% endif %}
         </div>
     </div>
@@ -114,9 +112,9 @@
                 {% endif %}
             </ul>
             {% if isTemplate %}
-                <p class="btn_go_snsbbs">Viết lời chúc</p>
+                <p class="btn_go_snsbbs">Chúc mừng</p>
             {% else %}
-                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Viết lời chúc</p></a>
+                <a href="{{ path('guest_book_page', {hash: hash}) }}"><p class="btn_go_snsbbs">Chúc mừng</p></a>
             {% endif %}
         </div>
     </div>
@@ -125,8 +123,7 @@
     <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
-                <li data-icon="delete"><a href="{{ path('home_page') }}"><span>Trang Chủ</span></a></li>
-                {#<li data-role="list-divider">-------------</li>#}
+                <li class="menu_scrolls" data-rel="close"><span>Trang Chủ</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>Lời Tựa</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>Album Ảnh</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_media"><span>Video</span></li>
@@ -152,7 +149,7 @@
             <div class="header_content">
                 <div class="header_date">
                     <p class="text">Ngày chung đôi</p>
-                    <p class="date"><span>{{ date | date('d.m.Y') }}</span><span>{{ date | date('H:i A') }}</span></p>
+                    <p class="date"><span>{{ date | date('d-m-Y') }}</span><span>{{ date | date('H:i A') }}</span></p>
                 </div>
             </div>
         </div>
@@ -173,7 +170,7 @@
                 <p class="bride"><a href="#panel_bride"><span class="icon"></span>Cô Dâu</a></p>
             </div>
             <div class="header_loca">
-                <p><span>{{ date | date('d.m.Y') }} ({{ date | date('l') }})</span> <span>{{ date | date('H:i A') }}</span></p>
+                <p><span>{{ date | long_time }}</span></p>
                 <p>{{ data['place'] }}</p>
             </div>
         </div>
@@ -200,7 +197,6 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
-                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -209,7 +205,6 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
-                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -219,7 +214,6 @@
                                 <span class="gn1">{{ data['bride_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['bride_mo_name']}}</span>
-                                {#<span class="gn3">의 장녀</span>#}
                             </p>
                             <p><span class="gn4"><em>Cô Dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
                         </li>
@@ -228,7 +222,6 @@
                                 <span class="gn1">{{ data['groom_fa_name'] }}</span>
                                 <span class="gn_and">,</span>
                                 <span class="gn2">{{ data['groom_mo_name'] }}</span>
-                                {#<span class="gn3">의 차남</span>#}
                             </p>
                             <p><span class="gn4"><em>Chú Rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
                         </li>
@@ -236,7 +229,8 @@
                 </ul>
 
                 <div class="greeting_loca">
-                    <p>Ngày {{ date | date('d') }} Tháng {{ date | date('m') }} Năm {{ date | date('Y') }}, lúc {{ date | date('H:i A') }}</p>
+                    <p>{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                    <p>(tức {{ dateAl }})</p>
                     <p>{{ data['place'] }}</p>
                 </div>
             </div>
@@ -249,23 +243,23 @@
             <div class="ul-body">
                 <div class="gal_list">
                     <div class="col-5">
-                        {% for img in first %}
+                        {% for img in gallery[0:5] %}
                             <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
                                 <div class="ui-block-{{ loop.index }}" style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;"></div>
                             </a>
                         {% endfor %}
                     </div>
-                    {% if second | length > 0 %}
+                    {% if gallery | length > 5 %}
                         <div class="col-4">
-                            {% for img in second %}
+                            {% for img in gallery[5:4] %}
                                 <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgId="{{ loop.index + 5}}">
                                     <div class="ui-block-{{ loop.index }}" style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;"></div>
                                 </a>
                             {% endfor %}
                         </div>
                     {% endif %}
-                    {% if rest | length > 0 %}
-                        {% for img in rest %}
+                    {% if gallery | length > 9 %}
+                        {% for img in gallery[9:] %}
                             <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index + 9}}">
                                 {% if loop.index == 1 %}
                                     <p class="gal_more"><span>more</span></p>
@@ -284,8 +278,8 @@
         <div class="dday_wrap">
             <div class="dday_title">Save The Date</div>
             <div class="dday_text">
-                <p class="date">{{ date | date('d.m.Y') }}</p>
-                <p class="time"><span>{{ date | date('l') }}</span><span>{{ date | date('H:i A') }}</span></p>
+                <p class="date">{{ date | date('d-m-Y') }}</p>
+                <p class="time"><span>{{ date | full_day }}</span><span>{{ date | date('H:i') }}</span></p>
                 <p class="dday">D-151</p></div>
         </div>
         <!--// dday -->
@@ -552,7 +546,7 @@
             <h2 class="title"><span>Địa điểm</span></h2>
             <div class="ul-body">
                 <ul class="lo_tab_wrap">
-                    <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</li>
+                    <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Lễ Thành Hôn</li>
                     <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
                 </ul>
             </div>
@@ -560,8 +554,8 @@
                 <div class="lo_box col-2">
                     <div class="ui-block-1">
                         <div class="lo_title">
-                            <h3>Lễ Cưới tổ chức tại</h3>
-                            <p class="date">{{ weddingDate | date('d.m.Y H:i A') }}</p>
+                            <h3>{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3>
+                            <p class="date">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</p>
                             <p class="place">{{ data['home'] }}</p></div>
                         <div class="lo_map">
                             <div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
@@ -571,7 +565,7 @@
                         <div class="lo_containerarea">
                             <table class="lo_container lo_left">
                                 <tr>
-                                    <th class="lo_loca"><span class="icon">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</span></th>
+                                    <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
                                     <td class="txt">{{ data['home'] }}</td>
                                 </tr>
                                 <tr>
@@ -601,8 +595,8 @@
                 <div class="lo_box col-2">
                     <div class="ui-block-1">
                         <div class="lo_title">
-                            <h3>Tiệc Cưới tổ chức tại</h3>
-                            <p class="date">{{ date | date('d.m.Y H:i A') }}</p>
+                            <h3>Tiệc Cưới</h3>
+                            <p class="date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
                             <p class="place">{{ data['place'] }}</p></div>
                         <div class="lo_map">
                             <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
@@ -717,22 +711,23 @@
         </div>
     </div>
 </div>
-
+{% if voted == false %}
 <div id="signup" class="signup">
     <div class="container">
         <div class="row">
             <i>Vui lòng cho biết dự định của bạn !</i>
         </div>
         <div class="row">
-            <button class="btn btn-success" href="#">Sẽ đến</button> &nbsp;
-            <button class="btn btn-warning" href="#">Cân nhắc</button> &nbsp;
-            <button class="btn btn-danger" href="#">Không đến</button>
+            <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+            <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+            <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
         </div>
         {#<p class="text-center">#}
         {#</p>#}
         <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
     </div>
 </div>
+{% endif %}
 
 <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
 {% if isTemplate == false %}
@@ -748,8 +743,8 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
 </script>
+<script src="/bundles/viettutweb/js/templates/common/popup.js"></script>
 <script type="text/javascript">
-
     {% if isTemplate == false %}
         (function($) {
             $.fn.onScrollTo = function(focusInFn, focusOutFn) {
@@ -776,6 +771,7 @@
             $('#signup').removeClass('show');
         });
     {% endif %}
+
     $(function () {
 
         $(".header").css("height", $(window).height());
@@ -1199,43 +1195,10 @@
             }
         });
 
-
-//        $('.locationtabs').click(function () {
-//            var id = $(this).attr('id').replace('tabs_', '');
-//            $('.locationtabs').removeClass('on');
-//            $(this).addClass('on');
-//            $('.locationdivs').removeClass('hide');
-//            $('.locationdivs').addClass('hide');
-//            $('#div_' + id).removeClass('hide');
-//
-//            setLocationInfoHeight();
-//
-//            initialize(id);
-//        }).css('cursor', 'pointer');
-
-        $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-1 cont_box3 ', '');
-
-            callKakaoNavi(id);
-        });
-
-        $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-2 cont_box4 ', '');
-
-            callOllehNavi(id);
-        });
-
-
         $('#div_snsbbs').masonry('bindResize');
-
-//
-//        function setLocationInfoHeight() {
-//        }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
@@ -1248,7 +1211,6 @@
                     window.location.href = '/';
                 }
             } catch (e) {
-                //console.log(e);
             }
         }).css('cursor', 'pointer');
 

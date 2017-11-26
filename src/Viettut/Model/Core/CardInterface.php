@@ -11,8 +11,8 @@ use Viettut\Model\User\UserEntityInterface;
 interface CardInterface extends ModelInterface
 {
     const STATUS_GOING = 1;
-    const STATUS_NOT_GOING = 2;
-    const STATUS_NOT_SURE = 3;
+    const STATUS_NOT_GOING = 3;
+    const STATUS_NOT_SURE = 2;
 
     /**
      * @param $id
@@ -239,4 +239,6 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setPartyDate($partyDate);
+
+    public function getWeddingDateString();
 }

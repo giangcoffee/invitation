@@ -8,6 +8,9 @@ parameters:
 
     # voter
     viettut.security.auth.voter.card.class: Viettut\Security\Authorization\Voter\CardVoter
+    viettut.long_date_extension.class: Viettut\Behaviors\FullDateExtension
+    viettut.long_time_extension.class: Viettut\Behaviors\FullTimeExtension
+    viettut.full_day_extension.class: Viettut\Behaviors\DayExtension
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
@@ -55,3 +58,18 @@ services:
         public: false
         tags:
             - { name: security.voter }
+
+    viettut.twig.long_date_extension:
+        class: %viettut.long_date_extension.class%
+        tags:
+            - { name: twig.extension }
+
+    viettut.twig.long_time_extension:
+        class: %viettut.long_time_extension.class%
+        tags:
+            - { name: twig.extension }
+
+    viettut.twig.full_day_extension:
+        class: %viettut.full_day_extension.class%
+        tags:
+            - { name: twig.extension }

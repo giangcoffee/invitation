@@ -147,8 +147,16 @@ label { cursor:pointer; }
 	.instagram	{background:url('../../../img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
 }
 
+@media all and (max-width: 640px) {
+	.footer h4 {right:5px;top:-5px;}
+}
+
 @media all and (max-width: 480px) {
-	.footer h4 {right:5px;top:-10px;}
+	.footer h4 {right:5px;top:-5px;}
+}
+
+@media all and (max-width: 320px) {
+    .footer h4 {right:5px;top:-5px;}
 }
 
 .hide {display:none;}

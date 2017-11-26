@@ -307,7 +307,7 @@ h2.title span {font-size: 2.1em;line-height:1;color:#fff;font-family:'Georgia',c
 .nopost_wrap:before {position:absolute;top: 0;left:0;right:0;height:30px;background:url('../../../img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 0;background-size:auto 60px;opacity:0.4;content:''}
 .nopost_wrap:after {position:absolute;bottom:0;left:0;right:0;height:30px;background:url('../../../img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 100%;background-size:auto 60px;opacity:0.4;content:''}
 
-.gb_btn {position:relative; width:155px; height:40px;margin:30px auto; padding:0;background:url('../../../img/templates/gardenwedding/btn_guestbook.png') no-repeat 0 0; background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+.gb_btn {position:relative; width:155px; height:45px;margin:30px auto; padding:0;background:url('../../../img/templates/gardenwedding/btn_guestbook_1.png') no-repeat 0 0; background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
 .gb_msg {position:relative;margin: 0 0 60px}
 .nopost_wrap .gb_msg {margin-bottom:40px}
 .gb_msg span {display: block;width:270px;height:18px;margin: 0 auto;background:url('../../../img/templates/gardenwedding/txt_guestbook.png') no-repeat 50% 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
@@ -540,4 +540,68 @@ background:url('../../../img/templates/gardenwedding/tab_on.png') no-repeat 0 0;
 
 @media all and (max-width: 790px) and (max-height: 580px) and (orientation: landscape) {
   .header {height: 850px!important;}
+}
+
+
+.gb-button {
+  float:left;
+  margin-left:40%;
+  margin-top:35px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 24px;
+  border: 1px solid #c2373c;
+  border-radius: 26px;
+  background: #ff5a62;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff5a62), to(#c2373c));
+  background: -moz-linear-gradient(top, #ff5a62, #c2373c);
+  background: linear-gradient(to bottom, #ff5a62, #c2373c);
+  text-shadow: #7a2326 1px 1px 1px;
+  font: normal normal bold 18px arial;
+  color: #ffffff;
+  text-decoration: none;
+}
+.gb-button:hover,
+.gb-button:focus {
+  border: 1px solid ##f3454b;
+  background: #ff6c76;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff6c76), to(#e94248));
+  background: -moz-linear-gradient(top, #ff6c76, #e94248);
+  background: linear-gradient(to bottom, #ff6c76, #e94248);
+  color: #ffffff;
+  text-decoration: none;
+}
+.gb-button:active {
+  background: #c2373c;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c2373c), to(#c2373c));
+  background: -moz-linear-gradient(top, #c2373c, #c2373c);
+  background: linear-gradient(to bottom, #c2373c, #c2373c);
+}
+.gb-button:before{
+  content:  "\0000a0";
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  margin: 0 4px -6px -4px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACzUlEQVRIiaXVP2idVRjH8c8TS5FSRC8Xh+rQtZcgDtFIaipSQox0sL4XwcFFcBB5L7RObxYJhbw4OJhXnHQXe99u9iYUQSEV7SAlhGRxEHEopcTgUJxyHO6t5v+/nvU8fH+/8zy/c054zJV1ioakwlt4iC/T0MbMjc8/3YAnHgfe7hTNSOaD1/A1HuDDEM+1Rsd7q78sbhxboN0pGphPDCOrq3KuNTp+HUMRcUVy5txLF747lkA7L5qYT6GFdl2VN2H1zqLVO4s/nHv51SFcibBx4qjwLC+aSfSEEdJ6RNzfpewTtPDR0NHg0w2ih2EpfSBZk/SyTjGyua6uSriP04cWyPLpJhYGzrK6Kr/CxSStEwvtzvTI/7XFJbyPG3EYeLtTNFPSC4aTyOpq9uYm2FncEp6WTOFZ1BGWNlKaOlCg3c/5gkFauoOBbj1dcRbfo4Eng2VhsjtXru2bonanaErmE63g7W5V9narW72zuN4aHX8o4p0Id4WJ7lz5F+x5gnY+3UxSb+D8cl2V83vVZnnxJmosBVPdqlx7tLerQDufbmAhSY8u0Y62bINfJ1YwWVeza5v3d6Sof4nSAqk1cL4f/NLA+QomtsN3nCAbOI++88vdQ7YFU/WmtuwqkOXFCdzCK7FHWrbBrwcricm94LD5qbiGC3jvAPilAXwZE3VVru9Vy2AGWV68gKv4B78dwvlSYrJ7APw/AbwLwT302vnWt2ULPGI57dPzHQJv5DmM4Ve8HqwlbmX5jreljn4UJw4Lh6FTTp/Ci/i5W5V/YCJ4QFrI8mIsy4urfeeW+td/9sC2bBEIWhHxlHAbulX5Oy7q/68/hvgMN1My1Z3bmfOD1gmMSWkDf2Z50cb5xFhwJnEvRfp4+JmT38zMzByV3RcIzusP+3aIIdLfuJuYkXxRV+VafSz0QCDxPL7F7ST9FKxE4+TD7jEdb1//AjuvHhmkF32aAAAAAElFTkSuQmCC") no-repeat left center transparent;
+  background-size: 100% 100%;
+}
+
+@media all and (max-width: 320px) {
+  .gb-button {
+    margin-left:20%;
+    margin-top:20px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .gb-button {
+    margin-left:35%;
+    margin-top:25px;
+  }
 }
