@@ -952,18 +952,31 @@
         <div class="ui-panel-inner">
             <div class="groom-wrap">
                 <ul>
-                    <a href="tel:01020000000" class="ui-link">
+                    <a href="tel:{{ data['groom_phone'] }}" class="ui-link">
                         <li class="ico5">Gọi điện</li>
                     </a>
-                    <a href="sms:01020000000" class="ui-link">
+                    <a href="sms:{{ data['groom_phone'] }}" class="ui-link">
                         <li class="ico6">Nhắn tin</li>
                     </a>
-                    <a href="http://facebook.com/dalpeng" target="_blank" class="ui-link">
-                        <li class="ico7">Facebook</li>
-                    </a>
-                    <a href="http://instagram.com/dalpeng2com" target="_blank" class="ui-link">
-                        <li class="ico_insta">Instagram</li>
-                    </a>
+                    {% if data['groom_facebook'] is empty %}
+                        <a href="http://facebook.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico7">Facebook</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['groom_facebook'] }}" target="_blank" class="ui-link">
+                            <li class="ico7">Facebook</li>
+                        </a>
+                    {% endif %}
+                    {% if data['groom_instagram'] is empty %}
+                        <a href="http://instagram.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico_insta">Instagram</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['groom_instagram'] }}" target="_blank" class="ui-link">
+                            <li class="ico_insta">Instagram</li>
+                        </a>
+                    {% endif %}
+
                 </ul>
                 <p class="btn_go_snsbbs" style="cursor: pointer;">Lưu bút</p>
             </div>
@@ -978,18 +991,31 @@
         <div class="ui-panel-inner">
             <div class="bride-wrap">
                 <ul>
-                    <a href="tel:01020000000" class="ui-link">
+                    <a href="tel:{{ data['bride_phone'] }}" class="ui-link">
                         <li class="ico1">Gọi điện</li>
                     </a>
-                    <a href="sms:01020000000" class="ui-link">
+                    <a href="sms:{{ data['bride_phone'] }}" class="ui-link">
                         <li class="ico2">Nhắn tin</li>
                     </a>
-                    <a href="http://facebook.com/dalpeng" target="_blank" class="ui-link">
-                        <li class="ico3">Facebook</li>
-                    </a>
-                    <a href="http://instagram.com/dalpeng2com" target="_blank" class="ui-link">
-                        <li class="ico_insta">Instagram</li>
-                    </a>
+                    {% if data['bride_facebook'] is empty %}
+                        <a href="http://facebook.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico3">Facebook</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['bride_facebook'] }}" target="_blank" class="ui-link">
+                            <li class="ico3">Facebook</li>
+                        </a>
+                    {% endif %}
+                    {% if data['bride_instagram'] is empty %}
+                        <a href="http://instagram.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico_insta">Instagram</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['bride_instagram'] }}" target="_blank" class="ui-link">
+                            <li class="ico3">Instagram</li>
+                        </a>
+                    {% endif %}
+
                 </ul>
                 <p class="btn_go_snsbbs" style="cursor: pointer;">Lưu bút</p>
             </div>
@@ -1046,26 +1072,23 @@
         <div class="header ui-section-a">
 
             <div class="header_txt">
-                <!-- 청첩장 타이틀 -->
                 <div class="title">
-                    <span class="tit_txt1"><font style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">October's beautiful day, </font></font></span>
-                    <span class="tit_txt2"><font style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">invite</font></font></span>
+                    <span class="tit_txt1">Những ngày đẹp trời</span>
+                    <span class="tit_txt2">Hôn lễ của</span>
                 </div>
             </div>
             <div class="header_img"
                  style="height: 1024px; background: url('/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg') center center / cover no-repeat;"></div>
 
             <div class="header_panel">
-                <p class="bride" style="float:left;"><a href="http://dalpeng.com/beautifulday#panel_bride"
-                                                        class="ui-link"><span class="icon"></span><font
-                                style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">Bride</font></font></a></p>
-                <p class="groom" style="float:right;"><a href="http://dalpeng.com/beautifulday#panel_groom"
-                                                         class="ui-link"><span class="icon"></span><font
-                                style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">Groom</font></font></a></p>
+                <p class="bride">
+                    <a href="http://dalpeng.com/beautifulday#panel_bride" class="ui-link">
+                        <span class="icon"></span>Cô dâu</a>
+                </p>
+                <p class="groom">
+                    <a href="http://dalpeng.com/beautifulday#panel_groom" class="ui-link">
+                        <span class="icon"></span>Chú rể</a>
+                </p>
             </div>
         </div>
         <!--// header -->
@@ -1077,7 +1100,7 @@
                     <div class="couple_list">
                         <div class="name"><p><strong>{{ data['groom_name'] }}</strong></p>
                         </div>
-                        <div class="and"><p><strong>Và</strong></p></div>
+                        <div class="and"><p><strong>&</strong></p></div>
                         <div class="name"><p><strong>{{ data['bride_name'] }}</strong>
                             </p></div>
                     </div>
@@ -1086,12 +1109,7 @@
                         <div class="place">{{ data['place'] }}</div>
                     </div>
                     <div class="home_dday">
-                        <!--<p>D<span>-</span>317</p>-->
-                        <p><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">D </font></font><span><font
-                                        style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></span><font
-                                    style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 317</font></font>
-                        </p>
+                        <p>D <span>-</span> 317</p>
                     </div>
                 </div>
             </div>
@@ -1100,9 +1118,8 @@
             <div class="invite_wrap">
 
                 <div class="invite_content">
-                    <!-- 초대글 -->
                     <h2 class="title"><span>LỜI CẢM ƠN</span></h2>
-                    <div class="invite_img"><span>We are married.</span></div>
+                    <div class="invite_img"><span>Destined to love you !</span></div>
 
                     <div class="invite_text">{{ data['greeting'] }}</div>
                     <ul class="invite_name">
@@ -1121,8 +1138,7 @@
 
             <!-- gallery -->
             <div class="gallery_wrap" id="sk_gallery" data-pswp-uid="1">
-                <h2 class="title"><span>ALBUM ẢNH</span>
-                </h2>
+                <h2 class="title">ALBUM ẢNH</h2>
                 <div class="ul-body">
                     <div class="gal_list">
                         <div class="col-4">
@@ -1162,29 +1178,10 @@
             </div>
             <!--// gallery -->
 
-
-            <!-- movie -->
-            {#<div class="movie_wrap" id="sk_media">#}
-                {#<h2 class="title"><span>WEDDING MOVIE</span>#}
-                {#</h2>#}
-                {#<div class="ul-body">#}
-                    {#<div class="movie_container movie1">#}
-                        {#<ul>#}
-                            {#<li>#}
-                                {#<iframe id="movie" width="100%"#}
-                                        {#data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&amp;autohide=1&amp;rel=0&amp;vq=hd1080"#}
-                                        {#height="100%" frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""#}
-                                        {#allowfullscreen="" src="./beautiful_day_files/Q9aUb6FJdhk.html"></iframe>#}
-                            {#</li>#}
-                            {#<!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->#}
-                        {#</ul>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
             {% if isTemplate %}
                 <!-- movie -->
                 <div class="movie_wrap" id="sk_media">
-                    <h2 class="title hidden"><span>Video</span></h2>
+                    <h2 class="title hidden">VIDEO</h2>
                     <div class="ul-body">
                         <div class="movie_container movie1">
                             <ul>
@@ -1207,7 +1204,7 @@
                 {% if embed | length > 0 %}
                     <!-- movie -->
                     <div class="movie_wrap" id="sk_media">
-                        <h2 class="title hidden"><span>Video</span></h2>
+                        <h2 class="title hidden">VIDEO</h2>
                         <div class="ul-body">
                             <div class="movie_container movie1">
                                 <ul>
@@ -1225,12 +1222,11 @@
 
             <!-- guestbook -->
             <div class="guestbook_wrap" id="sk_snsbbs">
-                <h2 class="title"><span>WEDDING GUESTBOOK</span>
-                </h2>
+                <h2 class="title">LƯU BÚT</h2>
                 <div class="ul-body col-3">
-                    <div class="gb_msg"><span>Leave a congratulatory message to the groom ♥ Bride</span>
+                    <div class="gb_msg"><span>Hãy chúc mừng cho ngày vui của cô dâu chú rể !</span>
                     </div>
-                    <div id="div_snsbbs" style="position: relative; height: 971.157px;">
+                    <div id="div_snsbbs">
                         {% if isTemplate %}
                             <div class="snsbbs_sections">
                                 <div class="ui-body-d">
@@ -1434,16 +1430,16 @@
                     </div>
                 </div>
                 {% if isTemplate %}
-                    <div class="btn_go_snsbbs" style='z-index:999;'><a class="gb-button" href="#" title="Để lại lời chúc">Chúc mừng</a></div>
+                    <div class="gb_btn btn_go_snsbbs" style='z-index:999;'>Chúc mừng</div>
                 {% else %}
-                    <div class="btn_go_snsbbs" style="cursor: pointer;"><a class="gb-button" href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc">Chúc mừng</a></div>
+                <a class="gb-button" href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style="cursor: pointer;">Chúc mừng</div></a>
                 {% endif %}
             </div>
             <!--// guestbook -->
 
             <!-- location -->
             <div class="location_wrap" id="sk_map">
-                <h2 class="title"><span>ĐỊA ĐIỂM</span></h2>
+                <h2 class="title">ĐỊA ĐIỂM</h2>
 
                 <div class="ul-body">
                     <ul class="lo_tab_wrap">
@@ -1472,12 +1468,20 @@
                                 <table class="lo_container lo_left">
                                     <tbody>
                                     <tr>
-                                        <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
-                                        <td class="txt"><span>{{ data['home'] }}</span></td>
+                                        <th class="lo_loca">Địa chỉ</th>
+                                        <td><span>{{ data['home'] }}</span></td>
                                     </tr>
                                     <tr>
-                                        <th class="lo_tel"><span class="icon">Tel</span></th>
-                                        <td class="txt"><span>{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</span></td>
+                                        <th class="lo_info">Hướng dẫn</th>
+                                        <td><span>{{ data['home_info'] }}</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="lo_container lo_right">
+                                    <tbody>
+                                    <tr>
+                                        <th class="lo_tel">Liên hệ</th>
+                                        <td><span>{{ data['home_contact'] }}</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -1517,31 +1521,31 @@
                                 <table class="lo_container lo_left">
                                     <tbody>
                                         <tr>
-                                            <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
-                                            <td class="txt"><span>{{ data['place_addr'] }}</span></td>
+                                            <th class="lo_loca">Địa chỉ</th>
+                                            <td><span>{{ data['place_addr'] }}</span></td>
                                         </tr>
                                         <tr>
-                                            <th class="lo_tel"><span class="icon">Tel</span></th>
-                                            <td class="txt"><span>{{ data['place_phone'] }}</span></td>
+                                            <th class="lo_info">Hướng dẫn</th>
+                                            <td><span>{{ data['place_info'] }}</span></td>
                                         </tr>
                                         <tr>
-                                            <th class="lo_info"><span class="icon">Đỗ xe</span></th>
-                                            <td><span>{{ data['parking_info'] }}</span></td>
+                                            <th class="lo_tel">Liên hệ</th>
+                                            <td><span>{{ data['place_phone'] }}</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <table class="lo_container lo_right">
                                     <tbody>
                                     <tr>
-                                        <th class="lo_bus"><span class="icon">Xe Bus</span></th>
+                                        <th class="lo_bus">Xe Khách</th>
                                         <td><span>{{ data['bus_info'] }}</span></td>
                                     </tr>
-                                    <tr>
-                                        <th class="lo_subway"><span class="icon">Tàu điện</span></th>
-                                        <td>
-                                            <span>{{ data['subway_info'] }}</span>
-                                        </td>
-                                    </tr>
+                                    {#<tr>#}
+                                        {#<th class="lo_subway"><span class="icon">Tàu điện</span></th>#}
+                                        {#<td>#}
+                                            {#<span>{{ data['subway_info'] }}</span>#}
+                                        {#</td>#}
+                                    {#</tr>#}
                                     </tbody>
                                 </table>
                                 <div class="nav-wrap">

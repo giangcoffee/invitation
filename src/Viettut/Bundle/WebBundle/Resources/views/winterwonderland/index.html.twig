@@ -1178,8 +1178,12 @@
                             <td>{{ data['home'] }}</td>
                         </tr>
                         <tr>
+                            <th>Hướng dẫn</th>
+                            <td>{{ data['home_info'] }}</td>
+                        </tr>
+                        <tr>
                             <th>Liên hệ</th>
-                            <td>{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</td>
+                            <td>{{ data['home_contact'] }}</td>
                         </tr>
                     </table>
                 </div>
@@ -1216,21 +1220,17 @@
                             <td>{{ data['place_addr'] }}</td>
                         </tr>
                         <tr>
+                            <th>Hướng dẫn</th>
+                            <td>{{ data['home_info'] }}</td>
+                        </tr>
+                        <tr>
                             <th>Liên hệ</th>
                             <td>{{ data['place_phone'] }}</td>
                         </tr>
                         <tr>
-                            <th>Đỗ xe</th>
-                            <td>{{ data['parking_info'] }}</td>
-                        </tr>
-                        <tr>
-                            <th>Xe bus</th>
+                            <th>Xe Khách</th>
                             <td>{{ data['bus_info'] }}
                             </td>
-                        </tr>
-                        <tr>
-                            <th>Tàu điện ngầm</th>
-                            <td>{{ data['subway_info'] }}</td>
                         </tr>
                     </table>
                 </div>

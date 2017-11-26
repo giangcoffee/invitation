@@ -1115,15 +1115,19 @@
                     <table class="lo_container">
                         <tr>
                             <th class="lo_date">Thời gian</th>
-                            <td class="txt">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
+                            <td>{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th class="lo_loca">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</th>
-                            <td class="txt">{{ data['home'] }}</td>
+                            <td>{{ data['home'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_tel">Tel</th>
-                            <td class="txt">{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</td>
+                            <th class="lo_tel">Hướng dẫn</th>
+                            <td>{{ data['home_info'] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_tel">Liên hệ</th>
+                            <td>{{ data['home_contact'] }}</td>
                         </tr>
                     </table>
                 </div>
@@ -1157,34 +1161,24 @@
                     <table class="lo_container">
                         <tr>
                             <th class="lo_date">Thời gian</th>
-                            <td class="txt">{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
+                            <td>{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
                         </tr>
                         <tr>
                             <th class="lo_loca">Tiệc cưới</th>
-                            <td class="txt">{{ data['place_addr'] }}</td>
+                            <td>{{ data['place_addr'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_tel">Tel</th>
-                            <td class="txt">{{ data['place_phone'] }}</td>
+                            <th class="lo_info">Hướng dẫn</th>
+                            <td>{{ data['home_info'] }}</td>
                         </tr>
-                        {% if data['parking_info'] is not empty %}
-                            <tr>
-                                <th class="lo_info">Đỗ xe</th>
-                                <td>{{ data['parking_info'] }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if data['bus_info'] is not empty %}
-                            <tr>
-                                <th class="lo_bus">Xe Bus</th>
-                                <td>{{ data['bus_info'] }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if data['subway_info'] is not empty %}
-                            <tr>
-                                <th class="lo_subway">Tàu điện ngầm</th>
-                                <td>{{ data['subway_info'] }}</td>
-                            </tr>
-                        {% endif %}
+                        <tr>
+                            <th class="lo_tel">Liên hệ</th>
+                            <td>{{ data['place_phone'] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_bus">Xe Khách</th>
+                            <td>{{ data['bus_info'] }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>

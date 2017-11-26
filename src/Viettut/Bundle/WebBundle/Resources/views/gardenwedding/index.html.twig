@@ -566,11 +566,17 @@
                             <table class="lo_container lo_left">
                                 <tr>
                                     <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
-                                    <td class="txt">{{ data['home'] }}</td>
+                                    <td>{{ data['home'] }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="lo_tel"><span class="icon">Tel</span></th>
-                                    <td class="txt">{% if forGroom %}{{ data['groom_phone'] }}{% else %}{{ data['bride_phone'] }}{% endif %}</td>
+                                    <th class="lo_info"><span class="icon">Hướng dẫn</span></th>
+                                    <td><p>{{ data['home_info'] }}</p></td>
+                                </tr>
+                            </table>
+                            <table class="lo_container lo_right">
+                                <tr>
+                                    <th class="lo_tel"><span class="icon">Liên hệ</span></th>
+                                    <td>{{ data['home_contact'] }}</td>
                                 </tr>
                             </table>
                         </div>
@@ -607,25 +613,21 @@
                             <table class="lo_container lo_left">
                                 <tr>
                                     <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
-                                    <td class="txt">{{ data['place_addr'] }}</td>
+                                    <td>{{ data['place_addr'] }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="lo_tel"><span class="icon">Tel</span></th>
-                                    <td class="txt">{{ data['place_phone'] }}</td>
+                                    <th class="lo_info"><span class="icon">Hướng dẫn</span></th>
+                                    <td><p>{{ data['place_info'] }}</p></td>
                                 </tr>
                                 <tr>
-                                    <th class="lo_info"><span class="icon">Đỗ xe</span></th>
-                                    <td><p>{{ data['parking_info'] }}</p></td>
+                                    <th class="lo_tel"><span class="icon">Liên hệ</span></th>
+                                    <td>{{ data['place_phone'] }}</td>
                                 </tr>
                             </table>
                             <table class="lo_container lo_right">
                                 <tr>
-                                    <th class="lo_bus"><span class="icon">Xe bus</span></th>
+                                    <th class="lo_bus"><span class="icon">Xe Khách</span></th>
                                     <td><p>{{ data['bus_info'] }}</p></td>
-                                </tr>
-                                <tr>
-                                    <th class="lo_subway"><span class="icon">Tàu điện</span></th>
-                                    <td><p>{{ data['subway_info'] }}</p></td>
                                 </tr>
                             </table>
                         </div>

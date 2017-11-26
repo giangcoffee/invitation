@@ -226,7 +226,8 @@ background-size:25px 110px, 25px 110px}
 .gb_btn {position:relative; width:140px;
   line-height:40px; margin:30px auto; padding:0 0 0 20px; border-radius:5px;
   font-size:1em; font-weight:bold; color:#fff;
-  background:#ff5f5f url(../../../img/templates/goldstar/icon_pencil.png) no-repeat 92% 50%; background-size:20px; box-sizing: border-box;}
+  background:#ff5f5f url(../../../img/templates/goldstar/icon_pencil.png) no-repeat 95% 40%; background-size:20px; box-sizing: border-box;}
+.gb_btn:hover {opacity: 0.7;}
 
 #div_snsbbs:after {clear:both; content:''; display:block;}
 .gb_cont_box {width:100%; padding:1em 0; font-family:'NanumGothic'; font-size:0.8em; color:#666; background-color:#fff; border:1px solid #ff5f5f; box-sizing:border-box; border-radius:5px;}
@@ -307,7 +308,7 @@ background: url(../../../img/templates/goldstar/lo_titlepin.png) no-repeat 10px 
 
 .lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; font-family:'NanumGothic'; border-top:2px solid #ceb36f;; border-bottom:2px solid #ceb36f;}
 .lo_container th {width:20%; min-width:100px; border-bottom:1px solid #ceb36f; color:#ceb36f; font-size:0.8em; font-family:'Vidaloka'; vertical-align:top; padding:10px 0; text-transform:uppercase;}
-.lo_container td {width:80%; border-bottom:1px solid #e0e0e0; color:#666; padding:10px 0 10px 10px; font-size:0.85em; line-height:1.6em }
+.lo_container td {width:80%; border-bottom:1px solid #ceb36f; color:#666; padding:10px 0 10px 10px; font-size:0.85em; line-height:1.6em }
 .lo_container td.txt {color:#000; font-weight:bold}
 
 
@@ -547,7 +548,7 @@ background: url(../../../img/templates/goldstar/lo_titlepin.png) no-repeat 10px 
   .lo_box {padding:10px;}
   .lo_tab_wrap {padding:0; width:90%;}
   .lo_container th{float:left; width:100%; text-align:left; padding:10px 0 0 10px; border:none; box-sizing: border-box}
-  .lo_container td{float:left; width:100%; padding:10px; border-bottom:1px solid #ceb36f; font-size:0.75em; box-sizing: border-box}
+  .lo_container td{float:left; width:100%; padding:10px; border-bottom:1px solid #ceb36f !important; font-size:0.75em; box-sizing: border-box}
 
   .lo_map #wedding_pmap_canvas,
   .lo_map #party_pmap_canvas {height:300px!important;}
