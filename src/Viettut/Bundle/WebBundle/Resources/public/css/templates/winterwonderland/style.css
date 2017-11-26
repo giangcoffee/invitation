@@ -85,8 +85,8 @@ h2.title img {height:55px;}
 /* couple */
 .couple_container {position:relative; width:500px; margin:0 auto; background:url(../../../img/templates/winterwonderland/couple_heart.png) no-repeat 50% 80px; background-size:40px}
 .couple_container:after {content:''; display:block; clear:both}
-.couple_groom {float:left; width:200px}
-.couple_bride {float:right; width:200px}
+.couple_groom {float:left; width:220px}
+.couple_bride {float:right; width:220px}
 .couple_photo {width:200px; height:200px; border-radius:100%; border:5px solid #9CBAAE; background-position:50% 50%!important; background-size:100%!important; box-sizing:border-box; -webkit-box-sizing:border-box;}
 .couple_name {text-align:center;margin:10px 0; font-size:1.2em; color:#333; font-weight:bold}
 .couple_name span {font-family: 'Oswald', sans-serif; font-size:0.6em; margin:0 5px 0 0; font-weight:normal}
@@ -475,3 +475,10 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd}
 @media all and (max-width: 480px) {
   .snow {height:120px;}
   }*/
+.bride-wrap ul {
+  margin: 0 0 !important;
+}
+
+.groom-wrap ul {
+  margin: 0 0 !important;
+}

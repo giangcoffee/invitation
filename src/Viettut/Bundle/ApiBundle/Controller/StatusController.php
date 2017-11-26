@@ -127,11 +127,11 @@ class StatusController extends RestControllerAbstract implements ClassResourceIn
 
         $this->get('viettut.domain_manager.status')->save($statusEntity);
         if (!array_key_exists('user_voted', $_COOKIE)) {
-            setcookie("user_voted", 1, time() + 604800, sprintf('/cards/%s', $card->getHash()), $this->getParameter('domain')); //cookie expire in 7 day
+            setcookie("user_voted", 1, time() + 604800, null, $this->getParameter('domain')); //cookie expire in 7 day
         }
 
         $response = new Response("", Response::HTTP_NO_CONTENT);
-        $cookie = new Cookie('user_voted', true, time() + 604800, sprintf('/cards/%s', $card->getHash()), $this->getParameter('domain'));
+        $cookie = new Cookie('user_voted', true, time() + 604800, null, $this->getParameter('domain'));
         $response->headers->setCookie($cookie);
 
         return $response;
