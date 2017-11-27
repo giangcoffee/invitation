@@ -1,7 +1,6 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:700');
-@import url('/dalpeng/skin/_common/fonts/KoPubBatang.css');
 
 /* beautiful_day */
 
@@ -56,7 +55,7 @@ html,body {font-family:'KoPub Batang','batang',serif;font-size: 100%}
 .parents_wrap {padding:80px 0 55px;border-bottom:1px solid #eee;background-color:#f8f8f8}
 .gallery_wrap {position:relative;padding:70px 0;overflow:hidden;border-bottom:1px solid #eee}
 .movie_wrap {position:relative;padding:70px 0 100px;overflow:hidden;border-bottom:1px solid #eee}
-.guestbook_wrap {position:relative;padding:70px 0 100px;overflow:hidden;background: #fff url(../../../img/templates/beautifulday/bg_guestbook.jpg) repeat 50% 50%;background-size:cover;border-bottom:1px solid #eee}
+.guestbook_wrap {position:relative;padding:70px 0 100px;overflow:hidden;background: #fff url(/bundles/viettutweb/img/templates/beautifulday/bg_guestbook.jpg) repeat 50% 50%;background-size:cover;border-bottom:1px solid #eee}
 .location_wrap {position:relative;margin: -50px 0 0;padding: 80px 0 0;overflow:hidden;}
 .footer {background-color: #ccc}
 
@@ -126,7 +125,7 @@ html,body {font-family:'KoPub Batang','batang',serif;font-size: 100%}
 .header_panel p {display:inline-block;width: 80px;height: 80px;font-size: 1.1em;line-height:1;letter-spacing: 0;text-align:center;font-family: 'Crimson Text',serif;z-index: 30;position: relative;}
 .header_panel a {display:block;width:80px;height:80px;padding:12px 0 0;color: #fff!important;background-color: rgba(0,0,0,0.3);border-radius:50%;font-weight:normal!important;-webkit-transition:0.2s background-color;transition:0.2s background-color;}
 .header_panel a:hover{background-color: rgba(0,0,0, 0.5)}
-.header_panel a .icon {display:block;margin: 0 auto;padding:0;width:55px;height:33px;background:url(../../../img/templates/beautifulday/ico_couple.png) no-repeat;background-size:110px auto;}
+.header_panel a .icon {display:block;margin: 0 auto;padding:0;width:55px;height:33px;background:url(/bundles/viettutweb/img/templates/beautifulday/ico_couple.png) no-repeat;background-size:110px auto;}
 .header_panel p.groom .icon {background-position: 0 2px}
 .header_panel p.bride .icon {background-position:100% 0}
 .header_panel p.bride {float: left;}
@@ -145,14 +144,14 @@ div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
 .bride-wrap p,
 .bride-wrap ul li {cursor:pointer}
 .groom-wrap p, 
-.bride-wrap p {position:absolute;top:486px;right:1px;width:50px;height:50px;text-shadow:none!important;background: #999 url(../../../img/templates/beautifulday/ico_panel.png) 100% 0 no-repeat;background-size:250px;font-size:0;line-height:0;text-indent:-9999px;}
+.bride-wrap p {position:absolute;top:486px;right:1px;width:50px;height:50px;text-shadow:none!important;background: #999 url(/bundles/viettutweb/img/templates/beautifulday/ico_panel.png) 100% 0 no-repeat;background-size:250px;font-size:0;line-height:0;text-indent:-9999px;}
 .groom-wrap ul,
 .bride-wrap ul {position:absolute;top: 486px;left:0;width:200px;height:50px}
 .groom-wrap ul:after,
 .bride-wrap ul:after{position:absolute;bottom:-100px;left:0;width:271px;height:100px;background-color:#fff;content:''}
 
 .groom-wrap ul li,
-.bride-wrap ul li {float:left; width:50px; height:50px; margin:0; background:rgba(0,0,0,0.5) url(../../../img/templates/beautifulday/ico_panel.png) 0 0 no-repeat; background-size:250px; font-size:0; line-height:0; text-indent:-9999px}
+.bride-wrap ul li {float:left; width:50px; height:50px; margin:0; background:rgba(0,0,0,0.5) url(/bundles/viettutweb/img/templates/beautifulday/ico_panel.png) 0 0 no-repeat; background-size:250px; font-size:0; line-height:0; text-indent:-9999px}
 .groom-wrap ul li.ico5,
 .bride-wrap ul li.ico1 {background-position:0 0px}
 .groom-wrap ul li.ico6,
@@ -190,12 +189,12 @@ div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
 /* title */
 h2.title {position: relative;width:100%;height:100px;padding:40px 0;z-index: 10;text-align:center;font-size:30px;font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic}
 h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 auto;font-size:0;line-height:0;text-indent:-9999px}
-.gallery_wrap h2.title span{background:url(../../../img/templates/beautifulday/title_gallery.png) no-repeat 50% 50%;background-size:auto 100%}
-.movie_wrap h2.title span{background:url(../../../img/templates/beautifulday/title_movie.png) no-repeat 50% 50%;background-size:auto 100%}
+.gallery_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_gallery.png) no-repeat 50% 50%;background-size:auto 100%}
+.movie_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_movie.png) no-repeat 50% 50%;background-size:auto 100%}
 .invite_wrap h2.title,.location_wrap h2.title {padding-top:60px;}
-.invite_wrap h2.thanks_title span{background:url(../../../img/templates/beautifulday/title_thankyou.png) no-repeat 50% 50%;background-size:auto 100%}
-.guestbook_wrap h2.title span{background:url(../../../img/templates/beautifulday/title_guestbook.png) no-repeat 50% 50%;background-size:auto 100%}
-.location_wrap h2.title span{background: url(../../../img/templates/beautifulday/title_location.png) no-repeat 50% 50%;background-size: 100% auto;width: 280px;height: 40px;}
+.invite_wrap h2.thanks_title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_thankyou.png) no-repeat 50% 50%;background-size:auto 100%}
+.guestbook_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_guestbook.png) no-repeat 50% 50%;background-size:auto 100%}
+.location_wrap h2.title span{background: url(/bundles/viettutweb/img/templates/beautifulday/title_location.png) no-repeat 50% 50%;background-size: 100% auto;width: 280px;height: 40px;}
 @media (max-width:414px) {
 	h2.title{height:90px}
 	.location_wrap h2.title span{width:220px;height:30px}
@@ -249,7 +248,7 @@ h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 a
 	.couple_list div.and p strong{font-size:45px}
 }
 
-.msg_wrap{position:relative;width:100%;height:200px;background:#323e40 url(../../../img/templates/beautifulday/wonkyu_txt.png) no-repeat 50% 50%;background-size:auto 115px}
+.msg_wrap{position:relative;width:100%;height:200px;background:#323e40 url(/bundles/viettutweb/img/templates/beautifulday/wonkyu_txt.png) no-repeat 50% 50%;background-size:auto 115px}
 .msg_wrap span{font-size:0;text-indent:-9999px}
 
 /* gallery */
@@ -265,7 +264,7 @@ h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 a
 .gal_list .col-4 .ui-block-4 {width:49%}
 
 .gal_more {display:block;clear:both;width:100px;height:40px;margin: 20px auto 0;cursor:pointer;
-font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templates/beautifulday/btn_more.png) no-repeat 0 0;background-size:100%;}
+font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb/img/templates/beautifulday/btn_more.png) no-repeat 0 0;background-size:100%;}
 
 .gal_list2 .gal_more{left:50%;bottom:0;margin-left:-50px}
 
@@ -354,11 +353,11 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 
 /* invite */
 .invite_content{width:100%;padding: 0;text-align:center;color: #444;line-height:1.4;}
-.invite_img{position:relative;width: 100%;height:550px;margin: 0 0 60px;background: url(../../../img/templates/beautifulday/bg_greetings.jpg) no-repeat 50% 50%;background-size: cover;}
+.invite_img{position:relative;width: 100%;height:550px;margin: 0 0 60px;background: url(/bundles/viettutweb/img/templates/beautifulday/bg_greetings.jpg) no-repeat 50% 50%;background-size: cover;}
 .invite_img:after{content:'';position:absolute;bottom:0;left:50%;width:80px;height:1px;margin-left:-40px;background-color:#000}
-.thanks_img{background: url(../../../img/templates/beautifulday/bg_thankyou.jpg) no-repeat 50% 100%;background-size: cover;}
+.thanks_img{background: url(/bundles/viettutweb/img/templates/beautifulday/bg_thankyou.jpg) no-repeat 50% 100%;background-size: cover;}
 .invite_img span{position:absolute;bottom:60px;left:0;right:0;display:block;height:200px;font-size:60px;}
-.thanks_img span{background:url(../../../img/templates/beautifulday/cont_thankyou.png) no-repeat 50% 0;background-size:auto 100%}
+.thanks_img span{background:url(/bundles/viettutweb/img/templates/beautifulday/cont_thankyou.png) no-repeat 50% 0;background-size:auto 100%}
 
 .invite_text {position:relative;width: 100%;max-width:640px;min-width: 290px;margin: 0 auto;padding: 0 10px;line-height: 2;font-size: 1.3em;color: #777;word-break: break-word;}
 
@@ -373,7 +372,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 /* Guestbook */
 .gb_msg {position:relative;padding: 30px 0;text-align:center;color:#444;}
 .gb_msg span{display:inline-block;padding:8px 0;line-height:1;font-weight:bold;}
-.gb_btn {cursor:pointer;position:relative;width:150px;height:45px;margin: 30px auto 0;padding:0;background: url(../../../img/templates/beautifulday/btn_write_1.png) no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+.gb_btn {cursor:pointer;position:relative;width:150px;height:45px;margin: 30px auto 0;padding:0;background: url(/bundles/viettutweb/img/templates/beautifulday/btn_write_1.png) no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
 .gb_btn:hover {opacity: 0.7;}
 .nopost_wrap {position:relative;width:98%;max-width: 450px;margin: 30px auto 0;padding: 25px 0 50px;background-color: rgba(245,245,245,0.8);}
 .nopost_wrap .gb_msg{padding-bottom:0px}
@@ -420,7 +419,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 .lo_tab_wrap .on.wh {border-left: 1px solid #dfdede;}
 .lo_tab_wrap .on.rh {border-right: 1px solid #dfdede;}
 
-.lo_tab_wrap li:after{width:20px;height:20px;content:'';display:block;position:absolute;top:17px;background:url(../../../img/templates/beautifulday/ico_lotab.png) no-repeat;background-size:auto 20px}
+.lo_tab_wrap li:after{width:20px;height:20px;content:'';display:block;position:absolute;top:17px;background:url(/bundles/viettutweb/img/templates/beautifulday/ico_lotab.png) no-repeat;background-size:auto 20px}
 .lo_tab_wrap li.wh:after{left:25px;background-position:-40px 0}
 .lo_tab_wrap li.rh:after{right:25px;background-position:-20px 0}
 .lo_tab_wrap li.on:after{background-position:0 0}
@@ -452,7 +451,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 .lo_container tr:last-child td{padding-bottom:10px}
 .lo_container td.txt {font-weight:bold}
 .lo_container td span {display:inline-block}
-.lo_container th span {display:inline-block;width: 25px;height:25px;vertical-align:top;line-height:25px;/* padding: 0 0 0 27px; */background:url(../../../img/templates/beautifulday/location_icon.png) no-repeat 0 0;background-size:25px;box-sizing: border-box;font-size: 0;text-indent: -9999px}
+.lo_container th span {display:inline-block;width: 25px;height:25px;vertical-align:top;line-height:25px;/* padding: 0 0 0 27px; */background:url(/bundles/viettutweb/img/templates/beautifulday/location_icon.png) no-repeat 0 0;background-size:25px;box-sizing: border-box;font-size: 0;text-indent: -9999px}
 .lo_container th.lo_date .icon    {background-position:0 0}
 .lo_container th.lo_loca .icon    {background-position:0 -25px}
 .lo_container th.lo_tel .icon     {background-position:0 -50px}
@@ -603,7 +602,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(../../../img/templa
 	.ui-section-wrap{max-width:1024px;margin: 0 auto;padding: 60px 0 0 0;box-shadow: 0px 0px 25px rgba(0,0,0,0.4);overflow: hidden;}
 	.footer {max-width:1024px;margin: 0 auto;box-shadow: 0px 0px 25px rgba(0,0,0,0.4)}
 	.ui-section-wrap .header_bg{position:absolute;top:0;left:0;right:0;height: 700px;z-index: -1;opacity:0.5}
-	.ui-section-wrap .header_bg:after{content:'';position:absolute;bottom:0;left:0;right:0;height:400px;background:url(../../../img/templates/beautifulday/bg_header.png) repeat-x 0 0;opacity:1}
+	.ui-section-wrap .header_bg:after{content:'';position:absolute;bottom:0;left:0;right:0;height:400px;background:url(/bundles/viettutweb/img/templates/beautifulday/bg_header.png) repeat-x 0 0;opacity:1}
 }
 
 @media(min-width:1240px){
