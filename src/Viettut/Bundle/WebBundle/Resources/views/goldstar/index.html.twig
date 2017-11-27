@@ -284,6 +284,7 @@
         <h2 class="title title_pink"><span>LƯU BÚT</span></h2>
 
         <div class="ul-body col-3">
+            <div class="gb_msg">Hãy chúc mừng cho ngày vui của cô dâu chú rể !</div>
             <div id="div_snsbbs">
                 {% if isTemplate %}
                 <div class="snsbbs_sections">
@@ -480,9 +481,9 @@
             </div>
         </div>
         {% if isTemplate %}
-            <div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span></div>
+            <div class="gb_btn btn_go_snsbbs"><span>Chúc mừng</span></div>
         {% else %}
-            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span></div></a>
+            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Chúc mừng</span></div></a>
         {% endif %}
     </div>
     <!--// guestbook -->

@@ -142,7 +142,7 @@ h2.title_gold span {border-bottom:1px solid #9d7f3c;}
 /* Greeting */
 .greeting_textbox {position:relative; width:90%; max-width:500px; min-width:290px; margin:0 auto; padding:80px 0; border-radius:5px;
   background:#fff url(/bundles/viettutweb/img/templates/goldstar/greeting_textbg.png) no-repeat 0 0; background-size:200px; box-shadow:0 2px 2px rgba(0,0,0,0.2); z-index:20}
-.greeting_textbox p {color:#444; font-size:1.05em; line-height:1.8; text-align:center; width:85%; margin:0px auto; }
+.greeting_textbox p {color:#444; font-size:1.05em; line-height:1.8; text-align:center; width:85%; margin:0px auto;word-break:normal;border-collapse:collapse !important;}
 
 .greeting_name {margin:30px auto 0; border-collapse: collapse; table-layout:fixed; color:#444;}
 .greeting_name thead {text-align:center;}
@@ -222,6 +222,7 @@ background-size:25px 110px, 25px 110px}
 /*}*/
   
 /* Guestbook */
+.gb_msg {position:relative;margin: 0 0 40px;}
 .snsbbs_nopost {width:50%; min-width:300px; background:#ffbbbb url(/bundles/viettutweb/img/templates/goldstar/icon_nopost.png) no-repeat 50% 20px; background-size:32px; color:#fff; font-weight:bold; text-align:center; margin:0 auto 50px; padding:60px 0 20px; border-radius:5px;}
 .gb_btn {position:relative; width:140px;
   line-height:40px; margin:30px auto; padding:0 0 0 20px; border-radius:5px;
@@ -308,7 +309,7 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
 
 .lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; font-family:'NanumGothic'; border-top:2px solid #ceb36f;; border-bottom:2px solid #ceb36f;}
 .lo_container th {width:20%; min-width:100px; border-bottom:1px solid #ceb36f; color:#ceb36f; font-size:0.8em; font-family:'Vidaloka'; vertical-align:top; padding:10px 0; text-transform:uppercase;}
-.lo_container td {width:80%; border-bottom:1px solid #ceb36f; color:#666; padding:10px 0 10px 10px; font-size:0.85em; line-height:1.6em }
+.lo_container td {width:80%; border-bottom:1px solid #ceb36f; color:#666; padding:10px 0 10px 10px; font-size:0.85em; line-height:1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important; }
 .lo_container td.txt {color:#000; font-weight:bold}
 
 
@@ -553,7 +554,7 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
   .lo_map #wedding_pmap_canvas,
   .lo_map #party_pmap_canvas {height:300px!important;}
   .lo_map .ui-link img {height:100%;}
-
+  .gb_msg {font-size:14px;}
   .nav_info {font-size:0.7em;}
 }
 

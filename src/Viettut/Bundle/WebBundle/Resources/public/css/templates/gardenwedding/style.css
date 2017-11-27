@@ -309,7 +309,7 @@ h2.title span {font-size: 2.1em;line-height:1;color:#fff;font-family:'Georgia',c
 
 .gb_btn {position:relative; width:155px; height:45px;margin:30px auto; padding:0;background:url('/bundles/viettutweb/img/templates/gardenwedding/btn_guestbook_1.png') no-repeat 0 0; background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
 .gb_btn:hover {opacity:0.7;}
-.gb_msg {position:relative;margin: 0 0 60px}
+.gb_msg {position:relative;margin: 0 0 40px}
 .nopost_wrap .gb_msg {margin-bottom:40px}
 .gb_msg span {display: block;width:270px;height:18px;margin: 0 auto;background:url('/bundles/viettutweb/img/templates/gardenwedding/txt_guestbook.png') no-repeat 50% 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
 
@@ -394,7 +394,7 @@ background:url('/bundles/viettutweb/img/templates/gardenwedding/tab_on.png') no-
 .lo_containerarea:after {content:'';display:block;clear:both}
 .lo_container {position:relative;width:100%;border-collapse: collapse;box-sizing: border-box;background-color:#fff}
 .lo_container th {width:20%;min-width: 90px;color:#069689;font-size: 0.8em;font-family:'Lora', serif;font-weight:700;font-style:italic;letter-spacing: -1px;vertical-align:top;text-align:left;padding: 8px 0 12px 0;text-transform:uppercase}
-.lo_container td {width:80%;color:#666;padding: 10px 0 12px 10px;font-size: 0.85em;line-height:1.6em}
+.lo_container td {width:80%;color:#666;padding: 10px 0 12px 10px;font-size: 0.85em;line-height:1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important;}
 .lo_container td.txt {color:#000; font-weight:bold}
 .lo_container td span {display:inline-block}
 .lo_container th span {display:inline-block;width:100%;height:25px;line-height:25px;padding: 0 0 0 10px;background:url('/bundles/viettutweb/img/templates/gardenwedding/location_icon.png') no-repeat 0 0;background-size:25px;box-sizing: border-box}
@@ -480,7 +480,7 @@ background:url('/bundles/viettutweb/img/templates/gardenwedding/tab_on.png') no-
   .greeting_img>img {border: 10px solid rgba(255,255,255,0.8);border-bottom: 0}
   .greeting_wrap h2.title {top:-70px}
   .greeting_content {padding-top: 55px}
-  .gb_msg span {width:250px;background-size: 240px auto;}
+  .gb_msg span {width:250px;background-size: 240px auto;font-size:15px;}
   
   .col-2 .ui-block-1,.col-2 .ui-block-2,
   .col-3 .ui-block-1,.col-3 .ui-block-2,.col-3 .ui-block-3 {float:left; width:100%}

@@ -319,6 +319,7 @@
             <h2 class="title"><span>Lưu bút</span></h2>
 
             <div class="ul-body col-3">
+                <div class="gb_msg">Để lại lời chúc mừng cho cô dâu & chú rể !</div>
                 <div id="div_snsbbs" style='z-index:999;'>
                     {% if isTemplate %}
                     <div class="snsbbs_sections">
@@ -523,9 +524,9 @@
                 </div>
             </div>
             {% if isTemplate %}
-                <div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div>
+                <div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Chúc mừng</span></div>
             {% else %}
-                <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Để lại lời chúc</span></div></a>
+                <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs" style='z-index:999;'><span>Chúc mừng</span></div></a>
             {% endif %}
         </div>
         <!--// guestbook -->

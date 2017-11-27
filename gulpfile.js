@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'copyfont', 'copyimage'], function(){
+gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland'], function(){
     console.log('i am GULP');
 });
 
@@ -109,17 +109,4 @@ gulp.task('winterwonderland-styles', function(){
         'web/bundles/viettutweb/css/templates/winterwonderland/style.css',
         'web/bundles/viettutweb/css/templates/winterwonderland/app.css'
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/winterwonderland'))
-});
-
-gulp.task('copyfont', function(){
-   return gulp.src([
-       'web/bundles/viettutweb/bower_components/font-awesome/fonts/*',
-       'web/bundles/viettutweb/css/fonts/*'
-   ]).pipe(gulp.dest('web/fonts'))
-});
-
-gulp.task('copyimage', function(){
-   return gulp.src([
-       'web/bundles/viettutweb/img/**/*'
-   ]).pipe(gulp.dest('web/img'))
 });

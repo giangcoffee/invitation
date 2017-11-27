@@ -199,17 +199,13 @@ h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 a
 	h2.title{height:90px}
 	.location_wrap h2.title span{width:220px;height:30px}
 }
-@media all and (max-width:320px) {
+@media all and (max-width:480px) {
 	h2.title span{height:50px !important;}
 	table.lo_right th {padding-left:0 !important;}
 	.lo_container th {font-size:15px !important;}
 	h2.title {font-size:22px !important;}
 	.invite_img span {font-size:30px !important;}
 	h2.title {font-size:20px !important;}
-}
-
-@media all and (max-width:480px) {
-	.invite_img span {font-size:40px !important;}
 }
 
 @media (min-width:1024px) {
@@ -434,7 +430,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .lo_title .tit strong{display:block;font-size: 1.9em;}
 .lo_title .date{color: #999;font-weight:bold;font-size: 1.1em;line-height:1.5;margin: 0 0 20px;}
 .lo_title .date:after{content:''}
-.lo_title .place{color: #444;font-weight:bold;font-size: 1.1em;line-height:1.5;}
+.lo_title .place{color: #444;font-weight:bold;font-size: 1.1em;line-height:1.5;word-break:normal;border-collapse:collapse !important;}
 .lo_map>a.ui-link {display:block;font-size:0}
 .lo_map #wedding_pmap_canvas,
 .lo_map #party_pmap_canvas {height:400px!important;background-color: #ddd}
@@ -447,7 +443,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .lo_container {position:relative;width:100%;border-collapse: collapse;box-sizing: border-box;}
 .lo_container th {width: 25%;text-align:left;padding: 0;}
 
-.lo_container td {color: #444;padding:2px 0 15px 0;font-size: 1em;line-height: 1.6em;}
+.lo_container td {color: #444;padding:2px 0 15px 0;font-size: 1em;line-height: 1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important;}
 .lo_container tr:last-child td{padding-bottom:10px}
 .lo_container td.txt {font-weight:bold}
 .lo_container td span {display:inline-block}
