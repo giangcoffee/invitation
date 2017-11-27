@@ -223,10 +223,14 @@ class BuilderController extends Controller
         $cardManager->save($card);
         $userVoted = false;
         if (!array_key_exists('user_unique_id', $_COOKIE)) {
+            $uniqueUser = uniqid('user', true);
             setcookie("user_unique_id", uniqid('user', true), time() + 604800); //cookie expire in 7 day
+        } else {
+            $uniqueUser = $_COOKIE['user_unique_id'];
         }
 
-        if (array_key_exists('user_voted', $_COOKIE)) {
+        $statuses = $this->get('viettut.repository.status')->checkUniqueUserForCard($card, $uniqueUser);
+        if (count($statuses) > 0) {
             $userVoted = true;
         }
 
