@@ -44,3 +44,7 @@ function updateStatus(status) {
         }
     });
 }
+
+function guestBookAlert() {
+    alert('Không thể chúc mừng trên thiệp mẫu !');
+}

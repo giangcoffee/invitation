@@ -394,7 +394,7 @@
             <div class="snsbbs_sections f-r">
                 <div class="ui-body-d">
                     {% if isTemplate %}
-                        <div class="gb_btn btn_go_snsbbs"><span>Chúc mừng</span><span class="ico"></span></div>
+                        <div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()"><span>Chúc mừng</span><span class="ico"></span></div>
                     {% else %}
                         <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Chúc mừng</span><span class="ico"></span></div></a>
                     {% endif %}

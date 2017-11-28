@@ -126,10 +126,10 @@ label { cursor:pointer; }
 .footer ul li div {width:60px; height:60px; margin:0 auto;}
 .footer ul li div span {display:block; text-indent:-9999px; overflow:hidden;}
 .footer ul li em {display:none; margin-top:.5em; font-size:1em; text-align:center; text-shadow:none;}
-.facebook {background:url('../../../img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
-.twitter {background:url('../../../img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
-.zalo {background:url('../../../img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
-.instagram	{background:url('../../../img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.facebook {background:url('/bundles/viettutweb/img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.twitter {background:url('/bundles/viettutweb/img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.zalo {background:url('/bundles/viettutweb/img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.instagram	{background:url('/bundles/viettutweb/img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
 
 
 
@@ -141,10 +141,10 @@ label { cursor:pointer; }
 	.footer ul {float:right; width:33%; padding-top:12px;}
 	.footer ul li {float:left; width:25%;}
 	.footer ul li div {width:40px; height:40px;}
-	.facebook {background:url('../../../img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
-	.twitter {background:url('../../../img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
-	.zalo {background:url('../../../img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
-	.instagram	{background:url('../../../img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.facebook {background:url('/bundles/viettutweb/img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.twitter {background:url('/bundles/viettutweb/img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.zalo {background:url('/bundles/viettutweb/img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.instagram	{background:url('/bundles/viettutweb/img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
 }
 
 @media all and (max-width: 640px) {
