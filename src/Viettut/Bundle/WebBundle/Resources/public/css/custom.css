@@ -18,7 +18,7 @@
     .btn-zl, .btn-fb {background-color: transparent !important;}
     .btn-zl img {width:44px;}
     .btn-fb img {width:48px;}
-    .img-responsive {max-width: 40% !important;}
+    /*.img-responsive {max-width: 40% !important;}*/
 }
 
 .temp-margin {margin-top:20px;margin-bottom:10px;}

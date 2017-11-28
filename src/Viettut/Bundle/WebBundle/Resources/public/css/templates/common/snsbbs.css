@@ -330,7 +330,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 /* footer */
 .footer_wrap {position:absolute;bottom:0;left:0;right:0;z-index: 0}
 .footer_wrap .logo{position:relative;padding:20px 0}
-.footer_wrap .logo span{display: block;width:40px;height:40px;margin: 0 auto;background:url(/bundles/viettutweb/img/templates/common/footer_logo2.png) no-repeat;background-size:100%;font-size:0;line-height:0;text-indent:-9999px;opacity:0.1;vertical-align: top}
+.footer_wrap .logo span{display: block;width:40px;height:40px;margin: 0 auto;background:url(/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png) no-repeat;background-size:100%;font-size:0;line-height:0;text-indent:-9999px;opacity:0.2;vertical-align: top}
 
 /* MYPAGE */
 .mypage_wrap {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;z-index:998}

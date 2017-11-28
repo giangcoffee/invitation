@@ -186,7 +186,7 @@ class AuthenController extends Controller
         } catch (\Exception $ex) {
             throw new RuntimeException('Không thể xác thực bằng tài khoản Zalo. Vui lòng thực hiện lại sau');
         }
-        
+
         $targetUrl = $request->query->get('_target_url', null);
         if ($targetUrl) {
             return $this->redirect($targetUrl);

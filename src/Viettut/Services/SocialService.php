@@ -143,7 +143,7 @@ class SocialService implements SocialServiceInterface
         $permissions = ['email', 'user_likes', 'user_photos']; // optional
         $redirectUrl = $this->facebookLoginRedirectUrl;
         if ($targetUrl) {
-            $redirectUrl = sprintf('%s?_target_url=%', $redirectUrl, $targetUrl);
+            $redirectUrl = sprintf('%s?_target_url=%s', $redirectUrl, $targetUrl);
         }
 
         return $helper->getLoginUrl($redirectUrl, $permissions);
@@ -155,7 +155,7 @@ class SocialService implements SocialServiceInterface
         $helper = $zalo -> getRedirectLoginHelper();
         $redirectUrl = $this->zaloLoginRedirectUrl;
         if ($targetUrl) {
-            $redirectUrl = sprintf('%s?_target_url=%', $redirectUrl, $targetUrl);
+            $redirectUrl = sprintf('%s?_target_url=%s', $redirectUrl, $targetUrl);
         }
 
         return $helper->getLoginUrl($redirectUrl);
