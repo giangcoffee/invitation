@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland'], function(){
+gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'guestbook'], function(){
     console.log('i am GULP');
 });
 
@@ -109,4 +109,39 @@ gulp.task('winterwonderland-styles', function(){
         'web/bundles/viettutweb/css/templates/winterwonderland/style.css',
         'web/bundles/viettutweb/css/templates/winterwonderland/app.css'
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/winterwonderland'))
+});
+
+
+gulp.task('guestbook', ['guestbook-scripts', 'guestbook-styles', 'guestbook-libraries'], function () {});
+gulp.task('guestbook-scripts', function () {
+    gulp.src([
+        'web/bundles/viettutweb/js/guest_book.js'
+    ])
+        .pipe(uglify())
+        .pipe(gulp.dest(config.SCRIPT_DEST + '/guestbook'));
+});
+
+gulp.task('guestbook-styles', function () {
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/common/snsbbs.css',
+        'web/bundles/viettutweb/css/templates/common/emoticon.css',
+        'web/bundles/viettutweb/css/lib/jquery.cropbox.custom.css'
+    ]).pipe(concat('guestbook.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/guestbook'))
+});
+
+gulp.task('guestbook-libraries', function () {
+    gulp.src([
+        'web/bundles/viettutweb/js/lib/jquery-1.11.1.min.js',
+        'web/bundles/viettutweb/js/lib/mustache.js',
+        'web/bundles/viettutweb/js/lib/masonry.pkgd.min.js',
+        'web/bundles/viettutweb/js/lib/imagesloaded.pkgd.min.js',
+        'web/bundles/viettutweb/js/lib/hammer.js',
+        'web/bundles/viettutweb/js/lib/jquery.mousewheel.js',
+        'web/bundles/viettutweb/js/lib/jquery.cropbox.custom.js'
+    ])
+        .pipe(concat('guestbook-libraries.temp'))
+        .pipe(gulp.dest(config.SCRIPT_DEST))
+        .pipe(rename('guestbook-libraries.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(config.SCRIPT_DEST));
 });

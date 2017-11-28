@@ -36,8 +36,7 @@ class BuilderController extends Controller
     {
         $user = $this->getUser();
         if (!$user instanceof UserEntityInterface) {
-            $this->container->get('session')->set('_security.main.target_path', $this->generateUrl('edit_card_page', array('hash' => $hash)));
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
+            return $this->redirect($this->generateUrl('fos_user_security_login', array('_target_url' => $request->getUri())));
         }
 
         /** @var CardManagerInterface $cardManager */

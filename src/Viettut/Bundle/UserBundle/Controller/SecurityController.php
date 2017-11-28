@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
-use Zalo\Zalo;
-use Zalo\ZaloConfig;
 
 class SecurityController extends BaseController
 {
@@ -48,17 +46,17 @@ class SecurityController extends BaseController
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
-        $facebookLoginUrl = $this->get('viettut.services.facebook_service')->getLoginUrl();
+        $targetUrl = $request->query->get('_target_url');
+        $facebookLoginUrl = $this->get('viettut.services.facebook_service')->getLoginUrl($targetUrl);
+        $zaloLoginUrl = $this->get('viettut.services.facebook_service')->getZaloLoginUrl($targetUrl);
 
-        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
-        $helper = $zalo -> getRedirectLoginHelper();
-        $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
-            'zaloUrl' => $zaloLoginUrl
+            'zaloUrl' => $zaloLoginUrl,
+            '_target_url' => $targetUrl
         ));
     }
 }

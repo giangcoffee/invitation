@@ -4,7 +4,7 @@
 namespace Viettut\Services;
 
 
-interface FacebookServiceInterface
+interface SocialServiceInterface
 {
     /**
      * @param $token
@@ -20,9 +20,16 @@ interface FacebookServiceInterface
     public function getAlbumPhotos($token, $albumId);
 
     /**
+     * @param null $targetUrl
      * @return mixed
      */
-    public function getLoginUrl();
+    public function getLoginUrl($targetUrl = null);
+
+    /**
+     * @param null $targetUrl
+     * @return mixed
+     */
+    public function getZaloLoginUrl($targetUrl = null);
 
     /**
      * @return mixed

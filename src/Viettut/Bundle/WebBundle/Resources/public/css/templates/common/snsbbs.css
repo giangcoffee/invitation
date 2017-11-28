@@ -82,7 +82,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .ico-back:before {background:url(/bundles/viettutweb/img/templates/common/ico-back.png) no-repeat 50% 50%;width:12px;height:22px;margin:-11px 0 0 -6px}
 .ico-prev:before {background:url(/bundles/viettutweb/img/templates/common/ico-back.png) no-repeat 50% 50%;width:10px;height:18px;margin:-9px 0 0 -5px}
 .ico-next:before {background:url(/bundles/viettutweb/img/templates/common/ico-next.png) no-repeat 50% 50%;width:10px;height:18px;margin:-9px 0 0 -5px}
-.ico-menu:before {background:url(//bundles/viettutweb/img/templates/common/ico-menu.png) no-repeat 50% 50%;width:26px;height:16px;margin:-8px 0 0 -13px}
+.ico-menu:before {background:url(/bundles/viettutweb/img/templates/common/ico-menu.png) no-repeat 50% 50%;width:26px;height:16px;margin:-8px 0 0 -13px}
 .ico-pencil:before {background:url(/bundles/viettutweb/img/templates/common/ico-pencil.png) no-repeat 50% 50%;width:20px;height:20px;left:0;margin: -10px 0 0 18px;}
 .ico-pencil-b:before {background:url(/bundles/viettutweb/img/templates/common/ico-pencil-b.png) no-repeat 50% 50%;width: 16px;height: 16px;left:0;margin: -8px 0 0 12px;opacity:0.5;}
 .ico-pencil2 {background:url(/bundles/viettutweb/img/templates/common/ico-pencil2.png) no-repeat 50% 50%;width:26px;height:26px;margin: -13px 0 0 -13px}

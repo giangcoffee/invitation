@@ -74,6 +74,11 @@ class AuthenController extends Controller
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
         }
 
+        $targetUrl = $request->query->get('_target_url', null);
+        if ($targetUrl) {
+            return $this->redirect($targetUrl);
+        }
+
         return $this->redirect($this->generateUrl('home_page'));
     }
 
@@ -180,6 +185,11 @@ class AuthenController extends Controller
             $this->get("security.token_storage")->setToken($token);
         } catch (\Exception $ex) {
             throw new RuntimeException('Không thể xác thực bằng tài khoản Zalo. Vui lòng thực hiện lại sau');
+        }
+        
+        $targetUrl = $request->query->get('_target_url', null);
+        if ($targetUrl) {
+            return $this->redirect($targetUrl);
         }
 
         return $this->redirect($this->generateUrl('home_page'));

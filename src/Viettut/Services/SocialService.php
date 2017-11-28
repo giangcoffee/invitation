@@ -8,8 +8,10 @@ use Facebook\Facebook;
 use RestClient\CurlRestClient;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Model\Core\CardInterface;
+use Zalo\Zalo;
+use Zalo\ZaloConfig;
 
-class FacebookService implements FacebookServiceInterface
+class SocialService implements SocialServiceInterface
 {
     /** @var string */
     private $appId;
@@ -21,25 +23,29 @@ class FacebookService implements FacebookServiceInterface
     private $defaultGraphVersion;
 
     /** @var  string */
-    private $loginRedirectUrl;
+    private $facebookLoginRedirectUrl;
+
+    private $zaloLoginRedirectUrl;
 
     /** @var  string */
     private $getAlbumRedirectUrl;
 
     /**
-     * FacebookService constructor.
+     * SocialService constructor.
      * @param string $appId
      * @param string $appSecret
-     * @param $loginRedirectUrl
+     * @param $facebookLoginRedirectUrl
+     * @param $zaloLoginRedirectUrl
      * @param $getAlbumRedirectUrl
      * @param string $defaultGraphVersion
      */
-    public function __construct($appId, $appSecret, $loginRedirectUrl, $getAlbumRedirectUrl, $defaultGraphVersion)
+    public function __construct($appId, $appSecret, $facebookLoginRedirectUrl, $zaloLoginRedirectUrl, $getAlbumRedirectUrl, $defaultGraphVersion)
     {
         $this->appId = $appId;
         $this->appSecret = $appSecret;
         $this->defaultGraphVersion = $defaultGraphVersion;
-        $this->loginRedirectUrl = $loginRedirectUrl;
+        $this->facebookLoginRedirectUrl = $facebookLoginRedirectUrl;
+        $this->zaloLoginRedirectUrl = $zaloLoginRedirectUrl;
         $this->getAlbumRedirectUrl = $getAlbumRedirectUrl;
     }
 
@@ -130,13 +136,29 @@ class FacebookService implements FacebookServiceInterface
         }
     }
 
-    public function getLoginUrl()
+    public function getLoginUrl($targetUrl = null)
     {
         $fb = $this->getFacebookApp();
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email', 'user_likes', 'user_photos']; // optional
+        $redirectUrl = $this->facebookLoginRedirectUrl;
+        if ($targetUrl) {
+            $redirectUrl = sprintf('%s?_target_url=%', $redirectUrl, $targetUrl);
+        }
 
-        return $helper->getLoginUrl($this->loginRedirectUrl, $permissions);
+        return $helper->getLoginUrl($redirectUrl, $permissions);
+    }
+
+    public function getZaloLoginUrl($targetUrl = null)
+    {
+        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
+        $helper = $zalo -> getRedirectLoginHelper();
+        $redirectUrl = $this->zaloLoginRedirectUrl;
+        if ($targetUrl) {
+            $redirectUrl = sprintf('%s?_target_url=%', $redirectUrl, $targetUrl);
+        }
+
+        return $helper->getLoginUrl($redirectUrl);
     }
 
     public function getAlbumUrl()
