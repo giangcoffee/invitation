@@ -21,8 +21,6 @@ use Viettut\Model\Core\TemplateInterface;
 use Symfony\Component\Security\Core\Security;
 use Viettut\Model\User\UserEntityInterface;
 use Viettut\Utilities\DateUtil;
-use Zalo\Zalo;
-use Zalo\ZaloConfig;
 
 class BuilderController extends Controller
 {
@@ -116,11 +114,9 @@ class BuilderController extends Controller
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
-        $facebookLoginUrl = $this->get('viettut.services.facebook_service')->getLoginUrl();
-
-        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
-        $helper = $zalo -> getRedirectLoginHelper();
-        $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
+        $targetUrl = $request->getUri();
+        $facebookLoginUrl = $this->get('viettut.services.facebook_service')->getLoginUrl($targetUrl);
+        $zaloLoginUrl = $this->get('viettut.services.facebook_service')->getZaloLoginUrl($targetUrl);
 
         $comments = $this->get('viettut.repository.comment')->getByCard($card);
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
