@@ -12,7 +12,8 @@
 #right-panel.ui-panel-open {border-left:1px solid #999}
 .ui-panel-open{border-color:#555;overflow:hidden}
 .ui-listview>.ui-li-divider{padding-top:0.9em;padding-bottom:0.9em}
-
+div#right-panel {z-index:9999;}
+ul.ui-listview li {cursor: pointer;}
 /* Global */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -135,8 +136,8 @@ html,body {font-family:'KoPub Batang','batang',serif;font-size: 100%}
 
 div#panel_groom,div#panel_groom .ui-panel-inner,
 div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
-
-
+div#panel_groom {background:#fff url('/bundles/viettutweb/img/templates/beautifulday/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;}
+div#panel_bride {background:#fff url('/bundles/viettutweb/img/templates/beautifulday/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;}
 .groom-wrap,
 .bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing: border-box}
 .groom-wrap p,
@@ -187,6 +188,8 @@ div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
 }
 
 /* title */
+div.header_bg {background:url('/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg') center top no-repeat; background-size:100% auto}
+li.menu_scrolls {cursor:pointer;}
 h2.title {position: relative;width:100%;height:100px;padding:40px 0;z-index: 10;text-align:center;font-size:30px;font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic}
 h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 auto;font-size:0;line-height:0;text-indent:-9999px}
 .gallery_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_gallery.png) no-repeat 50% 50%;background-size:auto 100%}
@@ -195,6 +198,7 @@ h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 a
 .invite_wrap h2.thanks_title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_thankyou.png) no-repeat 50% 50%;background-size:auto 100%}
 .guestbook_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_guestbook.png) no-repeat 50% 50%;background-size:auto 100%}
 .location_wrap h2.title span{background: url(/bundles/viettutweb/img/templates/beautifulday/title_location.png) no-repeat 50% 50%;background-size: 100% auto;width: 280px;height: 40px;}
+div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg') center center / cover no-repeat;}
 @media (max-width:414px) {
 	h2.title{height:90px}
 	.location_wrap h2.title span{width:220px;height:30px}
@@ -368,7 +372,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 /* Guestbook */
 .gb_msg {position:relative;padding: 30px 0;text-align:center;color:#444;}
 .gb_msg span{display:inline-block;padding:8px 0;line-height:1;font-weight:bold;}
-.gb_btn {cursor:pointer;position:relative;width:150px;height:45px;margin: 30px auto 0;padding:0;background: url(/bundles/viettutweb/img/templates/beautifulday/btn_write_1.png) no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+.gb_btn {cursor:pointer;position:relative;width:150px;height:45px;margin: 30px auto 0;padding:0;background: url(/bundles/viettutweb/img/templates/beautifulday/btn_write_1.png) no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px;z-index:999;}
 .gb_btn:hover {opacity: 0.7;}
 .nopost_wrap {position:relative;width:98%;max-width: 450px;margin: 30px auto 0;padding: 25px 0 50px;background-color: rgba(245,245,245,0.8);}
 .nopost_wrap .gb_msg{padding-bottom:0px}
@@ -403,7 +407,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .gb_skip {overflow:hidden;padding:0.9em 0.5em 0 0.5em;border-top: 1px solid #fff;}
 .gb_skip .gb_comm {height:13px;color: #fff;font-size: 17px;font-weight:bold;line-height:15px;font-family: 'Crimson Text',serif;}
 .gb_skip .gb_comm .icon_reply {float:left;text-align:center;width:16px;height:13px;margin:0 5px 0 0;font-size:0;line-height:0;text-indent:-9999px;background: url(/dalpeng/skin/_common/img/ico_reply_w.png) no-repeat;background-size:auto 13px;vertical-align:top;}
-
+.btn_go_snsbbs {cursor: pointer;}
 /* Location */
 .location_wrap h2.title + .locationdivs .lo_title{border-top:1px solid #dfdfdf}
 .lo_tab_wrap {min-height:40px;margin: 0 30px;padding: 0;}
@@ -469,6 +473,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .ui-page-theme-a .ui-btn {}
 .nav_info {font-size:0.75em;font-family:sans-serif;padding: 5px 0 20px;color:#333;text-align:center;}
 
+.nav-1 form input {height: 25px;width:300px;}
 .col-2,.col-3,.col-4 {position:relative; overflow:hidden}
 /*.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 .col-2 .ui-block-b {float:left; width:49%}*/
@@ -603,71 +608,6 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 
 @media(min-width:1240px){
 	.ui-section-b {z-index:30}
-}
-
-.gb-button {
-	float:left;
-	margin-left:40%;
-	margin-top:35px;
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	padding: 12px 24px;
-	border: 1px solid #a08d9e;
-	border-radius: 26px;
-	background: ##e5c9e1;
-	background: -webkit-gradient(linear, left top, left bottom, from(##e5c9e1), to(#a08d9e));
-	background: -moz-linear-gradient(top, ##e5c9e1, #a08d9e);
-	background: linear-gradient(to bottom, ##e5c9e1, #a08d9e);
-	text-shadow: #ffffff 1px 1px 1px;
-	font: normal normal bold 18px arial;
-	color: #111111;
-	text-decoration: none;
-}
-
-.gb-button:hover,
-.gb-button:focus {
-	background: #fff1ff;
-	background: -webkit-gradient(linear, left top, left bottom, from(#fff1ff), to(#c0a9be));
-	background: -moz-linear-gradient(top, #fff1ff, #c0a9be);
-	background: linear-gradient(to bottom, #fff1ff, #c0a9be);
-	color: #111111;
-	text-decoration: none;
-}
-
-.gb-button:active {
-	background: #a08d9e;
-	background: -webkit-gradient(linear, left top, left bottom, from(#a08d9e), to(#a08d9e));
-	background: -moz-linear-gradient(top, #a08d9e, #a08d9e);
-	background: linear-gradient(to bottom, #a08d9e, #a08d9e);
-}
-
-.gb-button:before{
-	content:  "\0000a0";
-	display: inline-block;
-	height: 24px;
-	width: 24px;
-	line-height: 24px;
-	margin: 0 4px -6px -4px;
-	position: relative;
-	top: 0px;
-	left: 0px;
-	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACzUlEQVRIiaXVP2idVRjH8c8TS5FSRC8Xh+rQtZcgDtFIaipSQox0sL4XwcFFcBB5L7RObxYJhbw4OJhXnHQXe99u9iYUQSEV7SAlhGRxEHEopcTgUJxyHO6t5v+/nvU8fH+/8zy/c054zJV1ioakwlt4iC/T0MbMjc8/3YAnHgfe7hTNSOaD1/A1HuDDEM+1Rsd7q78sbhxboN0pGphPDCOrq3KuNTp+HUMRcUVy5txLF747lkA7L5qYT6GFdl2VN2H1zqLVO4s/nHv51SFcibBx4qjwLC+aSfSEEdJ6RNzfpewTtPDR0NHg0w2ih2EpfSBZk/SyTjGyua6uSriP04cWyPLpJhYGzrK6Kr/CxSStEwvtzvTI/7XFJbyPG3EYeLtTNFPSC4aTyOpq9uYm2FncEp6WTOFZ1BGWNlKaOlCg3c/5gkFauoOBbj1dcRbfo4Eng2VhsjtXru2bonanaErmE63g7W5V9narW72zuN4aHX8o4p0Id4WJ7lz5F+x5gnY+3UxSb+D8cl2V83vVZnnxJmosBVPdqlx7tLerQDufbmAhSY8u0Y62bINfJ1YwWVeza5v3d6Sof4nSAqk1cL4f/NLA+QomtsN3nCAbOI++88vdQ7YFU/WmtuwqkOXFCdzCK7FHWrbBrwcricm94LD5qbiGC3jvAPilAXwZE3VVru9Vy2AGWV68gKv4B78dwvlSYrJ7APw/AbwLwT302vnWt2ULPGI57dPzHQJv5DmM4Ve8HqwlbmX5jreljn4UJw4Lh6FTTp/Ci/i5W5V/YCJ4QFrI8mIsy4urfeeW+td/9sC2bBEIWhHxlHAbulX5Oy7q/68/hvgMN1My1Z3bmfOD1gmMSWkDf2Z50cb5xFhwJnEvRfp4+JmT38zMzByV3RcIzusP+3aIIdLfuJuYkXxRV+VafSz0QCDxPL7F7ST9FKxE4+TD7jEdb1//AjuvHhmkF32aAAAAAElFTkSuQmCC") no-repeat left center transparent;
-	background-size: 100% 100%;
-}
-
-@media all and (max-width: 320px) {
-	.gb-button {
-		margin-left:20%;
-		margin-top:20px;
-	}
-}
-
-@media all and (max-width: 480px) {
-	.gb-button {
-		margin-left:35%;
-		margin-top:25px;
-	}
 }
 
 table.lo_right th {
