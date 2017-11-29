@@ -26,6 +26,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/beautifulday/app.css') }}"/>
 </head>
 <body class="ui-mobile-viewport ui-overlay-a">
+<h1 class="hide">Beautiful Day - Những ngày đẹp trời</h1>
+<h2 class="hide">Mẫu mới với phong cách nhẹ nhàng trong sáng với tông màu nhẹ, thích hợp với những bộ ảnh giản dị.</h2>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
 <div id="card_id" data-id="{{ id }}"></div>
@@ -727,7 +729,7 @@
         })(jQuery);
     </script>
 {% endif %}
-<script async src="{{ asset('js/libraries.min.js') }}"></script>
+<script src="{{ asset('js/libraries.min.js') }}"></script>
 <script async>
     $(function () {
         function fixScrollEvent() {

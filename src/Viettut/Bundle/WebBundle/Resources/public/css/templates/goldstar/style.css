@@ -14,6 +14,7 @@
 .spacer.s0 {min-height: 1px;}
 
 /* Global */
+.hide {display:none;}
 .ul-body   {position:relative; max-width: 980px; margin: 0 auto; padding:0 10px; box-sizing: border-box; -webkit-box-sizing: border-box;}
 .ui-cont-a {padding: 0 1em}
 .ui-cont-b {padding: 3em 0}
@@ -298,7 +299,7 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
 .nav-m {margin-top:5px;}
 .nav-m .nav-1 {float:left; width:100%;}
 .nav-m .nav-2 {float:left; width:50%;}
-.nav-m form input {height: 25px;width:300px;}
+.nav-m form input {margin-bottom: 0 !important;font-size:16px !important;}
 .ui-icon-nav1 {background:url('/bundles/viettutweb/img/templates/goldstar/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
 .ui-icon-nav2 {background:url('/bundles/viettutweb/img/templates/goldstar/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
 .ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}

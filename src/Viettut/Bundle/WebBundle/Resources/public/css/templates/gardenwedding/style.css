@@ -26,7 +26,7 @@
 .p-r {position:relative}
 .f-l {float:left!important}
 .f-r {float:right!important}
-
+.hide {display:none;}
 /* Layout */
 html,body {font-family:AppleSDGothicNeo-Regular,Droid sans,'NanumGothic','돋움',Dotum,Helvetica,sans-serif}
 body {font-size: 100%}
@@ -72,7 +72,7 @@ div.header_img {background:url('/bundles/viettutweb/img/templates/gardenwedding/
 /*.lnb li.on {background-color: rgba(0,0,0,0.5);border: 1px solid rgba(255,255,255,0.3)}*/
 .lnb li.on:after {}
 
-.header_date {position:absolute;width:220px;height:220px;top:50%;left:50%;margin:-110px 0 0 -110px;padding:75px 0 0;background-color:#fff;border-radius:50%; text-align:center; color:#ec7267; font-family:'Cookie', cursive;line-height:1}
+.header_date {position:absolute;width:220px;height:220px;top:50%;left:50%;margin:-110px 0 0 -110px;padding:60px 0 0;background-color:#fff;border-radius:50%; text-align:center; color:#ec7267; font-family:'Cookie', cursive;line-height:1}
 .header_date:before {position:absolute;width:260px;height:260px;top:-20px;left:-20px;background-color:rgba(255,255,255,0.5);border-radius:50%;content:''}
 .header_date .text {position:relative;font-size:42px;margin-bottom:5px}
 .header_date .date {position:relative;font-size: 28px;color:#999;letter-spacing:0}
@@ -136,7 +136,7 @@ div#right-panel {z-index:9999;}
 
 /* title */
 h2.title {margin: 0 0 40px;text-align: center}
-h2.title span {font-size: 2.1em;line-height:1;color:#fff;font-family:'Georgia',cursive}
+h2.title span {font-size: 2.1em;line-height:1;color:#f89287;font-family:'Georgia',cursive}
 
 .greeting_wrap h2.title {position:absolute;top: -90px;left:50%;margin:0 0 0 -150px;width:300px;height:105px;background:url('/bundles/viettutweb/img/templates/gardenwedding/tit_greeting.png') no-repeat 50% 0;background-size:100%}
 .gallery_wrap h2.title {position:relative;margin: 0 auto 30px;width:320px;height: 70px;background:url('/bundles/viettutweb/img/templates/gardenwedding/tit_gallery.png') no-repeat 50% 0;background-size:100%}
@@ -382,7 +382,7 @@ background:url('/bundles/viettutweb/img/templates/gardenwedding/tab_on.png') no-
 .nav-wrap ul {overflow:hidden; margin-top:10px}
 .nav-wrap ul li {float:left; margin-right:30px}
 .nav-m {margin-top:5px}
-.nav-m form input {height: 25px;width:300px;}
+.nav-m form input {margin-bottom: 0 !important;font-size:16px !important;}
 .nav-m .nav-1 {float:left; width:100%}
 .nav-m .nav-2 {float:left; width:50%}
 .ui-icon-nav1 {background:url('/bundles/viettutweb/img/templates/gardenwedding/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}

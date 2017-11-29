@@ -5,6 +5,7 @@
 /* beautiful_day */
 
 
+.hide {display:none;}
 /* 임시css */
 .ui-panel-wrapper {min-height:80px}
 .ui-page-theme-a {text-shadow:none!important}
@@ -473,7 +474,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .ui-page-theme-a .ui-btn {}
 .nav_info {font-size:0.75em;font-family:sans-serif;padding: 5px 0 20px;color:#333;text-align:center;}
 
-.nav-1 form input {height: 25px;width:300px;}
+.nav-1 form input {margin-bottom: 0 !important;font-size:16px !important;}
 .col-2,.col-3,.col-4 {position:relative; overflow:hidden}
 /*.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 .col-2 .ui-block-b {float:left; width:49%}*/

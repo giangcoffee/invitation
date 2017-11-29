@@ -22,8 +22,11 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/gardenwedding/app.css') }}"/>
+    <link href="http://fonts.googleapis.com/css?family=Lora:400italic,700italic" rel="stylesheet" type="text/css">
 </head>
 <body>
+<h1 class="hide">Garden Wedding - Khu vườn bí mật</h1>
+<h2 class="hide">Là sự pha trộn giữa màu hồng đáng yêu và đen sang trọng, thể hiện sự trang trọng đồng thời tôn vẻ trẻ trung nhí nhảnh.</h2>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
 <div id="card_id" data-id="{{ id }}"></div>
@@ -706,7 +709,7 @@
 </div>
 {% endif %}
 
-<script async src="{{ asset('js/libraries.min.js') }}"></script>
+<script src="{{ asset('js/libraries.min.js') }}"></script>
 <script async>
     $(function () {
 

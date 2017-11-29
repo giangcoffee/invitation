@@ -15,6 +15,7 @@
 .btn_wrap {cursor:pointer;}
 .p-r {position:relative}
 .f-r {float:right!important;}
+.hide {display:none;}
 
 /* Layout */
 html,body {width:100%; height:100%;}
@@ -94,7 +95,7 @@ div.header_bg {background:url('/bundles/viettutweb/img/templates/winterwonderlan
 .couple_bride {float:right; width:220px}
 .couple_photo {width:200px; height:200px; border-radius:100%; border:5px solid #9CBAAE; background-position:50% 50%!important; background-size:100%!important; box-sizing:border-box; -webkit-box-sizing:border-box;}
 li#groom_popup {background: url('/bundles/viettutweb/img/templates/winterwonderland/default_groom.jpg') 50% 50% no-repeat;}
-li#bride_popup {background: url('/bundles/viettutweb/img/templates/winterwonderland/default_bride.jpg') 50% 50% no-repeat;"}
+li#bride_popup {background: url('/bundles/viettutweb/img/templates/winterwonderland/default_bride.jpg') 50% 50% no-repeat;}
 .couple_name {text-align:center;margin:10px 0; font-size:1.2em; color:#333; font-weight:bold}
 .couple_name span {font-family: 'Oswald', sans-serif; font-size:0.6em; margin:0 5px 0 0; font-weight:normal}
 .couple_container .groom-wrap,
@@ -259,7 +260,7 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd;cursor:point
 .nav-m {margin-top:5px;}
 .nav-m .nav-1 {float:left; width:100%;}
 .nav-m .nav-2 {float:left; width:50%;}
-.nav-m form input {height: 25px;width:300px;}
+.nav-m form input {margin-bottom: 0 !important;font-size:16px !important;}
 .ui-icon-nav1 {background:url('/bundles/viettutweb/img/templates/winterwonderland/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
 .ui-icon-nav2 {background:url('/bundles/viettutweb/img/templates/winterwonderland/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
 .ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
@@ -272,7 +273,7 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd;cursor:point
 
 .lo_title {font-size:1.2em; color:#E0C387; font-weight:bold; padding:10px 0;}
 .lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; border-top:3px solid #444}
-.lo_container th {width:13%; min-width:65px; height:45px; position:relative; color:#E0C387; font-size:0.8em; border-bottom:1px solid #444;}
+.lo_container th {width:15%; min-width:65px; height:45px; position:relative; color:#E0C387; font-size:0.8em; border-bottom:1px solid #444;}
 .lo_container td {width:87%; min-height:35px; border-bottom:1px solid #444; color:#fff ;margin:0 0 0 10%; padding:5px 0 5px 5px; font-size:0.8em; line-height:1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important;}
 
 .col-2,
