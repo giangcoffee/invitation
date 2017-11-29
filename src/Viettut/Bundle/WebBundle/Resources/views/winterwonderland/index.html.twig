@@ -48,7 +48,7 @@
     </div>
     <!--// panel-menu -->
     <div id="sk_topinfo" class="header">
-        <div class="header_bg" style="background:url('/bundles/viettutweb/img/templates/winterwonderland/3c329ef94de4851a82a2bbde4a744348.jpg') center center no-repeat; background-size:cover;"></div>
+        <div class="header_bg"></div>
         <div class="header_title">
             <h1 class="hd_title">
                 {% if forGroom %}
@@ -129,7 +129,7 @@
         <h2 class="title">Just married !</h2>
         <div class="couple_container">
             <ul class="{% if forGroom %}couple_groom{% else %}couple_bride{% endif %}">
-                <li class="couple_photo" style="background: url('/bundles/viettutweb/img/templates/winterwonderland/default_groom.jpg') 50% 50% no-repeat;"></li>
+                <li class="couple_photo" id="groom_popup"></li>
                 <li class="couple_name"><span>Chú rể</span>{{ data['groom_name'] }}</li>
                 <li class="groom-wrap">
                     <ul>
@@ -157,7 +157,7 @@
                 </li>
             </ul>
             <ul class="{% if forGroom %}couple_bride{% else %}couple_groom{% endif %}">
-                <li class="couple_photo" style="background: url('/bundles/viettutweb/img/templates/winterwonderland/default_bride.jpg') 50% 50% no-repeat;"></li>
+                <li class="couple_photo" id="bride_popup"></li>
                 <li class="couple_name"><span>Cô dâu</span>{{ data['bride_name'] }}</li>
                 <li class="bride-wrap">
                     <ul>
@@ -453,8 +453,8 @@
             <div class="col-2">
                 <div class="ui-block-a">
                     <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;"><strong>Lễ Thành Hôn</strong></li>
-                        <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;"><strong>Tiệc Cưới</strong></li>
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding"><strong>Lễ Thành Hôn</strong></li>
+                        <li class="tab_btn rh locationtabs" id="tabs_party"><strong>Tiệc Cưới</strong></li>
                     </ul>
                 </div>
             </div>
@@ -466,7 +466,7 @@
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
                             <form action='http://maps.google.com/maps' method='get' target='_blank' id="getHomePath">
-                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
                                 <input type='hidden' name='daddr' value='{{ data['home'] }}' />
                             </form>
                             <div class="nav-1">
@@ -500,7 +500,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-2 locationdivs" id="div_party" style="display:none;">
+            <div class="col-2 locationdivs hide" id="div_party">
                 <div class="ui-block-a">
                     <div class="lo_map">
                         <div id="party_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
@@ -508,7 +508,7 @@
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
                             <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
-                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
                                 <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
                             </form>
                             <div class="nav-1">
