@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'guestbook'], function(){
+gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'guestbook', 'html-minify'], function(){
     console.log('i am GULP');
 });
 
@@ -148,9 +148,34 @@ gulp.task('guestbook-libraries', function () {
         .pipe(gulp.dest(config.SCRIPT_DEST));
 });
 
-gulp.task('html-minify', function() {
+gulp.task('gardenwedding-html-minify', function() {
     return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/gardenwedding/index.html.twig')
-        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true}))
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
         .pipe(rename('gardenwedding.min.twig'))
         .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/gardenwedding/'));
+});
+
+
+gulp.task('html-minify', ['beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify'], function() {
+});
+
+gulp.task('beautifulday-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/beautifulday/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('beautifulday.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/beautifulday/'));
+});
+
+gulp.task('goldstar-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/goldstar/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('goldstar.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/goldstar/'));
+});
+
+gulp.task('winterwonderland-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/winterwonderland/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('winterwonderland.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/winterwonderland/'));
 });
