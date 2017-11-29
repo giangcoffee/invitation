@@ -7,7 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var streamqueue  = require('streamqueue');
 var rename = require('gulp-rename');
-
+var htmlmin = require('gulp-htmlmin');
 var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
@@ -146,4 +146,11 @@ gulp.task('guestbook-libraries', function () {
         .pipe(rename('guestbook-libraries.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest(config.SCRIPT_DEST));
+});
+
+gulp.task('html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/gardenwedding/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true}))
+        .pipe(rename('gardenwedding.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/gardenwedding/'));
 });

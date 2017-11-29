@@ -60,7 +60,8 @@ body {font-size: 100%}
   .lnb_mobile .bar_line {width:24px;height:4px}
   h2.title span {font-size:1.1em;}
 }
-.header_img {position:relative;max-height:720px;margin:0 auto;z-index:-1}
+.header_img {position:relative;max-height:720px;margin:0 auto;z-index:-1;}
+div.header_img {background:url('/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg') CENTER CENTER no-repeat; background-size:cover;}
 .header_img:before {content:'';position:absolute;top:0;left:0;right:0;bottom:0; background-color:rgba(255,255,255,0.3);z-index:-1}
 .header_img:after {content:'';position:absolute;bottom:0;height:25px;left:0;right:0;background:url('/bundles/viettutweb/img/templates/gardenwedding/bg_headerimg.png') repeat-x;background-size:auto 25px;z-index:-1}
 .header_content {position:absolute;bottom: -180px;left:0;width:100%;height: 400px;background: url('/bundles/viettutweb/img/templates/gardenwedding/header_flower.png') no-repeat;background-position: 50% 50%}
@@ -97,7 +98,9 @@ body {font-size: 100%}
 div#panel_groom,div#panel_groom .ui-panel-inner,
 div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
 .ui-panel-open.ui-panel-position-right.ui-panel-display-push {border-color:#555}
-
+div#panel_groom {background:#fff url('/bundles/viettutweb/img/templates/gardenwedding/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;}
+div#panel_bride {background:#fff url('/bundles/viettutweb/img/templates/gardenwedding/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;}
+div#right-panel {z-index:9999;}
 .groom-wrap,
 .bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing: border-box}
 .groom-wrap p,
@@ -145,7 +148,7 @@ h2.title span {font-size: 2.1em;line-height:1;color:#fff;font-family:'Georgia',c
 .greeting_img {position:relative;padding: 30px 30px 0 30px;text-align:center}
 .greeting_img:before {content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('/bundles/viettutweb/img/templates/gardenwedding/bg_greeting.png') repeat;opacity:0.8}
 .greeting_img>img {position:relative;display:inline-block;max-width:100%;max-height: 600px;border: 15px solid rgba(255,255,255,0.8);border-bottom:0}
-
+div.greeting_img {background:url('/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg') CENTER CENTER no-repeat; background-size:cover;}
 .greeting_content {position:relative;margin: 0;padding: 60px 0;background-color:#fff;z-index: 10}
 .greeting_content:before {content:'';position:absolute;top:-50px;left:0;width:100%;height:50px;background:url('/bundles/viettutweb/img/templates/gardenwedding/bg_roundtop.png') no-repeat 50% 100%;background-size: 100% auto}
 .greeting_content:after  {content:'';position:absolute;bottom:-50px;left:0;width:100%;height:50px;background:url('/bundles/viettutweb/img/templates/gardenwedding/bg_roundbottom.png') no-repeat 50% 0;background-size: 100% auto}
@@ -309,11 +312,13 @@ h2.title span {font-size: 2.1em;line-height:1;color:#fff;font-family:'Georgia',c
 
 .gb_btn {position:relative; width:155px; height:45px;margin:30px auto; padding:0;background:url('/bundles/viettutweb/img/templates/gardenwedding/btn_guestbook_1.png') no-repeat 0 0; background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
 .gb_btn:hover {opacity:0.7;}
+div.gb_btn {z-index:999;}
 .gb_msg {position:relative;margin: 0 0 40px}
 .nopost_wrap .gb_msg {margin-bottom:40px}
 .gb_msg span {display: block;width:270px;height:18px;margin: 0 auto;background:url('/bundles/viettutweb/img/templates/gardenwedding/txt_guestbook.png') no-repeat 50% 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
 
 #div_snsbbs:after {clear:both; content:''; display:block}
+div#div_snsbbs {z-index:999;}
 .gb_cont_box {position:relative;width:100%; padding:1em 0.8em;font-size:0.8em; color:#888; background-color:#fff; border:1px solid #ccc; box-sizing:border-box}
 .snsbbs_sections:first-child .gb_cont_box {background-color:#f9a096;color:#fff;border-color:#f9a096}
 .snsbbs_sections:first-child .gb_cont_box:after {position:absolute;top:-27px;left:0;right:0;height:26px;background:url('/bundles/viettutweb/img/templates/gardenwedding/line_guestbook.png') no-repeat 50% 0;background-size:auto 60px;opacity:0.4;content:''}
@@ -372,12 +377,12 @@ background:url('/bundles/viettutweb/img/templates/gardenwedding/tab_on.png') no-
 .lo_map #wedding_pmap_canvas .nmap,
 .lo_map #party_pmap_canvas .nmap {width:100%!important;height:400px!important}
 .lo_map .ui-link img {height:100%}
-
 .nav-wrap {margin:0 50px}
 
 .nav-wrap ul {overflow:hidden; margin-top:10px}
 .nav-wrap ul li {float:left; margin-right:30px}
 .nav-m {margin-top:5px}
+.nav-m form input {height: 25px;width:300px;}
 .nav-m .nav-1 {float:left; width:100%}
 .nav-m .nav-2 {float:left; width:50%}
 .ui-icon-nav1 {background:url('/bundles/viettutweb/img/templates/gardenwedding/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
