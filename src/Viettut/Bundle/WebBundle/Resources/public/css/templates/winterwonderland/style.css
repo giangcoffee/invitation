@@ -274,7 +274,7 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd;cursor:point
 .lo_title {font-size:1.2em; color:#E0C387; font-weight:bold; padding:10px 0;}
 .lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; border-top:3px solid #444}
 .lo_container th {width:15%; min-width:65px; height:45px; position:relative; color:#E0C387; font-size:0.8em; border-bottom:1px solid #444;}
-.lo_container td {width:87%; min-height:35px; border-bottom:1px solid #444; color:#fff ;margin:0 0 0 10%; padding:5px 0 5px 5px; font-size:0.8em; line-height:1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important;}
+.lo_container td {width:85%; min-height:35px; border-bottom:1px solid #444; color:#fff ;margin:0 0 0 10%; padding:5px 0 5px 5px; font-size:0.8em; line-height:1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important;}
 
 .col-2,
 .col-3,
