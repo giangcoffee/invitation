@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="vi">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
@@ -33,7 +31,7 @@
 <div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
-    <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
+    <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b">
         <div class="groom-wrap">
             <ul>
                 <a href="tel:{{ data['groom_phone'] }}"><li class="ico5">Gọi điện</li></a>
@@ -62,7 +60,7 @@
     </div>
     <!--// panel-groom -->
     <!-- panel-bride -->
-    <div data-role="panel" id="panel_bride" class="righttpanel" data-position="right" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="a" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;">
+    <div data-role="panel" id="panel_bride" class="righttpanel" data-position="right" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="a">
         <div class="bride-wrap">
             <ul>
                 <a href="tel:{{ data['bride_phone'] }}"><li class="ico1">Gọi điện</li></a>
@@ -91,7 +89,7 @@
     </div>
     <!--// panel-bride -->
     <!-- panel-menu -->
-    <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
+    <div data-role="panel" id="right-panel" data-position="right" data-display="push">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
                 <li class="menu_scrolls" data-rel="close"><span>TRANG CHỦ</span></li>
@@ -120,10 +118,10 @@
 
     <!-- header -->
     <div id="sk_topinfo" class="header">
-        <div class="header_bg" style="background:url('/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg') CENTER CENTER no-repeat; background-size:cover;"></div>
+        <div class="header_bg"></div>
         <div class="header_content">
             <div class="header_photo">
-                <p style="background:url('/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg') CENTER CENTER no-repeat; background-size:cover;"></p>
+                <p></p>
             </div>
             <div class="header_title">
                 <p class="hd_name">
@@ -495,8 +493,8 @@
             <div class="col-2">
                 <div class="ui-block-a">
                     <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Lễ Thành Hôn</li>
-                        <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Tiệc cưới</li>
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding">Lễ Thành Hôn</li>
+                        <li class="tab_btn rh locationtabs" id="tabs_party">Tiệc cưới</li>
                     </ul>
                 </div>
             </div>
@@ -511,7 +509,7 @@
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
                             <form action='http://maps.google.com/maps' method='get' target='_blank' id="getHomePath">
-                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
                                 <input type='hidden' name='daddr' value='{{ data['home'] }}' />
                             </form>
                             <div class="nav-1">
@@ -547,7 +545,7 @@
             </div>
         </div>
 
-        <div class="ul-body locationdivs" id="div_party" style="display:none;">
+        <div class="ul-body locationdivs hide" id="div_party">
             <div class="lo_box col-2">
                 <div class="ui-block-a">
                     <h3 class="lo_title">{{ data['place'] }}</h3>
@@ -557,7 +555,7 @@
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
                             <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
-                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
                                 <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
                             </form>
                             <div class="nav-1">
@@ -610,9 +608,6 @@
             <ul>
                 <div class="addthis_inline_share_toolbox"></div>
             </ul>
-        </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
         </div>
     </div>
     <!--// footer -->

@@ -67,11 +67,12 @@ body {font-size: 100%}
 
 .header {position:relative; width:100%; height:900px;}
 .header_bg {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.6;}
+div.header_bg {background:url('/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg') CENTER CENTER no-repeat; background-size:cover;}
 .header_bg:after {content:''; position:absolute; top:0; left:0; right:0; bottom:0; z-index:1; background:url(/bundles/viettutweb/img/templates/goldstar/header_pattern.png) repeat 0 0; opacity:0.6;}
 .header_content {background-color:rgba(255,255,255,0.7); position:absolute; top:50%; left:0; width:100%; height:600px; margin:-300px 0 0 0; padding:0 100px; z-index:2; box-sizing: border-box}
 .header_photo {position:absolute; top:50%; left:50%; width:470px; height:470px; margin: -235px 0 0 -460px; }
 .header_photo:after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:url(/bundles/viettutweb/img/templates/goldstar/photo_frame.png) no-repeat 0 0; background-size:100%;}
-.header_photo p {position:relative; width:94%; height:94%; margin:3%; border:10px solid #fff; box-sizing: border-box}
+.header_photo p {position:relative; width:94%; height:94%; margin:3%; border:10px solid #fff; box-sizing: border-box;background:url('/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg') CENTER CENTER no-repeat; background-size:cover;}
 
 .header_title {position:absolute; top:50%; left:50%; width: 600px; height:470px; margin: -235px 0 0 15px; padding:160px 0 0 0; text-align:center;
 background:url(/bundles/viettutweb/img/templates/goldstar/header_title1.png) no-repeat 50% 50px; background-size:350px auto;  box-sizing: border-box}
@@ -99,7 +100,9 @@ background-size:auto 80%, auto 80%; }
 div#panel_groom,div#panel_groom .ui-panel-inner,
 div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
 .ui-panel-open.ui-panel-position-right.ui-panel-display-push {border-color:#555}
-
+div#panel_groom {background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;}
+div#panel_bride {background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;}
+div#right-panel {z-index:9999;}
 .groom-wrap,
 .bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing: border-box}
 .groom-wrap p,
@@ -295,6 +298,7 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
 .nav-m {margin-top:5px;}
 .nav-m .nav-1 {float:left; width:100%;}
 .nav-m .nav-2 {float:left; width:50%;}
+.nav-m form input {height: 25px;width:300px;}
 .ui-icon-nav1 {background:url('/bundles/viettutweb/img/templates/goldstar/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
 .ui-icon-nav2 {background:url('/bundles/viettutweb/img/templates/goldstar/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
 .ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
