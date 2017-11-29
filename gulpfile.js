@@ -124,8 +124,10 @@ gulp.task('guestbook-scripts', function () {
 gulp.task('guestbook-styles', function () {
     gulp.src([
         'web/bundles/viettutweb/css/templates/common/snsbbs.css',
+        'web/bundles/viettutweb/css/templates/common/Roboto.css',
         'web/bundles/viettutweb/css/templates/common/emoticon.css',
-        'web/bundles/viettutweb/css/lib/jquery.cropbox.custom.css'
+        'web/bundles/viettutweb/css/lib/jquery.cropbox.custom.css',
+        'web/bundles/viettutweb/css/lib/font-awesome.min.css'
     ]).pipe(concat('guestbook.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/guestbook'))
 });
 
