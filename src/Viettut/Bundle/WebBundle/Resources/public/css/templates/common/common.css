@@ -1,6 +1,4 @@
 @charset "utf-8";
-@import url(NanumGothic.css);
-
 /* reset */
 #skin_page {background-color:#fff; color:#000;}
 
@@ -11,7 +9,7 @@
 body {
  color:#333;
  font-size:100%;
- font-family: AppleSDGothicNeo-Regular, Droid sans, '나눔고딕', 'Nanum Gothic', 'NanumGothic', '돋움', Dotum, Helvetica, sans-serif;
+ font-family: 'Lora', serif;
  line-height:1.25em;
  word-break:break-all;
  }
@@ -47,11 +45,11 @@ textarea, input {
 textarea { resize:none; }
 label { cursor:pointer; }
 
-.helv { font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }
-.verd { font-family:verdana, "돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }
-.nanum{ font-family:nanumFont,"돋움",dotum;}
+/*.helv { font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }*/
+/*.verd { font-family:verdana, "돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }*/
+/*.nanum{ font-family:nanumFont,"돋움",dotum;}*/
 .bold { font-weight:bold; }
-.utsa { font-family:Utsaah, HelveticaNeue, Apple-Gothic; }
+/*.utsa { font-family:Utsaah, HelveticaNeue, Apple-Gothic; }*/
 
 .blind, legend {overflow:hidden; width:0; height:0; position:absolute; top:0; left:0; font-size:0; line-height:0; }
 .hidden {position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;font-size:0;line-height:0}
@@ -192,7 +190,7 @@ a.gallery_comment_link:link {color:white;float:right;}
 
 .popup_olleh .olleh_btn .title {
 	position: relative;width:72%;margin:0;padding: 20px 0 20px 60px;box-sizing:border-box;
-	font-size:17px;letter-spacing:-1px;line-height:1.5;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+	font-size:17px;letter-spacing:-1px;line-height:1.5;font-family: 'Lora', serif;
 }
 .popup_olleh .olleh_btn .title strong{font-size:17px;color:#333}
 .popup_olleh .olleh_btn .title:before {position:absolute;top:50%;left:13px;margin:-20px 0 0 0;width:40px;height:40px;background:url(/dalpeng/skin/_common/img/olleh_imgs.png) no-repeat;content:'';background-size:40px auto}
@@ -203,7 +201,7 @@ a.gallery_comment_link:link {color:white;float:right;}
 
 .popup_olleh .olleh_btn .link {
 	position:absolute;top:0;right:0;bottom:0;width:28%;background: url(/dalpeng/skin/_common/img/olleh_arrow.png) no-repeat 50% 20px;background-size: 25px;
-	font-size:14px;letter-spacing:-1px;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+	font-size:14px;letter-spacing:-1px;font-family: 'Lora', serif;
 }
 .popup_olleh .olleh_btn.btn1 .link{background-color:#ff3b49}
 .popup_olleh .olleh_btn.btn2 .link{background-color:#747474}
@@ -211,7 +209,7 @@ a.gallery_comment_link:link {color:white;float:right;}
 
 .popup_olleh .olleh_back {
 	position:relative;width: 85%;max-width:400px;min-width:290px;margin:0 auto;box-sizing:border-box;
-	font-size:16px;color:#fff;font-weight:bold;text-align:right;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+	font-size:16px;color:#fff;font-weight:bold;text-align:right;font-family: 'Lora', serif;
 }
 .popup_olleh .olleh_back span{display:inline-block;padding:20px 15px 15px 26px;background:url(/dalpeng/skin/_common/img/olleh_close.png) no-repeat 0 20px;background-size:20px;cursor:pointer}
 

@@ -49,7 +49,7 @@ time, mark, audio, video {box-sizing: border-box; -webkit-box-sizing: border-box
 .f-r {float:right!important}
 
 /* Layout */
-html,body {font-family:'KoPub Batang','batang',serif;font-size: 100%}
+html,body {font-family:'Lora', serif;font-size: 100%}
 #skin_page {z-index:10;background-color:#fff}
 
 .home_wrap {position:relative;overflow:hidden}
@@ -83,7 +83,7 @@ html,body {font-family:'KoPub Batang','batang',serif;font-size: 100%}
 /* header */
 .header_txt{position:relative;min-height:200px;z-index: 10;overflow: hidden;text-align:center;background-color:#fff}
 .header_txt .title{position:relative;display:inline-block;font-size:100px;padding:1em 0;}
-.header_txt .title span{display:block;font-family:'KoPub Batang';text-align:left}
+.header_txt .title span{display:block;font-family:'Lora', serif;;text-align:left}
 .header_txt .title .tit_txt1{font-size:0.5em;color:#999;line-height:1.5}
 .header_txt .title .tit_txt2{font-size:1em;color:#000;line-height:1.2}
 .header_txt .title_thankyou .tit_txt1{font-size:0.4em}
@@ -94,7 +94,7 @@ html,body {font-family:'KoPub Batang','batang',serif;font-size: 100%}
 .lnb ul {position:relative;text-align:center;font-size:0;z-index:10}
 .lnb ul:after {display:block; content:''; clear:both}
 .lnb li {position:relative;display:inline-block;margin:0;padding: 0 20px;height: 60px;color: #444;}
-.lnb li span{font-size: 18px;line-height: 62px;font-weight:bold;font-family:'Crimson Text',serif;text-transform:uppercase}
+.lnb li span{font-size: 18px;line-height: 62px;font-weight:bold;font-family:'Lora', serif;;text-transform:uppercase}
 .lnb li:hover{}
 .lnb li.on {}
 .lnb li.on:after {content:''}
@@ -124,7 +124,7 @@ html,body {font-family:'KoPub Batang','batang',serif;font-size: 100%}
 
 .header_panel {position:fixed;bottom:10px;left: 10px;right: 10px;}
 .header_panel:after {clear:both;content:'';display:block}
-.header_panel p {display:inline-block;width: 80px;height: 80px;font-size: 1.1em;line-height:1;letter-spacing: 0;text-align:center;font-family: 'Crimson Text',serif;z-index: 30;position: relative;}
+.header_panel p {display:inline-block;width: 80px;height: 80px;font-size: 1.1em;line-height:1;letter-spacing: 0;text-align:center;font-family: 'Lora', serif;z-index: 30;position: relative;}
 .header_panel a {display:block;width:80px;height:80px;padding:12px 0 0;color: #fff!important;background-color: rgba(0,0,0,0.3);border-radius:50%;font-weight:normal!important;-webkit-transition:0.2s background-color;transition:0.2s background-color;}
 .header_panel a:hover{background-color: rgba(0,0,0, 0.5)}
 .header_panel a .icon {display:block;margin: 0 auto;padding:0;width:55px;height:33px;background:url(/bundles/viettutweb/img/templates/beautifulday/ico_couple.png) no-repeat;background-size:110px auto;}
@@ -191,7 +191,7 @@ div#panel_bride {background:#fff url('/bundles/viettutweb/img/templates/beautifu
 /* title */
 div.header_bg {background:url('/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg') center top no-repeat; background-size:100% auto}
 li.menu_scrolls {cursor:pointer;}
-h2.title {position: relative;width:100%;height:100px;padding:40px 0;z-index: 10;text-align:center;font-size:30px;font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic}
+h2.title {position: relative;width:100%;height:100px;padding:40px 0;z-index: 10;text-align:center;font-size:30px;font-family:'Lora', serif;}
 h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 auto;font-size:0;line-height:0;text-indent:-9999px}
 .gallery_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_gallery.png) no-repeat 50% 50%;background-size:auto 100%}
 .movie_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_movie.png) no-repeat 50% 50%;background-size:auto 100%}
@@ -220,7 +220,7 @@ div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templat
 
 /* home */
 .home_content{padding:110px 0;text-align:center;color: #585858;line-height:1.2;}
-.home_title{margin: 0 0 20px;color:#363e42;font-size:30px;font-weight:bold;font-family: 'Roboto', sans-serif;}
+.home_title{margin: 0 0 20px;color:#363e42;font-size:30px;font-weight:bold;font-family: 'Lora', serif;}
 .home_loca{max-width: 500px;width: 100%;padding: 0 10px;margin: 0 auto}
 .home_loca div{margin: 0 0 10px}
 .home_loca .date{color:#4a4a4a;font-size:18px}
@@ -230,7 +230,7 @@ div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templat
 .couple_list:after{content:'';position:absolute;bottom: -35px;left:50%;width:60px;height:1px;margin-left:-30px;background-color:#222;}
 .couple_list div.name p strong{display:block;font-size: 80px;padding: 0 10px;font-weight:normal;color:#222;}
 .couple_list div.and p strong{display:block;font-size:80px;padding: 0 10px;font-weight:normal;}
-.home_dday{margin-top:30px;font-size: 20px;font-family:'Roboto', sans-serif;}
+.home_dday{margin-top:30px;font-size: 20px;font-family:'Lora', serif;}
 .home_dday p{display:inline-block;padding: 10px 18px 9px;line-height:1;border-radius:50px;background-color: #ddd;color: #222;}
 .home_dday span{display:inline-block;padding:0 5px;line-height:20px;vertical-align:top}
 
@@ -406,7 +406,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .gb_cont li img {max-width:100%}
 
 .gb_skip {overflow:hidden;padding:0.9em 0.5em 0 0.5em;border-top: 1px solid #fff;}
-.gb_skip .gb_comm {height:13px;color: #fff;font-size: 17px;font-weight:bold;line-height:15px;font-family: 'Crimson Text',serif;}
+.gb_skip .gb_comm {height:13px;color: #fff;font-size: 17px;font-weight:bold;line-height:15px;font-family: 'Lora', serif;}
 .gb_skip .gb_comm .icon_reply {float:left;text-align:center;width:16px;height:13px;margin:0 5px 0 0;font-size:0;line-height:0;text-indent:-9999px;background: url(/dalpeng/skin/_common/img/ico_reply_w.png) no-repeat;background-size:auto 13px;vertical-align:top;}
 .btn_go_snsbbs {cursor: pointer;}
 /* Location */
@@ -472,7 +472,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fafafa!important;padding: 12px 0}
 .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none}
 .ui-page-theme-a .ui-btn {}
-.nav_info {font-size:0.75em;font-family:sans-serif;padding: 5px 0 20px;color:#333;text-align:center;}
+.nav_info {font-size:0.75em;font-family:'Lora', serif;;padding: 5px 0 20px;color:#333;text-align:center;}
 
 .nav-1 form input {margin-bottom: 0 !important;font-size:16px !important;}
 .col-2,.col-3,.col-4 {position:relative; overflow:hidden}

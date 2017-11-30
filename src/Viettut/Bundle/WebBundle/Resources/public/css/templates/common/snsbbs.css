@@ -18,10 +18,10 @@ html,body{
 	-webkit-overflow-scrolling:touch !important;
 	height:100% !important;
 	font-size:16px;
-	font-family:HelveticaNeue-Light,AppleSDGothicNeo-Light,'Malgun Gothic',sans-serif;
+	font-family:'Lora', serif;
 }
-input,textarea{font-size:16px;font-family:HelveticaNeue-Bold,AppleSDGothicNeo-Bold,'Malgun Gothic',sans-serif}
-h1,h2,h3,h4,h5,h6{font-size:100%;font-family:HelveticaNeue-Bold,AppleSDGothicNeo-Bold,'Malgun Gothic',sans-serif}
+input,textarea{font-size:16px;font-family:'Lora', serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-family:'Lora', serif;}
 
 body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-break:break-word;overflow-x:hidden;}
 
@@ -123,7 +123,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 
 /*gnb*/
 .gnb_wrap>.color_bg {position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.5}
-.gnb_wrap .title{position:relative;display:block;padding:16px 0 0;font-size:1.2em;line-height:1;color:#fff;font-family:'Roboto';font-weight:900}
+.gnb_wrap .title{position:relative;display:block;padding:16px 0 0;font-size:1.2em;line-height:1;color:#fff;font-family:'Lora', serif;;font-weight:900}
 .gnb_wrap .back{position:absolute;top:0;left:0;width:40px;height:50px;font-size:0;line-height:0;text-indent:-9999px;cursor: pointer}
 .gnb_wrap .menu{position:absolute;top:0;right:0;width:60px;height:50px;font-size:0;line-height:0;text-indent:-9999px;cursor: pointer}
 .gnb_wrap .gnb_login{display:none;position:absolute;top:0;right:0;height:50px;padding:10px 0 10px 10px}
@@ -166,7 +166,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .contents_list>li.loader .btn_more:hover{background-color:#aaa}
 .contents_list>li.loader .btn_more.loading{background-color:#eee;color: #999}
 .contents_list>li.loader .btn_more span{position:relative;padding: 11px 28px 0 0;height: 40px;display: inline-block;box-sizing: border-box;}
-.contents_list>li.loader .btn_more span>i{font-family:'Malgun Gothic','Roboto',sans-serif;line-height:18px;vertical-align:top}
+.contents_list>li.loader .btn_more span>i{font-family:'Lora', serif;;line-height:18px;vertical-align:top}
 .contents_list>li.focus{box-shadow:0px 2px 10px rgba(0,0,0,0);animation:flash 1s both;-webkit-animation:flash 1s both} /*글 추적*/
 .contents_list .cloak{visibility : hidden;}
 
@@ -199,10 +199,10 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .reply_area {position:relative;height: 40px;border-top: 1px solid #f2f2f2;margin: 0 15px;padding: 0 5px 0 0;line-height:1;}
 .reply_area .reply_btn {position:relative;float:left;padding:10px 0 0 6px}
 .reply_area .reply_btn *{float:left}
-.reply_area .reply_txt {display:inline-block;font-size: 0.85em;font-weight:bold;font-family:'Roboto';padding: 4px 0 0 5px;vertical-align: top;}
+.reply_area .reply_txt {display:inline-block;font-size: 0.85em;font-weight:bold;font-family:'Lora', serif;;padding: 4px 0 0 5px;vertical-align: top;}
 
 .del_area {position:absolute;bottom:0;right: 0;height: 40px;z-index: 99;}
-.del_area .info_date {position:relative;float:right;padding:11px 18px 0 0;font-size: 0.75em;font-family:'Roboto','Malgun Gothic';color: #999;z-index: 0;}
+.del_area .info_date {position:relative;float:right;padding:11px 18px 0 0;font-size: 0.75em;font-family:'Lora', serif;;color: #999;z-index: 0;}
 .del_area .del_btn {position:relative;float:right;width: 48px;/*50px;*/height:40px;cursor:pointer;color:#ccc;margin-left: -22px;z-index: 1;}
 
 .comment_box {display:none;position:relative;background-color: #f8f8f8;z-index: 1;}
@@ -251,7 +251,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .comm_user_name .ico-sns-small{position:absolute;top:2px}
 .comm_user_name span{padding: 0 0 0 22px}
 .comm_info {margin: 0;float: left;}
-.comm_info .date {display: inline-block;font-size: 0.7em;font-family:'Roboto';line-height: 22px;vertical-align: top;color: #999;}
+.comm_info .date {display: inline-block;font-size: 0.7em;font-family:'Lora', serif;;line-height: 22px;vertical-align: top;color: #999;}
 .comm_del_area {position:absolute;top: 0;right: 0}
 .comm_del_btn {width: 54px;height: 44px;cursor:pointer;}
 
@@ -408,7 +408,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 
 .popup_box .pop_title{position:relative;margin:0 0 10px;padding:85px 0 0;text-align:center;font-size:1.05em;line-height: 1;font-weight:bold;color:#777;}
 .popup_login .popup_box .pop_title{padding: 0;border-radius:6px 6px 0 0;margin: 0 0 20px;}
-.popup_login .popup_box .pop_title>h1{font-family:'Roboto';font-weight:400;font-size: 1.4em;padding: 19px 0 10px 25px;text-align: left;color:#ccc;}
+.popup_login .popup_box .pop_title>h1{font-family:'Lora', serif;;font-weight:400;font-size: 1.4em;padding: 19px 0 10px 25px;text-align: left;color:#ccc;}
 
 .popup_write .popup_box .pop_title,
 .popup_read .popup_box .pop_title{margin:0;padding: 17px 0 0;border-radius: 8px 8px 0 0;height: 50px;}
@@ -440,7 +440,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .alert_info{margin:15px 0;padding: 0 10px;font-size:0.9em;letter-spacing:-0.05em;text-align:center;color: #f00;}
 
 .snslogin_line{position:relative;width: 80%;min-width: 280px;margin: 15px auto;text-align:center;}
-.snslogin_line span{display:inline-block;font-family:'Roboto';font-size:0.8em;font-weight:bold;color:#aaa}
+.snslogin_line span{display:inline-block;font-family:'Lora', serif;;font-size:0.8em;font-weight:bold;color:#aaa}
 .snslogin_line span:before{content:'';position:absolute;top:50%;left:0;width:40%;height:1px;background-color:#aaa}
 .snslogin_line span:after{content:'';position:absolute;top:50%;right:0;width:40%;height:1px;background-color:#aaa}
 .snslogin_list{position: relative;margin: 15px 20px;}
@@ -646,7 +646,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 	div.loader .btn_more{position:relative;height: 40px;margin:0 auto;border-radius:8px;background-color: #bbb;color:#fff;line-height:1;letter-spacing:0.5px;padding: 11px 0 0;font-size: 14px;font-weight:bold;transition: 0.2s background-color;-webkit-transition: 0.2s background-color;cursor:pointer}
 	div.loader .btn_more:hover{background-color:#aaa}
 	div.loader .btn_more span{position:relative;padding: 0 28px 0 0}
-	div.loader .btn_more span>i{font-family:'Roboto',sans-serif}
+	div.loader .btn_more span>i{font-family:'Lora', serif;}
 
 	.contents_list.nocomment .message_box{position: absolute;top: 50%;left: 50%;width: 300px;height: 50px;padding: 0;margin: -25px 0 0 -150px;text-align:center;}
 	.contents_list.nocomment .nocomment_txt{position:relative;display:inline-block;margin:0;padding: 16px 25px 18px 55px;font-size: 0.95em;line-height: 1;color: #fff;border-radius:30px;background-color: #aaa}

@@ -36,6 +36,56 @@ gulp.task('scripts', function(){
     .pipe(gulp.dest(config.SCRIPT_DEST));
 });
 
+gulp.task('base-scripts', function(){
+    gulp.src([
+        'web/bundles/viettutweb/vendor/jquery/jquery.js',
+        'web/bundles/viettutweb/vendor/jquery.appear/jquery.appear.js',
+        'web/bundles/viettutweb/vendor/jquery.easing/jquery.easing.js',
+        'web/bundles/viettutweb/vendor/jquery-cookie/jquery-cookie.js',
+        'web/bundles/viettutweb/vendor/bootstrap/bootstrap.js',
+        'web/bundles/viettutweb/vendor/common/common.js',
+        'web/bundles/viettutweb/vendor/jquery.stellar/jquery.stellar.js',
+        'web/bundles/viettutweb/vendor/isotope/jquery.isotope.js',
+        'web/bundles/viettutweb/vendor/owlcarousel/owl.carousel.js',
+        'web/bundles/viettutweb/js/theme.js',
+        'web/bundles/viettutweb/vendor/rs-plugin/js/jquery.themepunch.tools.min.js',
+        'web/bundles/viettutweb/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js',
+        'web/bundles/bundles/viettutweb/vendor/circle-flip-slideshow/js/jquery.flipshow.js',
+        'web/bundles/viettutweb/js/views/view.home.js',
+        'web/bundles/viettutweb/js/custom.js',
+        'web/bundles/viettutweb/js/theme.init.js'
+    ])
+    .pipe(concat('base.temp.js'))
+    .pipe(gulp.dest(config.SCRIPT_DEST))
+    .pipe(rename('base.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.SCRIPT_DEST));
+});
+
+gulp.task('base-styles', function(){
+    gulp.src([
+        'web/bundles/viettutweb/vendor/bootstrap/bootstrap.css',
+        'web/bundles/viettutweb/vendor/fontawesome/css/font-awesome.css',
+        'web/bundles/viettutweb/vendor/owlcarousel/owl.carousel.min.css',
+        'web/bundles/viettutweb/vendor/owlcarousel/owl.theme.default.min.css',
+        'web/bundles/viettutweb/vendor/magnific-popup/magnific-popup.css',
+        'web/bundles/viettutweb/css/theme.css',
+        'web/bundles/viettutweb/css/theme-elements.css',
+        'web/bundles/viettutweb/css/theme-blog.css',
+        'web/bundles/viettutweb/css/theme-shop.css',
+        'web/bundles/viettutweb/css/theme-animate.css',
+        'web/bundles/viettutweb/vendor/rs-plugin/css/settings.css',
+        'web/bundles/viettutweb/vendor/circle-flip-slideshow/css/component.css',
+        'web/bundles/viettutweb/css/skins/default.css',
+        'web/bundles/viettutweb/css/custom.css'
+    ])
+        .pipe(concat('base.temp.css'))
+        .pipe(gulp.dest(config.SCRIPT_DEST))
+        .pipe(rename('base.min.css'))
+        .pipe(uglify())
+        .pipe(gulp.dest(config.SCRIPT_DEST));
+});
+
 gulp.task('styles', function(){
     gulp.src([
         'web/bundles/viettutweb/css/lib/jquery.mobile-1.4.3.min.css',

@@ -1,13 +1,5 @@
 @charset "utf-8";
-@font-face {
-  font-family: 'Vidaloka';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Vidaloka '), local('Vidaloka-Regular'), url(http://fonts.gstatic.com/s/vidaloka/v9/eFa9T8RYEkXovE5TBdfY-fesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-}
 
-/* 임시css */
 .snsbbs_sections {float:left; width:25%;}
 .ui-panel-wrapper {min-height:80px;}
 .ui-page-theme-a {text-shadow:none!important}
@@ -25,7 +17,7 @@
 .f-r {float:right!important;}
 
 /* Layout */
-html,body {font-family:'NanumGothic'}
+html,body {font-family:'Lora', serif;}
 body {font-size: 100%}
 #skin_page {z-index:10; background:#fff}
 .greeting_wrap {position:relative; background:url(/bundles/viettutweb/img/templates/goldstar/greeting_bg2.png) repeat; overflow:hidden}
@@ -57,7 +49,7 @@ body {font-size: 100%}
 .lnb:before {content:''; opacity:0.8; position:absolute; top:0; left:0; width:100%; height:50px; background:url(/bundles/viettutweb/img/templates/goldstar/lnb_bg.png) repeat-x 50% 100%; background-size:10px auto;}
 .lnb_title {position:absolute; top:8px; left:30px; width:300px; height:30px; line-height:30px; font-size:1em; color:#ae904c; overflow:hidden; }
 .lnb ul {position:absolute; top:8px; right:30px;}
-.lnb li {position:relative; float:left; height:30px; padding:0; font-family:'Vidaloka'; font-size:1em; line-height:30px; text-align:center; color:#555; cursor:pointer;}
+.lnb li {position:relative; float:left; height:30px; padding:0; font-family:'Lora', serif; font-size:1em; line-height:30px; text-align:center; color:#555; cursor:pointer;}
 .lnb li span {display:block; background:url(/bundles/viettutweb/img/templates/goldstar/lnb_line.png) no-repeat 100% 50%; background-size:8px; padding:0 14px 0 5px}
 .lnb li:last-child span {background-image:none}
 .lnb li:last-child:after {content:''; margin:0}
@@ -80,14 +72,14 @@ background:url(/bundles/viettutweb/img/templates/goldstar/header_title1.png) no-
 .hd_name {height:100px; margin:0 auto; padding:0; font-size: 45px; line-height:100px; color:#555; border-top:1px solid #c1a565; border-bottom:1px solid #c1a565; overflow:hidden;letter-spacing: -1px;}
 .hd_name span {display:inline-block; margin: 0 5px; background:url(/bundles/viettutweb/img/templates/goldstar/header_and.png) no-repeat 0 30%; background-size:35px 40px; width:35px; height:50px;
 font-size:0; line-height:0; text-indent:-9999px; vertical-align:middle}
-.hd_date {margin:30px 0 10px; padding:0 30px;font-family:'Vidaloka'; font-size:1.5em; line-height: 33px; height: 33px; color:#ae904c;
+.hd_date {margin:30px 0 10px; padding:0 30px;font-family:'Lora', serif; font-size:1.5em; line-height: 33px; height: 33px; color:#ae904c;
 background:url(/bundles/viettutweb/img/templates/goldstar/header_title2.png) no-repeat 0 50%,url(/bundles/viettutweb/img/templates/goldstar/header_title3.png) no-repeat 100% 50%;
 background-size:auto 80%, auto 80%; }
 .hd_loca {color:#ae904c; font-weight:bold; font-size:1em; height: 41px; line-height:20px; overflow:hidden;}
 
 .header_panel {position:absolute; top:50%; left:0; width:100%; margin:-30px 0 0 0; padding:0 10px; box-sizing: border-box}
 .header_panel p {width:60px; height:60px; border:2px solid #ae904c; border-radius:100%; color:#ae904c; background-color:rgba(255,255,255,0.3);
-  font-family:'Vidaloka'; font-size:0.95em; line-height:60px; letter-spacing:-1px; text-align:center}
+  font-family:'Lora', serif; font-size:0.95em; line-height:60px; letter-spacing:-1px; text-align:center}
 .header_panel a {display:block; color:#ae904c!important;}
 .header_panel .groom {float:left}
 .header_panel .bride {float:right}
@@ -138,9 +130,9 @@ div#right-panel {z-index:9999;}
 
 h2.title {text-align:center; margin:0 0 60px 0;}
 h2.title img {width:240px;}
-h2.title_pink {margin:0 auto 60px; color:#ff5f5f; font-size:36px; line-height:40px; font-family:'Vidaloka';}
+h2.title_pink {margin:0 auto 60px; color:#ff5f5f; font-size:36px; line-height:40px; font-family:'Lora', serif;}
 h2.title_pink span {border-bottom:1px solid #ff5f5f;}
-h2.title_gold {margin:0 auto 60px; color:#9d7f3c; font-size:36px; line-height:40px; font-family:'Vidaloka';}
+h2.title_gold {margin:0 auto 60px; color:#9d7f3c; font-size:36px; line-height:40px; font-family:'Lora', serif;}
 h2.title_gold span {border-bottom:1px solid #9d7f3c;}
 
 /* Greeting */
@@ -165,7 +157,7 @@ h2.title_gold span {border-bottom:1px solid #9d7f3c;}
 .gallery_wrap .ul-body {}
 .gal_more {display:block; width: 140px; height: 36px; margin: 40px auto 0; padding: 0 0 0 20px; border-radius: 5px; box-sizing: border-box; cursor: pointer; 
 background-color: #fff;background:#fff url("/bundles/viettutweb/img/templates/goldstar/gal_more_g.png") no-repeat scroll 91% 50%;background-size:13px auto; border: 1px solid #ae904c;
-font-family:'Vidaloka'; color: #ae904c; text-align: left; line-height: 34px; font-size: 1em; font-weight: bold; font-style: normal;text-shadow:none!important }
+font-family:'Lora', serif; color: #ae904c; text-align: left; line-height: 34px; font-size: 1em; font-weight: bold; font-style: normal;text-shadow:none!important }
 
 .gal_list2 {}
 .gal_list2 .gal_frame img {border:1px solid #dbc89a;border-radius:5px}
@@ -177,7 +169,7 @@ background:url(/bundles/viettutweb/img/templates/goldstar/movie_text1.png) no-re
 background-size:25px 110px, 25px 110px}
 .lovestory_img {float:left; margin:10px 0 0 0;}
 .lovestory_img img {width:220px;}
-.lovestory_txt {float:right; margin:18px 0 0 0; color:#ae904c; font-family:'Vidaloka';}
+.lovestory_txt {float:right; margin:18px 0 0 0; color:#ae904c; font-family:'Lora', serif;}
 
 .movie_container {position:relative; z-index:1}
 .movie_container ul {width:100%; margin:0}
@@ -235,7 +227,7 @@ background-size:25px 110px, 25px 110px}
 .gb_btn:hover {opacity: 0.7;}
 
 #div_snsbbs:after {clear:both; content:''; display:block;}
-.gb_cont_box {width:100%; padding:1em 0; font-family:'NanumGothic'; font-size:0.8em; color:#666; background-color:#fff; border:1px solid #ff5f5f; box-sizing:border-box; border-radius:5px;}
+.gb_cont_box {width:100%; padding:1em 0; font-family:'Lora', serif; font-size:0.8em; color:#666; background-color:#fff; border:1px solid #ff5f5f; box-sizing:border-box; border-radius:5px;}
 .pro_info {padding:0 1em;}
 .pro_img {position:relative; float:left;}
 .pro_img img {width:50px; height:50px; border-radius:50px}
@@ -290,7 +282,7 @@ color:#fff; text-align:center; font-size:1.05em; font-weight:bold; background-co
 .lo_map .ui-link img {height:100%;}
 
 .lo_title {margin:0 0 10px 0; padding: 10px 10px 10px 34px; /* height:40px; */  border:1px solid #ceb36f; border-radius:5px; overflow:hidden;
-color:#ceb36f; font-size:0.95em; font-family:'NanumGothic'; font-weight:bold; line-height: 24px; text-align:left;
+color:#ceb36f; font-size:0.95em; font-family:'Lora', serif; font-weight:bold; line-height: 24px; text-align:left;
 background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-repeat 10px 11px; background-size:16px}
 
 .nav-wrap {}
@@ -302,18 +294,18 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
 .nav-m form input {margin-bottom: 0 !important;font-size:16px !important;}
 .ui-icon-nav1 {background:url('/bundles/viettutweb/img/templates/goldstar/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
 .ui-icon-nav2 {background:url('/bundles/viettutweb/img/templates/goldstar/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
-.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-btn {font-family:'Lora', serif; font-weight:400!important}
 .ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;}
 .ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fafafa!important;padding: 12px 0;}
 .ui-btn-nav .ui-icon-nav1:hover,
 .ui-btn-nav .ui-icon-nav2:hover{border:1px solid rgba(0,0,0,0.6)!important}
 .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none;}
 .ui-page-theme-a .ui-btn {}
-.nav_info {font-size:0.8em; font-family:'NanumGothic'; color:#333; text-align:center}
+.nav_info {font-size:0.8em; font-family:'Lora', serif; color:#333; text-align:center}
 
 
-.lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; font-family:'NanumGothic'; border-top:2px solid #ceb36f;; border-bottom:2px solid #ceb36f;}
-.lo_container th {width:20%; min-width:100px; border-bottom:1px solid #ceb36f; color:#ceb36f; font-size:0.8em; font-family:'Vidaloka'; vertical-align:top; padding:10px 0; text-transform:uppercase;}
+.lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; font-family:'Lora', serif; border-top:2px solid #ceb36f;; border-bottom:2px solid #ceb36f;}
+.lo_container th {width:20%; min-width:100px; border-bottom:1px solid #ceb36f; color:#ceb36f; font-size:0.8em; font-family:'Lora', serif; vertical-align:top; padding:10px 0; text-transform:uppercase;}
 .lo_container td {width:80%; border-bottom:1px solid #ceb36f; color:#666; padding:10px 0 10px 10px; font-size:0.85em; line-height:1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important; }
 .lo_container td.txt {color:#000; font-weight:bold}
 
