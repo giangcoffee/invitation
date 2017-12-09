@@ -105,7 +105,7 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
         } else {
             $url = $request->request->get('_target_url', null);
             if ($url == null)  {
-                $url = '/';
+                $url = '/my-cards';
             }
 
             $response = new RedirectResponse($url);

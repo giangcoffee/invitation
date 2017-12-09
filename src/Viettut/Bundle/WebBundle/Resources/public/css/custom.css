@@ -30,3 +30,10 @@
 .temp-margin .text-primary {font-size:1.2em;}
 
 .button-center {text-align: center;}
+
+.bottom-hint {
+    border-top: 1px solid#888;
+    padding-top:15px;
+    font-size:85%;
+    text-align: center;
+}

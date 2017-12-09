@@ -84,7 +84,8 @@ class HomeController extends Controller
         }
 
         $cards = $this->get('viettut.repository.card')->getCardByUser($user);
-        return $this->render('ViettutWebBundle:Home:my_cards.html.twig', array('cards' => $cards));
+        $templates = $this->get('viettut.repository.template')->findAll();
+        return $this->render('ViettutWebBundle:Home:my_cards.html.twig', array('cards' => $cards, 'templates' => $templates));
     }
 
     /**
