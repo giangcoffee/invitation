@@ -143,8 +143,8 @@ h2.title_gold span {border-bottom:1px solid #9d7f3c;}
 .greeting_name {margin:30px auto 0; border-collapse: collapse; table-layout:fixed; color:#444;}
 .greeting_name thead {text-align:center;}
 .gn1 span {padding:0 0.2em; float:right; font-weight:bold;}
-.gn1 {padding:0.5em 0; font-size:0.9em; line-height:1;text-align:right;}
-.gn2 {padding:0.5em 0; font-size:0.9em; line-height:1;text-align:left;}
+.gn1 {padding:0.5em 15px; font-size:0.9em; line-height:1;text-align:right;}
+.gn2 {padding:0.5em 15px; font-size:0.9em; line-height:1;text-align:left;}
 .gn3 {padding:0.5em 0.8em 0.5em 0; font-size:0.9em; line-height:1}
 .gn4 {padding:0.5em 0; font-size:1.1em; line-height:1; }
 .gn3 span {display:block; text-align:right; padding-right:0.5em;}
@@ -218,7 +218,7 @@ background-size:25px 110px, 25px 110px}
 /*}*/
   
 /* Guestbook */
-.gb_msg {position:relative;margin: 0 0 40px;}
+.gb_msg {position:relative;margin: 0 0 40px;text-align:center;}
 .snsbbs_nopost {width:50%; min-width:300px; background:#ffbbbb url(/bundles/viettutweb/img/templates/goldstar/icon_nopost.png) no-repeat 50% 20px; background-size:32px; color:#fff; font-weight:bold; text-align:center; margin:0 auto 50px; padding:60px 0 20px; border-radius:5px;}
 .gb_btn {position:relative; width:140px;
   line-height:40px; margin:30px auto; padding:0 0 0 20px; border-radius:5px;
@@ -456,8 +456,8 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
 
   .greeting_textbox {padding:70px 0 50px;}
   .greeting_textbox p {font-size: 1em;}
-  .gn1 {padding:0.5em 0; font-size:0.8em; line-height:1}
-  .gn2 {padding:0.5em 0; font-size:0.8em; line-height:1}
+  .gn1 {padding:0.5em 10px; font-size:0.8em; line-height:1}
+  .gn2 {padding:0.5em 10px; font-size:0.8em; line-height:1}
   .gn3 {min-width:45px; padding:0.5em 0.5em 0.5em 0; font-size:0.8em; line-height:1}
   .gn4 {min-width:50px; font-size:1em; line-height:1}
 
@@ -506,8 +506,8 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
   .header_photo {position:relative; top:124px; left:0; width:300px; height:300px; margin:0 auto; padding:2px 0 0 0;}
   .header_photo p {width:280px; height:280px; margin:9px; border:6px solid #fff;}
   .header_title {position:absolute; top:0; left:50%; width:300px; height:auto; margin:0 0 0 -150px; padding:85px 0 0 0;
-    background-position:50% 20px; background-size:200px auto;}
-  .hd_name {padding:0; border:none; height:30px; font-size:25px; line-height:30px;}
+    background-position:50% 20px; background-size:240px auto;}
+  .hd_name {padding:0; border:none; height:30px; font-size:28px; line-height:30px;}
   .hd_name span {background:url(/bundles/viettutweb/img/templates/goldstar/header_and.png) no-repeat 0 1px; background-size:20px; width:20px; height:25px; margin:0 3px;}
   .hd_date {font-size:1.1em; margin:320px 0 5px 0; line-height:25px; height:25px;}
   .hd_loca {font-size:0.8em;}
@@ -551,7 +551,7 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
   .lo_map #wedding_pmap_canvas,
   .lo_map #party_pmap_canvas {height:300px!important;}
   .lo_map .ui-link img {height:100%;}
-  .gb_msg {font-size:14px;}
+  .gb_msg {font-size:15px;}
   .nav_info {font-size:0.7em;}
 }
 
@@ -568,7 +568,7 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
   .hd_loca {font-size:0.75em}
   .greeting_textbox {background-size:150px; }
   .greeting_textbox p {font-size: 0.95em;}
-
+  .gb_msg {font-size:13px;}
   h2.title img {width:150px;}
   h2.title_pink,
   h2.title_gold {font-size:24px; line-height:28px;}
