@@ -371,7 +371,7 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
 @media all and (max-width: 800px) {
   .lnb .lnb_title {display:none}
   .lnb ul {left:0; right:0;}
-  .lnb li {width:20%; font-size:0.95em;}
+  .lnb li {width:16%; font-size:0.95em;}
   .lnb li span{padding:0 8px 0 0}
   
   .header {height:600px;}
@@ -414,6 +414,8 @@ background: url(/bundles/viettutweb/img/templates/goldstar/lo_titlepin.png) no-r
   .location_wrap .col-2 .ui-block-b {float:left; width:100%}
   .lo_tab_wrap li {width:48%}
   .lo_tab_wrap li:last-child {margin:0 2% 0 0}
+  .gn1 {padding:0.5em 15px;}
+  .gn2 {padding:0.5em 15px;}
 }
 
 /* 640 이하 */

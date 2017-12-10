@@ -491,3 +491,13 @@ color:#888; text-align:center; font-size:1em; background-color:#ddd;cursor:point
 .groom-wrap ul {
   margin: 0 0 !important;
 }
+
+.gb_center {
+  width: 50%;
+  margin: 0 auto;
+  float: none !important;
+}
+
+.pointer {
+  cursor:pointer;
+}

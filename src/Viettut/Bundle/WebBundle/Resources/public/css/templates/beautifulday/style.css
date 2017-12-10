@@ -211,6 +211,9 @@ div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templat
 	h2.title {font-size:22px !important;}
 	.invite_img span {font-size:30px !important;}
 	h2.title {font-size:20px !important;}
+	.header_txt .title .tit_txt2 {
+		font-size:0.7em;
+	}
 }
 
 @media (min-width:1024px) {
@@ -221,10 +224,10 @@ div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templat
 /* home */
 .home_content{padding:110px 0;text-align:center;color: #585858;line-height:1.2;}
 .home_title{margin: 0 0 20px;color:#363e42;font-size:30px;font-weight:bold;font-family: 'Lora', serif;}
-.home_loca{max-width: 500px;width: 100%;padding: 0 10px;margin: 0 auto}
+.home_loca{max-width: 700px;width: 100%;padding: 0 10px;margin: 0 auto}
 .home_loca div{margin: 0 0 10px}
 .home_loca .date{color:#4a4a4a;font-size:18px}
-.home_loca .place{color:#888;font-size:22px}
+.home_loca .place{color:#888;font-size:22px;word-break: break-word;}
 
 .couple_list{position:relative;margin: 0 0 80px;}
 .couple_list:after{content:'';position:absolute;bottom: -35px;left:50%;width:60px;height:1px;margin-left:-30px;background-color:#222;}
@@ -247,6 +250,9 @@ div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templat
 @media(max-width:320px){
 	.couple_list div.name p strong,
 	.couple_list div.and p strong{font-size:45px}
+	.header_txt .title .tit_txt2 {
+		font-size:0.6em;
+	}
 }
 
 .msg_wrap{position:relative;width:100%;height:200px;background:#323e40 url(/bundles/viettutweb/img/templates/beautifulday/wonkyu_txt.png) no-repeat 50% 50%;background-size:auto 115px}
@@ -365,9 +371,9 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 .invite_name {width: 100%;max-width: 420px;margin: 60px auto 0;letter-spacing:-1px;font-size:20px;}
 .invite_name li{width: 45%;display:inline-block;margin:0 1%;vertical-align:middle;vertical-align:top}
 .invite_name li p{padding: 2px 0;}
-.invite_name li p.parents{font-size:0.75em;}
+.invite_name li p.parents{font-size:0.75em;word-break:break-word;hyphens:none;border-collapse: collapse !important;}
 .invite_name li .in_and{padding:0 2px 0 1px}
-.invite_name li .in4>em {font-size:0.75em;padding:0 5px 0 0;color:#666;font-weight: bold}
+.invite_name li .in4>em {font-size:0.75em;padding:0 5px 0 0;color:#666;font-weight: bold;margin-right:5px;}
 .invite_name li .in4 strong{}
 
 /* Guestbook */
@@ -591,7 +597,7 @@ font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb
 	.home_content{padding:90px 0}
 	.invite_img{height:260px;margin-bottom: 40px;}
 	.lo_tab_wrap li{margin:0;font-size:0.9em}
-	
+	.gb_msg{font-size:0.8em}
 }
 
 
