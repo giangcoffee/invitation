@@ -231,7 +231,7 @@
                             <iframe
                                     id="movie"
                                     width="100%"
-                                    src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                    src="https://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
                                     height="100%"
                                     frameborder="0"
                                     allowfullscreen>
@@ -482,7 +482,7 @@
         {% if isTemplate %}
             <div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()"><span>Chúc mừng</span></div>
         {% else %}
-            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Chúc mừng</span></div></a>
+            <div class="gb_btn btn_go_snsbbs" onclick="gotoGuestBook('{{ hash }}')"><span>Chúc mừng</span></div>
         {% endif %}
     </div>
     <!--// guestbook -->

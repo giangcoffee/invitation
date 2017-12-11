@@ -27,7 +27,6 @@ gulp.task('scripts', function(){
         'web/bundles/viettutweb/js/templates/common/photoswipe.js',
         'web/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js',
         'web/bundles/viettutweb/js/templates/common/popup.js',
-        'web/bundles/viettutweb/js/templates/gardenwedding/index.js'
     ])
     .pipe(concat('libraries.temp'))
     .pipe(gulp.dest(config.SCRIPT_DEST))
@@ -174,7 +173,6 @@ gulp.task('guestbook-scripts', function () {
 gulp.task('guestbook-styles', function () {
     gulp.src([
         'web/bundles/viettutweb/css/templates/common/snsbbs.css',
-        'web/bundles/viettutweb/css/templates/common/Roboto.css',
         'web/bundles/viettutweb/css/templates/common/emoticon.css',
         'web/bundles/viettutweb/css/lib/jquery.cropbox.custom.css',
         'web/bundles/viettutweb/css/lib/font-awesome.min.css'

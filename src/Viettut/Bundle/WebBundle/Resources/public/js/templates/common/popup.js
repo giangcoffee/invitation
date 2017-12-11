@@ -48,3 +48,7 @@ function updateStatus(status) {
 function guestBookAlert() {
     alert('Không thể chúc mừng trên thiệp mẫu !');
 }
+
+function gotoGuestBook(hash) {
+    window.location.href = '/cards/' + hash + '/guest-book';
+}

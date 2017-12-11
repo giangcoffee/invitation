@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Web Fonts  -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+    {#<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">#}
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/vendor/bootstrap/bootstrap.css') }}">
@@ -294,7 +294,20 @@
 
 <!-- Theme Initialization Files -->
 <script src="{{ asset('bundles/viettutweb/js/theme.init.js') }}"></script>
+<script>
+    WebFontConfig = {
+        google: {
+            families: ['Open+Sans:300,400,600,700,800%7CShadows+Into+Light']
+        }
+    };
 
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
 <script async>
     window.dataLayer = window.dataLayer || [];

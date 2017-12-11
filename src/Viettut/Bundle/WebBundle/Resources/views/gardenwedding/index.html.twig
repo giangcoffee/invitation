@@ -5,10 +5,10 @@
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="http://thiepdo.com/garden-wedding"/>
     <meta property="og:description" content="{{ description }}"/>
-
     <meta property="og:title" content="{{ name }}"/>
-    <meta name="description" content="{{ description }}"/>
     <meta property="og:image" content="/bundles/viettutweb/img/templates/gardenwedding/7445cc41988e70ed839f0505739f50fb.jpg"/>
+
+    <meta name="description" content="{{ description }}"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -280,7 +280,7 @@
                                 <iframe
                                         id="movie"
                                         width="100%"
-                                        src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                        src="https://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
                                         height="100%"
                                         frameborder="0"
                                         allowfullscreen>
@@ -520,9 +520,9 @@
                 </div>
             </div>
             {% if isTemplate %}
-                <div class="gb_btn btn_go_snsbbs"  onclick="guestBookAlert()"><span>Chúc mừng</span></div>
+                <div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()"><span>Chúc mừng</span></div>
             {% else %}
-                <a href="{{ path('guest_book_page', {hash: hash}) }}" title="Để lại lời chúc"><div class="gb_btn btn_go_snsbbs"><span>Chúc mừng</span></div></a>
+                <div class="gb_btn btn_go_snsbbs" onclick="gotoGuestBook('{{ hash }}')"><span>Chúc mừng</span></div>
             {% endif %}
         </div>
         <!--// guestbook -->
