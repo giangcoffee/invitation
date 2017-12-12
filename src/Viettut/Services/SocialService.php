@@ -5,6 +5,7 @@ namespace Viettut\Services;
 
 
 use Facebook\Facebook;
+use Google_Client;
 use RestClient\CurlRestClient;
 use Viettut\DomainManager\CardManagerInterface;
 use Viettut\Model\Core\CardInterface;
@@ -30,22 +31,39 @@ class SocialService implements SocialServiceInterface
     /** @var  string */
     private $getAlbumRedirectUrl;
 
+    private $googleAppId;
+
+    private $googleAppSecret;
+
+    private $googleAppName;
+
+    private $googleRedirectUri;
+
     /**
      * SocialService constructor.
      * @param string $appId
      * @param string $appSecret
      * @param $facebookLoginRedirectUrl
      * @param $zaloLoginRedirectUrl
+     * @param $googleAppId
+     * @param $googleAppSecret
+     * @param $googleAppName
+     * @param $googleRedirectUri
      * @param $getAlbumRedirectUrl
      * @param string $defaultGraphVersion
      */
-    public function __construct($appId, $appSecret, $facebookLoginRedirectUrl, $zaloLoginRedirectUrl, $getAlbumRedirectUrl, $defaultGraphVersion)
+    public function __construct($appId, $appSecret, $facebookLoginRedirectUrl, $zaloLoginRedirectUrl, $googleAppId, $googleAppSecret,
+                                $googleAppName, $googleRedirectUri, $getAlbumRedirectUrl, $defaultGraphVersion)
     {
         $this->appId = $appId;
         $this->appSecret = $appSecret;
         $this->defaultGraphVersion = $defaultGraphVersion;
         $this->facebookLoginRedirectUrl = $facebookLoginRedirectUrl;
         $this->zaloLoginRedirectUrl = $zaloLoginRedirectUrl;
+        $this->googleAppId = $googleAppId;
+        $this->googleAppSecret = $googleAppSecret;
+        $this->googleAppName = $googleAppName;
+        $this->googleRedirectUri = $googleRedirectUri;
         $this->getAlbumRedirectUrl = $getAlbumRedirectUrl;
     }
 
@@ -81,6 +99,18 @@ class SocialService implements SocialServiceInterface
             'app_secret' => self::getAppSecret(),
             'default_graph_version' => self::getDefaultGraphVersion(),
         ]);
+    }
+
+    public function getGoogleApp()
+    {
+        $client = new Google_Client();
+        $client->setClientId($this->googleAppId);
+        $client->setClientSecret($this->googleAppSecret);
+        $client->setRedirectUri($this->googleRedirectUri);
+        $client->addScope("email");
+        $client->addScope("profile");
+
+        return $client;
     }
 
     public function getUserAlbums($token)
@@ -136,7 +166,7 @@ class SocialService implements SocialServiceInterface
         }
     }
 
-    public function getLoginUrl($targetUrl = null)
+    public function getFacebookLoginUrl($targetUrl = null)
     {
         $fb = $this->getFacebookApp();
         $helper = $fb->getRedirectLoginHelper();
@@ -147,6 +177,19 @@ class SocialService implements SocialServiceInterface
         }
 
         return $helper->getLoginUrl($redirectUrl, $permissions);
+    }
+
+    public function getGoogleLoginUrl($targetUrl = null)
+    {
+        $api = new Google_Client();
+        $api->setApplicationName($this->googleAppName); // Set Application name
+        $api->setClientId($this->googleAppId); // Set Client ID
+        $api->setClientSecret($this->googleAppSecret); //Set client Secret
+        $api->addScope('email');
+        $api->addScope('profile');
+        $api->setRedirectUri($this->googleRedirectUri); // Enter your file path (Redirect Uri) that you have set to get client ID in API console
+
+        return $api->createAuthUrl();
     }
 
     public function getZaloLoginUrl($targetUrl = null)

@@ -115,8 +115,9 @@ class BuilderController extends Controller
             : null;
 
         $targetUrl = $request->getUri();
-        $facebookLoginUrl = $this->get('viettut.services.facebook_service')->getLoginUrl($targetUrl);
-        $zaloLoginUrl = $this->get('viettut.services.facebook_service')->getZaloLoginUrl($targetUrl);
+        $socialService = $this->get('viettut.services.social_service');
+        $facebookLoginUrl = $socialService->getFacebookLoginUrl($targetUrl);
+        $zaloLoginUrl = $socialService->getZaloLoginUrl($targetUrl);
 
         $comments = $this->get('viettut.repository.comment')->getByCard($card);
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(

@@ -23,7 +23,18 @@ interface SocialServiceInterface
      * @param null $targetUrl
      * @return mixed
      */
-    public function getLoginUrl($targetUrl = null);
+    public function getFacebookLoginUrl($targetUrl = null);
+
+    /**
+     * @param null $targetUrl
+     * @return mixed
+     */
+    public function getGoogleLoginUrl($targetUrl = null);
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleApp();
 
     /**
      * @param null $targetUrl

@@ -47,14 +47,17 @@ class SecurityController extends BaseController
             : null;
 
         $targetUrl = $request->query->get('_target_url');
-        $facebookLoginUrl = $this->get('viettut.services.facebook_service')->getLoginUrl($targetUrl);
-        $zaloLoginUrl = $this->get('viettut.services.facebook_service')->getZaloLoginUrl($targetUrl);
+        $socialService = $this->get('viettut.services.social_service');
+        $facebookLoginUrl = $socialService->getFacebookLoginUrl($targetUrl);
+        $zaloLoginUrl = $socialService->getZaloLoginUrl($targetUrl);
+        $googleLoginUrl = $socialService->getGoogleLoginUrl($targetUrl);
 
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
+            'googleUrl' => $googleLoginUrl,
             'zaloUrl' => $zaloLoginUrl,
             '_target_url' => $targetUrl
         ));

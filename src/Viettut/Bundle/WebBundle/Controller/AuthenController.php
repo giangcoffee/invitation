@@ -9,6 +9,7 @@
 namespace Viettut\Bundle\WebBundle\Controller;
 
 
+use Google_Service_Oauth2;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -29,7 +30,7 @@ class AuthenController extends Controller
     public function facebookLoginAction(Request $request)
     {
         $lecturerManager = $this->get('viettut_user.domain_manager.lecturer');
-        $fb = $this->get('viettut.services.facebook_service')->getFacebookApp();
+        $fb = $this->get('viettut.services.social_service')->getFacebookApp();
 
         $helper = $fb->getRedirectLoginHelper();
         try {
@@ -79,7 +80,7 @@ class AuthenController extends Controller
             return $this->redirect($targetUrl);
         }
 
-        return $this->redirect($this->generateUrl('home_page'));
+        return $this->redirect($this->generateUrl('my_card_page'));
     }
 
     /**
@@ -88,13 +89,13 @@ class AuthenController extends Controller
     public function facebookAlbumAction(Request $request)
     {
         $lecturerManager = $this->get('viettut_user.domain_manager.lecturer');
-        $facebookService = $this->get('viettut.services.facebook_service');
-        $fb = $facebookService->getFacebookApp();
+        $socialService = $this->get('viettut.services.social_service');
+        $fb = $socialService->getFacebookApp();
 
         $helper = $fb->getRedirectLoginHelper();
         try {
             $accessToken = $helper->getAccessToken();
-            $facebookService->getUserAlbums($accessToken);
+            $socialService->getUserAlbums($accessToken);
             $fb->setDefaultAccessToken($accessToken);
             $response = $fb->get('/me?fields=id,name,email', $fb->getDefaultAccessToken());
             $userNode = $response->getGraphUser();
@@ -195,5 +196,62 @@ class AuthenController extends Controller
         return $this->redirect($this->generateUrl('home_page'));
     }
 
+    /**
+     * @param Request $request
+     * @Route("/google/login", name="google_login")
+     */
+    public function googleLoginAction(Request $request)
+    {
+        $code = $request->get('code');
+        $socialService = $this->get('viettut.services.social_service');
+        $client = $socialService->getGoogleApp();
+        $service = new Google_Service_Oauth2($client);
+
+        $client->authenticate($code);
+        $user = $service->userinfo->get();
+
+        $userManager = $this->container->get('viettut_user.domain_manager.lecturer');
+        $lecturer = $userManager->findUserByUsernameOrEmail($user['email']);
+        if($lecturer instanceof UserEntityInterface) {
+            $gender = strtolower($user['gender']) == 'male' ? 1 : 0;
+            $avatar = $lecturer->getAvatar();
+            if (empty($avatar) || strpos($avatar, 'http://gravatar.com') === 0) {
+                $lecturer->setAvatar($user['picture']);
+            }
+
+            $lecturer
+                ->setGoogleId($user['id'])
+                ->setName($user['name'])
+                ->setGender($gender);
+            $userManager->save($lecturer);
+        }
+        else {
+            $lecturer = $userManager->createNew();
+            $gender = strtolower($user['gender']) == 'male' ? 1 : 0;
+            $lecturer->setEnabled(true)
+                ->setPlainPassword($user['email'])
+                ->setUsername($user['email'])
+                ->setEmail($user['email'])
+                ->setName($user['name'])
+                ->setGoogleId($user['id'])
+                ->setActive(true)
+                ->setGender($gender)
+                ->setAvatar($user['picture'])
+            ;
+
+            $userManager->save($lecturer);
+        }
+
+        $token = new UsernamePasswordToken($lecturer, $lecturer->getPassword(), 'main', $lecturer->getRoles());
+
+        $this->get("security.token_storage")->setToken($token);
+
+        $targetUrl = $request->query->get('_target_url', null);
+        if ($targetUrl) {
+            return $this->redirect($targetUrl);
+        }
+
+        return $this->redirect($this->generateUrl('my_card_page'));
+    }
 
 }

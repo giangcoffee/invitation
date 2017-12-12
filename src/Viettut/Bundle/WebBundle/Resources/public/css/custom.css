@@ -3,10 +3,11 @@
     /*margin: 10px 10px;*/
 /*}*/
 
-.social-buttons a {width: 48%;}
+.social-buttons a {width: 31%;}
 
 .btn-zl {background-color: #55acee !important; }
 .btn-fb {background-color: #3b5998 !important;}
+.btn-gl {background-color: #fe0000 !important;}
 .social-login {display:none;}
 
 @media all and (max-width: 640px) {

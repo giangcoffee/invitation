@@ -25,14 +25,12 @@ parameters:
     facebook_graph_default_version: v2.9
     facebook_redirect_uri: 'http://thiepdo.com/facebook/login'
     facebook_album_redirect_uri: 'http://thiepdo.com/facebook/album'
-    google_client_id: 355171488116-rml9h7b9ivdn8ub5sgu6r6eh1vkluvav.apps.googleusercontent.com
-    google_client_secret: eyeBjN6tVwQwNrkG-S0XQmxa
+    google_client_id: 709027637172-sjraivnj8q8cvqdsqc5a3cvjqtkiv5bj.apps.googleusercontent.com
+    google_client_secret: kdp6nRxh6xrXVjkPSySNXQeR
+    google_client_app_name: 'ThiepDo Digital'
     google_redirect_uri: 'http://thiepdo.com/google/login'
     zalo_redirect_uri: 'http://thiepdo.com/zalo/login'
     cookie_domain: .thiepdo.com
     domain: thiepdo.com
-    http_schema: 'http://'
-    facebook_object_id_url_template: 'https://graph.facebook.com/?id=%s'
     cookie_path: /
     cookie_lifetime: 3600
-    youtube_iframe_template: '<iframe id="movie" width="100%" src="http://www.youtube.com/embed/$$VIDEO_ID$$?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" allowfullscreen></iframe>'
