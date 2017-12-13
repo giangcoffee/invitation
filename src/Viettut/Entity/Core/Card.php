@@ -26,4 +26,5 @@ class Card extends CardModel
     protected $status;
     protected $partyDate;
     protected $statuses;
+    protected $name;
 }

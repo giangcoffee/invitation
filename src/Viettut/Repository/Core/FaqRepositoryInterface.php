@@ -11,4 +11,5 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 interface FaqRepositoryInterface extends ObjectRepository
 {
+    public function search($keyword);
 }

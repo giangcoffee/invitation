@@ -63,6 +63,9 @@ class Card implements CardInterface
     /** @var  int */
     protected $views;
 
+    /** @var  string */
+    protected $name;
+
     /** @var  DateTime */
     protected $partyDate;
 
@@ -518,6 +521,24 @@ class Card implements CardInterface
         }
 
         return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
     }
 
     function __toString()

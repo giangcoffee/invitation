@@ -240,5 +240,16 @@ interface CardInterface extends ModelInterface
      */
     public function setPartyDate($partyDate);
 
+    /**
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * @param string $name
+     * @return self
+     */
+    public function setName($name);
+
     public function getWeddingDateString();
 }

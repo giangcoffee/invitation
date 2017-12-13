@@ -52,6 +52,9 @@ Viettut\Entity\Core\Card:
             nullable: false
             options:
                 default: 0
+        name:
+            type: text
+            nullable: false
         deletedAt:
             type: date
             nullable: true

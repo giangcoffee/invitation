@@ -68,13 +68,23 @@
                     <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" src="{{ asset('bundles/viettutweb/img/logo1_default.png') }}">
                 </a>
             </div>
+            {#<div class="search">#}
+                {#<form id="searchForm">#}
+                    {#<div class="input-group">#}
+                        {#<input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>#}
+                        {#<span class="input-group-btn">#}
+                            {#<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>#}
+                        {#</span>#}
+                    {#</div>#}
+                {#</form>#}
+            {#</div>#}
             <div class="search">
-                <form id="searchForm">
+                <form id="searchForm" method="get" action="{{ path('public_search') }}">
                     <div class="input-group">
                         <input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                        </span>
+									<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+								</span>
                     </div>
                 </form>
             </div>
@@ -270,15 +280,9 @@
 <script src="{{ asset('bundles/viettutweb/vendor/jquery-cookie/jquery-cookie.js') }}"></script>
 <script src="{{ asset('bundles/viettutweb/vendor/bootstrap/bootstrap.js') }}"></script>
 <script src="{{ asset('bundles/viettutweb/vendor/common/common.js') }}"></script>
-{#<script src="{{ asset('bundles/viettutweb/vendor/jquery.validation/jquery.validation.js') }}"></script>#}
 <script src="{{ asset('bundles/viettutweb/vendor/jquery.stellar/jquery.stellar.js') }}"></script>
-{#<script src="{{ asset('bundles/viettutweb/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js') }}"></script>#}
-{#<script src="{{ asset('bundles/viettutweb/vendor/jquery.gmap/jquery.gmap.js') }}"></script>#}
 <script src="{{ asset('bundles/viettutweb/vendor/isotope/jquery.isotope.js') }}"></script>
 <script src="{{ asset('bundles/viettutweb/vendor/owlcarousel/owl.carousel.js') }}"></script>
-{#<script src="{{ asset('bundles/viettutweb/vendor/jflickrfeed/jflickrfeed.js') }}"></script>#}
-{#<script src="{{ asset('bundles/viettutweb/vendor/magnific-popup/jquery.magnific-popup.js') }}"></script>#}
-{#<script src="{{ asset('bundles/viettutweb/vendor/vide/vide.js') }}"></script>#}/app
 
 <!-- Theme Base, Components and Settings -->
 <script src="{{ asset('bundles/viettutweb/js/theme.js') }}"></script>
@@ -297,7 +301,7 @@
 <script>
     WebFontConfig = {
         google: {
-            families: ['Open+Sans:300,400,600,700,800%7CShadows+Into+Light']
+            families: ['Open+Sans:300,400,600,700,800%7CSedgwick+Ave']
         }
     };
 

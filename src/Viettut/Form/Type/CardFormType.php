@@ -17,6 +17,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Viettut\Entity\Core\Card;
 use Viettut\Entity\Core\LibraryCard;
+use Viettut\Model\Core\CardInterface;
 use Viettut\Utilities\StringFactory;
 
 class CardFormType extends AbstractRoleSpecificFormType
@@ -58,6 +59,25 @@ class CardFormType extends AbstractRoleSpecificFormType
                     $form->add('libraryCard', new LibraryCardFormType());
                 }
             }
+        );
+
+        $builder->addEventListener(
+            FormEvents::POST_SUBMIT, function(FormEvent $event) {
+            /** @var CardInterface $card */
+            $card = $event->getData();
+            try {
+                $data = $card->getData();
+                if (is_array($data) && array_key_exists('groom_name', $data) && array_key_exists('bride_name', $data)) {
+                    if ($card->isForGroom()) {
+                        $card->setName(sprintf('Hôn lễ của %s %s', $data['groom_name'], $data['bride_name']));
+                    } else {
+                        $card->setName(sprintf('Hôn lễ của %s %s', $data['bride_name'], $data['groom_name']));
+                    }
+                }
+            } catch (\Exception $ex) {
+
+            }
+        }
         );
     }
 

@@ -37,7 +37,7 @@
                     {% for faq in faqs %}
                         <section class="toggle {% if loop.index == 1 %}active{% endif %}">
                             <label>{{ faq.question }}</label>
-                            <p>{{ faq.answer }}</p>
+                            <p>{{ faq.answer | raw }}</p>
                         </section>
                     {% endfor %}
                 </div>

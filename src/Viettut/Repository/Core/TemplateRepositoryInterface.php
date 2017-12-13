@@ -16,4 +16,6 @@ interface TemplateRepositoryInterface extends ObjectRepository
      * @return mixed
      */
     public function getTemplateByHash($hash);
+
+    public function search($keyword);
 }
