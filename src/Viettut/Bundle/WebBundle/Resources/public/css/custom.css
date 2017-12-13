@@ -6,19 +6,24 @@
 .social-buttons a {width: 31%;}
 
 .btn-zl {background-color: #55acee !important; }
+.btn-zl:hover {opacity: .8}
 .btn-fb {background-color: #3b5998 !important;}
+.btn-fb:hover {opacity:.8;}
 .btn-gl {background-color: #fe0000 !important;}
+.btn-gl:hover {opacity: .8;}
 .social-login {display:none;}
 
 @media all and (max-width: 640px) {
     .social-buttons {display:none;}
     .social-login {display:block;}
     .social-login a {width:20%;}
-    .social-login .btn-fb {float:left;margin-left:60px;}
-    .social-login .btn-zl {float:right;margin-right:65px;}
-    .btn-zl, .btn-fb {background-color: transparent !important;}
+    .social-login .btn-fb {float:left;margin-left:10px;}
+    .social-login .btn-gl {float:left;margin-left:20px;}
+    .social-login .btn-zl {float:right;margin-right:35px;}
+    .btn-gl, .btn-zl, .btn-fb {background-color: transparent !important;}
     .btn-zl img {width:44px;}
     .btn-fb img {width:48px;}
+    .btn-gl img {width:44px;}
     /*.img-responsive {max-width: 40% !important;}*/
 }
 

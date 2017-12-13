@@ -118,6 +118,7 @@ class BuilderController extends Controller
         $socialService = $this->get('viettut.services.social_service');
         $facebookLoginUrl = $socialService->getFacebookLoginUrl($targetUrl);
         $zaloLoginUrl = $socialService->getZaloLoginUrl($targetUrl);
+        $googleLoginUrl = $socialService->getGoogleLoginUrl($targetUrl);
 
         $comments = $this->get('viettut.repository.comment')->getByCard($card);
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
@@ -129,6 +130,7 @@ class BuilderController extends Controller
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
+            'googleUrl' => $googleLoginUrl,
             'zaloUrl' => $zaloLoginUrl,
             'id' => $card->getId(),
             'comments' => $comments,

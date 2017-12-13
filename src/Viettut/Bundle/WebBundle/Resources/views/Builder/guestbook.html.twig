@@ -201,8 +201,9 @@
             </div>
             <div class="login_area on">
                 <div class="social-buttons">
-                    <a href="{{ facebookUrl }}" class="btn_login btn-fb social-login"><img width="50px" src="{{ asset('bundles/viettutweb/img/logos/facebook_circle_color-256.png') }}"/></a>
-                    <a href="{{ zaloUrl }}" class="btn_login btn-zl"><img width="50px" src="{{ asset('bundles/viettutweb/img/logos/cach-ban-hang-zalo-hieu-qua.png') }}"/></a>
+                    <a href="{{ facebookUrl }}" class="btn_login btn-fb social-login"><img width="50px" src="{{ asset('bundles/viettutweb/img/logos/facebook_circle_color-256.png') }}" alt="facebook icon"/></a>
+                    <a href="{{ googleUrl }}" class="btn btn-gl" title="Đăng nhập Google"><img width="46px" src="{{ asset('bundles/viettutweb/img/logos/google_plus_circle_icon.png') }}" alt="google plus icon" /></a>
+                    <a href="{{ zaloUrl }}" class="btn_login btn-zl"><img width="50px" src="{{ asset('bundles/viettutweb/img/logos/cach-ban-hang-zalo-hieu-qua.png') }}" alt="zalo icon"/></a>
                 </div>
                 <form  method="POST" action="{{ path('fos_user_security_check') }}">
                     <ul class="login_form">

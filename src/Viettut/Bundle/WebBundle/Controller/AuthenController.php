@@ -246,9 +246,10 @@ class AuthenController extends Controller
 
         $this->get("security.token_storage")->setToken($token);
 
-        $targetUrl = $request->query->get('_target_url', null);
-        if ($targetUrl) {
-            return $this->redirect($targetUrl);
+        $state = $request->get('state');
+        $state = json_decode(base64_decode(strtr($state, '-_,', '+/=')), true);
+        if (is_array($state) && array_key_exists('_target_url', $state)) {
+            return $this->redirect($state['_target_url']);
         }
 
         return $this->redirect($this->generateUrl('my_card_page'));

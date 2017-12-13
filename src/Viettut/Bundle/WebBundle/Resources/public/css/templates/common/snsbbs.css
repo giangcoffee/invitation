@@ -201,7 +201,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .reply_area .reply_btn *{float:left}
 .reply_area .reply_txt {display:inline-block;font-size: 0.85em;font-weight:bold;font-family:'Lora', serif;;padding: 4px 0 0 5px;vertical-align: top;}
 
-.del_area {position:absolute;bottom:0;right: 0;height: 40px;z-index: 99;}
+.del_area {position:absolute;bottom:-10px;right: 0;height: 40px;z-index: 99;}
 .del_area .info_date {position:relative;float:right;padding:11px 18px 0 0;font-size: 0.75em;font-family:'Lora', serif;;color: #999;z-index: 0;}
 .del_area .del_btn {position:relative;float:right;width: 48px;/*50px;*/height:40px;cursor:pointer;color:#ccc;margin-left: -22px;z-index: 1;}
 
@@ -255,7 +255,6 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .comm_del_area {position:absolute;top: 0;right: 0}
 .comm_del_btn {width: 54px;height: 44px;cursor:pointer;}
 
-/* 댓글 더보기 */
 .comm_prev {cursor: pointer;background: #e0e0e0;text-align: center;padding:8px 0;border-radius: 0 0 8px 8px;}
 .comm_prev>img {display:inline-block;width:25px;height:25px}
 .comm_prev>span {display:inline-block;padding-left:5px;font-size:0.8em;color:#999;font-weight:bold}
@@ -318,7 +317,6 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .mypage_wrap .recentlist_area{position:absolute;top: 45px;left:0;width:100%;bottom:0;margin: 0;overflow-y:auto;}
 
 
-/*로그인시 프로필영역 보이기*/
 /* .header_wrap.login .header_area{padding-bottom: 130px}
 .header_wrap.login .header_write{bottom: 75px;}
 .header_wrap.login .hdprofile_box{display:block}
@@ -587,7 +585,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 	.mypage_wrap .recentlist_area{position:relative;top:auto;left: auto;bottom: auto;overflow-y: hidden;}
 	.mypage_wrap .mypage_btns{position:relative;left: auto;bottom:auto;}
 }
-@media (max-width:768px) { /*스크롤시 메뉴고정*/
+@media (max-width:768px) {
 	.gnb_wrap.fixed {position:fixed;animation: slideDown 0.3s ease;-webkit-animation: slideDown 0.3s ease}
 	.gnb_wrap.fixed>.color_bg{opacity:0.9}
 	.btn_write.fixed {animation: slideDown 0.3s ease;-webkit-animation: slideDown 0.3s ease}
@@ -641,7 +639,6 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 	.contents_list>.content_size{width: 95%;}  /* 임시추가 */
 	.contents_list>.gutter{width:2.5%}
 	
-	/* 로딩 부분 css 추가 */
 	div.loader{text-align:center; padding: 0 0 0 1%}
 	div.loader .btn_more{position:relative;height: 40px;margin:0 auto;border-radius:8px;background-color: #bbb;color:#fff;line-height:1;letter-spacing:0.5px;padding: 11px 0 0;font-size: 14px;font-weight:bold;transition: 0.2s background-color;-webkit-transition: 0.2s background-color;cursor:pointer}
 	div.loader .btn_more:hover{background-color:#aaa}
@@ -794,9 +791,6 @@ body.mint .comm_list>li{border-color: #d2e8e8}
 body.mint .comment_box.on{background-color: #f3ffff}
 
 
-
-
-/* 카톡인앱 로그인안내(2017-07-06) */
 .snsbbs_tip{margin:15px 20px 12px;padding:8px 0;background-color: #fffce0;border: 1px solid #fff7a3;color:#5d2a2b;font-size:12px;text-shadow: none;line-height:24px;text-align: center;letter-spacing:-0.2px;}
 .snsbbs_tip strong{display:block;font-size:13px;padding-bottom:0px}
 .snsbbs_tip .ico-kakao1{vertical-align:middle;display:inline-block;width:28px;height:28px;background:url(http://www.dalpeng.com/img/snsbbs/tip_kakao1.png) no-repeat;background-size:100%;border-radius:6px;font-size:0;border: 1px solid #ccc;box-sizing: border-box;}
@@ -805,12 +799,16 @@ body.mint .comment_box.on{background-color: #f3ffff}
 	.snsbbs_tip{margin-left:0;margin-right:0;border-left:0;border-right:0}
 }
 
-@media all and (max-width: 640px) {
-	.social-login {margin-left:40%;}
-}
-
 .social-login {margin-left:40%;}
 
+@media all and (max-width: 768px) {
+	.social-login {margin-left:32%;}
+}
+
 @media all and (max-width: 480px) {
-	.social-login {margin-left:35%;}
+	.social-login {margin-left:30%;}
+}
+
+@media all and (max-width: 320px) {
+	.social-login {margin-left:25%;}
 }

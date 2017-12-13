@@ -181,15 +181,21 @@ class SocialService implements SocialServiceInterface
 
     public function getGoogleLoginUrl($targetUrl = null)
     {
-        $api = new Google_Client();
-        $api->setApplicationName($this->googleAppName); // Set Application name
-        $api->setClientId($this->googleAppId); // Set Client ID
-        $api->setClientSecret($this->googleAppSecret); //Set client Secret
+        $state = null;
+        if ($targetUrl) {
+            $state = strtr(base64_encode(json_encode(array('_target_url' => $targetUrl))), '+/=', '-_,');
+        }
+
+        $api = new Google_Client(array('state' => $state));
+        $api->setApplicationName($this->googleAppName);
+        $api->setClientId($this->googleAppId);
+        $api->setClientSecret($this->googleAppSecret);
         $api->addScope('email');
         $api->addScope('profile');
-        $api->setRedirectUri($this->googleRedirectUri); // Enter your file path (Redirect Uri) that you have set to get client ID in API console
+        $api->setRedirectUri($this->googleRedirectUri);
+        $loginUrl = $api->createAuthUrl();
 
-        return $api->createAuthUrl();
+        return $loginUrl;
     }
 
     public function getZaloLoginUrl($targetUrl = null)
