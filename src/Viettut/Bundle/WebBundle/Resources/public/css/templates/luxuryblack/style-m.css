@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/* Layout */
+.contact_wrap {background-color:#333;}
+
+/* Font */
+body { font-size:80%; }
+h2 {line-height:1.2em;}
+
+/* Main */
+.main_info {margin:0;}
+.main_info h1 img {width:50%;}
+
+/*.main_info .w_info {position:relative; top:-13px; left:15px; width:250px;}*/
+.main_info .w_info {position:relative; width:250px; margin:3px 0 0 3px}
+
+.main_info .w_info .name {margin:1em 0;}
+.main_info .w_info .name p {margin-bottom:.5em;}
+.main_info .w_info .name p em {margin-right:10px; color:#575757;}
+.main_info .w_info .greeting {margin-bottom:1em;}
+.main_info .w_info .greeting h2 img {height:9px;}
+.main_info .w_info .greeting p {line-height:2em;}
+.main_info .w_info .greeting p img {width:7px; margin:0 1em;}
+
+
+/* gallery */
+.gal_list > ul > li {width:50%; height:110px;} 
+.gal-txt ul {padding:0 1%; padding-top:100px; box-sizing:border-box;}
+.gal-txt p  {padding-top:100px; box-sizing:border-box;}
+
+/* Contact */
+.contact_wrap ul li {color:rgba(255,255,255,.8); text-align:center; line-height:60px; height:62px; border-bottom:1px solid rgba(255,255,255,.2);}
+.contact_wrap ul li:first-child {border-top:1px solid rgba(255,255,255,.2);}
+.btn_spr {width:60px; height:60px; background:url('/bundles/viettutweb/img/templates/luxuryblack/btn_spr.png')0 0 no-repeat; background-size:100%; text-indent:-9999px; overflow:hidden;}
+.btn_spr.ph  {background-position:0 0;}
+.btn_spr.ms  {background-position:0 -60px;}
+.btn_spr.kat {background-position:0 -120px;}
+.btn_spr.kas {background-position:0 -180px;}
+.btn_spr.ms:hover,
+.btn_spr.ph:hover,
+.btn_spr.kat:hover,
+.btn_spr.kas:hover {background-color:rgba(200,200,255,.2);}
+
+
+/* Greeting */
+/* Guestbook */
+/* Movie */
+/* Location */
+
+
+

@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'guestbook', 'html-minify'], function(){
+gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
     console.log('i am GULP');
 });
 
@@ -110,6 +110,12 @@ gulp.task('gardenwedding-styles', function(){
         'web/bundles/viettutweb/css/templates/gardenwedding/style.css',
         'web/bundles/viettutweb/css/templates/gardenwedding/app.css'
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/gardenwedding'))
+});
+
+gulp.task('luxuryblack-styles', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/luxuryblack/style.css',
+    ]).pipe(minifyCss()).pipe(gulp.dest('web/css/luxuryblack'))
 });
 
 gulp.task('goldstar', ['goldstar-scripts', 'goldstar-styles'], function () {});
