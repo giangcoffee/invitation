@@ -5,14 +5,13 @@ namespace Viettut\Bundle\ApiBundle\EventListener;
 
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Viettut\Exception\InvalidArgumentException;
 use Viettut\Model\Core\CardInterface;
 use Viettut\Utilities\StringFactory;
 
 class SetDefaultCardDataListener
 {
-    const TEMPLATE = '<iframe id="movie" width="100%" src="http://www.youtube.com/embed/$$VIDEO_ID$$?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" allowfullscreen></iframe>';
+    const TEMPLATE = '<iframe id="movie" width="100%" src="https://www.youtube.com/embed/$$VIDEO_ID$$?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" allowfullscreen></iframe>';
     const DEFAULT_VIDEO_ID = 'Q9aUb6FJdhk';
     use StringFactory;
 
