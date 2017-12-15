@@ -29,6 +29,7 @@ parameters:
     google_client_secret: kdp6nRxh6xrXVjkPSySNXQeR
     google_client_app_name: 'ThiepDo Digital'
     google_redirect_uri: 'http://thiepdo.com/google/login'
+    google_map_api_key: 'AIzaSyDxhMSp7eUxSr3lJocnsQIsP4p_Wanqpnk'
     zalo_redirect_uri: 'http://thiepdo.com/zalo/login'
     cookie_domain: .thiepdo.com
     domain: thiepdo.com

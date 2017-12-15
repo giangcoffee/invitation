@@ -211,10 +211,10 @@
             data['template'] = id;
             data['weddingDate'] = $('#wedding_date').val();
             data['partyDate'] = $('#party_date').val();
-            data['forGroom'] = true;
+            data['forGroom'] = false;
             data['libraryCard'] = {'gallery': [], 'video': ''};
 
-            if ($('#check_id').is(":checked")) {
+            if ($('#for_groom').is(":checked")) {
                 data['forGroom'] = true;
             }
 

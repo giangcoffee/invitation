@@ -4,7 +4,6 @@
 namespace Viettut\Bundle\ApiBundle\EventListener;
 
 
-use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\Query\GeocodeQuery;
@@ -14,17 +13,16 @@ use Viettut\Model\Core\CardInterface;
 
 class UpdateGeoLocationListener
 {
-    /**
-     * @param LifecycleEventArgs $args
-     */
-    public function prePersist(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-        if (!$entity instanceof CardInterface) {
-            return;
-        }
 
-        $this->updateGeoLocation($entity);
+    private $apiKey;
+
+    /**
+     * UpdateGeoLocationListener constructor.
+     * @param $apiKey
+     */
+    public function __construct($apiKey)
+    {
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -53,7 +51,7 @@ class UpdateGeoLocationListener
 
 
         $adapter  = new Client();
-        $provider = new GoogleMaps($adapter, null, 'AIzaSyDxhMSp7eUxSr3lJocnsQIsP4p_Wanqpnk');
+        $provider = new GoogleMaps($adapter, null, $this->apiKey);
         $geocoder = new StatefulGeocoder($provider, 'vi');
 
         if (array_key_exists('place_addr', $data) && !empty($data['place_addr'])) {

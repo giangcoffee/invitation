@@ -42,12 +42,17 @@ services:
         class: Viettut\Bundle\ApiBundle\EventListener\UpdateVideoIdListener
         arguments:
         tags:
-            - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
 
     viettut.event_listener.update_geo_location_listener:
         class: Viettut\Bundle\ApiBundle\EventListener\UpdateGeoLocationListener
         arguments:
+            - '%google_map_api_key%'
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+
+    viettut.event_listener.set_default_card_data_listener:
+        class: Viettut\Bundle\ApiBundle\EventListener\SetDefaultCardDataListener
+        arguments:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
-            - { name: doctrine.event_listener, event: preUpdate }

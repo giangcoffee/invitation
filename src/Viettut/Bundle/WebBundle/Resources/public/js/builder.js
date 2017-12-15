@@ -52,6 +52,7 @@ function submit() {
                 'Thông tin cập nhật thành công !'
                 + '</div>';
             $('div.form-horizontal').before(html);
+            $('body').scrollTop(0);
         },
         error : function(jqXHR, textStatus, errorThrown) {
         },
@@ -60,7 +61,7 @@ function submit() {
     });
 
     var forGroom = false;
-    if ($('#check_id').is(":checked"))
+    if ($('#for_groom').is(":checked"))
     {
         forGroom = true;
     }
@@ -100,6 +101,7 @@ function updateAlbum() {
                 + '</div>';
             $('div.form-horizontal').before(html);
             $('button#updateAlbumButton').html('Cập Nhật Album');
+            $('body').scrollTop(0);
         },
         error : function(jqXHR, textStatus, errorThrown) {
         },
