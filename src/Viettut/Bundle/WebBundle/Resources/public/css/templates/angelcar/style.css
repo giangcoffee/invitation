@@ -33,12 +33,12 @@ body {font-size: 100%;}
 
 .header {z-index:-1}
 .greeting_wrap {position:relative;box-sizing: border-box;z-index:1;}
-.gallery_wrap {position:relative; background:#6dcff6 url(../img/gallery_bg.png) ; box-sizing: border-box; box-shadow:0px 6px 6px rgba(0,0,0,0.2); z-index:20}
-.gallery_wrap:before {position:absolute; top:-70px; left:0; right:0; height:70px; background:url(../img/gallery_bgtop.png) repeat-x 50% 0; content:''; z-index:20}
-.guestbook_wrap {position:relative; overflow:hidden; background:#cdf4ff; /*   url(../img/guestbook_bg1400.jpg) no-repeat 50% 0*/; background-size:cover; box-shadow:0px 0px 0px rgba(0,0,0,0.2) inset; box-sizing: border-box; z-index:20;}
+.gallery_wrap {position:relative; background:#6dcff6 url(/bundles/viettutweb/img/templates/angelcar/gallery_bg.png) ; box-sizing: border-box; box-shadow:0px 6px 6px rgba(0,0,0,0.2); z-index:20}
+.gallery_wrap:before {position:absolute; top:-70px; left:0; right:0; height:70px; background:url(/bundles/viettutweb/img/templates/angelcar/gallery_bgtop.png) repeat-x 50% 0; content:''; z-index:20}
+.guestbook_wrap {position:relative; overflow:hidden; background:#cdf4ff; /*   url(/bundles/viettutweb/img/templates/angelcar/guestbook_bg1400.jpg) no-repeat 50% 0*/; background-size:cover; box-shadow:0px 0px 0px rgba(0,0,0,0.2) inset; box-sizing: border-box; z-index:20;}
 
-.movie_wrap {position:relative; overflow:hidden; background:#ffeed7 /*url(../img/movie_bg.png) repeat 50% 0*/; box-sizing: border-box; z-index:20;padding-bottom:50px;}
-.location_wrap {position:relative; overflow:hidden; background:#ffffff url(../img/location_bg.png); background-repeat:repeat-x ; box-sizing: border-box; z-index:20}
+.movie_wrap {position:relative; overflow:hidden; background:#ffeed7 /*url(/bundles/viettutweb/img/templates/angelcar/movie_bg.png) repeat 50% 0*/; box-sizing: border-box; z-index:20;padding-bottom:50px;}
+.location_wrap {position:relative; overflow:hidden; background:#ffffff url(/bundles/viettutweb/img/templates/angelcar/location_bg.png); background-repeat:repeat-x ; box-sizing: border-box; z-index:20}
 .footer {position:relative; background-color: #C9EFFD!important; z-index:20;}
 
 .gallery_wrap {padding:50px 0 70px}
@@ -70,7 +70,7 @@ font-size: 0; letter-spacing: 0; word-spacing: 0; line-height:1}
 .lnb li.menu5 {width:25%}
 /*.lnb li.on span{padding:0 0 2px 0; border-bottom:2px solid #f17643}*/
 
-.header_box {position:relative;background:url(../img/header_pattern.png) repeat-x 0 0,url(../img/header_pattern.png) repeat-x 0 100%,#6dcff6}
+.header_box {position:relative;background:url(/bundles/viettutweb/img/templates/angelcar/header_pattern.png) repeat-x 0 0,url(/bundles/viettutweb/img/templates/angelcar/header_pattern.png) repeat-x 0 100%,#6dcff6}
 
 
 
@@ -80,7 +80,7 @@ font-size: 0; letter-spacing: 0; word-spacing: 0; line-height:1}
 
 
 .header_title {position:absolute;left: 30px;right: 30px;margin-top:-270px;padding:40px 30px;border-radius: 12px;box-sizing: border-box;
-background:url(../img/left-dot.png) no-repeat 2% 2%,url(../img/left-dot2.png) no-repeat 2% 98%,url(../img/right-dot.png) no-repeat 98% 2%,url(../img/right-dot2.png) no-repeat 98% 98%,rgba(255,255,255,0.9);}
+background:url(/bundles/viettutweb/img/templates/angelcar/left-dot.png) no-repeat 2% 2%,url(/bundles/viettutweb/img/templates/angelcar/left-dot2.png) no-repeat 2% 98%,url(/bundles/viettutweb/img/templates/angelcar/right-dot.png) no-repeat 98% 2%,url(/bundles/viettutweb/img/templates/angelcar/right-dot2.png) no-repeat 98% 98%,rgba(255,255,255,0.9);}
 .header_title .cars {position:absolute;top: -80px;left:0;right:0;text-align:center!important}
 .header_title .cars img {width: 170px}
 .header_title .one {position: relative;margin: 0 0 30px;}
@@ -110,8 +110,8 @@ background:url(../img/left-dot.png) no-repeat 2% 2%,url(../img/left-dot2.png) no
 .header_panel {position:fixed; left:0; right:0; bottom:250px;margin:0; padding:0; box-sizing: border-box; z-index: 10; }
 .header_panel p {width: 55px; height:55px; box-sizing: border-box; font-size:1em; line-height:42px}
 .header_panel a {display:block;height:55px;color: #fff!important;font-size: 1em;line-height: 55px;}
-.header_panel .dad{float:left;text-align: center;padding: 0;background:url(../img/header_panel.png) no-repeat 100% 0;background-size:auto 100%;}
-.header_panel .mom{float:right;text-align: center;background:url(../img/header_panel2.png) no-repeat 0 100%;background-size:auto 100%;}
+.header_panel .dad{float:left;text-align: center;padding: 0;background:url(/bundles/viettutweb/img/templates/angelcar/header_panel.png) no-repeat 100% 0;background-size:auto 100%;}
+.header_panel .mom{float:right;text-align: center;background:url(/bundles/viettutweb/img/templates/angelcar/header_panel2.png) no-repeat 0 100%;background-size:auto 100%;}
 
 /*
 div#panel_father,div#panel_father .ui-panel-inner,
@@ -128,14 +128,14 @@ div#panel_mother,div#panel_mother .ui-panel-inner {padding:0; top:0!important;}
 .bride-wrap p,
 .bride-wrap ul li {cursor:pointer;}
 .groom-wrap p, 
-.bride-wrap p {position:absolute; top: 498px; right:0; width:50px; height:50px; text-shadow:none!important; background: rgba(0,174,239,0.8) url(../img/panel_icon.png) 100% 0 no-repeat; background-size:250px;
+.bride-wrap p {position:absolute; top: 498px; right:0; width:50px; height:50px; text-shadow:none!important; background: rgba(0,174,239,0.8) url(/bundles/viettutweb/img/templates/angelcar/panel_icon.png) 100% 0 no-repeat; background-size:250px;
   font-size:0; line-height:0; text-indent:-9999px;}
   .groom-wrap p {right:1px;}
 .groom-wrap ul,
 .bride-wrap ul {position:absolute; top: 498px; left:0; width:200px; height:50px; overflow:hidden;}
 
 .groom-wrap ul li,
-.bride-wrap ul li {float:left; width:50px; height:50px; margin:0; background:rgba(0,0,0,0.5) url(../img/panel_icon.png) 0 0 no-repeat; background-size:250px;
+.bride-wrap ul li {float:left; width:50px; height:50px; margin:0; background:rgba(0,0,0,0.5) url(/bundles/viettutweb/img/templates/angelcar/panel_icon.png) 0 0 no-repeat; background-size:250px;
   font-size:0; line-height:0; text-indent:-9999px}
 .groom-wrap ul li.ico5,
 .bride-wrap ul li.ico1 {background-position:0 0px}
@@ -180,7 +180,7 @@ h2.title img {display:inline-block}
 
 .profile_wrap .profile_box {display:block;position:relative;width: 300px;}
 .profile_wrap .profile_box:before,
-.profile_wrap .profile_box:after {position:absolute;content:'';top:30px;width:60px;height: 78px;background:url(../img/angel_bg2.png) no-repeat;background-size:120px auto;}
+.profile_wrap .profile_box:after {position:absolute;content:'';top:30px;width:60px;height: 78px;background:url(/bundles/viettutweb/img/templates/angelcar/angel_bg2.png) no-repeat;background-size:120px auto;}
 .profile_wrap .profile_box:before {left:-75px;background-position:0 0}
 .profile_wrap .profile_box:after {right:-75px;background-position:-60px 0}
 
@@ -209,8 +209,8 @@ h2.title img {display:inline-block}
 .profile_content { }
 .baby_title {position:relative; display:block; width: 106%; height: 50px; margin: 0 0 0 -3%; background-color: #7cc0eb;
 font-size: 1.2em; color:#fff; line-height: 52px;}
-.baby_title:before {position:absolute; bottom:-13px; left:-16px; width:29px; height:41px; background:url(../img/baby_title1.png) no-repeat 0 0; content:''; z-index:-2}
-.baby_title:after {position:absolute; bottom:-13px; right:-16px; width:29px; height:41px; background:url(../img/baby_title2.png) no-repeat 0 0; content:''; z-index:-2}
+.baby_title:before {position:absolute; bottom:-13px; left:-16px; width:29px; height:41px; background:url(/bundles/viettutweb/img/templates/angelcar/baby_title1.png) no-repeat 0 0; content:''; z-index:-2}
+.baby_title:after {position:absolute; bottom:-13px; right:-16px; width:29px; height:41px; background:url(/bundles/viettutweb/img/templates/angelcar/baby_title2.png) no-repeat 0 0; content:''; z-index:-2}
 
 .baby_photo {position:relative; width:230px; height:230px; margin:10px auto; border-radius:0px;}
 
@@ -231,7 +231,7 @@ font-size: 1.2em; color:#fff; line-height: 52px;}
   .baby_name span {display:inline-block; min-width:180px; height:28px; line-height:28px; color:#fff; padding:0 10px; font-size:14px; border-radius:6px;vertical-align: top;}
   .baby_name strong{font-size:18px; padding:0 0 0 10px;display: inline-block;max-width: 130px;overflow: hidden;height: 28px;vertical-align: top;}
   .baby_gender {position:absolute; bottom: 15px; left: 175px; width:30px; height:30px; font-size:0; line-height:0; text-indent:-9999px;
-  background:url(../img/greeting_gender.png) no-repeat 0 0; border-radius:50%; background-size:60px;border: 2px solid #fff;}
+  background:url(/bundles/viettutweb/img/templates/angelcar/greeting_gender.png) no-repeat 0 0; border-radius:50%; background-size:60px;border: 2px solid #fff;}
   .baby_gender.male {background-color:#8fc9f5; background-position:0 0}
   .baby_gender.female {background-color:#f371ac; background-position:100% 0}
 
@@ -250,7 +250,7 @@ font-size: 1.2em; color:#fff; line-height: 52px;}
 
 .profile_wrap .profile_box:nth-child(even) .baby_title {}
 .profile_wrap .profile_box:nth-child(even) .baby_img {}
-.profile_wrap .profile_box:nth-child(even) .baby_firstword {color:#f7941d; background:url(../img/greeting_cars1.png) no-repeat 0 0; background-size:100%}
+.profile_wrap .profile_box:nth-child(even) .baby_firstword {color:#f7941d; background:url(/bundles/viettutweb/img/templates/angelcar/greeting_cars1.png) no-repeat 0 0; background-size:100%}
 .profile_wrap .profile_box:nth-child(even) .baby_name span {background-color:#f7941d;}
 .profile_wrap .profile_box:nth-child(even) .baby_profile table td {color:#f7941d}
 
@@ -258,19 +258,19 @@ font-size: 1.2em; color:#fff; line-height: 52px;}
 .gal_list > div > a > div {float:left; height:240px; border:6px solid #fff; box-shadow: 0 3px 4px rgba(0,0,0,0.1); box-sizing:border-box;padding-top:30px
 }
 
-  .gal_list .col-3:nth-child(1) .ui-block-a {width:32.3%; margin:0 1.1% 12px 0; border:6px solid #ff71af}
-  .gal_list .col-3:nth-child(1) .ui-block-b {width:32.3%; margin:0 1.1% 12px 0}
-  .gal_list .col-3:nth-child(1) .ui-block-c {width:32.3%; margin:0 0 12px 0;}
+  .gal_list .col-3:nth-child(1) .ui-block-1 {width:32.3%; margin:0 1.1% 12px 0; border:6px solid #ff71af}
+  .gal_list .col-3:nth-child(1) .ui-block-2 {width:32.3%; margin:0 1.1% 12px 0}
+  .gal_list .col-3:nth-child(1) .ui-block-0 {width:32.3%; margin:0 0 12px 0;}
 
-  .gal_list .col-3:nth-child(2) .ui-block-a,
-  .gal_list .col-3:nth-child(2) .ui-block-b {width:32.3%; margin:0 1.1% 12px 0}
-  .gal_list .col-3:nth-child(2) .ui-block-c {width:32.3%; margin:0 0 12px 0}
+  .gal_list .col-3:nth-child(2) .ui-block-1,
+  .gal_list .col-3:nth-child(2) .ui-block-2 {width:32.3%; margin:0 1.1% 12px 0}
+  .gal_list .col-3:nth-child(2) .ui-block-0 {width:32.3%; margin:0 0 12px 0}
 
   .gal_list .col-3:nth-child(3) {position:relative; overflow:visible!important}
   .gal_list .col-3:nth-child(3):after {display:block; content:''; clear:both}
-  .gal_list .col-3:nth-child(3) .ui-block-a,
-  .gal_list .col-3:nth-child(3) .ui-block-b {width:32.3%; margin:0 1.1% 12px 0}
-  .gal_list .col-3:nth-child(3) .ui-block-c {width:32.3%; margin:0 0 12px 0}
+  .gal_list .col-3:nth-child(3) .ui-block-1,
+  .gal_list .col-3:nth-child(3) .ui-block-2 {width:32.3%; margin:0 1.1% 12px 0}
+  .gal_list .col-3:nth-child(3) .ui-block-0 {width:32.3%; margin:0 0 12px 0}
 
 .gal_more {display:block; width:184px; height:50px; margin:20px auto 0;cursor:pointer}
 .gal_more img {width:100%;}
@@ -357,7 +357,7 @@ color:#a1e2fc; font-size:0.85em; line-height:1.1; text-align:center}
 .pro_txt strong {font-size:1.1em}
 .pro_img {position:relative; float:left;}
 .pro_img img {width:80px; height:80px; border-radius:50%;background-color:#fff}
-.pro_img:after {position:absolute; top:-15px; left:-13px; background:url(../img/guestbook_imgbg2.png) no-repeat; width:108px; height:108px; background-size:100%; content:''; z-index:-1}
+.pro_img:after {position:absolute; top:-15px; left:-13px; background:url(/bundles/viettutweb/img/templates/angelcar/guestbook_imgbg2.png) no-repeat; width:108px; height:108px; background-size:100%; content:''; z-index:-1}
 .snsbbs_sections:first-child .pro_img:after {background-color:#ffffff; background-size:100%}
 .pro-sns {position:absolute; top: 60%; left: 65px; width:20px; height:20px; background:url('/dalpeng/skin/_common/img/ico_spr_sns24.png') -20px 0 no-repeat; background-size:200%;}
 .pro-sns span   {display:block; text-indent:-9999px; overflow:hidden;}
@@ -380,7 +380,7 @@ color:#a1e2fc; font-size:0.85em; line-height:1.1; text-align:center}
 .gb_skip .gb_comm {height:13px; color:#444; font-size:0.95em; font-weight:bold; line-height:13px;}
 .gb_skip .gb_comm .icon_reply {float:left; text-align:center; width:15px; height:13px; padding:0 5px 0 0;
   font-size:0; line-height:0; text-indent:-9999px;
-  background:url(../img/guestbook_reply.png) no-repeat; background-size:15px;}
+  background:url(/bundles/viettutweb/img/templates/angelcar/guestbook_reply.png) no-repeat; background-size:15px;}
 
 /* Location */
 
@@ -391,7 +391,7 @@ color:#81d8d0; text-align:center; font-size:0.95em; font-family:'Lora',serif; fo
 .lo_tab_wrap li:last-child {margin:0}
 .lo_tab_wrap .on {background-color:#81d8d0; color:#fff}
 .lo_tab_wrap .on:after {position:absolute; bottom:-9px; left:50%; margin:0 0 0 -8px; content:''; 
-width:15px; height:8px; background:url(../img/tab_on.png) no-repeat 0 0; background-size:15px 8px}*/
+width:15px; height:8px; background:url(/bundles/viettutweb/img/templates/angelcar/tab_on.png) no-repeat 0 0; background-size:15px 8px}*/
 
 .lo_box { background-color: #fff; padding: 0; border-radius: 8px; border: 2px solid #cdf4ff;margin-bottom:40px;}
 .lo_box .ui-block-a { margin:0 0 10px 0; padding: 20px 10px 20px 20px}
@@ -420,7 +420,7 @@ width:15px; height:8px; background:url(../img/tab_on.png) no-repeat 0 0; backgro
 
 .lo_container {position:relative; margin:0; border-collapse: collapse; font-family:'NanumGothic'}
 .lo_container1 {width: 100%; margin:0 0 30px 0; padding: 0 0 0px 0; background-color:#fff;  border: 1px solid #42b4e4;}
-.lo_container2:after {position:absolute; top: -150px; right: -10px; width: 150px; height: 150px; background: url(../img/location_bunny.png) no-repeat 0 0; background-size: 100%; content:''; z-index: 40}
+.lo_container2:after {position:absolute; top: -150px; right: -10px; width: 150px; height: 150px; background: url(/bundles/viettutweb/img/templates/angelcar/location_bunny.png) no-repeat 0 0; background-size: 100%; content:''; z-index: 40}
 .lo_container2 {width:100%; background-color: #42b4e4;}
 .lo_container th {width: 40px;  padding-top: 16px;vertical-align: top;text-align: center; box-sizing: border-box}
 .lo_container td {padding: 0 15px 0 0; word-break:break-all; font-size:.9em; line-height:1.5; color:#444; box-sizing: border-box}
@@ -440,7 +440,7 @@ width:15px; height:8px; background:url(../img/tab_on.png) no-repeat 0 0; backgro
   margin: 0 auto;
   line-height:0;
   text-indent:-9999px;
-  background:url(../img/location_icon.png) no-repeat 0 0;
+  background:url(/bundles/viettutweb/img/templates/angelcar/location_icon.png) no-repeat 0 0;
   background-size:25px;
   box-sizing: border-box
   }
@@ -468,6 +468,10 @@ width:15px; height:8px; background:url(../img/tab_on.png) no-repeat 0 0; backgro
 .col-3 .ui-block-b {width:32%; margin:0 2% 0 0 }
 .col-3 .ui-block-c {width:32%}
 
+.col-3 .ui-block-1,
+.col-3 .ui-block-2 {width:32%; margin:0 2% 0 0 }
+.col-3 .ui-block-0 {width:32%}
+
 .ui-body-d {margin:2%}
 .snsbbs_sections .ui-body-d {margin: 5px 8px 15px;}
 
@@ -477,14 +481,14 @@ width:15px; height:8px; background:url(../img/tab_on.png) no-repeat 0 0; backgro
 
 
 
-.nav_wrap {position: relative;min-height: 250px;background: url(../img/location_envelope.png) no-repeat 50% 0; margin: -110px 0 0 0; }
+.nav_wrap {position: relative;min-height: 250px;background: url(/bundles/viettutweb/img/templates/angelcar/location_envelope.png) no-repeat 50% 0; margin: -110px 0 0 0; }
 
 .nav_list {padding: 120px 0 0 40px;}
 .nav_list:after {display:block; content:''; clear:both}
 .nav_list li{display:inline-block;float:left;width: 160px;margin: 0 10px 0 0;padding: 8px 0 8px 12px;background-color:#43add5;border-radius:6px;box-sizing:border-box;font-size:0.9em;font-weight:bold;line-height: 40px;color:#fff;cursor:pointer;}
 .nav_list li:last-child {margin:0}
-.nav_list .fbirthday_kimnavi span{display:inline-block; height:40px; background: url(../img/ico_nav_kakao_w.png) no-repeat 0 0; background-size:auto 100%; padding:0 0 0 45px}
-.nav_list .fbirthday_ollehnavi span{display:inline-block; height:42px; background: url(../img/ico_nav_ai_w.png) no-repeat 0 0; background-size:auto 100%; padding:0 0 0 45px}
+.nav_list .fbirthday_kimnavi span{display:inline-block; height:40px; background: url(/bundles/viettutweb/img/templates/angelcar/ico_nav_kakao_w.png) no-repeat 0 0; background-size:auto 100%; padding:0 0 0 45px}
+.nav_list .fbirthday_ollehnavi span{display:inline-block; height:42px; background: url(/bundles/viettutweb/img/templates/angelcar/ico_nav_ai_w.png) no-repeat 0 0; background-size:auto 100%; padding:0 0 0 45px}
 .nav_info {padding:10px 0 0 40px; font-size:0.75em; font-weight:bold; color:#005b7f; letter-spacing:-0.5px}
 
 .col-2,
@@ -502,6 +506,10 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 .col-3 .ui-block-a,
 .col-3 .ui-block-b {width:32%; margin:0 2% 0 0 }
 .col-3 .ui-block-c {width:32%;}
+
+.col-3 .ui-block-1,
+.col-3 .ui-block-2 {width:32%; margin:0 2% 0 0 }
+.col-3 .ui-block-0 {width:32%;}
 
 .ui-body-d {margin:2%;}
 
@@ -540,17 +548,17 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
   .gal_list .col-3 {overflow:visible!important}
   .gal_list .col-3:after {display:block; content:''; clear:both}
 
-  .gal_list .col-3:nth-child(1) .ui-block-a {width:100%; height:500px; margin:0 0 10px 0}
-  .gal_list .col-3:nth-child(1) .ui-block-b {width:49%; margin:0 2% 10px 0}
-  .gal_list .col-3:nth-child(1) .ui-block-c {width:49%; margin:0 0 10px 0}
+  .gal_list .col-3:nth-child(1) .ui-block-1 {width:100%; height:500px; margin:0 0 10px 0}
+  .gal_list .col-3:nth-child(1) .ui-block-2 {width:49%; margin:0 2% 10px 0}
+  .gal_list .col-3:nth-child(1) .ui-block-0 {width:49%; margin:0 0 10px 0}
 
-  .gal_list .col-3:nth-child(2) .ui-block-a {width:49%; margin:0 2% 10px 0}
-  .gal_list .col-3:nth-child(2) .ui-block-b {width:49%; margin:0 0 10px 0}
-  .gal_list .col-3:nth-child(2) .ui-block-c {width:49%; margin:0 0 10px 0}
+  .gal_list .col-3:nth-child(2) .ui-block-1 {width:49%; margin:0 2% 10px 0}
+  .gal_list .col-3:nth-child(2) .ui-block-2 {width:49%; margin:0 0 10px 0}
+  .gal_list .col-3:nth-child(2) .ui-block-0 {width:49%; margin:0 0 10px 0}
 
-  .gal_list .col-3:nth-child(3) .ui-block-a {float:right; width:49%; margin:-290px 0 10px 0}
-  .gal_list .col-3:nth-child(3) .ui-block-b {width:49%; margin:0 2% 10px 0}
-  .gal_list .col-3:nth-child(3) .ui-block-c {width:49%; margin:0 0 10px 0}
+  .gal_list .col-3:nth-child(3) .ui-block-1 {float:right; width:49%; margin:-290px 0 10px 0}
+  .gal_list .col-3:nth-child(3) .ui-block-2 {width:49%; margin:0 2% 10px 0}
+  .gal_list .col-3:nth-child(3) .ui-block-0 {width:49%; margin:0 0 10px 0}
   .header_date {position:relative;color:#777;margin-bottom:100px;}
 
   .profile_boy { border-radius:10px; border:10px solid #42b4e4;}
@@ -572,14 +580,14 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 /* 768 이하 */
 @media all and (max-width: 768px) {
   .greeting_wrap {background:none;padding: 0;}
-  .guestbook_wrap {background:#cdf4ff /*url(../img/guestbook_bg640.jpg) repeat-y 50% 0*/; background-size:auto;}
+  .guestbook_wrap {background:#cdf4ff /*url(/bundles/viettutweb/img/templates/angelcar/guestbook_bg640.jpg) repeat-y 50% 0*/; background-size:auto;}
   .ui-section-a {position:relative; width:100%;}
   .ui-section-b {width:100%;}
   .lnb {display:none!important}
   .lnb_mobile,
   .lnb_mobile.fadeIn {position:fixed!important; display:block!important; opacity:0.8!important}  
   .header .flag {position:absolute; top:0px; left:0; right:0; height:120px;
-  background:url(../img/header_flag1.png) no-repeat -15px -10px; background-size:420px}
+  background:url(/bundles/viettutweb/img/templates/angelcar/header_flag1.png) no-repeat -15px -10px; background-size:420px}
   .header_box {background:none;}
   .header_title {bottom: 20px;left: 15px;right: 15px;margin:0;padding: 20px;margin-top: 0!important;background: none;min-height: auto!important;;}
   .header_box .cars,
@@ -617,9 +625,9 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
   .greeting_box {background-color:rgba(255,255,255,0.8)}
   /*.greeting_box:after {position:absolute; top:0; left:0; right:0; bottom:0; content:'';background-color:rgba(255,255,255,0.5);}*/
 
-  .gal_list .col-3:nth-child(1) .ui-block-a {height:450px}
+  .gal_list .col-3:nth-child(1) .ui-block-1 {height:450px}
   .gal_list > div > a > div {height:240px;}
-  .gal_list .col-3:nth-child(3) .ui-block-a {margin-top:-250px}
+  .gal_list .col-3:nth-child(3) .ui-block-1 {margin-top:-250px}
 
   .lo_box {margin: 10px 10px;padding: 10px 10px 10px 10px;}
   .nav_list {padding:130px 0 0 0;margin:0;text-align:center}
@@ -647,6 +655,9 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
   .col-3 .ui-block-a, 
   .col-3 .ui-block-b, 
   .col-3 .ui-block-c {width:100%;}
+  .col-3 .ui-block-1,
+  .col-3 .ui-block-2,
+  .col-3 .ui-block-0 {width:100%;}
   .col-4 .ui-block-a,
   .col-4 .ui-block-b,
   .col-4 .ui-block-c, 
@@ -668,9 +679,9 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
   .header_title {bottom: 20px;left: 20px;right: 20px;margin:0;padding: 0;height: auto;margin-top: 0!important;background: none;min-height: auto!important;}
 
 
-  .gal_list .col-3:nth-child(1) .ui-block-a {height:330px; border:5px solid #ff71af}
+  .gal_list .col-3:nth-child(1) .ui-block-1 {height:330px; border:5px solid #ff71af}
   .gal_list > div > a > div {height:160px; border:5px solid #fff}
-  .gal_list .col-3:nth-child(3) .ui-block-a {margin-top:-170px}
+  .gal_list .col-3:nth-child(3) .ui-block-1 {margin-top:-170px}
 
   .lo_box  {padding:0}
   .lo_box .ui-block-a { padding: 10px 10px 0px 10px}
@@ -690,7 +701,7 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 
 .profile_wrap .profile_box {display:block;position:relative;width: 300px;}
 .profile_wrap .profile_box:before,
-.profile_wrap .profile_box:after {position:absolute;content:'';top:30px;width:45px;height: 78px;background:url(../img/angel_bg3.png) no-repeat;background-size:90px auto;}
+.profile_wrap .profile_box:after {position:absolute;content:'';top:30px;width:45px;height: 78px;background:url(/bundles/viettutweb/img/templates/angelcar/angel_bg3.png) no-repeat;background-size:90px auto;}
 .profile_wrap .profile_box:before {left:-59px;background-position:0 0}
 .profile_wrap .profile_box:after {right:-59px;background-position:-44px 0}
 
@@ -737,7 +748,7 @@ h2.title img {display:inline-block}
 
 /* 320 이하 */
 @media all and (max-width: 320px) {
-	.guestbook_wrap {background:#cdf4ff url(../img/guestbook_bg320.jpg) repeat-y 50% 0; background-size:auto;}
+	.guestbook_wrap {background:#cdf4ff url(/bundles/viettutweb/img/templates/angelcar/guestbook_bg320.jpg) repeat-y 50% 0; background-size:auto;}
 	.lnb_mobile {width:40px; height:40px;}
 	.header_title .small {font-size: 1.2em;}
 	.header_title .name,
@@ -745,11 +756,11 @@ h2.title img {display:inline-block}
 	.gallery_wrap h2.title img {width:90%}
 	.movie_ballon {width:100%;}
 	/*.greeting_name li span:first-child {display:block;}*/
-	.gal_list .col-3:nth-child(1) .ui-block-a {height:240px}
+	.gal_list .col-3:nth-child(1) .ui-block-1 {height:240px}
 	.gal_list > div > a > div {height:130px}
-	.gal_list .col-3:nth-child(3) .ui-block-a {margin-top:-140px}
+	.gal_list .col-3:nth-child(3) .ui-block-1 {margin-top:-140px}
 
-	.profile_wrap .profile_box:after {position:absolute;content:'';top:30px;width:60px;height: 78px;background:url(../img/angel_bg3.png) no-repeat;background-size:125px auto;}
+	.profile_wrap .profile_box:after {position:absolute;content:'';top:30px;width:60px;height: 78px;background:url(/bundles/viettutweb/img/templates/angelcar/angel_bg3.png) no-repeat;background-size:125px auto;}
 	.profile_wrap .profile_box:before {left:-75px;background-position:0 0}
 	.profile_wrap .profile_box:after {right:-75px;background-position:-60px 0}
 
@@ -801,7 +812,7 @@ h2.title img {display:inline-block}
 }
 
 
-.movie_bottom{background-image:url(../img/movie_bg_bottom.png);
+.movie_bottom{background-image:url(/bundles/viettutweb/img/templates/angelcar/movie_bg_bottom.png);
               background-repeat:repeat-x;
               background-position:center bottom;height:103px;background-color:#ffeed7; vertical-align: bottom;}
 
