@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://thiepdo.com/angel-car"/>
+    <meta property="og:description" content=""/>
+
+    <meta property="og:title" content="{{ description }}"/>
+    <meta property="og:image" content="http://dalpeng.com/user/angelcar/img/f6023d1ca8dd43dea2d6ded9c41f689d.jpg"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="robots" content="noindex"/>
+
+    <title>{{ name }}</title>
+
+    <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
+    <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
+    <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
+
+
+
+    <script type="text/javascript">
+        <!--
+
+
+        var swipe_exception = false;
+
+
+        $(document).on("pagecreate", "#skin_page", function (e) {
+            $(document).on("swipeleft swiperight", ".not_view_panel , #skin_page", function (e) {
+                // We check if there is no open panel on the page because otherwise
+                // a swipe to close the left panel would also open the right panel (and v.v.).
+                // We do this by checking the data that the framework stores on the page element (panel: open).
+                var id = $(this).attr('id');
+                var not = $(this).attr('class');
+                if (not.indexOf('not_view_panel') > -1) swipe_exception = true;
+                if (!swipe_exception) {
+                    if ($(".ui-page-active").jqmData("panel") !== "open") {
+                        if (e.type === "swipeleft") {
+                            $("#panel_bride").panel("open");
+                            $("#panel_mother").panel("open");
+                        } else if (e.type === "swiperight") {
+                            $("#panel_groom").panel("open");
+                            $("#panel_father").panel("open");
+                        }
+                    }
+                }
+                if (id == 'skin_page') swipe_exception = false;
+            });
+        });
+
+
+        $(function () {
+
+            function fixScrollEvent() {
+                $("html,body").on("mousewheel", function () {
+                    event.preventDefault();
+
+                    var wheelDelta = event.wheelDelta;
+                    var currentScrollPosition = window.pageYOffset;
+
+                    window.scrollTo(0, currentScrollPosition - wheelDelta);
+                });
+
+                $("html,body").on("keydown", function (e) {
+                    e.preventDefault();
+
+                    var currentScrollPosition = window.pageYOffset;
+
+                    switch (e.which) {
+                        case 38: // up
+                            window.scrollTo(0, currentScrollPosition - 120);
+                            break;
+
+                        case 40: // down
+                            window.scrollTo(0, currentScrollPosition + 120);
+                            break;
+
+                        default:
+                            return;
+                    }
+                });
+            }
+
+            $(".header,.header_box").css("height", $(window).height());
+            $(window).bind("orientationchange, resize", function (e) {
+                $(".header,.header_box").css("height", $(window).height());
+            });
+
+            try {
+                var headerTitle = $('.gallery_wrap').offset().top;
+                var headerAnimate = function () {
+                    var scrollTop = $(window).scrollTop();
+                    if (scrollTop > headerTitle) $('.header_panel,.lnb,.header').hide();
+                    else $('.header_panel,.lnb,.header').show();
+                    if (scrollTop > headerTitle + 100) $('.lnb_mobile').addClass('fadeIn');
+                    else $('.lnb_mobile').removeClass('fadeIn');
+                };
+                $(window).scroll(function () {
+                    headerAnimate();
+                });
+            } catch (e) {
+            }
+
+
+            function initGeolocation() {
+                if (navigator && navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+                } else {
+                    console.log('위치정보가 지원되지 않는 기기입니다.\n해당기기에서는 네비게이션 연결이 원할하지 않을 수 있습니다.');
+                }
+            }
+
+            function errorCallback() {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("위치정보가 꺼져있습니다.\n정상적인 네비게이션 연결을 위해서는 반드시 활성화 되어야 합니다.");
+                        break;
+
+                    case error.POSITION_UNAVAILABLE:
+                        alert("현재 위치 정보를 확인 할 수 없습니다.");
+                        break;
+
+                    case error.TIMEOUT:
+                        alert("위처정보 요청시간이 초과 되었습니다.\n잠시후에 다시 시도해 주십시요.");
+                        break;
+
+                    default:
+                        alert("위치정보 요청중 기타 오류");
+                        break;
+                }
+            }
+
+            function successCallback(position) {
+                $('#now_lat').val(position.coords.latitude);
+                $('#now_lon').val(position.coords.longitude);
+                // alert($('#now_lat').val()+" | | "+$('#now_lon').val());
+            }
+
+
+            // 네이버 지도시 스마트폰 회전 감지하여 지도 초기화(마커 위치 센터)
+            $(window).on("orientationchange", function () {
+                callMapInitializeAfterResize();
+            });
+
+            function callMapInitializeAfterResize() {
+                initialize('fbirthday');
+            }
+
+
+            // -- map -- //
+            function initialize(md) {
+                //try{
+                // console.log (md+' initialize');
+                // console.log (md+' initialize');
+                $('#wedding_pmap_canvas, #party_pmap_canvas,#fbirthday_map_canvas,#ceremony_map_canvas').empty();
+
+                if (md == 'party') {
+                    var $map_lat = $('#party_pmap_lat').val();
+                    var $map_lon = $('#party_pmap_lon').val();
+                    var $map_canvas = $('#party_pmap_canvas');
+                } else if (md == 'wedding') {
+                    var $map_lat = $('#wedding_pmap_lat').val();
+                    var $map_lon = $('#wedding_pmap_lon').val();
+                    var $map_canvas = $('#wedding_pmap_canvas');
+                } else if (md == 'fbirthday') {
+                    var $map_lat = $('#fbirthday_map_lat').val();
+                    var $map_lon = $('#fbirthday_map_lon').val();
+                    var $map_canvas = $('#fbirthday_map_canvas');
+                } else if (md == 'ceremony') {
+                    var $map_lat = $('#ceremony_map_lat').val();
+                    var $map_lon = $('#ceremony_map_lon').val();
+                    var $map_canvas = $('#ceremony_map_canvas');
+                }
+
+                var map_width = $(window).width();
+
+                $('.lo_map').css('width', '100%');
+                //alert($map_canvas.css('width'));
+                $map_canvas.css('width', '100%');	// 모든 네이버 지도 가로 크기 100%
+                //alert($map_canvas.css('width'));
+
+                /*
+                 if(map_width > 500 ) map_width = 500;
+                 map_height = 400;
+                 */
+                if ($map_canvas[0]) {
+
+                    var zoomlv = 11;
+
+                    var markerTarget = new naver.maps.LatLng($map_lat, $map_lon);
+                    var map = new naver.maps.Map($map_canvas[0], {
+                        center: markerTarget,
+                        zoom: zoomlv,
+                        zoomControl: true,
+                        zoomControlOptions: {
+                            style: naver.maps.ZoomControlStyle.LARGE,
+                            position: naver.maps.Position.TOP_RIGHT
+                        }
+                        /*
+                         mapDataControl: true,
+                         mapDataControlOptions: {
+                         position: naver.maps.Position.BOTTOM_LEFT
+                         }
+                         */
+                    });
+
+                    var marker = new naver.maps.Marker({
+                        position: markerTarget,
+                        map: map
+                    });
+
+
+                    map.setCenter(markerTarget);		// 마커 위치 지도 센터
+                    marker.setPosition(markerTarget);
+                    marker.setMap(map);
+
+                    // 지도 인터랙션 by echos(2016-09-29)
+                    $('#interaction').remove();
+
+                    var mappos = $map_canvas.position();
+
+                    $('<div id="interaction" class="control-on"></div>').insertAfter($map_canvas[0]);
+
+                    $('#interaction').css({'top': (mappos.top + 10), 'left': (mappos.left + 10)});
+
+                    // 지도 인터랙션 옵션
+                    $("#interaction").on("click", function (e) {
+                        e.preventDefault();
+
+                        if (map.getOptions("draggable")) {
+                            map.setOptions({ // 지도 잠금
+                                draggable: false,
+                                pinchZoom: false,
+                                scrollWheel: false,
+                                keyboardShortcuts: false,
+                                disableDoubleTapZoom: true,
+                                disableDoubleClickZoom: true,
+                                disableTwoFingerTapZoom: true
+                            });
+
+                            $(this).removeClass("control-on");
+                        } else {
+                            map.setOptions({ // 지도 인터랙션 켜기(잠금풀기)
+                                draggable: true,
+                                pinchZoom: true,
+                                scrollWheel: true,
+                                keyboardShortcuts: true,
+                                disableDoubleTapZoom: false,
+                                disableDoubleClickZoom: false,
+                                disableTwoFingerTapZoom: false
+                            });
+
+                            $(this).addClass("control-on");
+                        }
+                    });
+
+                }
+
+                //}catch(err){console.log("error : " + err.message);}
+
+            }
+
+            function callKimNavi(md) {
+                alert('모바일기기에서만 가능합니다.');
+            }
+
+            function callKakaoNavi(md) {
+                var $map_addr, $map_lat, $map_lon
+                alert('모바일기기에서만 가능합니다.');
+            }
+
+
+            var $map_addr = ''
+            var $map_lat = ''
+            var $map_lon = '';
+
+            function callOllehNavi(md) {
+                alert('모바일기기에서만 가능합니다.');
+            }
+
+
+            function callTmapNavi(md) {
+                //console.log(md);
+
+                alert('모바일기기에서만 가능합니다.');
+            }
+
+            $('#div_snsbbs').masonry({
+                //columnWidth: .snsbbs_sections,
+                //isFitWidth : true,
+                itemSelector: '.snsbbs_sections',
+                transitionDuration: 0
+            }).on('layoutComplete', function () {
+                return true;
+            });
+
+            var closest = function closest(el, fn) {
+                return el && (fn(el) ? el : closest(el.parentNode, fn));
+            };
+
+            var photoswipeParseHash = function () {
+                var hash = window.location.hash.substring(1),
+                        params = {};
+
+                if (hash.length < 5) {
+                    return params;
+                }
+
+                var vars = hash.split('&');
+                for (var i = 0; i < vars.length; i++) {
+                    if (!vars[i]) {
+                        continue;
+                    }
+                    var pair = vars[i].split('=');
+                    if (pair.length < 2) {
+                        continue;
+                    }
+                    params[pair[0]] = pair[1];
+                }
+
+                if (params.gid) {
+                    params.gid = parseInt(params.gid, 10);
+                }
+
+                return params;
+            };
+
+            function getGallery($el) {
+                var el = [];
+                var aTag = Array.prototype.slice.call($el.find("a"));
+
+                $.merge(el, aTag);
+
+                return el;
+            }
+
+            function onThumbnailsClick(e) {
+                e = e || window.event;
+                e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+                var eTarget = e.target || e.srcElement;
+                var clickedListItem = closest(eTarget, function (el) {
+                    var tagName = el.tagName.toUpperCase();
+                    return (tagName && tagName === 'A');
+                });
+
+                if (!clickedListItem) {
+                    return;
+                }
+
+                if (clickedListItem.className.indexOf("swipebox") == -1) {
+                    return false;
+                }
+
+                var childNodes = el,
+                        numChildNodes = el.length,
+                        nodeIndex = 0,
+                        index = 0;
+
+                var no_image_count = 0;
+                for (var i = 0; i < numChildNodes; i++) {
+                    if (el[i].className.indexOf("swipebox") == -1) {
+                        no_image_count++;
+                    }
+
+                    if (el[i] == clickedListItem) {
+                        index = i - no_image_count;
+
+                        break;
+                    }
+                }
+
+                if (index >= 0) {
+                    openPhotoSwipe(index, el);
+                }
+
+                return false;
+            }
+
+            var gallery;
+
+            function getPrefix(prop) {
+                var style = document.body.style;
+                var prefix = ['Webkit', 'ms', 'moz', 'o'];
+                var prefix_len = prefix.length;
+
+                if (style[prop] == '') {
+                    return prop;
+                }
+
+                prop = prop[0].toUpperCase() + prop.slice(1);
+
+                for (var i = 0; i < prefix_len; i++) {
+                    if (style[prefix[i] + prop] == '') {
+                        return prefix[i] + prop;
+                    }
+                }
+            }
+
+            function getTranslate(transform) {
+                var regex;
+
+                if (transform.indexOf('translate3d') == -1) {
+                    regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
+                } else {
+                    regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
+                }
+
+                var matched = transform.match(regex);
+                var coordinate = {};
+
+                coordinate.x = matched[1];
+                coordinate.y = matched[2];
+
+                if (matched[3]) {
+                    coordinate.z = matched[3];
+                }
+
+                return coordinate;
+            }
+
+            function getScale(transform) {
+                var regex = /scale\(([0-9.]+)\)/;
+                var matched = transform.match(regex);
+
+                return matched[1];
+            }
+
+            function psBeforeInitAddEvent() {
+                gallery.listen('gettingData', function (index, item) {
+                    var size = item.el.getAttribute("data-size").split("X");
+
+                    item.w = size[0];
+                    item.h = size[1];
+                });
+
+                gallery.listen('arrowUpdate', function () {
+                    var $nextBtn = $('.pswp__button--arrow--right');
+                    var $prevBtn = $('.pswp__button--arrow--left');
+                    var loop = this.options.loop;
+                    var index = this.getCurrentIndex();
+
+                    $nextBtn.toggle(loop || index < this.items.length - 1);
+                    $prevBtn.toggle(loop || index > 0);
+                });
+
+                gallery.listen('initialZoomIn', function () {
+
+                });
+            }
+
+            function psAfterInitAddEvent() {
+                gallery.listen('initialZoomOut', function () {
+                    var item = this.currItem;
+                    var container_style = item.container.style;
+                    var transform = getPrefix('transform');
+                    var transition = getPrefix('transition');
+
+                    if (!transform || !transition) {
+                        return;
+                    }
+
+                    var container_transform = container_style[getPrefix('transform')];
+                    var scale = getScale(container_transform);
+                    var coordinate = getTranslate(container_transform);
+                    var initTransY = item.initialPosition.y;
+                    var currTransY = coordinate.y;
+                    var size = item.el.getAttribute("data-size").split("X");
+                    var transX = item.initialPosition.x;
+                    var transY;
+
+                    if (initTransY > currTransY) {
+                        transY = -(size[1]);
+                    } else {
+                        transY = window.screen.availHeight;
+                    }
+
+                    container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
+
+                    if (!this.isGestureClose() && this.isVerticalDrag()) {
+                        container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
+                    }
+                });
+
+                gallery.listen('close', function () {
+                    /* 슬라이드
+                     var slide_show = document.getElementById("slide-show");
+
+                     if(slide_show.checked) {
+                     var event = document.createEvent('Event');
+
+                     event.initEvent('change', true, true);
+
+                     slide_show.checked = false;
+                     slide_show.dispatchEvent(event);
+                     }
+                     */
+
+                    // pswp 플러그인에서 스크롤 이벤트를 unbind 시키는 문제로 scroll 이벤트가 재바인드
+                    this.framework.bind(window, 'scroll', function () {
+                        if (typeof headerAnimate == "function") {
+                            headerAnimate();
+                        }
+                    });
+
+
+                });
+
+
+                /* 슬라이드
+                 $("#slide-show").on("change", function(e) {
+                 var next;
+                 var index;
+                 var last = gallery.items.length - 1;
+
+                 if($(this).is(":checked")) {
+                 gallery.show = setInterval(function() {
+                 index = gallery.getCurrentIndex();
+
+                 if(index == 0) {
+                 next = true;
+                 } else if(index == last) {
+                 next = false;
+                 }
+
+                 if(next) {
+                 gallery.next();
+                 } else {
+                 gallery.prev();
+                 }
+                 }, 3000);
+                 } else {
+                 clearInterval(gallery.show);
+                 delete gallery.show;
+                 }
+                 });
+                 */
+            }
+
+            var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+                var pswpElement = document.querySelector('.pswp'),
+                        options, items, kakaoInApp;
+
+                items = parseThumbnailElements(galleryElement);
+
+                if (/KAKAOTALK/.test(navigator.userAgent)) {
+                    kakaoInApp = true;
+                }
+
+                options = {
+                    useZoom: true,
+                    arrowKeys: false,
+                    hideAnimationDuration: 200,
+                    showAnimationDuration: 100,
+                    loop: false,
+                    imageEl: true,
+                    galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
+                    showHideOpacity: true,
+                    getThumbBoundsFn: false,
+                    closeOnScroll: false,
+                    kakaoInApp: kakaoInApp,
+                };
+
+                if (fromURL) {
+                    if (options.galleryPIDs) {
+
+                        for (var j = 0; j < items.length; j++) {
+                            if (items[j].pid == index) {
+                                options.index = j;
+                                break;
+                            }
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+
+                if (isNaN(options.index)) {
+                    return;
+                }
+
+                if (disableAnimation) {
+                    options.showAnimationDuration = 0;
+                }
+
+                gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                gallery.useAniNum = false;
+
+                // 방명록 글쓰기에 이미지 첨부
+                gallery.includeImage = function () {
+                    var id = gallery.currItem.id
+                    var url = "angelcar/snsbbs/w/" + id;
+                    var kakaoInApp = gallery.options.kakaoInApp;
+
+                    /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
+                     (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
+                    if (!kakaoInApp) {
+                        window.location = url;
+                    } else {
+                        window.open(url);
+                    }
+                }
+
+                psBeforeInitAddEvent();
+                gallery.init();
+                psAfterInitAddEvent();
+            };
+
+            var parseThumbnailElements = function (el) {
+                var imageElements = el,
+                        numNodes = imageElements.length,
+                        items = [],
+                        size,
+                        item;
+                var wrapper = document.createElement('div');
+                var imageEl,
+                        thumbEl;
+
+                for (var i = 0; i < numNodes; i++) {
+                    imageEl = imageElements[i];
+
+                    if (imageEl.nodeType !== 1) {
+                        continue;
+                    }
+
+                    var img_el = imageEl.getElementsByTagName("img");
+                    var exist_img = img_el.length > 0 ? true : false;
+                    var src = imageEl.href;
+                    var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
+                    var msrc;
+                    var $imageEl = $(imageEl);
+
+                    if (!is_swipe_image) {
+                        continue;
+                    }
+
+                    if (!exist_img) {
+                        thumbEl = imageEl.getElementsByTagName("div")[0];
+
+                        if (thumbEl) {
+                            msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                        } else {
+                            var piece = src.split("/");
+                            var pieceCount = piece.length;
+                            var file = piece[pieceCount - 1]
+
+                            piece[pieceCount - 1] = "S_" + file;
+
+                            msrc = piece.join("/");
+                        }
+                    } else {
+                        if ($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
+                            msrc = img_el[0].parentNode.href;
+                        } else {
+                            thumbEl = img_el[0];
+                            msrc = thumbEl.src;
+                        }
+                    }
+
+                    item = {
+                        src: src,
+                        msrc: msrc,
+                        el: imageEl,
+                    };
+
+                    wrapper.innerHTML = imageEl.getAttribute("alt");
+                    item.id = wrapper.firstChild.getAttribute("id").replace("gcomment_", "");
+
+                    items.push(item);
+                }
+                return items;
+            };
+
+            var $my_gallery = $("#sk_gallery");
+            var my_gallery_count = $my_gallery.length;
+            var el = getGallery($my_gallery);
+            var $el = $(el);
+            var hashData = photoswipeParseHash();
+
+            $el.on("click", onThumbnailsClick);
+
+            for (var i = 0; i < my_gallery_count; i++) {
+                $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
+            }
+
+            if (hashData.pid && hashData.gid) {
+                openPhotoSwipe(hashData.pid - 1, el, true, true);
+            }
+
+            $(document).on("keydown keyup", function (e) {
+                var hidden = $(".pswp").attr("aria-hidden") == "true";
+
+                if (hidden) {
+                    return;
+                }
+
+                var keydownAction = '';
+                var index = gallery.getCurrentIndex();
+                var gallery_len = gallery.items.length;
+
+                if (e.type == "keydown") {
+                    if (e.keyCode === 37 && index != 0) {
+                        keydownAction = 'prev';
+                    } else if (e.keyCode === 39 && index != (gallery_len - 1)) {
+                        keydownAction = 'next';
+                    }
+                } else if (e.type == "keyup") {
+                    if (e.keyCode === 37 && index == 0) {
+                        keydownAction = 'prev';
+                    } else if (e.keyCode === 39 && index == (gallery_len - 1)) {
+                        keydownAction = 'next';
+                    }
+                }
+
+                if (keydownAction) {
+                    if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
+                        if (e.preventDefault) {
+                            e.preventDefault();
+                        } else {
+                            e.returnValue = false;
+                        }
+
+                        gallery[keydownAction]();
+                    }
+                }
+            });
+
+            /*$( '.swipebox' ).swipebox({
+             hideBarsOnMobile : false, // false will show the caption and navbar on mobile devices
+             });*/
+            /*
+
+
+
+             $( '.swipebox' ).swipebox( {
+             useCSS : true, // false will force the use of jQuery for animations
+             useSVG : true, // false to force the use of png for buttons
+             initialIndexOnArray : 0, // which image index to init when a array is passed
+             hideCloseButtonOnMobile : false, // true will hide the close button on mobile devices
+             removeBarsOnMobile : false, // false will show top bar on mobile devices
+             hideBarsDelay : 3000, // delay before hiding bars on desktop
+             videoMaxWidth : 1140, // videos max width
+             beforeOpen: function() {}, // called before opening
+             afterOpen: null, // called after opening
+             afterClose: function() {}, // called after closing
+             loopAtEnd: false // true will return to the first image after the last image is reached
+             } );
+             */
+
+            /*
+             $('body').on('click','.swipebox-write, swipebox-comment',function(){
+             var id = $(this).attr('id').replace('gcomment_','').replace('gwrite_','');
+             if($(this).attr('class') == 'swipebox-write') location.href = "/angelcar/snsbbs/w/"+id;
+             else location.href = "/angelcar/snsbbs/c/"+id;
+             });
+             */
+
+            $('.locationtabs').click(function () {
+                var id = $(this).attr('id').replace('tabs_', '');
+                $('.locationtabs').removeClass('on');
+                $(this).addClass('on');
+                $('.locationdivs').removeClass('hide');
+                $('.locationdivs').addClass('hide');
+                $('#div_' + id).removeClass('hide');
+
+                setLocationInfoHeight();
+
+                initialize(id);
+            }).css('cursor', 'pointer');
+
+            $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function () {
+                var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-a cont_box3 ', '');
+
+                callKakaoNavi(id);
+            });
+
+            $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function () {
+                var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-b cont_box4 ', '');
+
+                callOllehNavi(id);
+            });
+
+            $('.ceremony_tmapnavi').click(function () {
+                callTmapNavi('ceremony');
+            });
+
+
+            $('#div_snsbbs').masonry('bindResize');
+
+            $('.btn_go_snsbbs').click(function () {
+                location.href = "/angelcar/snsbbs";
+            }).css('cursor', 'pointer');
+
+            $('#btn_line').click(function () {
+                alert('모바일 기기에서만 사용 가능한 기능입니다.');
+            });
+
+            $('.btn_send_kakao').click(function () {
+                alert('모바일 기기에서만 사용 가능한 기능입니다.');
+            });
+
+            function setLocationInfoHeight() {
+            }
+
+            function setPosition(id) {
+                var $obj = $('#sk_' + id);
+                // console.log(id);
+
+                $('body').scrollTo($obj, 500);
+            }
+
+            $('.menu_scrolls').click(function () {
+                try {
+                    if ($(this).attr('id')) {
+
+
+                        var id = $(this).attr('id').replace('p_', '').replace('m_', '');
+
+                        //console.log(id);
+
+                        setPosition(id);
+                    }
+                } catch (e) {
+                    //console.log(e);
+                }
+            }).css('cursor', 'pointer');
+
+
+            initialize('fbirthday');
+            setLocationInfoHeight();
+        });
+
+        $(window).load(function () {
+
+
+            $('.gal_list2').masonry({
+                itemSelector: '.gal_frame',
+                columnWidth: '.gal_size',
+                transitionDuration: '0.2s',
+                percentPosition: true
+            });
+
+            $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+
+            // 페이지 로딩 후 동영상 로딩 처리
+            var $iframe = $("#sk_media iframe");
+            if ($iframe.length) {
+                $.each($iframe, function () {
+                    var src = $(this).attr("data-src");
+                    this.src = src.replace("http://", "https://");
+                });
+            }
+        });
+
+        //-->
+    </script>
+</head>
+<body>
+<input type="hidden" id="now_lon"/>
+<input type="hidden" id="now_lat"/>
+<div data-role="page" id="skin_page">
+    <!-- panel-groom -->
+    <div data-role="panel" id="panel_father" class="leftpanel" data-position="left" data-display="push"
+         data-position-fixed="true" data-swipe-close="true" data-theme="b"
+         style="background:#fff url('/dalpeng/skin/angel_car/img/bg_dad.jpg') center top no-repeat; background-size:100%; z-index:9999;">
+        <div class="groom-wrap">
+            <ul>
+                <a href="tel:01020000000">
+                    <li class="ico5">아빠에게 전화하기</li>
+                </a><a href="sms:01020000000">
+                    <li class="ico6">아빠에게 문자하기</li>
+                </a><a href="http://facebook.com/dalpeng" target="_blank">
+                    <li class="ico7">페이스북 바로가기</li>
+                </a><a href="http://twitter.com/dalpengcom" target="_blank">
+                    <li class="ico8">트위터 바로가기</li>
+                </a></ul>
+            <p class="btn_go_snsbbs">축하글 남기기</p></div>
+    </div>
+    <!--// panel-groom -->
+    <!-- panel-bride -->
+    <div data-role="panel" id="panel_mother" class="righttpanel" data-position="right" data-display="push"
+         data-position-fixed="true" data-swipe-close="true" data-theme="a"
+         style="background:#d3f2fd url('/dalpeng/skin/angel_car/img/bg_mom.jpg') center top no-repeat; background-size:100% auto; z-index:9999;">
+        <div class="bride-wrap">
+            <ul>
+                <a href="tel:01000000000">
+                    <li class="ico1">엄마에게 전화하기</li>
+                </a><a href="sms:01000000000">
+                    <li class="ico2">엄마에게 문자하기</li>
+                </a><a href='http://facebook.com/dalpeng' target='_blank'>
+                    <li class='ico3'>페이스북 바로가기</li>
+                </a><a href='http://twitter.com/dalpengcom' target="_blank">
+                    <li class='ico4'>트위터 바로가기</li>
+                </a></ul>
+            <p class="btn_go_snsbbs">축하글 남기기</p></div>
+    </div>
+    <!--// panel-bride -->
+    <!-- panel-menu -->
+    <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
+        <div class="menu-wrap ui-panel-inner">
+            <ul data-role="listview" data-icon="false">
+                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                <li data-role="list-divider">첫 번째 생일파티에 초대합니다.</li>
+                <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>초대합니다</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>포토앨범</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_media"><span>동영상</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>방명록</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_map"><span>찾아오시는길</span></li>
+            </ul>
+        </div>
+    </div>
+    <!--// panel-menu -->
+
+    <div class="header_panel">
+        <p class="dad"><a href="#panel_father">아빠</a></p>
+        <p class="mom"><a href="#panel_mother">엄마</a></p></div>
+
+    <div class="lnb_wrap">
+        <div class="lnb_mobile"><a href="#right-panel"><img src="/dalpeng/skin/angel_car/img/lnb_mobile.png" alt=""></a>
+        </div>
+        <div class="lnb">
+            <ul>
+                <li class="menu1 menu_scrolls on" id="m_topinfo"><span>초대합니다</span></li>
+                <li class="menu2 menu_scrolls" id="m_gallery"><span>포토앨범</span></li>
+                <li class="menu3 menu_scrolls" id="m_media"><span>동영상</span></li>
+                <li class="menu4 menu_scrolls" id="m_snsbbs"><span>방명록</span></li>
+                <li class="menu5 menu_scrolls" id="m_map"><span>찾아오시는길</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- header -->
+    <div id="sk_topinfo" class="header ui-section-b"
+         style="background:#c9effd url('/user/angelcar/img/f6023d1ca8dd43dea2d6ded9c41f689d.jpg') CENTER CENTER no-repeat; background-size:cover;">
+        <div class="flag"></div>
+    </div>
+    <!--// header -->
+
+    <!-- greeting -->
+    <div class="greeting_wrap ui-section-a">
+
+        <div class="header_box">
+            <div class="header_title align_center color" style="color:#000000;">
+                <!-- 좌,중,우 정렬 --><!-- 색상 변경 -->
+                <div class="cars"><img src="/dalpeng/skin/angel_car/img/mother_father_car.png" alt=""></div>
+                <div class="one align_center"><img src="/dalpeng/skin/angel_car/img/happy_cali.png" alt=""></div>
+                <h1>
+                    <p class="name">
+                        달팽이의 첫 생일파티에</p>
+                    <!-- <span>달팽이 의 </span> 첫 생일파티에-->
+                    <p class="birthday">여러분을 초대합니다!</p>
+                </h1>
+                <ul class="header_date" style="color:#000000;">
+                    <!-- 좌,중,우 정렬 -->
+                    <li>2018년 7월 7일 (토요일)</li>
+                    <li class="time">오후 2시 ~ 5시</li>
+                    <li class="place">달팽뷔페 달팽홀</li>
+                </ul>
+            </div>
+        </div>
+        <div class="greeting_box">
+            <h2 class="title"><img src="/dalpeng/skin/angel_car/img/greeting_title.png" alt="초대합니다"></h2>
+            <div class="greeting_content">
+                <p class="greeting_text"> 1년동안 무럭무럭 잘 자라<br/>
+                    첫 생일을 맞이하였습니다. <br/>
+                    <br/>
+                    늘 건강하고 행복하길 바라는 마음으로<br/>
+                    생일파티를 마련하였습니다.<br/>
+                    <br/>
+                    많이들 오셔서<br/>
+                    첫 생일을 함께 축하해 주세요.</p>
+                <ul class="greeting_name">
+                    <li class="dad">
+                        <span>아빠</span>최아빠
+                        <span class="panel"><a href="#panel_father">◀ 아빠에게 연락하기</a></span>
+                    </li>
+                    <li class="mom">
+                        <span>엄마</span>윤엄마
+                        <span class="panel"><a href="#panel_mother">엄마에게 연락하기 ▶</a></span>
+                    </li>
+                </ul>
+                <div class="greeting_loca">
+                    <p>
+                        <span>2018년 7월 7일 (토)</span>
+                        <span class="option">오후 2시 ~ 5시</span>
+                        <!-- <span class="option">오후 00시 00분 ~ 00시 00분</span> (직접 입력할 경우) -->
+                    </p>
+                    <p>달팽뷔페 달팽홀</p>
+                    <p>서울시 송파구 중대로 135</p>
+                </div>
+            </div>
+        </div>
+        <!-- profile-wrap -->
+        <div class="profile_wrap">
+            <h2 class="title"><img src="/dalpeng/skin/angel_car/img/intro_title.png" alt="우리 아기를 소개합니다"></h2>
+            <!-- profile box -->
+            <div class="profile_box profile_boy">
+                <div class="profile_content">
+                    <div class="baby_photo">
+                        <p class="baby_img"><img src="/user/angelcar/img/ETC_98e607978557353e0cb95d8563d06e45.jpg"
+                                                 alt=""></p>
+                        <!-- <p class="baby_firstword"><span>처음 했던 말은?<br><strong>마마마맘~마</strong></span></p>
+						<p class="baby_teeth"><span>이는 <strong>2개</strong><br>났어요~!</span></p> -->
+                        <p class="baby_gender male"><span>성별<strong>남아</strong></span></p>
+                        <!-- <p class="baby_name"><span>이름<strong>이달팽</strong></span></p> -->
+                    </div>
+                    <div class="baby_profile boy">
+                        <ul>
+                            <li><span class="title">내 이름이 알고 싶나요?</span><span class="text">최달팽</span></li>
+                            <li><span class="title">태몽부터 남다른 :</span><span class="text">큰 사과가 품으로 들어오는 꿈</span></li>
+                            <li><span class="title">태명까지 멋진 :</span><span class="text">알콩달콩</span></li>
+                            <li><span class="title">나의 탄생일 :</span><span class="text">2016. 12. 09</span></li>
+                            <li><span class="title">근육질 몸무게 :</span><span class="text">2.56kg</span></li>
+                            <li><span class="title">내가 처음 한말 :</span><span class="text">암마</span></li>
+                            <li><span class="title">튼튼한 치아개수 :</span><span class="text">7개</span></li>
+                            <li><span class="title">고상한 취미 :</span><span class="text">온 집안 기어다니기</span></li>
+                            <li><span class="title">비범한 특기 :</span><span class="text">아빠 물기</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--// profile-wrap -->
+
+
+    </div>
+    <!--// greeting -->
+
+    <!-- gallery -->
+    <div class="gallery_wrap ui-cont-b" id="sk_gallery">
+        <h2 class="title"><img src="/dalpeng/skin/angel_car/img/gallery_title.png" alt="Photo Gallery"></h2>
+        <div class="ul-body">
+            <div class="gal_list">
+                <div class="col-3">
+                    <a href="/user/angelcar/img/8b18b6d94f5a436971eb58fbc9cca20e.jpg" class="swipebox"
+                       data-size="945X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781226' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781226'></div>">
+                        <div class="ui-block-a"
+                             style="background:url('/user/angelcar/img/8b18b6d94f5a436971eb58fbc9cca20e.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a>
+                    <a href="/user/angelcar/img/b787072395889df60ba2953474063267.jpg" class="swipebox"
+                       data-size="1024X576"
+                       alt="<div class='swipebox-comment' id='gcomment_1781227' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781227'></div>">
+                        <div class="ui-block-b"
+                             style="background:url('/user/angelcar/img/b787072395889df60ba2953474063267.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a><a href="/user/angelcar/img/332ba74c0aa3d6eddbdfa291da77c604.jpg" class="swipebox"
+                           data-size="514X768"
+                           alt="<div class='swipebox-comment' id='gcomment_1781228' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781228'></div>">
+                        <div class="ui-block-c"
+                             style="background:url('/user/angelcar/img/332ba74c0aa3d6eddbdfa291da77c604.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a></div>
+                <div class="col-3">
+                    <a href="/user/angelcar/img/01cee07df22d41995c490f94b97a695a.jpg" class="swipebox"
+                       data-size="511X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781229' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781229'></div>">
+                        <div class="ui-block-a"
+                             style="background:url('/user/angelcar/img/01cee07df22d41995c490f94b97a695a.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a>
+                    <a href="/user/angelcar/img/120a17e453f90a8eb988d37e5d0bd1a8.jpg" class="swipebox"
+                       data-size="768X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781230' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781230'></div>">
+                        <div class="ui-block-b"
+                             style="background:url('/user/angelcar/img/120a17e453f90a8eb988d37e5d0bd1a8.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a><a href="/user/angelcar/img/4a609b2866fea221178dc86bc88a5632.jpg" class="swipebox"
+                           data-size="729X768"
+                           alt="<div class='swipebox-comment' id='gcomment_1781231' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781231'></div>">
+                        <div class="ui-block-c "
+                             style="background:url('/user/angelcar/img/4a609b2866fea221178dc86bc88a5632.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a></div>
+                <div class="col-3">
+                    <a href="/user/angelcar/img/21d69af2104528ef6233381cec4512c7.jpg" class="swipebox"
+                       data-size="576X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781232' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781232'></div>">
+                        <div class="ui-block-a"
+                             style="background:url('/user/angelcar/img/21d69af2104528ef6233381cec4512c7.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a>
+                    <a href="/user/angelcar/img/b357a68ff0b3722a2cebf91880e5c154.jpg" class="swipebox"
+                       data-size="563X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781233' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781233'></div>">
+                        <div class="ui-block-b"
+                             style="background:url('/user/angelcar/img/b357a68ff0b3722a2cebf91880e5c154.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a><a href="/user/angelcar/img/d27784410f46516d5885e2b5b4767ef0.jpg" class="swipebox"
+                           data-size="768X768"
+                           alt="<div class='swipebox-comment' id='gcomment_1781234' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781234'></div>">
+                        <div class="ui-block-c"
+                             style="background:url('/user/angelcar/img/d27784410f46516d5885e2b5b4767ef0.jpg') center center no-repeat;background-size:cover;"></div>
+                    </a></div>
+
+                <div class="gal_more">
+                    <a href="/user/angelcar/img/faff316a843b897da9779b5d94699c14.jpg" class="swipebox" data-ajax="false"
+                       data-size="512X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781235' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781235'></div>"><img
+                                src="/dalpeng/skin/angel_car/img/gallery_more.png" alt="more"></a>
+                </div>
+                <div class="hide">
+                    <a href="/user/angelcar/img/6f53c5bf5c8842a24807ca1ce53dd91d.jpg" class="swipebox" data-ajax="false"
+                       data-size="501X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781236' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781236'></div>"></a>
+                </div>
+                <div class="hide">
+                    <a href="/user/angelcar/img/2abb9f854960990ae1bac555744300c2.jpg" class="swipebox" data-ajax="false"
+                       data-size="512X768"
+                       alt="<div class='swipebox-comment' id='gcomment_1781237' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_1781237'></div>"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// gallery -->
+
+
+    <!-- movie -->
+    <div class="movie_wrap ui-cont-b" id="sk_media">
+        <h2 class="title"><img src="/dalpeng/skin/angel_car/img/movie_ballon.png" alt="동영상"></h2>
+        <div class="ul-body">
+            <div class="movie_container movie1">
+                <ul style="z-index:99999;">
+                    <li>
+                        <iframe id="movie" width="100%" height="100%"
+                                data-src="http://www.youtube.com/embed/aSjy4h9GHS0?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </li>
+                    <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/aSjy4h9GHS0?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="movie_bottom"></div>
+    </div>
+    <!--// movie -->
+
+    <!-- guestbook -->
+    <div class="guestbook_wrap ui-cont-b" id="sk_snsbbs">
+        <h2 class="title btn_go_snsbbs"><img src="/dalpeng/skin/angel_car/img/guestbook_title.png" alt="방명록"></h2>
+
+        <div class="ul-body col-3">
+            <div id="div_snsbbs">
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="https://phinf.pstatic.net/contact/22/2015/4/20/dalpengcom_1429496656026.jpg?type=m100"
+                                         alt="">
+                                    <div class="pro-sns naver"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>달팽</strong></p>
+                                    <p class="date">2017-11-16 10:50</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>돌잔치에 꼭 참석하겠습니다~~~~~<br/>
+                                        생일 축하해 달팽이!!</p>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="http://mud-kage.kakao.co.kr/14/dn/btqdCKdl6mu/DxKlcY8OPmv8eKQ3nhnyI0/o.jpg"
+                                         alt="">
+                                    <div class="pro-sns kakao"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>달팽</strong></p>
+                                    <p class="date">2017-06-21 09:34</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>당신은 사랑 받기 위-해 태어난 사람<br/>
+                                        당신의 삶속에서-그사랑 받고있지요<br/>
+                                        .<br/>
+                                        .<br/>
+                                        .<br/>
+                                        .<br/>
+                                        .<br/>
+                                        생일축하해♥</p>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="https://scontent.cdninstagram.com/t51.2885-19/s150x150/11375134_799616980151358_191488437_a.jpg"
+                                         alt="">
+                                    <div class="pro-sns instagram"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>달팽</strong></p>
+                                    <p class="date">2016-08-11 13:38</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>우리 달팽이 첫 생일을 이렇게 많이 축하받아서 좋겠다♡<br/>
+                                        고모는 우리 달팽이랑 손잡고 놀이터 가서 뛰어 놀았으면 좋겠어!!<br/>
+                                        아주아주 정말정말 축하해 </p>
+                                    <div class="emo-type-a emo01"></div>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="http://pbs.twimg.com/profile_images/613231098017902592/oePKO9m5_bigger.jpg"
+                                         alt="">
+                                    <div class="pro-sns twitter"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>달팽</strong></p>
+                                    <p class="date">2016-08-11 10:59</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>달팽이의 첫 생일을 축하합니다! 해피 버스데이~달팽~~~~~<br/>
+                                        무럭무럭 건강하게만 자라줘~~<br/>
+                                        아니다! 달팽이가 행복해질 수 있기만 하면 좋겠어~<br/>
+                                        사랑해~~</p>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="/dalpeng/skin/angel_car/img/img_profile.png" alt="">
+                                    <div class="pro-sns notmember"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>이현주</strong></p>
+                                    <p class="date">2016-08-11 10:56</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p></p>
+                                    <div class="emo-type-b emo04"></div>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="/dalpeng/skin/angel_car/img/img_profile.png" alt="">
+                                    <div class="pro-sns dalpeng"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>조현숙</strong></p>
+                                    <p class="date">2016-08-11 10:54</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>달팽아 생축!</p>
+                                    <div class="emo-type-a emo01"></div>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="/dalpeng/skin/angel_car/img/img_profile.png" alt="">
+                                    <div class="pro-sns notmember"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>엄마</strong></p>
+                                    <p class="date">2016-08-11 10:54</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>우리 달팽이 첫 생일을 엄마가 많이 축하해♡<br/>
+                                        항상 행복하고 건강하게만 자라줬으면 좋겠어~~엄마는 그거 하나면 돼!!!!!!<br/>
+                                        사랑해 내 달팽이~</p>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="pro_info">
+                                <div class="pro_img">
+                                    <img src="/dalpeng/skin/angel_car/img/img_profile.png" alt="">
+                                    <div class="pro-sns notmember"><span></span></div>
+                                </div>
+                                <div class="pro_txt">
+                                    <p><strong>주연이모</strong></p>
+                                    <p class="date">2016-08-11 10:53</p>
+                                </div>
+                            </div>
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>달팽! 첫 생일을 축하해~~~~~<br/>
+                                        이모가 사랑하는거 알지?? >_</p>
+                                    <div class="emo-type-d emo04"></div>
+                                </li>
+                            </ul>
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_comm fl">more</p>
+                                <p class="gb_comm fr"><span class="icon_reply">Reply:</span>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gb_btn btn_go_snsbbs"><img src="/dalpeng/skin/angel_car/img/guestbook_btn.png" alt="축하글 쓰기"></div>
+    </div>
+    <!--// guestbook -->
+
+    <!-- location -->
+    <div class="location_wrap ui-cont-b" id="sk_map">
+        <input type="hidden" id="fbirthday_map_lat" value="37.4950598"/>
+        <input type="hidden" id="fbirthday_map_lon" value="127.12241160000008"/>
+        <input type="hidden" id="fbirthday_addr" value="서울시 송파구 중대로 135"/>
+        <input type="hidden" id="fbirthday_name" value="달팽뷔페 달팽홀"/>
+
+        <h2 class="title"><img src="/dalpeng/skin/angel_car/img/location_title.png" alt="찾아오시는길"></h2>
+
+        <div class="ul-body">
+            <div class="lo_box col-2">
+                <div class="ui-block-a">
+                    <div class="lo_map">
+                        <div id="fbirthday_map_canvas" class="not_view_panel" style="width:100%;height:400px;"></div>
+                    </div>
+                    <div class="nav-wrap">
+                        <div class="ui-grid-a nav-m">
+                            <div class="nav-1">
+                                <div class="ui-body-d ui-btn-nav fbirthday_kimnavi">
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
+                                </div>
+                            </div>
+                            <div class="nav-2">
+                                <div class="ui-body-d ui-btn-nav fbirthday_ollehnavi">
+                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                </div>
+
+
+                <div class="ui-block-b">
+                    <table class="lo_container lo_container1">
+                        <tr>
+                            <th class="lo_date"><span class="icon">Date</span></th>
+                            <td><span><strong>2018년 7월 7일 (토)</strong><br>오후 2시 ~ 5시</span></td>
+                        </tr>
+                        <tr>
+                            <th class="lo_loca"><span class="icon">Location</span></th>
+                            <td>
+                                <span><strong>달팽뷔페 달팽홀</strong><br>서울시 송파구 중대로 135</span></td>
+                        </tr>
+                    </table>
+                    <table class="lo_container lo_container2">
+                        <tr>
+                            <th class="lo_tel"><span class="icon">Tel</span></th>
+                            <td><span>02-1655-5555</span></td>
+                        </tr>
+                        <tr>
+                            <th class="lo_info"><span class="icon">Info</span></th>
+                            <td><span>▷ 주차 120대 가능</span></td>
+                        </tr>
+                        <tr>
+                            <th class="lo_bus"><span class="icon">Bus</span></th>
+                            <td>
+                                <span>▷ 일반 60 10 116 116-1 116-3 390 720-2 820<br/>
+▷ 직행좌석 102 1241 1303 5500-1 7007-1 9001 9414</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="lo_subway"><span class="icon">Subway</span></th>
+                            <td><span>▷ 3호선 경찰병원역 1번출구<br/>
+▷ 8호선 가락시장역 4번출구</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// sub_contents  -->
+
+    <!-- footer -->
+    <div class="footer" id="sk_snslink">
+        <div class="contents">
+            <h4><a href="http://dalpeng.com" target="_blank"><img src="/dalpeng/skin/angel_car/img/footer_logo.png"
+                                                                  alt="로고"
+                                                                  title="달팽 초대장 :: dalpeng.com"/></a><span></span></h4>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://dalpeng.com/angelcar">
+                        <div class="ft_sns_wrap1 fasebook"><span>facebook logo</span></div>
+                    </a>
+                    <em>facebook</em>
+                </li>
+                <!-- 네이버 밴드 추가용 by echos(2014-12-08) -->
+                <li>
+                    <a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/angelcar">
+                        <div class="ft_sns_wrap1 band"><span>band logo</span></div>
+                    </a>
+                    <em>naver band</em>
+                </li>
+                <!--
+                <li>
+                    <a target="_blank" href="http://twitter.com/share?text=달팽초대장::♥&url=http://dalpeng.com/angelcar"><div class="ft_sns_wrap1 twitter"><span>twitter logo</span></div></a>
+                    <em>twitter</em>
+                </li>-->
+                <li id="sk_kakao">
+                    <div class="ft_sns_wrap1 kakao btn_send_kakao" id="btn_kakao_talk"><span>KAKAOTALK</span></div>
+                    <em>KAKAOTALK</em>
+                </li>
+                <!-- https://story.kakao.com/share?url=http%3A%2F%2Fdalpeng.com%2Fangelcar -->
+                <li>
+                    <a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/angelcar">
+                        <div class="ft_sns_wrap1 story" id="btn_kakao_story"><span>KAKAOSTORY</span></div>
+                    </a>
+                    <em>KAKAOSTORY</em>
+                </li>
+                <!-- <li>
+                    <div class="ft_sns_wrap1 band" id="btn_line"><span>LINE</span></div>
+                    <em>LINE</em>
+                </li> -->
+            </ul>
+        </div>
+        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
+            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
+        </div>
+    </div>
+    <!--// footer -->
+</div><!--//skin_page-->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-55160879-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+
+<div class="popup_wrap popup_olleh" style="display:none;">
+    <div class="popup_navibox">
+        <div class="olleh_btnbox">
+            <div class="olleh_btn btn1" id="android_go_olleh">
+                <p class="title">이미 원내비앱을<br><strong>사용 중이신 경우</strong></p>
+                <p class="link"><span>바로 길안내</span></p>
+            </div>
+            <div class="olleh_btn btn2" id="android_install_olleh">
+                <p class="title">원내비앱이<br><strong>없으신 경우</strong></p>
+                <p class="link"><span>앱 설치하기</span></p>
+            </div>
+        </div>
+        <div class="popup_back olleh_back">
+            <span id="popOllehClose">닫기</span>
+        </div>
+    </div>
+</div>
+
+<!-- photoswipe -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--fit pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter" data-role="none"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)" data-role="none"></button>
+                <button class="pswp__button pswp__button--image" title="Include Image" data-role="none"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen" data-role="none"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out" data-role="none"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"
+                    data-role="none"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"
+                    data-role="none"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center">Image caption 1</div>
+            </div>
+
+            <!-- 슬라이드
+            <div class="pswp__slide">
+                <label for="slide-show">자동 슬라이드</label>
+                <input type="checkbox" name="slideShow" id="slide-show" data-role="none">
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
