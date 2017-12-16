@@ -39,9 +39,9 @@
          style="background:#fff url('/bundles/viettutweb/img/templates/angelcar/bg_dad.jpg') center top no-repeat; background-size:100%; z-index:9999;">
         <div class="groom-wrap">
             <ul>
-                <a href="tel:01020000000">
+                <a href="tel:{{ data['fa_phone'] }}">
                     <li class="ico5">Gọi điện</li>
-                </a><a href="sms:01020000000">
+                </a><a href="sms:{{ data['fa_phone'] }}">
                     <li class="ico6">Nhắn tin</li>
                 </a><a href="http://facebook.com/dalpeng" target="_blank">
                     <li class="ico7">Facebook</li>
@@ -57,9 +57,9 @@
          style="background:#d3f2fd url('/bundles/viettutweb/img/templates/angelcar/bg_mom.jpg') center top no-repeat; background-size:100% auto; z-index:9999;">
         <div class="bride-wrap">
             <ul>
-                <a href="tel:01000000000">
+                <a href="tel:{{ data['mo_phone'] }}">
                     <li class="ico1">Gọi điện</li>
-                </a><a href="sms:01000000000">
+                </a><a href="sms:{{ data['mo_phone'] }}">
                     <li class="ico2">Nhắn tin</li>
                 </a><a href='http://facebook.com/dalpeng' target='_blank'>
                     <li class='ico3'>Facebook</li>
@@ -95,6 +95,7 @@
         </div>
         <div class="lnb">
             <ul>
+                <li class="menu1 menu_scrolls on"><span>TRANG CHỦ</span></li>
                 <li class="menu1 menu_scrolls on" id="m_topinfo"><span>THÔNG TIN</span></li>
                 <li class="menu2 menu_scrolls" id="m_gallery"><span>ALBUM ẢNH</span></li>
                 <li class="menu3 menu_scrolls" id="m_media"><span>VIDEO</span></li>
@@ -116,52 +117,47 @@
 
         <div class="header_box">
             <div class="header_title align_center color" style="color:#000000;">
-                <!-- 좌,중,우 정렬 --><!-- 색상 변경 -->
-                <div class="cars"><img src="/bundles/viettutweb/img/templates/angelcar/mother_father_car.png" alt=""></div>
-                <div class="one align_center"><img src="/bundles/viettutweb/img/templates/angelcar/happy_cali.png" alt=""></div>
+                <div class="cars">
+                    <img src="/bundles/viettutweb/img/templates/angelcar/mother_father_car.png" alt="mother car">
+                </div>
+                <div class="one align_center">
+                    <img src="/bundles/viettutweb/img/templates/angelcar/happy_cali.png" alt="">
+                </div>
                 <h1>
-                    <p class="name">
-                        달팽이의 첫 생일파티에</p>
-                    <!-- <span>달팽이 의 </span> 첫 생일파티에-->
-                    <p class="birthday">여러분을 초대합니다!</p>
+                    <p class="birthday">Thân mời bạn !</p>
+                    <p class="name">{{ data['title'] }} {{ data['name'] }}</p>
                 </h1>
                 <ul class="header_date" style="color:#000000;">
-                    <!-- 좌,중,우 정렬 -->
-                    <li>2018년 7월 7일 (토요일)</li>
-                    <li class="time">오후 2시 ~ 5시</li>
-                    <li class="place">달팽뷔페 달팽홀</li>
+                    <li>{{ date | long_date }}</li>
+                    <li class="time">{{ data['time'] }}</li>
+                    <li class="place">{{ data['place'] }}, {{ data['place_addr'] }}</li>
                 </ul>
             </div>
         </div>
         <div class="greeting_box">
             <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/greeting_title.png" alt="chúc mừng sinh nhật con"></h2>
             <div class="greeting_content">
-                <p class="greeting_text"> 1년동안 무럭무럭 잘 자라<br/>
-                    첫 생일을 맞이하였습니다. <br/>
-                    <br/>
-                    늘 건강하고 행복하길 바라는 마음으로<br/>
-                    생일파티를 마련하였습니다.<br/>
-                    <br/>
-                    많이들 오셔서<br/>
-                    첫 생일을 함께 축하해 주세요.</p>
+                <p class="greeting_text">{{ data['greeting'] | raw }}</p>
                 <ul class="greeting_name">
                     <li class="dad">
-                        <span>아빠</span>최아빠
-                        <span class="panel"><a href="#panel_father">◀ 아빠에게 연락하기</a></span>
+                        <span>Bố</span>{{ data['fa_name'] }}
+                        <span class="panel">
+                            <a href="#panel_father">◀ Gọi cho bố</a>
+                        </span>
                     </li>
                     <li class="mom">
-                        <span>엄마</span>윤엄마
-                        <span class="panel"><a href="#panel_mother">엄마에게 연락하기 ▶</a></span>
+                        <span>Mẹ</span>{{ data['mo_name'] }}
+                        <span class="panel">
+                            <a href="#panel_mother">Gọi cho mẹ ▶</a>
+                        </span>
                     </li>
                 </ul>
                 <div class="greeting_loca">
                     <p>
-                        <span>2018년 7월 7일 (토)</span>
-                        <span class="option">오후 2시 ~ 5시</span>
-                        <!-- <span class="option">오후 00시 00분 ~ 00시 00분</span> (직접 입력할 경우) -->
+                        <span>{{ date | long_date }}</span>
+                        <span class="option">{{ data['time'] }}</span>
                     </p>
-                    <p>달팽뷔페 달팽홀</p>
-                    <p>서울시 송파구 중대로 135</p>
+                    <p>{{ data['place_addr'] }}</p>
                 </div>
             </div>
         </div>
@@ -172,24 +168,23 @@
             <div class="profile_box profile_boy">
                 <div class="profile_content">
                     <div class="baby_photo">
-                        <p class="baby_img"><img src="/bundles/viettutweb/img/templates/angelcar/ETC_98e607978557353e0cb95d8563d06e45.jpg"
-                                                 alt="baby avatar"></p>
+                        <p class="baby_img">
+                            <img src="/bundles/viettutweb/img/templates/angelcar/ETC_98e607978557353e0cb95d8563d06e45.jpg"
+                                                 alt="baby avatar">
+                        </p>
                         <!-- <p class="baby_firstword"><span>처음 했던 말은?<br><strong>마마마맘~마</strong></span></p>
 						<p class="baby_teeth"><span>이는 <strong>2개</strong><br>났어요~!</span></p> -->
                         <p class="baby_gender male"><span>성별<strong>남아</strong></span></p>
-                        <!-- <p class="baby_name"><span>이름<strong>이달팽</strong></span></p> -->
+                        <p class="baby_name"><span>Bé<strong>{{ data['name'] }}</strong></span></p>
                     </div>
                     <div class="baby_profile boy">
                         <ul>
-                            <li><span class="title">내 이름이 알고 싶나요?</span><span class="text">최달팽</span></li>
-                            <li><span class="title">태몽부터 남다른 :</span><span class="text">큰 사과가 품으로 들어오는 꿈</span></li>
-                            <li><span class="title">태명까지 멋진 :</span><span class="text">알콩달콩</span></li>
-                            <li><span class="title">나의 탄생일 :</span><span class="text">2016. 12. 09</span></li>
-                            <li><span class="title">근육질 몸무게 :</span><span class="text">2.56kg</span></li>
-                            <li><span class="title">내가 처음 한말 :</span><span class="text">암마</span></li>
-                            <li><span class="title">튼튼한 치아개수 :</span><span class="text">7개</span></li>
-                            <li><span class="title">고상한 취미 :</span><span class="text">온 집안 기어다니기</span></li>
-                            <li><span class="title">비범한 특기 :</span><span class="text">아빠 물기</span></li>
+                            <li><span class="title">Tên con là gì ?</span><span class="text">{{ data['name'] }}</span></li>
+                            <li><span class="title">Ngày sinh :</span><span class="text">{{ data['birth_day'] }}</span></li>
+                            <li><span class="title">Cân nặng :</span><span class="text">{{ data['weight'] }}</span></li>
+                            <li><span class="title">Răng :</span><span class="text">{{ data['tooth'] }}</span></li>
+                            <li><span class="title">Sở thích :</span><span class="text">{{ data['hobbies'] }}</span></li>
+                            <li><span class="title">Sở trường :</span><span class="text">{{ data['skill'] }}</span></li>
                         </ul>
                     </div>
                 </div>
@@ -207,6 +202,7 @@
         <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/gallery_title.png" alt="Photo Gallery"></h2>
         <div class="ul-body">
             <div class="gal_list">
+                {% if gallery | length > 2 %}
                 <div class="col-3">
                     {% for img in gallery[0:3] %}
                         <a href="{{ img['src'] }}" class="swipebox"
@@ -217,6 +213,8 @@
                         </a>
                     {% endfor %}
                 </div>
+                {% endif %}
+                {% if gallery | length > 5 %}
                 <div class="col-3">
                     {% for img in gallery[3:3] %}
                         <a href="{{ img['src'] }}" class="swipebox"
@@ -227,6 +225,8 @@
                         </a>
                     {% endfor %}
                 </div>
+                {% endif %}
+                {% if gallery | length > 8 %}
                 <div class="col-3">
                     {% for img in gallery[6:3] %}
                         <a href="{{ img['src'] }}" class="swipebox"
@@ -237,24 +237,31 @@
                         </a>
                     {% endfor %}
                 </div>
+                {% endif %}
 
+                {% if gallery | length > 9 %}
                 <div class="gal_more">
                     <a href="{{ gallery[9]['src'] }}" class="swipebox"
                        data-size="{{ gallery[9]['size'] }}" imgId="10">
                         <img src="/bundles/viettutweb/img/templates/angelcar/gallery_more.png" alt="more">
                     </a>
                 </div>
+                {% endif %}
+
+                {% if gallery | length > 10 %}
                 {% for img in gallery[10:] %}
                     <div class="hide">
                         <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index + 10 }}"></a>
                     </div>
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
     <!--// gallery -->
 
 
+    {% if isTemplate %}
     <!-- movie -->
     <div class="movie_wrap ui-cont-b" id="sk_media">
         <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/movie_ballon.png" alt="동영상"></h2>
@@ -263,17 +270,32 @@
                 <ul style="z-index:99999;">
                     <li>
                         <iframe id="movie" width="100%" height="100%"
-                                data-src="http://www.youtube.com/embed/aSjy4h9GHS0?showinfo=0&autohide=1&rel=0&vq=hd1080"
-                                frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                src="https://www.youtube.com/embed/aSjy4h9GHS0?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                frameborder="0" allowfullscreen></iframe>
                     </li>
-                    <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/aSjy4h9GHS0?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
                 </ul>
             </div>
         </div>
         <div class="movie_bottom"></div>
     </div>
     <!--// movie -->
-
+    {% else %}
+        <!-- movie -->
+        <div class="movie_wrap ui-cont-b" id="sk_media">
+            <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/movie_ballon.png" alt="video"></h2>
+            <div class="ul-body">
+                <div class="movie_container movie1">
+                    <ul style="z-index:99999;">
+                        <li>
+                            {{ embed | raw }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="movie_bottom"></div>
+        </div>
+        <!--// movie -->
+    {% endif %}
     <!-- guestbook -->
     <div class="guestbook_wrap ui-cont-b" id="sk_snsbbs">
         <h2 class="title btn_go_snsbbs"><img src="/bundles/viettutweb/img/templates/angelcar/guestbook_title.png" alt="방명록"></h2>
@@ -521,55 +543,48 @@
                         <div id="fbirthday_map_canvas" class="not_view_panel" style="width:100%;height:400px;"></div>
                     </div>
                     <div class="nav-wrap">
-                        <div class="ui-grid-a nav-m">
-                            <div class="nav-1">
-                                <div class="ui-body-d ui-btn-nav fbirthday_kimnavi">
-                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                                </div>
-                            </div>
-                            <div class="nav-2">
-                                <div class="ui-body-d ui-btn-nav fbirthday_ollehnavi">
-                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
-                                </div>
+                    <div class="ui-grid-a nav-m">
+                        <form action='http://maps.google.com/maps' method='get' target='_blank' id="getHomePath">
+                            <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
+                            <input type='hidden' name='daddr' value='{{ data["place_addr"] }}' />
+                        </form>
+                        <div class="nav-1">
+                            <div class="ui-btn-nav wedding_kimnavi">
+                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getHomePath()">CHỈ ĐƯỜNG</span>
                             </div>
                         </div>
                     </div>
-                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                    </div>
+                    <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
                 </div>
 
 
                 <div class="ui-block-b">
                     <table class="lo_container lo_container1">
                         <tr>
-                            <th class="lo_date"><span class="icon">Date</span></th>
-                            <td><span><strong>2018년 7월 7일 (토)</strong><br>오후 2시 ~ 5시</span></td>
+                            <th class="lo_date"><span class="icon">Thời gian</span></th>
+                            <td><span><strong>{{ date | long_date }}</strong><br>{{ data['time'] }}</span></td>
                         </tr>
                         <tr>
-                            <th class="lo_loca"><span class="icon">Location</span></th>
+                            <th class="lo_loca"><span class="icon">Địa chỉ</span></th>
                             <td>
-                                <span><strong>달팽뷔페 달팽홀</strong><br>서울시 송파구 중대로 135</span></td>
+                                <span><strong>{{ data['place'] }}</strong><br>{{ data['place_addr'] }}</span></td>
                         </tr>
                     </table>
                     <table class="lo_container lo_container2">
                         <tr>
-                            <th class="lo_tel"><span class="icon">Tel</span></th>
-                            <td><span>02-1655-5555</span></td>
+                            <th class="lo_tel"><span class="icon">ĐT</span></th>
+                            <td><span>{{ data['place_phone'] }}</span></td>
                         </tr>
                         <tr>
-                            <th class="lo_info"><span class="icon">Info</span></th>
-                            <td><span>▷ 주차 120대 가능</span></td>
+                            <th class="lo_info"><span class="icon">Đỗ xe</span></th>
+                            <td><span>{{ data['parking_info'] }}</span></td>
                         </tr>
                         <tr>
-                            <th class="lo_bus"><span class="icon">Bus</span></th>
+                            <th class="lo_bus"><span class="icon">Xe Bus</span></th>
                             <td>
-                                <span>▷ 일반 60 10 116 116-1 116-3 390 720-2 820<br/>
-▷ 직행좌석 102 1241 1303 5500-1 7007-1 9001 9414</span>
+                                <span>{{ data['bus_info'] }}</span>
                             </td>
-                        </tr>
-                        <tr>
-                            <th class="lo_subway"><span class="icon">Subway</span></th>
-                            <td><span>▷ 3호선 경찰병원역 1번출구<br/>
-▷ 8호선 가락시장역 4번출구</span></td>
                         </tr>
                     </table>
                 </div>
@@ -581,47 +596,16 @@
     <!-- footer -->
     <div class="footer" id="sk_snslink">
         <div class="contents">
-            <h4><a href="http://dalpeng.com" target="_blank"><img src="/bundles/viettutweb/img/templates/angelcar/footer_logo.png"
-                                                                  alt="로고"
-                                                                  title="달팽 초대장 :: dalpeng.com"/></a><span></span></h4>
+            <h4>
+                <a href="{{ path('home_page') }}" target="_blank">
+                    <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo"
+                         title="thiepdo.com"/>
+                </a>
+                <span></span>
+            </h4>
             <ul>
-                <li>
-                    <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://dalpeng.com/angelcar">
-                        <div class="ft_sns_wrap1 fasebook"><span>facebook logo</span></div>
-                    </a>
-                    <em>facebook</em>
-                </li>
-                <!-- 네이버 밴드 추가용 by echos(2014-12-08) -->
-                <li>
-                    <a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/angelcar">
-                        <div class="ft_sns_wrap1 band"><span>band logo</span></div>
-                    </a>
-                    <em>naver band</em>
-                </li>
-                <!--
-                <li>
-                    <a target="_blank" href="http://twitter.com/share?text=달팽초대장::♥&url=http://dalpeng.com/angelcar"><div class="ft_sns_wrap1 twitter"><span>twitter logo</span></div></a>
-                    <em>twitter</em>
-                </li>-->
-                <li id="sk_kakao">
-                    <div class="ft_sns_wrap1 kakao btn_send_kakao" id="btn_kakao_talk"><span>KAKAOTALK</span></div>
-                    <em>KAKAOTALK</em>
-                </li>
-                <!-- https://story.kakao.com/share?url=http%3A%2F%2Fdalpeng.com%2Fangelcar -->
-                <li>
-                    <a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/angelcar">
-                        <div class="ft_sns_wrap1 story" id="btn_kakao_story"><span>KAKAOSTORY</span></div>
-                    </a>
-                    <em>KAKAOSTORY</em>
-                </li>
-                <!-- <li>
-                    <div class="ft_sns_wrap1 band" id="btn_line"><span>LINE</span></div>
-                    <em>LINE</em>
-                </li> -->
+                <div class="addthis_inline_share_toolbox"></div>
             </ul>
-        </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
         </div>
     </div>
     <!--// footer -->
@@ -688,31 +672,10 @@
         </div>
     </div>
 {% endif %}
-{% if isTemplate == false %}
-    <script type="text/javascript">
-        (function($) {
-            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
-                var $this = this;
-                $(document).scroll(function() {
-                    var y = $(this).scrollTop();
-                    if (y >= $this.position().top) {
-                        if (focusInFn) focusInFn();
-                    } else {
-                        if (focusOutFn) focusOutFn();
-                    }
-                });
-            }
-        })(jQuery);
-    </script>
-{% endif %}
 <script src="{{ asset('js/libraries.min.js') }}"></script>
 <script type="text/javascript">
     <!--
-
-
     var swipe_exception = false;
-
-
     $(document).on("pagecreate", "#skin_page", function (e) {
         $(document).on("swipeleft swiperight", ".not_view_panel , #skin_page", function (e) {
             // We check if there is no open panel on the page because otherwise
@@ -789,20 +752,8 @@
         } catch (e) {
         }
 
-        // 네이버 지도시 스마트폰 회전 감지하여 지도 초기화(마커 위치 센터)
-        $(window).on("orientationchange", function () {
-            callMapInitializeAfterResize();
-        });
-
-        function callMapInitializeAfterResize() {
-            initialize('fbirthday');
-        }
-
-
         // -- map -- //
         function initialize(md) {
-
-
         }
 
 
@@ -1110,21 +1061,6 @@
 
             gallery.useAniNum = false;
 
-            // 방명록 글쓰기에 이미지 첨부
-            gallery.includeImage = function () {
-                var id = gallery.currItem.id
-                var url = "angelcar/snsbbs/w/" + id;
-                var kakaoInApp = gallery.options.kakaoInApp;
-
-                /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
-                 (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
-                if (!kakaoInApp) {
-                    window.location = url;
-                } else {
-                    window.open(url);
-                }
-            }
-
             psBeforeInitAddEvent();
             gallery.init();
             psAfterInitAddEvent();
@@ -1249,47 +1185,25 @@
 
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/angelcar/snsbbs";
-        }).css('cursor', 'pointer');
-
-        $('#btn_line').click(function () {
-            alert('모바일 기기에서만 사용 가능한 기능입니다.');
-        });
-
-        $('.btn_send_kakao').click(function () {
-            alert('모바일 기기에서만 사용 가능한 기능입니다.');
-        });
-
         function setLocationInfoHeight() {
         }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
         $('.menu_scrolls').click(function () {
             try {
                 if ($(this).attr('id')) {
-
-
                     var id = $(this).attr('id').replace('p_', '').replace('m_', '');
-
-                    //console.log(id);
-
                     setPosition(id);
+                } else {
+                    window.location.href = '/';
                 }
             } catch (e) {
-                //console.log(e);
             }
         }).css('cursor', 'pointer');
-
-
-        initialize('fbirthday');
-        setLocationInfoHeight();
     });
 
     $(window).load(function () {
@@ -1303,6 +1217,19 @@
         });
 
         $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+
+        {% if isTemplate == false %}
+        $('.movie_wrap').onScrollTo(function() {
+            $('#signup').addClass('show');
+        }, function() {
+            $('#signup').removeClass('show');
+        });
+
+        $('#signup').on('click', '.close', function(e) {
+            e.preventDefault();
+            $('#signup').removeClass('show');
+        });
+        {% endif %}
     });
 
     function initMap() {
@@ -1352,6 +1279,19 @@
         document.getElementById("getHomePath").submit();
     }
 
+    (function ($) {
+        $.fn.onScrollTo = function (focusInFn, focusOutFn) {
+            var $this = this;
+            $(document).scroll(function () {
+                var y = $(this).scrollTop();
+                if (y >= $this.position().top) {
+                    if (focusInFn) focusInFn();
+                } else {
+                    if (focusOutFn) focusOutFn();
+                }
+            });
+        }
+    })(jQuery);
     //-->
 </script>
 <script>

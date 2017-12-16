@@ -587,14 +587,6 @@
             });
         }
 
-        $(window).on("orientationchange", function () {
-            callMapInitializeAfterResize();
-        });
-
-        function callMapInitializeAfterResize() {
-            initialize('ceremony');
-        }
-
 
         $('#div_snsbbs').masonry({
             //columnWidth: .snsbbs_sections,
@@ -1018,6 +1010,19 @@
         });
 
         $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+
+        {% if isTemplate == false %}
+            $('.movie_wrap').onScrollTo(function() {
+                $('#signup').addClass('show');
+            }, function() {
+                $('#signup').removeClass('show');
+            });
+
+            $('#signup').on('click', '.close', function(e) {
+                e.preventDefault();
+                $('#signup').removeClass('show');
+            });
+        {% endif %}
     });
 
     function initMap() {
