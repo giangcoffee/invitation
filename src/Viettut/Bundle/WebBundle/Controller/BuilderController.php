@@ -64,6 +64,7 @@ class BuilderController extends Controller
             'id' => $card->getId(),
             'name' => $template->getName(),
             'hash' => $card->getHash(),
+            'type' => $card->getTemplate()->getType(),
             'forGroom' => $card->isForGroom(),
             'video' => $card->getVideo(),
             'embed' => $card->getEmbedded()

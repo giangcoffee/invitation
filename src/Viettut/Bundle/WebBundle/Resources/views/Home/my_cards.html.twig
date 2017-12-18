@@ -6,6 +6,11 @@
 {% block css %}
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/templates/common/preview.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/jquery.datetimepicker.min.css') }}">
+    <style>
+        i.chart:hover {
+            opacity: .8;
+        }
+    </style>
 {% endblock %}
 {% block main %}
     <section class="page-top">
@@ -117,7 +122,7 @@
                                 </div>
                                 <div class="row col-md-12 temp-margin">
                                     <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>
-                                    <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}')">Tạo thiệp</button>
+                                    <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}', {{ temp.type }})">Tạo thiệp</button>
                                 </div>
                             </div>
                         </li>
@@ -159,42 +164,44 @@
                     </ul>
                 </div>
             </div>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="weddingType" tabindex="-1" role="dialog" aria-labelledby="weddingType" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Chọn mẫu</h4>
+                            <h4 class="modal-title" id="myModalLabel">Tạo thiệp cưới</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal form-bordered" method="get">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="label_name">Mẫu sử dụng</label>
+                                    <label class="col-md-3 control-label" for="wedding_type_name">Mẫu sử dụng:</label>
                                     <div class="col-md-6">
-                                        <input type="text" value="" id="label_name" class="form-control" readonly="readonly" />
+                                        <input type="text" value="" id="wedding_type_name" class="form-control" readonly="readonly" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="groom_name">Tên chú rể</label>
+                                    <label class="col-md-3 control-label" for="groom_name">Tên chú rể:</label>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" id="groom_name" placeholder="ví dụ: Thanh Tùng">
+                                        <span class="help-block">Tên cô dâu, chú rể và ngày cưới được dùng để tạo ra đường link.</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="bride_name">Tên cô dâu</label>
+                                    <label class="col-md-3 control-label" for="bride_name">Tên cô dâu:</label>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" id="bride_name" placeholder="ví dụ: Ngọc Lan">
+                                        <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="wedding_date">Giờ thành hôn</label>
+                                    <label class="col-md-3 control-label" for="wedding_date">Giờ thành hôn:</label>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control input-rounded" id="wedding_date">
                                         <span class="help-block">Giờ làm lễ thành hôn (ăn hỏi, rước dâu) tại nhà trai hoặc nhà gái.</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="wedding_date">Giờ tiệc cưới</label>
+                                    <label class="col-md-3 control-label" for="party_date">Giờ tiệc cưới:</label>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control input-rounded" id="party_date">
                                         <span class="help-block">Giờ tổ chức tiệc cưới ngoài nhà hàng.</span>
@@ -215,6 +222,88 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="exhibitionType" tabindex="-1" role="dialog" aria-labelledby="exhibitionType" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Tạo thiệp sự kiện</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-bordered" method="get">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="exhibition_type_name">Mẫu sử dụng:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" value="" id="exhibition_type_name" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="event_title">Tiêu đề sự kiện:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="event_title" placeholder="ví dụ: Mã màu sự kiện - FTU Zone">
+                                        <span class="help-block">Tiêu đề và ngày giờ được dùng để tạo ra đường link.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="event_date">Ngày tổ chức:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-rounded" id="event_date">
+                                        <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" onclick="createExhibitionCard()" id="create-button">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="birthdayType" tabindex="-1" role="dialog" aria-labelledby="birthdayType" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Tạo thiệp sinh nhật</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-bordered" method="get">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="birthday_type_name">Mẫu sử dụng:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" value="" id="birthday_type_name" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="party_title">Tiêu đề sinh nhật:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="party_title" placeholder="ví dụ: Sinh nhật lần thứ 3">
+                                        <span class="help-block">Tiêu đề, tên bé và ngày giờ được dùng để tạo ra đường link.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="baby_name">Tên bé:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="baby_name" placeholder="ví dụ: Kem Bông">
+                                        <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="birthday_date">Ngày tổ chức:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-rounded" id="birthday_date">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" onclick="createBirthdayCard()" id="create-button">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     {% endif %}
 {% endblock %}
@@ -222,7 +311,7 @@
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery.canvasjs.min.js') }}"></script>
     <script type="text/javascript">
-        var id = '', name = '';
+        var id = '', name = '', type = '';
         function createCard() {
             var data = {};
             data['template'] = id;
@@ -258,27 +347,89 @@
             });
         }
 
-        function showModal(i, n) {
-            name = n;
-            id = i;
-            $('#label_name').val(n);
-            $('#myModal').modal();
+        function createExhibitionCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#event_date').val();
+            data['libraryCard'] = {'gallery': [], 'video': ''};
+
+            data['data'] = {};
+            data['data']['event'] = $('#event_title').val();
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
         }
 
+        function createBirthdayCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#birthday_date').val();
+            data['libraryCard'] = {'gallery': [], 'video': ''};
+
+            data['data'] = {};
+            data['data']['title'] = $('#party_title').val();
+            data['data']['name'] = $('#baby_name').val();
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
+        }
+
+        function showModal(i, n, t) {
+            name = n;
+            id = i;
+            type = t;
+            $('#label_name').val(n);
+            switch (t) {
+                case 1:
+                    $('#weddingType').modal();
+                    $('#wedding_type_name').val(n);
+                    break;
+                case 2:
+                    $('#exhibitionType').modal();
+                    $('#exhibition_type_name').val(n);
+                    break;
+                case 3:
+                    $('#birthdayType').modal();
+                    $('#birthday_type_name').val(n);
+                    break;
+            }
+        }
 
         $(document).ready(function(){
-            jQuery('#wedding_date').datetimepicker(
-                    {
-                        format: 'Y-m-d H:i',
-                        lang:   'vi'
-                    }
-            );
-            jQuery('#party_date').datetimepicker(
-                    {
-                        format: 'Y-m-d H:i',
-                        lang:   'vi'
-                    }
-            );
+            jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#party_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#event_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#birthday_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
         });
 
         $(function () {
@@ -586,7 +737,7 @@
             dataPoints.push({label: 'Sẽ đến', legendText: 'Sẽ đến', y: (parseFloat(statuses['going']) / parseFloat(statuses['total'])) * 100});
             dataPoints.push({label: 'Không đến', legendText: 'Không đến', y: (parseFloat(statuses['notGoing']) / parseFloat(statuses['total'])) * 100});
             dataPoints.push({label: 'Cân nhắc', legendText: 'Cân nhắc', y: (parseFloat(statuses['notSure']) / parseFloat(statuses['total'])) * 100});
-            dataPoints.push({label: 'Không KS', legendText: 'Không khảo sát', y: 100 * ((parseFloat(statuses['total']) - parseFloat(statuses['notSure']) + parseFloat(statuses['notGoing']) + parseFloat(statuses['going'])) / parseFloat(statuses['total']))});
+            dataPoints.push({label: 'Không KS', legendText: 'Không khảo sát', y: 100 * ((parseFloat(statuses['total']) - parseFloat(statuses['notSure']) - parseFloat(statuses['notGoing']) - parseFloat(statuses['going'])) / parseFloat(statuses['total']))});
 
             $("#chartContainer").CanvasJSChart({
                 title: {

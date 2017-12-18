@@ -67,7 +67,7 @@
             <div id="general" class="tab-pane active">
                 <div class="form-horizontal form-bordered">
                     {% for column,name in columns %}
-                        {% if column == 'greeting' %}
+                        {% if (column == 'greeting') or (column == 'content') or (column == 'schedule_content') %}
                             <div class="row">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="textareaAutosize">{{ name }}</label>
@@ -87,6 +87,7 @@
                             </div>
                         {% endif %}
                     {% endfor %}
+                    {% if type == 1 %}
                     <div class="row">
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="wedding_date">Giờ thành hôn</label>
@@ -118,6 +119,25 @@
                             </div>
                         </div>
                     </div>
+                    {% elseif type == 2 %}
+                                        <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="wedding_date">Ngày tổ chức</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d') }}">
+                            </div>
+                        </div>
+                    </div>
+                    {% elseif type == 3 %}
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="wedding_date">Ngày tổ chức</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d') }}">
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                     <div class="row">
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>

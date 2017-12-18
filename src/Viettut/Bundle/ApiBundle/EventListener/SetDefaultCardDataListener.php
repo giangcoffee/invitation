@@ -57,7 +57,7 @@ class SetDefaultCardDataListener
                 break;
             case 2:
                 $templateData['event'] = $data['event'];
-                $name = sprintf('%s thang %s nam %s %s',
+                $name = sprintf('%s %s thang %s nam %s',
                     $data['event'],
                     $entity->getWeddingDate()->format('d'),
                     $entity->getWeddingDate()->format('m'),
@@ -67,7 +67,7 @@ class SetDefaultCardDataListener
             case 3:
                 $templateData['title'] = $data['title'];
                 $templateData['name'] = $data['name'];
-                $name = sprintf('%s của %s thang %s nam %s %s',
+                $name = sprintf('%s của %s %s thang %s nam %s',
                     $data['title'],
                     $data['name'],
                     $entity->getWeddingDate()->format('d'),
