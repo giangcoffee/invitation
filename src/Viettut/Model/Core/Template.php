@@ -76,6 +76,8 @@ class Template implements TemplateInterface
 
     protected $homeLatitude;
 
+    protected $type;
+
     /**
      * Template constructor.
      */
@@ -366,5 +368,23 @@ class Template implements TemplateInterface
     public function setForGroom($forGroom)
     {
         $this->forGroom = $forGroom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
     }
 }

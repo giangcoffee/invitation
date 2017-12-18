@@ -220,7 +220,7 @@ class BuilderController extends Controller
             $description = $data['greeting'];
         }
 
-        $name = sprintf('Hôn lễ của %s và %s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('d-m-Y'));
+        $name = sprintf('%s-%s', $card->getName(), $card->getWeddingDate()->format('d-m-Y'));
         $gallery = $card->getGallery();
         $card->setViews($card->getViews() + 1);
         $cardManager->save($card);
@@ -249,11 +249,15 @@ class BuilderController extends Controller
             }
         }
 
+        $dateAl = '';
+        if ($card->getTemplate()->getType() == 1) {
+            $dateAl = $this->getLunarDateString($card->getPartyDate());
+        }
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
             'date' => $card->getPartyDate(),
-            'dateAl' => $this->getLunarDateString($card->getPartyDate()),
+            'dateAl' => $dateAl,
             'weddingDate' => $card->getWeddingDate(),
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),

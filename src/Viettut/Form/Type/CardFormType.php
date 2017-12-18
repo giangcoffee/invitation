@@ -67,12 +67,26 @@ class CardFormType extends AbstractRoleSpecificFormType
             $card = $event->getData();
             try {
                 $data = $card->getData();
-                if (is_array($data) && array_key_exists('groom_name', $data) && array_key_exists('bride_name', $data)) {
-                    if ($card->isForGroom()) {
-                        $card->setName(sprintf('Hôn lễ của %s %s', $data['groom_name'], $data['bride_name']));
-                    } else {
-                        $card->setName(sprintf('Hôn lễ của %s %s', $data['bride_name'], $data['groom_name']));
-                    }
+                switch ($card->getTemplate()->getType()) {
+                    case 1:
+                        if (is_array($data) && array_key_exists('groom_name', $data) && array_key_exists('bride_name', $data)) {
+                            if ($card->isForGroom()) {
+                                $card->setName(sprintf('Hôn lễ của %s %s', $data['groom_name'], $data['bride_name']));
+                            } else {
+                                $card->setName(sprintf('Hôn lễ của %s %s', $data['bride_name'], $data['groom_name']));
+                            }
+                        }
+                        break;
+                    case 2:
+                        if (is_array($data) && array_key_exists('event', $data)) {
+                            $card->setName($data['event']);
+                        }
+                        break;
+                    case 3:
+                        if (is_array($data) && array_key_exists('title', $data) && array_key_exists('name', $data)) {
+                            $card->setName(sprintf('%s của %s', $data['title'], $data['name']));
+                        }
+                        break;
                 }
             } catch (\Exception $ex) {
 

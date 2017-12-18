@@ -22,7 +22,7 @@ Viettut\Entity\Core\Card:
             nullable: false
         partyDate:
             type: datetime
-            nullable: false
+            nullable: true
         weddingDate:
             type: datetime
             nullable: false

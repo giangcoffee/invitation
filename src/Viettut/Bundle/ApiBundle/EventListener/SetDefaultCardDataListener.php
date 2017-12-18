@@ -26,24 +26,55 @@ class SetDefaultCardDataListener
         }
 
         $data = $entity->getData();
-        if ($entity->isForGroom()) {
-            $name = sprintf('%s %s %s thang %s nam %s %s',
-                $data['groom_name'],
-                $data['bride_name'],
-                $entity->getWeddingDate()->format('d'),
-                $entity->getWeddingDate()->format('m'),
-                $entity->getWeddingDate()->format('Y'),
-                uniqid('')
-            );
-        } else {
-            $name = sprintf('%s %s %s thang %s nam %s %s',
-                $data['bride_name'],
-                $data['groom_name'],
-                $entity->getWeddingDate()->format('d'),
-                $entity->getWeddingDate()->format('m'),
-                $entity->getWeddingDate()->format('Y'),
-                uniqid('')
-            );
+        $template = $entity->getTemplate();
+
+        $templateData = $template->getData();
+
+        $name = '';
+        switch ($entity->getTemplate()->getType()) {
+            case 1:
+                $templateData['bride_name'] = $data['bride_name'];
+                $templateData['groom_name'] = $data['groom_name'];
+                if ($entity->isForGroom()) {
+                    $name = sprintf('%s %s %s thang %s nam %s %s',
+                        $data['groom_name'],
+                        $data['bride_name'],
+                        $entity->getWeddingDate()->format('d'),
+                        $entity->getWeddingDate()->format('m'),
+                        $entity->getWeddingDate()->format('Y'),
+                        uniqid('')
+                    );
+                } else {
+                    $name = sprintf('%s %s %s thang %s nam %s %s',
+                        $data['bride_name'],
+                        $data['groom_name'],
+                        $entity->getWeddingDate()->format('d'),
+                        $entity->getWeddingDate()->format('m'),
+                        $entity->getWeddingDate()->format('Y'),
+                        uniqid('')
+                    );
+                }
+                break;
+            case 2:
+                $templateData['event'] = $data['event'];
+                $name = sprintf('%s thang %s nam %s %s',
+                    $data['event'],
+                    $entity->getWeddingDate()->format('d'),
+                    $entity->getWeddingDate()->format('m'),
+                    $entity->getWeddingDate()->format('Y'),
+                    uniqid(''));
+                break;
+            case 3:
+                $templateData['title'] = $data['title'];
+                $templateData['name'] = $data['name'];
+                $name = sprintf('%s của %s thang %s nam %s %s',
+                    $data['title'],
+                    $data['name'],
+                    $entity->getWeddingDate()->format('d'),
+                    $entity->getWeddingDate()->format('m'),
+                    $entity->getWeddingDate()->format('Y'),
+                    uniqid(''));
+                break;
         }
 
         $entity->setHash($this->getUrlFriendlyString($name));
@@ -63,12 +94,6 @@ class SetDefaultCardDataListener
         } else if (empty($video) && empty($entity->getEmbedded())) {
             $entity->setEmbedded(str_replace('$$VIDEO_ID$$', self::DEFAULT_VIDEO_ID, self::TEMPLATE));
         }
-
-        $template = $entity->getTemplate();
-
-        $templateData = $template->getData();
-        $templateData['bride_name'] = $data['bride_name'];
-        $templateData['groom_name'] = $data['groom_name'];
 
         $entity
             ->setData($templateData)

@@ -66,6 +66,11 @@ Viettut\Entity\Core\Template:
             nulable: false
             options:
                 default: true
+        type:
+            type: smallint
+            nullable: false
+            options:
+                default: 1
         createdAt:
             type: datetime
             gedmo:
