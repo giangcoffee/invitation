@@ -15,12 +15,14 @@ Viettut\Entity\Core\LibraryCard:
         video:
             type: string
             nullable: true
+            length: 256
         embedded:
             type: text
             nullable: true
         videoId:
             type: string
             nullable: true
+            length: 128
         validVideo:
             type: boolean
             options:

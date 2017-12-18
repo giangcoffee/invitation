@@ -31,10 +31,12 @@
                 <th class="text-right">Tên</th>
                 <th class="text-right">Ngày cưới</th>
                 <th class="text-right">Lượt view</th>
+                <th class="text-right">Đã xem thiệp</th>
                 <th class="text-right">Sẽ đến</th>
                 <th class="text-right">Đang cân nhắc</th>
                 <th class="text-right">Không đến</th>
                 <th class="text-right">Ghi chú</th>
+                <th class="text-right">&nbsp;</th>
             </tr>
             </thead>
             <tbody>
@@ -44,14 +46,28 @@
                     <td>{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }}</td>
                     <td class="text-right">{{ card.weddingDate | date('d-m-Y') }}</td>
                     <td class="text-right">{{ card.views }}</td>
+                    <td class="text-right">{{ card.statuses['total'] }}</td>
                     <td class="text-right">{{ card.statuses['going'] }}</td>
                     <td class="text-right">{{ card.statuses['notSure'] }}</td>
                     <td class="text-right">{{ card.statuses['notGoing'] }}</td>
                     <td class="text-right">{% if card.forGroom == true %}Nhà Trai{% else %}Nhà Gái{% endif %}</td>
+                    <td class="text-right"><i class="fa fa-2x fa-pie-chart chart" aria-hidden="true" data-statuses="{{ card.statuses | json_encode() }}" style="cursor:pointer" title="Biểu đồ"></i></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+        <div class="modal fade" id="pieChart" tabindex="-1" role="dialog" aria-labelledby="pieChartModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="chartContainer" style="height: 500px;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <hr class="tall"/>
     <div class="container">
@@ -204,6 +220,7 @@
 {% endblock %}
 {% block javascript %}
 <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/js/lib/jquery.canvasjs.min.js') }}"></script>
     <script type="text/javascript">
         var id = '', name = '';
         function createCard() {
@@ -555,6 +572,50 @@
             }
         });
     }
+
+    $('i.chart').click(function () {
+        try {
+            var width = $('#pieChart').width();
+            if (width >= 768) {
+                width = 500;
+            } else width = width * 0.9
+
+            console.log(width);
+            var statuses = $(this).data('statuses');
+            var dataPoints = [];
+            dataPoints.push({label: 'Sẽ đến', legendText: 'Sẽ đến', y: (parseFloat(statuses['going']) / parseFloat(statuses['total'])) * 100});
+            dataPoints.push({label: 'Không đến', legendText: 'Không đến', y: (parseFloat(statuses['notGoing']) / parseFloat(statuses['total'])) * 100});
+            dataPoints.push({label: 'Cân nhắc', legendText: 'Cân nhắc', y: (parseFloat(statuses['notSure']) / parseFloat(statuses['total'])) * 100});
+            dataPoints.push({label: 'Không KS', legendText: 'Không khảo sát', y: 100 * ((parseFloat(statuses['total']) - parseFloat(statuses['notSure']) + parseFloat(statuses['notGoing']) + parseFloat(statuses['going'])) / parseFloat(statuses['total']))});
+
+            $("#chartContainer").CanvasJSChart({
+                title: {
+                    text: "Thống kê số lượng khách",
+                    fontSize: 24
+                },
+                width: width,
+                axisY: {
+                    title: "Products in %"
+                },
+                legend :{
+                    verticalAlign: "center",
+                    horizontalAlign: "right"
+                },
+                data: [
+                    {
+                        type: "pie",
+                        showInLegend: true,
+                        toolTipContent: "{label} <br/> {y} %",
+                        indexLabel: "{y} %",
+                        dataPoints: dataPoints
+                    }
+                ]
+            });
+
+            $('#pieChart').modal();
+        } catch (e) {
+        }
+    });
 </script>
 {% endblock %}
 

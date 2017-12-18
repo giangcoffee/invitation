@@ -16,10 +16,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Viettut\DomainManager\CardManagerInterface;
+use Viettut\Entity\Core\Engage;
+use Viettut\Entity\Core\Status;
 use Viettut\Model\Core\CardInterface;
+use Viettut\Model\Core\StatusInterface;
 use Viettut\Model\Core\TemplateInterface;
 use Symfony\Component\Security\Core\Security;
 use Viettut\Model\User\UserEntityInterface;
+use Viettut\Repository\Core\EngageRepositoryInterface;
+use Viettut\Repository\Core\StatusRepositoryInterface;
 use Viettut\Utilities\DateUtil;
 
 class BuilderController extends Controller
@@ -227,9 +232,21 @@ class BuilderController extends Controller
             $uniqueUser = $_COOKIE['user_unique_id'];
         }
 
-        $statuses = $this->get('viettut.repository.status')->checkUniqueUserForCard($card, $uniqueUser);
-        if (count($statuses) > 0) {
-            $userVoted = true;
+        /** @var StatusRepositoryInterface $statusesRepository */
+        $statusesRepository = $this->get('viettut.repository.status');
+        $statusesEntities = $statusesRepository->checkUniqueUserForCard($card, $uniqueUser);
+        if (count($statusesEntities) <= 0) {
+            $statusEntity = new Status();
+            $statusEntity->setCard($card)->setUniqueUser($uniqueUser)->setStatus(0);
+            $this->get('viettut.domain_manager.status')->save($statusEntity);
+        } else {
+            /** @var StatusInterface $entity */
+            foreach ($statusesEntities as $entity) {
+                if ($entity->getStatus() != 0) {
+                    $userVoted = true;
+                    break;
+                }
+            }
         }
 
         return $this->render($template->getPath(), array (

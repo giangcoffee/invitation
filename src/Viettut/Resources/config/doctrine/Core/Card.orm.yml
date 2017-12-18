@@ -14,7 +14,8 @@ Viettut\Entity\Core\Card:
                 strategy: AUTO
     fields:
         hash:
-            type: text
+            type: string
+            length: 256
             nullable: false
         data:
             type: json_array
@@ -31,16 +32,24 @@ Viettut\Entity\Core\Card:
                 timestampable:
                     on: create
         latitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         longitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         homeLatitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         homeLongitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         forGroom:
             type: boolean
@@ -53,8 +62,9 @@ Viettut\Entity\Core\Card:
             options:
                 default: 0
         name:
-            type: text
+            type: string
             nullable: false
+            length: 256
         deletedAt:
             type: date
             nullable: true

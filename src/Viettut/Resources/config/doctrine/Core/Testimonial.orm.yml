@@ -10,17 +10,17 @@ Viettut\Entity\Core\Testimonial:
                 strategy: AUTO
     fields:
         name:
-            type: text
+            type: string
             nullable: false
-
+            length: 256
         profession:
-            type: text
+            type: string
             nullable: false
-
+            length: 256
         image:
-            type: text
+            type: string
             nullable: false
-
+            length: 256
         content:
             type: text
             nullable: false

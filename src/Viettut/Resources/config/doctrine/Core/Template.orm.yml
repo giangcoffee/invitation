@@ -14,14 +14,17 @@ Viettut\Entity\Core\Template:
                 strategy: AUTO
     fields:
         name:
-            type: text
+            type: string
             nullable: false
+            length: 256
         hash:
-            type: text
+            type: string
             nullable: false
+            length: 256
         path:
-            type: text
+            type: string
             nullable: false
+            length: 256
         data:
             type: json_array
             nullable: false
@@ -34,20 +37,29 @@ Viettut\Entity\Core\Template:
         thumbnail:
             type: string
             nulable: false
+            length: 256
         weddingDate:
             type: datetime
             nullable: false
         latitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         longitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         homeLatitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         homeLongitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         forGroom:
             type: boolean

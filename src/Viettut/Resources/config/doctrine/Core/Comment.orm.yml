@@ -14,7 +14,8 @@ Viettut\Entity\Core\Comment:
                 strategy: AUTO
     fields:
         content:
-            type: text
+            type: string
+            length: 256
             nullable: false
         createdAt:
             type: datetime

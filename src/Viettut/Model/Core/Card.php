@@ -491,6 +491,7 @@ class Card implements CardInterface
         $going = 0;
         $notSure = 0;
         $notGoing = 0;
+        $total = count($this->statuses);
         if ($this->statuses != null) {
             /** @var StatusInterface $status */
             foreach ($this->statuses as $status) {
@@ -510,7 +511,8 @@ class Card implements CardInterface
         return array(
             'going' => $going,
             'notSure' => $notSure,
-            'notGoing' => $notGoing
+            'notGoing' => $notGoing,
+            'total' => $total
         );
     }
 

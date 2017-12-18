@@ -10,9 +10,9 @@ Viettut\Entity\Core\Faq:
                 strategy: AUTO
     fields:
         question:
-            type: text
+            type: string
             nullable: false
-
+            length: 256
         answer:
             type: text
             nullable: false
