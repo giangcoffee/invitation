@@ -7,6 +7,7 @@ namespace Viettut\Bundle\ApiBundle\EventListener;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Viettut\Exception\InvalidArgumentException;
 use Viettut\Model\Core\CardInterface;
+use Viettut\Model\Core\LibraryCardInterface;
 
 class UpdateVideoIdListener
 {
@@ -18,7 +19,7 @@ class UpdateVideoIdListener
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
-        if (!$entity instanceof CardInterface) {
+        if (!$entity instanceof LibraryCardInterface) {
             return;
         }
 
