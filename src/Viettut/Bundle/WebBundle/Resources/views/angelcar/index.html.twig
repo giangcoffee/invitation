@@ -7,7 +7,7 @@
     <meta property="og:description" content=""/>
 
     <meta property="og:title" content="{{ description }}"/>
-    <meta property="og:image" content="http://dalpeng.com/user/angelcar/img/f6023d1ca8dd43dea2d6ded9c41f689d.jpg"/>
+    <meta property="og:image" content="/bundles/viettutweb/img/templates/angelcar/f6023d1ca8dd43dea2d6ded9c41f689d.jpg"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -95,12 +95,12 @@
         </div>
         <div class="lnb">
             <ul>
-                <li class="menu1 menu_scrolls on"><span>TRANG CHỦ</span></li>
-                <li class="menu1 menu_scrolls on" id="m_topinfo"><span>THÔNG TIN</span></li>
-                <li class="menu2 menu_scrolls" id="m_gallery"><span>ALBUM ẢNH</span></li>
-                <li class="menu3 menu_scrolls" id="m_media"><span>VIDEO</span></li>
-                <li class="menu4 menu_scrolls" id="m_snsbbs"><span>CHÚC MỪNG</span></li>
-                <li class="menu5 menu_scrolls" id="m_map"><span>ĐỊA ĐIỂM</span></li>
+                <li class="menu6 menu_scrolls on"><span>TRANG CHỦ</span></li>
+                <li class="menu6 menu_scrolls on" id="m_topinfo"><span>THÔNG TIN</span></li>
+                <li class="menu6 menu_scrolls" id="m_gallery"><span>ALBUM ẢNH</span></li>
+                <li class="menu6 menu_scrolls" id="m_media"><span>VIDEO</span></li>
+                <li class="menu6 menu_scrolls" id="m_snsbbs"><span>CHÚC MỪNG</span></li>
+                <li class="menu6 menu_scrolls" id="m_map"><span>ĐỊA ĐIỂM</span></li>
             </ul>
         </div>
     </div>
@@ -125,7 +125,7 @@
                 </div>
                 <h1>
                     <p class="birthday">Thân mời bạn !</p>
-                    <p class="name">{{ data['title'] }} {{ data['name'] }}</p>
+                    <p class="name">Tới dự {{ data['title'] }} của {{ data['name'] }}</p>
                 </h1>
                 <ul class="header_date" style="color:#000000;">
                     <li>{{ date | long_date }}</li>
@@ -163,7 +163,7 @@
         </div>
         <!-- profile-wrap -->
         <div class="profile_wrap">
-            <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/intro_title.png" alt="우리 아기를 소개합니다"></h2>
+            <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/intro_title.png" alt="Chuc mung sinh nhat"></h2>
             <!-- profile box -->
             <div class="profile_box profile_boy">
                 <div class="profile_content">
@@ -564,6 +564,10 @@
                                 <span>{{ data['bus_info'] }}</span>
                             </td>
                         </tr>
+                        <tr>
+                            <th class="lo_info"><span class="icon">Ghi chú</span></th>
+                            <td><span>{{ data['note'] }}</span></td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -933,58 +937,12 @@
             });
 
             gallery.listen('close', function () {
-                /* 슬라이드
-                 var slide_show = document.getElementById("slide-show");
-
-                 if(slide_show.checked) {
-                 var event = document.createEvent('Event');
-
-                 event.initEvent('change', true, true);
-
-                 slide_show.checked = false;
-                 slide_show.dispatchEvent(event);
-                 }
-                 */
-
-                // pswp 플러그인에서 스크롤 이벤트를 unbind 시키는 문제로 scroll 이벤트가 재바인드
                 this.framework.bind(window, 'scroll', function () {
                     if (typeof headerAnimate == "function") {
                         headerAnimate();
                     }
                 });
-
-
             });
-
-
-            /* 슬라이드
-             $("#slide-show").on("change", function(e) {
-             var next;
-             var index;
-             var last = gallery.items.length - 1;
-
-             if($(this).is(":checked")) {
-             gallery.show = setInterval(function() {
-             index = gallery.getCurrentIndex();
-
-             if(index == 0) {
-             next = true;
-             } else if(index == last) {
-             next = false;
-             }
-
-             if(next) {
-             gallery.next();
-             } else {
-             gallery.prev();
-             }
-             }, 3000);
-             } else {
-             clearInterval(gallery.show);
-             delete gallery.show;
-             }
-             });
-             */
         }
 
         var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
@@ -1197,16 +1155,16 @@
         $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
 
         {% if isTemplate == false %}
-        $('.movie_wrap').onScrollTo(function() {
-            $('#signup').addClass('show');
-        }, function() {
-            $('#signup').removeClass('show');
-        });
+            $('.movie_wrap').onScrollTo(function() {
+                $('#signup').addClass('show');
+            }, function() {
+                $('#signup').removeClass('show');
+            });
 
-        $('#signup').on('click', '.close', function(e) {
-            e.preventDefault();
-            $('#signup').removeClass('show');
-        });
+            $('#signup').on('click', '.close', function(e) {
+                e.preventDefault();
+                $('#signup').removeClass('show');
+            });
         {% endif %}
     });
 

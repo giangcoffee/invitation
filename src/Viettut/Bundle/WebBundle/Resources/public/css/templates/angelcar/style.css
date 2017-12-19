@@ -24,7 +24,7 @@
 .color {color:#444444;}
 
 /* Layout */
-html,body {font-family:'NanumGothic','Nanum Gothic'}
+html,body {font-family:'Lora', sans-serif}
 body {font-size: 100%;}
 #skin_page {z-index:10; background-color:#c9effd;}
 
@@ -68,6 +68,7 @@ font-size: 0; letter-spacing: 0; word-spacing: 0; line-height:1}
 .lnb li.menu3 {width:18%}
 .lnb li.menu4 {width:14%}
 .lnb li.menu5 {width:25%}
+.lnb li.menu6 {width:16%}
 /*.lnb li.on span{padding:0 0 2px 0; border-bottom:2px solid #f17643}*/
 
 .header_box {position:relative;background:url(/bundles/viettutweb/img/templates/angelcar/header_pattern.png) repeat-x 0 0,url(/bundles/viettutweb/img/templates/angelcar/header_pattern.png) repeat-x 0 100%,#6dcff6}
@@ -350,7 +351,7 @@ color:#a1e2fc; font-size:0.85em; line-height:1.1; text-align:center}
 .gb_msg p{display:inline-block; padding:6px 15px 4px; font-size:.8em; font-weight:bold; color:#fff; margin:0 0 50px; background-color:rgba(0,0,0,0.2); border-radius:6px; }
 
 #div_snsbbs:after {clear:both; content:''; display:block;}
-.gb_cont_box {border:2px solid #fff; width:100%; padding:1em 0.8em; font-family:'NanumGothic'; font-size: 0.8em; color:#444; box-sizing:border-box;background-color: #fff;   box-shadow: 0 2px 6px rgba(0,0,0,0.3);border-radius:5px;}
+.gb_cont_box {border:2px solid #fff; width:100%; padding:1em 0.8em; font-family:'Lora', sans-serif; font-size: 0.8em; color:#444; box-sizing:border-box;background-color: #fff;   box-shadow: 0 2px 6px rgba(0,0,0,0.3);border-radius:5px;}
 .snsbbs_sections:first-child .gb_cont_box {/*border:2px solid #a1e2fc;*/ background-color:#ffffff;border-radius:3px;}
 .pro_info:after {clear:both; content:''; display:block}
 .pro_info {padding: 0.5em 0 1em 0.5em; border-bottom: 1px solid rgba(204,204,204,0.5);}
@@ -406,19 +407,19 @@ width:15px; height:8px; background:url(/bundles/viettutweb/img/templates/angelca
 .nav-wrap ul {overflow:hidden; margin-top:10px}
 .nav-wrap ul li {float:left; margin-right:30px}
 .nav-m {margin-top:5px}
-.nav-m .nav-1 {float:left; width:50%}
+.nav-m .nav-1 {float:left; width:100%}
 .nav-m .nav-2 {float:left; width:50%}
 .ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 5px center no-repeat; background-size:50px}
 .ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 5px center no-repeat; background-size:50px}
-.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-btn {font-family:'Lora', sans-serif; font-weight:400!important}
 .ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0 12px 20px}
 .ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fcfcfc!important;padding: 12px 0 12px 20px}
 
 .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none}
 .ui-page-theme-a .ui-btn {}
-.nav_info {font-size:0.8em; font-family:'NanumGothic'; color:#333; text-align:center}
+.nav_info {font-size:0.8em; font-family:'Lora', sans-serif; color:#333; text-align:center}
 
-.lo_container {position:relative; margin:0; border-collapse: collapse; font-family:'NanumGothic'}
+.lo_container {position:relative; margin:0; border-collapse: collapse; font-family:'Lora', sans-serif}
 .lo_container1 {width: 100%; margin:0 0 30px 0; padding: 0 0 0px 0; background-color:#fff;  border: 1px solid #42b4e4;}
 .lo_container2:after {position:absolute; top: -150px; right: -10px; width: 150px; height: 150px; background: url(/bundles/viettutweb/img/templates/angelcar/location_bunny.png) no-repeat 0 0; background-size: 100%; content:''; z-index: 40}
 .lo_container2 {width:100%; background-color: #42b4e4;}
@@ -516,8 +517,8 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 /* 980 이상 */
 @media all and (min-width: 980px) {
   .header_title .small {font-size:1.6em; margin:0 0 2px 0}
-  .header_title .name {margin:0;font-size: 1.8em;}
-  .header_title .birthday {font-size: 1.8em;}
+  .header_title .name {margin:0;font-size: 1.1em;}
+  .header_title .birthday {font-size: 1.6em;}
   .profile_boy { border-radius:10px; border:10px solid #42b4e4;}
 .profile_girl { border-radius:10px; border:10px solid #f371ac;}  
 
@@ -526,7 +527,7 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 @media all and (max-width: 980px) {
   .snsbbs_sections {float:left; width:33%!important;}
   .profile_boy { border-radius:10px; border:10px solid #42b4e4;}
-.profile_girl { border-radius:10px; border:10px solid #f371ac;}  
+  .profile_girl { border-radius:10px; border:10px solid #f371ac;}
 }
 
 /* 800 이하 */
@@ -537,13 +538,14 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
   .col-2 .ui-block-a,
   .col-2 .ui-block-b {float:left; width:100%;}
   .profile_boy { border-radius:10px; border:10px solid #42b4e4;}
-.profile_girl { border-radius:10px; border:10px solid #f371ac;}  
+  .profile_girl { border-radius:10px; border:10px solid #f371ac;}
 }
 
 /* 768 이하 */
 @media all and (max-width: 768px) {  
   .lnb li:after {content:''}
-
+  .header_title .name {margin:0;font-size: 0.9em;}
+  .header_title .birthday {font-size: 1.2em;}
   .gal_list > div > a > div {height:280px;}
   .gal_list .col-3 {overflow:visible!important}
   .gal_list .col-3:after {display:block; content:''; clear:both}
@@ -562,10 +564,9 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
   .header_date {position:relative;color:#777;margin-bottom:100px;}
 
   .profile_boy { border-radius:10px; border:10px solid #42b4e4;}
-.profile_girl { border-radius:10px; border:10px solid #f371ac;}  
+  .profile_girl { border-radius:10px; border:10px solid #f371ac;}
 
-.header_date {position:relative;color:#777;margin-bottom:85px;}
-
+  .header_date {position:relative;color:#777;margin-bottom:85px;}
 }
 
 
@@ -594,9 +595,6 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
   .header_box .one {display:none;}
   .header_title h1 {background : rgba(255, 255, 255, 0.8);border-radius:20px;padding: 5px 10px;margin-bottom: 10px;display: block;}
    .header_title happy {}
-
-  .header_title .name,
-  .header_title .birthday {font-size: 1.3em}
   .header_date {background : rgba(255, 255, 255, 0.8);border-radius: 20px;padding: 5px 10px;margin: 0;}
   .header_date li {display:block;font-size:1em}
 
@@ -606,7 +604,7 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 .header_title h1 {position: relative;margin: 0 0 10px;}
 .header_title p {display:block;line-height: 1.4;}
 .header_title .small {font-size:1.2em; margin:0 0 2px 0}
-.header_title .name {font-size:1.6em;margin:0;line-height: 1.4;}
+/*.header_title .name {font-size:1.6em;margin:0;line-height: 1.4;}*/
 .header_title .name span {display:inline-block;}
 .header_title .name span.twins {display:block;}
 .header_title .birthday {font-size:1.3em}
@@ -695,9 +693,8 @@ col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
 
   .header_box {height:500px;}
 
-  .header_title .name,
-  .header_title .birthday {font-size:1.6em} 
-
+  .header_title .name {font-size: 0.7em;}
+  .header_title .birthday {font-size: 1em;}
 
 .profile_wrap .profile_box {display:block;position:relative;width: 300px;}
 .profile_wrap .profile_box:before,
@@ -719,7 +716,7 @@ h2.title img {display:inline-block}
 
 .ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 0px center no-repeat; background-size:40px}
 .ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 0px center no-repeat; background-size:40px}
-.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-btn {font-family:'Lora', sans-serif; font-weight:400!important}
 .ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0px 12px 20px;font-size:0.8em;}
 .ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fcfcfc!important;padding:12px 0px 12px 20px;font-size:0.8em;}
 
@@ -751,8 +748,8 @@ h2.title img {display:inline-block}
 	.guestbook_wrap {background:#cdf4ff url(/bundles/viettutweb/img/templates/angelcar/guestbook_bg320.jpg) repeat-y 50% 0; background-size:auto;}
 	.lnb_mobile {width:40px; height:40px;}
 	.header_title .small {font-size: 1.2em;}
-	.header_title .name,
-	.header_title .birthday {font-size: 1.3em;}
+  .header_title .name {font-size: 0.5em;}
+  .header_title .birthday {font-size: 0.9em;}
 	.gallery_wrap h2.title img {width:90%}
 	.movie_ballon {width:100%;}
 	/*.greeting_name li span:first-child {display:block;}*/
@@ -819,7 +816,7 @@ h2.title img {display:inline-block}
 .profile_boy { border-radius:10px; border:10px solid #42b4e4;}
 .profile_girl { border-radius:10px; border:10px solid #f371ac;}  
 .profile_bg {background-color:#cdf4ff;text-align:center;padding: 20px 0 100px 0 ;}
-
+.nav-m form input {margin-bottom: 0 !important;font-size:16px !important;}
 /* .profile_wrap .profile_box:after {position:absolute;content:'';top:30px;width:60px;height: 78px}
 .profile_wrap .profile_box:before {left:-75px;background-position:0 0}
 .profile_wrap .profile_box:after {right:-75px;background-position:-60px 0} */

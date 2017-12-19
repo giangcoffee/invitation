@@ -24,9 +24,9 @@
     <div class="container">
 
         <ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter">
-            <li data-option-value="*" class="active"><a href="#">Tất cả</a></li>
-            <li data-option-value=".new"><a href="#">Sản phẩm mới</a></li>
-            <li data-option-value=".popular"><a href="#">Phổ biến</a></li>
+            <li data-option-value=".wedding" class="active"><a href="#">Thiệp cưới</a></li>
+            <li data-option-value=".exhibition"><a href="#">Thiệp mời sự kiện</a></li>
+            <li data-option-value=".birthday"><a href="#">Thiệp sinh nhật</a></li>
             <li data-option-value=".coming-soon"><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> Coming Soon</a></li>
         </ul>
 
@@ -36,7 +36,7 @@
 
             <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
                 {% for temp in templates %}
-                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular">
+                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item {% if temp.type == 1 %}wedding{% elseif temp.type == 2 %}exhibition{% elseif temp.type == 3 %}birthday{% endif %}">
                         <div class="portfolio-item img-thumbnail">
                             <a href="{{ path('template_page', {hash: temp.hash}) }}" class="thumb-info">
                                 <img alt="" class="img-responsive" src="{{ temp.thumbnail }}"/>
@@ -58,23 +58,23 @@
                         </div>
                     </li>
                 {% endfor %}
-                <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
-                    <div class="portfolio-item img-thumbnail">
-                        <a href="{{ path('coming_soon_page') }}" class="thumb-info">
-                            <img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/angel_car.png') }}">
-                            <span class="thumb-info-action">
-                                <span title="Angel Car" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                            </span>
-                        </a>
-                        <div class="row col-md-12 temp-margin">
-                            <span class="text-primary">Angel Car</span>
-                        </div>
-                        <div class="row col-md-12 temp-margin">
-                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
-                        </div>
-                    </div>
-                </li>
+                {#<li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">#}
+                    {#<div class="portfolio-item img-thumbnail">#}
+                        {#<a href="{{ path('coming_soon_page') }}" class="thumb-info">#}
+                            {#<img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/angel_car.png') }}">#}
+                            {#<span class="thumb-info-action">#}
+                                {#<span title="Angel Car" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>#}
+                            {#</span>#}
+                        {#</a>#}
+                        {#<div class="row col-md-12 temp-margin">#}
+                            {#<span class="text-primary">Angel Car</span>#}
+                        {#</div>#}
+                        {#<div class="row col-md-12 temp-margin">#}
+                            {#<button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>#}
+                            {#<button class="btn btn-primary pull-right disabled">Tạo thiệp</button>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</li>#}
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
                     <div class="portfolio-item img-thumbnail">
                         <a href="{{ path('coming_soon_page') }}" class="thumb-info">
@@ -517,23 +517,23 @@
                         </div>
                     </div>
                 </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
-                    <div class="portfolio-item img-thumbnail">
-                        <a href="{{ path('coming_soon_page') }}" class="thumb-info">
-                            <img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/welcome.png') }}">
-                            <span class="thumb-info-action">
-                                <span title="Welcome" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                            </span>
-                        </a>
-                        <div class="row col-md-12 temp-margin">
-                            <span class="text-primary">Welcome</span>
-                        </div>
-                        <div class="row col-md-12 temp-margin">
-                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
-                        </div>
-                    </div>
-                </li>
+                {#<li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">#}
+                    {#<div class="portfolio-item img-thumbnail">#}
+                        {#<a href="{{ path('coming_soon_page') }}" class="thumb-info">#}
+                            {#<img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/welcome.png') }}">#}
+                            {#<span class="thumb-info-action">#}
+                                {#<span title="Welcome" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>#}
+                            {#</span>#}
+                        {#</a>#}
+                        {#<div class="row col-md-12 temp-margin">#}
+                            {#<span class="text-primary">Welcome</span>#}
+                        {#</div>#}
+                        {#<div class="row col-md-12 temp-margin">#}
+                            {#<button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>#}
+                            {#<button class="btn btn-primary pull-right disabled">Tạo thiệp</button>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</li>#}
             </ul>
         </div>
 

@@ -18,6 +18,7 @@ Array.prototype.remByVal = function(val) {
 };
 
 var requireColumns = ['groom_name', 'bride_name', 'groom_phone', 'bride_phone', 'place', 'place_addr', 'greeting'];
+var textColumns = ['greeting', 'content', 'schedule_content'];
 function submit() {
 
     $('div.has-error').removeClass('has-error');
@@ -34,7 +35,11 @@ function submit() {
             return;
         }
 
-        columns[column] = $('#' + column).val();
+        if (textColumns.indexOf(column) >= 0) {
+            columns[column] = CKEDITOR.instances[column].getData();
+        } else {
+            columns[column] = $('#' + column).val();
+        }
     }
 
     $('button#updateButton').html('<i class="fa fa-spinner fa-spin"></i> Cập Nhật');
@@ -227,12 +232,7 @@ function downloadAlbum() {
 }
 
 $(document).ready(function(){
-    jQuery('#wedding_date').datetimepicker(
-        {
-            format: 'Y-m-d H:i',
-            lang:   'vi'
-        }
-    );
+    jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang:   'vi'});
 
     $("#fileuploader").uploadFile({
         url:"/api/v1/cards/uploads",

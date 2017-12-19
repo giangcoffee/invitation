@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="textareaAutosize">{{ name }}</label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">{% if data[column] is defined %}{{ data[column] }}{% endif %}</textarea>
+                                        <textarea class="form-control ckeditor" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">{% if data[column] is defined %}{{ data[column] }}{% endif %}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -240,5 +240,6 @@
 {% block javascript %}
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.uploadfile.min.js') }}"></script>
+    <script src="//cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
     <script src="{{ asset('bundles/viettutweb/js/builder.js') }}"></script>
 {% endblock %}
