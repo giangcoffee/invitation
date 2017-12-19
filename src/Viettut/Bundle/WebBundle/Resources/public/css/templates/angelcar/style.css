@@ -89,7 +89,7 @@ background:url(/bundles/viettutweb/img/templates/angelcar/left-dot.png) no-repea
 .header_title h1 {position: relative;margin: 0 0 30px;}
 .header_title p {display:block;line-height: 1.4;}
 .header_title .small {font-size:1.2em; margin:0 0 2px 0}
-.header_title .name {font-size:1.6em;margin:0;line-height: 1.4;}
+.header_title .name {font-size:1.6em;margin:0;line-height: 1.4;word-break: break-word;}
 .header_title .name span {display:inline-block;}
 .header_title .name span.twins {display:block;}
 .header_title .birthday {font-size:1.6em}
@@ -97,7 +97,7 @@ background:url(/bundles/viettutweb/img/templates/angelcar/left-dot.png) no-repea
 /* .header_date {position:relative;color:#777;margin-bottom:110px;} */
 
 .header_date li {position:relative;display: inline-block;font-size: 1.25em;line-height: 1.5;box-sizing:  border-box;}
-.header_date li.place {display:block}
+.header_date li.place {display:block;word-break:break-word;}
 .align_left .header_date li:first-child {padding:0 5px 0 0}
 .align_right .header_date li:last-child {padding:0 0 0 5px}
 
@@ -429,7 +429,7 @@ width:15px; height:8px; background:url(/bundles/viettutweb/img/templates/angelca
 .lo_container1 tr td span {display:block; min-height: 20px; padding: 16px 0; border-bottom: 1px solid #42b4e4;}
 .lo_container1 tr:last-child td span {border-bottom:0}
 
-.lo_container2 tr td span {display:block; min-height: 20px; padding: 16px 0; border-bottom:1px solid #fff}
+.lo_container2 tr td span {display:block; min-height: 20px; padding: 16px 0; border-bottom:1px solid #fff;word-break:break-word;}
 .lo_container2 tr:last-child td span {border-bottom:0}
 .lo_container2 td {color:#fff}
 
