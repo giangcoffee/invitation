@@ -234,6 +234,11 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         return new JsonResponse($images);
     }
 
+    public function deleteAction($id)
+    {
+        return $this->delete($id);
+    }
+
     /**
      * @return string
      */

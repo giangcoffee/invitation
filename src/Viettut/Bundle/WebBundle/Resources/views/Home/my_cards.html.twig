@@ -82,9 +82,9 @@
     <div class="container">
         <h2>Danh sách thiệp</h2>
         <div class="row">
-            <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
+            <ul class="portfolio-list sort-destination">
                 {% for card in cards %}
-                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular">
+                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular" id="card_{{ card.id }}">
                         <div class="portfolio-item img-thumbnail">
                             <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank" class="thumb-info">
                                 <img alt="thumbnail image" class="img-responsive" src="{{ card.template.thumbnail }}"/>
@@ -92,17 +92,18 @@
                                     <span title="{{ card.name }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                                 </span>
                             </a>
-                            <div class="row col-md-12 temp-margin">
+                            <div class="col-md-12 temp-margin">
                                 <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank"><span class="text-primary">{{ card.name }} - {{ card.weddingDate | date('d-m-Y') }}</span></a>
                             </div>
-                            <div class="row col-md-12 temp-margin">
-                                <a href="{{ path('edit_card_page', {hash: card.hash}) }}" class="btn btn-primary pull-left btn_page_preview">Chỉnh sửa</a>
+                            <div class="col-md-12 temp-margin">
+                                <a href="{{ path('edit_card_page', {hash: card.hash}) }}" class="btn btn-primary pull-left">Sửa</a>
+                                <button class="btn btn-danger pull-left btn-remove" data-id="{{ card.id }}">Xóa</button>
                                 {% if card.template.type == 1 %}
-                                    <button class="btn btn-primary pull-right" onclick="copyCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['groom_name'] }}', '{{ card.data['bride_name'] }}', {% if card.forGroom %}false{% else %}true{% endif %})" id="copy_button">Copy Thiệp</button>
+                                    <button class="btn btn-primary pull-right" onclick="copyCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['groom_name'] }}', '{{ card.data['bride_name'] }}', {% if card.forGroom %}false{% else %}true{% endif %})" id="copy_button">Copy</button>
                                 {% elseif card.template.type == 2 %}
-                                    <button class="btn btn-primary pull-right" onclick="copyExhibitionCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['event'] }}')" id="copy_button">Copy Thiệp</button>
+                                    <button class="btn btn-primary pull-right" onclick="copyExhibitionCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['event'] }}')" id="copy_button">Copy</button>
                                 {% elseif card.template.type == 3 %}
-                                    <button class="btn btn-primary pull-right" onclick="copyBirthdayCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['title'] }}', '{{ card.data['name'] }}')" id="copy_button">Copy Thiệp</button>
+                                    <button class="btn btn-primary pull-right" onclick="copyBirthdayCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['title'] }}', '{{ card.data['name'] }}')" id="copy_button">Copy</button>
                                 {% endif %}
                             </div>
                         </div>
@@ -134,10 +135,10 @@
                                     <span title="{{ temp.name }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                                 </span>
                                 </a>
-                                <div class="row col-md-12 temp-margin">
+                                <div class="col-md-12 temp-margin">
                                     <span class="text-primary">{{ temp.name }}</span>
                                 </div>
-                                <div class="row col-md-12 temp-margin">
+                                <div class="col-md-12 temp-margin">
                                     <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>
                                     <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}', {{ temp.type }})">Tạo thiệp</button>
                                 </div>
@@ -447,6 +448,41 @@
             jQuery('#party_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
             jQuery('#event_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
             jQuery('#birthday_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            $('.btn-remove').click(function(){
+                var result = confirm("Bạn có chắc chắn muốn xóa thiệp này ?");
+                if (result == true) {
+                    var id = $(this).data('id');
+                    $(this).html('<i class="fa fa-spinner fa-spin"></i> Xóa');
+                    $.ajax({
+                        headers : {
+                            'Content-Type' : 'application/json; charset=utf-8'
+                        },
+                        url : '/api/v1/cards/' + id,
+                        type : 'DELETE',
+                        success : function(response, textStatus, jqXhr) {
+                            $('li#card_' + id).remove();
+                            $(this).html('Xóa');
+                            var html = '<div class="alert alert-success alert-dismissable">' +
+                                    '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    'Thiệp đã được xóa thành công !'
+                                    + '</div>';
+                            $('ul.portfolio-list').before(html);
+                            $('body').scrollTop(0);
+                        },
+                        error : function(jqXHR, textStatus, errorThrown) {
+                            $(this).html('Xóa');
+                            var html = '<div class="alert alert-success alert-dismissable">' +
+                                    '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    'Không thể xóa được thiệp, vui lòng thử lại sau !'
+                                    + '</div>';
+                            $('ul.portfolio-list').before(html);
+                            $('body').scrollTop(0);
+                        },
+                        complete : function() {
+                        }
+                    });
+                }
+            });
         });
 
         $(function () {
@@ -711,6 +747,7 @@
         });
     </script>
 <script type="text/javascript">
+
     function copyCard(libCard, template, date, groom, bride, forGroom) {
         var data = {};
         data['template'] = template;
