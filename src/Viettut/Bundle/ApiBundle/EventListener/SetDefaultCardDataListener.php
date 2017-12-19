@@ -12,7 +12,9 @@ use Viettut\Utilities\StringFactory;
 class SetDefaultCardDataListener
 {
     const TEMPLATE = '<iframe id="movie" width="100%" src="https://www.youtube.com/embed/$$VIDEO_ID$$?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" allowfullscreen></iframe>';
-    const DEFAULT_VIDEO_ID = 'Q9aUb6FJdhk';
+    const DEFAULT_WEDDING_VIDEO_ID = 'Q9aUb6FJdhk';
+    const DEFAULT_BIRTHDAY_VIDEO_ID = 'aSjy4h9GHS0';
+    const DEFAULT_EXHIBITION_VIDEO_ID = 'JIRrGBnwBek';
     use StringFactory;
 
     /**
@@ -92,7 +94,17 @@ class SetDefaultCardDataListener
                 throw new InvalidArgumentException(sprintf('%s is not a valid Youtube link', $video));
             }
         } else if (empty($video) && empty($entity->getEmbedded())) {
-            $entity->setEmbedded(str_replace('$$VIDEO_ID$$', self::DEFAULT_VIDEO_ID, self::TEMPLATE));
+            switch ($entity->getTemplate()->getType()) {
+                case 1:
+                    $entity->setEmbedded(str_replace('$$VIDEO_ID$$', self::DEFAULT_WEDDING_VIDEO_ID, self::TEMPLATE));
+                    break;
+                case 2:
+                    $entity->setEmbedded(str_replace('$$VIDEO_ID$$', self::DEFAULT_EXHIBITION_VIDEO_ID, self::TEMPLATE));
+                    break;
+                case 3:
+                    $entity->setEmbedded(str_replace('$$VIDEO_ID$$', self::DEFAULT_BIRTHDAY_VIDEO_ID, self::TEMPLATE));
+                    break;
+            }
         }
 
         $entity

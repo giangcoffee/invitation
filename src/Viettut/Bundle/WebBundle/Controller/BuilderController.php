@@ -91,8 +91,6 @@ class BuilderController extends Controller
         }
 
         $referrer = $this->generateUrl('card_page', array('hash' => $hash));
-        $groom = $card->getData()['groom_name'];
-        $bride = $card->getData()['bride_name'];
         $date = $card->getWeddingDate();
 
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
@@ -129,9 +127,8 @@ class BuilderController extends Controller
         $comments = $this->get('viettut.repository.comment')->getByCard($card);
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
             'referrer' => $referrer,
-            'groom' => $groom,
-            'bride' => $bride,
             'date' => $date,
+            'name' => $card->getName(),
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
