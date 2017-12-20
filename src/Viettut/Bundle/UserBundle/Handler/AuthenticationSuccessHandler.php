@@ -103,10 +103,9 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 
         // if form login
         } else {
-            if ( $this->session->get('_security.main.target_path' ) ) {
-                $url = $this->session->get( '_security.main.target_path' );
-            } else {
-                $url = $this->router->generate( 'home_page' );
+            $url = $request->request->get('_target_url', null);
+            if ($url == null)  {
+                $url = '/my-cards';
             }
 
             $response = new RedirectResponse($url);

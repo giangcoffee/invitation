@@ -10,6 +10,10 @@ use Viettut\Model\User\UserEntityInterface;
 
 interface CardInterface extends ModelInterface
 {
+    const STATUS_GOING = 1;
+    const STATUS_NOT_GOING = 3;
+    const STATUS_NOT_SURE = 2;
+
     /**
      * @param $id
      * @return $this
@@ -95,12 +99,6 @@ interface CardInterface extends ModelInterface
     public function setGallery($gallery);
 
     /**
-     * @param $path
-     * @return $this
-     */
-    public function addImage($path);
-
-    /**
      * @return DateTime
      */
     public function getWeddingDate();
@@ -168,17 +166,6 @@ interface CardInterface extends ModelInterface
     /**
      * @return string
      */
-    public function getCommentObjectId(): string;
-
-    /**
-     * @param string $commentObjectId
-     * @return self
-     */
-    public function setCommentObjectId($commentObjectId);
-
-    /**
-     * @return string
-     */
     public function getVideo(): string;
 
     /**
@@ -208,4 +195,61 @@ interface CardInterface extends ModelInterface
      * @return self
      */
     public function setVideoId($videoId);
+
+    /**
+     * @return LibraryCardInterface|null
+     */
+    public function getLibraryCard();
+
+    /**
+     * @param LibraryCardInterface $libraryCard
+     * @return self
+     */
+    public function setLibraryCard($libraryCard);
+
+    /**
+     * @return mixed
+     */
+    public function getEmbedded();
+
+    /**
+     * @param mixed $embedded
+     * @return self
+     */
+    public function setEmbedded($embedded);
+
+    /**
+     * @return int
+     */
+    public function getViews(): int;
+
+    /**
+     * @param int $views
+     * @return self
+     */
+    public function setViews($views);
+
+    /**
+     * @return DateTime
+     */
+    public function getPartyDate();
+
+    /**
+     * @param DateTime $partyDate
+     * @return self
+     */
+    public function setPartyDate($partyDate);
+
+    /**
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * @param string $name
+     * @return self
+     */
+    public function setName($name);
+
+    public function getWeddingDateString();
 }

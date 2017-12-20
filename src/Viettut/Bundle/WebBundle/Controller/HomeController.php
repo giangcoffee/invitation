@@ -84,7 +84,8 @@ class HomeController extends Controller
         }
 
         $cards = $this->get('viettut.repository.card')->getCardByUser($user);
-        return $this->render('ViettutWebBundle:Home:my_cards.html.twig', array('cards' => $cards));
+        $templates = $this->get('viettut.repository.template')->findAll();
+        return $this->render('ViettutWebBundle:Home:my_cards.html.twig', array('cards' => $cards, 'templates' => $templates));
     }
 
     /**
@@ -159,7 +160,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/posts", name="posts_page")
+     * @Route("/blogs", name="posts_page")
      * @param $request
      * @return Response
      */
@@ -179,7 +180,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/posts/{hash}", name="single_post_page")
+     * @Route("/blogs/{hash}", name="single_post_page")
      *
      * @param Request $request
      * @param $hash

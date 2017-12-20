@@ -6,104 +6,221 @@ var concat = require('gulp-concat');
 var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var streamqueue  = require('streamqueue');
-
+var rename = require('gulp-rename');
+var htmlmin = require('gulp-htmlmin');
 var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'copyfont', 'copyimage'], function(){
+gulp.task('default', ['styles', 'scripts', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
     console.log('i am GULP');
 });
 
 gulp.task('scripts', function(){
-    return gulp.src([
-        'web/bundles/viettutweb/bower_components/jquery/dist/jquery.min.js',
-        'web/bundles/viettutweb/bower_components/angular/angular.min.js',
-        'web/bundles/viettutweb/bower_components/ng-tags-input/ng-tags-input.min.js',
-        'web/bundles/viettutweb/bower_components/angular-bootstrap/ui-bootstrap.min.js',
-        'web/bundles/viettutweb/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-        'web/bundles/viettutweb/bower_components/angular-animate/angular-animate.min.js',
-        'web/bundles/viettutweb/bower_components/marked/lib/marked.js',
-        'web/bundles/viettutweb/bower_components/angular-marked/dist/angular-marked.min.js',
-        'web/bundles/viettutweb/bower_components/bootstrap-markdown/js/bootstrap-markdown.js',
-        'web/bundles/viettutweb/bower_components/angular-highlightjs/src/angular-highlightjs.js',
-        'web/bundles/viettutweb/bower_components/angular-markdown-editor-ghiscoding/src/angular-markdown-editor.js',
-        'web/bundles/viettutweb/bower_components/angular-sanitize/angular-sanitize.min.js',
-        'web/bundles/viettutweb/bower_components/ng-file-upload/ng-file-upload.min.js',
-        'web/bundles/viettutweb/bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js',
-        'web/bundles/viettutweb/bower_components/bootstrap/dist/js/bootstrap.min.js',
-        'web/bundles/viettutweb/bower_components/highlightjs/highlight.pack.min.js',
-        'web/bundles/viettutweb/bower_components/ladda/dist/spin.min.js',
-        'web/bundles/viettutweb/bower_components/ladda/dist/ladda.min.js',
-        'web/bundles/viettutweb/bower_components/ladda-angular/dist/ladda-angular.min.js',
-        'web/bundles/viettutweb/bower_components/codemirror/lib/codemirror.js',
-        'web/bundles/viettutweb/bower_components/isteven-angular-multiselect/isteven-multi-select.js',
-        'web/bundles/viettutweb/bower_components/angular-ui-codemirror/ui-codemirror.js',
+    gulp.src([
+        'web/bundles/viettutweb/js/lib/jquery-1.11.1.min.js',
+        'web/bundles/viettutweb/js/lib/bootstrap.min.js',
+        'web/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js',
+        'web/bundles/viettutweb/js/templates/common/jquery.mobile.init.js',
+        'web/bundles/viettutweb/js/lib/masonry.pkgd.min.js',
+        'web/bundles/viettutweb/js/lib/jquery.scrollTo.min.js',
+        'web/bundles/viettutweb/js/templates/common/photoswipe.js',
+        'web/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js',
+        'web/bundles/viettutweb/js/templates/common/popup.js',
+    ])
+    .pipe(concat('libraries.temp'))
+    .pipe(gulp.dest(config.SCRIPT_DEST))
+    .pipe(rename('libraries.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.SCRIPT_DEST));
+});
 
-        'web/bundles/viettutweb/js/app.js',
-        'web/bundles/viettutweb/js/sticky_sidebar.js',
-        'web/bundles/viettutweb/js/controller/login.js',
-        'web/bundles/viettutweb/js/controller/footer.js',
-        'web/bundles/viettutweb/js/controller/register.js',
-        'web/bundles/viettutweb/js/controller/navbar.js',
-        'web/bundles/viettutweb/js/services/authen.js',
-        'web/bundles/viettutweb/js/services/chapter.js',
-        'web/bundles/viettutweb/js/services/course.js',
-        'web/bundles/viettutweb/js/services/tag.js',
-        'web/bundles/viettutweb/js/services/tutorial.js',
-        'web/bundles/viettutweb/js/services/upload.js',
-        'web/bundles/viettutweb/js/services/comment.js',
-        'web/bundles/viettutweb/js/services/alert.js',
-        'web/bundles/viettutweb/js/services/route.js',
-        'web/bundles/viettutweb/js/services/challenge.js',
-        'web/bundles/viettutweb/js/services/test.js',
-
+gulp.task('base-scripts', function(){
+    gulp.src([
+        'web/bundles/viettutweb/vendor/jquery/jquery.js',
         'web/bundles/viettutweb/vendor/jquery.appear/jquery.appear.js',
         'web/bundles/viettutweb/vendor/jquery.easing/jquery.easing.js',
+        'web/bundles/viettutweb/vendor/jquery-cookie/jquery-cookie.js',
+        'web/bundles/viettutweb/vendor/bootstrap/bootstrap.js',
         'web/bundles/viettutweb/vendor/common/common.js',
+        'web/bundles/viettutweb/vendor/jquery.stellar/jquery.stellar.js',
         'web/bundles/viettutweb/vendor/isotope/jquery.isotope.js',
-
+        'web/bundles/viettutweb/vendor/owlcarousel/owl.carousel.js',
         'web/bundles/viettutweb/js/theme.js',
-        'web/bundles/viettutweb/js/theme.init.js',
-        'web/bundles/viettutweb/js/custom.js'
+        'web/bundles/viettutweb/vendor/rs-plugin/js/jquery.themepunch.tools.min.js',
+        'web/bundles/viettutweb/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js',
+        'web/bundles/bundles/viettutweb/vendor/circle-flip-slideshow/js/jquery.flipshow.js',
+        'web/bundles/viettutweb/js/views/view.home.js',
+        'web/bundles/viettutweb/js/custom.js',
+        'web/bundles/viettutweb/js/theme.init.js'
     ])
-        .pipe(concat(config.SCRIPT_FILE))
-        //.pipe(uglify('app.min.js'))
+    .pipe(concat('base.temp.js'))
+    .pipe(gulp.dest(config.SCRIPT_DEST))
+    .pipe(rename('base.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.SCRIPT_DEST));
+});
+
+gulp.task('base-styles', function(){
+    gulp.src([
+        'web/bundles/viettutweb/vendor/bootstrap/bootstrap.css',
+        'web/bundles/viettutweb/vendor/fontawesome/css/font-awesome.css',
+        'web/bundles/viettutweb/vendor/owlcarousel/owl.carousel.min.css',
+        'web/bundles/viettutweb/vendor/owlcarousel/owl.theme.default.min.css',
+        'web/bundles/viettutweb/vendor/magnific-popup/magnific-popup.css',
+        'web/bundles/viettutweb/css/theme.css',
+        'web/bundles/viettutweb/css/theme-elements.css',
+        'web/bundles/viettutweb/css/theme-blog.css',
+        'web/bundles/viettutweb/css/theme-shop.css',
+        'web/bundles/viettutweb/css/theme-animate.css',
+        'web/bundles/viettutweb/vendor/rs-plugin/css/settings.css',
+        'web/bundles/viettutweb/vendor/circle-flip-slideshow/css/component.css',
+        'web/bundles/viettutweb/css/skins/default.css',
+        'web/bundles/viettutweb/css/custom.css'
+    ])
+        .pipe(concat('base.temp.css'))
         .pipe(gulp.dest(config.SCRIPT_DEST))
+        .pipe(rename('base.min.css'))
+        .pipe(uglify())
+        .pipe(gulp.dest(config.SCRIPT_DEST));
 });
 
 gulp.task('styles', function(){
-   gulp.src([
-       'web/bundles/viettutweb/vendor/bootstrap/bootstrap.css',
-       'web/bundles/viettutweb/bower_components/ladda/dist/ladda.min.css',
-       'web/bundles/viettutweb/bower_components/highlightjs/styles/github.css',
-       'web/bundles/viettutweb/bower_components/angular-bootstrap/ui-bootstrap-csp.css',
-       'web/bundles/viettutweb/bower_components/ng-tags-input/ng-tags-input.min.css',
-       'web/bundles/viettutweb/bower_components/angular-markdown-editor/styles/angular-markdown-editor.css',
-       'web/bundles/viettutweb/vendor/fontawesome/css/font-awesome.css',
-       'web/bundles/viettutweb/vendor/magnific-popup/magnific-popup.css',
-       'web/bundles/viettutweb/css/theme.css',
-       'web/bundles/viettutweb/css/theme-elements.css',
-       'web/bundles/viettutweb/css/theme-blog.css',
-       'web/bundles/viettutweb/css/theme-animate.css',
-       'web/bundles/viettutweb/vendor/rs-plugin/css/settings.css',
-       'web/bundles/viettutweb/css/skins/default.css',
-       'web/bundles/viettutweb/css/custom.css',
-       'web/bundles/viettutweb/css/sidebar.css',
-       'web/bundles/viettutweb/bower_components/codemirror/lib/codemirror.css',
-       'web/bundles/viettutweb/bower_components/isteven-angular-multiselect/isteven-multi-select.css'
-   ]).pipe(concat('main.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/'))
+    gulp.src([
+        'web/bundles/viettutweb/css/lib/jquery.mobile-1.4.3.min.css',
+        'web/bundles/viettutweb/css/templates/common/common.css',
+        'web/bundles/viettutweb/css/templates/common/photoswipe.css',
+        'web/bundles/viettutweb/css/templates/common/photoswipe.skin.css',
+        'web/bundles/viettutweb/css/lib/bootstrap-combined.min.css',
+        'web/bundles/viettutweb/css/lib/font-awesome.min.css'
+    ]).pipe(concat('libraries.min.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/'))
 });
 
-gulp.task('copyfont', function(){
-   return gulp.src([
-       'web/bundles/viettutweb/bower_components/font-awesome/fonts/*',
-       'web/bundles/viettutweb/css/fonts/*'
-   ]).pipe(gulp.dest('web/fonts'))
+gulp.task('gardenwedding', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/gardenwedding/style.css',
+        'web/bundles/viettutweb/css/templates/gardenwedding/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/gardenwedding'))
 });
 
-gulp.task('copyimage', function(){
-   return gulp.src([
-       'web/bundles/viettutweb/img/**/*'
-   ]).pipe(gulp.dest('web/img'))
+gulp.task('luxuryblack-styles', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/luxuryblack/style.css',
+    ]).pipe(minifyCss()).pipe(gulp.dest('web/css/luxuryblack'))
+});
+
+gulp.task('goldstar', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/goldstar/style.css',
+        'web/bundles/viettutweb/css/templates/goldstar/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/goldstar'))
+});
+
+gulp.task('angelcar', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/angelcar/style.css',
+        'web/bundles/viettutweb/css/templates/angelcar/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/angelcar'))
+});
+
+gulp.task('beautifulday', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/beautifulday/style.css',
+        'web/bundles/viettutweb/css/templates/beautifulday/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/beautifulday'))
+});
+
+gulp.task('winterwonderland', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/winterwonderland/style.css',
+        'web/bundles/viettutweb/css/templates/winterwonderland/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/winterwonderland'))
+});
+
+gulp.task('welcome', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/welcome/style.css',
+        'web/bundles/viettutweb/css/templates/welcome/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/welcome'))
+});
+
+gulp.task('guestbook', ['guestbook-scripts', 'guestbook-styles', 'guestbook-libraries'], function () {});
+gulp.task('guestbook-scripts', function () {
+    gulp.src([
+        'web/bundles/viettutweb/js/guest_book.js'
+    ])
+        .pipe(uglify())
+        .pipe(gulp.dest(config.SCRIPT_DEST + '/guestbook'));
+});
+
+gulp.task('guestbook-styles', function () {
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/common/snsbbs.css',
+        'web/bundles/viettutweb/css/templates/common/emoticon.css',
+        'web/bundles/viettutweb/css/lib/jquery.cropbox.custom.css',
+        'web/bundles/viettutweb/css/lib/font-awesome.min.css'
+    ]).pipe(concat('guestbook.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/guestbook'))
+});
+
+gulp.task('guestbook-libraries', function () {
+    gulp.src([
+        'web/bundles/viettutweb/js/lib/jquery-1.11.1.min.js',
+        'web/bundles/viettutweb/js/lib/mustache.js',
+        'web/bundles/viettutweb/js/lib/masonry.pkgd.min.js',
+        'web/bundles/viettutweb/js/lib/imagesloaded.pkgd.min.js',
+        'web/bundles/viettutweb/js/lib/hammer.js',
+        'web/bundles/viettutweb/js/lib/jquery.mousewheel.js',
+        'web/bundles/viettutweb/js/lib/jquery.cropbox.custom.js'
+    ])
+        .pipe(concat('guestbook-libraries.temp'))
+        .pipe(gulp.dest(config.SCRIPT_DEST))
+        .pipe(rename('guestbook-libraries.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(config.SCRIPT_DEST));
+});
+
+gulp.task('gardenwedding-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/gardenwedding/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('gardenwedding.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/gardenwedding/'));
+});
+
+
+gulp.task('html-minify', ['angelcar-html-minify','beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify', 'welcome-html-minify'], function() {
+});
+
+gulp.task('angelcar-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/angelcar/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('angelcar.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/angelcar/'));
+});
+
+gulp.task('beautifulday-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/beautifulday/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('beautifulday.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/beautifulday/'));
+});
+
+gulp.task('goldstar-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/goldstar/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('goldstar.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/goldstar/'));
+});
+
+gulp.task('winterwonderland-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/winterwonderland/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('winterwonderland.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/winterwonderland/'));
+});
+
+gulp.task('welcome-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/welcome/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('welcome.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/welcome/'));
 });

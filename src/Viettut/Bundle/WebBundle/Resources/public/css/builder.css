@@ -28,3 +28,9 @@ ul.gallery li:hover span { display: block; }
 ul.gallery li:hover span:hover { background-color: rgba(0,0,0,1); }
 
 ul.gallery li.selected { border: 2px solid #000; }
+
+.bottom-hint-big {
+    border-top: 1px solid#888;
+    padding-top: 15px;
+    text-align: center;
+}

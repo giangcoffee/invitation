@@ -1,5 +1,5 @@
 /* emoticon small type A */
-.emo-small-a {display:block;width:70px; height:70px; background:url('../../../img/templates/common/emo_spr_01.png') 0 0 no-repeat;background-size:500%;margin:1px}
+.emo-small-a {display:block;width:70px; height:70px; background:url('/bundles/viettutweb/img/templates/common/emo_spr_01.png') 0 0 no-repeat;background-size:500%;margin:1px}
 .emo-small-a.emo01  {background-position:    0px    0px}
 .emo-small-a.emo02  {background-position:  -70px    0px}
 .emo-small-a.emo03  {background-position: -140px    0px}
@@ -22,7 +22,7 @@
 .emo-small-a.emo20 {background-position: -280px  -210px}
 
 /* emoticon normal type A */
-.emo-type-a {display:block;width:120px; height:120px; background:url('../../../img/templates/common/emo_spr_01x2.png') 0 0 no-repeat;background-size:500%}
+.emo-type-a {display:block;width:120px; height:120px; background:url('/bundles/viettutweb/img/templates/common/emo_spr_01x2.png') 0 0 no-repeat;background-size:500%}
 .emo-type-a.emo01  {background-position:    0px     0px}
 .emo-type-a.emo02  {background-position: -120px     0px}
 .emo-type-a.emo03  {background-position: -240px     0px}
@@ -45,7 +45,7 @@
 .emo-type-a.emo20  {background-position: -480px  -360px}
 
 /* emoticon small type B */
-.emo-small-b {display:block;width:70px; height:70px; background:url('../../../img/templates/common/emo_spr_02.png') 0 0 no-repeat;background-size:500%;margin:1px}
+.emo-small-b {display:block;width:70px; height:70px; background:url('/bundles/viettutweb/img/templates/common/emo_spr_02.png') 0 0 no-repeat;background-size:500%;margin:1px}
 .emo-small-b.emo01  {background-position:    0px    0px}
 .emo-small-b.emo02  {background-position:  -70px    0px}
 .emo-small-b.emo03  {background-position: -140px    0px}
@@ -68,7 +68,7 @@
 .emo-small-b.emo20 {background-position: -280px  -210px}
 
 /* emoticon normal type B */
-.emo-type-b {display:block;width:120px; height:120px; background:url('../../../img/templates/common/emo_spr_02x2.png') 0 0 no-repeat;background-size:500%}
+.emo-type-b {display:block;width:120px; height:120px; background:url('/bundles/viettutweb/img/templates/common/emo_spr_02x2.png') 0 0 no-repeat;background-size:500%}
 .emo-type-b.emo01  {background-position:    0px     0px}
 .emo-type-b.emo02  {background-position: -120px     0px}
 .emo-type-b.emo03  {background-position: -240px     0px}
@@ -92,17 +92,17 @@
 
 /* emoticon normal type C */
 .emo-type-c {display:block;width: 200px;height: 136px;margin:1px}
-.emo-type-c.emo01  {background:url('../../../img/templates/common/emo3_01.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo02  {background:url('../../../img/templates/common/emo3_02.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo03  {background:url('../../../img/templates/common/emo3_03.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo04  {background:url('../../../img/templates/common/emo3_04.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo05  {background:url('../../../img/templates/common/emo3_05.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo06  {background:url('../../../img/templates/common/emo3_06.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo07  {background:url('../../../img/templates/common/emo3_07.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo08  {background:url('../../../img/templates/common/emo3_08.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo09  {background:url('../../../img/templates/common/emo3_09.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo10  {background:url('../../../img/templates/common/emo3_10.png') 50% 0 no-repeat;background-size:100%}
-.emo-type-c.emo11  {background:url('../../../img/templates/common/emo3_11.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo01  {background:url('/bundles/viettutweb/img/templates/common/emo3_01.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo02  {background:url('/bundles/viettutweb/img/templates/common/emo3_02.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo03  {background:url('/bundles/viettutweb/img/templates/common/emo3_03.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo04  {background:url('/bundles/viettutweb/img/templates/common/emo3_04.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo05  {background:url('/bundles/viettutweb/img/templates/common/emo3_05.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo06  {background:url('/bundles/viettutweb/img/templates/common/emo3_06.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo07  {background:url('/bundles/viettutweb/img/templates/common/emo3_07.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo08  {background:url('/bundles/viettutweb/img/templates/common/emo3_08.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo09  {background:url('/bundles/viettutweb/img/templates/common/emo3_09.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo10  {background:url('/bundles/viettutweb/img/templates/common/emo3_10.png') 50% 0 no-repeat;background-size:100%}
+.emo-type-c.emo11  {background:url('/bundles/viettutweb/img/templates/common/emo3_11.png') 50% 0 no-repeat;background-size:100%}
 
 .popemo_list .emo-type-c{width:140px;height:95px}
 .popemo_list .emo-type-c{width:118px;height:80px}
@@ -166,7 +166,7 @@
     .emo-small-d.emo20 	{background-position: -180px  -240px} */
 }
 /* @media (max-width:414px) { */
-.emo-small-d {display:block;width:70px; height:70px; background:url('../../../../public/img/templates/common/emo_spr_04.png') 0 0 no-repeat;background-size:400%}
+.emo-small-d {display:block;width:70px; height:70px; background:url('/bundles/viettutweb/../public/img/templates/common/emo_spr_04.png') 0 0 no-repeat;background-size:400%}
 .emo-small-d.emo01  {background-position:    0px     0px}
 .emo-small-d.emo02  {background-position:  -70px     0px}
 .emo-small-d.emo03  {background-position: -140px     0px}
@@ -190,7 +190,7 @@
 /* } */
 
 /* emoticon normal type D */
-.emo-type-d {display:block;width:120px; height:120px; background:url('../../../../public/img/templates/common/emo_spr_04.png') 0 0 no-repeat;background-size:400%}
+.emo-type-d {display:block;width:120px; height:120px; background:url('/bundles/viettutweb/../public/img/templates/common/emo_spr_04.png') 0 0 no-repeat;background-size:400%}
 .emo-type-d.emo01  {background-position:    0px     0px}
 .emo-type-d.emo02  {background-position: -120px     0px}
 .emo-type-d.emo03  {background-position: -240px     0px}

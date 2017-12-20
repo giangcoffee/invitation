@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="vi" data-sbro-popup-lock="true" data-sbro-deals-lock="true" data-sbro-ads-lock="true"
+      class="ui-mobile translated-ltr">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <base href=".">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://thiepdo.com/beautiful-day">
+    <meta property="og:description" content="{{ description }}">
+
+    <meta property="og:title" content="{{ name }}">
+    <meta property="og:image" content="/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="robots" content="noindex">
+
+    <title>{{ name }}</title>
+
+    <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
+    <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
+    <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/beautifulday/app.css') }}"/>
+</head>
+<body class="ui-mobile-viewport ui-overlay-a">
+<h1 class="hide">Beautiful Day - Những ngày đẹp trời</h1>
+<h2 class="hide">Mẫu mới với phong cách nhẹ nhàng trong sáng với tông màu nhẹ, thích hợp với những bộ ảnh giản dị.</h2>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
+     data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
+<div data-role="page" id="skin_page" data-url="skin_page" tabindex="0" class="ui-page ui-page-theme-a ui-page-active">
+    <!-- panel-groom -->
+    <div data-role="panel" id="panel_groom"
+         class="righttpanel ui-panel ui-panel-position-right ui-panel-display-push ui-panel-closed ui-body-b ui-panel-fixed ui-panel-animate"
+         data-position="right" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b">
+        <div class="ui-panel-inner">
+            <div class="groom-wrap">
+                <ul>
+                    <a href="tel:{{ data['groom_phone'] }}" class="ui-link">
+                        <li class="ico5">Gọi điện</li>
+                    </a>
+                    <a href="sms:{{ data['groom_phone'] }}" class="ui-link">
+                        <li class="ico6">Nhắn tin</li>
+                    </a>
+                    {% if data['groom_facebook'] is empty %}
+                        <a href="http://facebook.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico7">Facebook</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['groom_facebook'] }}" target="_blank" class="ui-link">
+                            <li class="ico7">Facebook</li>
+                        </a>
+                    {% endif %}
+                    {% if data['groom_instagram'] is empty %}
+                        <a href="http://instagram.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico_insta">Instagram</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['groom_instagram'] }}" target="_blank" class="ui-link">
+                            <li class="ico_insta">Instagram</li>
+                        </a>
+                    {% endif %}
+
+                </ul>
+                <p class="btn_go_snsbbs">Lưu bút</p>
+            </div>
+        </div>
+    </div>
+    <!--// panel-groom -->
+    <!-- panel-bride -->
+    <div data-role="panel" id="panel_bride"
+         class="leftpanel ui-panel ui-panel-position-left ui-panel-display-push ui-panel-closed ui-body-a ui-panel-fixed ui-panel-animate"
+         data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="a">
+        <div class="ui-panel-inner">
+            <div class="bride-wrap">
+                <ul>
+                    <a href="tel:{{ data['bride_phone'] }}" class="ui-link">
+                        <li class="ico1">Gọi điện</li>
+                    </a>
+                    <a href="sms:{{ data['bride_phone'] }}" class="ui-link">
+                        <li class="ico2">Nhắn tin</li>
+                    </a>
+                    {% if data['bride_facebook'] is empty %}
+                        <a href="http://facebook.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico3">Facebook</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['bride_facebook'] }}" target="_blank" class="ui-link">
+                            <li class="ico3">Facebook</li>
+                        </a>
+                    {% endif %}
+                    {% if data['bride_instagram'] is empty %}
+                        <a href="http://instagram.com/thiepdodigital" target="_blank" class="ui-link">
+                            <li class="ico_insta">Instagram</li>
+                        </a>
+                    {% else %}
+                        <a href="{{ data['bride_instagram'] }}" target="_blank" class="ui-link">
+                            <li class="ico3">Instagram</li>
+                        </a>
+                    {% endif %}
+
+                </ul>
+                <p class="btn_go_snsbbs">Lưu bút</p>
+            </div>
+        </div>
+    </div>
+    <!--// panel-bride -->
+    <!-- panel-menu -->
+    <div data-role="panel" id="right-panel" data-position="right" data-display="push"
+         class="ui-panel ui-panel-position-right ui-panel-display-push ui-panel-closed ui-body-inherit ui-panel-animate">
+        <div class="menu-wrap ui-panel-inner">
+            <ul data-role="listview" data-icon="false" class="ui-listview">
+                <li class="menu_scrolls ui-li-static ui-body-inherit" data-rel="close"><span>TRANG CHỦ</span></li>
+                <li class="menu_scrolls ui-li-static ui-body-inherit" data-rel="close" id="p_basicinfo"><span>LỜI TỰA</span></li>
+                <li class="menu_scrolls ui-li-static ui-body-inherit" data-rel="close" id="p_gallery"><span>ALBUM ẢNH</span></li>
+                <li class="menu_scrolls ui-li-static ui-body-inherit" data-rel="close" id="p_media"><span>VIDEO</span></li>
+                <li class="menu_scrolls ui-li-static ui-body-inherit" data-rel="close" id="p_snsbbs"><span>LƯU BÚT</span></li>
+                <li class="menu_scrolls ui-li-static ui-body-inherit ui-last-child" data-rel="close" id="p_map"><span>ĐỊA ĐIỂM</span></li>
+            </ul>
+        </div>
+    </div>
+    <!--// panel-menu -->
+
+
+    <div class="ui-section-wrap" id="sk_topinfo">
+        <div class="header_bg"></div>
+        <div class="lnb_mobile">
+            <a href="http://dalpeng.com/beautifulday#right-panel" class="ui-link">
+                <span class="bar_line bar_top"></span>
+                <span class="bar_line bar_middle"></span>
+                <span class="bar_line bar_bottom"></span>
+            </a>
+        </div>
+        <div class="lnb">
+            <ul>
+                <li class="menu1 menu_scrolls"><span>Trang chủ</span></li>
+                <li class="menu1 menu_scrolls" id="m_topinfo"><span>Lời tựa</span></li>
+                <li class="menu2 menu_scrolls" id="m_gallery"><span>Album ảnh</span></li>
+                <li class="menu3 menu_scrolls" id="m_media"><span>Video</span></li>
+                <li class="menu4 menu_scrolls" id="m_snsbbs"><span>Lưu bút</span></li>
+                <li class="menu5 menu_scrolls" id="m_map"><span>Địa điểm</span></li>
+            </ul>
+        </div>
+
+
+        <!-- header -->
+        <div class="header ui-section-a">
+
+            <div class="header_txt">
+                <div class="title">
+                    <span class="tit_txt2">Hôn lễ của</span>
+                </div>
+            </div>
+            <div class="header_img"></div>
+
+            <div class="header_panel">
+                <p class="bride">
+                    <a href="http://dalpeng.com/beautifulday#panel_bride" class="ui-link">
+                        <span class="icon"></span>Cô dâu</a>
+                </p>
+                <p class="groom">
+                    <a href="http://dalpeng.com/beautifulday#panel_groom" class="ui-link">
+                        <span class="icon"></span>Chú rể</a>
+                </p>
+            </div>
+        </div>
+        <!--// header -->
+
+        <div class="ui-section-b" id="sk_basicinfo">
+            <!-- home -->
+            <div class="home_wrap">
+                <div class="home_content">
+                    <div class="couple_list">
+                        <div class="name"><p><strong>{{ data['groom_name'] }}</strong></p>
+                        </div>
+                        <div class="and"><p><strong>&</strong></p></div>
+                        <div class="name"><p><strong>{{ data['bride_name'] }}</strong>
+                            </p></div>
+                    </div>
+                    <div class="home_loca">
+                        <div class="date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</div>
+                        <div class="place">{{ data['place'] }}</div>
+                    </div>
+                    <div class="home_dday">
+                        <p>D <span>-</span> 317</p>
+                    </div>
+                </div>
+            </div>
+            <!--// home -->
+
+            <div class="invite_wrap">
+
+                <div class="invite_content">
+                    <h2 class="title"><span>LỜI CẢM ƠN</span></h2>
+                    <div class="invite_img"><span>Destined to love you !</span></div>
+
+                    <div class="invite_text">{{ data['greeting'] }}</div>
+                    <ul class="invite_name">
+                        <li class="in_groom">
+                            <p class="parents"><span class="in1">{{ data['groom_fa_name'] }}</span><span class="in_and">,</span><span class="in2">{{ data['groom_mo_name'] }}</span><span class="in3"></span></p>
+                            <p><span class="in4"><em>Chú rể</em><strong>{{ data['groom_name'] }}</strong></span></p>
+                        </li>
+                        <li class="in_bride">
+                            <p class="parents"><span class="in1">{{ data['bride_fa_name'] }}</span><span class="in_and">,</span><span class="in2">{{ data['bride_mo_name'] }}</span><span class="in3"></span></p>
+                            <p><span class="in4"><em>Cô dâu</em><strong>{{ data['bride_name'] }}</strong></span></p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- gallery -->
+            <div class="gallery_wrap" id="sk_gallery" data-pswp-uid="1">
+                <h2 class="title">ALBUM ẢNH</h2>
+                <div class="ul-body">
+                    <div class="gal_list">
+                        <div class="col-4">
+                            {% for img in gallery[0:4] %}
+                                <a href="{{ img['src'] }}" class="swipebox ui-link" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
+                                    <div class="ui-block-{{ loop.index }}"
+                                         style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;">
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        {% if gallery | length > 4 %}
+                            <div class="col-4">
+                                {% for img in gallery[4:4] %}
+                                    <a href="{{ img['src'] }}" class="swipebox ui-link" data-size="{{ img['size'] }}" imgId="{{ loop.index + 4}}">
+                                        <div class="ui-block-{{ loop.index }}"
+                                             style="background:url('{{ img['src'] }}') center center no-repeat;background-size:cover;">
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if gallery | length > 8 %}
+                            <a href="{{ gallery[8]['src'] }}"
+                               class="swipebox ui-link" data-ajax="false" data-size="{{ gallery[8]['size'] }}" imgId="9">
+                                <p class="gal_more"><span>more</span></p>
+                            </a>
+                        {% endif %}
+                        {% if gallery | length > 9 %}
+                            {% for img in gallery[9:] %}
+                                <a href="{{ img['src'] }}" class="swipebox ui-link" data-size="{{ img['size'] }}" imgId="{{ loop.index + 9 }}"></a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!--// gallery -->
+
+            {% if isTemplate %}
+                <!-- movie -->
+                <div class="movie_wrap" id="sk_media">
+                    <h2 class="title hidden">VIDEO</h2>
+                    <div class="ul-body">
+                        <div class="movie_container movie1">
+                            <ul>
+                                <li class="iframe-container">
+                                    <iframe
+                                            id="movie"
+                                            width="100%"
+                                            src="https://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                            height="100%"
+                                            frameborder="0"
+                                            allowfullscreen>
+                                    </iframe>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--// movie -->
+            {% else %}
+                {% if embed | length > 0 %}
+                    <!-- movie -->
+                    <div class="movie_wrap" id="sk_media">
+                        <h2 class="title">VIDEO</h2>
+                        <div class="ul-body">
+                            <div class="movie_container movie1">
+                                <ul>
+                                    <li class="iframe-container">
+                                        {{ embed | raw }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// movie -->
+                {% endif %}
+            {% endif %}
+            <!--// movie -->
+
+            <!-- guestbook -->
+            <div class="guestbook_wrap" id="sk_snsbbs">
+                <h2 class="title">LƯU BÚT</h2>
+                <div class="ul-body col-3">
+                    <div class="gb_msg"><span>Hãy chúc mừng cho ngày vui của cô dâu chú rể !</span>
+                    </div>
+                    <div id="div_snsbbs">
+                        {% if isTemplate %}
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Michael</strong></p>
+                                                <p class="date">2017-07-14 17:45</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Quá tuyệt vời !</p>
+                                                <div class="emo-type-c emo11"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Giang Minh</strong></p>
+                                                <p class="date">2017-07-14 17:45</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Chúc mừng cô dâu chú rể nhé. </p>
+                                                <div class="emo-type-b emo02"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Sunny</strong></p>
+                                                <p class="date">2017-07-14 17:43</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Trăm năm hạnh phúc nha !</p>
+                                                <div class="emo-type-b emo20"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snsbbs_sections">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Windy</strong></p>
+                                                <p class="date">2017-07-14 17:43</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Ôi bao giờ mới đến lượt mình đây :((</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Sweet Corn</strong></p>
+                                                <p class="date">2017-07-14 17:43</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>
+                                                    Wow, thực sự chúc mừng. <br/>
+                                                                                                Hãy đến và tham gia vào ngày hạnh phúc của bạn <br/>
+                                                    Xin chúc mừng ^^
+                                                </p>
+                                                <div class="emo-type-a emo02"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/crop_c14f8a35bc8180f7cbf516f097919e03.jpg" alt="profile picture" />
+                                                <div class="pro-sns dalpeng"><span></span></div>
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>Thích thì nhích</strong></p>
+                                                <p class="date">2017-07-14 17:42</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Chúc mừng đôi trẻ !</p>
+                                                <div class="emo-type-a emo08"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                                <div class="pro-sns notmember"><span></span></div>
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>im_mi_ya</strong></p>
+                                                <p class="date">2017-07-03 15:04</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>
+                                                    Chúc mừng đám cưới của bạn! Tôi sẽ đến sớm!
+                                                </p>
+                                                <div class="emo-type-a emo06"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snsbbs_sections  mobile_hide">
+                                <div class="ui-body-d">
+                                    <div class="gb_cont_box btn_go_snsbbs">
+                                        <div class="pro_info">
+                                            <div class="pro_img">
+                                                <img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture" />
+                                                <div class="pro-sns notmember"><span></span></div>
+                                            </div>
+                                            <div class="pro_txt">
+                                                <p><strong>songsong2</strong></p>
+                                                <p class="date">2017-07-03 15:02</p>
+                                            </div>
+                                        </div>
+                                        <ul class="gb_cont btn_go_snsbbs">
+                                            <li class="comm_txt">
+                                                <p>Tuyệt đẹp !!!</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            {% for comment in comments %}
+                                <div class="snsbbs_sections">
+                                    <div class="ui-body-d">
+                                        <div class="gb_cont_box btn_go_snsbbs">
+                                            <div class="pro_info">
+                                                <div class="pro_img">
+                                                    <img src="{{ comment.author.avatar }}" alt="profile picture" />
+                                                </div>
+                                                <div class="pro_txt">
+                                                    <p><strong>{{ comment.author.name }}</strong></p>
+                                                    <p class="date">{{ comment.createdAt | date('d-m-Y H:i') }}</p>
+                                                </div>
+                                            </div>
+                                            <ul class="gb_cont btn_go_snsbbs">
+                                                <li class="comm_txt">
+                                                    <p>{{ comment.content }}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% if isTemplate %}
+                    <div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()">Chúc mừng</div>
+                {% else %}
+                    <div class="gb_btn btn_go_snsbbs" onclick="gotoGuestBook('{{ hash }}')">Chúc mừng</div>
+                {% endif %}
+            </div>
+            <!--// guestbook -->
+
+            <!-- location -->
+            <div class="location_wrap" id="sk_map">
+                <h2 class="title">ĐỊA ĐIỂM</h2>
+
+                <div class="ul-body">
+                    <ul class="lo_tab_wrap">
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding"><span>Lễ Thành Hôn</span></li>
+                        <li class="tab_btn rh locationtabs " id="tabs_party"><span>Tiệc Cưới</span></li>
+                    </ul>
+                </div>
+
+
+                <div class="ul-body locationdivs " id="div_wedding">
+                    <div class="lo_box col-2">
+                        <div class="ui-block-a">
+                            <div class="lo_title">
+                                <p class="tit"><strong>{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</strong></p>
+                                <p class="date">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</p>
+                                <p class="place">{{ data['home'] }}</p>
+                            </div>
+                            <div class="lo_map">
+                                <div id="wedding_pmap_canvas" class="not_view_panel" style="width: 100%; height: 500px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui-block-b">
+                            <div class="lo_containerarea">
+                                <table class="lo_container lo_left">
+                                    <tbody>
+                                    <tr>
+                                        <th class="lo_loca">Địa chỉ</th>
+                                        <td><span>{{ data['home'] }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="lo_info">Hướng dẫn</th>
+                                        <td><span>{{ data['home_info'] }}</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="lo_container lo_right">
+                                    <tbody>
+                                    <tr>
+                                        <th class="lo_tel">Liên hệ</th>
+                                        <td><span>{{ data['home_contact'] }}</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="nav-wrap">
+                                    <div class="ui-grid-a nav-m">
+                                        <div class="nav-1">
+                                            <form action='https://maps.google.com/maps' method='get' target='_blank' id="getHomePath">
+                                                <input type='text' name='saddr' placeholder="địa chỉ của bạn" />
+                                                <input type='hidden' name='daddr' value='{{ data["home"] }}' />
+                                            </form>
+                                            <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getHomePath()">CHỈ ĐƯỜNG</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ul-body locationdivs hide" id="div_party">
+                    <div class="lo_box col-2">
+                        <div class="ui-block-a">
+                            <div class="lo_title">
+                                <p class="tit"><strong>Tiệc Cưới</strong></p>
+                                <p class="date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                                <p class="place">{{ data['place'] }}</p>
+                            </div>
+                            <div class="lo_map">
+                                <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:337px;"></div>
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="lo_containerarea">
+                                <table class="lo_container lo_left">
+                                    <tbody>
+                                        <tr>
+                                            <th class="lo_loca">Địa chỉ</th>
+                                            <td><span>{{ data['place_addr'] }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="lo_info">Hướng dẫn</th>
+                                            <td><span>{{ data['place_info'] }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="lo_tel">Liên hệ</th>
+                                            <td><span>{{ data['place_phone'] }}</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="lo_container lo_right">
+                                    <tbody>
+                                    <tr>
+                                        <th class="lo_bus">Xe Khách</th>
+                                        <td><span>{{ data['bus_info'] }}</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="nav-wrap">
+                                    <div class="ui-grid-a nav-m">
+                                        <div class="nav-1">
+                                            <form action='https://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                                <input type='text' name='saddr' placeholder="địa chỉ của bạn" />
+                                                <input type='hidden' name='daddr' value='{{ data["place_addr"] }}' />
+                                            </form>
+                                            <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                                <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// location  -->
+        </div><!--//ui-section-b-->
+    </div><!--//ui-section-wrap-->
+    <!-- footer -->
+    <div class="footer" id="sk_snslink">
+        <div class="contents">
+            <h4>
+                <a href="{{ path('home_page') }}" target="_blank">
+                    <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
+                </a>
+                <span></span>
+            </h4>
+            <ul>
+                <div class="addthis_inline_share_toolbox"></div>
+            </ul>
+        </div>
+    </div>
+    <!--// footer -->
+</div><!--//skin_page-->
+
+<!-- photoswipe -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--fit pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter" data-role="none"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)" data-role="none"></button>
+                <button class="pswp__button pswp__button--image" title="Include Image" data-role="none"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen" data-role="none"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out" data-role="none"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"
+                    data-role="none"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"
+                    data-role="none"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center">Image caption 1</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if voted == false %}
+    <div id="signup" class="signup">
+        <div class="container">
+            <div class="row">
+                <i>Vui lòng cho biết dự định của bạn !</i>
+            </div>
+            <div class="row">
+                <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+                <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+                <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
+            </div>
+            <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
+        </div>
+    </div>
+{% endif %}
+{% if isTemplate == false %}
+    <script type="text/javascript">
+        (function($) {
+            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
+                var $this = this;
+                $(document).scroll(function() {
+                    var y = $(this).scrollTop();
+                    if (y >= $this.position().top) {
+                        if (focusInFn) focusInFn();
+                    } else {
+                        if (focusOutFn) focusOutFn();
+                    }
+                });
+            }
+        })(jQuery);
+    </script>
+{% endif %}
+<script src="{{ asset('js/libraries.min.js') }}"></script>
+<script async>
+    $(function () {
+        function fixScrollEvent() {
+            $("html,body").on("mousewheel", function () {
+                event.preventDefault();
+
+                var wheelDelta = event.wheelDelta;
+                var currentScrollPosition = window.pageYOffset;
+
+                window.scrollTo(0, currentScrollPosition - wheelDelta);
+            });
+
+            $("html,body").on("keydown", function (e) {
+                e.preventDefault();
+
+                var currentScrollPosition = window.pageYOffset;
+
+                switch (e.which) {
+                    case 38: // up
+                        window.scrollTo(0, currentScrollPosition - 120);
+                        break;
+
+                    case 40: // down
+                        window.scrollTo(0, currentScrollPosition + 120);
+                        break;
+
+                    default:
+                        return;
+                }
+            });
+        }
+
+        // beautiful_day
+        $(".header_img").css("height", $(".header_img").width());
+        $(window).bind("orientationchange, resize", function (e) {
+            $(".header_img").css("height", $(".header_img").width());
+        });
+
+        var headerTitle = $('.header').outerHeight(true);
+        var headerAnimate = function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > headerTitle) $('.header_panel').addClass('fadeOut');
+            else $('.header_panel').removeClass('fadeOut');
+            if (scrollTop > headerTitle) $('.lnb').addClass('fixed');
+            else $('.lnb').removeClass('fixed');
+        };
+        $(window).scroll(function () {
+            headerAnimate();
+        });
+
+        $(window).on("orientationchange", function () {
+            callMapInitializeAfterResize();
+        });
+
+        function callMapInitializeAfterResize() {
+            if ($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
+            else initialize('party');
+        }
+
+
+        // -- map -- //
+        function initialize(md) {
+
+        }
+
+        $('#div_snsbbs').masonry({
+            //columnWidth: .snsbbs_sections,
+            //isFitWidth : true,
+            itemSelector: '.snsbbs_sections',
+            transitionDuration: 0
+        }).on('layoutComplete', function () {
+            return true;
+        });
+
+        var closest = function closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        };
+
+        var photoswipeParseHash = function () {
+            var hash = window.location.hash.substring(1),
+                    params = {};
+
+            if (hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        function getGallery($el) {
+            var el = [];
+            var aTag = Array.prototype.slice.call($el.find("a"));
+
+            $.merge(el, aTag);
+
+            return el;
+        }
+
+        function onThumbnailsClick(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+            var clickedListItem = closest(eTarget, function (el) {
+                var tagName = el.tagName.toUpperCase();
+                return (tagName && tagName === 'A');
+            });
+
+            if (!clickedListItem) {
+                return;
+            }
+
+            if (clickedListItem.className.indexOf("swipebox") == -1) {
+                return false;
+            }
+
+            var childNodes = el,
+                    numChildNodes = el.length,
+                    nodeIndex = 0,
+                    index = 0;
+
+            var no_image_count = 0;
+            for (var i = 0; i < numChildNodes; i++) {
+                if (el[i].className.indexOf("swipebox") == -1) {
+                    no_image_count++;
+                }
+
+                if (el[i] == clickedListItem) {
+                    index = i - no_image_count;
+
+                    break;
+                }
+            }
+
+            if (index >= 0) {
+                openPhotoSwipe(index, el);
+            }
+
+            return false;
+        }
+
+        var gallery;
+
+        function getPrefix(prop) {
+            var style = document.body.style;
+            var prefix = ['Webkit', 'ms', 'moz', 'o'];
+            var prefix_len = prefix.length;
+
+            if (style[prop] == '') {
+                return prop;
+            }
+
+            prop = prop[0].toUpperCase() + prop.slice(1);
+
+            for (var i = 0; i < prefix_len; i++) {
+                if (style[prefix[i] + prop] == '') {
+                    return prefix[i] + prop;
+                }
+            }
+        }
+
+        function getTranslate(transform) {
+            var regex;
+
+            if (transform.indexOf('translate3d') == -1) {
+                regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
+            } else {
+                regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
+            }
+
+            var matched = transform.match(regex);
+            var coordinate = {};
+
+            coordinate.x = matched[1];
+            coordinate.y = matched[2];
+
+            if (matched[3]) {
+                coordinate.z = matched[3];
+            }
+
+            return coordinate;
+        }
+
+        function getScale(transform) {
+            var regex = /scale\(([0-9.]+)\)/;
+            var matched = transform.match(regex);
+
+            return matched[1];
+        }
+
+        function psBeforeInitAddEvent() {
+            gallery.listen('gettingData', function (index, item) {
+                var size = item.el.getAttribute("data-size").split("X");
+
+                item.w = size[0];
+                item.h = size[1];
+            });
+
+            gallery.listen('arrowUpdate', function () {
+                var $nextBtn = $('.pswp__button--arrow--right');
+                var $prevBtn = $('.pswp__button--arrow--left');
+                var loop = this.options.loop;
+                var index = this.getCurrentIndex();
+
+                $nextBtn.toggle(loop || index < this.items.length - 1);
+                $prevBtn.toggle(loop || index > 0);
+            });
+
+            gallery.listen('initialZoomIn', function () {
+
+            });
+        }
+
+        function psAfterInitAddEvent() {
+            gallery.listen('initialZoomOut', function () {
+                var item = this.currItem;
+                var container_style = item.container.style;
+                var transform = getPrefix('transform');
+                var transition = getPrefix('transition');
+
+                if (!transform || !transition) {
+                    return;
+                }
+
+                var container_transform = container_style[getPrefix('transform')];
+                var scale = getScale(container_transform);
+                var coordinate = getTranslate(container_transform);
+                var initTransY = item.initialPosition.y;
+                var currTransY = coordinate.y;
+                var size = item.el.getAttribute("data-size").split("X");
+                var transX = item.initialPosition.x;
+                var transY;
+
+                if (initTransY > currTransY) {
+                    transY = -(size[1]);
+                } else {
+                    transY = window.screen.availHeight;
+                }
+
+                container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
+
+                if (!this.isGestureClose() && this.isVerticalDrag()) {
+                    container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
+                }
+            });
+
+            gallery.listen('close', function () {
+                this.framework.bind(window, 'scroll', function () {
+                    if (typeof headerAnimate == "function") {
+                        headerAnimate();
+                    }
+                });
+            });
+        }
+
+        var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelector('.pswp'),
+                    options, items, kakaoInApp;
+
+            items = parseThumbnailElements(galleryElement);
+
+            options = {
+                useZoom: true,
+                arrowKeys: false,
+                hideAnimationDuration: 200,
+                showAnimationDuration: 100,
+                loop: false,
+                imageEl: true,
+                galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
+                showHideOpacity: true,
+                getThumbBoundsFn: false,
+                closeOnScroll: false,
+                kakaoInApp: kakaoInApp,
+            };
+
+            if (fromURL) {
+                if (options.galleryPIDs) {
+
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            if (isNaN(options.index)) {
+                return;
+            }
+
+            if (disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+            gallery.useAniNum = false;
+
+            psBeforeInitAddEvent();
+            gallery.init();
+            psAfterInitAddEvent();
+        };
+
+        var parseThumbnailElements = function (el) {
+            var imageElements = el,
+                    numNodes = imageElements.length,
+                    items = [],
+                    size,
+                    item;
+            var wrapper = document.createElement('div');
+            var imageEl,
+                    thumbEl;
+
+            for (var i = 0; i < numNodes; i++) {
+                imageEl = imageElements[i];
+
+                if (imageEl.nodeType !== 1) {
+                    continue;
+                }
+
+                var img_el = imageEl.getElementsByTagName("img");
+                var exist_img = img_el.length > 0 ? true : false;
+                var src = imageEl.href;
+                var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
+                var msrc;
+                var $imageEl = $(imageEl);
+
+                if (!is_swipe_image) {
+                    continue;
+                }
+
+                if (!exist_img) {
+                    thumbEl = imageEl.getElementsByTagName("div")[0];
+
+                    if (thumbEl) {
+                        msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                    } else {
+                        var piece = src.split("/");
+                        var pieceCount = piece.length;
+                        var file = piece[pieceCount - 1]
+
+                        piece[pieceCount - 1] = "S_" + file;
+
+                        msrc = piece.join("/");
+                    }
+                } else {
+                    if ($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
+                        msrc = img_el[0].parentNode.href;
+                    } else {
+                        thumbEl = img_el[0];
+                        msrc = thumbEl.src;
+                    }
+                }
+
+                item = {
+                    src: src,
+                    msrc: msrc,
+                    el: imageEl,
+                };
+
+                item.id = imageEl.getAttribute("imgId");
+                items.push(item);
+            }
+
+            return items;
+        };
+
+        var $my_gallery = $("#sk_gallery");
+        var my_gallery_count = $my_gallery.length;
+        var el = getGallery($my_gallery);
+        var $el = $(el);
+        var hashData = photoswipeParseHash();
+
+        $el.on("click", onThumbnailsClick);
+
+        for (var i = 0; i < my_gallery_count; i++) {
+            $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
+        }
+
+        if (hashData.pid && hashData.gid) {
+            openPhotoSwipe(hashData.pid - 1, el, true, true);
+        }
+
+        $(document).on("keydown keyup", function (e) {
+            var hidden = $(".pswp").attr("aria-hidden") == "true";
+
+            if (hidden) {
+                return;
+            }
+
+            var keydownAction = '';
+            var index = gallery.getCurrentIndex();
+            var gallery_len = gallery.items.length;
+
+            if (e.type == "keydown") {
+                if (e.keyCode === 37 && index != 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index != (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            } else if (e.type == "keyup") {
+                if (e.keyCode === 37 && index == 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index == (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            }
+
+            if (keydownAction) {
+                if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    gallery[keydownAction]();
+                }
+            }
+        });
+
+        $('#div_snsbbs').masonry('bindResize');
+
+        function setPosition(id) {
+            var $obj = $('#sk_' + id);
+            $('body').scrollTo($obj, 500);
+        }
+
+        $('.menu_scrolls').click(function () {
+            try {
+                if ($(this).attr('id')) {
+                    var id = $(this).attr('id').replace('p_', '').replace('m_', '');
+                    setPosition(id);
+                } else {
+                    window.location.href = '/';
+                }
+            } catch (e) {
+            }
+        }).css('cursor', 'pointer');
+    });
+
+    $(window).load(function () {
+        $('.gal_list2').masonry({
+            itemSelector: '.gal_frame',
+            columnWidth: '.gal_size',
+            transitionDuration: '0.2s',
+            percentPosition: true
+        });
+
+        $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+
+        $('#tabs_wedding').click(function() {
+            $('#tabs_wedding').addClass('on');
+            $('#tabs_party').removeClass('on');
+            $('#div_wedding').css('display', 'block');
+            $('#div_party').css('display', 'none');
+        }).css('cursor', 'pointer');
+
+        $('#tabs_party').click(function() {
+            $('#tabs_party').addClass('on');
+            $('#tabs_wedding').removeClass('on');
+            $('#div_wedding').css('display', 'none');
+            $('#div_party').css('display', 'block');
+        }).css('cursor', 'pointer');
+
+        $('.movie_wrap').onScrollTo(function() {
+            $('#signup').addClass('show');
+        }, function() {
+            $('#signup').removeClass('show');
+        });
+
+        $('#signup').on('click', '.close', function(e) {
+            e.preventDefault();
+            $('#signup').removeClass('show');
+        });
+    });
+
+    function initMap() {
+        var lat = $('#coordinates').data('lat');
+        var lon = $('#coordinates').data('lon');
+        var title = $('#coordinates').data('title');
+
+        var homeLat = $('#coordinates').data('home-lat');
+        var homeLon = $('#coordinates').data('home-lon');
+        var homeTitle = $('#coordinates').data('home-title');
+
+        var location = new google.maps.LatLng(lat, lon);
+        var homeLocation = new google.maps.LatLng(homeLat, homeLon);
+
+        var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
+            zoom: 16,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        var info = new google.maps.InfoWindow({
+            content: '<h4>' + title + '</h4>'
+        });
+        info.open(map, marker);
+
+        var homeMap = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+            zoom: 16,
+            center: homeLocation
+        });
+        var homeMarker = new google.maps.Marker({
+            position: homeLocation,
+            map: homeMap
+        });
+
+        var homeInfo = new google.maps.InfoWindow({
+            content: '<h4>' + homeTitle + '</h4>'
+        });
+        homeInfo.open(homeMap, homeMarker);
+
+        $('#wedding_pmap_canvas').css('width','100%');
+        $('#party_pmap_canvas').css('width','100%');
+    }
+
+    function getPath() {
+        var addr = $('#getPath input[name=saddr]').val();
+        if (addr.length < 3) {
+            $('#getPath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getPath").submit();
+    }
+
+    function getHomePath() {
+        var addr = $('#getHomePath input[name=saddr]').val();
+
+        if (addr.length < 3) {
+            $('#getHomePath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getHomePath").submit();
+    }
+</script>
+<script>
+    WebFontConfig = {
+        google: {
+            families: ['Lora:400,700i&amp;subset=vietnamese']
+        }
+    };
+
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
+</script>
+<script async defer type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
+<script async>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109753132-1');
+</script>
+</body>
+</html>

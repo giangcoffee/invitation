@@ -6,48 +6,48 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">{{ 'layout.register' | trans }}</div>
-                    <div class="text-right-top">
-                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login' | trans }}</a>
-                    </div>
+                    {#<div class="text-right-top">#}
+                        {#Đã có tài khoản ? <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login' | trans }}</a>#}
+                    {#</div>#}
                 </div>
                 <div class="panel-body" >
 
                     <form class="form-horizontal" role="form" action="{{ path("fos_user_registration_register") }}" method="post">
-                        {% for error in form.email.vars.errors %}
+                        {% if form.email.vars.errors | length > 0 %}
                             <div class="alert alert-danger text-center">
-                                {{ error.message }}
+                                {{ form.email.vars.errors[0].message }}
                             </div>
-                        {% endfor %}
+                        {% endif %}
 
-                        {% for error in form.username.vars.errors %}
+                        {% if form.username.vars.errors | length > 0 %}
                             <div class="alert alert-danger text-center">
-                                {{ error.message }}
+                                {{ form.username.vars.errors[0].message }}
                             </div>
-                        {% endfor %}
+                        {% endif %}
 
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">{{ 'form.email' | trans }}</label>
+                            <label for="email" class="col-md-4 control-label">* {{ 'form.email' | trans }}</label>
                             <div class="col-md-8">
                                 {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'form.email' | trans , 'required': 'required'}}) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="username" class="col-md-4 control-label">{{ 'form.username' | trans }}</label>
+                            <label for="username" class="col-md-4 control-label">* {{ 'form.username' | trans }}</label>
                             <div class="col-md-8">
                                 {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder' : 'form.username' | trans , 'required': 'required'}}) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">{{ 'form.password' | trans }}</label>
+                            <label for="password" class="col-md-4 control-label">* {{ 'form.password' | trans }}</label>
                             <div class="col-md-8">
                                 {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder' : 'form.password' | trans , 'required': 'required'}}) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">{{ 'form.password_confirmation' | trans }}</label>
+                            <label for="password" class="col-md-4 control-label">* {{ 'form.password_confirmation' | trans }}</label>
                             <div class="col-md-8">
                                 {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder' : 'form.password_confirmation' | trans , 'required': 'required'}}) }}
                             </div>
@@ -56,19 +56,19 @@
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Họ Tên</label>
                             <div class="col-md-8">
-                                {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder' : 'Name' }}) }}
+                                {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder' : 'họ và tên' }}) }}
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Nghề nghiệp</label>
                             <div class="col-md-8">
-                                {{ form_widget(form.professional, {'attr': {'class': 'form-control', 'placeholder' : 'Developer .eg'}}) }}
+                                {{ form_widget(form.professional, {'attr': {'class': 'form-control', 'placeholder' : 'kỹ sư'}}) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-offset-4 col-md-8">
+                            <div class="col-md-offset-4 col-md-8 button-center">
                                 <input type="submit" class="btn btn-lg btn-primary" value="{{ 'registration.submit' | trans }}">
                             </div>
                         </div>
@@ -81,6 +81,16 @@
                             {#</div>#}
                         {#</div>#}
                     </form>
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div class="bottom-hint" >
+                                Đã có tài khoản ?
+                                <a href="{{ path('fos_user_security_login') }}">
+                                    {{ 'layout.login' | trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

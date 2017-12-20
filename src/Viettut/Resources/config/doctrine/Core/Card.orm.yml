@@ -14,52 +14,57 @@ Viettut\Entity\Core\Card:
                 strategy: AUTO
     fields:
         hash:
-            type: text
+            type: string
+            length: 256
             nullable: false
         data:
             type: json_array
             nullable: false
-        gallery:
-            type: json_array
+        partyDate:
+            type: datetime
             nullable: true
         weddingDate:
             type: datetime
             nullable: false
-        video:
-            type: string
-            nullable: true
-        videoId:
-            type: string
-            nullable: true
-        validVideo:
-            type: boolean
-            options:
-                default: false
         createdAt:
             type: datetime
             gedmo:
                 timestampable:
                     on: create
         latitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         longitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         homeLatitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         homeLongitude:
-            type: text
+            type: decimal
+            scale: 7
+            precision: 10
             nullable: true
         forGroom:
             type: boolean
             nulable: false
             options:
                 default: true
-        commentObjectId:
+        views:
+            type: integer
+            nullable: false
+            options:
+                default: 0
+        name:
             type: string
-            nullable: true
+            nullable: false
+            length: 256
         deletedAt:
             type: date
             nullable: true
@@ -67,11 +72,18 @@ Viettut\Entity\Core\Card:
         template:
             targetEntity: Viettut\Entity\Core\Template
             inversedBy: cards
+        libraryCard:
+            targetEntity: Viettut\Entity\Core\LibraryCard
+            inversedBy: cards
+            cascade: ['persist']
         author:
             targetEntity: Viettut\Bundle\UserBundle\Entity\User
     oneToMany:
         comments:
             targetEntity: Viettut\Entity\Core\Comment
+            mappedBy: card
+        statuses:
+            targetEntity: Viettut\Entity\Core\Status
             mappedBy: card
 
 

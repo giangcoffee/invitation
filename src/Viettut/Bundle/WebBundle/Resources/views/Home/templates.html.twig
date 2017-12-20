@@ -25,8 +25,9 @@
 
         <ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter">
             <li data-option-value="*" class="active"><a href="#">Tất cả</a></li>
-            <li data-option-value=".new"><a href="#">Sản phẩm mới</a></li>
-            <li data-option-value=".popular"><a href="#">Phổ biến</a></li>
+            <li data-option-value=".wedding"><a href="#">Thiệp cưới</a></li>
+            <li data-option-value=".exhibition"><a href="#">Thiệp mời sự kiện</a></li>
+            <li data-option-value=".birthday"><a href="#">Thiệp sinh nhật</a></li>
             <li data-option-value=".coming-soon"><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> Coming Soon</a></li>
         </ul>
 
@@ -36,7 +37,7 @@
 
             <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
                 {% for temp in templates %}
-                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular">
+                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item {% if temp.type == 1 %}wedding{% elseif temp.type == 2 %}exhibition{% elseif temp.type == 3 %}birthday{% endif %}">
                         <div class="portfolio-item img-thumbnail">
                             <a href="{{ path('template_page', {hash: temp.hash}) }}" class="thumb-info">
                                 <img alt="" class="img-responsive" src="{{ temp.thumbnail }}"/>
@@ -44,50 +45,37 @@
                                     <span title="{{ temp.name }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                                 </span>
                             </a>
-                            <div class="row col-md-12 temp-margin">
+                            <div class="col-md-12 temp-margin">
                                 <span class="text-primary">{{ temp.name }}</span>
                             </div>
-                            <div class="row col-md-12 temp-margin">
+                            <div class="col-md-12 temp-margin">
                                 <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>
-                                <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}')">Dùng mẫu này</button>
+                                {% if app.user %}
+                                    <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}', {{ temp.type }})">Tạo thiệp</button>
+                                {% else %}
+                                    <a class="btn btn-primary pull-right" href="{{ path('fos_user_security_login', {'_target_url': '/templates'}) }}">Tạo thiệp</a>
+                                {% endif %}
                             </div>
                         </div>
                     </li>
                 {% endfor %}
-                <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
-                    <div class="portfolio-item img-thumbnail">
-                        <a href="{{ path('coming_soon_page') }}" class="thumb-info">
-                            <img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/angel_car.png') }}">
-                            <span class="thumb-info-action">
-                                <span title="Angel Car" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                            </span>
-                        </a>
-                        <div class="row col-md-12 temp-margin">
-                            <span class="text-primary">Angel Car</span>
-                        </div>
-                        <div class="row col-md-12 temp-margin">
-                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
-                    <div class="portfolio-item img-thumbnail">
-                        <a href="{{ path('coming_soon_page') }}" class="thumb-info">
-                            <img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/beautiful_day.png') }}">
-                            <span class="thumb-info-action">
-                                <span title="Beautiful Day" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                            </span>
-                        </a>
-                        <div class="row col-md-12 temp-margin">
-                            <span class="text-primary">Beautiful Day</span>
-                        </div>
-                        <div class="row col-md-12 temp-margin">
-                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
-                        </div>
-                    </div>
-                </li>
+                {#<li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">#}
+                    {#<div class="portfolio-item img-thumbnail">#}
+                        {#<a href="{{ path('coming_soon_page') }}" class="thumb-info">#}
+                            {#<img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/angel_car.png') }}">#}
+                            {#<span class="thumb-info-action">#}
+                                {#<span title="Angel Car" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>#}
+                            {#</span>#}
+                        {#</a>#}
+                        {#<div class="row col-md-12 temp-margin">#}
+                            {#<span class="text-primary">Angel Car</span>#}
+                        {#</div>#}
+                        {#<div class="row col-md-12 temp-margin">#}
+                            {#<button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>#}
+                            {#<button class="btn btn-primary pull-right disabled">Tạo thiệp</button>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</li>#}
                 <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
                     <div class="portfolio-item img-thumbnail">
                         <a href="{{ path('coming_soon_page') }}" class="thumb-info">
@@ -96,12 +84,12 @@
                                 <span title="Bunny Picnic" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Bunny Picnic</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -113,12 +101,12 @@
                                 <span title="Christmas Wedding" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Christmas Wedding</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -130,12 +118,12 @@
                                 <span title="Circle" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Circle</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -147,12 +135,12 @@
                                 <span title="Classic" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Classic</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -164,12 +152,12 @@
                                 <span title="Cotton Candy" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Cotton Candy</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -181,12 +169,12 @@
                                 <span title="Crescendo" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Crescendo</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -198,12 +186,12 @@
                                 <span title="Dream of Lily" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Dream of Lily</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -215,12 +203,12 @@
                                 <span title="Exhibition" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Exhibition</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -232,12 +220,12 @@
                                 <span title="Friends" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Friends</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -249,12 +237,12 @@
                                 <span title="Hope" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Hope</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -266,12 +254,12 @@
                                 <span title="Icecream Cake" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Icecream Cake</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -283,12 +271,12 @@
                                 <span title="Innocent Bride" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Innocent Bride</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -300,12 +288,12 @@
                                 <span title="Invitation" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Invitation</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -317,12 +305,12 @@
                                 <span title="Love blossom" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Love blossom</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -334,12 +322,12 @@
                                 <span title="Luxury Black" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Luxury Black</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -351,12 +339,12 @@
                                 <span title="Modern White" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Modern White</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -368,12 +356,12 @@
                                 <span title="One Fine Day" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">One Fine Day</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -385,12 +373,12 @@
                                 <span title="Over The Rainbow" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Over The Rainbow</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -402,12 +390,12 @@
                                 <span title="Poster" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Poster</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -419,12 +407,12 @@
                                 <span title="Respect" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Respect</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -436,12 +424,12 @@
                                 <span title="Retro City" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Retro City</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -453,12 +441,12 @@
                                 <span title="Romantic Flower" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Romantic Flower</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -470,12 +458,12 @@
                                 <span title="Romantic Pink" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Romantic Pink</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -487,12 +475,12 @@
                                 <span title="Sweet Honeybee" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Sweet Honeybee</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -504,12 +492,12 @@
                                 <span title="Thank You" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Thank You</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -521,29 +509,12 @@
                                 <span title="Twinkle Twinkle" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                             </span>
                         </a>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <span class="text-primary">Twinkle Twinkle</span>
                         </div>
-                        <div class="row col-md-12 temp-margin">
+                        <div class="col-md-12 temp-margin">
                             <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 isotope-item coming-soon">
-                    <div class="portfolio-item img-thumbnail">
-                        <a href="{{ path('coming_soon_page') }}" class="thumb-info">
-                            <img alt="thumbnail image" class="img-responsive" src="{{ asset('bundles/viettutweb/img/templates/common/welcome.png') }}">
-                            <span class="thumb-info-action">
-                                <span title="Welcome" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                            </span>
-                        </a>
-                        <div class="row col-md-12 temp-margin">
-                            <span class="text-primary">Welcome</span>
-                        </div>
-                        <div class="row col-md-12 temp-margin">
-                            <button type="button" class="btn btn-primary pull-left btn_page_preview disabled" >Xem trước</button>
-                            <button class="btn btn-primary pull-right disabled">Dùng mẫu này</button>
+                            <button class="btn btn-primary pull-right disabled">Tạo thiệp</button>
                         </div>
                     </div>
                 </li>
@@ -584,37 +555,47 @@
                 </ul>
             </div>
         </div>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="weddingType" tabindex="-1" role="dialog" aria-labelledby="weddingType" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Chọn mẫu</h4>
+                        <h4 class="modal-title" id="myModalLabel">Tạo thiệp cưới</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal form-bordered" method="get">
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="label_name">Mẫu sử dụng</label>
+                                <label class="col-md-3 control-label" for="wedding_type_name">Mẫu sử dụng:</label>
                                 <div class="col-md-6">
-                                    <input type="text" value="" id="label_name" class="form-control" readonly="readonly" />
+                                    <input type="text" value="" id="wedding_type_name" class="form-control" readonly="readonly" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="groom_name">Tên chú rể</label>
+                                <label class="col-md-3 control-label" for="groom_name">Tên chú rể:</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="groom_name">
+                                    <input type="text" class="form-control" id="groom_name" placeholder="ví dụ: Thanh Tùng">
+                                    <span class="help-block">Tên cô dâu, chú rể và ngày cưới được dùng để tạo ra đường link.</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="bride_name">Tên cô dâu</label>
+                                <label class="col-md-3 control-label" for="bride_name">Tên cô dâu:</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="bride_name">
+                                    <input type="text" class="form-control" id="bride_name" placeholder="ví dụ: Ngọc Lan">
+                                    <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>
+                                <label class="col-md-3 control-label" for="wedding_date">Giờ thành hôn:</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control input-rounded" id="wedding_date">
+                                    <span class="help-block">Giờ làm lễ thành hôn (ăn hỏi, rước dâu) tại nhà trai hoặc nhà gái.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="party_date">Giờ tiệc cưới:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control input-rounded" id="party_date">
+                                    <span class="help-block">Giờ tổ chức tiệc cưới ngoài nhà hàng.</span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -627,97 +608,219 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary" onclick="createCard()">Gửi</button>
+                        <button type="button" class="btn btn-primary" onclick="createCard()" id="create-button">Gửi</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        {#<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: none;">#}
-            {#<div class="modal-backdrop fade in" style="height: 503px;"></div>#}
-            {#<div class="modal-dialog">#}
-                {#<div class="modal-content">#}
-                    {#<div class="modal-header">#}
-                        {#<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>#}
-                        {#<h4 class="modal-title" id="myModalLabel">Tạo thiệp mời</h4>#}
-                    {#</div>#}
-                    {#<div class="modal-body">#}
-                        {#<form class="form-horizontal form-bordered" method="get">#}
-                            {#<div class="form-group">#}
-                                {#<label class="col-md-3 control-label" for="label_name">Mẫu sử dụng</label>#}
-                                {#<div class="col-md-6">#}
-                                    {#<input type="text" value="" id="label_name" class="form-control" readonly="readonly" />#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                {#<label class="col-md-3 control-label" for="groom_name">Tên chú rể</label>#}
-                                {#<div class="col-md-6">#}
-                                    {#<input type="text" class="form-control" id="groom_name">#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                {#<label class="col-md-3 control-label" for="bride_name">Tên cô dâu</label>#}
-                                {#<div class="col-md-6">#}
-                                    {#<input type="text" class="form-control" id="bride_name">#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                {#<label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>#}
-                                {#<div class="col-md-6">#}
-                                    {#<input type="text" class="form-control input-rounded" id="wedding_date">#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</form>#}
-                    {#</div>#}
-                    {#<div class="modal-footer">#}
-                        {#<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>#}
-                        {#<button type="button" class="btn btn-primary" onclick="createCard()">Gửi</button>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
+        <div class="modal fade" id="exhibitionType" tabindex="-1" role="dialog" aria-labelledby="exhibitionType" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Tạo thiệp sự kiện</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-bordered" method="get">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="exhibition_type_name">Mẫu sử dụng:</label>
+                                <div class="col-md-6">
+                                    <input type="text" value="" id="exhibition_type_name" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="event_title">Tiêu đề sự kiện:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="event_title" placeholder="ví dụ: Mã màu sự kiện - FTU Zone">
+                                    <span class="help-block">Tiêu đề và ngày giờ được dùng để tạo ra đường link.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="event_date">Ngày tổ chức:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control input-rounded" id="event_date">
+                                    <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" onclick="createExhibitionCard()" id="create-button">Gửi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="birthdayType" tabindex="-1" role="dialog" aria-labelledby="birthdayType" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Tạo thiệp sinh nhật</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-bordered" method="get">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="birthday_type_name">Mẫu sử dụng:</label>
+                                <div class="col-md-6">
+                                    <input type="text" value="" id="birthday_type_name" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="party_title">Tiêu đề sinh nhật:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="party_title" placeholder="ví dụ: Sinh nhật lần thứ 3">
+                                    <span class="help-block">Tiêu đề, tên bé và ngày giờ được dùng để tạo ra đường link.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="baby_name">Tên bé:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="baby_name" placeholder="ví dụ: Kem Bông">
+                                    <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="birthday_date">Ngày tổ chức:</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control input-rounded" id="birthday_date">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" onclick="createBirthdayCard()" id="create-button">Gửi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block javascript %}
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
     <script type="text/javascript">
-        var id = '', name = '';
+        var id = '', name = '', type = '';
         function createCard() {
             var data = {};
             data['template'] = id;
             data['weddingDate'] = $('#wedding_date').val();
+            data['partyDate'] = $('#party_date').val();
             data['forGroom'] = false;
+            data['libraryCard'] = {'gallery': [], 'video': ''};
 
-            if ($('#check_id').is(":checked")) {
+            if ($('#for_groom').is(":checked")) {
                 data['forGroom'] = true;
             }
 
             data['data'] = {};
             data['data']['groom_name'] = $('#groom_name').val();
             data['data']['bride_name'] = $('#bride_name').val();
-
-            $.post('/api/v1/cards', data, function (response) {
-                var url = '/cards/' + response.hash + '/edit';
-                window.location.href = url;
-            }, 'json');
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
         }
 
-        function showModal(i, n) {
+        function createExhibitionCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#event_date').val();
+            data['libraryCard'] = {'gallery': [], 'video': ''};
+
+            data['data'] = {};
+            data['data']['event'] = $('#event_title').val();
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
+        }
+
+        function createBirthdayCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#birthday_date').val();
+            data['libraryCard'] = {'gallery': [], 'video': ''};
+
+            data['data'] = {};
+            data['data']['title'] = $('#party_title').val();
+            data['data']['name'] = $('#baby_name').val();
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
+        }
+
+        function showModal(i, n, t) {
             name = n;
             id = i;
+            type = t;
             $('#label_name').val(n);
-            $('#myModal').modal();
+            switch (t) {
+                case 1:
+                    $('#weddingType').modal();
+                    $('#wedding_type_name').val(n);
+                    break;
+                case 2:
+                    $('#exhibitionType').modal();
+                    $('#exhibition_type_name').val(n);
+                    break;
+                case 3:
+                    $('#birthdayType').modal();
+                    $('#birthday_type_name').val(n);
+                    break;
+            }
         }
 
 
         $(document).ready(function(){
-            jQuery('#wedding_date').datetimepicker(
-                    {
-                        format: 'Y-m-d H:i',
-                        lang:   'vi'
-                    }
-            );
+            jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#party_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#event_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#birthday_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
         });
 
         $(function () {

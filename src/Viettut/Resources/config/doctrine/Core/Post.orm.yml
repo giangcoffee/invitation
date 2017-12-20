@@ -12,14 +12,19 @@ Viettut\Entity\Core\Post:
         title:
             type: string
             nullable: false
-
+            length: 256
         content:
+            type: text
+            nullable: false
+
+        summary:
             type: text
             nullable: false
 
         hash:
             type: string
             nullable: false
+            length: 256
 
         view:
             type: integer
@@ -32,9 +37,9 @@ Viettut\Entity\Core\Post:
                 default: false
 
         video:
-            type: text
+            type: string
             nullable: true
-
+            length: 256
         hasVideo:
             type: boolean
             nullable: false

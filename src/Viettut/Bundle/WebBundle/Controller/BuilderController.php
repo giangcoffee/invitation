@@ -16,15 +16,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Viettut\DomainManager\CardManagerInterface;
+use Viettut\Entity\Core\Engage;
+use Viettut\Entity\Core\Status;
 use Viettut\Model\Core\CardInterface;
+use Viettut\Model\Core\StatusInterface;
 use Viettut\Model\Core\TemplateInterface;
 use Symfony\Component\Security\Core\Security;
 use Viettut\Model\User\UserEntityInterface;
-use Zalo\Zalo;
-use Zalo\ZaloConfig;
+use Viettut\Repository\Core\EngageRepositoryInterface;
+use Viettut\Repository\Core\StatusRepositoryInterface;
+use Viettut\Utilities\DateUtil;
 
 class BuilderController extends Controller
 {
+    use DateUtil;
     /**
      * @Route("/cards/{hash}/edit", name="edit_card_page")
      * @param $request
@@ -32,9 +37,9 @@ class BuilderController extends Controller
      */
     public function builderAction(Request $request, $hash)
     {
-        if (!$this->getUser() instanceof UserEntityInterface) {
-            $this->container->get('session')->set('_security.main.target_path', $this->generateUrl('edit_card_page', array('hash' => $hash)));
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        $user = $this->getUser();
+        if (!$user instanceof UserEntityInterface) {
+            return $this->redirect($this->generateUrl('fos_user_security_login', array('_target_url' => $request->getUri())));
         }
 
         /** @var CardManagerInterface $cardManager */
@@ -45,17 +50,24 @@ class BuilderController extends Controller
             throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
         }
 
+        if ($card->getAuthor()->getId() != $user->getId()) {
+            throw new NotFoundHttpException('The resource is not found or you don\'t have permission');
+        }
+
         $template = $card->getTemplate();
         return $this->render('ViettutWebBundle:Builder:edit.htm.twig', array(
             'data' => $card->getData(),
             'columns' => $template->getColumns(),
             'gallery' => $card->getGallery(),
             'date' => $card->getWeddingDate(),
+            'partyDate' => $card->getPartyDate(),
             'id' => $card->getId(),
             'name' => $template->getName(),
             'hash' => $card->getHash(),
+            'type' => $card->getTemplate()->getType(),
             'forGroom' => $card->isForGroom(),
-            'video' => $card->getVideo()
+            'video' => $card->getVideo(),
+            'embed' => $card->getEmbedded()
         ));
     }
 
@@ -79,8 +91,6 @@ class BuilderController extends Controller
         }
 
         $referrer = $this->generateUrl('card_page', array('hash' => $hash));
-        $groom = $card->getData()['groom_name'];
-        $bride = $card->getData()['bride_name'];
         $date = $card->getWeddingDate();
 
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
@@ -104,38 +114,27 @@ class BuilderController extends Controller
 
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
-
         $csrfToken = $this->has('security.csrf.token_manager')
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
-        $facebookAppId = $this->getParameter('facebook_app_id');
-        $facebookAppSecret = $this->getParameter('facebook_app_secret');
-        $facebookRedirectUri = $this->getParameter('facebook_redirect_uri');
-        $fb = new \Facebook\Facebook([
-            'app_id' => $facebookAppId,
-            'app_secret' => $facebookAppSecret,
-            'default_graph_version' => 'v2.9',
-        ]);
-
-        $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['email', 'user_likes']; // optional
-        $facebookLoginUrl = $helper->getLoginUrl($facebookRedirectUri, $permissions);
-
-        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
-        $helper = $zalo -> getRedirectLoginHelper();
-        $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
+        $targetUrl = $request->getUri();
+        $socialService = $this->get('viettut.services.social_service');
+        $facebookLoginUrl = $socialService->getFacebookLoginUrl($targetUrl);
+        $zaloLoginUrl = $socialService->getZaloLoginUrl($targetUrl);
+        $googleLoginUrl = $socialService->getGoogleLoginUrl($targetUrl);
 
         $comments = $this->get('viettut.repository.comment')->getByCard($card);
         return $this->render('@ViettutWeb/Builder/guestbook.html.twig', array(
             'referrer' => $referrer,
-            'groom' => $groom,
-            'bride' => $bride,
             'date' => $date,
+            'name' => $card->getName(),
+            'type' => $card->getTemplate()->getType(),
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
+            'googleUrl' => $googleLoginUrl,
             'zaloUrl' => $zaloLoginUrl,
             'id' => $card->getId(),
             'comments' => $comments,
@@ -158,26 +157,34 @@ class BuilderController extends Controller
         }
 
         $gallery = $template->getGallery();
-        $first = array_slice($gallery, 0, 5);
-        $second = array_slice($gallery, 5, 4);
-        $rest = array_slice($gallery, 9);
-        $weddingDate = $template->getWeddingDate()->modify('-1 hour');
+        $data = $template->getData();
+        $description = "
+            On a spring day,
+            Two loving people are about to start a new life.
+            Even if you are busy, bless the first start of the two
+            If you encourage me, I will be more joy.";
+
+        if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
+            $description = $data['greeting'];
+        }
+
         return $this->render($template->getPath(), array(
-            'data' => $template->getData(),
+            'data' => $data,
             'name' => $template->getName(),
             'gallery' => $gallery,
-            'first' => $first,
-            'second' => $second,
-            'rest' => $rest,
             'date' => $template->getWeddingDate(),
-            'weddingDate' => $weddingDate,
+            'dateAl' => $this->getLunarDateString($template->getWeddingDate()),
+            'weddingDate' => $template->getWeddingDate(),
             'lat' => $template->getLatitude(),
             'lon' => $template->getLongitude(),
             'homeLon' => $template->getHomeLongitude(),
             'homeLat' => $template->getHomeLatitude(),
             'forGroom' => $template->isForGroom(),
             'isTemplate' => true,
-            'hash' => $hash
+            'hash' => $hash,
+            'id' => $template->getId(),
+            'voted' => true,
+            'description' => $description
         ));
     }
 
@@ -202,21 +209,55 @@ class BuilderController extends Controller
         $comments = $card->getComments();
         $template = $card->getTemplate();
         $data = $card->getData();
-        $name = sprintf('%s-%s-%s', $data['groom_name'], $data['bride_name'], $card->getWeddingDate()->format('Ymd'));
-        $gallery = $card->getGallery();
-        $first = array_slice($gallery, 0, 5);
-        $second = array_slice($gallery, 5, 4);
-        $rest = array_slice($gallery, 9);
+        $description = "
+            On a spring day,
+            Two loving people are about to start a new life.
+            Even if you are busy, bless the first start of the two
+            If you encourage me, I will be more joy.";
 
-        $weddingDate = $card->getWeddingDate()->modify('-1 hour');
+        if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
+            $description = $data['greeting'];
+        }
+
+        $name = sprintf('%s-%s', $card->getName(), $card->getWeddingDate()->format('d-m-Y'));
+        $gallery = $card->getGallery();
+        $card->setViews($card->getViews() + 1);
+        $cardManager->save($card);
+        $userVoted = false;
+        if (!array_key_exists('user_unique_id', $_COOKIE)) {
+            $uniqueUser = uniqid('user', true);
+            setcookie("user_unique_id", uniqid('user', true), time() + 604800); //cookie expire in 7 day
+        } else {
+            $uniqueUser = $_COOKIE['user_unique_id'];
+        }
+
+        /** @var StatusRepositoryInterface $statusesRepository */
+        $statusesRepository = $this->get('viettut.repository.status');
+        $statusesEntities = $statusesRepository->checkUniqueUserForCard($card, $uniqueUser);
+        if (count($statusesEntities) <= 0) {
+            $statusEntity = new Status();
+            $statusEntity->setCard($card)->setUniqueUser($uniqueUser)->setStatus(0);
+            $this->get('viettut.domain_manager.status')->save($statusEntity);
+        } else {
+            /** @var StatusInterface $entity */
+            foreach ($statusesEntities as $entity) {
+                if ($entity->getStatus() != 0) {
+                    $userVoted = true;
+                    break;
+                }
+            }
+        }
+
+        $dateAl = '';
+        if ($card->getTemplate()->getType() == 1) {
+            $dateAl = $this->getLunarDateString($card->getPartyDate());
+        }
         return $this->render($template->getPath(), array (
             'data' => $data,
             'gallery' => $gallery,
-            'first' => $first,
-            'second' => $second,
-            'rest' => $rest,
-            'date' => $card->getWeddingDate(),
-            'weddingDate' => $weddingDate,
+            'date' => $card->getPartyDate(),
+            'dateAl' => $dateAl,
+            'weddingDate' => $card->getWeddingDate(),
             'lon' => $card->getLongitude(),
             'lat' => $card->getLatitude(),
             'homeLon' => $card->getHomeLongitude(),
@@ -226,7 +267,10 @@ class BuilderController extends Controller
             'forGroom' => $card->isForGroom(),
             'isTemplate' => false,
             'hash' => $hash,
-            'video' => $card->getVideoId()
+            'embed' => $card->getEmbedded(),
+            'id' => $card->getId(),
+            'voted' => $userVoted,
+            'description' => $description
         ));
     }
 }

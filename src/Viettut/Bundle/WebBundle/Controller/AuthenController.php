@@ -9,6 +9,7 @@
 namespace Viettut\Bundle\WebBundle\Controller;
 
 
+use Google_Service_Oauth2;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -28,18 +29,73 @@ class AuthenController extends Controller
      */
     public function facebookLoginAction(Request $request)
     {
-        $appId = $this->getParameter('facebook_app_id');
-        $appSecret = $this->getParameter('facebook_app_secret');
         $lecturerManager = $this->get('viettut_user.domain_manager.lecturer');
-        $fb = new \Facebook\Facebook([
-            'app_id' => $appId,
-            'app_secret' => $appSecret,
-            'default_graph_version' => 'v2.5',
-        ]);
+        $fb = $this->get('viettut.services.social_service')->getFacebookApp();
 
         $helper = $fb->getRedirectLoginHelper();
         try {
             $accessToken = $helper->getAccessToken();
+            $fb->setDefaultAccessToken($accessToken);
+            $response = $fb->get('/me?fields=id,name,email', $fb->getDefaultAccessToken());
+            $userNode = $response->getGraphUser();
+            $email = $userNode->getEmail();
+            $avatar = sprintf('http://graph.facebook.com/%s/picture?type=normal', $userNode->getId());
+            $user = $lecturerManager->findUserByUsernameOrEmail($email);
+
+            if (!$user instanceof UserEntityInterface) {
+                $user = $lecturerManager->createNew();
+
+                $user
+                    ->setEnabled(true)
+                    ->setPlainPassword($userNode->getEmail())
+                    ->setUsername($userNode->getEmail())
+                    ->setEmail($userNode->getEmail())
+                    ->setName($userNode->getName())
+                    ->setFacebookId($userNode->getId())
+                    ->setAvatar($avatar)
+                ;
+                $lecturerManager->save($user);
+            } else {
+                if (!$user->getGoogleId()) {
+                    $user->setAvatar($avatar);
+                }
+
+                $user->setFacebookId($userNode->getId());
+                $lecturerManager->save($user);
+            }
+
+            $token = new UsernamePasswordToken($user, $user->getPassword(), 'main', $user->getRoles());
+
+            $this->get("security.token_storage")->setToken($token);
+        } catch(\Facebook\Exceptions\FacebookResponseException $e) {
+            // When Graph returns an error
+            echo 'Graph returned an error: ' . $e->getMessage();
+        } catch(\Facebook\Exceptions\FacebookSDKException $e) {
+            // When validation fails or other local issues
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        }
+
+        $targetUrl = $request->query->get('_target_url', null);
+        if ($targetUrl) {
+            return $this->redirect($targetUrl);
+        }
+
+        return $this->redirect($this->generateUrl('my_card_page'));
+    }
+
+    /**
+     * @Route("/facebook/album", name="facebook_album")
+     */
+    public function facebookAlbumAction(Request $request)
+    {
+        $lecturerManager = $this->get('viettut_user.domain_manager.lecturer');
+        $socialService = $this->get('viettut.services.social_service');
+        $fb = $socialService->getFacebookApp();
+
+        $helper = $fb->getRedirectLoginHelper();
+        try {
+            $accessToken = $helper->getAccessToken();
+            $socialService->getUserAlbums($accessToken);
             $fb->setDefaultAccessToken($accessToken);
             $response = $fb->get('/me?fields=id,name,email', $fb->getDefaultAccessToken());
             $userNode = $response->getGraphUser();
@@ -132,6 +188,71 @@ class AuthenController extends Controller
             throw new RuntimeException('Không thể xác thực bằng tài khoản Zalo. Vui lòng thực hiện lại sau');
         }
 
+        $targetUrl = $request->query->get('_target_url', null);
+        if ($targetUrl) {
+            return $this->redirect($targetUrl);
+        }
+
         return $this->redirect($this->generateUrl('home_page'));
     }
+
+    /**
+     * @param Request $request
+     * @Route("/google/login", name="google_login")
+     */
+    public function googleLoginAction(Request $request)
+    {
+        $code = $request->get('code');
+        $socialService = $this->get('viettut.services.social_service');
+        $client = $socialService->getGoogleApp();
+        $service = new Google_Service_Oauth2($client);
+
+        $client->authenticate($code);
+        $user = $service->userinfo->get();
+
+        $userManager = $this->container->get('viettut_user.domain_manager.lecturer');
+        $lecturer = $userManager->findUserByUsernameOrEmail($user['email']);
+        if($lecturer instanceof UserEntityInterface) {
+            $gender = strtolower($user['gender']) == 'male' ? 1 : 0;
+            $avatar = $lecturer->getAvatar();
+            if (empty($avatar) || strpos($avatar, 'http://gravatar.com') === 0) {
+                $lecturer->setAvatar($user['picture']);
+            }
+
+            $lecturer
+                ->setGoogleId($user['id'])
+                ->setName($user['name'])
+                ->setGender($gender);
+            $userManager->save($lecturer);
+        }
+        else {
+            $lecturer = $userManager->createNew();
+            $gender = strtolower($user['gender']) == 'male' ? 1 : 0;
+            $lecturer->setEnabled(true)
+                ->setPlainPassword($user['email'])
+                ->setUsername($user['email'])
+                ->setEmail($user['email'])
+                ->setName($user['name'])
+                ->setGoogleId($user['id'])
+                ->setActive(true)
+                ->setGender($gender)
+                ->setAvatar($user['picture'])
+            ;
+
+            $userManager->save($lecturer);
+        }
+
+        $token = new UsernamePasswordToken($lecturer, $lecturer->getPassword(), 'main', $lecturer->getRoles());
+
+        $this->get("security.token_storage")->setToken($token);
+
+        $state = $request->get('state');
+        $state = json_decode(base64_decode(strtr($state, '-_,', '+/=')), true);
+        if (is_array($state) && array_key_exists('_target_url', $state)) {
+            return $this->redirect($state['_target_url']);
+        }
+
+        return $this->redirect($this->generateUrl('my_card_page'));
+    }
+
 }

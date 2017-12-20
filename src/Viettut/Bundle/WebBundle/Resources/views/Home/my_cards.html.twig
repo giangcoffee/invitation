@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
-{% block title %}Danh sách sản phẩm{% endblock %}
+{% block title %}Danh sách thiệp của tôi{% endblock %}
 {% block description %}
-    Những sản phẩm được tạo ra từ dịch vụ của Thiệp Đỏ
+    Tất cả thiệp của tôi được tạo ra từ dịch vụ của Thiệp Đỏ
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/templates/common/preview.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/jquery.datetimepicker.min.css') }}">
+    <style>
+        i.chart:hover {
+            opacity: .8;
+        }
+    </style>
 {% endblock %}
 {% block main %}
     <section class="page-top">
@@ -10,33 +19,872 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="{{ path('home_page') }}">Home</a></li>
-                        <li class="active">Sản phẩm</li>
+                        <li class="active">Thiệp của tôi</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    {% if cards | length > 0 %}
     <div class="container">
+        <h2>Thống kê số lượng đến dự</h2>
+        <table class="table table-bordered table-striped table-condensed mb-none">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th class="text-right">Tên</th>
+                <th class="text-right">Ngày cưới</th>
+                <th class="text-right">Lượt view</th>
+                <th class="text-right">Đã xem thiệp</th>
+                <th class="text-right">Sẽ đến</th>
+                <th class="text-right">Đang cân nhắc</th>
+                <th class="text-right">Không đến</th>
+                <th class="text-right">Ghi chú</th>
+                <th class="text-right">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for card in cards %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ card.name }}</td>
+                    <td class="text-right">{{ card.weddingDate | date('d-m-Y') }}</td>
+                    <td class="text-right">{{ card.views }}</td>
+                    <td class="text-right">{{ card.statuses['total'] }}</td>
+                    <td class="text-right">{{ card.statuses['going'] }}</td>
+                    <td class="text-right">{{ card.statuses['notSure'] }}</td>
+                    <td class="text-right">{{ card.statuses['notGoing'] }}</td>
+                    {% if card.template.type == 1 %}
+                        <td class="text-right">{% if card.forGroom == true %}Nhà Trai{% else %}Nhà Gái{% endif %}</td>
+                    {% else %}
+                        <td class="text-right">&nbsp;</td>
+                    {% endif %}
+                    <td class="text-right"><i class="fa fa-2x fa-pie-chart chart" aria-hidden="true" data-statuses="{{ card.statuses | json_encode() }}" style="cursor:pointer" title="Biểu đồ"></i></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="modal fade" id="pieChart" tabindex="-1" role="dialog" aria-labelledby="pieChartModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="chartContainer" style="height: 500px;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="tall"/>
+    <div class="container">
+        <h2>Danh sách thiệp</h2>
         <div class="row">
-            <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
+            <ul class="portfolio-list sort-destination">
                 {% for card in cards %}
-                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular">
+                    <li class="col-md-3 col-sm-6 col-xs-12 isotope-item popular" id="card_{{ card.id }}">
                         <div class="portfolio-item img-thumbnail">
                             <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank" class="thumb-info">
                                 <img alt="thumbnail image" class="img-responsive" src="{{ card.template.thumbnail }}"/>
                                 <span class="thumb-info-action">
-                                    <span title="{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                                    <span title="{{ card.name }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
                                 </span>
                             </a>
-                            <div class="row col-md-12 temp-margin">
-                                <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank"><span class="text-primary">{{ card.data['groom_name'] }} & {{ card.data['bride_name'] }} - {{ card.weddingDate | date('d-m-Y') }}</span></a>
+                            <div class="col-md-12 temp-margin">
+                                <a href="{{ path('card_page', {hash: card.hash}) }}" target="_blank"><span class="text-primary">{{ card.name }} - {{ card.weddingDate | date('d-m-Y') }}</span></a>
+                            </div>
+                            <div class="col-md-12 temp-margin">
+                                <a href="{{ path('edit_card_page', {hash: card.hash}) }}" class="btn btn-primary pull-left">Sửa</a>
+                                <button class="btn btn-danger pull-left btn-remove" data-id="{{ card.id }}">Xóa</button>
+                                {% if card.template.type == 1 %}
+                                    <button class="btn btn-primary pull-right" onclick="copyCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['groom_name'] }}', '{{ card.data['bride_name'] }}', {% if card.forGroom %}false{% else %}true{% endif %})" id="copy_button">Copy</button>
+                                {% elseif card.template.type == 2 %}
+                                    <button class="btn btn-primary pull-right" onclick="copyExhibitionCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['event'] }}')" id="copy_button">Copy</button>
+                                {% elseif card.template.type == 3 %}
+                                    <button class="btn btn-primary pull-right" onclick="copyBirthdayCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['title'] }}', '{{ card.data['name'] }}')" id="copy_button">Copy</button>
+                                {% endif %}
                             </div>
                         </div>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-
     </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <h2 align="center">Bạn chưa có thiệp mời nào, chọn một trong các mẫu dưới đây !</h2>
+            </div>
+            <hr />
+            <ul class="nav nav-pills sort-source" data-sort-id="portfolio" data-option-key="filter">
+                <li data-option-value=".wedding" class="active"><a href="#">Thiệp cưới</a></li>
+                <li data-option-value=".exhibition"><a href="#">Thiệp mời sự kiện</a></li>
+                <li data-option-value=".birthday"><a href="#">Thiệp sinh nhật</a></li>
+                <li data-option-value=".coming-soon"><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> Coming Soon</a></li>
+            </ul>
+            <div class="row">
+                <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
+                    {% for temp in templates %}
+                        <li class="col-md-3 col-sm-6 col-xs-12 isotope-item {% if temp.type == 1 %}wedding{% elseif temp.type == 2 %}exhibition{% elseif temp.type == 3 %}birthday{% endif %}">
+                            <div class="portfolio-item img-thumbnail">
+                                <a href="{{ path('template_page', {hash: temp.hash}) }}" class="thumb-info">
+                                    <img alt="" class="img-responsive" src="{{ temp.thumbnail }}"/>
+                                    <span class="thumb-info-action">
+                                    <span title="{{ temp.name }}" class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                                </span>
+                                </a>
+                                <div class="col-md-12 temp-margin">
+                                    <span class="text-primary">{{ temp.name }}</span>
+                                </div>
+                                <div class="col-md-12 temp-margin">
+                                    <button type="button" class="btn btn-primary pull-left btn_page_preview" id="btn_preview_{{ temp.hash }}">Xem trước</button>
+                                    <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}', {{ temp.type }})">Tạo thiệp</button>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="div_page_preview" style="display: none;">
+                <div class="preview_bg"></div>
+
+                <div class="preview_content skin3" id="pview_pc" style="display: none;">
+                    <div class="preview_frame" id="div_pview_pc">
+                        <iframe src=""></iframe>
+                    </div>
+                </div>
+                <div class="preview_content skin2" id="pview_tablet" style="display: none;">
+                    <div class="preview_frame" id="div_pview_tablet">
+                        <iframe src=""></iframe>
+                    </div>
+                </div>
+                <div class="preview_content skin1" id="pview_mobile" style="display: block;">
+                    <div class="preview_frame" id="div_pview_mobile">
+                        <iframe src=""></iframe>
+                    </div>
+                </div>
+
+                <div class="preview_header">
+                    <ul>
+                        <li class="view_icon1 btnPreview on" id="btn_pview_mobile" title="Mobile">
+                        </li>
+                        <li class="view_icon2 btnPreview" id="btn_pview_tablet" title="Tablet">
+                        </li>
+                        <li class="view_icon3 btnPreview" id="btn_pview_pc" title="PC">
+                        </li>
+                        <li class="view_icon4" id="btn_page_preview_close" title="Close Preview (Esc)">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal fade" id="weddingType" tabindex="-1" role="dialog" aria-labelledby="weddingType" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Tạo thiệp cưới</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-bordered" method="get">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="wedding_type_name">Mẫu sử dụng:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" value="" id="wedding_type_name" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="groom_name">Tên chú rể:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="groom_name" placeholder="ví dụ: Thanh Tùng">
+                                        <span class="help-block">Tên cô dâu, chú rể và ngày cưới được dùng để tạo ra đường link.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="bride_name">Tên cô dâu:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="bride_name" placeholder="ví dụ: Ngọc Lan">
+                                        <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="wedding_date">Giờ thành hôn:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-rounded" id="wedding_date">
+                                        <span class="help-block">Giờ làm lễ thành hôn (ăn hỏi, rước dâu) tại nhà trai hoặc nhà gái.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="party_date">Giờ tiệc cưới:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-rounded" id="party_date">
+                                        <span class="help-block">Giờ tổ chức tiệc cưới ngoài nhà hàng.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="for_groom"></label>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" value="" checked="checked" id="for_groom"> Nhà Trai
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" onclick="createCard()" id="create-button">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exhibitionType" tabindex="-1" role="dialog" aria-labelledby="exhibitionType" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Tạo thiệp sự kiện</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-bordered" method="get">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="exhibition_type_name">Mẫu sử dụng:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" value="" id="exhibition_type_name" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="event_title">Tiêu đề sự kiện:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="event_title" placeholder="ví dụ: Mã màu sự kiện - FTU Zone">
+                                        <span class="help-block">Tiêu đề và ngày giờ được dùng để tạo ra đường link.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="event_date">Ngày tổ chức:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-rounded" id="event_date">
+                                        <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" onclick="createExhibitionCard()" id="create-button">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="birthdayType" tabindex="-1" role="dialog" aria-labelledby="birthdayType" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Tạo thiệp sinh nhật</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-bordered" method="get">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="birthday_type_name">Mẫu sử dụng:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" value="" id="birthday_type_name" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="party_title">Tiêu đề sinh nhật:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="party_title" placeholder="ví dụ: Sinh nhật lần thứ 3">
+                                        <span class="help-block">Tiêu đề, tên bé và ngày giờ được dùng để tạo ra đường link.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="baby_name">Tên bé:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="baby_name" placeholder="ví dụ: Kem Bông">
+                                        <span class="help-block">Đường link một khi đã tạo ra sẽ không thể thay đổi.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="birthday_date">Ngày tổ chức:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control input-rounded" id="birthday_date">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" onclick="createBirthdayCard()" id="create-button">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
+{% block javascript %}
+<script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/js/lib/jquery.canvasjs.min.js') }}"></script>
+    <script type="text/javascript">
+        var id = '', name = '', type = '';
+        function createCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#wedding_date').val();
+            data['partyDate'] = $('#party_date').val();
+            data['forGroom'] = false;
+            data['libraryCard'] = {'gallery': [], 'video': ''};
+
+            if ($('#for_groom').is(":checked")) {
+                data['forGroom'] = true;
+            }
+
+            data['data'] = {};
+            data['data']['groom_name'] = $('#groom_name').val();
+            data['data']['bride_name'] = $('#bride_name').val();
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
+        }
+
+        function createExhibitionCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#event_date').val();
+            data['libraryCard'] = {'gallery': [], 'video': ''};
+
+            data['data'] = {};
+            data['data']['event'] = $('#event_title').val();
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
+        }
+
+        function createBirthdayCard() {
+            var data = {};
+            data['template'] = id;
+            data['weddingDate'] = $('#birthday_date').val();
+            data['libraryCard'] = {'gallery': [], 'video': ''};
+
+            data['data'] = {};
+            data['data']['title'] = $('#party_title').val();
+            data['data']['name'] = $('#baby_name').val();
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $.ajax({
+                headers : {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                },
+                url : '/api/v1/cards',
+                type : 'POST',
+                data : JSON.stringify(data),
+                success : function(response, textStatus, jqXhr) {
+                    $('button#create-button').html('Gửi');
+                    var url = '/cards/' + response.hash + '/edit';
+                    window.location.href = url;
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                },
+                complete : function() {
+                }
+            });
+        }
+
+        function showModal(i, n, t) {
+            name = n;
+            id = i;
+            type = t;
+            $('#label_name').val(n);
+            switch (t) {
+                case 1:
+                    $('#weddingType').modal();
+                    $('#wedding_type_name').val(n);
+                    break;
+                case 2:
+                    $('#exhibitionType').modal();
+                    $('#exhibition_type_name').val(n);
+                    break;
+                case 3:
+                    $('#birthdayType').modal();
+                    $('#birthday_type_name').val(n);
+                    break;
+            }
+        }
+
+        $(document).ready(function(){
+            jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#party_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#event_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            jQuery('#birthday_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
+            $('.btn-remove').click(function(){
+                var result = confirm("Bạn có chắc chắn muốn xóa thiệp này ?");
+                if (result == true) {
+                    var id = $(this).data('id');
+                    $(this).html('<i class="fa fa-spinner fa-spin"></i> Xóa');
+                    $.ajax({
+                        headers : {
+                            'Content-Type' : 'application/json; charset=utf-8'
+                        },
+                        url : '/api/v1/cards/' + id,
+                        type : 'DELETE',
+                        success : function(response, textStatus, jqXhr) {
+                            $('li#card_' + id).remove();
+                            $(this).html('Xóa');
+                            var html = '<div class="alert alert-success alert-dismissable">' +
+                                    '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    'Thiệp đã được xóa thành công !'
+                                    + '</div>';
+                            $('ul.portfolio-list').before(html);
+                            $('body').scrollTop(0);
+                        },
+                        error : function(jqXHR, textStatus, errorThrown) {
+                            $(this).html('Xóa');
+                            var html = '<div class="alert alert-success alert-dismissable">' +
+                                    '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    'Không thể xóa được thiệp, vui lòng thử lại sau !'
+                                    + '</div>';
+                            $('ul.portfolio-list').before(html);
+                            $('body').scrollTop(0);
+                        },
+                        complete : function() {
+                        }
+                    });
+                }
+            });
+        });
+
+        $(function () {
+            var _WSKIN = ["beautifulday", "modernwhite", "romanticpink", "GardenWedding", "OneFineDay", "FallInLove", "goldstar", "retrocity", "IceCreamCake", "dreamoflily", "innocentbride", "romanticflower", "cottoncandy", "christmaswedding", "loveblossom", "luxuryblack"];
+            var _FSKIN = ["AngelCar", "mysunshine", "mrlittleman", "twinkletwinkle", "OverTheRainbow", "SweetHoneybee", "BunnysPicnic"];
+            var _CSKIN = ["friends", "welcome", "SNOWING", "Exhibition", "ThankYou", "Crescendo", "Respect", "Invitation", "Hope", "Circle", "Poster", "Classic"];
+            var _PREV_SKIN = "";
+            var _NEXT_SKIN = "";
+
+            var wedding_skinname = 'Luxury Black';
+            var fbirthday_skinname = 'Bunny Picnic';
+            var ceremony_skinname = 'Respect';
+
+            $('body').append("<div class='ui-loader-background'> </div>");
+
+            // short key
+            $(document).keyup(function (e) {
+                if (e.keyCode == 27)    closeDiv();    // esc
+            });
+
+            function closeDiv() {
+                $('#div_page_preview').hide();
+                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', '');
+            }
+
+            function setPreview(sn) {
+                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', 'app_dev.php/templates/' + sn);
+            }
+
+
+            var now_preview_skinname;
+            $('.btn_page_preview').click(function () {
+                var id = $(this).attr('id').replace('btn_preview_', '');
+                now_preview_skinname = id;
+
+
+                setPreview(id);
+
+                $('.preview_content').hide();
+
+                $('.btnPreview').removeClass('on');
+                $('#btn_pview_mobile').addClass('on');
+                $('#pview_mobile').show();
+                $('#div_page_preview').show();
+
+                set_preview_controls(id);
+            }).mouseenter(function () {
+                var id = $(this).attr('id').replace('btn_preview_', '');
+                now_preview_skinname = id;
+
+                // setPreview(id);
+            }).css('cursor', 'pointer');
+
+
+            $('.btn_page_preview_gopay').click(function () {
+                $('#btype').val('P');
+
+                $('#LGD_PAYINFO').attr('action', '');
+                $('#LGD_PAYINFO').submit();
+            }).css('cursor', 'pointer');
+
+
+            function set_preview_controls(id) {
+                var _SKIN = '';
+                var left_hide = false;
+                var right_hide = false;
+                _PREV_SKIN = "";
+                _NEXT_SKIN = "";
+
+                if ($('#now_skin_tab').val() == 'wedding') _SKIN = _WSKIN;
+                else if ($('#now_skin_tab').val() == 'fbirthday') _SKIN = _FSKIN;
+                else if ($('#now_skin_tab').val() == 'ceremony') _SKIN = _CSKIN;
+
+                for (var i = 0; i < _SKIN.length; i++) {
+                    if (id == _SKIN[i]) {
+                        if (i == 0) {
+                            left_hide = true;
+                        } else if (i == _SKIN.length - 1) {
+                            right_hide = true;
+                        }
+
+                        if (_SKIN.length < 2) right_hide = true;
+
+                        _NEXT_SKIN = (_SKIN[i + 1] == undefined) ? "" : _SKIN[i + 1];
+                        _PREV_SKIN = (_SKIN[i - 1] == undefined) ? "" : _SKIN[i - 1];
+                    }
+                }
+
+                if (!left_hide) {
+                    $("#preview_left").css("top", ($(window).height() / 2) - 60 + "px").show();
+                } else {
+                    $("#preview_left").hide();
+                }
+                if (!right_hide) {
+                    $("#preview_right").css("top", ($(window).height() / 2) - 60 + "px").show();
+                } else {
+                    $("#preview_right").hide();
+                }
+            }
+
+            $("#preview_left").click(function () {
+                now_preview_skinname = _PREV_SKIN;
+
+                setPreview(now_preview_skinname);
+
+                $('.preview_content').hide();
+
+                $('.btnPreview').removeClass('on');
+                $('#btn_pview_mobile').addClass('on');
+                $('#pview_mobile').show();
+                $('#div_page_preview').show();
+
+                set_preview_controls(_PREV_SKIN);
+            });
+
+            $("#preview_right").click(function () {
+                now_preview_skinname = _NEXT_SKIN;
+
+                setPreview(now_preview_skinname);
+
+                $('.preview_content').hide();
+
+                $('.btnPreview').removeClass('on');
+                $('#btn_pview_mobile').addClass('on');
+                $('#pview_mobile').show();
+                $('#div_page_preview').show();
+
+                set_preview_controls(_NEXT_SKIN);
+            });
+
+            $('#btn_page_preview_close').click(function () {
+                $('#div_page_preview').hide();
+                $("#preview_left,#preview_right").hide();
+                _NEXT_SKIN = "";
+                _PREV_SKIN = "";
+            }).css('cursor', 'pointer');
+
+            $('.btnPreview').click(function () {
+                var id = $(this).attr('id').replace('btn_pview_', '');
+                $('.btnPreview').removeClass('on');
+                $(this).addClass('on');
+                $('.preview_content').hide();
+                $('#pview_' + id).show();
+                $('#div_pview_' + id).scrollTop(0);
+            });
+
+            $('.basic_type').click(function () {
+                var id = $(this).attr('id').replace('btype_', '');
+
+                if (id == 'free') alert('죄송합니다\n이미 무료형으로 신청하신 초대장이 있습니다.\n무료형 초대장은 한개만 제공됩니다.');
+            }).mouseenter(function () {
+            }).mouseleave(function () {
+                var id = $(this).attr('id');
+                if ((id == 'btype_free' && $('#btype').val() == 'P') || (id == 'btype_pay' && $('#btype').val() == 'F')) $(this).removeClass('on');
+            });
+
+            $('.skin_type').click(function () {
+                var id = $(this).attr('id').replace('stype_', '');
+
+                if ($('#btype').val() == 'F' && id == 'ceremony') {
+                    alert('행사 초대장은 유료형으로만 사용이 가능합니다.\n신청구분을 유료형 으로 선택하신뒤에 선택이 가능합니다.');
+                } else {
+                    $('.skin_type').removeClass('on');
+                    $(this).addClass('on');
+
+                    //$('.skills').removeClass('on');
+
+                    $('.skin_wedding,.skin_fbirthday,.skin_ceremony').removeClass('on');
+                    $('.skin_' + id).addClass('on');
+
+                    setSkillOption();
+
+                    $('#now_skin_type').val(id);
+                    if (id == 'wedding') $('#sk_name').val(wedding_skinname);
+                    if (id == 'fbirthday') $('#sk_name').val(fbirthday_skinname);
+                    else $('#sk_name').val(ceremony_skinname);
+                }
+            });
+
+
+            function setSkillOption() {
+
+
+                if ($('#stype_wedding').hasClass('on')) var setSkin = 'wedding';
+                else if ($('#stype_fbirthday').hasClass('on')) var setSkin = 'fbirthday';
+                else var setSkin = 'ceremony';
+
+                if ($('#btype').val() == 'P') {
+                    $('.skill_free').removeClass('on')
+                    $('.skill_pay').addClass('on');
+
+                    $('#media_desc').text('유튜브/비메오');
+
+                    $('.skin_wedding,.skin_fbirthday,.skin_ceremony').removeClass('on');
+                    $('.skin_' + setSkin).addClass('on');
+                } else {
+
+                    $('.skill_pay,.skill_event').removeClass('on');
+                    $('.skill_free').addClass('on');
+
+                    $('#media_desc').text('유튜브 지원');
+                }
+
+                if (setSkin == 'ceremony') $('.skill_event').addClass('on');
+
+            }
+
+            setSkillOption();
+
+            function scale(width, height, padding, border) {
+                var scrWidth = $(window).width() - 30,
+                        scrHeight = $(window).height() - 30,
+                        ifrPadding = 2 * padding,
+                        ifrBorder = 2 * border,
+                        ifrWidth = width + ifrPadding + ifrBorder,
+                        ifrHeight = height + ifrPadding + ifrBorder,
+                        h, w;
+
+                if (ifrWidth < scrWidth && ifrHeight < scrHeight) {
+                    w = ifrWidth;
+                    h = ifrHeight;
+                } else if (( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight )) {
+                    w = scrWidth;
+                    h = ( scrWidth / ifrWidth ) * ifrHeight;
+                } else {
+                    h = scrHeight;
+                    w = ( scrHeight / ifrHeight ) * ifrWidth;
+                }
+
+                return {
+                    'width': w - ( ifrPadding + ifrBorder ),
+                    'height': h - ( ifrPadding + ifrBorder )
+                };
+            };
+
+            $('.btnTabSkins').click(function (e) {
+                e.preventDefault();
+
+                var id = $(this).attr('id').replace('btn_', '');
+                var $obj = '';
+
+                $('.btnTabSkins').removeClass('on');
+                $(this).addClass('on');
+
+                $('#now_skin_tab').val(id);
+
+                $('#divWeddingSkins,#divFbirthdaySkins,#divCeremonySkins').hide();
+
+                if (id == 'wedding') {
+                    $('#divWeddingSkins').show();
+                    $obj = wslider;
+                } else if (id == 'fbirthday') {
+                    $('#divFbirthdaySkins').show();
+                    $obj = fslider;
+                } else {
+                    $('#divCeremonySkins').show();
+                    $obj = cslider;
+                }
+
+                $obj.reloadSlider();
+            });
+        });
+    </script>
+<script type="text/javascript">
+
+    function copyCard(libCard, template, date, groom, bride, forGroom) {
+        var data = {};
+        data['template'] = template;
+        data['weddingDate'] = date;
+        data['partyDate'] = date;
+        data['forGroom'] = forGroom;
+        data['libraryCard'] = libCard;
+
+        data['data'] = {};
+        data['data']['groom_name'] = groom;
+        data['data']['bride_name'] = bride;
+        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy Thiệp');
+        $.ajax({
+            headers : {
+                'Content-Type' : 'application/json; charset=utf-8'
+            },
+            url : '/api/v1/cards',
+            type : 'POST',
+            data : JSON.stringify(data),
+            success : function(response, textStatus, jqXhr) {
+                $('button#copy_button-button').html('Copy Thiệp');
+                var url = '/cards/' + response.hash + '/edit';
+                window.location.href = url;
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                $('button#copy_button-button').html('Copy Thiệp');
+            },
+            complete : function() {
+                $('button#copy_button-button').html('Copy Thiệp');
+            }
+        });
+    }
+
+    function copyExhibitionCard(libCard, template, date, title) {
+        var data = {};
+        data['template'] = template;
+        data['weddingDate'] = date;
+        data['libraryCard'] = libCard;
+
+        data['data'] = {};
+        data['data']['event'] = title;
+        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy Thiệp');
+        $.ajax({
+            headers : {
+                'Content-Type' : 'application/json; charset=utf-8'
+            },
+            url : '/api/v1/cards',
+            type : 'POST',
+            data : JSON.stringify(data),
+            success : function(response, textStatus, jqXhr) {
+                $('button#copy_button-button').html('Copy Thiệp');
+                var url = '/cards/' + response.hash + '/edit';
+                window.location.href = url;
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                $('button#copy_button-button').html('Copy Thiệp');
+            },
+            complete : function() {
+                $('button#copy_button-button').html('Copy Thiệp');
+            }
+        });
+    }
+
+    function copyBirthdayCard(libCard, template, date, title, name) {
+        var data = {};
+        data['template'] = template;
+        data['weddingDate'] = date;
+        data['libraryCard'] = libCard;
+
+        data['data'] = {};
+        data['data']['title'] = title;
+        data['data']['name'] = name;
+        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy Thiệp');
+        $.ajax({
+            headers : {
+                'Content-Type' : 'application/json; charset=utf-8'
+            },
+            url : '/api/v1/cards',
+            type : 'POST',
+            data : JSON.stringify(data),
+            success : function(response, textStatus, jqXhr) {
+                $('button#copy_button-button').html('Copy Thiệp');
+                var url = '/cards/' + response.hash + '/edit';
+                window.location.href = url;
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                $('button#copy_button-button').html('Copy Thiệp');
+            },
+            complete : function() {
+                $('button#copy_button-button').html('Copy Thiệp');
+            }
+        });
+    }
+
+    $('i.chart').click(function () {
+        try {
+            var width = $('#pieChart').width();
+            if (width >= 768) {
+                width = 500;
+            } else width = width * 0.9
+
+            console.log(width);
+            var statuses = $(this).data('statuses');
+            var dataPoints = [];
+            dataPoints.push({label: 'Sẽ đến', legendText: 'Sẽ đến', y: (parseFloat(statuses['going']) / parseFloat(statuses['total'])) * 100});
+            dataPoints.push({label: 'Không đến', legendText: 'Không đến', y: (parseFloat(statuses['notGoing']) / parseFloat(statuses['total'])) * 100});
+            dataPoints.push({label: 'Cân nhắc', legendText: 'Cân nhắc', y: (parseFloat(statuses['notSure']) / parseFloat(statuses['total'])) * 100});
+            dataPoints.push({label: 'Không KS', legendText: 'Không khảo sát', y: 100 * ((parseFloat(statuses['total']) - parseFloat(statuses['notSure']) - parseFloat(statuses['notGoing']) - parseFloat(statuses['going'])) / parseFloat(statuses['total']))});
+
+            $("#chartContainer").CanvasJSChart({
+                title: {
+                    text: "Thống kê số lượng khách",
+                    fontSize: 24
+                },
+                width: width,
+                axisY: {
+                    title: "Products in %"
+                },
+                legend :{
+                    verticalAlign: "center",
+                    horizontalAlign: "right"
+                },
+                data: [
+                    {
+                        type: "pie",
+                        showInLegend: true,
+                        toolTipContent: "{label} <br/> {y} %",
+                        indexLabel: "{y} %",
+                        dataPoints: dataPoints
+                    }
+                ]
+            });
+
+            $('#pieChart').modal();
+        } catch (e) {
+        }
+    });
+</script>
+{% endblock %}
+

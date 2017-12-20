@@ -23,4 +23,10 @@ interface CardRepositoryInterface extends ObjectRepository
      * @return mixed
      */
     public function getCardByUser(UserEntityInterface $user);
+
+    /**
+     * @param $keyword
+     * @return mixed
+     */
+    public function search($keyword);
 }

@@ -28,4 +28,6 @@ interface PostRepositoryInterface extends ObjectRepository
      * @return mixed
      */
     public function getLatestPost($pageSize);
+
+    public function search($keyword);
 }

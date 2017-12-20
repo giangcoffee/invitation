@@ -15,9 +15,12 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Viettut\Entity\Core\Faq;
 use Viettut\Entity\Core\Post;
+use Viettut\Model\Core\PostInterface;
+use Viettut\Utilities\StringFactory;
 
 class PostFormType extends AbstractRoleSpecificFormType
 {
+    use StringFactory;
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -34,8 +37,20 @@ class PostFormType extends AbstractRoleSpecificFormType
         ;
 
         $builder->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function(FormEvent $event) {
+            FormEvents::POST_SUBMIT, function(FormEvent $event) {
+                /**
+                 * @var PostInterface $post
+                 */
+                $post = $event->getData();
+                try {
+                    $content = $post->getContent();
+                    if (strlen($content) > 6) {
+                        $summary = $this->getFirstParagraph($post->getContent());
+                        $post->setSummary($summary);
+                    }
+                } catch (\Exception $ex) {
+
+                }
             }
         );
     }

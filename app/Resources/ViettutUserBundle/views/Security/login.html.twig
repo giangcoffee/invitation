@@ -17,7 +17,7 @@
                     <div class="text-right-top"><a href="{{ path('fos_user_resetting_request') }}">Quên mật khẩu?</a></div>
                 </div>
 
-                <div style="padding-top:30px" class="panel-body" >
+                <div class="panel-body" >
 
                     {% if error %}
                         <div class="alert alert-danger col-sm-12">
@@ -28,17 +28,25 @@
                         <div class="col-md-1">&nbsp;</div>
                         <div class="col-md-10">
                             <div class="social-buttons">
-                                <a href="{{ facebookUrl }}" class="btn btn-primary btn-fb">Đăng nhập Facebook</a>
-                                <a href="{{ zaloUrl }}" class="btn btn-primary btn-zl">Đăng nhập Zalo</a>
+                                <a href="{{ facebookUrl }}" class="btn btn-primary btn-fb"><span>Facebook Login</span></a>
+                                <a href="{{ googleUrl }}" class="btn btn-primary btn-gl"><span>Google Login</span></a>
+                                <a href="{{ zaloUrl }}" class="btn btn-primary btn-zl"><span>Zalo Login</span></a>
+                            </div>
+                            <div class="social-login">
+                                <a href="{{ facebookUrl }}" class="btn btn-fb" title="Đăng nhập Facebook"><img src="{{ asset('bundles/viettutweb/img/logos/facebook_circle_icon.png') }}" alt="facebook icon" /></a>
+                                <a href="{{ googleUrl }}" class="btn btn-gl" title="Đăng nhập Google"><img src="{{ asset('bundles/viettutweb/img/logos/google_plus_circle_icon.png') }}" alt="google plus icon" /></a>
+                                <a href="{{ zaloUrl }}" class="btn btn-zl" title="Đăng nhập Zalo"><img src="{{ asset('bundles/viettutweb/img/logos/zalo_cicle_icon.png') }}" alt="zalo icon" /></a>
                             </div>
                         </div>
                         <div class="col-md-1">&nbsp;</div>
                     </div>
-                    <hr class="tall"/>
+                    <hr />
                     <form class="form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
                         {% if csrf_token %}
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                         {% endif %}
+                        <input type="hidden" name="_target_url" value="{{ _target_url }}" />
+
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
                             <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="username hoặc email">
@@ -59,7 +67,7 @@
 
                         <div style="margin-top:10px" class="form-group">
                             <div class="col-sm-4">&nbsp;</div>
-                            <div class="col-sm-4 controls">
+                            <div class="col-sm-4 controls button-center">
                                 <input class="btn btn-lg btn-primary" type="submit" id="_submit" name="_submit" value="Đăng Nhập" />
                             </div>
                             <div class="col-sm-4">&nbsp;</div>
@@ -67,7 +75,7 @@
                     </form>
                     <div class="form-group">
                         <div class="col-md-12 control">
-                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                            <div class="bottom-hint" >
                                 Chưa có tài khoản ?
                                 <a href="{{ path('fos_user_registration_register') }}">
                                     Đăng ký

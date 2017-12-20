@@ -2,11 +2,11 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host: 127.0.0.1
+    database_host: localhost
     database_port: null
-    database_name: test
-    database_user: test
-    database_password: 12345678
+    database_name: thiepdoc_1
+    database_user: thiepdoc_1
+    database_password: 'W&}giStZ9n[N'
     mailer_transport: smtp
     mailer_host: thiepdo.com
     mailer_user: noreply@thiepdo.com
@@ -16,21 +16,23 @@ parameters:
     mailer_sender_name: 'Thiệp Đỏ'
     secret: ea31b59727f6a11e1d8160027e80707f6d0b0ce9
     password_resetting_link: 'http://localhost:9010/#/reset/changePassword'
-    upload_root_directory: /var/www/api.server.dev/web/uploads/images
+    upload_root_directory: /home/thiepdoc/public_html/uploads/images
     upload_directory: /uploads/images
     popular_size: 10
     page_size: 5
     facebook_app_id: '1934863569863740'
-    facebook_app_secret: 'd434152d2c3d913d6fb72ce9db5f9eb6'
-    facebook_redirect_uri: 'http://invitation.dev/app_dev.php/facebook/login'
-    facebook_graph_default_version: 'v2.9'
-    google_client_id: '355171488116-rml9h7b9ivdn8ub5sgu6r6eh1vkluvav.apps.googleusercontent.com'
-    google_client_secret: 'eyeBjN6tVwQwNrkG-S0XQmxa'
-    google_redirect_uri: 'http://viettut.dev/app_dev.php/google/login'
-    zalo_redirect_uri: 'http://invitation.dev/app_dev.php/zalo/login'
-    cookie_domain: '.thiepdo.com'
-    domain: 'thiepdo.com'
-    http_schema: 'http://'
-    facebook_object_id_url_template: 'https://graph.facebook.com/?id=%s'
-    cookie_path: '/'
+    facebook_app_secret: d434152d2c3d913d6fb72ce9db5f9eb6
+    facebook_graph_default_version: v2.9
+    facebook_redirect_uri: 'http://thiepdo.com/facebook/login'
+    facebook_album_redirect_uri: 'http://thiepdo.com/facebook/album'
+    google_client_id: 709027637172-sjraivnj8q8cvqdsqc5a3cvjqtkiv5bj.apps.googleusercontent.com
+    google_client_secret: kdp6nRxh6xrXVjkPSySNXQeR
+    google_client_app_name: 'ThiepDo Digital'
+    google_redirect_uri: 'http://thiepdo.com/google/login'
+    google_map_api_key: 'AIzaSyDxhMSp7eUxSr3lJocnsQIsP4p_Wanqpnk'
+    zalo_redirect_uri: 'http://thiepdo.com/zalo/login'
+    cookie_domain: .thiepdo.com
+    domain: thiepdo.com
+    image_quality: 50
+    cookie_path: /
     cookie_lifetime: 3600

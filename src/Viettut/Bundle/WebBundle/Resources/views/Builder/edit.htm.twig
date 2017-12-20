@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/lib/uploadfile.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/viettutweb/css/builder.css') }}">
 {% endblock %}
+{% block facebook %}
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '1934863569863740',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.11'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+{% endblock %}
 {% block main %}
     <div class="card-columns" data-columns="{{ columns|json_encode|e('html_attr') }}">
     <div class="card-info" data-id="{{ id }}" data-gallery="{{ gallery|json_encode|e('html_attr') }}" data-video="{{ video }}">
@@ -47,16 +67,12 @@
             <div id="general" class="tab-pane active">
                 <div class="form-horizontal form-bordered">
                     {% for column,name in columns %}
-                        {% if column == 'greeting' %}
+                        {% if (column == 'greeting') or (column == 'content') or (column == 'schedule_content') %}
                             <div class="row">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="textareaAutosize">{{ name }}</label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">
-                                        {% if data[column] is defined %}
-                                            {{ data[column] }}
-                                        {% endif %}
-                                        </textarea>
+                                        <textarea class="form-control ckeditor" rows="5" id="{{ column }}" name="{{ column }}" data-plugin-textarea-autosize="">{% if data[column] is defined %}{{ data[column] }}{% endif %}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -71,11 +87,22 @@
                             </div>
                         {% endif %}
                     {% endfor %}
+                    {% if type == 1 %}
                     <div class="row">
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="wedding_date">Ngày cưới</label>
+                            <label class="col-md-3 control-label" for="wedding_date">Giờ thành hôn</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d H:i') }}">
+                                <span class="help-block">Giờ làm lễ thành hôn (ăn hỏi, rước dâu) tại nhà trai hoặc nhà gái.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="wedding_date">Giờ tiệc cưới</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="party_date" value="{{ partyDate | date('Y-m-d H:i') }}">
+                                <span class="help-block">Giờ tổ chức tiệc cưới ngoài nhà hàng.</span>
                             </div>
                         </div>
                     </div>
@@ -92,6 +119,25 @@
                             </div>
                         </div>
                     </div>
+                    {% elseif type == 2 %}
+                                        <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="wedding_date">Ngày tổ chức</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d') }}">
+                            </div>
+                        </div>
+                    </div>
+                    {% elseif type == 3 %}
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="wedding_date">Ngày tổ chức</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="wedding_date" value="{{ date | date('Y-m-d') }}">
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                     <div class="row">
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>
@@ -101,16 +147,45 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-md-9 control">
+                            <div class="bottom-hint-big" >
+                                Cập nhật thiệp của bạn bất cứ lúc nào tại
+                                <a href="{{ path('my_card_page') }}">
+                                    Thiệp của tôi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="album" class="tab-pane">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-lg push-top push-bottom" onclick="facebookAlbum()" id="fetchAlbums">Tải Từ Facebook</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="selectAlbums" style="display:none;">
+                        <label class="col-md-2 control-label" for="albums">Chọn một album</label>
+                        <div class="col-md-3">
+                            <select class="form-control mb-md" id="albums">
+                                <option selected="selected" value="0">-- chọn album --</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" onclick="downloadAlbum()" id="downloadAlbum">Download</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left:30px;font-size:30px;margin-bottom:20px;margin-top:20px;">-- HOẶC --</div>
                 <div class="row">
                     <div id="fileuploader">Thêm Ảnh</div>
                 </div>
                 <div class="row">
                     <ul class="gallery">
                         {% for img in gallery %}
-                            <li data-url="{{ img['src'] }}" style="background-image: url({{ img['src'] }});" class="aimg"><span><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></li>
+                            <li data-url="{{ img['src'] }}" style="background-image: url({{ img['src'] }});background-size: contain;" class="aimg"><span><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -120,11 +195,37 @@
                 </div>
             </div>
             <div id="video" class="tab-pane">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-lg push-top push-bottom" onclick="facebookVideos()" id="fetchVideos">Tải Từ Facebook</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="selectVideos" style="display:none;">
+                        <label class="col-md-2 control-label" for="albums">Chọn một video</label>
+                        <div class="col-md-3">
+                            <select class="form-control mb-md" id="videos">
+                                <option selected="selected" value="0">-- chọn video --</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" onclick="downloadVideo()" id="downloadVideo">Download</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="row" id="videoForm">
                     <div class="form-group">
                         <label class="col-md-3 control-label">Link Youtube</label>
                         <div class="col-md-6">
                             <input type="text" class="form-control input-rounded" id="video_link" value="{{ video }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="embedded">Mã nhúng</label>
+                        <div class="col-md-6">
+                            <textarea class="form-control" id="embedded" data-plugin-textarea-autosize rows="5">{{ embed }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -140,5 +241,6 @@
 {% block javascript %}
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.uploadfile.min.js') }}"></script>
+    <script src="//cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
     <script src="{{ asset('bundles/viettutweb/js/builder.js') }}"></script>
 {% endblock %}

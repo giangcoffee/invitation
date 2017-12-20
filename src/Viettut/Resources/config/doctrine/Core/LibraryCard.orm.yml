@@ -1,0 +1,41 @@
+Viettut\Entity\Core\LibraryCard:
+    type: entity
+    table: viettut_library_card
+    repositoryClass: Viettut\Repository\Core\LibraryCardRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        gallery:
+            type: json_array
+            nullable: true
+        video:
+            type: string
+            nullable: true
+            length: 256
+        embedded:
+            type: text
+            nullable: true
+        videoId:
+            type: string
+            nullable: true
+            length: 128
+        validVideo:
+            type: boolean
+            options:
+                default: false
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+    oneToMany:
+        cards:
+            targetEntity: Viettut\Entity\Core\Card
+            mappedBy: libraryCard
+
+
+    lifecycleCallbacks: {  }

@@ -6,15 +6,15 @@
 .preview_content {position:absolute;top:50%;left:50%}
 .preview_frame {position:absolute;border:2px solid #666;margin:0;padding:0;overflow-y:auto;background-color:#fff; border-radius:3px}
 .preview_frame iframe {width:100%; height:100%; border:0; overflow:hidden}
-.preview_content.skin1 {margin:-390px 0 0 -190px;width:380px;height:740px;background:url(../../../img/templates/common/preview_mobile.png) no-repeat;}
-.preview_content.skin1 .preview_frame {top:80px;left:19px;width:337px;height:570px; overflow:hidden; background:url(../../../img/templates/common/preview_loading.png) no-repeat 50% 50%;}
-.preview_content.skin2 {margin:-355px 0 0 -475px;width:950px;height:670px;background:url(../../../img/templates/common/preview_tablet.png) no-repeat;}
-.preview_content.skin2 .preview_frame {top:42px;left:70px;width:785px;height:580px; overflow:hidden; background:url(../../../img/templates/common/preview_loading.png) no-repeat 50% 50%;}
+.preview_content.skin1 {margin:-390px 0 0 -190px;width:380px;height:740px;background:url(/bundles/viettutweb/img/templates/common/preview_mobile.png) no-repeat;}
+.preview_content.skin1 .preview_frame {top:80px;left:19px;width:337px;height:570px; overflow:hidden; background:url(/bundles/viettutweb/img/templates/common/preview_loading.png) no-repeat 50% 50%;}
+.preview_content.skin2 {margin:-355px 0 0 -475px;width:950px;height:670px;background:url(/bundles/viettutweb/img/templates/common/preview_tablet.png) no-repeat;}
+.preview_content.skin2 .preview_frame {top:42px;left:70px;width:785px;height:580px; overflow:hidden; background:url(/bundles/viettutweb/img/templates/common/preview_loading.png) no-repeat 50% 50%;}
 .preview_content.skin3 {margin:-390px 0 0 -600px;width:1200px;height:740px; background-color:#f3f3f3; border-radius:15px; border:1px solid #ddd}
-.preview_content.skin3 .preview_frame {top:30px;left:30px;width:1140px;height:680px; overflow:hidden; background:url(../../../img/templates/common/preview_loading.png) no-repeat 50% 50%;}
+.preview_content.skin3 .preview_frame {top:30px;left:30px;width:1140px;height:680px; overflow:hidden; background:url(/bundles/viettutweb/img/templates/common/preview_loading.png) no-repeat 50% 50%;}
 
 .preview_header {position:absolute;left:48%;bottom:15px;width:290px;margin-left:-110px}
-.preview_header ul li {float:left; background:url('../../../img/templates/common/preview_header2.png') 0 0 no-repeat;
+.preview_header ul li {float:left; background:url('/bundles/viettutweb/img/templates/common/preview_header2.png') 0 0 no-repeat;
     margin-right:5px; display:block; width:50px; height:50px; cursor:pointer; border-radius:8px; box-sizing:border-box}
 .preview_header ul li.view_icon1	  	{background-position: 0 0}
 .preview_header ul li.view_icon2	  	{background-position: -50px 0}
@@ -32,7 +32,7 @@
 .basic_type {display:block; margin:5px 0; padding:0 30px 0 0; height:34px; line-height:34px; font-size:16px; font-weight:bold; color:#aaa; border:3px solid #ccc; border-radius:5px; cursor:pointer}
 .basic_type.on { border:3px solid #ff8c3f; color:#ff8c3f;}
 .basic_type .check {float:left; width:40px; height:34px; margin:0 20px 0 0; background-color:#ccc}
-.basic_type.on .check {background:#ff8c3f url(../../../img/templates/common/preview_check.png) no-repeat 50% 50%; background-size:22px 16px}
+.basic_type.on .check {background:#ff8c3f url(/bundles/viettutweb/img/templates/common/preview_check.png) no-repeat 50% 50%; background-size:22px 16px}
 
 /* 초대장 분류 선택 추가 by echos(2015-05-16) */
 #DIV_SKIN td {position:relative}
@@ -40,7 +40,7 @@
 .skin_type {position: relative;display:block; margin:5px 0; padding:0 30px 0 0; height:34px; line-height:34px; font-size:16px; font-weight:bold; color:#aaa; border:3px solid #ccc; border-radius:5px; cursor:pointer}
 .skin_type.on { border:3px solid #ff8c3f; color:#ff8c3f;}
 .skin_type .check {float:left; width:40px; height:34px; margin:0 20px 0 0; background-color:#ccc}
-.skin_type.on .check {background:#ff8c3f url(../../../img/templates/common/preview_check.png) no-repeat 50% 50%; background-size:22px 16px}
+.skin_type.on .check {background:#ff8c3f url(/bundles/viettutweb/img/templates/common/preview_check.png) no-repeat 50% 50%; background-size:22px 16px}
 
 .order_list td .ico_event {position:absolute;top: -19px;left: 515px;width:130px;height:37px;background:url(/img/product/ico_event2.png) no-repeat;font-size:0;line-height:0;text-indent:-9999px;}
 .order_list td .ico_event3 {position:absolute;top: -78px;left:6px;width:160px;height:80px;background:url(/img/product/ico_event3.png) no-repeat;font-size:0;line-height:0;text-indent:-9999px;background-size:100%}
@@ -59,7 +59,7 @@
     .tip_qr {display:none}
 }
 .qr_text {float:left; text-align:left; padding-top:2px;width: 220px; font-size:13px; line-height:18px; color:#666}
-.btn_qr_manual {float:right; display:block; font-size:13px; font-weight:bold; background: #ccc url(../../../img/templates/common/preview_tip.png) no-repeat 5px 50%; background-size:18px; margin:5px 0 0 0;padding: 5px 8px 5px 28px; color:#fff; border-radius:5px; cursor:pointer}
+.btn_qr_manual {float:right; display:block; font-size:13px; font-weight:bold; background: #ccc url(/bundles/viettutweb/img/templates/common/preview_tip.png) no-repeat 5px 50%; background-size:18px; margin:5px 0 0 0;padding: 5px 8px 5px 28px; color:#fff; border-radius:5px; cursor:pointer}
 .tip_qr:hover .btn_qr_manual {background-color:#5FD4D3}
 .tip_qr:hover .btn_qr_manual:hover {background-color:#56c3c2}
 .tip_text {line-height:40px}

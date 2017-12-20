@@ -11,9 +11,12 @@ namespace Viettut\Model\Core;
 
 use DateTime;
 use Viettut\Model\User\UserEntityInterface;
+use Viettut\Utilities\DateUtil;
 
 class Card implements CardInterface
 {
+    use DateUtil;
+
     /** @var integer */
     protected $id;
 
@@ -29,9 +32,6 @@ class Card implements CardInterface
     /** @var UserEntityInterface */
     protected $author;
 
-    /** @var array */
-    protected $gallery;
-
     /** @var DateTime */
     protected $weddingDate;
 
@@ -40,9 +40,6 @@ class Card implements CardInterface
 
     /** @var DateTime */
     protected $createdAt;
-
-    /** @var  string */
-    protected $commentObjectId;
 
     /** @var DateTime */
     protected $deletedAt;
@@ -60,18 +57,24 @@ class Card implements CardInterface
     /** @var bool */
     protected $forGroom;
 
-    /** @var  string */
-    protected $video;
+    /** @var  LibraryCardInterface */
+    protected $libraryCard;
+
+    /** @var  int */
+    protected $views;
 
     /** @var  string */
-    protected $videoId;
+    protected $name;
 
-    /** @var  bool */
-    protected $validVideo;
+    /** @var  DateTime */
+    protected $partyDate;
+
+    protected $statuses;
 
     function __construct()
     {
         $this->forGroom = true;
+        $this->views = 0;
     }
 
     /**
@@ -83,7 +86,6 @@ class Card implements CardInterface
         $this->id = $id;
         return $this;
     }
-
 
     /**
      * Get deletedAt
@@ -152,7 +154,11 @@ class Card implements CardInterface
      */
     public function getGallery()
     {
-        return $this->gallery;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getGallery();
+        }
+
+        return [];
     }
 
     /**
@@ -161,25 +167,13 @@ class Card implements CardInterface
      */
     public function setGallery($gallery)
     {
-        $this->gallery = $gallery;
-        return $this;
-    }
-
-    /**
-     * @param $path
-     * @return $this
-     */
-    public function addImage($path)
-    {
-        if (empty($this->gallery)) {
-            $this->gallery = [];
+        if (!$this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard = new LibraryCard();
         }
 
-        $this->gallery[] = $path;
-
+        $this->libraryCard->setGallery($gallery);
         return $this;
     }
-
 
     /**
      * @return TemplateInterface
@@ -341,34 +335,17 @@ class Card implements CardInterface
         $this->forGroom = $forGroom;
     }
 
-    /**
-     * @return string
-     */
-    public function getCommentObjectId(): string
-    {
-        return $this->commentObjectId;
-    }
-
-    /**
-     * @param string $commentObjectId
-     * @return self
-     */
-    public function setCommentObjectId($commentObjectId)
-    {
-        $this->commentObjectId = $commentObjectId;
-        return $this;
-    }
 
     /**
      * @return string
      */
     public function getVideo(): string
     {
-        if ($this->video === null) {
-            return '';
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getVideo();
         }
 
-        return $this->video;
+        return '';
     }
 
     /**
@@ -377,7 +354,10 @@ class Card implements CardInterface
      */
     public function setVideo($video)
     {
-        $this->video = $video;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setVideo($video);
+        }
+
         return $this;
     }
 
@@ -386,7 +366,11 @@ class Card implements CardInterface
      */
     public function getVideoId(): string
     {
-        return $this->videoId;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getVideoId();
+        }
+
+        return null;
     }
 
     /**
@@ -395,7 +379,10 @@ class Card implements CardInterface
      */
     public function setVideoId($videoId)
     {
-        $this->videoId = $videoId;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setVideoId($videoId);
+        }
+
         return $this;
     }
 
@@ -404,7 +391,11 @@ class Card implements CardInterface
      */
     public function isValidVideo(): bool
     {
-        return $this->validVideo;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->isValidVideo();
+        }
+
+        return false;
     }
 
     /**
@@ -413,7 +404,142 @@ class Card implements CardInterface
      */
     public function setValidVideo($validVideo)
     {
-        $this->validVideo = $validVideo;
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setValidVideo($validVideo);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return LibraryCardInterface|null
+     */
+    public function getLibraryCard()
+    {
+        return $this->libraryCard;
+    }
+
+    /**
+     * @param LibraryCardInterface $libraryCard
+     * @return self
+     */
+    public function setLibraryCard($libraryCard)
+    {
+        $this->libraryCard = $libraryCard;
+        return $this;
+    }
+
+    public function getEmbedded()
+    {
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            return $this->libraryCard->getEmbedded();
+        }
+
+        return null;
+    }
+
+    public function setEmbedded($embedded)
+    {
+        if ($this->libraryCard instanceof LibraryCardInterface) {
+            $this->libraryCard->setEmbedded($embedded);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getViews(): int
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param int $views
+     * @return self
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getPartyDate()
+    {
+        return $this->partyDate;
+    }
+
+    /**
+     * @param DateTime $partyDate
+     * @return self
+     */
+    public function setPartyDate($partyDate)
+    {
+        $this->partyDate = $partyDate;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatuses()
+    {
+        $going = 0;
+        $notSure = 0;
+        $notGoing = 0;
+        $total = count($this->statuses);
+        if ($this->statuses != null) {
+            /** @var StatusInterface $status */
+            foreach ($this->statuses as $status) {
+                switch ($status->getStatus()) {
+                    case CardInterface::STATUS_GOING:
+                        $going++;
+                        break;
+                    case CardInterface::STATUS_NOT_SURE:
+                        $notSure++;
+                        break;
+                    case CardInterface::STATUS_NOT_GOING:
+                        $notGoing++;
+                        break;
+                }
+            }
+        }
+        return array(
+            'going' => $going,
+            'notSure' => $notSure,
+            'notGoing' => $notGoing,
+            'total' => $total
+        );
+    }
+
+    public function getWeddingDateString()
+    {
+        if ($this->weddingDate instanceof \DateTime) {
+            return $this->getDateString($this->weddingDate);
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
         return $this;
     }
 

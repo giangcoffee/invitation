@@ -22,4 +22,5 @@ class Template extends TemplateModel
     protected $forGroom;
     protected $homeLatitude;
     protected $homeLongitude;
+    protected $type;
 }

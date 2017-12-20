@@ -174,4 +174,15 @@ interface TemplateInterface extends ModelInterface
      * @param boolean $forGroom
      */
     public function setForGroom($forGroom);
+
+    /**
+     * @return mixed
+     */
+    public function getType();
+
+    /**
+     * @param mixed $type
+     * @return self
+     */
+    public function setType($type);
 }

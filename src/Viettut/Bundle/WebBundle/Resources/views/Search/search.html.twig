@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+{% block title %}Kết quả tìm kiếm cho {{ keyword }}{% endblock %}
+{% block description %}
+    Kết quả tìm kiếm cho từ khóa {{ keyword }} trên thiệp đỏ, kết quả sẽ bao gồm thiệp, mẫu thiệp, các bài viết hoặc những câu hỏi thường gặp. Áp dụng cả từ khóa có dấu và không dấu.
+{% endblock %}
+{% block main %}
+    <section class="page-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('home_page') }}">Home</a></li>
+                        <li class="active">Tìm kiếm</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h5 class="dark shorter">Tiếp tục tìm kiếm:</h5>
+                <p>Thay đổi từ khóa nếu kết quả không như bạn mong muốn:</p>
+
+                <form method="get" action="{{ path('public_search') }}">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Search..." name="q" id="q" type="text">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+                <hr />
+
+                <h4 class="dark">{{ totalMatch }} kết quả tìm kếm cho : <strong>{{ keyword }}</strong></h4>
+                <ul class="simple-post-list">
+                    {% if cards | length > 0 %}
+                        <h3>Thiệp</h3>
+                        {% for card in cards %}
+                            <li>
+                                <div class="post-info">
+                                    <a href="{{ path('card_page', {'hash' : card.hash}) }}">{{ card.name }}</a>
+                                    <div class="post-meta">
+                                        {% if card.forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %} - {{ card.createdAt | date('d-m-Y') }}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if templates | length > 0 %}
+                        <h3>Mẫu Thiệp</h3>
+                        {% for template in templates %}
+                            <li>
+                                <div class="post-info">
+                                    <a href="{{ path('template_page', {'hash' : template.hash}) }}">{{ template.name }}</a>
+                                    <div class="post-meta">
+                                        {{ template.createdAt | date('d-m-Y') }}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if posts | length > 0 %}
+                        <h3>Bài viết</h3>
+                        {% for post in posts %}
+                            <li>
+                                <div class="post-info">
+                                    <a href="{{ path('single_post_page', {'hash' : post.hash}) }}">{{ post.title }}</a>
+                                    <div class="post-meta">
+                                        {{ post.createdAt | date('d-m-Y') }}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if faqs | length > 0 %}
+                        <h3>Câu hỏi thường gặp</h3>
+                        {% for faq in faqs %}
+                            <li>
+                                <div class="post-info">
+                                    <a href="{{ path('faq_page') }}">{{ faq.question }}</a>
+                                    <div class="post-meta">
+                                        {{ faq.createdAt | date('d-m-Y') }}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+
+                {#<ul class="pagination pull-right">#}
+                    {#<li><a href="#">«</a></li>#}
+                    {#<li class="active"><a href="#">1</a></li>#}
+                    {#<li><a href="#">2</a></li>#}
+                    {#<li><a href="#">3</a></li>#}
+                    {#<li><a href="#">»</a></li>#}
+                {#</ul>#}
+            </div>
+            {#<div class="col-md-3">#}
+                {#{% include 'sidebar.html' %}#}
+            {#</div>#}
+        </div>
+    </div>
+{% endblock %}

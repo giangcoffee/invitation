@@ -1,6 +1,4 @@
 @charset "utf-8";
-@import url(NanumGothic.css);
-
 /* reset */
 #skin_page {background-color:#fff; color:#000;}
 
@@ -11,7 +9,7 @@
 body {
  color:#333;
  font-size:100%;
- font-family: AppleSDGothicNeo-Regular, Droid sans, '나눔고딕', 'Nanum Gothic', 'NanumGothic', '돋움', Dotum, Helvetica, sans-serif;
+ font-family: 'Lora', serif;
  line-height:1.25em;
  word-break:break-all;
  }
@@ -47,11 +45,11 @@ textarea, input {
 textarea { resize:none; }
 label { cursor:pointer; }
 
-.helv { font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }
-.verd { font-family:verdana, "돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }
-.nanum{ font-family:nanumFont,"돋움",dotum;}
+/*.helv { font-family:"돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }*/
+/*.verd { font-family:verdana, "돋움", HelveticaNeue, Dotum, "굴림", Gulim, Apple-Gothic; }*/
+/*.nanum{ font-family:nanumFont,"돋움",dotum;}*/
 .bold { font-weight:bold; }
-.utsa { font-family:Utsaah, HelveticaNeue, Apple-Gothic; }
+/*.utsa { font-family:Utsaah, HelveticaNeue, Apple-Gothic; }*/
 
 .blind, legend {overflow:hidden; width:0; height:0; position:absolute; top:0; left:0; font-size:0; line-height:0; }
 .hidden {position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;font-size:0;line-height:0}
@@ -120,31 +118,43 @@ label { cursor:pointer; }
 /* Footer */
 .ui-page-theme-a .ui-bar-inherit {background:none; border:none;}
 .footer {overflow:hidden; padding:1em; background-color:#eee;}
-.footer h4 {display:none;}
+.footer h4 {position:absolute;}
 .footer ul {overflow:hidden; padding-top:0.5em;}
 .footer ul li {float:left; width:25%; }
 .footer ul li div {width:60px; height:60px; margin:0 auto;}
 .footer ul li div span {display:block; text-indent:-9999px; overflow:hidden;}
 .footer ul li em {display:none; margin-top:.5em; font-size:1em; text-align:center; text-shadow:none;}
-.facebook {background:url('../../../img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
-.twitter {background:url('../../../img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
-.zalo {background:url('../../../img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
-.instagram	{background:url('../../../img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.facebook {background:url('/bundles/viettutweb/img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.twitter {background:url('/bundles/viettutweb/img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.zalo {background:url('/bundles/viettutweb/img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
+.instagram	{background:url('/bundles/viettutweb/img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:60px; opacity:.7;cursor:pointer;}
 
 
 
 /* 640 이상 */
 @media all and (min-width: 640px) {
-	.footer h4 {display:block; float:left; padding:18px 0 0 10px}
+	/*.footer h4 {padding:18px 0 0 10px}*/
 	.footer h4 span {display:inline-block; padding-left:.5em; line-height:2em; vertical-align:top; text-shadow:none; color:rgba(255,255,255,.5);}
 	.footer h4 img {opacity:.8;}
 	.footer ul {float:right; width:33%; padding-top:12px;}
 	.footer ul li {float:left; width:25%;}
 	.footer ul li div {width:40px; height:40px;}
-	.facebook {background:url('../../../img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
-	.twitter {background:url('../../../img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
-	.zalo {background:url('../../../img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
-	.instagram	{background:url('../../../img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.facebook {background:url('/bundles/viettutweb/img/templates/common/facebook_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.twitter {background:url('/bundles/viettutweb/img/templates/common/twitter_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.zalo {background:url('/bundles/viettutweb/img/templates/common/zalo_icon_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+	.instagram	{background:url('/bundles/viettutweb/img/templates/common/instagram_circle_120.png') 0 0 no-repeat;background-size:40px;opacity:.7;cursor:pointer;}
+}
+
+@media all and (max-width: 640px) {
+	.footer h4 {right:5px;top:-5px;}
+}
+
+@media all and (max-width: 480px) {
+	.footer h4 {right:5px;top:-5px;}
+}
+
+@media all and (max-width: 320px) {
+    .footer h4 {right:5px;top:-5px;}
 }
 
 .hide {display:none;}
@@ -180,7 +190,7 @@ a.gallery_comment_link:link {color:white;float:right;}
 
 .popup_olleh .olleh_btn .title {
 	position: relative;width:72%;margin:0;padding: 20px 0 20px 60px;box-sizing:border-box;
-	font-size:17px;letter-spacing:-1px;line-height:1.5;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+	font-size:17px;letter-spacing:-1px;line-height:1.5;font-family: 'Lora', serif;
 }
 .popup_olleh .olleh_btn .title strong{font-size:17px;color:#333}
 .popup_olleh .olleh_btn .title:before {position:absolute;top:50%;left:13px;margin:-20px 0 0 0;width:40px;height:40px;background:url(/dalpeng/skin/_common/img/olleh_imgs.png) no-repeat;content:'';background-size:40px auto}
@@ -191,7 +201,7 @@ a.gallery_comment_link:link {color:white;float:right;}
 
 .popup_olleh .olleh_btn .link {
 	position:absolute;top:0;right:0;bottom:0;width:28%;background: url(/dalpeng/skin/_common/img/olleh_arrow.png) no-repeat 50% 20px;background-size: 25px;
-	font-size:14px;letter-spacing:-1px;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+	font-size:14px;letter-spacing:-1px;font-family: 'Lora', serif;
 }
 .popup_olleh .olleh_btn.btn1 .link{background-color:#ff3b49}
 .popup_olleh .olleh_btn.btn2 .link{background-color:#747474}
@@ -199,7 +209,7 @@ a.gallery_comment_link:link {color:white;float:right;}
 
 .popup_olleh .olleh_back {
 	position:relative;width: 85%;max-width:400px;min-width:290px;margin:0 auto;box-sizing:border-box;
-	font-size:16px;color:#fff;font-weight:bold;text-align:right;font-family: AppleSDGothicNeo-Regular, Droid sans, '맑은 고딕',sans-serif;
+	font-size:16px;color:#fff;font-weight:bold;text-align:right;font-family: 'Lora', serif;
 }
 .popup_olleh .olleh_back span{display:inline-block;padding:20px 15px 15px 26px;background:url(/dalpeng/skin/_common/img/olleh_close.png) no-repeat 0 20px;background-size:20px;cursor:pointer}
 
@@ -277,4 +287,61 @@ a.gallery_comment_link:link {color:white;float:right;}
 	background-image: url('/bundles/viettutweb/img/templates/common/panel_insta.png');
 	background-position:50% 50%;
 	background-size:50px;
+}
+
+.iframe-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 35px;
+	height: 0;
+	overflow: hidden;
+}
+
+.iframe-container iframe, .iframe-container object, .iframe-container embed {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* POP UP */
+.container { position: relative; }
+
+/* create a scrollbar for demo purposes */
+#signup {
+	position: fixed;
+	z-index:100;
+	width: 100%;
+	/*height: 80px;*/
+	top: -90px;
+	left: 0;
+	background-color: #2f6e71;
+	transition: top 0.67s linear;
+	color: white;
+	font-size: 1.4em;
+	text-align: center;
+	padding: 5px 10px;
+}
+
+#signup.show {
+	top: 0;
+}
+#signup .row {
+	margin-top:8px;
+	margin-bottom:10px;
+}
+
+#signup .close { position: absolute; top: 0.25em; right: 0.125em; }
+#signup p { margin-top: 0.125em; line-height: 1.25em; }
+
+nav { text-align: center; font-size: 1.25em; margin: 0.25em; }
+.banner { text-align: center; font-size: 2em; margin: 1em; }
+.new-nav { height: 800px; padding: 0.5em; }
+.text-white { color: #FFFFFF; }
+
+@media all and (max-width: 480px) {
+	#signup {
+		font-size:1.1em;
+	}
 }

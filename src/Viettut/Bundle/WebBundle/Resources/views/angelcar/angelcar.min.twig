@@ -1,0 +1,573 @@
+<!DOCTYPE html><html lang="vi"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#"><meta property="og:type" content="website"><meta property="og:url" content="http://thiepdo.com/angel-car"><meta property="og:description" content=""><meta property="og:title" content="{{ description }}"><meta property="og:image" content="/bundles/viettutweb/img/templates/angelcar/f6023d1ca8dd43dea2d6ded9c41f689d.jpg"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="format-detection" content="telephone=no"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="robots" content="noindex"><title>{{ name }}</title><link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon"><link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png"><link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png"><link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}"><link rel="stylesheet" type="text/css" href="{{ asset('css/angelcar/app.css') }}"></head><body><h1 class="hide">Angel Car - Những thiên thần nhỏ</h1><h2 class="hide">Mẫu mới với phong cách nhẹ nhàng trong sáng với tông màu nhẹ, thích hợp với những bộ ảnh giản dị.</h2><div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}" data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div><div id="card_id" data-id="{{ id }}"></div><div data-role="page" id="skin_page"><div data-role="panel" id="panel_father" class="leftpanel dad-panel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b"><div class="groom-wrap"><ul><a href="tel:{{ data['fa_phone'] }}"><li class="ico5">Gọi điện</li></a><a href="sms:{{ data['fa_phone'] }}"><li class="ico6">Nhắn tin</li></a><a href="http://facebook.com/dalpeng" target="_blank"><li class="ico7">Facebook</li></a><a href="http://twitter.com/dalpengcom" target="_blank"><li class="ico8">Instagram</li></a></ul><p class="btn_go_snsbbs">Chúc mừng</p></div></div><div data-role="panel" id="panel_mother" class="righttpanel mom-panel" data-position="right" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="a"><div class="bride-wrap"><ul><a href="tel:{{ data['mo_phone'] }}"><li class="ico1">Gọi điện</li></a><a href="sms:{{ data['mo_phone'] }}"><li class="ico2">Nhắn tin</li></a><a href="http://facebook.com/dalpeng" target="_blank"><li class="ico3">Facebook</li></a><a href="http://twitter.com/dalpengcom" target="_blank"><li class="ico4">Instagram</li></a></ul><p class="btn_go_snsbbs">Chúc mừng</p></div></div><div data-role="panel" id="right-panel" data-position="right" data-display="push"><div class="menu-wrap ui-panel-inner"><ul data-role="listview" data-icon="false">{#<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>#} {#<li data-role="list-divider">첫 번째 생일파티에 초대합니다.</li>#}<li class="menu_scrolls" data-rel="close"><span>TRANG CHỦ</span></li><li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>THÔNG TIN</span></li><li class="menu_scrolls" data-rel="close" id="p_gallery"><span>ALBUM ẢNH</span></li><li class="menu_scrolls" data-rel="close" id="p_media"><span>VIDEO</span></li><li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>CHÚC MỪNG</span></li><li class="menu_scrolls" data-rel="close" id="p_map"><span>ĐỊA ĐIỂM</span></li></ul></div></div><div class="header_panel"><p class="dad"><a href="#panel_father">Bố</a></p><p class="mom"><a href="#panel_mother">Mẹ</a></p></div><div class="lnb_wrap"><div class="lnb_mobile"><a href="#right-panel"><img src="/bundles/viettutweb/img/templates/angelcar/lnb_mobile.png" alt=""></a></div><div class="lnb"><ul><li class="menu6 menu_scrolls on"><span>TRANG CHỦ</span></li><li class="menu6 menu_scrolls on" id="m_topinfo"><span>THÔNG TIN</span></li><li class="menu6 menu_scrolls" id="m_gallery"><span>ALBUM ẢNH</span></li><li class="menu6 menu_scrolls" id="m_media"><span>VIDEO</span></li><li class="menu6 menu_scrolls" id="m_snsbbs"><span>CHÚC MỪNG</span></li><li class="menu6 menu_scrolls" id="m_map"><span>ĐỊA ĐIỂM</span></li></ul></div></div><div id="sk_topinfo" class="header ui-section-b"><div class="flag"></div></div><div class="greeting_wrap ui-section-a"><div class="header_box"><div class="header_title align_center color"><div class="cars"><img src="/bundles/viettutweb/img/templates/angelcar/mother_father_car.png" alt="mother car"></div><div class="one align_center"><img src="/bundles/viettutweb/img/templates/angelcar/happy_cali.png" alt=""></div><h1><p class="birthday">Thân mời bạn !</p><p class="name">Tới dự {{ data['title'] }} của {{ data['name'] }}</p></h1><ul class="header_date"><li>{{ date | long_date }}</li><li class="time">{{ data['time'] }}</li><li class="place">{{ data['place'] }}, {{ data['place_addr'] }}</li></ul></div></div><div class="greeting_box"><h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/greeting_title.png" alt="chúc mừng sinh nhật con"></h2><div class="greeting_content"><p class="greeting_text">{{ data['greeting'] | raw }}</p><ul class="greeting_name"><li class="dad"><span>Bố</span>{{ data['fa_name'] }} <span class="panel"><a href="#panel_father">◀ Gọi cho bố</a></span></li><li class="mom"><span>Mẹ</span>{{ data['mo_name'] }} <span class="panel"><a href="#panel_mother">Gọi cho mẹ ▶</a></span></li></ul><div class="greeting_loca"><p><span>{{ date | long_date }}</span> <span class="option">{{ data['time'] }}</span></p><p>{{ data['place_addr'] }}</p></div></div></div><div class="profile_wrap"><h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/intro_title.png" alt="Chuc mung sinh nhat"></h2><div class="profile_box profile_boy"><div class="profile_content"><div class="baby_photo"><p class="baby_img"><img src="/bundles/viettutweb/img/templates/angelcar/ETC_98e607978557353e0cb95d8563d06e45.jpg" alt="baby avatar"></p><p class="baby_gender male"><span>성별<strong>남아</strong></span></p><p class="baby_name"><span>Bé<strong>{{ data['name'] }}</strong></span></p></div><div class="baby_profile boy"><ul><li><span class="title">Tên con là gì ?</span><span class="text">{{ data['name'] }}</span></li><li><span class="title">Ngày sinh :</span><span class="text">{{ data['birth_day'] }}</span></li><li><span class="title">Cân nặng :</span><span class="text">{{ data['weight'] }}</span></li><li><span class="title">Răng :</span><span class="text">{{ data['tooth'] }}</span></li><li><span class="title">Sở thích :</span><span class="text">{{ data['hobbies'] }}</span></li><li><span class="title">Sở trường :</span><span class="text">{{ data['skill'] }}</span></li></ul></div></div></div></div></div><div class="gallery_wrap ui-cont-b" id="sk_gallery"><h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/gallery_title.png" alt="Photo Gallery"></h2><div class="ul-body"><div class="gal_list">{% if gallery | length > 2 %}<div class="col-3">{% for img in gallery[0:3] %} <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgid="{{ loop.index }}"><div class="ui-block-{{ loop.index % 3 }}" style="background:url({{ img['src'] }}) center center no-repeat;background-size:cover;"></div></a>{% endfor %}</div>{% endif %} {% if gallery | length > 5 %}<div class="col-3">{% for img in gallery[3:3] %} <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgid="{{ loop.index + 3}}"><div class="ui-block-{{ loop.index % 3 }}" style="background:url({{ img['src'] }}) center center no-repeat;background-size:cover;"></div></a>{% endfor %}</div>{% endif %} {% if gallery | length > 8 %}<div class="col-3">{% for img in gallery[6:3] %} <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgid="{{ loop.index + 6 }}"><div class="ui-block-{{ loop.index % 3 }}" style="background:url({{ img['src'] }}) center center no-repeat;background-size:cover;"></div></a>{% endfor %}</div>{% endif %} {% if gallery | length > 9 %}<div class="gal_more"><a href="{{ gallery[9]['src'] }}" class="swipebox" data-size="{{ gallery[9]['size'] }}" imgid="10"><img src="/bundles/viettutweb/img/templates/angelcar/gallery_more.png" alt="more"></a></div>{% endif %} {% if gallery | length > 10 %} {% for img in gallery[10:] %}<div class="hide"><a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgid="{{ loop.index + 10 }}"></a></div>{% endfor %} {% endif %}</div></div></div>{% if isTemplate %}<div class="movie_wrap ui-cont-b" id="sk_media"><h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/movie_ballon.png" alt="동영상"></h2><div class="ul-body"><div class="movie_container movie1"><ul><li><iframe id="movie" width="100%" height="100%" src="https://www.youtube.com/embed/aSjy4h9GHS0?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" allowfullscreen></iframe></li></ul></div></div><div class="movie_bottom"></div></div>{% else %}<div class="movie_wrap ui-cont-b" id="sk_media"><h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/movie_ballon.png" alt="video"></h2><div class="ul-body"><div class="movie_container movie1"><ul><li>{{ embed | raw }}</li></ul></div></div><div class="movie_bottom"></div></div>{% endif %}<div class="guestbook_wrap ui-cont-b" id="sk_snsbbs"><h2 class="title btn_go_snsbbs"><img src="/bundles/viettutweb/img/templates/angelcar/guestbook_title.png" alt="guest book"></h2><div class="ul-body col-3"><div id="div_snsbbs">{% if isTemplate %}<div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture"></div><div class="pro_txt"><p><strong>Michael</strong></p><p class="date">2017-07-14 17:45</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Trộm vía yêu quá!</p><div class="emo-type-c emo11"></div></li></ul></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture"></div><div class="pro_txt"><p><strong>Giang Minh</strong></p><p class="date">2017-07-14 17:45</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Chúc con hay ăn chóng nhớn !</p><div class="emo-type-b emo02"></div></li></ul></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture"></div><div class="pro_txt"><p><strong>Sunny</strong></p><p class="date">2017-07-14 17:43</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Con rể tôi đây r</p><div class="emo-type-b emo20"></div></li></ul></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture"></div><div class="pro_txt"><p><strong>Windy</strong></p><p class="date">2017-07-14 17:43</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Yêu quá trời l</p></li></ul></div></div></div><div class="snsbbs_sections mobile_hide"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture"></div><div class="pro_txt"><p><strong>Sweet Corn</strong></p><p class="date">2017-07-14 17:43</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Trông vậy mà nghịch lắm c</p><div class="emo-type-a emo02"></div></li></ul></div></div></div><div class="snsbbs_sections mobile_hide"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/crop_c14f8a35bc8180f7cbf516f097919e03.jpg" alt="profile picture"><div class="pro-sns dalpeng"><span></span></div></div><div class="pro_txt"><p><strong>Thích thì nhích</strong></p><p class="date">2017-07-14 17:42</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Sâu nhà mình bao giờ mới dc thế này !</p><div class="emo-type-a emo08"></div></li></ul></div></div></div><div class="snsbbs_sections mobile_hide"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture"><div class="pro-sns notmember"><span></span></div></div><div class="pro_txt"><p><strong>im_mi_ya</strong></p><p class="date">2017-07-03 15:04</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Chúc mừng hai anh chị nh</p><div class="emo-type-a emo06"></div></li></ul></div></div></div><div class="snsbbs_sections mobile_hide"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="/bundles/viettutweb/img/templates/gardenwedding/img_profile.png" alt="profile picture"><div class="pro-sns notmember"><span></span></div></div><div class="pro_txt"><p><strong>songsong2</strong></p><p class="date">2017-07-03 15:02</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Hôm nay cho Kem ngồi với Bốp nhé</p></li></ul></div></div></div>{% else %} {% for comment in comments %}<div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="pro_info"><div class="pro_img"><img src="{{ comment.author.avatar }}" alt="profile picture"></div><div class="pro_txt"><p><strong>{{ comment.author.name }}</strong></p><p class="date">{{ comment.createdAt | date('d-m-Y H:i') }}</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>{{ comment.content }}</p></li></ul></div></div></div>{% endfor %} {% endif %}</div></div>{% if isTemplate %}<div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()"><img src="/bundles/viettutweb/img/templates/angelcar/guestbook_btn.png" alt="congratulate"></div>{% else %}<div class="gb_btn btn_go_snsbbs" onclick='gotoGuestBook("{{ hash }}")'><img src="/bundles/viettutweb/img/templates/angelcar/guestbook_btn.png" alt="congratulate"></div>{% endif %}</div><div class="location_wrap ui-cont-b" id="sk_map"><h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/location_title.png" alt="location"></h2><div class="ul-body"><div class="lo_box col-2"><div class="ui-block-a"><div class="lo_map"><div id="fbirthday_map_canvas" class="not_view_panel" style="width:100%;height:400px;"></div></div><div class="nav-wrap"><div class="ui-grid-a nav-m"><form action="https://maps.google.com/maps" method="get" target="_blank" id="getHomePath"><input type="text" name="saddr" placeholder="địa chỉ của bạn"> <input type="hidden" name="daddr" value='{{ data["place_addr"] }}'></form><div class="nav-1"><div class="ui-btn-nav wedding_kimnavi"><span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getHomePath()">CHỈ ĐƯỜNG</span></div></div></div></div><div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div></div><div class="ui-block-b"><table class="lo_container lo_container1"><tr><th class="lo_date"><span class="icon">Thời gian</span></th><td><span><strong>{{ date | long_date }}</strong><br>{{ data['time'] }}</span></td></tr><tr><th class="lo_loca"><span class="icon">Địa chỉ</span></th><td><span><strong>{{ data['place'] }}</strong><br>{{ data['place_addr'] }}</span></td></tr></table><table class="lo_container lo_container2"><tr><th class="lo_tel"><span class="icon">ĐT</span></th><td><span>{{ data['place_phone'] }}</span></td></tr><tr><th class="lo_info"><span class="icon">Đỗ xe</span></th><td><span>{{ data['parking_info'] }}</span></td></tr><tr><th class="lo_bus"><span class="icon">Xe Bus</span></th><td><span>{{ data['bus_info'] }}</span></td></tr><tr><th class="lo_info"><span class="icon">Ghi chú</span></th><td><span>{{ data['note'] }}</span></td></tr></table></div></div></div></div><div class="footer" id="sk_snslink"><div class="contents"><h4><a href="{{ path('home_page') }}" target="_blank"><img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"> </a><span></span></h4><ul><div class="addthis_inline_share_toolbox"></div></ul></div></div></div><div class="pswp" tabindex="-1" role="dialog" aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--fit pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter" data-role="none"></div><button class="pswp__button pswp__button--close" title="Close (Esc)" data-role="none"></button> <button class="pswp__button pswp__button--image" title="Include Image" data-role="none"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen" data-role="none"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out" data-role="none"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)" data-role="none"></button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)" data-role="none"></button><div class="pswp__caption"><div class="pswp__caption__center">Image caption 1</div></div></div></div></div>{% if voted == false %}<div id="signup" class="signup"><div class="container"><div class="row"><i>Vui lòng cho biết dự định của bạn !</i></div><div class="row"><button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp; <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp; <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button></div><a href="#" class="close"><i class="fa fa-times text-white"></i></a></div></div>{% endif %}<script src="{{ asset('js/libraries.min.js') }}"></script><script type="text/javascript"><!--
+    var swipe_exception = false;
+    $(document).on("pagecreate", "#skin_page", function (e) {
+        $(document).on("swipeleft swiperight", ".not_view_panel , #skin_page", function (e) {
+            // We check if there is no open panel on the page because otherwise
+            // a swipe to close the left panel would also open the right panel (and v.v.).
+            // We do this by checking the data that the framework stores on the page element (panel: open).
+            var id = $(this).attr('id');
+            var not = $(this).attr('class');
+            if (not.indexOf('not_view_panel') > -1) swipe_exception = true;
+            if (!swipe_exception) {
+                if ($(".ui-page-active").jqmData("panel") !== "open") {
+                    if (e.type === "swipeleft") {
+                        $("#panel_bride").panel("open");
+                        $("#panel_mother").panel("open");
+                    } else if (e.type === "swiperight") {
+                        $("#panel_groom").panel("open");
+                        $("#panel_father").panel("open");
+                    }
+                }
+            }
+            if (id == 'skin_page') swipe_exception = false;
+        });
+    });
+
+
+    $(function () {
+
+        function fixScrollEvent() {
+            $("html,body").on("mousewheel", function () {
+                event.preventDefault();
+
+                var wheelDelta = event.wheelDelta;
+                var currentScrollPosition = window.pageYOffset;
+
+                window.scrollTo(0, currentScrollPosition - wheelDelta);
+            });
+
+            $("html,body").on("keydown", function (e) {
+                e.preventDefault();
+
+                var currentScrollPosition = window.pageYOffset;
+
+                switch (e.which) {
+                    case 38: // up
+                        window.scrollTo(0, currentScrollPosition - 120);
+                        break;
+
+                    case 40: // down
+                        window.scrollTo(0, currentScrollPosition + 120);
+                        break;
+
+                    default:
+                        return;
+                }
+            });
+        }
+
+        $(".header,.header_box").css("height", $(window).height());
+        $(window).bind("orientationchange, resize", function (e) {
+            $(".header,.header_box").css("height", $(window).height());
+        });
+
+        try {
+            var headerTitle = $('.gallery_wrap').offset().top;
+            var headerAnimate = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > headerTitle) $('.header_panel,.lnb,.header').hide();
+                else $('.header_panel,.lnb,.header').show();
+                if (scrollTop > headerTitle + 100) $('.lnb_mobile').addClass('fadeIn');
+                else $('.lnb_mobile').removeClass('fadeIn');
+            };
+            $(window).scroll(function () {
+                headerAnimate();
+            });
+        } catch (e) {
+        }
+
+        // -- map -- //
+        function initialize(md) {
+        }
+
+
+        $('#div_snsbbs').masonry({
+            //columnWidth: .snsbbs_sections,
+            //isFitWidth : true,
+            itemSelector: '.snsbbs_sections',
+            transitionDuration: 0
+        }).on('layoutComplete', function () {
+            return true;
+        });
+
+        var closest = function closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        };
+
+        var photoswipeParseHash = function () {
+            var hash = window.location.hash.substring(1),
+                    params = {};
+
+            if (hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        function getGallery($el) {
+            var el = [];
+            var aTag = Array.prototype.slice.call($el.find("a"));
+
+            $.merge(el, aTag);
+
+            return el;
+        }
+
+        function onThumbnailsClick(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+            var clickedListItem = closest(eTarget, function (el) {
+                var tagName = el.tagName.toUpperCase();
+                return (tagName && tagName === 'A');
+            });
+
+            if (!clickedListItem) {
+                return;
+            }
+
+            if (clickedListItem.className.indexOf("swipebox") == -1) {
+                return false;
+            }
+
+            var childNodes = el,
+                    numChildNodes = el.length,
+                    nodeIndex = 0,
+                    index = 0;
+
+            var no_image_count = 0;
+            for (var i = 0; i < numChildNodes; i++) {
+                if (el[i].className.indexOf("swipebox") == -1) {
+                    no_image_count++;
+                }
+
+                if (el[i] == clickedListItem) {
+                    index = i - no_image_count;
+
+                    break;
+                }
+            }
+
+            if (index >= 0) {
+                openPhotoSwipe(index, el);
+            }
+
+            return false;
+        }
+
+        var gallery;
+
+        function getPrefix(prop) {
+            var style = document.body.style;
+            var prefix = ['Webkit', 'ms', 'moz', 'o'];
+            var prefix_len = prefix.length;
+
+            if (style[prop] == '') {
+                return prop;
+            }
+
+            prop = prop[0].toUpperCase() + prop.slice(1);
+
+            for (var i = 0; i < prefix_len; i++) {
+                if (style[prefix[i] + prop] == '') {
+                    return prefix[i] + prop;
+                }
+            }
+        }
+
+        function getTranslate(transform) {
+            var regex;
+
+            if (transform.indexOf('translate3d') == -1) {
+                regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
+            } else {
+                regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
+            }
+
+            var matched = transform.match(regex);
+            var coordinate = {};
+
+            coordinate.x = matched[1];
+            coordinate.y = matched[2];
+
+            if (matched[3]) {
+                coordinate.z = matched[3];
+            }
+
+            return coordinate;
+        }
+
+        function getScale(transform) {
+            var regex = /scale\(([0-9.]+)\)/;
+            var matched = transform.match(regex);
+
+            return matched[1];
+        }
+
+        function psBeforeInitAddEvent() {
+            gallery.listen('gettingData', function (index, item) {
+                var size = item.el.getAttribute("data-size").split("X");
+
+                item.w = size[0];
+                item.h = size[1];
+            });
+
+            gallery.listen('arrowUpdate', function () {
+                var $nextBtn = $('.pswp__button--arrow--right');
+                var $prevBtn = $('.pswp__button--arrow--left');
+                var loop = this.options.loop;
+                var index = this.getCurrentIndex();
+
+                $nextBtn.toggle(loop || index < this.items.length - 1);
+                $prevBtn.toggle(loop || index > 0);
+            });
+
+            gallery.listen('initialZoomIn', function () {
+
+            });
+        }
+
+        function psAfterInitAddEvent() {
+            gallery.listen('initialZoomOut', function () {
+                var item = this.currItem;
+                var container_style = item.container.style;
+                var transform = getPrefix('transform');
+                var transition = getPrefix('transition');
+
+                if (!transform || !transition) {
+                    return;
+                }
+
+                var container_transform = container_style[getPrefix('transform')];
+                var scale = getScale(container_transform);
+                var coordinate = getTranslate(container_transform);
+                var initTransY = item.initialPosition.y;
+                var currTransY = coordinate.y;
+                var size = item.el.getAttribute("data-size").split("X");
+                var transX = item.initialPosition.x;
+                var transY;
+
+                if (initTransY > currTransY) {
+                    transY = -(size[1]);
+                } else {
+                    transY = window.screen.availHeight;
+                }
+
+                container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
+
+                if (!this.isGestureClose() && this.isVerticalDrag()) {
+                    container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
+                }
+            });
+
+            gallery.listen('close', function () {
+                this.framework.bind(window, 'scroll', function () {
+                    if (typeof headerAnimate == "function") {
+                        headerAnimate();
+                    }
+                });
+            });
+        }
+
+        var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelector('.pswp'),
+                    options, items, kakaoInApp;
+
+            items = parseThumbnailElements(galleryElement);
+
+            if (/KAKAOTALK/.test(navigator.userAgent)) {
+                kakaoInApp = true;
+            }
+
+            options = {
+                useZoom: true,
+                arrowKeys: false,
+                hideAnimationDuration: 200,
+                showAnimationDuration: 100,
+                loop: false,
+                imageEl: true,
+                galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
+                showHideOpacity: true,
+                getThumbBoundsFn: false,
+                closeOnScroll: false,
+                kakaoInApp: kakaoInApp,
+            };
+
+            if (fromURL) {
+                if (options.galleryPIDs) {
+
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            if (isNaN(options.index)) {
+                return;
+            }
+
+            if (disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+            gallery.useAniNum = false;
+
+            psBeforeInitAddEvent();
+            gallery.init();
+            psAfterInitAddEvent();
+        };
+
+        var parseThumbnailElements = function (el) {
+            var imageElements = el,
+                    numNodes = imageElements.length,
+                    items = [],
+                    size,
+                    item;
+            var wrapper = document.createElement('div');
+            var imageEl,
+                    thumbEl;
+
+            for (var i = 0; i < numNodes; i++) {
+                imageEl = imageElements[i];
+
+                if (imageEl.nodeType !== 1) {
+                    continue;
+                }
+
+                var img_el = imageEl.getElementsByTagName("img");
+                var exist_img = img_el.length > 0 ? true : false;
+                var src = imageEl.href;
+                var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
+                var msrc;
+                var $imageEl = $(imageEl);
+
+                if (!is_swipe_image) {
+                    continue;
+                }
+
+                if (!exist_img) {
+                    thumbEl = imageEl.getElementsByTagName("div")[0];
+
+                    if (thumbEl) {
+                        msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                    } else {
+                        var piece = src.split("/");
+                        var pieceCount = piece.length;
+                        var file = piece[pieceCount - 1]
+
+                        piece[pieceCount - 1] = "S_" + file;
+
+                        msrc = piece.join("/");
+                    }
+                } else {
+                    if ($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
+                        msrc = img_el[0].parentNode.href;
+                    } else {
+                        thumbEl = img_el[0];
+                        msrc = thumbEl.src;
+                    }
+                }
+
+                item = {
+                    src: src,
+                    msrc: msrc,
+                    el: imageEl,
+                };
+
+                item.id = imageEl.getAttribute("imgId");
+                items.push(item);
+            }
+            return items;
+        };
+
+        var $my_gallery = $("#sk_gallery");
+        var my_gallery_count = $my_gallery.length;
+        var el = getGallery($my_gallery);
+        var $el = $(el);
+        var hashData = photoswipeParseHash();
+
+        $el.on("click", onThumbnailsClick);
+
+        for (var i = 0; i < my_gallery_count; i++) {
+            $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
+        }
+
+        if (hashData.pid && hashData.gid) {
+            openPhotoSwipe(hashData.pid - 1, el, true, true);
+        }
+
+        $(document).on("keydown keyup", function (e) {
+            var hidden = $(".pswp").attr("aria-hidden") == "true";
+
+            if (hidden) {
+                return;
+            }
+
+            var keydownAction = '';
+            var index = gallery.getCurrentIndex();
+            var gallery_len = gallery.items.length;
+
+            if (e.type == "keydown") {
+                if (e.keyCode === 37 && index != 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index != (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            } else if (e.type == "keyup") {
+                if (e.keyCode === 37 && index == 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index == (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            }
+
+            if (keydownAction) {
+                if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    gallery[keydownAction]();
+                }
+            }
+        });
+
+        $('#div_snsbbs').masonry('bindResize');
+
+        function setLocationInfoHeight() {
+        }
+
+        function setPosition(id) {
+            var $obj = $('#sk_' + id);
+            $('body').scrollTo($obj, 500);
+        }
+
+        $('.menu_scrolls').click(function () {
+            try {
+                if ($(this).attr('id')) {
+                    var id = $(this).attr('id').replace('p_', '').replace('m_', '');
+                    setPosition(id);
+                } else {
+                    window.location.href = '/';
+                }
+            } catch (e) {
+            }
+        }).css('cursor', 'pointer');
+    });
+
+    $(window).load(function () {
+
+
+        $('.gal_list2').masonry({
+            itemSelector: '.gal_frame',
+            columnWidth: '.gal_size',
+            transitionDuration: '0.2s',
+            percentPosition: true
+        });
+
+        $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+
+        {% if isTemplate == false %}
+            $('.movie_wrap').onScrollTo(function() {
+                $('#signup').addClass('show');
+            }, function() {
+                $('#signup').removeClass('show');
+            });
+
+            $('#signup').on('click', '.close', function(e) {
+                e.preventDefault();
+                $('#signup').removeClass('show');
+            });
+        {% endif %}
+    });
+
+    function initMap() {
+        var lat = $('#coordinates').data('lat');
+        var lon = $('#coordinates').data('lon');
+        var title = $('#coordinates').data('title');
+
+        var location = new google.maps.LatLng(lat, lon);
+
+        var map = new google.maps.Map(document.getElementById('fbirthday_map_canvas'), {
+            zoom: 16,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        var info = new google.maps.InfoWindow({
+            content: '<h4>' + title + '</h4>'
+        });
+        info.open(map, marker);
+
+        $('#fbirthday_map_canvas').css('width','100%');
+    }
+
+    function getPath() {
+        var addr = $('#getPath input[name=saddr]').val();
+        if (addr.length < 3) {
+            $('#getPath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getPath").submit();
+    }
+
+    function getHomePath() {
+        var addr = $('#getHomePath input[name=saddr]').val();
+
+        if (addr.length < 3) {
+            $('#getHomePath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getHomePath").submit();
+    }
+
+    (function ($) {
+        $.fn.onScrollTo = function (focusInFn, focusOutFn) {
+            var $this = this;
+            $(document).scroll(function () {
+                var y = $(this).scrollTop();
+                if (y >= $this.position().top) {
+                    if (focusInFn) focusInFn();
+                } else {
+                    if (focusOutFn) focusOutFn();
+                }
+            });
+        }
+    })(jQuery);
+    //--></script><script>WebFontConfig={google:{families:["Lora:400,700i&amp;subset=vietnamese"]}},function(e){var t=e.createElement("script"),o=e.scripts[0];t.src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js",t.async=!0,o.parentNode.insertBefore(t,o)}(document)</script><script async defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap"></script><script async defer="defer" type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script><script async>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-109753132-1")</script></body></html>

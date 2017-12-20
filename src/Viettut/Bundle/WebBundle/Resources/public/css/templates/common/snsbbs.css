@@ -1,8 +1,4 @@
 @charset "utf-8";
-@import url("emoticon.css");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
 /* reset */
 html{font-size:100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}
 body,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,hgroup,p,blockquote,figure,form,fieldset,input,legend,pre,abbr,button,div{margin:0;padding:0;border:0;box-sizing:border-box}
@@ -22,10 +18,10 @@ html,body{
 	-webkit-overflow-scrolling:touch !important;
 	height:100% !important;
 	font-size:16px;
-	font-family:HelveticaNeue-Light,AppleSDGothicNeo-Light,'Malgun Gothic',sans-serif;
+	font-family:'Lora', serif;
 }
-input,textarea{font-size:16px;font-family:HelveticaNeue-Bold,AppleSDGothicNeo-Bold,'Malgun Gothic',sans-serif}
-h1,h2,h3,h4,h5,h6{font-size:100%;font-family:HelveticaNeue-Bold,AppleSDGothicNeo-Bold,'Malgun Gothic',sans-serif}
+input,textarea{font-size:16px;font-family:'Lora', serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-family:'Lora', serif;}
 
 body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-break:break-word;overflow-x:hidden;}
 
@@ -34,7 +30,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .noscroll{overflow:hidden; width:100%;position:fixed;top:0;left:0; right: 0;bottom: 0;}
 
 /* SNS ICON */
-.ico-sns-big {width:48px;height:48px;background:url('../../../img/templates/common/ico-snsicon.png') 0 0 no-repeat;border-radius:100%;background-size:100%}
+.ico-sns-big {width:48px;height:48px;background:url('/bundles/viettutweb/img/templates/common/ico-snsicon.png') 0 0 no-repeat;border-radius:100%;background-size:100%}
 .ico-sns-big.facebook  {background-position:0 0}
 .ico-sns-big.kakao 	   {background-position:0 -48px}
 .ico-sns-big.naver     {background-position:0 -96px}
@@ -42,7 +38,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .ico-sns-big.nouser    {background-position:0 -192px}
 .ico-sns-big.instagram {background-position:0 -240px}
 
-.ico-sns-medium {width:24px;height:24px;background:url('../../../img/templates/common/ico-snsicon.png') 0 0 no-repeat;border-radius:100%;background-size:100%}
+.ico-sns-medium {width:24px;height:24px;background:url('/bundles/viettutweb/img/templates/common/ico-snsicon.png') 0 0 no-repeat;border-radius:100%;background-size:100%}
 .ico-sns-medium.facebook  {background-position:0 0}
 .ico-sns-medium.kakao 	  {background-position:0 -24px}
 .ico-sns-medium.naver     {background-position:0 -48px}
@@ -50,7 +46,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .ico-sns-medium.nouser    {background-position:0 -96px}
 .ico-sns-medium.instagram {background-position:0 -120px}
 
-.ico-sns-small {width:18px;height:18px;background:url('../../../img/templates/common/ico-snsicon.png') 0 0 no-repeat;border-radius:100%;background-size:100%}
+.ico-sns-small {width:18px;height:18px;background:url('/bundles/viettutweb/img/templates/common/ico-snsicon.png') 0 0 no-repeat;border-radius:100%;background-size:100%}
 .ico-sns-small.facebook  {background-position:0 0}
 .ico-sns-small.kakao 	 {background-position:0 -18px}
 .ico-sns-small.naver     {background-position:0 -36px}
@@ -80,13 +76,13 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .ico-logout:before,
 .ico-more:before {content:'';position:absolute;top:50%;left:50%;display:inline-block;overflow:hidden;background-size:100%!important;font-size:0;line-height:0;text-indent:-9999px;vertical-align:top}
 
-.ico-back:before {background:url(../../../img/templates/common/ico-back.png) no-repeat 50% 50%;width:12px;height:22px;margin:-11px 0 0 -6px}
-.ico-prev:before {background:url(../../../img/templates/common/ico-back.png) no-repeat 50% 50%;width:10px;height:18px;margin:-9px 0 0 -5px}
-.ico-next:before {background:url(../../../img/templates/common/ico-next.png) no-repeat 50% 50%;width:10px;height:18px;margin:-9px 0 0 -5px}
-.ico-menu:before {background:url(/../../../img/templates/common/ico-menu.png) no-repeat 50% 50%;width:26px;height:16px;margin:-8px 0 0 -13px}
-.ico-pencil:before {background:url(../../../img/templates/common/ico-pencil.png) no-repeat 50% 50%;width:20px;height:20px;left:0;margin: -10px 0 0 18px;}
-.ico-pencil-b:before {background:url(../../../img/templates/common/ico-pencil-b.png) no-repeat 50% 50%;width: 16px;height: 16px;left:0;margin: -8px 0 0 12px;opacity:0.5;}
-.ico-pencil2 {background:url(../../../img/templates/common/ico-pencil2.png) no-repeat 50% 50%;width:26px;height:26px;margin: -13px 0 0 -13px}
+.ico-back:before {background:url(/bundles/viettutweb/img/templates/common/ico-back.png) no-repeat 50% 50%;width:12px;height:22px;margin:-11px 0 0 -6px}
+.ico-prev:before {background:url(/bundles/viettutweb/img/templates/common/ico-back.png) no-repeat 50% 50%;width:10px;height:18px;margin:-9px 0 0 -5px}
+.ico-next:before {background:url(/bundles/viettutweb/img/templates/common/ico-next.png) no-repeat 50% 50%;width:10px;height:18px;margin:-9px 0 0 -5px}
+.ico-menu:before {background:url(/bundles/viettutweb/img/templates/common/ico-menu.png) no-repeat 50% 50%;width:26px;height:16px;margin:-8px 0 0 -13px}
+.ico-pencil:before {background:url(/bundles/viettutweb/img/templates/common/ico-pencil.png) no-repeat 50% 50%;width:20px;height:20px;left:0;margin: -10px 0 0 18px;}
+.ico-pencil-b:before {background:url(/bundles/viettutweb/img/templates/common/ico-pencil-b.png) no-repeat 50% 50%;width: 16px;height: 16px;left:0;margin: -8px 0 0 12px;opacity:0.5;}
+.ico-pencil2 {background:url(/bundles/viettutweb/img/templates/common/ico-pencil2.png) no-repeat 50% 50%;width:26px;height:26px;margin: -13px 0 0 -13px}
 
 .popup_box .write_btn .ico-pencil:before{margin-left: 13px}
 .nocomment .ico-pencil:before{margin-left:25px}
@@ -94,23 +90,23 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .btn_write .ico-pencil:before{margin-left: 15px;}
 
 /* .ico-reply {background:#444 url(/img/snsbbs/ico-reply.png) no-repeat 50% 50%;width:24px;height:24px;top: 0;left:0;margin: 0} */
-.ico-delete {background:url(../../../img/templates/common/ico-delete2.png) no-repeat 50% 50%;width:20px;height: 20px;margin: -7px 0 0 -10px;opacity:0.6;}
-.ico-close-w {background:url(../../../img/templates/common/ico-close-w.png) no-repeat 50% 50%;width: 14px;height: 14px;margin: -7px 0 0 -7px;}
-.ico-popclose-w {background:url(../../../img/templates/common/ico-popclose-w.png) no-repeat 50% 50%;width:20px;height:20px;margin:-10px 0 0 -10px}
-.ico-popclose-g {background:url(../../../img/templates/common/ico-popclose-g.png) no-repeat 50% 50%;width:20px;height:20px;margin:-10px 0 0 -10px}
-.ico-popclose-b {background:url(../../../img/templates/common/ico-popclose-b.png) no-repeat 50% 50%;width:20px;height:20px;margin:-10px 0 0 -10px}
+.ico-delete {background:url(/bundles/viettutweb/img/templates/common/ico-delete2.png) no-repeat 50% 50%;width:20px;height: 20px;margin: -7px 0 0 -10px;opacity:0.6;}
+.ico-close-w {background:url(/bundles/viettutweb/img/templates/common/ico-close-w.png) no-repeat 50% 50%;width: 14px;height: 14px;margin: -7px 0 0 -7px;}
+.ico-popclose-w {background:url(/bundles/viettutweb/img/templates/common/ico-popclose-w.png) no-repeat 50% 50%;width:20px;height:20px;margin:-10px 0 0 -10px}
+.ico-popclose-g {background:url(/bundles/viettutweb/img/templates/common/ico-popclose-g.png) no-repeat 50% 50%;width:20px;height:20px;margin:-10px 0 0 -10px}
+.ico-popclose-b {background:url(/bundles/viettutweb/img/templates/common/ico-popclose-b.png) no-repeat 50% 50%;width:20px;height:20px;margin:-10px 0 0 -10px}
 .ico-minus-w {width: 14px;height: 2px;margin: -1px 0 0 -7px;background-color: #fff;}
-.ico-emo {background:url(../../../img/templates/common/ico-emo.png) no-repeat 50% 50%;background-position:0 0;width: 25px;height: 25px;margin: -12.5px 0 0 -12.5px}
-.ico-trash {background:url(../../../img/templates/common/ico-trash-w.png) no-repeat 50% 50%;background-position:0 0;width: 12px;height: 16px;margin: -7px 0 0 -6px;}
+.ico-emo {background:url(/bundles/viettutweb/img/templates/common/ico-emo.png) no-repeat 50% 50%;background-position:0 0;width: 25px;height: 25px;margin: -12.5px 0 0 -12.5px}
+.ico-trash {background:url(/bundles/viettutweb/img/templates/common/ico-trash-w.png) no-repeat 50% 50%;background-position:0 0;width: 12px;height: 16px;margin: -7px 0 0 -6px;}
 .comm_del_area .ico-trash {margin: -5px 0 0 -3px;}
 /* .comment_box .ico-emo {background:url(/img/snsbbs/ico-emo-comm.png) no-repeat 50% 50%;background-position:0 0;width: 25px;height: 25px;margin: -12.5px 0 0 -12.5px}
 .write_emo.on .ico-emo {background-position: 0 -25px} */
-.ico-warning:before {background:url(../../../img/templates/common/ico-warning.png) no-repeat 50% 50%;background-position:0 0;width: 40px;height: 40px;top: 0;margin: 30px 0 0 -20px}
-.ico-upload:before {background:url(../../../img/templates/common/ico-upload.png) no-repeat 50% 50%;width:20px;height:16px;left:0;margin: -8px 0 0 12px}
-.ico-logout:before {background:url(../../../img/templates/common/ico-logout.png) no-repeat 50% 50%;background-position:0 0;width: 40px;height: 40px;top: 0;margin: 30px 0 0 -20px}
-.ico-more:before {background:url(../../../img/templates/common/ico-more.png) no-repeat 50% 50%;width:16px;height:16px;top:0;left: auto;margin:12px 0 0;right: 0;}
+.ico-warning:before {background:url(/bundles/viettutweb/img/templates/common/ico-warning.png) no-repeat 50% 50%;background-position:0 0;width: 40px;height: 40px;top: 0;margin: 30px 0 0 -20px}
+.ico-upload:before {background:url(/bundles/viettutweb/img/templates/common/ico-upload.png) no-repeat 50% 50%;width:20px;height:16px;left:0;margin: -8px 0 0 12px}
+.ico-logout:before {background:url(/bundles/viettutweb/img/templates/common/ico-logout.png) no-repeat 50% 50%;background-position:0 0;width: 40px;height: 40px;top: 0;margin: 30px 0 0 -20px}
+.ico-more:before {background:url(/bundles/viettutweb/img/templates/common/ico-more.png) no-repeat 50% 50%;width:16px;height:16px;top:0;left: auto;margin:12px 0 0;right: 0;}
 
-.ico-snslogin{cursor:pointer; position:relative;display:block;margin:0 auto;font-size:0;line-height:0;text-indent:-9999px;border-radius: 50%;background:url(../../../img/templates/common/ico-snsicon.png) no-repeat 0 0;width:48px;height:48px;background-size:100%}
+.ico-snslogin{cursor:pointer; position:relative;display:block;margin:0 auto;font-size:0;line-height:0;text-indent:-9999px;border-radius: 50%;background:url(/bundles/viettutweb/img/templates/common/ico-snsicon.png) no-repeat 0 0;width:48px;height:48px;background-size:100%}
 .ico-snslogin.ico-facebook{background-position:0 0}
 .ico-snslogin.ico-naver{background-position:0 -96px}
 .ico-snslogin.ico-kakaotalk{background-position:0 -48px}
@@ -127,7 +123,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 
 /*gnb*/
 .gnb_wrap>.color_bg {position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.5}
-.gnb_wrap .title{position:relative;display:block;padding:16px 0 0;font-size:1.2em;line-height:1;color:#fff;font-family:'Roboto';font-weight:900}
+.gnb_wrap .title{position:relative;display:block;padding:16px 0 0;font-size:1.2em;line-height:1;color:#fff;font-family:'Lora', serif;;font-weight:900}
 .gnb_wrap .back{position:absolute;top:0;left:0;width:40px;height:50px;font-size:0;line-height:0;text-indent:-9999px;cursor: pointer}
 .gnb_wrap .menu{position:absolute;top:0;right:0;width:60px;height:50px;font-size:0;line-height:0;text-indent:-9999px;cursor: pointer}
 .gnb_wrap .gnb_login{display:none;position:absolute;top:0;right:0;height:50px;padding:10px 0 10px 10px}
@@ -170,7 +166,7 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .contents_list>li.loader .btn_more:hover{background-color:#aaa}
 .contents_list>li.loader .btn_more.loading{background-color:#eee;color: #999}
 .contents_list>li.loader .btn_more span{position:relative;padding: 11px 28px 0 0;height: 40px;display: inline-block;box-sizing: border-box;}
-.contents_list>li.loader .btn_more span>i{font-family:'Malgun Gothic','Roboto',sans-serif;line-height:18px;vertical-align:top}
+.contents_list>li.loader .btn_more span>i{font-family:'Lora', serif;;line-height:18px;vertical-align:top}
 .contents_list>li.focus{box-shadow:0px 2px 10px rgba(0,0,0,0);animation:flash 1s both;-webkit-animation:flash 1s both} /*글 추적*/
 .contents_list .cloak{visibility : hidden;}
 
@@ -203,10 +199,10 @@ body{background-color:#eee;color:#444;letter-spacing:0;line-height: 1.2em;word-b
 .reply_area {position:relative;height: 40px;border-top: 1px solid #f2f2f2;margin: 0 15px;padding: 0 5px 0 0;line-height:1;}
 .reply_area .reply_btn {position:relative;float:left;padding:10px 0 0 6px}
 .reply_area .reply_btn *{float:left}
-.reply_area .reply_txt {display:inline-block;font-size: 0.85em;font-weight:bold;font-family:'Roboto';padding: 4px 0 0 5px;vertical-align: top;}
+.reply_area .reply_txt {display:inline-block;font-size: 0.85em;font-weight:bold;font-family:'Lora', serif;;padding: 4px 0 0 5px;vertical-align: top;}
 
-.del_area {position:absolute;bottom:0;right: 0;height: 40px;z-index: 99;}
-.del_area .info_date {position:relative;float:right;padding:11px 18px 0 0;font-size: 0.75em;font-family:'Roboto','Malgun Gothic';color: #999;z-index: 0;}
+.del_area {position:absolute;bottom:-10px;right: 0;height: 40px;z-index: 99;}
+.del_area .info_date {position:relative;float:right;padding:11px 18px 0 0;font-size: 0.75em;font-family:'Lora', serif;;color: #999;z-index: 0;}
 .del_area .del_btn {position:relative;float:right;width: 48px;/*50px;*/height:40px;cursor:pointer;color:#ccc;margin-left: -22px;z-index: 1;}
 
 .comment_box {display:none;position:relative;background-color: #f8f8f8;z-index: 1;}
@@ -255,11 +251,10 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .comm_user_name .ico-sns-small{position:absolute;top:2px}
 .comm_user_name span{padding: 0 0 0 22px}
 .comm_info {margin: 0;float: left;}
-.comm_info .date {display: inline-block;font-size: 0.7em;font-family:'Roboto';line-height: 22px;vertical-align: top;color: #999;}
+.comm_info .date {display: inline-block;font-size: 0.7em;font-family:'Lora', serif;;line-height: 22px;vertical-align: top;color: #999;}
 .comm_del_area {position:absolute;top: 0;right: 0}
 .comm_del_btn {width: 54px;height: 44px;cursor:pointer;}
 
-/* 댓글 더보기 */
 .comm_prev {cursor: pointer;background: #e0e0e0;text-align: center;padding:8px 0;border-radius: 0 0 8px 8px;}
 .comm_prev>img {display:inline-block;width:25px;height:25px}
 .comm_prev>span {display:inline-block;padding-left:5px;font-size:0.8em;color:#999;font-weight:bold}
@@ -322,7 +317,6 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .mypage_wrap .recentlist_area{position:absolute;top: 45px;left:0;width:100%;bottom:0;margin: 0;overflow-y:auto;}
 
 
-/*로그인시 프로필영역 보이기*/
 /* .header_wrap.login .header_area{padding-bottom: 130px}
 .header_wrap.login .header_write{bottom: 75px;}
 .header_wrap.login .hdprofile_box{display:block}
@@ -331,7 +325,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 /* footer */
 .footer_wrap {position:absolute;bottom:0;left:0;right:0;z-index: 0}
 .footer_wrap .logo{position:relative;padding:20px 0}
-.footer_wrap .logo span{display: block;width:40px;height:40px;margin: 0 auto;background:url(../../../img/templates/common/footer_logo2.png) no-repeat;background-size:100%;font-size:0;line-height:0;text-indent:-9999px;opacity:0.1;vertical-align: top}
+.footer_wrap .logo span{display: block;width:40px;height:40px;margin: 0 auto;background:url(/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png) no-repeat;background-size:100%;font-size:0;line-height:0;text-indent:-9999px;opacity:0.2;vertical-align: top}
 
 /* MYPAGE */
 .mypage_wrap {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;z-index:998}
@@ -412,7 +406,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 
 .popup_box .pop_title{position:relative;margin:0 0 10px;padding:85px 0 0;text-align:center;font-size:1.05em;line-height: 1;font-weight:bold;color:#777;}
 .popup_login .popup_box .pop_title{padding: 0;border-radius:6px 6px 0 0;margin: 0 0 20px;}
-.popup_login .popup_box .pop_title>h1{font-family:'Roboto';font-weight:400;font-size: 1.4em;padding: 19px 0 10px 25px;text-align: left;color:#ccc;}
+.popup_login .popup_box .pop_title>h1{font-family:'Lora', serif;;font-weight:400;font-size: 1.4em;padding: 19px 0 10px 25px;text-align: left;color:#ccc;}
 
 .popup_write .popup_box .pop_title,
 .popup_read .popup_box .pop_title{margin:0;padding: 17px 0 0;border-radius: 8px 8px 0 0;height: 50px;}
@@ -444,7 +438,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .alert_info{margin:15px 0;padding: 0 10px;font-size:0.9em;letter-spacing:-0.05em;text-align:center;color: #f00;}
 
 .snslogin_line{position:relative;width: 80%;min-width: 280px;margin: 15px auto;text-align:center;}
-.snslogin_line span{display:inline-block;font-family:'Roboto';font-size:0.8em;font-weight:bold;color:#aaa}
+.snslogin_line span{display:inline-block;font-family:'Lora', serif;;font-size:0.8em;font-weight:bold;color:#aaa}
 .snslogin_line span:before{content:'';position:absolute;top:50%;left:0;width:40%;height:1px;background-color:#aaa}
 .snslogin_line span:after{content:'';position:absolute;top:50%;right:0;width:40%;height:1px;background-color:#aaa}
 .snslogin_list{position: relative;margin: 15px 20px;}
@@ -470,8 +464,8 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .pop_write .btn_area .write_btn{position:relative;width:100px;height:40px;float:right;padding: 12px 0 0 39px;font-size:0.93em;font-weight:bold;line-height: 1;cursor: pointer;border-radius: 6px;}
 
 .popup_box .pop_upload{position:relative;width: 240px;margin: 0 auto 30px;text-align:center;}
-.popup_box .pop_upload_img{position:relative;width: 240px;height: 240px;overflow:hidden;vertical-align:top;margin: 0 auto;background:url(../../../img/templates/common/profile_noimg.png) no-repeat;background-size:100%;}
-.popup_box .pop_upload_img:after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.9;background:url(../../../img/templates/common/profile_radiusbg.png) no-repeat;background-size:100%}
+.popup_box .pop_upload_img{position:relative;width: 240px;height: 240px;overflow:hidden;vertical-align:top;margin: 0 auto;background:url(/bundles/viettutweb/img/templates/common/profile_noimg.png) no-repeat;background-size:100%;}
+.popup_box .pop_upload_img:after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.9;background:url(/bundles/viettutweb/img/templates/common/profile_radiusbg.png) no-repeat;background-size:100%}
 .popup_box .uploaded.pop_upload_img:after{content:none;}
 
 .popup_box .pop_upload_img>img{display:inline-block;height:100%;border-radius:6px}
@@ -491,7 +485,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 
 .popup_box .pop_upload_info{text-align:center}
 .popup_box .pop_upload_info p{position:relative;display:inline-block;padding: 0 0 0 40px;line-height: 18px;font-size:0.9em;font-weight:bold;color:#999;text-align: left;}
-.popup_box .pop_upload_info .info1:before{content:'';position:absolute;top: 4px;left: 0;width:30px;height:30px;background:url(../../../img/templates/common/ico-upload-info1.png) no-repeat;background-size:100%;}
+.popup_box .pop_upload_info .info1:before{content:'';position:absolute;top: 4px;left: 0;width:30px;height:30px;background:url(/bundles/viettutweb/img/templates/common/ico-upload-info1.png) no-repeat;background-size:100%;}
 .popup_box .pop_upload_info .info2{display:none}
 
 .select_area{position:relative;background-color:#f0f0f0;border:1px solid #ddd;border-top:0}
@@ -513,7 +507,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 .emoticon_area{}
 .popemo_tabs{position:relative;padding-left:10px;text-align:center;border-bottom:1px solid #eee;height: 70px;background-color:#f8f8f8;border-radius:6px 6px 0 0;font-size: 0}
 .popemo_tabs:after{clear:both;content:'';display:block}
-.popemo_tabs .popemo_tab{float:left;display:inline-block;width:70px;height: 70px;overflow:hidden;background:url(/../../../img/templates/common/tab_emoticon_imgs.png) no-repeat;background-size:240px;cursor:pointer;vertical-align:top}
+.popemo_tabs .popemo_tab{float:left;display:inline-block;width:70px;height: 70px;overflow:hidden;background:url(//bundles/viettutweb/img/templates/common/tab_emoticon_imgs.png) no-repeat;background-size:240px;cursor:pointer;vertical-align:top}
 
 .popemo_tabs .popemo_taba{background-position:5px 5px}
 .popemo_tabs .popemo_tabb{background-position:-55px 5px}
@@ -591,7 +585,7 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 	.mypage_wrap .recentlist_area{position:relative;top:auto;left: auto;bottom: auto;overflow-y: hidden;}
 	.mypage_wrap .mypage_btns{position:relative;left: auto;bottom:auto;}
 }
-@media (max-width:768px) { /*스크롤시 메뉴고정*/
+@media (max-width:768px) {
 	.gnb_wrap.fixed {position:fixed;animation: slideDown 0.3s ease;-webkit-animation: slideDown 0.3s ease}
 	.gnb_wrap.fixed>.color_bg{opacity:0.9}
 	.btn_write.fixed {animation: slideDown 0.3s ease;-webkit-animation: slideDown 0.3s ease}
@@ -645,12 +639,11 @@ animation:comm-flash 1s both;-webkit-animation:comm-flash 1s both}/*글 추적*/
 	.contents_list>.content_size{width: 95%;}  /* 임시추가 */
 	.contents_list>.gutter{width:2.5%}
 	
-	/* 로딩 부분 css 추가 */
 	div.loader{text-align:center; padding: 0 0 0 1%}
 	div.loader .btn_more{position:relative;height: 40px;margin:0 auto;border-radius:8px;background-color: #bbb;color:#fff;line-height:1;letter-spacing:0.5px;padding: 11px 0 0;font-size: 14px;font-weight:bold;transition: 0.2s background-color;-webkit-transition: 0.2s background-color;cursor:pointer}
 	div.loader .btn_more:hover{background-color:#aaa}
 	div.loader .btn_more span{position:relative;padding: 0 28px 0 0}
-	div.loader .btn_more span>i{font-family:'Roboto',sans-serif}
+	div.loader .btn_more span>i{font-family:'Lora', serif;}
 
 	.contents_list.nocomment .message_box{position: absolute;top: 50%;left: 50%;width: 300px;height: 50px;padding: 0;margin: -25px 0 0 -150px;text-align:center;}
 	.contents_list.nocomment .nocomment_txt{position:relative;display:inline-block;margin:0;padding: 16px 25px 18px 55px;font-size: 0.95em;line-height: 1;color: #fff;border-radius:30px;background-color: #aaa}
@@ -798,9 +791,6 @@ body.mint .comm_list>li{border-color: #d2e8e8}
 body.mint .comment_box.on{background-color: #f3ffff}
 
 
-
-
-/* 카톡인앱 로그인안내(2017-07-06) */
 .snsbbs_tip{margin:15px 20px 12px;padding:8px 0;background-color: #fffce0;border: 1px solid #fff7a3;color:#5d2a2b;font-size:12px;text-shadow: none;line-height:24px;text-align: center;letter-spacing:-0.2px;}
 .snsbbs_tip strong{display:block;font-size:13px;padding-bottom:0px}
 .snsbbs_tip .ico-kakao1{vertical-align:middle;display:inline-block;width:28px;height:28px;background:url(http://www.dalpeng.com/img/snsbbs/tip_kakao1.png) no-repeat;background-size:100%;border-radius:6px;font-size:0;border: 1px solid #ccc;box-sizing: border-box;}
@@ -809,12 +799,16 @@ body.mint .comment_box.on{background-color: #f3ffff}
 	.snsbbs_tip{margin-left:0;margin-right:0;border-left:0;border-right:0}
 }
 
-@media all and (max-width: 640px) {
-	.social-login {margin-left:40%;}
-}
-
 .social-login {margin-left:40%;}
 
+@media all and (max-width: 768px) {
+	.social-login {margin-left:32%;}
+}
+
 @media all and (max-width: 480px) {
-	.social-login {margin-left:35%;}
+	.social-login {margin-left:30%;}
+}
+
+@media all and (max-width: 320px) {
+	.social-login {margin-left:25%;}
 }

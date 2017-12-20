@@ -1,16 +1,10 @@
-
-
 <!DOCTYPE html>
 <html lang="vi">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="http://thiepdo.com/gold-star"/>
-    <meta property="og:description" content="
-    On a spring day,
-    Two loving people are about to start a new life.
-    Even if you are busy, bless the first start of the two
-    If you encourage me, I will be more joy."/>
+    <meta property="og:description" content="{{ description }}"/>
 
     <meta property="og:title" content="{{ name }}" />
     <meta property="og:image" content="/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg" />
@@ -26,715 +20,84 @@
 
     <title>{{ name }}</title>
 
-    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/lib/jquery.mobile-1.4.3.min.css" />
-    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/common/common.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/goldstar/app.css') }}" />
 
-    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/goldstar/style.css" />
-    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/goldstar/app.css" />
-
-    <!-- 2017-07-21 테스트용 -->
-    <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.css">
-    <link rel="stylesheet" href="/bundles/viettutweb/css/templates/common/photoswipe.skin.css">
-
-    <link href='http://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
-
-    <script src="/bundles/viettutweb/js/lib/jquery-1.11.1.min.js"></script>
-    <script src="/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js"></script>
-    <script src="/bundles/viettutweb/js/templates/common/jquery.mobile.init.js"></script>
-    <script src="/bundles/viettutweb/js/lib/masonry.pkgd.min.js"></script>
-    <script src="/bundles/viettutweb/js/lib/jquery.scrollTo.min.js?v2.1.2"></script>
-    <script src="/bundles/viettutweb/js/templates/common/photoswipe.js"></script>
-    <script src="/bundles/viettutweb/js/templates/common/photoswipe-ui-default.js"></script>
-
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
-    </script>
-    <script type="text/javascript">
-        <!--
-
-        function initMap() {
-            var lat = $('#coordinates').data('lat');
-            var lon = $('#coordinates').data('lon');
-            var title = $('#coordinates').data('title');
-            var location = {lat: lat, lng: lon};
-            var map = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
-                zoom: 16,
-                center: location
-            });
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map
-            });
-
-            var info = new google.maps.InfoWindow({
-                content: '<h4>' + title + '</h4>'
-            });
-            info.open(map, marker);
-        }
-
-        function getPath() {
-            var addr = $('#getPath input[name=saddr]').val();
-            if (addr.length < 3) {
-                $('#getPath input[name=saddr]').focus();
-                alert('Nhập địa chỉ của bạn một cách chính xác!');
-                return;
-            }
-
-            document.getElementById("getPath").submit();
-        }
-
-        var swipe_exception = false;
-
-
-        $(function(){
-
-
-            var bool_click_menu = false;
-
-            try{
-                var pos_greeting	= $('#sk_topinfo').position().top;
-                var pos_gallery		= $('#sk_gallery').position().top;  var pos_media		= $('#sk_media').position().top;  var pos_snsbbs		= $('#sk_snsbbs').position().top;  var pos_map			= $('#sk_map').position().top;
-                $(window).scroll(function(e) {
-                    var newScroll = $(document).scrollTop();
-                    //console.log(newScroll);
-                    if(!bool_click_menu){
-                        if(newScroll > pos_greeting) setMenu('#m_topinfo');
-                        if(newScroll > pos_gallery) setMenu('#m_gallery');  if(newScroll > pos_media) setMenu('#m_media');  if(newScroll > pos_snsbbs - 60) setMenu('#m_snsbbs');  if(newScroll > pos_map - 60) setMenu('#m_map'); 			}
-                });
-            }catch(e){}
-
-            function setMenu(id){
-                //console.log(bool_click_menu);
-                $('.menu_scrolls').removeClass('on');
-                $(id).addClass('on');
-            }
-
-            $.fn.scrollStopped = function(callback) {
-                $(this).scroll(function(){
-                    var self = this, $this = $(self);
-                    if ($this.data('scrollTimeout')) {
-                        clearTimeout($this.data('scrollTimeout'));
-                    }
-                    $this.data('scrollTimeout', setTimeout(callback,250,self));
-                });
-            };
-
-
-            $(window).scrollStopped(function(){
-                bool_click_menu = false;
-            });
-
-
-
-            function initGeolocation() {
-                if (navigator && navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                } else {
-                    console.log('위치정보가 지원되지 않는 기기입니다.\n해당기기에서는 네비게이션 연결이 원할하지 않을 수 있습니다.');
-                }
-            }
-
-            function errorCallback() {
-                switch(error.code)
-                {
-                    case error.PERMISSION_DENIED: alert("위치정보가 꺼져있습니다.\n정상적인 네비게이션 연결을 위해서는 반드시 활성화 되어야 합니다.");
-                        break;
-
-                    case error.POSITION_UNAVAILABLE: alert("현재 위치 정보를 확인 할 수 없습니다.");
-                        break;
-
-                    case error.TIMEOUT: alert("위처정보 요청시간이 초과 되었습니다.\n잠시후에 다시 시도해 주십시요.");
-                        break;
-
-                    default: alert("위치정보 요청중 기타 오류");
-                        break;
-                }
-            }
-
-            function successCallback(position) {
-                $('#now_lat').val(position.coords.latitude);
-                $('#now_lon').val(position.coords.longitude);
-                // alert($('#now_lat').val()+" | | "+$('#now_lon').val());
-            }
-
-
-            // 네이버 지도시 스마트폰 회전 감지하여 지도 초기화(마커 위치 센터)
-            $(window).on("orientationchange",function(){
-                callMapInitializeAfterResize();
-            });
-
-            function callMapInitializeAfterResize(){
-                if($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
-                else initialize('party');
-            }
-
-
-            // -- map -- //
-            function initialize(md) {
-            }
-
-            function callKimNavi(md){
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-            function callKakaoNavi(md){
-                var $map_addr, $map_lat, $map_lon
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-
-            var $map_addr=''
-            var $map_lat=''
-            var $map_lon='';
-
-            function callOllehNavi(md){
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-
-            function callTmapNavi(md){
-                //console.log(md);
-
-                alert('모바일기기에서만 가능합니다.');
-            }
-
-            $('#div_snsbbs').masonry({
-                //columnWidth: .snsbbs_sections,
-                //isFitWidth : true,
-                itemSelector: '.snsbbs_sections'
-            }).on( 'layoutComplete', function() {
-                return true;
-            });
-
-            var closest = function closest(el, fn) {
-                return el && (fn(el) ? el : closest(el.parentNode, fn));
-            };
-
-            var photoswipeParseHash = function() {
-                var hash = window.location.hash.substring(1),
-                        params = {};
-
-                if (hash.length < 5) {
-                    return params;
-                }
-
-                var vars = hash.split('&');
-                for (var i = 0; i < vars.length; i++) {
-                    if (!vars[i]) {
-                        continue;
-                    }
-                    var pair = vars[i].split('=');
-                    if (pair.length < 2) {
-                        continue;
-                    }
-                    params[pair[0]] = pair[1];
-                }
-
-                if (params.gid) {
-                    params.gid = parseInt(params.gid, 10);
-                }
-
-                return params;
-            };
-
-            function getGallery($el) {
-                var el = [];
-                var aTag = Array.prototype.slice.call($el.find("a"));
-
-                $.merge(el, aTag);
-
-                return el;
-            }
-
-            function onThumbnailsClick(e) {
-                e = e || window.event;
-                e.preventDefault ? e.preventDefault() : e.returnValue = false;
-
-                var eTarget = e.target || e.srcElement;
-                var clickedListItem = closest(eTarget, function(el) {
-                    var tagName = el.tagName.toUpperCase();
-                    return (tagName && tagName === 'A');
-                });
-
-                if (!clickedListItem) {
-                    return;
-                }
-
-                if (clickedListItem.className.indexOf("swipebox") == -1) {
-                    return false;
-                }
-
-                var childNodes = el,
-                        numChildNodes = el.length,
-                        nodeIndex = 0,
-                        index = 0;
-
-                var no_image_count = 0;
-                for (var i = 0; i < numChildNodes; i++) {
-                    if (el[i].className.indexOf("swipebox") == -1) {
-                        no_image_count++;
-                    }
-
-                    if (el[i] == clickedListItem) {
-                        index = i - no_image_count;
-
-                        break;
-                    }
-                }
-
-                if (index >= 0) {
-                    openPhotoSwipe(index, el);
-                }
-
-                return false;
-            }
-
-            var gallery;
-
-            function getPrefix(prop) {
-                var style = document.body.style;
-                var prefix = ['Webkit', 'ms', 'moz', 'o'];
-                var prefix_len = prefix.length;
-
-                if(style[prop] == '') {
-                    return prop;
-                }
-
-                prop = prop[0].toUpperCase() + prop.slice(1);
-
-                for(var i = 0; i < prefix_len; i++) {
-                    if(style[prefix[i] + prop] == '') {
-                        return prefix[i] + prop;
-                    }
-                }
-            }
-
-            function getTranslate(transform) {
-                var regex;
-
-                if(transform.indexOf('translate3d') == -1) {
-                    regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
-                } else {
-                    regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
-                }
-
-                var matched = transform.match(regex);
-                var coordinate = {};
-
-                coordinate.x = matched[1];
-                coordinate.y = matched[2];
-
-                if(matched[3]) {
-                    coordinate.z = matched[3];
-                }
-
-                return coordinate;
-            }
-
-            function getScale(transform) {
-                var regex = /scale\(([0-9.]+)\)/;
-                var matched = transform.match(regex);
-
-                return matched[1];
-            }
-
-            function psBeforeInitAddEvent() {
-                gallery.listen('gettingData', function(index, item) {
-                    var size = item.el.getAttribute("data-size").split("X");
-
-                    item.w = size[0];
-                    item.h = size[1];
-                });
-
-                gallery.listen('arrowUpdate', function() {
-                    var $nextBtn = $('.pswp__button--arrow--right');
-                    var $prevBtn = $('.pswp__button--arrow--left');
-                    var loop = this.options.loop;
-                    var index = this.getCurrentIndex();
-
-                    $nextBtn.toggle(loop || index < this.items.length - 1);
-                    $prevBtn.toggle(loop || index > 0);
-                });
-
-                gallery.listen('initialZoomIn', function() {
-
-                });
-            }
-
-            function psAfterInitAddEvent() {
-                gallery.listen('initialZoomOut', function() {
-                    var item = this.currItem;
-                    var container_style = item.container.style;
-                    var transform = getPrefix('transform');
-                    var transition = getPrefix('transition');
-
-                    if(!transform || !transition) {
-                        return;
-                    }
-
-                    var container_transform = container_style[getPrefix('transform')];
-                    var scale = getScale(container_transform);
-                    var coordinate = getTranslate(container_transform);
-                    var initTransY = item.initialPosition.y;
-                    var currTransY = coordinate.y;
-                    var size = item.el.getAttribute("data-size").split("X");
-                    var transX = item.initialPosition.x;
-                    var transY;
-
-                    if(initTransY > currTransY) {
-                        transY = -(size[1]);
-                    } else {
-                        transY = window.screen.availHeight;
-                    }
-
-                    container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
-
-                    if(!this.isGestureClose() && this.isVerticalDrag()){
-                        container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
-                    }
-                });
-
-                gallery.listen('close', function() {
-                    /* 슬라이드
-                     var slide_show = document.getElementById("slide-show");
-
-                     if(slide_show.checked) {
-                     var event = document.createEvent('Event');
-
-                     event.initEvent('change', true, true);
-
-                     slide_show.checked = false;
-                     slide_show.dispatchEvent(event);
-                     }
-                     */
-
-
-                });
-
-                /* 슬라이드
-                 $("#slide-show").on("change", function(e) {
-                 var next;
-                 var index;
-                 var last = gallery.items.length - 1;
-
-                 if($(this).is(":checked")) {
-                 gallery.show = setInterval(function() {
-                 index = gallery.getCurrentIndex();
-
-                 if(index == 0) {
-                 next = true;
-                 } else if(index == last) {
-                 next = false;
-                 }
-
-                 if(next) {
-                 gallery.next();
-                 } else {
-                 gallery.prev();
-                 }
-                 }, 3000);
-                 } else {
-                 clearInterval(gallery.show);
-                 delete gallery.show;
-                 }
-                 });
-                 */
-            }
-
-            var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-                var pswpElement = document.querySelector('.pswp'),
-                        options, items, kakaoInApp;
-
-                items = parseThumbnailElements(galleryElement);
-
-                if(/KAKAOTALK/.test(navigator.userAgent)) {
-                    kakaoInApp = true;
-                }
-
-                options = {
-                    useZoom: true,
-                    arrowKeys: false,
-                    hideAnimationDuration: 200,
-                    showAnimationDuration: 100,
-                    loop: false,
-                    imageEl: true,
-                    galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
-                    showHideOpacity: true,
-                    getThumbBoundsFn: false,
-                    closeOnScroll: false,
-                    kakaoInApp: kakaoInApp,
-                };
-
-                if (fromURL) {
-                    if (options.galleryPIDs) {
-
-                        for (var j = 0; j < items.length; j++) {
-                            if (items[j].pid == index) {
-                                options.index = j;
-                                break;
-                            }
-                        }
-                    } else {
-                        options.index = parseInt(index, 10);
-                    }
-                } else {
-                    options.index = parseInt(index, 10);
-                }
-
-                if (isNaN(options.index)) {
-                    return;
-                }
-
-                if (disableAnimation) {
-                    options.showAnimationDuration = 0;
-                }
-
-                gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-
-                gallery.useAniNum = false;
-
-                // 방명록 글쓰기에 이미지 첨부
-                gallery.includeImage = function() {
-                    var id = gallery.currItem.id
-                    var url = "goldstar/snsbbs/w/" + id;
-                    var kakaoInApp = gallery.options.kakaoInApp;
-
-                    /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
-                     (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
-                    if(!kakaoInApp) {
-                        window.location = url;
-                    } else {
-                        window.open(url);
-                    }
-                }
-
-                psBeforeInitAddEvent();
-                gallery.init();
-                psAfterInitAddEvent();
-            };
-
-            var parseThumbnailElements = function(el) {
-                var imageElements = el,
-                        numNodes = imageElements.length,
-                        items = [],
-                        size,
-                        item;
-                var wrapper = document.createElement('div');
-                var imageEl,
-                        thumbEl;
-
-                for (var i = 0; i < numNodes; i++) {
-                    imageEl = imageElements[i];
-
-                    if (imageEl.nodeType !== 1) {
-                        continue;
-                    }
-
-                    var img_el = imageEl.getElementsByTagName("img");
-                    var exist_img = img_el.length > 0 ? true : false;
-                    var src = imageEl.href;
-                    var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
-                    var msrc;
-                    var $imageEl = $(imageEl);
-
-                    if(!is_swipe_image) {
-                        continue;
-                    }
-
-                    if(!exist_img) {
-                        thumbEl = imageEl.getElementsByTagName("div")[0];
-
-                        if(thumbEl) {
-                            msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-                        } else {
-                            var piece = src.split("/");
-                            var pieceCount = piece.length;
-                            var file = piece[pieceCount - 1]
-
-                            piece[pieceCount - 1] = "S_" + file;
-
-                            msrc = piece.join("/");
-                        }
-                    } else {
-                        if($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
-                            msrc = img_el[0].parentNode.href;
-                        } else {
-                            thumbEl = img_el[0];
-                            msrc = thumbEl.src;
-                        }
-                    }
-
-                    item = {
-                        src: src,
-                        msrc: msrc,
-                        el: imageEl,
-                    };
-
-//                    wrapper.innerHTML = imageEl.getAttribute("alt");
-//                    item.id = wrapper.firstChild.getAttribute("id").replace("gcomment_", "");
-                    item.id = imageEl.getAttribute("imgId");
-                    items.push(item);
-                }
-                return items;
-            };
-
-            var $my_gallery = $("#sk_gallery");
-            var my_gallery_count = $my_gallery.length;
-            var el = getGallery($my_gallery);
-            var $el = $(el);
-            var hashData = photoswipeParseHash();
-
-            $el.on("click", onThumbnailsClick);
-
-            for (var i = 0; i < my_gallery_count; i++) {
-                $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
-            }
-
-            if (hashData.pid && hashData.gid) {
-                openPhotoSwipe(hashData.pid - 1, el, true, true);
-            }
-
-            $(document).on("keydown keyup", function(e) {
-                var hidden = $(".pswp").attr("aria-hidden") == "true";
-
-                if(hidden) {
-                    return;
-                }
-
-                var keydownAction = '';
-                var index = gallery.getCurrentIndex();
-                var gallery_len = gallery.items.length;
-
-                if(e.type == "keydown") {
-                    if(e.keyCode === 37 && index != 0) {
-                        keydownAction = 'prev';
-                    } else if(e.keyCode === 39 && index != (gallery_len - 1)) {
-                        keydownAction = 'next';
-                    }
-                } else if(e.type == "keyup") {
-                    if(e.keyCode === 37 && index == 0) {
-                        keydownAction = 'prev';
-                    } else if(e.keyCode === 39 && index == (gallery_len - 1)) {
-                        keydownAction = 'next';
-                    }
-                }
-
-                if(keydownAction) {
-                    if( !e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey ) {
-                        if(e.preventDefault) {
-                            e.preventDefault();
-                        } else {
-                            e.returnValue = false;
-                        }
-
-                        gallery[keydownAction]();
-                    }
-                }
-            });
-
-            $('.locationtabs').click(function(){
-                var id = $(this).attr('id').replace('tabs_','');
-                $('.locationtabs').removeClass('on');
-                $(this).addClass('on');
-                $('.locationdivs').removeClass('hide');
-                $('.locationdivs').addClass('hide');
-                $('#div_'+id).removeClass('hide');
-
-                setLocationInfoHeight();
-
-                initialize(id);
-            }).css('cursor','pointer');
-
-
-
-            $('#div_snsbbs').masonry('bindResize');
-
-            function setLocationInfoHeight(){
-            }
-
-            function setPosition(id){
-                var $obj = $('#sk_'+id);
-                // console.log(id);
-
-                $('body').scrollTo($obj, 500);
-            }
-
-            $('.menu_scrolls').click(function(){
-                try{
-                    if($(this).attr('id')){
-
-
-                        var id = $(this).attr('id').replace('p_','').replace('m_','');
-
-                        //console.log(id);
-
-                        setPosition(id);
-                    }
-                }catch(e){
-                    //console.log(e);
-                }
-            }).css('cursor','pointer');
-
-
-            initialize('wedding');
-            setLocationInfoHeight();
-        });
-
-        $( window ).load(function() {
-
-
-            $('.gal_list2').masonry({
-                itemSelector: '.gal_frame',
-                columnWidth: '.gal_size',
-                transitionDuration: '0.2s',
-                percentPosition: true
-            });
-
-            $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
-        });
-
-        //-->
-    </script>
 </head>
 <body>
-<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
+<h1 class="hide">Gold st ars- Dải ngân hà</h1>
+<h2 class="hide">Trắng tinh khôi điểm xuyết sao vàng lấp lánh mang đến cảm giác lung linh huyền diệu như một giấc mơ.</h2>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
+     data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
-    <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
+    <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b">
         <div class="groom-wrap">
             <ul>
                 <a href="tel:{{ data['groom_phone'] }}"><li class="ico5">Gọi điện</li></a>
                 <a href="sms:{{ data['groom_phone'] }}"><li class="ico6">Nhắn tin</li></a>
-                <a href="http://facebook.com/dalpeng" target="_blank"><li class="ico7">Facebook</li></a>
-                <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
+                {% if 'groom_facebook' in data|keys %}
+                    <a href="{{ data['groom_facebook'] }}" target="_blank" title="Facebook">
+                        <li class="ico7">Facebook</li>
+                    </a>
+                {% else %}
+                    <a href="http://facebook.com/thiepdodigital" target="_blank" title="Facebook">
+                        <li class="ico7">Facebook</li>
+                    </a>
+                {% endif %}
+                {% if 'groom_instagram' in data|keys %}
+                    <a href="{{ data['groom_instagram'] }}" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% else %}
+                    <a href="http://instagram.com/thiepdodigital" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% endif %}
             </ul>
-            <p class="btn_go_snsbbs">Viết lưu bút</p>
+            <p class="btn_go_snsbbs">Lưu bút</p>
         </div>
     </div>
     <!--// panel-groom -->
     <!-- panel-bride -->
-    <div data-role="panel" id="panel_bride" class="righttpanel" data-position="right" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="a" style="background:#f3ebd3 url('/bundles/viettutweb/img/templates/goldstar/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;">
+    <div data-role="panel" id="panel_bride" class="righttpanel" data-position="right" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="a">
         <div class="bride-wrap">
             <ul>
                 <a href="tel:{{ data['bride_phone'] }}"><li class="ico1">Gọi điện</li></a>
                 <a href="sms:{{ data['bride_phone'] }}"><li class="ico2">Nhắn tin</li></a>
-                <a href='http://facebook.com/dalpeng' target='_blank'><li class='ico3'>Facebook</li></a>
-                <a href="http://instagram.com/dalpeng2com" target="_blank"><li class="ico_insta">Instagram</li></a>
+                {% if 'bride_facebook' in data|keys %}
+                    <a href="{{ data['bride_facebook'] }}" target="_blank" title="Facebook">
+                        <li class="ico3">Facebook</li>
+                    </a>
+                {% else %}
+                    <a href="http://facebook.com/thiepdodigital" target="_blank" title="Facebook">
+                        <li class="ico3">Facebook</li>
+                    </a>
+                {% endif %}
+                {% if 'bride_instagram' in data|keys %}
+                    <a href="http://instagram.com/{{ data['bride_instagram'] }}" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% else %}
+                    <a href="http://instagram.com/thiepdodigital" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% endif %}
             </ul>
-            <p class="btn_go_snsbbs">Viết lưu bút</p>
+            <p class="btn_go_snsbbs">Lưu bút</p>
         </div>
     </div>
     <!--// panel-bride -->
     <!-- panel-menu -->
-    <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
+    <div data-role="panel" id="right-panel" data-position="right" data-display="push">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
-                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider">JUST MARRIED!</li>
+                <li class="menu_scrolls" data-rel="close"><span>TRANG CHỦ</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>LỜI TỰA</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>ALBUM ẢNH</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_media"><span>VIDEO</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>SỔ LƯU BÚT</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>LƯU BÚT</span></li>
                 <li class="menu_scrolls" data-rel="close" id="p_map"><span>ĐỊA ĐIỂM</span></li>
             </ul>
         </div>
@@ -744,10 +107,11 @@
     <div class="lnb slideDown">
         <div class="lnb_title">JUST MARRIED!</div>
         <ul>
+            <li class="menu1 menu_scrolls"><span>TRANG CHỦ</span></li>
             <li class="menu1 menu_scrolls on" id="m_topinfo"><span>LỜI TỰA</span></li>
             <li class="menu2 menu_scrolls" id="m_gallery"><span>ALBUM ẢNH</span></li>
             <li class="menu3 menu_scrolls" id="m_media"><span>VIDEO</span></li>
-            <li class="menu4 menu_scrolls" id="m_snsbbs"><span>SỔ LƯU BÚT</span></li>
+            <li class="menu4 menu_scrolls" id="m_snsbbs"><span>LƯU BÚT</span></li>
             <li class="menu5 menu_scrolls" id="m_map"><span>ĐỊA ĐIỂM</span></li>
         </ul>
     </div>
@@ -755,22 +119,32 @@
 
     <!-- header -->
     <div id="sk_topinfo" class="header">
-        <div class="header_bg" style="background:url('/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg') CENTER CENTER no-repeat; background-size:cover;"></div>
+        <div class="header_bg"></div>
         <div class="header_content">
             <div class="header_photo">
-                <p style="background:url('/bundles/viettutweb/img/templates/goldstar/9b854c77bd8bd11be8cfd28c7240e73e.jpg') CENTER CENTER no-repeat; background-size:cover;"></p>
+                <p></p>
             </div>
             <div class="header_title">
                 <p class="hd_name">
-                    {{ data['groom_name'] }}<span>và</span>{{ data['bride_name'] }}
+                    {% if forGroom %}
+                        {{ data['groom_name'] }}<span>và</span>{{ data['bride_name'] }}
+                    {% else %}
+                        {{ data['bride_name'] }}<span>và</span>{{ data['groom_name'] }}
+                    {% endif %}
                 </p>
 
-                <p class="hd_date">{{ date | date('d/m/Y l H:i A') }}</p>
+                <p class="hd_date">{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                <p class="hd_loca">(tức {{ dateAl }})</p>
                 <p class="hd_loca">{{ data['place'] }}</p>
             </div>
             <div class="header_panel">
-                <p class="groom slideLeft"><a href="#panel_groom">CHÚ RỂ</a></p>
-                <p class="bride slideRight"><a href="#panel_bride">CÔ DÂU</a></p>
+                {% if forGroom %}
+                    <p class="groom slideLeft"><a href="#panel_groom">CHÚ RỂ</a></p>
+                    <p class="bride slideRight"><a href="#panel_bride">CÔ DÂU</a></p>
+                {% else %}
+                    <p class="bride slideRight"><a href="#panel_groom">CHÚ RỂ</a></p>
+                    <p class="groom slideLeft"><a href="#panel_bride">CÔ DÂU</a></p>
+                {% endif %}
             </div>
         </div>
         <div class="scroll slideUp"><span>Trượt xuống</span></div>
@@ -834,7 +208,7 @@
                 <div class="gal_size"></div>
                 {% for img in gallery %}
                     <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
-                        {% if gallery|length == loop.index  %}
+                        {% if (gallery|length == loop.index) or (loop.index >= 10)  %}
                             <div class="gal_more"><span>more</span></div>
                         {% else %}
                             <div class="gal_frame"><img src="{{ img['src'] }}"></div>
@@ -853,11 +227,11 @@
             <div class="ul-body">
                 <div class="movie_container movie1">
                     <ul>
-                        <li>
+                        <li class="iframe-container">
                             <iframe
                                     id="movie"
                                     width="100%"
-                                    src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                    src="https://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
                                     height="100%"
                                     frameborder="0"
                                     allowfullscreen>
@@ -877,22 +251,15 @@
         </div>
         <!--// movie -->
     {% else %}
-        {% if video %}
+        {% if embed | length > 0 %}
             <!-- movie -->
             <div class="movie_wrap ui-cont-b">
                 <h2 class="title hidden">VIDEO</h2>
                 <div class="ul-body">
                     <div class="movie_container movie1">
                         <ul>
-                            <li>
-                                <iframe
-                                        id="movie"
-                                        width="100%"
-                                        src="http://www.youtube.com/embed/{{ video }}?showinfo=0&autohide=1&rel=0&vq=hd1080"
-                                        height="100%"
-                                        frameborder="0"
-                                        allowfullscreen>
-                                </iframe>
+                            <li class="iframe-container">
+                                {{ embed | raw }}
                             </li>
                         </ul>
                     </div>
@@ -913,12 +280,13 @@
 
     <!-- guestbook -->
     <div class="guestbook_wrap ui-cont-b" id="sk_snsbbs">
-        <h2 class="title title_pink"><span>Sổ lưu bút</span></h2>
+        <h2 class="title title_pink"><span>LƯU BÚT</span></h2>
 
         <div class="ul-body col-3">
+            <div class="gb_msg">Hãy chúc mừng cho ngày vui của cô dâu chú rể !</div>
             <div id="div_snsbbs">
                 {% if isTemplate %}
-                <div class="snsbbs_sections ">
+                <div class="snsbbs_sections">
                     <div class="ui-body-d">
                         <div class="gb_cont_box btn_go_snsbbs">
                             <div class="pro_info">
@@ -1112,32 +480,42 @@
             </div>
         </div>
         {% if isTemplate %}
-            <div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span></div>
+            <div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()"><span>Chúc mừng</span></div>
         {% else %}
-            <a href="{{ path('guest_book_page', {hash: hash}) }}"><div class="gb_btn btn_go_snsbbs"><span>Viết lưu bút</span></div></a>
+            <div class="gb_btn btn_go_snsbbs" onclick="gotoGuestBook('{{ hash }}')"><span>Chúc mừng</span></div>
         {% endif %}
     </div>
     <!--// guestbook -->
 
     <!-- location -->
     <div class="location_wrap ui-cont-b" id="sk_map">
-        <h2 class="title title_gold"><span>Hôn lễ tổ chức tại</span></h2>
+        <h2 class="title title_gold"><span>ĐỊA ĐIỂM</span></h2>
+        <div class="ul-body">
+            <div class="col-2">
+                <div class="ui-block-a">
+                    <ul class="lo_tab_wrap">
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding">Lễ Thành Hôn</li>
+                        <li class="tab_btn rh locationtabs" id="tabs_party">Tiệc cưới</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="ul-body locationdivs" id="div_wedding">
             <div class="lo_box col-2">
                 <div class="ui-block-a">
-                    <h3 class="lo_title">{{ data['place'] }}</h3>
+                    <h3 class="lo_title">{{ data['home'] }}</h3>
                     <div class="lo_map">
                         <div id="wedding_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
                     </div>
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
-                            <form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">
-                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>
-                                <input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />
+                            <form action='https://maps.google.com/maps' method='get' target='_blank' id="getHomePath">
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
+                                <input type='hidden' name='daddr' value='{{ data["home"] }}' />
                             </form>
                             <div class="nav-1">
                                 <div class="ui-body-d ui-btn-nav wedding_kimnavi">
-                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">CHỈ ĐƯỜNG</span>
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getHomePath()">CHỈ ĐƯỜNG</span>
                                 </div>
                             </div>
                         </div>
@@ -1149,115 +527,81 @@
                     <table class="lo_container">
                         <tr>
                             <th class="lo_date">Thời gian</th>
-                            <td class="txt">{{ date | date('d-m-Y H:i A') }}</td>
+                            <td>{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_loca">Địa chỉ</th>
-                            <td class="txt">{{ data['place_addr'] }}</td>
+                            <th class="lo_loca">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</th>
+                            <td>{{ data['home'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_tel">Tel</th>
-                            <td class="txt">{{ data['place_phone'] }}</td>
+                            <th class="lo_tel">Hướng dẫn</th>
+                            <td>{{ data['home_info'] }}</td>
                         </tr>
-                        {% if data['parking_info'] is not empty %}
-                            <tr>
-                                <th class="lo_info">Đỗ xe</th>
-                                <td>{{ data['parking_info'] }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if data['bus_info'] is not empty %}
-                            <tr>
-                                <th class="lo_bus">Xe Bus</th>
-                                <td>{{ data['bus_info'] }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if data['subway_info'] is not empty %}
-                            <tr>
-                                <th class="lo_subway">Tàu điện ngầm</th>
-                                <td>{{ data['subway_info'] }}</td>
-                            </tr>
-                        {% endif %}
+                        <tr>
+                            <th class="lo_tel">Liên hệ</th>
+                            <td>{{ data['home_contact'] }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>
         </div>
 
-        {#<div class="ul-body locationdivs hide" id="div_party">#}
-            {#<input type="hidden" id="party_pmap_lat" value="37.4950598" />#}
-            {#<input type="hidden" id="party_pmap_lon" value="127.12241160000008" />#}
-            {#<input type="hidden" id="party_paddr" value="서울시 송파구 중대로 135" />#}
-            {#<input type="hidden" id="party_pname" value="달팽 웨딩홀" />#}
-            {#<div class="lo_box col-2">#}
-                {#<div class="ui-block-a">#}
-                    {#<h3 class="lo_title">{{ data['place'] }}</h3>#}
-                    {#<div class="lo_map">#}
-                        {#<div id="party_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>#}
-                    {#</div>#}
-                    {#<div class="nav-wrap">#}
-                        {#<div class="ui-grid-a nav-m">#}
-                            {#<form action='http://maps.google.com/maps' method='get' target='_blank' id="getPath">#}
-                                {#<input type='text' name='saddr' placeholder="địa chỉ của bạn"  style="height: 25px;width:300px;"/>#}
-                                {#<input type='hidden' name='daddr' value='{{ data['place_addr'] }}' />#}
-                                {#<input type='submit' value='CHỈ ĐƯỜNG' style="display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;"/>#}
-                            {#</form>#}
-                            {#<div class="nav-1">#}
-                                {#<div class="ui-body-d ui-btn-nav party_kimnavi">#}
-                                    {#<span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">CHỈ ĐƯỜNG</span>#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="nav-2">#}
-                                {#<div class="ui-body-d ui-btn-nav party_ollehnavi">#}
-                                    {#<span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">KT 내비</span>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên</div>#}
-                {#</div>#}
-                {#<div class="ui-block-b">#}
+        <div class="ul-body locationdivs hide" id="div_party">
+            <div class="lo_box col-2">
+                <div class="ui-block-a">
+                    <h3 class="lo_title">{{ data['place'] }}</h3>
+                    <div class="lo_map">
+                        <div id="party_pmap_canvas"  class="not_view_panel" style="width:100%;height:500px;"></div>
+                    </div>
+                    <div class="nav-wrap">
+                        <div class="ui-grid-a nav-m">
+                            <form action='https://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
+                                <input type='hidden' name='daddr' value='{{ data["place_addr"] }}' />
+                            </form>
+                            <div class="nav-1">
+                                <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
+                </div>
+                <div class="ui-block-b">
 
-                    {#<table class="lo_container">#}
-                        {#<tr>#}
-                            {#<th class="lo_date">Thời gian</th>#}
-                            {#<td class="txt">{{ date | date('d-m-Y H:i A') }}</td>#}
-                        {#</tr>#}
-                        {#<tr>#}
-                            {#<th class="lo_loca">Địa chỉ</th>#}
-                            {#<td class="txt">{{ data['place_addr'] }}</td>#}
-                        {#</tr>#}
-                        {#<tr>#}
-                            {#<th class="lo_tel">Tel</th>#}
-                            {#<td class="txt">{{ data['place_phone'] }}</td>#}
-                        {#</tr>#}
-                        {#{% if data['parking_info'] is not empty %}#}
-                            {#<tr>#}
-                                {#<th class="lo_info">Information</th>#}
-                                {#<td>{{ data['parking_info'] }}</td>#}
-                            {#</tr>#}
-                        {#{% endif %}#}
-                        {#{% if data['bus_info'] is not empty %}#}
-                            {#<tr>#}
-                                {#<th class="lo_bus">Bus Info</th>#}
-                                {#<td>{{ data['bus_info'] }}</td>#}
-                            {#</tr>#}
-                        {#{% endif %}#}
-                        {#{% if data['subway_info'] is not empty %}#}
-                            {#<tr>#}
-                                {#<th class="lo_subway">Subway Info</th>#}
-                                {#<td>{{ data['subway_info'] }}</td>#}
-                            {#</tr>#}
-                        {#{% endif %}#}
-                    {#</table>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
+                    <table class="lo_container">
+                        <tr>
+                            <th class="lo_date">Thời gian</th>
+                            <td>{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_loca">Tiệc cưới</th>
+                            <td>{{ data['place_addr'] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_info">Hướng dẫn</th>
+                            <td>{{ data['place_info'] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_tel">Liên hệ</th>
+                            <td>{{ data['place_phone'] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_bus">Xe Khách</th>
+                            <td>{{ data['bus_info'] }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- footer -->
     <div class="footer"  id="sk_snslink">
         <div class="contents">
             <h4>
-                <a href="http://thiepdo.com" target="_blank">
+                <a href="{{ path('home_page') }}" target="_blank">
                     <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
                 </a>
                 <span></span>
@@ -1265,9 +609,6 @@
             <ul>
                 <div class="addthis_inline_share_toolbox"></div>
             </ul>
-        </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
         </div>
     </div>
     <!--// footer -->
@@ -1307,16 +648,597 @@
             <div class="pswp__caption">
                 <div class="pswp__caption__center">Image caption 1</div>
             </div>
-
-            <!-- 슬라이드
-            <div class="pswp__slide">
-                <label for="slide-show">자동 슬라이드</label>
-                <input type="checkbox" name="slideShow" id="slide-show" data-role="none">
-            </div>
-            -->
         </div>
     </div>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
+{% if voted == false %}
+<div id="signup" class="signup">
+    <div class="container">
+        <div class="row">
+            <i>Vui lòng cho biết dự định của bạn !</i>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp;
+            <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp;
+            <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
+        </div>
+        <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
+    </div>
+</div>
+{% endif %}
+<script src="{{ asset('js/libraries.min.js') }}"></script>
+<script async>
+    function initMap() {
+        var lat = $('#coordinates').data('lat');
+        var lon = $('#coordinates').data('lon');
+        var title = $('#coordinates').data('title');
+
+        var homeLat = $('#coordinates').data('home-lat');
+        var homeLon = $('#coordinates').data('home-lon');
+        var homeTitle = $('#coordinates').data('home-title');
+
+        var location = {lat: lat, lng: lon};
+        var homeLocation = {lat: homeLat, lng: homeLon};
+
+        var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
+            zoom: 16,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        var info = new google.maps.InfoWindow({
+            content: '<h4>' + title + '</h4>'
+        });
+        info.open(map, marker);
+
+        var homeMap = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+            zoom: 16,
+            center: homeLocation
+        });
+        var homeMarker = new google.maps.Marker({
+            position: homeLocation,
+            map: homeMap
+        });
+
+        var homeInfo = new google.maps.InfoWindow({
+            content: '<h4>' + homeTitle + '</h4>'
+        });
+        homeInfo.open(homeMap, homeMarker);
+    }
+
+    function getPath() {
+        var addr = $('#getPath input[name=saddr]').val();
+        if (addr.length < 3) {
+            $('#getPath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getPath").submit();
+    }
+
+    function getHomePath() {
+        var addr = $('#getHomePath input[name=saddr]').val();
+
+        if (addr.length < 3) {
+            $('#getHomePath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getHomePath").submit();
+    }
+
+    $(function(){
+        var bool_click_menu = false;
+
+        try{
+            var pos_greeting	= $('#sk_topinfo').position().top;
+            var pos_gallery		= $('#sk_gallery').position().top;  var pos_media		= $('#sk_media').position().top;  var pos_snsbbs		= $('#sk_snsbbs').position().top;  var pos_map			= $('#sk_map').position().top;
+            $(window).scroll(function(e) {
+                var newScroll = $(document).scrollTop();
+                if(!bool_click_menu){
+                    if(newScroll > pos_greeting) setMenu('#m_topinfo');
+                    if(newScroll > pos_gallery) setMenu('#m_gallery');  if(newScroll > pos_media) setMenu('#m_media');  if(newScroll > pos_snsbbs - 60) setMenu('#m_snsbbs');  if(newScroll > pos_map - 60) setMenu('#m_map'); 			}
+            });
+        }catch(e){}
+
+        function setMenu(id){
+            $('.menu_scrolls').removeClass('on');
+            $(id).addClass('on');
+        }
+
+        $.fn.scrollStopped = function(callback) {
+            $(this).scroll(function(){
+                var self = this, $this = $(self);
+                if ($this.data('scrollTimeout')) {
+                    clearTimeout($this.data('scrollTimeout'));
+                }
+                $this.data('scrollTimeout', setTimeout(callback,250,self));
+            });
+        };
+
+
+        $(window).scrollStopped(function(){
+            bool_click_menu = false;
+        });
+
+
+        $('#div_snsbbs').masonry({
+            //columnWidth: .snsbbs_sections,
+            //isFitWidth : true,
+            itemSelector: '.snsbbs_sections'
+        }).on( 'layoutComplete', function() {
+            return true;
+        });
+
+        var closest = function closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        };
+
+        var photoswipeParseHash = function() {
+            var hash = window.location.hash.substring(1),
+                    params = {};
+
+            if (hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        function getGallery($el) {
+            var el = [];
+            var aTag = Array.prototype.slice.call($el.find("a"));
+
+            $.merge(el, aTag);
+
+            return el;
+        }
+
+        function onThumbnailsClick(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+            var clickedListItem = closest(eTarget, function(el) {
+                var tagName = el.tagName.toUpperCase();
+                return (tagName && tagName === 'A');
+            });
+
+            if (!clickedListItem) {
+                return;
+            }
+
+            if (clickedListItem.className.indexOf("swipebox") == -1) {
+                return false;
+            }
+
+            var childNodes = el,
+                    numChildNodes = el.length,
+                    nodeIndex = 0,
+                    index = 0;
+
+            var no_image_count = 0;
+            for (var i = 0; i < numChildNodes; i++) {
+                if (el[i].className.indexOf("swipebox") == -1) {
+                    no_image_count++;
+                }
+
+                if (el[i] == clickedListItem) {
+                    index = i - no_image_count;
+
+                    break;
+                }
+            }
+
+            if (index >= 0) {
+                openPhotoSwipe(index, el);
+            }
+
+            return false;
+        }
+
+        var gallery;
+
+        function getPrefix(prop) {
+            var style = document.body.style;
+            var prefix = ['Webkit', 'ms', 'moz', 'o'];
+            var prefix_len = prefix.length;
+
+            if(style[prop] == '') {
+                return prop;
+            }
+
+            prop = prop[0].toUpperCase() + prop.slice(1);
+
+            for(var i = 0; i < prefix_len; i++) {
+                if(style[prefix[i] + prop] == '') {
+                    return prefix[i] + prop;
+                }
+            }
+        }
+
+        function getTranslate(transform) {
+            var regex;
+
+            if(transform.indexOf('translate3d') == -1) {
+                regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
+            } else {
+                regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
+            }
+
+            var matched = transform.match(regex);
+            var coordinate = {};
+
+            coordinate.x = matched[1];
+            coordinate.y = matched[2];
+
+            if(matched[3]) {
+                coordinate.z = matched[3];
+            }
+
+            return coordinate;
+        }
+
+        function getScale(transform) {
+            var regex = /scale\(([0-9.]+)\)/;
+            var matched = transform.match(regex);
+
+            return matched[1];
+        }
+
+        function psBeforeInitAddEvent() {
+            gallery.listen('gettingData', function(index, item) {
+                var size = item.el.getAttribute("data-size").split("X");
+
+                item.w = size[0];
+                item.h = size[1];
+            });
+
+            gallery.listen('arrowUpdate', function() {
+                var $nextBtn = $('.pswp__button--arrow--right');
+                var $prevBtn = $('.pswp__button--arrow--left');
+                var loop = this.options.loop;
+                var index = this.getCurrentIndex();
+
+                $nextBtn.toggle(loop || index < this.items.length - 1);
+                $prevBtn.toggle(loop || index > 0);
+            });
+
+            gallery.listen('initialZoomIn', function() {
+
+            });
+        }
+
+        function psAfterInitAddEvent() {
+            gallery.listen('initialZoomOut', function() {
+                var item = this.currItem;
+                var container_style = item.container.style;
+                var transform = getPrefix('transform');
+                var transition = getPrefix('transition');
+
+                if(!transform || !transition) {
+                    return;
+                }
+
+                var container_transform = container_style[getPrefix('transform')];
+                var scale = getScale(container_transform);
+                var coordinate = getTranslate(container_transform);
+                var initTransY = item.initialPosition.y;
+                var currTransY = coordinate.y;
+                var size = item.el.getAttribute("data-size").split("X");
+                var transX = item.initialPosition.x;
+                var transY;
+
+                if(initTransY > currTransY) {
+                    transY = -(size[1]);
+                } else {
+                    transY = window.screen.availHeight;
+                }
+
+                container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
+
+                if(!this.isGestureClose() && this.isVerticalDrag()){
+                    container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
+                }
+            });
+
+            gallery.listen('close', function() {
+            });
+        }
+
+        var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelector('.pswp'),
+                    options, items, kakaoInApp;
+
+            items = parseThumbnailElements(galleryElement);
+
+            options = {
+                useZoom: true,
+                arrowKeys: false,
+                hideAnimationDuration: 200,
+                showAnimationDuration: 100,
+                loop: false,
+                imageEl: true,
+                galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
+                showHideOpacity: true,
+                getThumbBoundsFn: false,
+                closeOnScroll: false,
+                kakaoInApp: kakaoInApp,
+            };
+
+            if (fromURL) {
+                if (options.galleryPIDs) {
+
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            if (isNaN(options.index)) {
+                return;
+            }
+
+            if (disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+            gallery.useAniNum = false;
+
+            psBeforeInitAddEvent();
+            gallery.init();
+            psAfterInitAddEvent();
+        };
+
+        var parseThumbnailElements = function(el) {
+            var imageElements = el,
+                    numNodes = imageElements.length,
+                    items = [],
+                    size,
+                    item;
+            var wrapper = document.createElement('div');
+            var imageEl,
+                    thumbEl;
+
+            for (var i = 0; i < numNodes; i++) {
+                imageEl = imageElements[i];
+
+                if (imageEl.nodeType !== 1) {
+                    continue;
+                }
+
+                var img_el = imageEl.getElementsByTagName("img");
+                var exist_img = img_el.length > 0 ? true : false;
+                var src = imageEl.href;
+                var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
+                var msrc;
+                var $imageEl = $(imageEl);
+
+                if(!is_swipe_image) {
+                    continue;
+                }
+
+                if(!exist_img) {
+                    thumbEl = imageEl.getElementsByTagName("div")[0];
+
+                    if(thumbEl) {
+                        msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                    } else {
+                        var piece = src.split("/");
+                        var pieceCount = piece.length;
+                        var file = piece[pieceCount - 1]
+
+                        piece[pieceCount - 1] = "S_" + file;
+
+                        msrc = piece.join("/");
+                    }
+                } else {
+                    if($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
+                        msrc = img_el[0].parentNode.href;
+                    } else {
+                        thumbEl = img_el[0];
+                        msrc = thumbEl.src;
+                    }
+                }
+
+                item = {
+                    src: src,
+                    msrc: msrc,
+                    el: imageEl,
+                };
+
+                item.id = imageEl.getAttribute("imgId");
+                items.push(item);
+            }
+            return items;
+        };
+
+        var $my_gallery = $("#sk_gallery");
+        var my_gallery_count = $my_gallery.length;
+        var el = getGallery($my_gallery);
+        var $el = $(el);
+        var hashData = photoswipeParseHash();
+
+        $el.on("click", onThumbnailsClick);
+
+        for (var i = 0; i < my_gallery_count; i++) {
+            $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
+        }
+
+        if (hashData.pid && hashData.gid) {
+            openPhotoSwipe(hashData.pid - 1, el, true, true);
+        }
+
+        $(document).on("keydown keyup", function(e) {
+            var hidden = $(".pswp").attr("aria-hidden") == "true";
+
+            if(hidden) {
+                return;
+            }
+
+            var keydownAction = '';
+            var index = gallery.getCurrentIndex();
+            var gallery_len = gallery.items.length;
+
+            if(e.type == "keydown") {
+                if(e.keyCode === 37 && index != 0) {
+                    keydownAction = 'prev';
+                } else if(e.keyCode === 39 && index != (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            } else if(e.type == "keyup") {
+                if(e.keyCode === 37 && index == 0) {
+                    keydownAction = 'prev';
+                } else if(e.keyCode === 39 && index == (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            }
+
+            if(keydownAction) {
+                if( !e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey ) {
+                    if(e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    gallery[keydownAction]();
+                }
+            }
+        });
+
+        $('#div_snsbbs').masonry('bindResize');
+
+        function setPosition(id){
+            var $obj = $('#sk_'+id);
+            // console.log(id);
+
+            $('body').scrollTo($obj, 500);
+        }
+
+        $('.menu_scrolls').click(function(){
+            try {
+                if($(this).attr('id')){
+                    var id = $(this).attr('id').replace('p_','').replace('m_','');
+                    setPosition(id);
+                } else {
+                    window.location.href = '/';
+                }
+            } catch(e) {
+                console.log(e);
+            }
+        }).css('cursor','pointer');
+
+        $('#tabs_wedding').click(function() {
+            $('#tabs_wedding').addClass('on');
+            $('#tabs_party').removeClass('on');
+            $('#div_wedding').css('display', 'block');
+            $('#div_party').css('display', 'none');
+        }).css('cursor', 'pointer');
+
+        $('#tabs_party').click(function() {
+            $('#tabs_party').addClass('on');
+            $('#tabs_wedding').removeClass('on');
+            $('#div_wedding').css('display', 'none');
+            $('#div_party').css('display', 'block');
+        }).css('cursor', 'pointer');
+    });
+
+    $( window ).load(function() {
+        $('.gal_list2').masonry({
+            itemSelector: '.gal_frame',
+            columnWidth: '.gal_size',
+            transitionDuration: '0.2s',
+            percentPosition: true
+        });
+
+        $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+        $('.movie_wrap').onScrollTo(function() {
+            $('#signup').addClass('show');
+        }, function() {
+            $('#signup').removeClass('show');
+        });
+
+        $('#signup').on('click', '.close', function(e) {
+            e.preventDefault();
+            $('#signup').removeClass('show');
+        });
+    });
+</script>
+
+{% if isTemplate == false %}
+    <script type="text/javascript">
+        (function($) {
+            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
+                var $this = this;
+                $(document).scroll(function() {
+                    var y = $(this).scrollTop();
+                    if (y >= $this.position().top) {
+                        if (focusInFn) focusInFn();
+                    } else {
+                        if (focusOutFn) focusOutFn();
+                    }
+                });
+            }
+        })(jQuery);
+    </script>
+{% endif %}
+<script>
+    WebFontConfig = {
+        google: {
+            families: ['Lora:400,700i&amp;subset=vietnamese']
+        }
+    };
+
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
+</script>
+<script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109753132-1');
+</script>
 </body>
 </html>

@@ -6,6 +6,7 @@ imports:
     - { resource: services/faq.services.yml }
     - { resource: services/post.services.yml }
     - { resource: services/testimonial.services.yml }
+    - { resource: services/status.services.yml }
 
 services:
 
@@ -18,16 +19,24 @@ services:
         arguments:
             - '@form.factory'
 
-    viettut.services.facebook_service:
-        class: Viettut\Services\FacebookService
+    viettut.services.image_optimizer:
+        class: Viettut\Services\ImageOptimizer
+        arguments:
+            - '%image_quality%'
+
+    viettut.services.social_service:
+        class: Viettut\Services\SocialService
         arguments:
             - '%facebook_app_id%'
             - '%facebook_app_secret%'
+            - '%facebook_redirect_uri%'
+            - '%zalo_redirect_uri%'
+            - '%google_client_id%'
+            - '%google_client_secret%'
+            - '%google_client_app_name%'
+            - '%google_redirect_uri%'
+            - '%facebook_album_redirect_uri%'
             - '%facebook_graph_default_version%'
-            - '%domain%'
-            - '%http_schema%'
-            - '%facebook_object_id_url_template%'
-            - '@viettut.domain_manager.card'
 
     viettut.services.username_service:
         class: Viettut\Services\UsernameService
@@ -38,12 +47,17 @@ services:
         class: Viettut\Bundle\ApiBundle\EventListener\UpdateVideoIdListener
         arguments:
         tags:
-            - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
 
     viettut.event_listener.update_geo_location_listener:
         class: Viettut\Bundle\ApiBundle\EventListener\UpdateGeoLocationListener
         arguments:
+            - '%google_map_api_key%'
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+
+    viettut.event_listener.set_default_card_data_listener:
+        class: Viettut\Bundle\ApiBundle\EventListener\SetDefaultCardDataListener
+        arguments:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
-            - { name: doctrine.event_listener, event: preUpdate }

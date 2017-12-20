@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
-use Zalo\Zalo;
-use Zalo\ZaloConfig;
 
 class SecurityController extends BaseController
 {
@@ -21,9 +19,6 @@ class SecurityController extends BaseController
      */
     public function loginAction(Request $request)
     {
-        $facebookAppId = $this->getParameter('facebook_app_id');
-        $facebookAppSecret = $this->getParameter('facebook_app_secret');
-        $facebookRedirectUri = $this->getParameter('facebook_redirect_uri');
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
 
@@ -51,25 +46,20 @@ class SecurityController extends BaseController
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
-        $fb = new \Facebook\Facebook([
-            'app_id' => $facebookAppId,
-            'app_secret' => $facebookAppSecret,
-            'default_graph_version' => 'v2.9',
-        ]);
+        $targetUrl = $request->query->get('_target_url');
+        $socialService = $this->get('viettut.services.social_service');
+        $facebookLoginUrl = $socialService->getFacebookLoginUrl($targetUrl);
+        $zaloLoginUrl = $socialService->getZaloLoginUrl($targetUrl);
+        $googleLoginUrl = $socialService->getGoogleLoginUrl($targetUrl);
 
-        $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['email', 'user_likes']; // optional
-        $facebookLoginUrl = $helper->getLoginUrl($facebookRedirectUri, $permissions);
-
-        $zalo = new Zalo(ZaloConfig::getInstance()->getConfig());
-        $helper = $zalo -> getRedirectLoginHelper();
-        $zaloLoginUrl = $helper->getLoginUrl($this->getParameter('zalo_redirect_uri'));
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
             'facebookUrl' => $facebookLoginUrl,
-            'zaloUrl' => $zaloLoginUrl
+            'googleUrl' => $googleLoginUrl,
+            'zaloUrl' => $zaloLoginUrl,
+            '_target_url' => $targetUrl
         ));
     }
 }

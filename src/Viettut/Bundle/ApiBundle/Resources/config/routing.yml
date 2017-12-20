@@ -52,3 +52,13 @@ api_post:
     type: rest
     resource: Viettut\Bundle\ApiBundle\Controller\PostController
     name_prefix:  api_1_
+
+api_status:
+    type: rest
+    resource: Viettut\Bundle\ApiBundle\Controller\StatusController
+    name_prefix:  api_1_
+
+api_engage:
+    type: rest
+    resource: Viettut\Bundle\ApiBundle\Controller\EngageController
+    name_prefix:  api_1_

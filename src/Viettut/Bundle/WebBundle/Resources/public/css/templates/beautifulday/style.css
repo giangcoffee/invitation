@@ -1,0 +1,623 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:700');
+
+/* beautiful_day */
+
+
+.hide {display:none;}
+/* 임시css */
+.ui-panel-wrapper {min-height:80px}
+.ui-page-theme-a {text-shadow:none!important}
+.spacer.s0 {min-height: 1px}
+#right-panel.ui-panel-open {border-left:1px solid #999}
+.ui-panel-open{border-color:#555;overflow:hidden}
+.ui-listview>.ui-li-divider{padding-top:0.9em;padding-bottom:0.9em}
+div#right-panel {z-index:9999;}
+ul.ui-listview li {cursor: pointer;}
+/* Global */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {box-sizing: border-box; -webkit-box-sizing: border-box}
+
+.ul-body   {position:relative;/* max-width:980px; */margin: 0 auto;padding: 0 10px;}
+.ul-body:after {display:block; content:''; clear:both}
+.gallery_wrap .ul-body {padding: 10px 10px 30px;}
+.movie_wrap .ul-body {/* max-width:640px; */padding: 20px 0 0;max-width: 100%;}
+.location_wrap .ul-body {padding: 0;max-width: 100%}
+@media(max-width:640px){
+  .gallery_wrap .ul-body {}
+}
+
+.ui-cont-a {padding: 0 1em}
+.ui-cont-b {padding: 2em 0}
+.ui-cont-c {padding-top: 2em}
+.ui-cont-d {padding-bottom: 2em}
+.btn_wrap {cursor:pointer}
+.p-r {position:relative}
+.f-l {float:left!important}
+.f-r {float:right!important}
+
+/* Layout */
+html,body {font-family:'Lora', serif;font-size: 100%}
+#skin_page {z-index:10;background-color:#fff}
+
+.home_wrap {position:relative;overflow:hidden}
+.invite_wrap {position:relative;padding:0 0 100px;overflow:hidden;border-bottom:1px solid #eee}
+.parents_wrap {padding:80px 0 55px;border-bottom:1px solid #eee;background-color:#f8f8f8}
+.gallery_wrap {position:relative;padding:70px 0;overflow:hidden;border-bottom:1px solid #eee}
+.movie_wrap {position:relative;padding:70px 0 100px;overflow:hidden;border-bottom:1px solid #eee}
+.guestbook_wrap {position:relative;padding:70px 0 100px;overflow:hidden;background: #fff url(/bundles/viettutweb/img/templates/beautifulday/bg_guestbook.jpg) repeat 50% 50%;background-size:cover;border-bottom:1px solid #eee}
+.location_wrap {position:relative;margin: -50px 0 0;padding: 80px 0 0;overflow:hidden;}
+.footer {background-color: #ccc}
+
+.lnb_mobile {display:none;position:fixed;top:0;right:0;width:60px;height:60px;padding: 0;z-index:9990;background-color: rgba(0,0,0,0.6);}
+.lnb_mobile a {display:block;height:60px;padding-top: 14px;}
+.lnb_mobile .bar_line{width:28px;height:4px;background-color:#fff;display:block;margin:5px auto}
+.lnb_mobile .bar_top{}
+.lnb_mobile .bar_middle{}
+.lnb_mobile .bar_bottom{}
+@media (max-width:1023px){
+	.location_wrap {margin:0;padding:30px 0 0}	
+}
+@media (max-width:414px){
+	.gallery_wrap {padding-top:30px}
+	.movie_wrap{padding:30px 0 70px}
+	.guestbook_wrap{padding:30px 0}
+	.location_wrap {padding:40px 0 0}
+  .lnb_mobile {width:50px;height:50px;}
+  .lnb_mobile a{padding-top:11px;height: 50px}
+  .lnb_mobile .bar_line {width:24px;height:3px}
+}
+
+/* header */
+.header_txt{position:relative;min-height:200px;z-index: 10;overflow: hidden;text-align:center;background-color:#fff}
+.header_txt .title{position:relative;display:inline-block;font-size:100px;padding:1em 0;}
+.header_txt .title span{display:block;font-family:'Lora', serif;;text-align:left}
+.header_txt .title .tit_txt1{font-size:0.5em;color:#999;line-height:1.5}
+.header_txt .title .tit_txt2{font-size:1em;color:#000;line-height:1.2}
+.header_txt .title_thankyou .tit_txt1{font-size:0.4em}
+.header_txt .title_thankyou .tit_txt2{font-size:0.9em}
+
+
+.lnb {position: absolute;top: 0;left: 50%;width: 1024px;height: 60px;margin-left: -512px;background-color: rgba(255,255,255,0.3);border-bottom: 1px solid rgba(150, 150, 150, 0.1);}
+.lnb ul {position:relative;text-align:center;font-size:0;z-index:10}
+.lnb ul:after {display:block; content:''; clear:both}
+.lnb li {position:relative;display:inline-block;margin:0;padding: 0 20px;height: 60px;color: #444;}
+.lnb li span{font-size: 18px;line-height: 62px;font-weight:bold;font-family:'Lora', serif;;text-transform:uppercase}
+.lnb li:hover{}
+.lnb li.on {}
+.lnb li.on:after {content:''}
+.lnb li:after{content:'';position:absolute;top:50%;right:-2px;margin-top:-4px;width:6px;height:6px;border-radius:50%;background-color:rgba(0,0,0,0.2);}
+.lnb li:last-child:after{display:none}
+
+.lnb.fixed {visibility:hidden;position:fixed;top: 0;left:0;width:100%;height:50px;margin-left: 0;z-index:999;background-color: rgba(100,100,100,0.85);border-bottom:0;}
+.lnb.fixed li{height:50px;color:#fff}
+.lnb.fixed li span{line-height: 52px;}
+.lnb.fixed{
+	animation-name: slideDown;
+	-webkit-animation-name: slideDown;
+	animation-duration: 1s;	
+	-webkit-animation-duration: 1s;
+	animation-timing-function: ease-out;	
+	-webkit-animation-timing-function: ease-out;	
+	visibility: visible !important;
+}
+@keyframes slideDown {
+	0%,10% {transform: translateY(-10%); opacity:0;}		
+	30%,100% {transform: translateY(0%); opacity:1;}		
+}
+@-webkit-keyframes slideDown {
+	0%,10% {-webkit-transform: translateY(-10%); opacity:0;}		
+	30%,100% {-webkit-transform: translateY(0%); opacity:1;}		
+}
+
+.header_panel {position:fixed;bottom:10px;left: 10px;right: 10px;}
+.header_panel:after {clear:both;content:'';display:block}
+.header_panel p {display:inline-block;width: 80px;height: 80px;font-size: 1.1em;line-height:1;letter-spacing: 0;text-align:center;font-family: 'Lora', serif;z-index: 30;position: relative;}
+.header_panel a {display:block;width:80px;height:80px;padding:12px 0 0;color: #fff!important;background-color: rgba(0,0,0,0.3);border-radius:50%;font-weight:normal!important;-webkit-transition:0.2s background-color;transition:0.2s background-color;}
+.header_panel a:hover{background-color: rgba(0,0,0, 0.5)}
+.header_panel a .icon {display:block;margin: 0 auto;padding:0;width:55px;height:33px;background:url(/bundles/viettutweb/img/templates/beautifulday/ico_couple.png) no-repeat;background-size:110px auto;}
+.header_panel p.groom .icon {background-position: 0 2px}
+.header_panel p.bride .icon {background-position:100% 0}
+.header_panel p.bride {float: left;}
+.header_panel p.groom {float: right;}
+.header_panel p:first-child {float:left}
+.header_panel p:last-child {float:right}
+
+div#panel_groom,div#panel_groom .ui-panel-inner,
+div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
+div#panel_groom {background:#fff url('/bundles/viettutweb/img/templates/beautifulday/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;}
+div#panel_bride {background:#fff url('/bundles/viettutweb/img/templates/beautifulday/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;}
+.groom-wrap,
+.bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing: border-box}
+.groom-wrap p,
+.groom-wrap ul li,
+.bride-wrap p,
+.bride-wrap ul li {cursor:pointer}
+.groom-wrap p, 
+.bride-wrap p {position:absolute;top:486px;right:1px;width:50px;height:50px;text-shadow:none!important;background: #999 url(/bundles/viettutweb/img/templates/beautifulday/ico_panel.png) 100% 0 no-repeat;background-size:250px;font-size:0;line-height:0;text-indent:-9999px;}
+.groom-wrap ul,
+.bride-wrap ul {position:absolute;top: 486px;left:0;width:200px;height:50px}
+.groom-wrap ul:after,
+.bride-wrap ul:after{position:absolute;bottom:-100px;left:0;width:271px;height:100px;background-color:#fff;content:''}
+
+.groom-wrap ul li,
+.bride-wrap ul li {float:left; width:50px; height:50px; margin:0; background:rgba(0,0,0,0.5) url(/bundles/viettutweb/img/templates/beautifulday/ico_panel.png) 0 0 no-repeat; background-size:250px; font-size:0; line-height:0; text-indent:-9999px}
+.groom-wrap ul li.ico5,
+.bride-wrap ul li.ico1 {background-position:0 0px}
+.groom-wrap ul li.ico6,
+.bride-wrap ul li.ico2 {background-position:-50px 0}
+.groom-wrap ul li.ico7,
+.bride-wrap ul li.ico3 {background-position:-100px 0}
+.groom-wrap ul li.ico8,
+.bride-wrap ul li.ico4 {background-position:-150px 0}
+
+@media(max-width:1240px){
+	.header_panel {visibility:visible;opacity:1;-webkit-transition:0.4s ease-in-out all;transition:0.4s ease-in-out all;}
+	.header_panel.fadeOut {visibility:hidden;opacity:0;-webkit-transform:translateY(30px)}
+}
+@media(max-width:768px){
+	.header_txt .title_thankyou .tit_txt1{font-size:0.38em}
+	.header_txt .title_thankyou .tit_txt2{font-size:0.75em}
+}
+@media (max-width:414px) {
+	.header_panel {}
+	.header_panel p {width: 50px;height: 50px;}
+	.header_panel a {width:50px;height:50px;padding-top:12px;font-size:0;line-height:0;text-indent:-9999px;}
+	.header_panel a .icon {width:40px;background-size:80px auto}
+}
+
+@media all and (max-height: 543px) {
+	.groom-wrap ul,
+	.bride-wrap ul {position:fixed!important; top:auto!important; bottom:0!important; left:0!important}
+	.groom-wrap p,
+	.bride-wrap p {position:fixed!important; top:auto!important; bottom:0!important; left:221px!important}
+}
+@media(min-width:1241px){
+	.header_panel {bottom:auto;top:50%;margin-top:-40px}
+}
+
+/* title */
+div.header_bg {background:url('/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg') center top no-repeat; background-size:100% auto}
+li.menu_scrolls {cursor:pointer;}
+h2.title {position: relative;width:100%;height:100px;padding:40px 0;z-index: 10;text-align:center;font-size:30px;font-family:'Lora', serif;}
+h2.title span {position:relative;display:block;width:100%;height:60px;margin:0 auto;font-size:0;line-height:0;text-indent:-9999px}
+.gallery_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_gallery.png) no-repeat 50% 50%;background-size:auto 100%}
+.movie_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_movie.png) no-repeat 50% 50%;background-size:auto 100%}
+.invite_wrap h2.title,.location_wrap h2.title {padding-top:60px;}
+.invite_wrap h2.thanks_title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_thankyou.png) no-repeat 50% 50%;background-size:auto 100%}
+.guestbook_wrap h2.title span{background:url(/bundles/viettutweb/img/templates/beautifulday/title_guestbook.png) no-repeat 50% 50%;background-size:auto 100%}
+.location_wrap h2.title span{background: url(/bundles/viettutweb/img/templates/beautifulday/title_location.png) no-repeat 50% 50%;background-size: 100% auto;width: 280px;height: 40px;}
+div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templates/beautifulday/e8ed2466288448704a423d134bc229e2.jpg') center center / cover no-repeat;}
+@media (max-width:414px) {
+	h2.title{height:90px}
+	.location_wrap h2.title span{width:220px;height:30px}
+}
+@media all and (max-width:480px) {
+	h2.title span{height:50px !important;}
+	table.lo_right th {padding-left:0 !important;}
+	.lo_container th {font-size:15px !important;}
+	h2.title {font-size:22px !important;}
+	.invite_img span {font-size:30px !important;}
+	h2.title {font-size:20px !important;}
+	.header_txt .title .tit_txt2 {
+		font-size:0.7em;
+	}
+}
+
+@media (min-width:1024px) {
+	h2.title {height: 120px;}
+	h2.title span{height:70px}
+}
+
+/* home */
+.home_content{padding:110px 0;text-align:center;color: #585858;line-height:1.2;}
+.home_title{margin: 0 0 20px;color:#363e42;font-size:30px;font-weight:bold;font-family: 'Lora', serif;}
+.home_loca{max-width: 700px;width: 100%;padding: 0 10px;margin: 0 auto}
+.home_loca div{margin: 0 0 10px}
+.home_loca .date{color:#4a4a4a;font-size:18px}
+.home_loca .place{color:#888;font-size:22px;word-break: break-word;}
+
+.couple_list{position:relative;margin: 0 0 80px;}
+.couple_list:after{content:'';position:absolute;bottom: -35px;left:50%;width:60px;height:1px;margin-left:-30px;background-color:#222;}
+.couple_list div.name p strong{display:block;font-size: 80px;padding: 0 10px;font-weight:normal;color:#222;}
+.couple_list div.and p strong{display:block;font-size:80px;padding: 0 10px;font-weight:normal;}
+.home_dday{margin-top:30px;font-size: 20px;font-family:'Lora', serif;}
+.home_dday p{display:inline-block;padding: 10px 18px 9px;line-height:1;border-radius:50px;background-color: #ddd;color: #222;}
+.home_dday span{display:inline-block;padding:0 5px;line-height:20px;vertical-align:top}
+
+@media(max-width:768px){
+	.couple_list div.name p strong,
+	.couple_list div.and p strong{font-size: 70px;}
+}
+@media(max-width:414px){
+	.couple_list div.name p strong,
+	.couple_list div.and p strong{font-size: 60px;}
+	.home_loca .date{font-size:16px}
+	.home_loca .place{font-size:18px}
+}
+@media(max-width:320px){
+	.couple_list div.name p strong,
+	.couple_list div.and p strong{font-size:45px}
+	.header_txt .title .tit_txt2 {
+		font-size:0.6em;
+	}
+}
+
+.msg_wrap{position:relative;width:100%;height:200px;background:#323e40 url(/bundles/viettutweb/img/templates/beautifulday/wonkyu_txt.png) no-repeat 50% 50%;background-size:auto 115px}
+.msg_wrap span{font-size:0;text-indent:-9999px}
+
+/* gallery */
+.gal_list {margin:0 auto;padding-top:1%}
+.gal_list > div > a > div {float:left;box-sizing:border-box}
+.gal_list > div:after {content:'';display:block;clear:both}
+
+.gal_list .col-4 {padding:0 1%}
+.gal_list .col-4 > a > div {height:380px;margin-bottom:2%}
+.gal_list .col-4 .ui-block-1 {width:49%;margin-right:2%}
+.gal_list .col-4 .ui-block-2 {width:49%}
+.gal_list .col-4 .ui-block-3 {width:49%;margin-right:2%}
+.gal_list .col-4 .ui-block-4 {width:49%}
+
+.gal_more {display:block;clear:both;width:100px;height:40px;margin: 20px auto 0;cursor:pointer;
+font-size:0;line-height:0;text-indent:-9999px;background:url(/bundles/viettutweb/img/templates/beautifulday/btn_more.png) no-repeat 0 0;background-size:100%;}
+
+.gal_list2 .gal_more{left:50%;bottom:0;margin-left:-50px}
+
+@media (max-width:1280px) {
+/*   .gal_list .col-4 > a > div {height:220px} */
+}
+@media (max-width:1024px) {
+/*   .gal_list .col-4 > a > div {height:260px;} */
+}
+@media (max-width:768px) {
+	.gal_list .col-4 > a > div {height:260px}
+}
+@media (max-width:640px) {  
+	.gal_list .col-4 > a > div {width:49%!important;height:220px;margin-bottom: 2%!important}
+	.gal_list .col-4 .ui-block-1,
+	.gal_list .col-4 .ui-block-3 {margin-right:2%}
+}
+@media (max-width:480px) {
+	.gal_list .col-4 > a > div {height: 150px;}
+}
+@media (max-width:320px) {
+	.gal_list .col-4 > a > div {height:110px;}
+}
+
+.gal_list2{max-width:100%}
+.gal_list2 .gal_frame {padding: 1%;}
+@media (min-width:640px){
+	.gal_list2 .gal_size {width:33.33% !important}
+	.gal_list2 .gal_frame {width:33.33% !important}
+}
+
+
+/* Movie */
+.movie_container {position:relative;margin:0;z-index:1}
+.movie_container ul {width:100%; margin:0}
+.movie_container:after {display:block; content:''; clear:both}
+
+.movie1 ul li,
+.movie2 ul li,
+.movie3 ul li,
+.movie4 ul li {position:relative;overflow:hidden;background-color: #000}
+.movie1 ul li img,
+.movie2 ul li img,
+.movie3 ul li img,
+.movie4 ul li img {position:absolute; top:50%; left:0; width:100%; height:auto; margin:-38% 0 0 0;z-index:0}
+.android_play {position:absolute; display:block; top:50%; left:50%; cursor:pointer;z-index:1;
+  background:url('../img/btn_play.png') no-repeat 0 0; background-size:100%; font-size:0; line-height:0; text-indent:-9999px;
+  width:100px; height:100px;margin:-50px 0 0 -50px}
+
+.movie1 ul li {width:100%;height:480px;margin: 0 0 2%;}
+.movie2 ul li {width:100%;height:480px;margin:0 0 2%;}
+.movie3 ul li {float:left;width:49%;height: 220px;margin:0 0 2%;}
+.movie3 ul li:first-child {width:100%; height:480px; margin:0 0 2%}
+.movie3 ul li:nth-child(2) {margin-right:2%}
+
+.movie4 ul li {float:left; width:49%; height:220px; margin:0 0 2% 0}
+.movie4 ul li:first-child {margin-right:2%}
+.movie4 ul li:nth-child(3) {margin-right:2%}
+
+.nomovie {}
+.nomovie span {position:absolute;top:50%;left:50%;margin:-8px 0 0 -100px;display:block;width:200px;text-align:center;color: #eee;}
+
+@media (max-width: 640px) {
+	.movie1 ul li,.movie1 ul li:first-child,
+	.movie2 ul li,.movie2 ul li:first-child,
+	.movie3 ul li,.movie3 ul li:first-child,
+	.movie4 ul li,.movie4 ul li:first-child {position:relative;float:none;width:100%;height: 350px;margin:0 0 2% 0;}
+	.android_play {width:60px;height: 60px;margin: -30px 0 0 -30px}
+}
+@media (max-width: 480px) {
+	.movie1 ul li,.movie1 ul li:first-child,
+	.movie2 ul li,.movie2 ul li:first-child,
+	.movie3 ul li,.movie3 ul li:first-child,
+	.movie4 ul li,.movie4 ul li:first-child {height: 230px;}
+}
+@media (max-width: 320px) {
+	.movie1 ul li,.movie1 ul li:first-child,
+	.movie2 ul li,.movie2 ul li:first-child,
+	.movie3 ul li,.movie3 ul li:first-child,
+	.movie4 ul li,.movie4 ul li:first-child {height: 200px;}
+}
+.movie1 ul li:last-child,
+.movie2 ul li:last-child,
+.movie3 ul li:last-child,
+.movie4 ul li:last-child {margin-bottom:0}
+
+/* invite */
+.invite_content{width:100%;padding: 0;text-align:center;color: #444;line-height:1.4;}
+.invite_img{position:relative;width: 100%;height:550px;margin: 0 0 60px;background: url(/bundles/viettutweb/img/templates/beautifulday/bg_greetings.jpg) no-repeat 50% 50%;background-size: cover;}
+.invite_img:after{content:'';position:absolute;bottom:0;left:50%;width:80px;height:1px;margin-left:-40px;background-color:#000}
+.thanks_img{background: url(/bundles/viettutweb/img/templates/beautifulday/bg_thankyou.jpg) no-repeat 50% 100%;background-size: cover;}
+.invite_img span{position:absolute;bottom:60px;left:0;right:0;display:block;height:200px;font-size:60px;}
+.thanks_img span{background:url(/bundles/viettutweb/img/templates/beautifulday/cont_thankyou.png) no-repeat 50% 0;background-size:auto 100%}
+
+.invite_text {position:relative;width: 100%;max-width:640px;min-width: 290px;margin: 0 auto;padding: 0 10px;line-height: 2;font-size: 1.3em;color: #777;word-break: break-word;}
+
+.invite_name {width: 100%;max-width: 420px;margin: 60px auto 0;letter-spacing:-1px;font-size:20px;}
+.invite_name li{width: 45%;display:inline-block;margin:0 1%;vertical-align:middle;vertical-align:top}
+.invite_name li p{padding: 2px 0;}
+.invite_name li p.parents{font-size:0.75em;word-break:break-word;hyphens:none;border-collapse: collapse !important;}
+.invite_name li .in_and{padding:0 2px 0 1px}
+.invite_name li .in4>em {font-size:0.75em;padding:0 5px 0 0;color:#666;font-weight: bold;margin-right:5px;}
+.invite_name li .in4 strong{}
+
+/* Guestbook */
+.gb_msg {position:relative;padding: 30px 0;text-align:center;color:#444;}
+.gb_msg span{display:inline-block;padding:8px 0;line-height:1;font-weight:bold;}
+.gb_btn {cursor:pointer;position:relative;width:150px;height:45px;margin: 30px auto 0;padding:0;background: url(/bundles/viettutweb/img/templates/beautifulday/btn_write_1.png) no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px;z-index:999;}
+.gb_btn:hover {opacity: 0.7;}
+.nopost_wrap {position:relative;width:98%;max-width: 450px;margin: 30px auto 0;padding: 25px 0 50px;background-color: rgba(245,245,245,0.8);}
+.nopost_wrap .gb_msg{padding-bottom:0px}
+
+#div_snsbbs:after {clear:both; content:''; display:block}
+.gb_cont_box {position:relative;width:100%;padding:1em 0.8em;color: #fff;background-color: rgba(0,0,0,0.5);box-sizing:border-box;font-size:0.9em;}
+.snsbbs_sections:first-child .gb_cont_box {background-color: rgba(0,0,0,0.65);}
+
+.pro_info:after {clear:both; content:''; display:block}
+.pro_info {padding:0.3em 0 0.8em 0.5em;/* border-bottom:1px solid #ccc; */}
+.pro_img {position:relative;float:left;border-radius:50%;background-color: #fff;}
+.pro_img img {width:50px;height:50px;display:block;border-radius:50%;border: 2px solid #fff;overflow:hidden;}
+
+.pro-sns {position:absolute; top:65%; left:-5px; width:20px; height:20px; background:url('/dalpeng/skin/_common/img/ico_spr_sns24.png') -20px 0 no-repeat; background-size:200%}
+.pro-sns span   {display:block; text-indent:-9999px; overflow:hidden}
+.pro-sns.facebook {background-position:   -20px   0px}
+.pro-sns.twitter  {background-position:   -20px   -20px}
+.pro-sns.kakao    {background-position:   -20px   -40px}
+.pro-sns.naver    {background-position:   -20px   -60px}
+.pro-sns.dalpeng  {background-position:   -20px   -80px}
+.pro-sns.google   {background-position:   -20px   -100px}
+.pro-sns.notmember  {background-position:   -20px   -120px}
+.pro-sns.instagram  {background-position:   -20px   -140px}
+.pro_txt {float:left;padding: 0.3em 0 0 0.7em;max-width: 70%;font-size: 1.05em}
+.pro_txt strong{font-weight:normal}
+.pro_txt .date {font-size: 0.8em;padding: 3px 0 0 1px;}
+
+.gb_cont {clear:both; padding:1em 0.5em}
+.gb_cont li {margin-bottom:0}
+.gb_cont li img {max-width:100%}
+
+.gb_skip {overflow:hidden;padding:0.9em 0.5em 0 0.5em;border-top: 1px solid #fff;}
+.gb_skip .gb_comm {height:13px;color: #fff;font-size: 17px;font-weight:bold;line-height:15px;font-family: 'Lora', serif;}
+.gb_skip .gb_comm .icon_reply {float:left;text-align:center;width:16px;height:13px;margin:0 5px 0 0;font-size:0;line-height:0;text-indent:-9999px;background: url(/dalpeng/skin/_common/img/ico_reply_w.png) no-repeat;background-size:auto 13px;vertical-align:top;}
+.btn_go_snsbbs {cursor: pointer;}
+/* Location */
+.location_wrap h2.title + .locationdivs .lo_title{border-top:1px solid #dfdfdf}
+.lo_tab_wrap {min-height:40px;margin: 0 30px;padding: 0;}
+.lo_tab_wrap:after{content:'';clear:both;display:block}
+.lo_tab_wrap li {position:relative;display:inline-block;float: left;width: 50%;margin: 0;padding: 20px 0 18px;line-height: 1;color: #888;text-align:center;font-size: 1em;font-weight: bold;background-color: #ddd;cursor:pointer;box-sizing: border-box;height: 54px;border-top: 1px solid #ddd}
+.lo_tab_wrap li.wh{text-align:left;padding-left:70px;border-left:1px solid #ddd}
+.lo_tab_wrap li.rh{text-align:right;padding-right:70px;border-right:1px solid #ddd}
+.lo_tab_wrap .on {border-top: 1px solid #dfdede;background-color: #fff;color: #000;font-size:1.2em;padding-top:18px}
+.lo_tab_wrap .on.wh {border-left: 1px solid #dfdede;}
+.lo_tab_wrap .on.rh {border-right: 1px solid #dfdede;}
+
+.lo_tab_wrap li:after{width:20px;height:20px;content:'';display:block;position:absolute;top:17px;background:url(/bundles/viettutweb/img/templates/beautifulday/ico_lotab.png) no-repeat;background-size:auto 20px}
+.lo_tab_wrap li.wh:after{left:25px;background-position:-40px 0}
+.lo_tab_wrap li.rh:after{right:25px;background-position:-20px 0}
+.lo_tab_wrap li.on:after{background-position:0 0}
+
+.lo_box {padding: 0}
+.lo_box .ui-block-1 {margin:0;padding:0}
+.lo_box .ui-block-2 {padding: 0 0 30px;}
+.lo_title {margin: 0 30px;padding: 70px 30px 40px;text-align:center;line-height:1;border: 1px solid #dfdede;border-bottom: 0;border-top: 0;}
+.lo_title .tit {position:relative;margin:0 0 70px}
+.lo_title .tit:after{content:'';display:block;width: 70px;height:1px;position:absolute;bottom:-35px;left:50%;margin-left: -35px;background-color:#000;}
+.lo_title .tit span{display:block;font-size:0.8em;color:#aaa;margin: 0 0 20px;}
+.lo_title .tit strong{display:block;font-size: 1.9em;}
+.lo_title .date{color: #999;font-weight:bold;font-size: 1.1em;line-height:1.5;margin: 0 0 20px;}
+.lo_title .date:after{content:''}
+.lo_title .place{color: #444;font-weight:bold;font-size: 1.1em;line-height:1.5;word-break:normal;border-collapse:collapse !important;}
+.lo_map>a.ui-link {display:block;font-size:0}
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas {height:400px!important;background-color: #ddd}
+.lo_map #wedding_pmap_canvas .nmap,
+.lo_map #party_pmap_canvas .nmap {width:100%!important;height:400px!important}
+.lo_map .ui-link img {height:100%}
+
+.lo_containerarea {padding: 30px 30px 10px;border: 1px solid rgba(97, 92, 89, 0.2);border-top: 0;}
+.lo_containerarea:after {content:'';display:block;clear:both}
+.lo_container {position:relative;width:100%;border-collapse: collapse;box-sizing: border-box;}
+.lo_container th {width: 25%;text-align:left;padding: 0;}
+
+.lo_container td {color: #444;padding:2px 0 15px 0;font-size: 1em;line-height: 1.6em;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse !important;}
+.lo_container tr:last-child td{padding-bottom:10px}
+.lo_container td.txt {font-weight:bold}
+.lo_container td span {display:inline-block}
+.lo_container th span {display:inline-block;width: 25px;height:25px;vertical-align:top;line-height:25px;/* padding: 0 0 0 27px; */background:url(/bundles/viettutweb/img/templates/beautifulday/location_icon.png) no-repeat 0 0;background-size:25px;box-sizing: border-box;font-size: 0;text-indent: -9999px}
+.lo_container th.lo_date .icon    {background-position:0 0}
+.lo_container th.lo_loca .icon    {background-position:0 -25px}
+.lo_container th.lo_tel .icon     {background-position:0 -50px}
+.lo_container th.lo_info .icon    {background-position:0 -75px}
+.lo_container th.lo_bus .icon     {background-position:0 -100px}
+.lo_container th.lo_subway .icon  {background-position:0 -125px}
+
+.nav-wrap {clear:both;position:relative;width:100%;margin: 0 auto;padding:20px 0 0;}
+.nav-wrap ul {overflow:hidden; margin-top:10px}
+.nav-wrap ul li {float:left; margin-right:30px}
+.nav-m .nav-1,
+.nav-m .nav-2 {float:left; width:100%}
+.ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
+.ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
+.ui-btn-nav .ui-btn {font-weight:700!important}
+.ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0}
+.ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.2)!important;background-color:#fafafa!important;padding: 12px 0}
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.75em;font-family:'Lora', serif;;padding: 5px 0 20px;color:#333;text-align:center;}
+
+.nav-1 form input {margin-bottom: 0 !important;font-size:16px !important;}
+.col-2,.col-3,.col-4 {position:relative; overflow:hidden}
+/*.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-b {float:left; width:49%}*/
+.col-2 .ui-block-a,
+.col-2 .ui-block-b {float:left; width:100%}
+
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0}
+.col-3 .ui-block-c {width:32%}
+
+.gal_list .col-3 .ui-block-a,
+.gal_list .col-3 .ui-block-b {width:32%; margin:0 2% 2% 0}
+.gal_list .col-3 .ui-block-c {width:32%; margin:0 0 2% 0}
+
+.snsbbs_sections .ui-body-d {/* margin:7px; */}
+.snsbbs_sections {float:left; width:33.33%!important}
+
+@media (min-width: 1024px) {
+	.greeting_wrap {min-height:auto!important}
+	.greeting_loca {display:none}
+	.lo_container.lo_left {float:left;width:50%}
+	.lo_container.lo_right {float:left;width:50%}
+	.lo_container th.lo_bus,
+	.lo_container th.lo_subway{padding-left:20px}
+	.lo_container tr:last-child td{padding-bottom:10px}
+	.lo_container.lo_left td{padding-right:20px}
+	.lo_container.lo_left:after{content:'';position:absolute;top:0;right:-1px;bottom:0;width:1px;background-color:#ccc}
+	.lo_container.lo_right:after{content:'';position:absolute;top:0;left:0px;bottom:0;width:1px;background-color:#ccc}
+}
+
+@media (max-width: 1023px) {
+	.lnb_mobile {display:block}
+	.lnb {display:none}
+	.greeting_wrap {min-height:600px!important}
+	.snsbbs_sections {float:left; width:33.3%!important}    
+	.header_txt .title{font-size:85px}
+	.invite_img span{height:160px}
+	.home_content{padding:90px 0}
+	.invite_img{height:460px;margin-bottom:60px}
+}
+@media (max-width: 920px) {
+	.snsbbs_sections {float:left; width:50%!important}
+}
+
+@media (max-width: 640px) {
+	.gallery_wrap {padding:50px 0}
+	.invite_wrap {padding:0 0 70px}
+	.movie_wrap,.guestbook_wrap {padding:5px 0 70px}
+	.snsbbs_sections,
+	.nav-m .nav-1,
+	.nav-m .nav-2 {float:left; width:100%!important}
+}
+
+@media (max-width: 480px) {
+	.location_wrap {padding:0;border-top:0}
+	.col-2 .ui-block-1,.col-2 .ui-block-2,
+	.col-3 .ui-block-1,.col-3 .ui-block-2,.col-3 .ui-block-3 {float:left; width:100%}
+	.col-4 .ui-block-1,.col-4 .ui-block-2,.col-4 .ui-block-3,.col-4 .ui-block-4 {width:100%}
+
+	.header_txt .title{font-size: 65px;padding: 1.3em 0;}
+	.invite_img span{height:130px;bottom: 50px;}
+	.home_content{padding:90px 0}
+	.invite_img{height: 320px;margin-bottom: 50px;}
+
+	.home_loca{font-size: 20px;}
+
+	.home_img{position:relative;width: 300px;height: 140px;}
+	.msg_wrap{height:180px}
+	.snsbbs_sections {float:left; width:100%!important}
+	.gb_msg{font-size:0.9em}
+
+	.invite_text{font-size: 1em;}
+	.invite_name {font-size:16px}
+
+	.gallery_wrap {padding-bottom:40px}
+	.gallery_wrap:after{width:150px;bottom: 30px;margin-left:-75px}
+
+	.lo_title {margin:0 10px;padding: 50px 10px 30px;border:0;}
+	.location_wrap h2.title + .locationdivs .lo_title {border-top:0}
+	.lo_title .tit{margin-bottom:50px}
+	.lo_title .tit strong{font-size: 1.4em}
+	.lo_title .tit:after{width:50px;bottom:-25px;margin-left: -25px}
+  
+	.lo_tab_wrap {min-height:40px;margin:0;padding:40px 0 0;text-align:center;}
+	.lo_tab_wrap li {vertical-align:top;float:none;width:auto;margin:0 4px;padding:16px 20px 0;font-size:0.95em;height: 45px;border: 1px solid #ddd;border-radius:45px}
+	.lo_tab_wrap li.wh{text-align:left;padding-left:45px}
+	.lo_tab_wrap li.rh{text-align:right;padding-right:45px}
+	.lo_tab_wrap li.wh:after{top:12px;left:12px}
+	.lo_tab_wrap li.rh:after{top:12px;right:12px}
+	.lo_tab_wrap .on {font-size:0.95em;padding-top: 16px;}
+	.lo_tab_wrap .on.wh {border-left: 1px solid #dfdede;}
+	.lo_tab_wrap .on.rh {border-right: 1px solid #dfdede;}
+  
+	.lo_box .ui-block-1 {}
+	.lo_box .ui-block-2{padding-bottom:10px}
+	.lo_title .date{font-size:0.9em;margin-bottom: 10px;}
+	.lo_title .place{font-size: 0.9em;}
+
+	.lo_containerarea {padding: 20px 0 0;margin: 0 10px;border: 0;}
+	.lo_container th.lo_bus,
+	.lo_container th.lo_subway{width: 25%;padding-left:0}
+
+	.lo_map #wedding_pmap_canvas,
+	.lo_map #party_pmap_canvas,
+	.lo_map #wedding_pmap_canvas .nmap,
+	.lo_map #party_pmap_canvas .nmap  {height:300px!important}
+	.lo_map .ui-link img {height:100%}
+	.lo_container td {font-size:0.9em}
+}
+
+@media (max-width:320px) {
+	.header_txt .title{font-size: 55px;padding: 1.5em 0;}
+	.invite_img span{height:120px;bottom: 40px;}
+	.home_content{padding:90px 0}
+	.invite_img{height:260px;margin-bottom: 40px;}
+	.lo_tab_wrap li{margin:0;font-size:0.9em}
+	.gb_msg{font-size:0.8em}
+}
+
+
+/* common layout */
+.ui-section-a {position:relative;z-index:10}
+.ui-section-b {position:relative;background-color: #fff;}
+.ui-section-b:after {display:block;clear:both;content:''}
+
+@media (min-width: 1024px) {
+	.ui-section-wrap{max-width:1024px;margin: 0 auto;padding: 60px 0 0 0;box-shadow: 0px 0px 25px rgba(0,0,0,0.4);overflow: hidden;}
+	.footer {max-width:1024px;margin: 0 auto;box-shadow: 0px 0px 25px rgba(0,0,0,0.4)}
+	.ui-section-wrap .header_bg{position:absolute;top:0;left:0;right:0;height: 700px;z-index: -1;opacity:0.5}
+	.ui-section-wrap .header_bg:after{content:'';position:absolute;bottom:0;left:0;right:0;height:400px;background:url(/bundles/viettutweb/img/templates/beautifulday/bg_header.png) repeat-x 0 0;opacity:1}
+}
+
+@media(min-width:1240px){
+	.ui-section-b {z-index:30}
+}
+
+table.lo_right th {
+	padding-left:20px;
+}
+/* beautiful_day */
