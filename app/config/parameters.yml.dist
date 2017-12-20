@@ -16,7 +16,7 @@ parameters:
     mailer_sender_name: 'Thiệp Đỏ'
     secret: ea31b59727f6a11e1d8160027e80707f6d0b0ce9
     password_resetting_link: 'http://localhost:9010/#/reset/changePassword'
-    upload_root_directory: /home/thiepdoc/public_html/web/uploads/images
+    upload_root_directory: /home/thiepdoc/public_html/uploads/images
     upload_directory: /uploads/images
     popular_size: 10
     page_size: 5
