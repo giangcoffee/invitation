@@ -1,0 +1,525 @@
+@charset "utf-8";
+
+/* 임시css */
+.snsbbs_sections {float:left; width:25%;margin-bottom: 5%;}
+.ui-panel-wrapper {min-height:80px;}
+.ui-page-theme-a {text-shadow:none!important}
+.spacer.s0 {min-height: 1px;}
+
+/* Global */
+.ul-body   {position:relative; max-width: 980px; margin: 0 auto; padding:0 10px; box-sizing: border-box; -webkit-box-sizing: border-box;}
+.ul-body:after {display:block; content:''; clear:both;}
+.ui-cont-a {padding: 0 1em}
+.ui-cont-b {padding: 3em 0}
+.ui-cont-c {padding-top: 2em}
+.ui-cont-d {padding-bottom: 2em}
+.btn_wrap {cursor:pointer;}
+.p-r {position:relative}
+.f-r {float:right!important;}
+
+/* Layout */
+html,body {}
+body {font-size: 100%}
+#skin_page {z-index:10}
+.header {position:relative; width:100%; height:850px}
+.greeting_wrap {position:relative; background:#fcf2e6 url(/bundles/viettutweb/img/templates/icecreamcake/greeting_bg1.png) repeat-x 50% 100%;z-index: 1;}
+.greeting_wrap:after {position:absolute;left:0;right:0;bottom:-90px;height:90px;background: url(/bundles/viettutweb/img/templates/icecreamcake/greeting_bg2.png) repeat-x 45% 0;content:'';z-index: 1;}
+.parents_wrap   {padding-top:120px}
+.gallery_wrap {position:relative;padding: 200px 0 60px;background:#78bcb2 url(/bundles/viettutweb/img/templates/icecreamcake/gallery_bg.jpg) no-repeat 50% 0;  background-size:cover }
+.gallery_wrap:after {position:absolute;left:0;right:0;bottom:-120px;height:120px;background:url(/bundles/viettutweb/img/templates/icecreamcake/gallery_bg.png) repeat-x 50% 0;content:'';z-index: 1;}
+.guestbook_wrap {position:relative;padding: 150px 0 50px;background:url(/bundles/viettutweb/img/templates/icecreamcake/guestbook_bg.jpg) no-repeat 50% 0; background-size:cover;}
+.movie_wrap {position:relative;padding: 40px 0;background-color:#fcf2e6;z-index:1}
+.movie_wrap:after {position:absolute;left:0;right:0;bottom:-120px;height:120px;background:url(/bundles/viettutweb/img/templates/icecreamcake/movie_bg.png) repeat-x 20% 0;content:'';z-index: 1;}
+.location_wrap {position:relative; padding: 200px 0 40px; overflow:hidden; background-color:#5e3c3e}
+.footer {background-color:#fcf2e6!important;}
+
+.parents_wrap .pa-tit {color:#5e3c3e}
+.parents_wrap .pa-list li {background-color:#5e3c3e}
+
+
+/*방명록없을때 무비wrap상단배경추가*/
+.gallery_wrap+.movie_wrap:before{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 120px;
+    background: url(/bundles/viettutweb/img/templates/icecreamcake/gallery_bg.png) repeat-x 50% 0;
+    content: '';
+    z-index: 0;
+}
+
+.lnb {position:fixed; top:0; left:0; width:100%; height: 115px; background: url(/bundles/viettutweb/img/templates/icecreamcake/header_bg.png) repeat-x 50% 100%; z-index:999; }
+.lnb_icon,
+.lnb_mobile {position:absolute;top: -5px;left:50%;margin: 0 0 0 -75px;}
+.lnb_icon img,.lnb_mobile img {width: 150px;}
+.lnb_mobile {display:none}
+
+
+.lnb ul.leftside {float:left;width:42%;padding-left:1%;text-align:right}
+.lnb ul.rightside {float:right;width:42%;padding-right:1%;text-align:left}
+.lnb li {position:relative;display:inline-block;padding:20px 0;text-align:center}
+.lnb li.menu1 {width:31%}
+.lnb li.menu2 {width:36%}
+.lnb li.menu3 {width:30%}
+.lnb li.menu4 {width:29%}
+.lnb li.menu5 {width:38%}
+.lnb li.menu6 {width:30%}
+.lnb li:after {position:absolute;right:0;top:50%;margin:-3px 0 0 3px;width:6px;height:6px;border-radius:50%;background-color:#78bcb2;content:''}
+.lnb li:last-child:after {display:none}
+.lnb li span{font-family:'Pacifico';color:#5e3c3e;font-size:24px;line-height:1}
+
+h2.title {margin: 0 auto 10px;width:235px;height:150px;font-family:'Pacifico';background:url(/bundles/viettutweb/img/templates/icecreamcake/title_bg.png) no-repeat;background-size:100%;position: relative;}
+h2.title span {display:inline-block;width:165px;height:150px;line-height:125px; text-align:center;color:#5e3c3e;font-size:30px;letter-spacing:-1px}
+.greeting_wrap h2.title {margin-top:60px}
+
+h2.title2 {position:absolute; top: 0; left:50%; margin: 0 0 0 -116px;width:235px;height:150px;font-family:'Pacifico';background:url(/bundles/viettutweb/img/templates/icecreamcake/title_bg.png) no-repeat;background-size:100%;z-index: 99;}
+h2.title2 span {display:inline-block;width:165px;height:150px;line-height:125px; text-align:center;color:#5e3c3e;font-size:30px;letter-spacing:-1px}
+.gallery_wrap h2.title2 {top:10px}
+.guestbook_wrap h2.title2 {top:-20px}
+.location_wrap h2.title2 {top:30px}
+
+.ui-panel-inner {padding:0!important; top:0!important}
+.menu-wrap.ui-panel-inner {padding:1em!important; top:0!important}
+
+.groom-wrap,
+.bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing: border-box}
+
+.groom-wrap ul,
+.bride-wrap ul {position:absolute; top:485px; left:3px; width: 100%; height:50px; overflow:hidden;}
+
+.groom-wrap ul li,
+.bride-wrap ul li {float:left; width:50px; height:50px; margin: 0 4px 0 0; background: url(/bundles/viettutweb/img/templates/icecreamcake/panel_icon.png) 0 0 no-repeat; background-size:250px;
+  font-size:0; line-height:0; text-indent:-9999px; cursor:pointer}
+
+.groom-wrap ul li.ico1,.bride-wrap ul li.ico1 {background-position:0 0px}
+.groom-wrap ul li.ico2,.bride-wrap ul li.ico2 {background-position:-50px 0}
+.groom-wrap ul li.ico3,.bride-wrap ul li.ico3 {background-position:-100px 0}
+.groom-wrap ul li.ico4,.bride-wrap ul li.ico4 {background-position:-150px 0}
+.groom-wrap ul li.ico5,.bride-wrap ul li.ico5 {background-position:-200px 0;margin-right:0}
+
+.groom-wrap ul li.ico_insta,
+.bride-wrap ul li.ico_insta {
+	background-image: url('/bundles/viettutweb/img/templates/icecreamcake/panel_insta_brown.png') !important;
+	background-position:50% 50%;
+	background-size:50px;
+}
+
+@media all and (max-height: 548px) {
+  .groom-wrap ul {position:fixed; top:auto; bottom:15px; left:0}
+  .bride-wrap ul {position:fixed; top:auto; bottom:15px; right:0;}
+}
+
+/* Header */
+.header_info {position:absolute; top: 230px; left:50%;width: 480px;margin: 0 0 0 50px;box-sizing: border-box;}
+.header_info h1{font-family:'Pacifico';line-height:1}
+.header_info h1 .tit1 {color:#af5279;font-size:60px;margin-bottom:10px;letter-spacing:-1px}
+.header_info h1 .tit2 {color:#5e3c3e;font-size:85px;margin:0 0 50px -10px;letter-spacing:-1px}
+.header_info h1 .tit3 {color:#fff;font-size:43px;text-shadow:2px 2px 0px rgba(0,0,0,0.3);letter-spacing:-1px}
+.header_info h1 .tit3 a {display:inline-block;margin:0 0 0 15px}
+  .ico_groom,.ico_bride {display:inline-block;vertical-align:bottom;font-size:0;line-height:0;text-indent:-9999px}
+  .ico_groom {width:110px;height:45px;background:url(/bundles/viettutweb/img/templates/icecreamcake/ico_groom.png) no-repeat 0 0;background-size:100%}
+  .ico_bride {width:78px;height:70px;background:url(/bundles/viettutweb/img/templates/icecreamcake/ico_bride.png) no-repeat 0 0;background-size:100%}
+.header_info .hd_date {margin:20px 0 10px;width: 100%;font-size:34px;line-height:1;font-weight:bold;color:#fff;text-shadow:2px 2px 0px rgba(0,0,0,0.3)}
+.header_info .hd_loca {padding-right: 30px;width: 100%;height: 33px;font-size:24px;line-height: 32px;font-weight: bold;color:#fff;text-shadow:2px 2px 0px rgba(0,0,0,0.3);box-sizing: border-box;overflow: hidden;}
+.scrolldown {position:absolute; bottom:30px;left:50%;margin:0 0 0 -22.5px}
+.scrolldown img{width:45px;height:45px}
+
+.panel_mobile{display:none}
+.panel_mobile .ico_groom {position:absolute; left: 5px; top:16px; width:80px;height:32px;}
+.panel_mobile .ico_bride {position:absolute; right:10px; top:5px; width:55px;height:48px;}
+
+.panel_mobile a:first-child {left: 5px!important; right:auto!important}
+.panel_mobile a:last-child {left:auto!important; right:10px!important}
+
+/* Greeting */
+.greeting_img {background:url(/bundles/viettutweb/img/templates/icecreamcake/greeting_img.png) no-repeat 0 100%;background-size:480px auto;min-height: 480px;}
+.couple {min-height: 1px;margin: 60px 0 40px;box-sizing: border-box;}
+.couple:after {clear:both; content:''; display:block}
+.couple li {position:relative;float:left;width: 50%;margin: 0;line-height: 1.2;font-weight:bold;color:#5e3c3e;letter-spacing: -1px;box-sizing: border-box;}
+.couple li span {float:left;display: inline-block;font-size: 18px;font-family:'Pacifico';padding: 80px 10px 0 0;}
+.couple li strong {float: left;display: inline-block;max-width: 140px;font-size: 34px;padding: 65px 0 0 0;/* text-align: center; */}
+.couple li.groom strong{background:url(/bundles/viettutweb/img/templates/icecreamcake/greeting_groom.png) no-repeat 50% 0;background-size:auto 65px}
+.couple li.bride strong{background:url(/bundles/viettutweb/img/templates/icecreamcake/greeting_bride.png) no-repeat 50% 0;background-size:auto 65px}
+
+.greeting_textbox {padding: 0;}
+.greeting_textbox>p {font-size: 0.9em;line-height: 2}
+.greeting_textbox p.thanks {margin:30px 0;font-size:20px;color:#5e3c3e;font-family:'Pacifico'}
+
+.greeting_name {margin:30px 0; border-collapse: collapse; table-layout:fixed; color:#444;}
+.greeting_name thead {display:none}
+.gn1 span {padding:0 0.2em; float:right; font-weight:bold;}
+.gn1 {padding:0.5em 0; font-size:1em; line-height:1}
+.gn2 {padding:0.5em 0; font-size:1em; line-height:1}
+.gn3 {padding:0.5em 0.8em 0.5em 0; font-size:1em; line-height:1}
+.gn4 {padding:0.5em 0; font-size:1.4em; line-height:1;font-weight:bold}
+.gn3 span {display:block; text-align:right; padding-right:0.5em;}
+
+/* gallery */
+.gal_list > div > a {/* display: block; */}
+
+.gal_list .col-3 .ui-block-a,
+.gal_list .col-3 .ui-block-b {width:32%; margin:0 2% 2% 0}
+.gal_list .col-3 .ui-block-c {width:32%; margin:0 0 2% 0}
+.gal_list > div > a > div {height: 240px; border-radius:6px; /* box-sizing:border-box; */ border: 6px solid rgba(255,255,255,.5);}
+  
+.gal_more {position:relative; width: 170px; height: 96px; margin: 20px auto 0; padding: 0; cursor: pointer;
+background:url("/bundles/viettutweb/img/templates/icecreamcake/gallery_more.png") no-repeat 0 0;background-size:100%;font-size:0;line-height:0;text-indent:-9999px}
+
+.gal_list2 {padding-bottom:110px!important;}
+.gal_list2 .gal_frame img {border: 5px solid rgba(255,255,255,.5);border-radius:7px}
+.gal_list2 .gal_more {left:50%;bottom:0;margin-left:-85px;}
+
+
+/* Guestbook */
+.message {margin: 0 0 20px 0;text-align:center}
+.message img {width: 457px;}
+
+.gb_btn {margin: 40px 0 0 0;text-align:center}
+.gb_btn img {width:178px;height:100px}
+
+#div_snsbbs {}
+.gb_cont_box {position: relative;width: 220px; height: 470px; margin:0 auto;font-family:'NanumGothic'; font-size:0.8em; color:#666;   box-sizing:border-box;overflow: hidden;}
+.gb_cont_box:after {position:absolute; bottom: 0; left:50%;width: 55px; height: 80px; margin: 0 0 0 -27.5px;border: 7px solid #fff;border-radius: 0 0 30px 30px;box-sizing: border-box;content:''}
+
+.gb_content {position:relative;height: 350px;background-color:#fff;border-radius:120px 120px 0 0;padding: 4em 0 0 0;overflow: hidden;box-sizing: border-box;}
+.pro_info {padding: 0 1.5em 0 2em;}
+.pro_info:after {clear:both;content:'';display:block}
+.pro_img {position:relative; float:left;}
+.pro_img img {width:50px; height:50px; border-radius: 8px;}
+.pro-sns {position:absolute; top:65%; left:-5px; width:20px; height:20px; background:url('/dalpeng/skin/_common/img/ico_spr_sns24.png') -20px 0 no-repeat; background-size:200%;}
+.pro-sns span   {display:block; text-indent:-9999px; overflow:hidden;}
+.pro-sns.facebook {background-position:   -20px   0px;}
+.pro-sns.twitter  {background-position:   -20px   -20px;}
+.pro-sns.kakao    {background-position:   -20px   -40px;}
+.pro-sns.naver    {background-position:   -20px   -60px;}
+.pro-sns.dalpeng  {background-position:   -20px   -80px;}
+.pro-sns.google   {background-position:   -20px   -100px;}
+.pro-sns.notmember  {background-position:   -20px   -120px;}
+.pro-sns.instagram  {background-position:   -20px   -140px;}
+.pro_txt {float:left; padding: 0.3em 0 0 0.5em; max-width:60%}
+.pro_txt .date {font-size: 0.85em; letter-spacing: -1px;}
+
+.gb_cont {clear:both; padding: 1em;}
+.gb_cont li {margin-bottom:0;}
+.gb_cont li img {max-width:100%;}
+
+.gb_skip {overflow:hidden; height:44px; border: 7px solid #fff;border-radius: 0 0 12px 12px;box-sizing:border-box}
+.gb_skip .gb_more {color:#fff;line-height:30px;padding: 0 0 0 15px;}
+.gb_skip .gb_comm {width: 55px; height:30px; padding: 0 0 0 28px;background:url(/bundles/viettutweb/img/templates/icecreamcake/guestbook_reply.png) no-repeat 0 50%; background-size:22px; color:#fff; font-size:1em; line-height:28px;font-weight:bold;box-sizing:border-box }
+
+.emo-type-c {width: 196px;}
+
+/* Guestbook :: 글없을때 */
+.gb_default_box {width:100%; height:auto;}
+.gb_default_box .comm-cont {padding:5em 0; text-align:center;}
+.gb_default_box .comm-cont p {margin-bottom:2em; font-size:1em; color:#666; text-shadow:none; text-shadow:0 1px 1px rgba(255,255,255,.5);}
+.gb_default_box .comm-cont span {display:block;}
+.btn_write {max-width:350px; padding:.5em 1em; margin:0 auto; text-align:center; cursor:pointer; background-color:#000; background:rgba(0,0,0,0.7)}
+.btn_write span {color:#fff;}
+.btn_write span em {}
+.btn_write span:hover em {}
+
+.btn-snsbbs {max-width:1024px; margin:0 auto;}
+.btn-snsbbs .btn_go_snsbbs { margin:0 15px; float:right; display:inline-block; padding:10px 0; background:#66afb5 url(/bundles/viettutweb/img/templates/icecreamcake/btn_arrow_w.png) no-repeat 98% 50%;
+background-size:22px 22px; border-radius:5px; color:#fff;text-shadow:none; font-weight:bold; text-align:center}
+.btn-snsbbs .btn_go_snsbbs span {padding:0 60px}
+
+
+/* Movie */
+.movie_message {line-height:1.5;letter-spacing:-.5px}
+.movie_message .tit span{display:block;font-size:50px;font-family:'Pacifico';margin:0 0 0 10px}
+.movie_message .tit span.pc {display:block;color:#78bcb2;}
+.movie_message .tit span.mobile {display:none;color:#af5279;}
+.movie_message .tit {height: 350px; font-size:55px;color:#5e3c3e;font-family:'Pacifico';margin:0 0 0 -10px;
+background: url(/bundles/viettutweb/img/templates/icecreamcake/ico_movie.png) no-repeat 10px 100%; background-size:100px}
+
+.movie_message .txt {display:none}
+/* .movie_message .txt span{display:block;font-size:40px;color:#af5279;font-family:'Pacifico';margin:0 0 20px 0}
+.movie_message .txt {margin:70px 0 0 0;padding: 0 100px 0 0;font-size:.9em;color:#000;background-size: auto 100%;box-sizing: border-box;}
+ */
+.movie_container {
+    overflow: visible;
+}
+.movie_container ul {width:100%;}
+.movie_container:after {display:block; content:''; clear:both}
+.movie1 ul li,
+.movie2 ul li,
+.movie3 ul li,
+.movie4 ul li {position:relative; overflow:hidden;border:6px solid #fff;background-color:#000;box-sizing:border-box}
+.movie1 ul li img,
+.movie2 ul li img,
+.movie3 ul li img,
+.movie4 ul li img {position:absolute; top:50%; left:0; width:100%; height:auto; margin:-38% 0 0 0;z-index:0}
+.android_play {position:absolute; display:block; top:50%; left:50%; cursor:pointer;z-index:1;
+  background:url('/dalpeng/skin/_common/img/android_play.png') no-repeat 0 0; background-size:100%; font-size:0; line-height:0; text-indent:-9999;
+  width:80px; height:54px;margin:-27px 0 0 -40px}
+
+.movie1 ul li { width:99%; height:350px; margin: 0 1% 1% 0; box-shadow: 5px 5px 0 rgba(0,0,0,0.15);}
+
+.movie2 ul li { width:100%; height:350px; margin:0 0 2% 0;}
+
+.movie3 ul li {float:left; width:49%; height:190px; margin:0;}
+.movie3 ul li:first-child { width:100%; height:350px; margin:0 0 2% 0;}
+.movie3 ul li:nth-child(2) {margin-right:2%}
+
+.movie4 ul li {float:left; width:49%; height:190px; margin:0 0 2% 0;}
+.movie4 ul li:first-child {margin-right:2%}
+.movie4 ul li:nth-child(3) {margin-right:2%}
+
+.nomovie {background-color:#ccc}
+.nomovie span {position:absolute; top:50%; left:50%; margin:0 0 0 -100px; display:block; width:200px; text-align:center; color:#fff}
+
+@media all and (max-width: 640px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {position:relative; float:none; width:100%; height: 270px; margin:0 0 2% 0}
+  
+  .movie1 ul li,.movie1 ul li:first-child {width: 99%; margin: 0 1% 1% 0; box-shadow: 5px 5px 0 rgba(0,0,0,0.15);}
+
+  .android_play {width:60px; height:40px;margin:-20px 0 0 -30px}
+}
+@media all and (max-width: 480px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {height:240px}
+}
+
+
+/* Location */
+.lo_tab_wrap {margin:0; padding: 0 0 0 20px; overflow:hidden;}
+.lo_tab_wrap li {float:left; width:49%; margin:0 2% 0 0; line-height:40px; border-radius: 10px 10px 0 0;
+color:#fff; text-align:center; font-size:1.05em; font-weight:bold; background-color:#ccc; cursor:pointer; box-sizing: border-box}
+.lo_tab_wrap li:last-child {margin:0}
+.lo_tab_wrap .on {background-color: #fdfbf9; color: #af5279;}
+
+.lo_box {padding:20px;background-color:#fdfbf9;}
+
+.lo_map {margin-bottom: 20px; text-align:center; box-sizing: border-box; line-height:1;}
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas {height:400px!important; background-color:#eee}
+.lo_map .ui-link img {height:100%;}
+
+.lo_title {border:1px solid #af5279;margin:0 0 1em 0; padding:10px 20px;text-align:center;font-weight:bold;font-size:1.2em;line-height:1.2;box-sizing:border-box}
+/*
+.nav-wrap {text-align:center;padding:30px 0 0 0}
+.nav-1,.nav-2 {display:inline-block;padding: 10px 20px;}
+.nav-1 img,.nav-2 img {width:240px; height:100px;}
+*/
+.nav-wrap {}
+.nav-wrap ul {overflow:hidden; margin-top:10px;}
+.nav-wrap ul li {float:left; margin-right:30px;}
+.nav-m {margin-top:5px;}
+.nav-m .nav-1 {float:left; width:50%;}
+.nav-m .nav-2 {float:left; width:50%;}
+.ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
+.ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
+.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;}
+.ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fafafa!important;padding: 12px 0;}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none;}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.8em; font-family:'NanumGothic'; color:#333; text-align:center}
+
+
+/*.nav-wrap {}
+.nav-wrap ul {overflow:hidden; margin-top:10px;}
+.nav-wrap ul li {float:left; margin-right:30px;}
+.nav-m {margin-top:5px;}
+.nav-m .nav-1 {float:left; width:50%;}
+.nav-m .nav-2 {float:left; width:50%;}
+.ui-icon-nav1 {background:url(../img/ico_nav_kim.png) 10px center no-repeat; background-size:30px}
+.ui-icon-nav2 {background:url(../img/ico_nav_olleh.png) 10px center no-repeat; background-size:30px}
+.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-icon-nav1 {display:block; border:1px solid #bebebe; padding:10px 0;}
+.ui-btn-nav .ui-icon-nav2 {display:block; border:1px solid #bebebe; padding:10px 0;}
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none;}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.8em; font-family:'NanumGothic'; color:#333; text-align:center}*/
+
+.lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; font-family:'NanumGothic'; border-top:2px solid #af5279;; border-bottom:2px solid #af5279;}
+.lo_container th {width:20%; min-width:100px; border-bottom:1px solid #af5279; color:#333; font-size:0.85em; vertical-align:top; padding:10px 0;box-sizing: border-box;}
+.lo_container td {width:80%; border-bottom:1px solid #af5279; color:#666; padding: 10px; font-size:0.85em; line-height:1.6em ;box-sizing: border-box;}
+
+.col-2,
+.col-3,
+.col-4 {position:relative; overflow:hidden;}
+
+.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-b {float:left; width:49%;}
+
+.movie_wrap .col-2 .ui-block-a {float:left; width:45%;margin-right:2%}
+.movie_wrap .col-2 .ui-block-b {float:left; width:53%;}
+
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0 }
+.col-3 .ui-block-c {width:32%;}
+
+.ui-body-d {margin:2%}
+.snsbbs_sections .ui-body-d {margin:0}
+
+
+@media all and (max-width: 1024px) {
+  .header_info {left:50%;width: 480px;margin: 0 0 0 20px}
+}
+
+
+/* 980 이하 */
+@media all and (max-width: 980px) {
+  .snsbbs_sections {float:left; width:33%;}
+  .header_info {left:auto;right:0;margin:0}
+  .movie_message .txt {margin: 30px 0 0 0;padding: 0 130px 0 0;}
+
+  .nav-m .nav-1,
+  .nav-m .nav-2 {float:none; width:100%;}
+}
+@media all and (max-width: 870px) {
+  .movie_wrap .col-2 .ui-block-a,
+  .movie_wrap .col-2 .ui-block-b {float:left; width:100%;margin-right: 0;}
+  .movie_message {margin: 0 0 20px 0}
+  .movie_message .tit span{font-size:30px;margin:0 0 0 10px}
+  .movie_message .tit {height: 120px;font-size:48px;background: url(/bundles/viettutweb/img/templates/icecreamcake/ico_movie.png) no-repeat 100% 0;
+  background-size: auto 90%;margin: 0 0 0 -7px;}
+}
+
+/* 800 이하 */
+@media all and (max-width: 800px) {  
+  .snsbbs_sections {float:left; width:50%;}
+  .header {height: 800px;}
+  .greeting_wrap {padding-bottom:40px}
+  .movie_wrap {padding: 30px 0}
+
+  .lnb {height: 100px; background-size: auto 110px;}
+  .lnb_icon {display:none}
+  .lnb_mobile {display:block;margin:0 0 0 -60px}
+  .lnb_icon img,.lnb_mobile img {width:120px}
+  .lnb ul.leftside,.lnb ul.rightside {display:none}
+  .panel_mobile{display:block}
+  .lnb li {padding:18px 0}
+  .lnb li span {font-size:20px}
+
+  .greeting_wrap h2.title {margin-top:20px}
+
+  .header_info {top: auto; bottom:80px;left:0;right:0;width:100%;margin:0;text-align:center}
+  .header_info h1 .tit2 {font-size:80px}
+  .header_info h1 .tit3 {display:none}
+  .header_info .hd_loca {padding:0}
+  .scrolldown {bottom:10px}
+
+  .couple {width: 90%; min-width: 280px; min-height: auto;margin: 20px auto;}
+  .couple li {min-width: 140px;margin: 0;text-align:center}
+  .couple li span {float:none;display: block;font-size: 18px;font-family:'Pacifico';padding: 0 0 5px 0;}
+  .couple li strong {float:none;display: block;max-width: 100%;font-size: 34px;padding: 70px 0 0 0;}
+  .greeting_textbox>p {width: 90%;min-width: 280px;text-align:center;margin: 0 auto;}
+  .greeting_textbox p.thanks {width: 90%;min-width: 280px;margin: 20px auto 30px;}
+  .greeting_name {margin:0 auto}
+
+  .greeting_img {padding: 0 0 300px 0;background-position: 50% 100%;background-size: 480px auto;}
+
+  .nav_info {margin:5px auto 20px;}
+  
+  .col-2 .ui-block-a,
+  .col-2 .ui-block-b {float:left; width:100%;margin-right: 0;}
+
+  .gal_list > div > a > div {height:195px;}
+
+
+  .lo_tab_wrap {padding:0}
+  .lo_tab_wrap li {}
+  .lo_tab_wrap li:last-child {margin: 0;}  
+}
+
+
+/* 640 이하 */
+@media all and (max-width: 640px) {
+  .gal_list > div > a > div {height:220px;}
+  .gal_list > div > a > div.ui-block-c {height:320px;}
+  .gal_list .col-3 .ui-block-a {width:49%; margin:0 2% 2% 0}
+  .gal_list .col-3 .ui-block-b {width:49%; margin:0 0 2% 0}
+  .gal_list .col-3 .ui-block-c {width:100%; margin:0 0 2% 0}
+}
+
+
+/* 560(35em) 이하 */
+@media all and (max-width: 560px) {
+  .snsbbs_sections {float:left; width:100%;}
+}
+
+
+/* 480 이하 */
+@media all and (max-width: 480px) {
+  .header {height:736px}
+  .header_info h1 .tit1 {font-size: 50px;}
+  .header_info h1 .tit2 {font-size: 64px;margin-bottom: 35px;}
+  .header_info .hd_date {font-size: 28px;margin: 10px 0 5px;}
+  .header_info .hd_loca {font-size:20px}
+
+  .lnb {height: 90px;background-size:auto 110px}
+  .panel_mobile .ico_groom {left: 10px; width:60px; height:25px;}
+  .panel_mobile .ico_bride {right:10px; width:45px; height:40px;}
+  .lnb_icon,.lnb_mobile {margin:0 0 0 -55px}
+  .lnb_icon img,.lnb_mobile img {width:110px}
+
+
+  .greeting_wrap:after {background-position:80% 0}
+  .gallery_wrap {background:#78bcb2 url(/bundles/viettutweb/img/templates/icecreamcake/gallery_bg480.jpg) no-repeat 50% 0}
+  .gallery_wrap:after {background-position:19% 0}
+  .guestbook_wrap {background:#303a3b url(/bundles/viettutweb/img/templates/icecreamcake/guestbook_bg480.jpg) no-repeat 50% 0}
+  .movie_wrap:after {background-position:55% 0}
+  
+  .greeting_img {padding: 0 0 65% 0;background-size: 100% auto;}
+  
+  .gn4 {max-width:100px;}
+
+  .gal_list > div > a > div {height:260px!important;;}
+
+  .message img {width: 90%;}
+  .movie_message .tit {font-size:36px}
+
+  .col-2 .ui-block-a, 
+  .col-2 .ui-block-b {float:left; width:100%;}  
+  .gal_list .col-3 .ui-block-a,
+  .gal_list .col-3 .ui-block-b,
+  .gal_list .col-3 .ui-block-c,
+  .col-3 .ui-block-a, 
+  .col-3 .ui-block-b, 
+  .col-3 .ui-block-c {float:left; width:100%;}
+  .col-4 .ui-block-a,
+  .col-4 .ui-block-b,
+  .col-4 .ui-block-c, 
+  .col-4 .ui-block-d  {width:100%;}
+
+  .lo_tab_wrap {padding:0; }
+  .lo_box {padding:10px}
+  .lo_title {margin-bottom:10px;padding: 10px;font-size:1em}
+  .lo_map {margin-bottom:10px}
+  .lo_map #wedding_pmap_canvas,
+  .lo_map #party_pmap_canvas {height:300px!important;}
+  .lo_map .ui-link img {height:100%;}
+  .lo_container th {float:left;width:100%;border-bottom: 1px dashed #af5279;text-align: left;padding-left: 10px;}
+  .lo_container td {float:left;width:100%}
+}
+
+
+/* 360 이하 */
+@media all and (max-width: 360px) {
+  .header {height:640px}
+  .header_info h1 .tit1 {font-size: 40px;}
+  .header_info h1 .tit2 {font-size: 56px;margin-bottom: 35px;}
+  .header_info .hd_date {font-size: 23px}
+  
+  .gal_list > div > a > div {height:200px!important;}
+
+  .lo_tab_wrap li {font-size:.8em;letter-spacing:-.5px;}
+}
+
+
+/* 320 이하 */
+@media all and (max-width: 320px) {
+  .header {height: 568px;}
+  .header_info {bottom:65px}
+  .scrolldown {bottom:5px}
+}
