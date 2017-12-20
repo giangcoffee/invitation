@@ -19,6 +19,11 @@ services:
         arguments:
             - '@form.factory'
 
+    viettut.services.image_optimizer:
+        class: Viettut\Services\ImageOptimizer
+        arguments:
+            - '%image_quality%'
+
     viettut.services.social_service:
         class: Viettut\Services\SocialService
         arguments:

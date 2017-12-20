@@ -200,7 +200,7 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
      * @throws AccessDeniedException
      * @throws BadRequestHttpException
      */
-    public function postUploadAction(Request $request)
+    public function postUploadAction(Request $request, $id)
     {
         $user = $this->getUser();
         if (!$user instanceof UserEntityInterface) {
@@ -216,17 +216,18 @@ class CardController extends RestControllerAbstract implements ClassResourceInte
         $uploadRootDir = $this->container->getParameter('upload_root_directory');
         $uploadDir = $this->container->getParameter('upload_directory');
         $images = [];
-
+        $imageOptimizer = $this->get('viettut.services.image_optimizer');
         foreach ($_FILES as $file) {
             $imageInfo = getimagesize($file['tmp_name']);
             $uploadFile = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], $test = false);
             $baseName = uniqid('', true);
-            $uploadFile->move(join('/', [$uploadRootDir, $user->getUsername(), $today]) ,
+            $uploadFile->move(join('/', [$uploadRootDir, $user->getUsername(), $today, $id]) ,
                 $baseName.substr($uploadFile->getClientOriginalName(), -4)
             );
-
+            $src = join('/', array($uploadRootDir, $user->getUsername(), $today, $id, $baseName . substr($uploadFile->getClientOriginalName(), -4)));
+            $imageOptimizer->optimizeImage($src, 50);
             $images[] = array(
-                'src' => join('/', array($uploadDir, $user->getUsername(), $today, $baseName . substr($uploadFile->getClientOriginalName(), -4))),
+                'src' => join('/', array($uploadDir, $user->getUsername(), $today, $id, $baseName . substr($uploadFile->getClientOriginalName(), -4))),
                 'size' => sprintf('%sX%s', $imageInfo[0], $imageInfo[1])
             );
         }

@@ -233,11 +233,11 @@ function downloadAlbum() {
 
 $(document).ready(function(){
     jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang:   'vi'});
-
+    var cardId = $('.card-info').data('id');
     $("#fileuploader").uploadFile({
-        url:"/api/v1/cards/uploads",
+        url:"/api/v1/cards/"+cardId+"/uploads",
         fileName:"myfile",
-        maxFileSize: 3145728,
+        maxFileSize: 5242880,
         allowedTypes: 'jpg,png,gif',
         acceptFiles: 'image/',
         dragDrop: true,
@@ -247,8 +247,8 @@ $(document).ready(function(){
         onSuccess:function(files,data,xhr,pd) {
             data.forEach(function(element) {
                 var src = element['src'];
-                $('<li data-url="'+src+'" style="background-image: url('+src+')" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul.gallery').fadeIn(300);
-                gallery.push(element);
+                $('<li data-url="'+src+'" style="background-image: url('+src+');background-size: contain;" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul.gallery').fadeIn(300);
+                gallery.unshift(element);
             });
         },
         onError: function(files,status,errMsg,pd) {
@@ -258,8 +258,7 @@ $(document).ready(function(){
                 + '</div>';
             $('div#fileuploader').before(html);
         },
-        uploadStr:"Thêm Ảnh",
-        dragDropStr: 'Kéo file vào đây'
+        uploadStr:"Thêm Ảnh"
     });
 });
 

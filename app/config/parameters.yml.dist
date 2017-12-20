@@ -33,5 +33,6 @@ parameters:
     zalo_redirect_uri: 'http://thiepdo.com/zalo/login'
     cookie_domain: .thiepdo.com
     domain: thiepdo.com
+    image_quality: 50
     cookie_path: /
     cookie_lifetime: 3600
