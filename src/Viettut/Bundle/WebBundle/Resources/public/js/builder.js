@@ -247,7 +247,7 @@ $(document).ready(function(){
         onSuccess:function(files,data,xhr,pd) {
             data.forEach(function(element) {
                 var src = element['src'];
-                $('<li data-url="'+src+'" style="background-image: url('+src+');background-size: contain;" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().appendTo('ul.gallery').fadeIn(300);
+                $('<li data-url="'+src+'" style="background-image: url('+src+');background-size: contain;" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().prependTo('ul.gallery').fadeIn(300);
                 gallery.unshift(element);
             });
         },
