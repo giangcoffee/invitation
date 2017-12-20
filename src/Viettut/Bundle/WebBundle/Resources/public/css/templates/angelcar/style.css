@@ -196,7 +196,7 @@ h2.title img {display:inline-block}
 
 
 .greeting_content {}
-.greeting_text {width:98%; margin:40px auto; color:#444; font-size:0.9em; line-height:2; text-align:center; word-break: break-all;}
+.greeting_text {width:98%; margin:40px auto; color:#444; font-size:0.9em; line-height:2; text-align:center; word-break: break-word;}
 .greeting_name {width: 70%; max-width: 350px; min-width: 280px; margin:40px auto; color:#444; box-sizing: border-box; text-align:center;vertical-align:bottom;}
 .greeting_name:after {display:block; content:''; clear:both}
 .greeting_name li {display:inline-block; width:45%; vertical-align:top;}
