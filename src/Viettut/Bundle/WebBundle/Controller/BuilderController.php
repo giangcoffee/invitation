@@ -129,6 +129,7 @@ class BuilderController extends Controller
             'referrer' => $referrer,
             'date' => $date,
             'name' => $card->getName(),
+            'type' => $card->getTemplate()->getType(),
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,

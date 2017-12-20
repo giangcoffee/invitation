@@ -21,18 +21,17 @@
     <title>{{ name }}</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/welcome/style.css"/>
-    <link rel="stylesheet" type="text/css" href="/bundles/viettutweb/css/templates/welcome/app.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome/app.css') }}"/>
 
 </head>
 <body>
-<h1 class="hide">Winter Wonderland - Vườn địa đàng</h1>
+<h1 class="hide">Welcome - Vườn địa đàng</h1>
 <h2 class="hide">Mẫu với phong cách truyền thống tôn vinh sự giản đơn nhưng không kém phần trang trọng.</h2>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"></div>
 <div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-menu -->
-    <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
+    <div data-role="panel" id="right-panel" data-position="right" data-display="push">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
                 <li data-icon="delete"><a href="#" data-rel="close">Đóng</a></li>
@@ -51,8 +50,8 @@
 
     <div class="lnb">
         <ul>
-            <li class="menu1 menu_scrolls on"><span>TRANG CHỦ</span></li>
-            <li class="menu1 menu_scrolls on" id="m_topinfo"><span>KỊCH BẢN</span></li>
+            <li class="menu1 menu_scrolls"><span>TRANG CHỦ</span></li>
+            <li class="menu1 menu_scrolls on" id="m_topinfo"><span>THÔNG TIN</span></li>
             <li class="menu1 menu_scrolls" id="m_invite"><span>NỘI DUNG</span></li>
             <li class="menu2 menu_scrolls" id="m_schedule"><span>KỊCH BẢN</span></li>
             <li class="menu3 menu_scrolls" id="m_map"><span>ĐỊA ĐIỂM</span></li>
@@ -73,7 +72,7 @@
                     <img src="/bundles/viettutweb/img/templates/welcome/main_copy.png" alt="HOPE YOU COME<br />WELCOME"/>
                     <span class="title_to"></span>
                 </h1>
-                <div class="header_info" style="color:#2d2d42;">
+                <div class="header_info">
                     <p class="loca color align_center">{{ data['event'] }}</p>
                     <p class="date color align_center">
                         {{ data['time'] | raw }}
@@ -120,7 +119,7 @@
         <span class="flower_detail03"></span>
         <div class="program_box" id="sk_schedule">
             <div class="program_content">
-                <h2 class="program_title" id="sk_schedule_title"><span>Nội dung chương trình</span></h2>
+                <h2 class="program_title" id="sk_schedule_title"><span>Chương trình</span></h2>
                 <div class="content align_left" id="sk_schedule_content">
                     {{ data['schedule_content'] | raw }}
                 </div>
@@ -131,7 +130,7 @@
                         {#<span>앞으로 275일 남았습니다</span>#}
                         <span>{{ date | long_date }}</span>
                     </div>
-                    <div class="dday">{{ date | date('H.i') }}</div>
+                    <div class="dday">{{ date | date('H:i') }}</div>
                 </div>
             </div>
         </div>
@@ -556,7 +555,6 @@
 
 <script src="{{ asset('js/libraries.min.js') }}"></script>
 <script type="text/javascript">
-    <!--
     $(function () {
 
         function fixScrollEvent() {
@@ -1014,7 +1012,7 @@
         $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
 
         {% if isTemplate == false %}
-            $('.movie_wrap').onScrollTo(function() {
+            $('.location_wrap').onScrollTo(function() {
                 $('#signup').addClass('show');
             }, function() {
                 $('#signup').removeClass('show');
@@ -1075,8 +1073,6 @@
             });
         }
     })(jQuery);
-
-    //-->
 </script>
 <script>
     WebFontConfig = {

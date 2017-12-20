@@ -11,7 +11,7 @@
 .align_left {text-align:left}
 .align_center {text-align:center}
 .align_right {text-align:right}
-
+#right-panel {z-index:9999;}
 
 /* Layout */
 body {font-size:16px; font-family:'Lora',sans-serif; color:#2d2d42; line-height:1.2; background:#cce4e8}
@@ -92,7 +92,7 @@ h2.title span {display:none}
 .header_txt .title_to {display: block; position: relative; background:url(/bundles/viettutweb/img/templates/welcome/main_copy_to.png) no-repeat; width:60px; height:60px; margin: 0 auto}
 
 /*.detail_line {display: block; position: relative; width: 100px; height: 60px; margin: 0 auto 80px; border-bottom: 2px solid #ff4f12}*/
-.header_info {position:relative; line-height:1.4; letter-spacing:-0.5px; box-sizing: border-box}
+.header_info {position:relative; line-height:1.4; letter-spacing:-0.5px; box-sizing: border-box;color:#2d2d42;}
 .header_info p.loca {font-size:34px; font-weight:bold;word-break:break-word;}
 .header_info p.date {font-size:22px; font-weight:normal; padding-top:25px; line-height: 1.5em;word-break:break-word;}
 
@@ -189,7 +189,7 @@ h2.title span {display:none}
 @media all and (max-width:414px) {
 	.greeting_box {margin:40px auto}
 	.photo_flower {top:-106px; left:50%; margin-left: -150px; width: 300px; height: 106px; background-size: 300px 106px}
-	.greeting_title {font-size:30px;}
+	.greeting_title {font-size:27px;}
 }
 
 
@@ -640,3 +640,4 @@ h2.title span {display:none}
 
 .gb_skip {overflow:hidden; padding:.5em}
 .gb_skip .gb_comm {height: 24px; background:url(/bundles/viettutweb/img/templates/welcome/guestbook_reply.png) no-repeat 0 50%; background-size:22px 20px; color:#999; font-size:1em; line-height:1.5; font-weight:bold; padding:0 0 0 24px}
+.btn_go_snsbbs {cursor: pointer;}

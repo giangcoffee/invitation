@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="vi">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 
     <meta property="og:type" content="website"/>
@@ -21,22 +21,20 @@
     <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/viettutweb/css/templates/angelcar/style.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/viettutweb/css/templates/angelcar/app.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/angelcar/app.css') }}"/>
 
 
 </head>
 <body>
-<h1 class="hide">Beautiful Day - Những ngày đẹp trời</h1>
+<h1 class="hide">Angel Car - Những thiên thần nhỏ</h1>
 <h2 class="hide">Mẫu mới với phong cách nhẹ nhàng trong sáng với tông màu nhẹ, thích hợp với những bộ ảnh giản dị.</h2>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
 <div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
-    <div data-role="panel" id="panel_father" class="leftpanel" data-position="left" data-display="push"
-         data-position-fixed="true" data-swipe-close="true" data-theme="b"
-         style="background:#fff url('/bundles/viettutweb/img/templates/angelcar/bg_dad.jpg') center top no-repeat; background-size:100%; z-index:9999;">
+    <div data-role="panel" id="panel_father" class="leftpanel dad-panel" data-position="left" data-display="push"
+         data-position-fixed="true" data-swipe-close="true" data-theme="b">
         <div class="groom-wrap">
             <ul>
                 <a href="tel:{{ data['fa_phone'] }}">
@@ -52,9 +50,8 @@
     </div>
     <!--// panel-groom -->
     <!-- panel-bride -->
-    <div data-role="panel" id="panel_mother" class="righttpanel" data-position="right" data-display="push"
-         data-position-fixed="true" data-swipe-close="true" data-theme="a"
-         style="background:#d3f2fd url('/bundles/viettutweb/img/templates/angelcar/bg_mom.jpg') center top no-repeat; background-size:100% auto; z-index:9999;">
+    <div data-role="panel" id="panel_mother" class="righttpanel mom-panel" data-position="right" data-display="push"
+         data-position-fixed="true" data-swipe-close="true" data-theme="a">
         <div class="bride-wrap">
             <ul>
                 <a href="tel:{{ data['mo_phone'] }}">
@@ -70,7 +67,7 @@
     </div>
     <!--// panel-bride -->
     <!-- panel-menu -->
-    <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
+    <div data-role="panel" id="right-panel" data-position="right" data-display="push">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
                 {#<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>#}
@@ -106,8 +103,7 @@
     </div>
 
     <!-- header -->
-    <div id="sk_topinfo" class="header ui-section-b"
-         style="background:#c9effd url('/bundles/viettutweb/img/templates/angelcar/f6023d1ca8dd43dea2d6ded9c41f689d.jpg') CENTER CENTER no-repeat; background-size:cover;">
+    <div id="sk_topinfo" class="header ui-section-b">
         <div class="flag"></div>
     </div>
     <!--// header -->
@@ -116,7 +112,7 @@
     <div class="greeting_wrap ui-section-a">
 
         <div class="header_box">
-            <div class="header_title align_center color" style="color:#000000;">
+            <div class="header_title align_center color">
                 <div class="cars">
                     <img src="/bundles/viettutweb/img/templates/angelcar/mother_father_car.png" alt="mother car">
                 </div>
@@ -127,7 +123,7 @@
                     <p class="birthday">Thân mời bạn !</p>
                     <p class="name">Tới dự {{ data['title'] }} của {{ data['name'] }}</p>
                 </h1>
-                <ul class="header_date" style="color:#000000;">
+                <ul class="header_date">
                     <li>{{ date | long_date }}</li>
                     <li class="time">{{ data['time'] }}</li>
                     <li class="place">{{ data['place'] }}, {{ data['place_addr'] }}</li>
@@ -267,7 +263,7 @@
         <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/movie_ballon.png" alt="동영상"></h2>
         <div class="ul-body">
             <div class="movie_container movie1">
-                <ul style="z-index:99999;">
+                <ul>
                     <li>
                         <iframe id="movie" width="100%" height="100%"
                                 src="https://www.youtube.com/embed/aSjy4h9GHS0?showinfo=0&autohide=1&rel=0&vq=hd1080"
@@ -285,7 +281,7 @@
             <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/movie_ballon.png" alt="video"></h2>
             <div class="ul-body">
                 <div class="movie_container movie1">
-                    <ul style="z-index:99999;">
+                    <ul>
                         <li>
                             {{ embed | raw }}
                         </li>
@@ -298,7 +294,7 @@
     {% endif %}
     <!-- guestbook -->
     <div class="guestbook_wrap ui-cont-b" id="sk_snsbbs">
-        <h2 class="title btn_go_snsbbs"><img src="/bundles/viettutweb/img/templates/angelcar/guestbook_title.png" alt="방명록"></h2>
+        <h2 class="title btn_go_snsbbs"><img src="/bundles/viettutweb/img/templates/angelcar/guestbook_title.png" alt="guest book"></h2>
 
         <div class="ul-body col-3">
             <div id="div_snsbbs">
@@ -512,7 +508,7 @@
 
     <!-- location -->
     <div class="location_wrap ui-cont-b" id="sk_map">
-        <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/location_title.png" alt="찾아오시는길"></h2>
+        <h2 class="title"><img src="/bundles/viettutweb/img/templates/angelcar/location_title.png" alt="location"></h2>
 
         <div class="ul-body">
             <div class="lo_box col-2">

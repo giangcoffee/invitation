@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
+gulp.task('default', ['styles', 'scripts', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
     console.log('i am GULP');
 });
 
@@ -96,16 +96,7 @@ gulp.task('styles', function(){
     ]).pipe(concat('libraries.min.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/'))
 });
 
-gulp.task('gardenwedding', ['gardenwedding-scripts', 'gardenwedding-styles'], function () {});
-gulp.task('gardenwedding-scripts', function () {
-    gulp.src([
-        'web/bundles/viettutweb/js/templates/gardenwedding/index.js'
-    ])
-    .pipe(uglify())
-    .pipe(gulp.dest(config.SCRIPT_DEST + '/gardenwedding'));
-});
-
-gulp.task('gardenwedding-styles', function(){
+gulp.task('gardenwedding', function(){
     gulp.src([
         'web/bundles/viettutweb/css/templates/gardenwedding/style.css',
         'web/bundles/viettutweb/css/templates/gardenwedding/app.css'
@@ -118,54 +109,40 @@ gulp.task('luxuryblack-styles', function(){
     ]).pipe(minifyCss()).pipe(gulp.dest('web/css/luxuryblack'))
 });
 
-gulp.task('goldstar', ['goldstar-scripts', 'goldstar-styles'], function () {});
-gulp.task('goldstar-scripts', function () {
-    gulp.src([
-        'web/bundles/viettutweb/js/templates/goldstar/index.js'
-    ])
-        .pipe(uglify())
-        .pipe(gulp.dest(config.SCRIPT_DEST + '/goldstar'));
-});
-
-gulp.task('goldstar-styles', function(){
+gulp.task('goldstar', function(){
     gulp.src([
         'web/bundles/viettutweb/css/templates/goldstar/style.css',
         'web/bundles/viettutweb/css/templates/goldstar/app.css'
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/goldstar'))
 });
 
-gulp.task('beautifulday', ['beautifulday-scripts', 'beautifulday-styles'], function () {});
-gulp.task('beautifulday-scripts', function () {
+gulp.task('angelcar', function(){
     gulp.src([
-        'web/bundles/viettutweb/js/templates/beautifulday/index.js'
-    ])
-        .pipe(uglify())
-        .pipe(gulp.dest(config.SCRIPT_DEST + '/beautifulday'));
+        'web/bundles/viettutweb/css/templates/angelcar/style.css',
+        'web/bundles/viettutweb/css/templates/angelcar/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/angelcar'))
 });
 
-gulp.task('beautifulday-styles', function(){
+gulp.task('beautifulday', function(){
     gulp.src([
         'web/bundles/viettutweb/css/templates/beautifulday/style.css',
         'web/bundles/viettutweb/css/templates/beautifulday/app.css'
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/beautifulday'))
 });
 
-gulp.task('winterwonderland', ['winterwonderland-scripts', 'winterwonderland-styles'], function () {});
-gulp.task('winterwonderland-scripts', function () {
-    gulp.src([
-        'web/bundles/viettutweb/js/templates/winterwonderland/index.js'
-    ])
-        .pipe(uglify())
-        .pipe(gulp.dest(config.SCRIPT_DEST + '/winterwonderland'));
-});
-
-gulp.task('winterwonderland-styles', function(){
+gulp.task('winterwonderland', function(){
     gulp.src([
         'web/bundles/viettutweb/css/templates/winterwonderland/style.css',
         'web/bundles/viettutweb/css/templates/winterwonderland/app.css'
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/winterwonderland'))
 });
 
+gulp.task('welcome', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/welcome/style.css',
+        'web/bundles/viettutweb/css/templates/welcome/app.css'
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/welcome'))
+});
 
 gulp.task('guestbook', ['guestbook-scripts', 'guestbook-styles', 'guestbook-libraries'], function () {});
 gulp.task('guestbook-scripts', function () {
@@ -210,7 +187,14 @@ gulp.task('gardenwedding-html-minify', function() {
 });
 
 
-gulp.task('html-minify', ['beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify'], function() {
+gulp.task('html-minify', ['angelcar-html-minify','beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify', 'welcome-html-minify'], function() {
+});
+
+gulp.task('angelcar-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/angelcar/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('angelcar.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/angelcar/'));
 });
 
 gulp.task('beautifulday-html-minify', function() {
@@ -232,4 +216,11 @@ gulp.task('winterwonderland-html-minify', function() {
         .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
         .pipe(rename('winterwonderland.min.twig'))
         .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/winterwonderland/'));
+});
+
+gulp.task('welcome-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/welcome/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('welcome.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/welcome/'));
 });

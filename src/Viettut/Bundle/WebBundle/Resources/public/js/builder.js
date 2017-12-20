@@ -237,7 +237,10 @@ $(document).ready(function(){
     $("#fileuploader").uploadFile({
         url:"/api/v1/cards/uploads",
         fileName:"myfile",
-        maxFileSize: 524288,
+        maxFileSize: 3145728,
+        allowedTypes: 'jpg,png,gif',
+        acceptFiles: 'image/',
+        dragDrop: true,
         multiple: true,
         maxFileCount: 5,
         showProgress: true,
@@ -248,7 +251,15 @@ $(document).ready(function(){
                 gallery.push(element);
             });
         },
-        uploadStr:"Thêm Ảnh"
+        onError: function(files,status,errMsg,pd) {
+            var html = '<div class="alert alert-danger alert-dismissable">' +
+                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                errMsg
+                + '</div>';
+            $('div#fileuploader').before(html);
+        },
+        uploadStr:"Thêm Ảnh",
+        dragDropStr: 'Kéo file vào đây'
     });
 });
 

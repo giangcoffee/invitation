@@ -83,4 +83,15 @@ DirectoryIndex app.php
     ExpiresByType image/x-icon "access 1 year"
     ExpiresDefault "access 1 month"
 </IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+        Header set Expires "Wed, 15 Apr 2020 20:00:00 GMT"
+        Header set Cache-Control "public"
+    </FilesMatch>
+    # 1 WEEK
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+</IfModule>
 ## EXPIRES CACHING ##
