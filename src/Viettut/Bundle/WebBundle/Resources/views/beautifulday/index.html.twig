@@ -63,7 +63,6 @@
                             <li class="ico_insta">Instagram</li>
                         </a>
                     {% endif %}
-
                 </ul>
                 <p class="btn_go_snsbbs">Lưu bút</p>
             </div>
@@ -711,23 +710,6 @@
         </div>
     </div>
 {% endif %}
-{% if isTemplate == false %}
-    <script type="text/javascript">
-        (function($) {
-            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
-                var $this = this;
-                $(document).scroll(function() {
-                    var y = $(this).scrollTop();
-                    if (y >= $this.position().top) {
-                        if (focusInFn) focusInFn();
-                    } else {
-                        if (focusOutFn) focusOutFn();
-                    }
-                });
-            }
-        })(jQuery);
-    </script>
-{% endif %}
 <script src="{{ asset('js/libraries.min.js') }}"></script>
 <script async>
     $(function () {
@@ -1215,6 +1197,7 @@
             $('#div_party').css('display', 'block');
         }).css('cursor', 'pointer');
 
+        {% if isTemplate == false %}
         $('.movie_wrap').onScrollTo(function() {
             $('#signup').addClass('show');
         }, function() {
@@ -1225,7 +1208,22 @@
             e.preventDefault();
             $('#signup').removeClass('show');
         });
+        {% endif %}
     });
+
+    (function ($) {
+        $.fn.onScrollTo = function (focusInFn, focusOutFn) {
+            var $this = this;
+            $(document).scroll(function () {
+                var y = $(this).scrollTop();
+                if (y >= $this.position().top) {
+                    if (focusInFn) focusInFn();
+                } else {
+                    if (focusOutFn) focusOutFn();
+                }
+            });
+        }
+    })(jQuery);
 
     function initMap() {
         var lat = $('#coordinates').data('lat');

@@ -57,7 +57,7 @@ body {
 }
 .greeting_wrap {
 	position: relative;
-	background: url(../../../img/templates/retrocity/greeting_bg2.png) repeat;
+	background: url(/bundles/viettutweb/img/templates/retrocity/greeting_bg2.png) repeat;
 	overflow: hidden
 }
 .greeting_wrap:after {
@@ -68,7 +68,7 @@ body {
 	height: 168px;
 	content: '';
 	z-index: 1;
-	background: url(../../../img/templates/retrocity/greeting_bot1.png) repeat-x 60% 0
+	background: url(/bundles/viettutweb/img/templates/retrocity/greeting_bot1.png) repeat-x 60% 0
 }
 .gallery_wrap {
 	position: relative;
@@ -79,7 +79,7 @@ body {
 .guestbook_wrap {
 	position: relative;
 	overflow: hidden;
-	background: #fff url(../../../img/templates/retrocity/guestbook_bg.gif) repeat 50% 0;
+	background: #fff url(/bundles/viettutweb/img/templates/retrocity/guestbook_bg.gif) repeat 50% 0;
 	box-shadow: 0px -3px 10px rgba(0,0,0,0.1);
 }
 .movie_wrap {
@@ -96,7 +96,7 @@ body {
 	height: 230px;
 	content: '';
 	z-index: 1;
-	background: url(../../../img/templates/retrocity/greeting_bot2.png) repeat-x 60% 0
+	background: url(/bundles/viettutweb/img/templates/retrocity/greeting_bot2.png) repeat-x 60% 0
 }
 .movie_wrap:after {
 	position: absolute;
@@ -106,12 +106,12 @@ body {
 	height: 230px;
 	content: '';
 	z-index: 1;
-	background: url(../../../img/templates/retrocity/greeting_bot2.png) repeat-x 60% 0,
+	background: url(/bundles/viettutweb/img/templates/retrocity/greeting_bot2.png) repeat-x 60% 0,
 }
 .location_wrap {
 	position: relative;
 	overflow: hidden;
-	background: url(../../../img/templates/retrocity/location_bg.png) repeat 50% 0;
+	background: url(/bundles/viettutweb/img/templates/retrocity/location_bg.png) repeat 50% 0;
 }
 .footer {
 	background-color: #ebdfbb!important
@@ -136,7 +136,7 @@ body {
 	left: 0;
 	width: 100%;
 	height: 50px;
-	background: url(../../../img/templates/retrocity/lnb_bg.png) repeat-x 50% 100%;
+	background: url(/bundles/viettutweb/img/templates/retrocity/lnb_bg.png) repeat-x 50% 100%;
 	background-size: 10px auto;
 }
 .lnb_title {
@@ -169,7 +169,7 @@ body {
 }
 .lnb li span {
 	display: block;
-	background: url(../../../img/templates/retrocity/lnb_line.png) no-repeat 100% 50%;
+	background: url(/bundles/viettutweb/img/templates/retrocity/lnb_line.png) no-repeat 100% 50%;
 	background-size: 8px;
 	padding: 0 14px 0 5px
 }
@@ -219,7 +219,7 @@ body {
 	right: 0;
 	bottom: 0;
 	z-index: 1;
-	background: url(../../../img/templates/retrocity/header_pattern.png) repeat 0 0;
+	background: url(/bundles/viettutweb/img/templates/retrocity/header_pattern.png) repeat 0 0;
 	opacity: 0.75;
 }
 .header_content {
@@ -281,7 +281,7 @@ body {
 	height: 370px;
 	padding: 100px 0 0 0;
 	text-align: center;
-	background: #fff url(../../../img/templates/retrocity/head_title_Bg.png) no-repeat 50% 50%;
+	background: #fff url(/bundles/viettutweb/img/templates/retrocity/head_title_Bg.png) no-repeat 50% 50%;
 	background-size: cover;
 }
 .hd_name {
@@ -368,7 +368,7 @@ body {
 	width: 50px;
 	height: 50px;
 	margin: 0 0 0 -25px;
-	background: url(../../../img/templates/retrocity/header_scroll.png) no-repeat 0 0;
+	background: url(/bundles/viettutweb/img/templates/retrocity/header_scroll.png) no-repeat 0 0;
 	background-size: 50px;
 	font-size: 0;
 	line-height: 0;
@@ -402,7 +402,7 @@ div#panel_groom, div#panel_groom .ui-panel-inner, div#panel_bride, div#panel_bri
 	width: 50px;
 	height: 50px;
 	text-shadow: none!important;
-	background: rgba(213,122,136,0.8) url(../../../img/templates/retrocity/panel_icon.png) 100% 0 no-repeat;
+	background: rgba(213,122,136,0.8) url(/bundles/viettutweb/img/templates/retrocity/panel_icon.png) 100% 0 no-repeat;
 	background-size: 250px;
 	font-size: 0;
 	line-height: 0;
@@ -424,7 +424,7 @@ div#panel_groom, div#panel_groom .ui-panel-inner, div#panel_bride, div#panel_bri
 	width: 50px;
 	height: 50px;
 	margin: 0;
-	background: rgba(0,0,0,0.5) url(../../../img/templates/retrocity/panel_icon.png) 0 0 no-repeat;
+	background: rgba(0,0,0,0.5) url(/bundles/viettutweb/img/templates/retrocity/panel_icon.png) 0 0 no-repeat;
 	background-size: 250px;
 	font-size: 0;
 	line-height: 0;
@@ -557,7 +557,7 @@ h2.title_gold span {
 	font-weight: bold;
 	color: #4c5057;
 	background-color: #fcfaf7 ;
-	background: #fcfaf7 url(../../../img/templates/retrocity/icon_more.png) no-repeat 92% 50%;
+	background: #fcfaf7 url(/bundles/viettutweb/img/templates/retrocity/icon_more.png) no-repeat 92% 50%;
 	background-size: 20px;
 	box-sizing: border-box;
 }
@@ -575,7 +575,7 @@ h2.title_gold span {
 	margin: 30px auto 0;
 	padding: 0 50px;
 	box-sizing: border-box;
-	background: url(../../../img/templates/retrocity/movie_text1.png) no-repeat 0 0, url(../../../img/templates/retrocity/movie_text2.png) no-repeat 100% 0;
+	background: url(/bundles/viettutweb/img/templates/retrocity/movie_text1.png) no-repeat 0 0, url(/bundles/viettutweb/img/templates/retrocity/movie_text2.png) no-repeat 100% 0;
 	background-size: 25px 110px, 25px 110px
 }
 .lovestory_img {
@@ -708,7 +708,7 @@ h2.title_gold span {
 .snsbbs_nopost {
 	width: 50%;
 	min-width: 300px;
-	background: #ccc url(../../../img/templates/retrocity/icon_nopost.png) no-repeat 50% 20px;
+	background: #ccc url(/bundles/viettutweb/img/templates/retrocity/icon_nopost.png) no-repeat 50% 20px;
 	background-size: 32px;
 	color: #fff;
 	font-weight: bold;
@@ -727,7 +727,7 @@ h2.title_gold span {
 	font-size: 1em;
 	font-weight: bold;
 	color: #4c5057;
-	background: #fcfaf7 url(../../../img/templates/retrocity/icon_pencil.png) no-repeat 92% 50%;
+	background: #fcfaf7 url(/bundles/viettutweb/img/templates/retrocity/icon_pencil.png) no-repeat 92% 50%;
 	background-size: 20px;
 	box-sizing: border-box;
 }
@@ -824,7 +824,7 @@ h2.title_gold span {
 .gb_skip .gb_comm {
 	width: 34px;
 	height: 30px;
-	background: url(../../../img/templates/retrocity/guestbook_reply.png) no-repeat;
+	background: url(/bundles/viettutweb/img/templates/retrocity/guestbook_reply.png) no-repeat;
 	background-size: 34px;
 	color: #fff;
 	font-size: 0.95em;
@@ -878,7 +878,7 @@ h2.title_gold span {
 	float: right;
 	display: inline-block;
 	padding: 10px 0;
-	background: #66afb5 url(../../../img/templates/retrocity/btn_arrow_w.png) no-repeat 98% 50%;
+	background: #66afb5 url(/bundles/viettutweb/img/templates/retrocity/btn_arrow_w.png) no-repeat 98% 50%;
 	background-size: 22px 22px;
 	border-radius: 5px;
 	color: #fff;
@@ -894,7 +894,7 @@ margin:0 15px;
 float:right;
 display:inline-block;
 padding:10px 0;
-background:#66afb5 url(btn_arrow_w.png) no-repeat 98% 50%;
+background:#66afb5 url(/bundles/viettutweb/img/templates/retrocity/btn_arrow_w.png) no-repeat 98% 50%;
 background-size:22px 22px;
 border-radius:5px;
 color:#fff;
@@ -965,7 +965,7 @@ overflow:hidden;
 	font-weight: bold;
 	line-height: 24px;
 	text-align: left;
-	background: url(../../../img/templates/retrocity/lo_titlepin.png) no-repeat 10px 11px;
+	background: url(/bundles/viettutweb/img/templates/retrocity/lo_titlepin.png) no-repeat 10px 11px;
 	background-size: 16px
 }
 .nav-wrap {
@@ -983,13 +983,13 @@ overflow:hidden;
 }
 .nav-m .nav-1 {
 	float: left;
-	width: 50%;
+	width: 100%;
 }
 .nav-m .nav-2 {
 	float: left;
-	width: 50%;
+	width: 100%;
 }
-
+.nav-m form input {margin-bottom: 0 !important;font-size:16px !important;}
 .ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
 .ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
 .ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
@@ -1057,14 +1057,30 @@ overflow:hidden;
 	width: 32%;
 	margin: 0 2% 0 0
 }
+
+.col-3 .ui-block-1, .col-3 .ui-block-2 {
+	width: 32%;
+	margin: 0 2% 0 0
+}
 .col-3 .ui-block-c {
+	width: 32%;
+}
+.col-3 .ui-block-0 {
 	width: 32%;
 }
 .gal_list .col-3 .ui-block-a, .gal_list .col-3 .ui-block-b {
 	width: 32%;
 	margin: 0 2% 2% 0
 }
+.gal_list .col-3 .ui-block-1, .gal_list .col-3 .ui-block-2 {
+	width: 32%;
+	margin: 0 2% 2% 0
+}
 .gal_list .col-3 .ui-block-c {
+	width: 32%;
+	margin: 0 0 2% 0
+}
+.gal_list .col-3 .ui-block-0 {
 	width: 32%;
 	margin: 0 0 2% 0
 }
@@ -1118,7 +1134,7 @@ overflow:hidden;
 	font-size: 40px;
 }
 .hd_name span {
-	background: url(../../../img/templates/retrocity/header_and.png) no-repeat 0 30%;
+	background: url(/bundles/viettutweb/img/templates/retrocity/header_and.png) no-repeat 0 30%;
 	background-size: 35px 40px;
 	width: 35px;
 	height: 50px;
@@ -1397,8 +1413,11 @@ overflow:hidden;
 
 }
 .gal_list .col-3 .ui-block-a {width:49%; margin:0 2% 2% 0}
+.gal_list .col-3 .ui-block-1 {width:49%; margin:0 2% 2% 0}
 .gal_list .col-3 .ui-block-b {width: 49%; margin: 0 0 2% 0}
+.gal_list .col-3 .ui-block-2 {width: 49%; margin: 0 0 2% 0}
 .gal_list .col-3 .ui-block-c {width: 100%; height:350px; margin: 0 0 2% 0}
+.gal_list .col-3 .ui-block-0 {width: 100%; height:350px; margin: 0 0 2% 0}
 
 .col-2 .ui-block-a,
 .col-2 .ui-block-b {width:100%}
@@ -1527,6 +1546,10 @@ overflow:hidden;
 .gal_list .col-3 .ui-block-a,
 .gal_list .col-3 .ui-block-b,
 .gal_list .col-3 .ui-block-c {width: 100%; height:240px; margin: 0 0 2% 0}
+
+.gal_list .col-3 .ui-block-1,
+.gal_list .col-3 .ui-block-2,
+.gal_list .col-3 .ui-block-0 {width: 100%; height:240px; margin: 0 0 2% 0}
 /*480 이하부턴  100%로 나오게 하는 코드*/ 
 
 .lo_container th {float:left; width:100%; border:none; padding-bottom:0;}
@@ -1710,3 +1733,9 @@ opacity: 0;
 opacity: 1;
 }
 }
+
+
+.parents_wrap {background-color: #e6e1d0;border-top: 1px solid #dbd5be;padding:50px 0 30px}
+.parents_wrap .pa-tit {color:#555}
+.parents_wrap .pa-list li {background-color:#555}
+
