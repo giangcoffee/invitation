@@ -1,0 +1,547 @@
+@charset "utf-8";
+
+/* 임시css */
+.ui-panel-wrapper {min-height:80px;}
+.ui-page-theme-a {text-shadow:none!important}
+.spacer.s0 {min-height: 1px;}
+
+/* Global */
+.ul-body   {position:relative; max-width: 980px; margin: 0 auto; padding:0 10px; box-sizing: border-box; -webkit-box-sizing: border-box;}
+.ui-cont-a {padding: 0 1em}
+.ui-cont-b {padding: 3em 0}
+.ui-cont-c {padding-top: 2em}
+.ui-cont-d {padding-bottom: 2em}
+.btn_wrap {cursor:pointer;}
+.p-r {position:relative}
+.fl {float:left!important;}
+.fr {float:right!important;}
+
+/* Layout */
+html,body {font-family:'NanumGothic';width:100%; height:100%;}
+body {font-size: 100%;}
+#skin_page {z-index:10; background-color:#eee;}
+.header {position:relative; min-height:100%; z-index:-1;}
+
+.greeting_wrap,
+.gallery_wrap,
+.movie_wrap,
+.guestbook_wrap,
+.location_wrap {position:relative; overflow:hidden; z-index:10;}
+
+.greeting_wrap  {padding:100px 0}
+.parents_wrap   {background-color:#f8f8f8}
+.gallery_wrap   {padding:100px 0 60px; background:url(/bundles/viettutweb/img/templates/fallinlove/gallery_bg.gif) repeat 50% 50%;z-index: 20;}
+.guestbook_wrap {padding:80px 0;}
+.movie_wrap     {padding:50px 0; background:url(/bundles/viettutweb/img/templates/fallinlove/movie_bg.gif) repeat 50% 50%;box-shadow: 0 5px 10px rgba(0,0,0,0.5) inset}
+.location_wrap  {padding:80px 0 30px; background-color:#fff;}
+.footer         {background-color:#ffe6d7!important}
+
+
+.parents_wrap .pa-tit {color:#666}
+.parents_wrap .pa-list li {background-color:#f26522}
+
+.guestbook_wrap h2.title {text-align:center;margin:0 0 40px 0; cursor:pointer}
+.guestbook_wrap h2.title img {width:290px}
+
+.lnb {visibility: hidden; position:fixed; top:0; left:0; width:100%; height:90px; z-index:999; background:rgba(250,179,106,0.4) url(/bundles/viettutweb/img/templates/fallinlove/bg_gradient.png) repeat 50% 0;}
+.lnb ul {position:relative;padding:55px 0 0 0;background:url(/bundles/viettutweb/img/templates/fallinlove/menu_bg.png) no-repeat 50% 10px;background-size:260px auto;text-align:center;}
+.lnb li {position:relative; display:inline-block; height:30px; font-family:'Lora', serif; font-size:.9em; line-height:30px; font-weight:700; text-align:center; color:#fff; cursor:pointer;}
+.lnb li span {display:block;padding:0 16px 0 10px; background:url(/bundles/viettutweb/img/templates/fallinlove/menu_dot.png) no-repeat 100% 60%;background-size:4px}
+.lnb li:last-child span {background-image:none}
+.lnb li:last-child:after {content:''; margin:0}
+.lnb li.on span{}
+
+.lnb_mobile {display:none; position:fixed; top:0; right:0; width:50px; height:50px; z-index:999; opacity:0.8;}
+.lnb_mobile img {width:50px; height:50px;}
+
+.header_bg {position:fixed; width:100%;z-index:-1;}
+.header_bg:after {position:fixed; width:100%; top:0; left:0; right:0; bottom:0;background-color: rgba(250,179,106,0.5);content:''}
+.header_box {position:relative;width:100%;background:url(/bundles/viettutweb/img/templates/fallinlove/bg_gradient.png) repeat 50% 0;z-index: 998;}
+.scrolldown {position:absolute; bottom:20px; left:50%; width:45px; height:65px; margin:0 0 0 -22.5px; background:url(/bundles/viettutweb/img/templates/fallinlove/header_scrolldown.png) no-repeat 0 0; background-size:45px; font-size:0; line-height:0; text-indent:-9999px; z-index:20;}
+
+h1.header_title {position:absolute;top:50%;left:50%;width:400px;height: 220px;margin: -130px 0 0 -200px;padding: 90px 0 0 0;z-index:999;box-sizing:border-box;
+color:#fff;font-family:'Lora',serif;text-align:center;
+background:url(/bundles/viettutweb/img/templates/fallinlove/header_titlebg.png) no-repeat;background-size:100%}
+h1.header_title p:after {clear:both;content:'';display:block;}
+h1.header_title p.title {font-size: 60px;letter-spacing:-1px;line-height: 55px;margin: 0 0 5px 0;padding: 0 0 5px 0;/* text-shadow:0px 2px 4px rgba(0,0,0,0.2); */border-bottom: 1px solid #fff;}
+h1.header_title p.title .italic {font-size:50px;font-style:italic}
+h1.header_title .date,
+h1.header_title .time {font-size: 42px;letter-spacing:-1px;line-height:1;font-style:italic;/* text-shadow:0px 2px 4px rgba(0,0,0,0.2) */}
+
+.header_panel {position:fixed; top:50%; left:0; width:100%; margin: -40px 0 0 0; padding:0 10px; box-sizing: border-box;z-index:999;}
+.header_panel p { width:80px;height:80px;background:url(/bundles/viettutweb/img/templates/fallinlove/panel_button.png) no-repeat 0 0;background-size:160px;font-size:0;line-height:0;text-indent:-9999px}
+.header_panel a {display:block}
+.header_panel .groom {visibility:hidden; float:left; background-position:0 0}
+.header_panel .bride {visibility:hidden; float:right; background-position:-80px 0}
+
+div#panel_groom,div#panel_groom .ui-panel-inner,
+div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
+.ui-panel-open.ui-panel-position-right.ui-panel-display-push {border-color:#555}
+
+.groom-wrap,
+.bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing: border-box}
+.groom-wrap p,
+.groom-wrap ul li,
+.bride-wrap p,
+.bride-wrap ul li {cursor:pointer;}
+.groom-wrap p, 
+.bride-wrap p {position:absolute; top:488px; right:0; width:50px; height:50px; text-shadow:none!important; background:rgba(251,175,93,0.8) url(/bundles/viettutweb/img/templates/fallinlove/panel_icon.png) 100% 0 no-repeat; background-size:250px;
+  font-size:0; line-height:0; text-indent:-9999px}
+  .groom-wrap p {right:1px;}
+.groom-wrap ul,
+.bride-wrap ul {position:absolute; top:488px; left:0; width:200px; height:50px; overflow:hidden;}
+
+.groom-wrap ul li,
+.bride-wrap ul li {float:left; width:50px; height:50px; margin:0; background:rgba(0,0,0,0.5) url(/bundles/viettutweb/img/templates/fallinlove/panel_icon.png) 0 0 no-repeat; background-size:250px;
+  font-size:0; line-height:0; text-indent:-9999px}
+.groom-wrap ul li.ico5,
+.bride-wrap ul li.ico1 {background-position:0 0px}
+.groom-wrap ul li.ico6,
+.bride-wrap ul li.ico2 {background-position:-50px 0}
+.groom-wrap ul li.ico7,
+.bride-wrap ul li.ico3 {background-position:-100px 0}
+.groom-wrap ul li.ico8,
+.bride-wrap ul li.ico4 {background-position:-150px 0}
+
+@media all and (max-height: 539px) {
+  .groom-wrap ul {position:fixed; top:auto; bottom:0; left:0}
+  .groom-wrap p {position:fixed; top:auto; bottom:0; left:222px}
+  .bride-wrap ul {position:fixed; top:auto; bottom:0; right:72px; left:auto;}
+  .bride-wrap p {position:fixed; top:auto; bottom:0; right:0px}
+}
+
+/* Greeting */
+.greeting_textbox h2.title {text-align:center;font-size: 1.6em;line-height: 1;font-family:'Lora',serif;letter-spacing:-1px;font-style:italic;font-weight:700;margin: 0 0 60px;}
+.greeting_text {position:relative; width:90%;  min-height: 160px;  margin: 40px auto; padding:0;
+color:#444; font-size: 1em; line-height: 1.5; text-align:center; word-break: break-word; box-sizing: border-box }
+.greeting_name {margin: 40px auto; color:#444; width:90%; max-width:480px; min-width: 290px; box-sizing: border-box}
+.greeting_name:after {display:block; content:''; clear:both}
+.greeting_name li {text-align:center; width:50%; min-width:145px}
+.greeting_name li p {padding:4px 0}
+.gn_groom {float:left;}
+.gn_bride {float:right;}
+.gn4 {display:block; font-size:0.9em;}
+.gn4 strong {font-size:1.2em; padding:0 0 0 5px}
+.gn_groom p:nth-child(2),
+.gn_bride p:nth-child(2) {font-size:0.8em}
+.gn3 {font-size:0.85em}
+.greeting_loca {width: 80%; max-width: 450px; min-width: 300px; margin: 40px auto; padding:5px 10px; box-sizing: border-box; border:1px solid #f26522; }
+.greeting_loca p {margin:10px 0;text-align:center; color:#f26522;line-height:1.5; font-size: 1em; font-weight:bold;word-break: break-word;letter-spacing:-0.5px;}
+
+.greeting_name .gn_groom .panel,
+.greeting_name .gn_bride .panel {display:none;margin: 5px 0 0 0;padding:2px 12px; color:#fff; font-size:.75em; background-color:rgba(0,0,0,0.5);border-radius:15px}
+.greeting_name .gn_groom .panel a,
+.greeting_name .gn_bride .panel a {display:block;color:#fff;}
+
+/* gallery */
+.gal_list {position:relative;max-width:980px;width:100%;margin:0 auto;padding: 0 10px 80px!important;box-sizing: border-box;}
+.gal_list > div > a > div {float:left; height:220px; border:5px solid #fff; box-sizing:border-box;box-shadow:0 3px 5px rgba(0,0,0,0.2)}
+
+.gal_list .savethedate { background:url(/bundles/viettutweb/img/templates/fallinlove/gallery_savethedate.jpg) no-repeat 50% 0;background-size:cover;border: 5px solid #fff!important;text-align:center;color:#fff;font-family:'Lora',serif;box-shadow:0 3px 5px rgba(0,0,0,0.2);}
+.gal_list .savethedate strong {display:block;padding:100px 0 0 0;background:url(/bundles/viettutweb/img/templates/fallinlove/gallery_date.png) no-repeat 50% 35px;background-size:170px;font-size:1.9em;line-height: 1;}
+.gal_list .savethedate span {display:block;padding: 0 0 5px 0;font-size:1.5em;font-style:italic;line-height: 1;}
+
+.gal_list .col-4 .ui-block-a,
+.gal_list .col-4 .ui-block-b,
+.gal_list .col-4 .ui-block-c {width:24.25%; height:300px; margin:0 1% 10px 0}
+.gal_list .col-4 .ui-block-d {width:24.25%; height:300px; margin:0 0 10px 0}
+
+.gal_list .col-3 .ui-block-a,
+.gal_list .col-3 .ui-block-b {width:32.6%; margin:0 1% 10px 0}
+.gal_list .col-3 .ui-block-c {float:right;width:32.6%; margin:0 0 10px 0}
+
+.gal_list2 {max-width:980px;width:98%;margin:0 auto;padding-bottom:80px!important;}
+
+.gal_list:after,.gal_list2:after {display:block; content:''; clear:both}
+.gal_list a,.gal_list2 a {display:block;}
+
+.gal_frame .savethedate {height: 360px; background:url(/bundles/viettutweb/img/templates/fallinlove/gallery_savethedate.jpg) no-repeat 50% 0;background-size:cover;border: 5px solid #fff!important;text-align:center;color:#fff;font-family:'Lora',serif;box-shadow:0 3px 5px rgba(0,0,0,0.2);}
+.gal_frame .savethedate strong {display:block;padding:100px 0 0 0;background:url(/bundles/viettutweb/img/templates/fallinlove/gallery_date.png) no-repeat 50% 35px;background-size:170px;font-size:1.9em;line-height:1.5}
+.gal_frame .savethedate span {display:block;padding:0 0 10px;font-size:1.5em;font-style:italic}
+
+.gal_list2 .gal_frame img {border:5px solid #fff!important;box-shadow:0 3px 5px rgba(0,0,0,0.2)}
+.gal_list2 .gal_frame {float:left; padding:1%; box-sizing:border-box;}
+
+/* @media all and (max-width: 800px) {  
+  .gal_list .col-4 .ui-block-a,
+  .gal_list .col-4 .ui-block-c {width:49.5%;height:440px;background-position: 50% 20%;}
+  .gal_list .col-4 .ui-block-b,
+  .gal_list .col-4 .ui-block-d {width:49.5%;height:440px;margin-right:0;}
+  .gal_list > div > a > div {height:180px}
+} */
+@media all and (max-width: 768px) {
+  .gal_list > div > a > div {height:160px;}
+  .gal_list .col-4 .ui-block-a,
+  .gal_list .col-4 .ui-block-c {width:49.5%;height: 330px;}
+  .gal_list .col-4 .ui-block-b,
+  .gal_list .col-4 .ui-block-d {width:49.5%;height: 330px;margin-right:0;}
+
+  .gal_frame .savethedate {height:260px}
+  .gal_list .savethedate strong {padding: 110px 0 0 0;background: url(/bundles/viettutweb/img/templates/fallinlove/gallery_date.png) no-repeat 50% 30px;background-size: 200px;font-size: 2em}
+  .gal_frame .savethedate strong {padding: 105px 0 0 0;background: url(/bundles/viettutweb/img/templates/fallinlove/gallery_date.png) no-repeat 50% 50px;background-size: 135px;font-size: 1.6em}
+  .gal_list .savethedate span {font-size:1.8em}
+  .gal_frame .savethedate span {font-size:1.3em}
+}
+@media all and (max-width: 480px) {
+  .gal_list > div > a > div {height:240px;}
+  .gal_list .col-4 .ui-block-a,
+  .gal_list .col-4 .ui-block-c {width:49%;height: 260px;margin-right:2%}
+  .gal_list .col-4 .ui-block-b,
+  .gal_list .col-4 .ui-block-d {width:49%;height: 260px;margin-right:0;}
+  .gal_list .col-3 .ui-block-a,
+  .gal_list .col-3 .ui-block-b,
+  .gal_list .col-3 .ui-block-c {width:100%}
+
+  .gal_frame .savethedate {height: 230px;background-position:50% 50%;}
+  .gal_list .savethedate strong,
+  .gal_frame .savethedate strong {padding: 85px 0 0 0;background: url(/bundles/viettutweb/img/templates/fallinlove/gallery_date.png) no-repeat 50% 30px;background-size: 130px;font-size: 1.5em}
+  .gal_list .savethedate span,
+  .gal_frame .savethedate span {font-size: 1.2em;}
+}
+@media all and (max-width: 320px) {
+  .gal_list > div > a > div {height:180px;}
+  .gal_list .col-4 .ui-block-a,
+  .gal_list .col-4 .ui-block-b,
+  .gal_list .col-4 .ui-block-c,
+  .gal_list .col-4 .ui-block-d {height: 200px;}
+}
+
+.gal_more {position:absolute;bottom:0!important;left:50%;display:block; width:180px;background: #aaa url(/bundles/viettutweb/img/templates/fallinlove/gal_more_w.png) no-repeat 88% 50%; font-family:'Lora', serif; margin:0 0 0 -100px; padding: 10px 20px 15px 20px;color:#fff;font-style:italic;font-size:1.1em;line-height:1;box-sizing:border-box;background-size: 13px;}
+
+
+
+/* Movie */
+.movie_wrap .message {float:left;width:30%; height:350px;text-align:center;background: url(/bundles/viettutweb/img/templates/fallinlove/movie_quote.png) no-repeat 50% 50%;background-size: auto 95%;}
+
+.movie_container {position:relative; width:70%; float:right; z-index:1}
+.movie_container ul {width:100%; margin:0}
+.movie_container:after {display:block; content:''; clear:both}
+
+.movie1 ul li,
+.movie2 ul li,
+.movie3 ul li,
+.movie4 ul li {position:relative; overflow:hidden}
+
+.movie1 ul li img,
+.movie2 ul li img,
+.movie3 ul li img,
+.movie4 ul li img {position:absolute; top:50%; left:0; width:100%; height:auto; margin:-38% 0 0 0;z-index:0}
+.android_play {position:absolute; display:block; top:50%; left:50%; cursor:pointer;z-index:1;
+  background:url('/dalpeng/skin/_common/img/android_play.png') no-repeat 0 0; background-size:100%; font-size:0; line-height:0; text-indent:-9999px;
+  width:80px; height:54px;margin:-27px 0 0 -40px}
+
+.movie1 ul li { width:100%; height:350px; margin:0;}
+
+.movie2 ul li { width:100%; height:350px; margin:0 0 1% 0;}
+
+.movie3 ul li {float:left; width:49%; height:200px; margin:0;}
+.movie3 ul li:first-child { width:100%; height:350px; margin:0 0 1% 0;}
+.movie3 ul li:nth-child(2) {margin-right:2%}
+
+.movie4 ul li {float:left; width:49%; height: 200px; margin: 0 0 2% 0;}
+.movie4 ul li:first-child {margin-right:2%}
+.movie4 ul li:nth-child(3) {margin-right:2%}
+
+.nomovie {background-color: #000;}
+.nomovie span {position:absolute; top:50%; left:50%; margin:-8px 0 0 -100px; display:block; width:200px; text-align:center; color:#fff}
+
+@media all and (max-width: 768px) {
+  .movie_wrap .message {width: 40%;height:230px}
+  .movie_container {width:60%;}
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {position:relative; float:none; width:100%; height:230px; margin:0 0 1% 0}
+  .android_play {width:60px; height:40px;margin:-20px 0 0 -30px}
+}
+@media all and (max-width: 480px) {
+  .movie_wrap .message {display:none;}
+  .movie_container {float:none;width:100%;}
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {height:200px}
+}
+  
+/* Guestbook */
+.snsbbs_sections {float:left; width:33.3%; margin-bottom:20px;}
+
+#div_snsbbs {margin:0 -10px}
+.ui-body-d {margin:0 10px;}
+.snsbbs_nopost {width:50%; min-width:300px; background:#ffbbbb url(/bundles/viettutweb/img/templates/fallinlove/icon_nopost.png) no-repeat 50% 20px; background-size:32px; color:#fff; font-weight:bold; text-align:center; margin:0 auto 50px; padding:60px 0 20px; border-radius:5px;}
+.gb_btn {display:block; width:200px;background: #f26522 url(/bundles/viettutweb/img/templates/fallinlove/icon_pencil.png) no-repeat 88% 50%; background-size:22px;margin:30px auto 0; padding: 15px 20px;
+color:#fff;font-size:1em;font-weight:bold;line-height:1;box-sizing:border-box;}
+
+#div_snsbbs:after,
+.pro_info:after {clear:both; content:''; display:block;}
+.gb_cont_box {width:100%; padding: 10px; font-family:'NanumGothic'; font-size: 0.9em; color:#666; background-color: #fff;background-color: rgba(255,255,255,0.8);  box-sizing:border-box; box-shadow: 0 3px 5px rgba(0,0,0,0.2);}
+.pro_info {padding:0 1em;}
+.pro_img {position:relative; float:left;}
+.pro_img img {width: 60px; height: 60px; border-radius: 60px;}
+.pro-sns {position:absolute; top:65%; left:-5px; width:20px; height:20px; background:url('/dalpeng/skin/_common/img/ico_spr_sns24.png') -20px 0 no-repeat; background-size:200%;}
+.pro-sns span   {display:block; text-indent:-9999px; overflow:hidden;}
+.pro-sns.facebook {background-position:   -20px   0px;}
+.pro-sns.twitter  {background-position:   -20px   -20px;}
+.pro-sns.kakao    {background-position:   -20px   -40px;}
+.pro-sns.naver    {background-position:   -20px   -60px;}
+.pro-sns.dalpeng  {background-position:   -20px   -80px;}
+.pro-sns.google   {background-position:   -20px   -100px;}
+.pro-sns.notmember  {background-position:   -20px   -120px;}
+.pro-sns.instagram  {background-position:   -20px   -140px;}
+.pro_txt {float:left; padding:0.8em 0 0 0.5em; max-width:60%}
+.pro_txt .date {font-size:0.8em; letter-spacing:-0.5px}
+
+.gb_cont {clear:both; margin: 0.5em 0.2em;padding: 0.8em 0;border-top: 1px solid #f96;border-bottom: 1px solid #f96;}
+.gb_cont li {margin-bottom:0;min-height: 100px;font-size: .9em;}
+.gb_cont li img {max-width:100%;}
+
+.gb_skip {overflow:hidden; padding: .5em;}
+.gb_skip .gb_comm {  background: url(/bundles/viettutweb/img/templates/fallinlove/guestbook_reply.png) no-repeat 0 50%; background-size: 15px; color: #f96; font-size: 1.1em; line-height: 1;font-weight:bold ;padding: 0 0 0 18px;font-family: tahoma;}
+.gb_skip .gb_comm span {  }
+
+/* Guestbook :: 글없을때 */
+/*.gb_default_box {width:100%; height:auto;}
+.gb_default_box .comm-cont {padding:5em 0; text-align:center;}
+.gb_default_box .comm-cont p {margin-bottom:2em; font-size:1em; color:#666; text-shadow:none; text-shadow:0 1px 1px rgba(255,255,255,.5);}
+.gb_default_box .comm-cont span {display:block;}
+.btn_write {max-width:350px; padding:.5em 1em; margin:0 auto; text-align:center; cursor:pointer; background:rgba(0,0,0,0.7)}
+.btn_write span {color:#fff;}
+.btn_write span em {}
+.btn_write span:hover em {}
+
+.btn-snsbbs {max-width:1024px; margin:0 auto;}
+.btn-snsbbs .btn_go_snsbbs { margin:0 15px; float:right; display:inline-block; padding:10px 0; background:#66afb5 url(/bundles/viettutweb/img/templates/fallinlove/btn_arrow_w.png) no-repeat 98% 50%; 
+background-size:22px 22px; border-radius:5px; color:#fff;text-shadow:none; font-weight:bold; text-align:center}
+.btn-snsbbs .btn_go_snsbbs span {padding:0 60px}*/
+
+/* Location */
+.lo_tab_wrap {position:relative; overflow:hidden; margin:0 0 20px 0;font-size: 0;text-align: center;}
+.lo_tab_wrap li {position:relative; display: inline-block;width: 50%; margin: 0 0 10px; padding:0; line-height: 50px; 
+height: 50px;color:#fff;  font-family:'Lora',serif; font-style:italic; font-weight:bold; background-color:#ccc; cursor:pointer; box-sizing: border-box;font-size: 18px;}
+.lo_tab_wrap li:nth-child(2) {margin:0}
+.lo_tab_wrap .on {background-color: #f26522; }
+.lo_tab_wrap .on:after {width:20px;height:10px;position:absolute;bottom:-9px;left:50%;margin:0 0 0 -10px;background:url(/bundles/viettutweb/img/templates/fallinlove/location_tabon.png) no-repeat;background-size:20px;content:''}
+
+.lo_box {background-color:#fff; padding: 0;border-radius: 0;}
+
+.lo_map {position:relative;background-color:#ccc; margin-bottom:1em; text-align:center; box-sizing: border-box; line-height:1;}
+/*.lo_map:after {position:absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(255,255,255,0);content:''}*/
+
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas {height:400px!important;}
+.lo_map .ui-link img {height:100%;}
+
+.lo_title {margin: 0; padding: 15px 10px; overflow:hidden;
+color: #f26522; font-size:0.95em; font-family:'NanumGothic'; font-weight:bold;  line-height: 25px;text-align: center;
+background-color: #fde8de; }
+.lo_title .icon {display:inline-block;width:25px;height:25px;margin: 0 5px 0 0;background:url(/bundles/viettutweb/img/templates/fallinlove/location_icon.png) no-repeat 0 -25px;background-size:25px;vertical-align: top;}
+
+.nav-wrap {}
+.nav-wrap ul {overflow:hidden; margin-top:10px;}
+.nav-wrap ul li {float:left; margin-right:30px;}
+.nav-m {}
+/*
+.nav-m .nav-1 {float:left; width:50%;}
+.nav-m .nav-2 {float:left; width:50%;}
+*/
+.nav-m .nav-1,
+.nav-m .nav-2 {float:none; width:100%;}
+.ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 5px center no-repeat; background-size:50px}
+.ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 5px center no-repeat; background-size:50px}
+.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;}
+.ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fcfcfc!important;padding: 12px 0;}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none;}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.8em; padding: 10px 0;font-family:'NanumGothic'; color:#333; text-align:center}
+
+
+.lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; font-family:'NanumGothic';  }
+.lo_container th {width: 20%; min-width:120px; border-bottom: 1px solid #fff; color: #f26522; background-color: #fde8de;font-size:0.9em; line-height: 23px;font-family:'Lora', serif; vertical-align:top; text-align: left;padding:10px 0 10px 10px; font-style:italic}
+.lo_container td {width: 80%; background-color: #fde8de;border-bottom: 1px solid #fff; color:#666; padding:12px 15px; font-size:0.8em; line-height:1.6 }
+.lo_container td.txt {color:#000; font-weight:bold}
+
+.lo_container th span {display:inline-block;height:25px; padding:0 0 0 30px;background:url(/bundles/viettutweb/img/templates/fallinlove/location_icon.png) no-repeat 0 0;background-size:25px}
+.lo_container th.lo_date span   {background-position:0 0}
+.lo_container th.lo_loca span   {background-position:0 -25px}
+.lo_container th.lo_tel span    {background-position:0 -50px}
+.lo_container th.lo_info span   {background-position:0 -75px}
+.lo_container th.lo_bus span    {background-position:0 -100px}
+.lo_container th.lo_subway span {background-position:0 -125px}
+
+.col-2,
+.col-3,
+.col-4 {position:relative; overflow:hidden;}
+
+.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-b {float:left; width:49%;}
+
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0 }
+.col-3 .ui-block-c {width:32%;}
+
+
+
+/* 768이상 (for pc) */
+@media all and (min-width: 769px) {  
+  .guestbook_wrap {background:url(/bundles/viettutweb/img/templates/fallinlove/guestbook_bg1600.jpg) repeat 50% 0;background-size:auto;}
+  .greeting_box {position:relative;max-width: 960px;padding: 0;}
+  .greeting_box:after {clear:both;content:'';display:block}
+  .greeting_photo {position:absolute;top:0;bottom:0;width: 50%;box-shadow:0 5px 3px rgba(0,0,0,0.2);box-sizing: border-box;}
+  .greeting_textbox {float:right;width:50%;min-height:500px;background-color:#fff;color:#666; padding: 80px 0 20px;box-shadow:0 5px 3px rgba(0,0,0,0.2);box-sizing: border-box;}
+
+  .lnb.moveUp {height:70px;background:rgba(250,179,106,0.9) url(/bundles/viettutweb/img/templates/fallinlove/bg_gradient.png) repeat 50% 0;/*transition: all 0.3s;-webkit-transition: all 0.3s;*/}
+  .lnb.moveUp ul {padding:40px 0 0 0;background:url(/bundles/viettutweb/img/templates/fallinlove/menu_bg.png) no-repeat 50% 5px;background-size:220px auto;/*transition: padding 0.3s;-webkit-transition: padding 0.3s;*/}
+}
+@media all and (min-width: 785px) {
+  .header_box,.header_bg {min-height:580px;}
+}
+@media all and (min-width: 1140px) {
+  .header_box,.header_bg {min-height:680px;}
+}
+
+/* 768 이하 (for tablet) */
+@media all and (max-width: 768px) {
+  .lnb {display:none}
+  .lnb_mobile {display:block}
+  .header_bg {position: absolute;top: 0;}
+  .header_bg:after {display:none}
+  .header_box {}
+  .greeting_wrap  {padding:0}
+  .greeting_box {position:relative;max-width: 960px;padding: 0;}
+  .greeting_box:after {clear:both;content:'';display:block}
+  .greeting_photo {display:none}
+  .greeting_textbox {width: 100%; min-height:auto; margin:0 auto;background-color:#fff; color:#666; padding: 90px 0 50px;box-sizing: border-box;}
+  .greeting_name .gn_groom .panel,
+  .greeting_name .gn_bride .panel {display:inline-block}
+  .header_panel {display:none!important;}
+
+  .gallery_wrap {padding:80px 0 40px;}
+  .guestbook_wrap {background:url(/bundles/viettutweb/img/templates/fallinlove/guestbook_bg768.jpg) repeat 50% 0;background-size:auto;}
+
+  .snsbbs_sections {width:50%;}
+
+  .lo_contents {padding: 0!important;}
+  .lo_contents .col-2 .ui-block-b {padding: 10px 10px 0;}
+  .lo_tab_wrap li {font-size: 16px;}
+  
+  .col-2 .ui-block-a,
+  .col-2 .ui-block-b {float:left; width:100%;}
+  .nav-m .nav-1,.nav-m .nav-2 {float:left; width:50%;}
+}
+
+
+@media all and (max-width: 35em) {
+  .snsbbs_sections {width:100%;margin-bottom:10px;}
+  .nav-m .nav-1,.nav-m .nav-2 {float:none; width:100%;}
+}
+
+@media all and (max-height: 420px) {
+  .scrolldown {display:none}
+}
+
+/* 480 이하 */
+@media all and (max-width: 480px) {
+  .guestbook_wrap {background:url(/bundles/viettutweb/img/templates/fallinlove/guestbook_bg480.jpg) repeat 50% 0;background-size:auto;}  
+  h1.header_title {width: 310px; height: 170px;margin: -100px 0 0 -155px; padding: 65px 0 0 0;}
+  h1.header_title p.title {font-size: 45px;line-height: 52px;padding: 0;margin: 0 0 8px 0;}
+  h1.header_title p.title .italic {font-size: 40px;}
+  h1.header_title .date,
+  h1.header_title .time {font-size: 33px;}
+  .scrolldown {bottom: 15px;width: 30px;height: 44px;margin: 0 0 0 -15px;background-size: 30px;}
+  
+  .greeting_text {min-height: auto;}
+
+
+  .col-2 .ui-block-a, 
+  .col-2 .ui-block-b {float:left; width:100%;}
+  .col-3 .ui-block-a, 
+  .col-3 .ui-block-b, 
+  .col-3 .ui-block-c {float:left; width:100%;}
+  .col-4 .ui-block-a,
+  .col-4 .ui-block-b,
+  .col-4 .ui-block-c, 
+  .col-4 .ui-block-d {width:100%;}
+
+  .lo_tab_wrap li {font-size: 15px;height: 40px;line-height: 40px;}
+  .lo_title {text-align:left;padding:15px 10px 15px 45px;line-height:20px}
+  .lo_title span {position:absolute;top:12px;left:15px}
+  .lo_map #wedding_pmap_canvas,
+  .lo_map #party_pmap_canvas {height:300px!important;}
+  .lo_map .ui-link img {height:100%}
+
+  .lo_container th {float:left;width:100%;box-sizing: border-box;border-bottom:0;font-size: 1em;padding:10px 10px 5px 10px}
+  .lo_container td {float:left;width:100%;box-sizing: border-box;font-size: 0.9em;border-bottom:2px solid #fff;padding:0 10px 10px 40px;}
+
+  .nav_info {font-size:0.7em;}
+}
+
+/* 320 이하 */
+@media all and (max-width: 320px) {
+  h1.header_title {width: 280px; height: 170px;margin: -100px 0 0 -140px; padding: 60px 0 0 0;}
+  h1.header_title p.title {font-size: 41px;line-height: 52px;padding: 0;margin: 0 0 8px 0;}
+  h1.header_title p.title .italic {font-size: 38px;}
+  h1.header_title .date,
+  h1.header_title .time {font-size: 30px;}
+  
+  .guestbook_wrap h2.title img {width: 240px;}
+}
+
+
+
+/* HEADER ANIMATION */
+.fadeOut{
+  animation: fadeOut 1s ease forwards;
+  -webkit-animation: fadeOut 1s ease forwards;
+}
+@keyframes fadeOut {
+  0% {transform: translateY(0%); opacity: 1}
+  100% {transform: translateY(-100%); opacity: 0}
+}
+@-webkit-keyframes fadeOut {
+  0% {transform: translateY(0%); opacity: 1}
+  100% {transform: translateY(-100%); opacity: 0}
+}
+
+.slideDown{
+  animation: slideDown 1.5s ease-out;   
+  -webkit-animation: slideDown 1.5s ease-out;
+  visibility: visible !important;
+}
+@keyframes slideDown {
+  0%,50% {transform: translateY(-10%); opacity: 0}
+  100% {transform: translateY(0%); opacity: 1}
+}
+@-webkit-keyframes slideDown {
+  0%,50% {transform: translateY(-10%); opacity: 0}
+  100% {transform: translateY(0%); opacity: 1}
+}
+
+.slideLeft{
+  animation: slideLeft 1.5s ease;   
+  -webkit-animation: slideLeft 1.5s ease;
+  visibility: visible !important;
+}
+@keyframes slideLeft {
+  0%,80% {transform: translateX(-15%); opacity: 0}
+  100% {transform: translateX(0%); opacity: 1}
+}
+@-webkit-keyframes slideLeft {
+  0%,80% {transform: translateX(-15%); opacity: 0}
+  100% {transform: translateX(0%); opacity: 1}
+}
+
+.slideRight{
+  animation: slideRight 1.5s ease;   
+  -webkit-animation: slideRight 1.5s ease;
+  visibility: visible !important;
+}
+@keyframes slideRight {
+  0%,80% {transform: translateX(15%); opacity: 0}
+  100% {transform: translateX(0%); opacity: 1}
+}
+@-webkit-keyframes slideRight {
+  0%,80% {transform: translateX(15%); opacity: 0}
+  100% {transform: translateX(0%); opacity: 1}
+}
