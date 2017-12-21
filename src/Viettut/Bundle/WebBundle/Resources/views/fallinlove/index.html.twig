@@ -322,16 +322,32 @@
          style="background:#eee url('/bundles/viettutweb/img/templates/fallinlove/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
         <div class="groom-wrap">
             <ul>
-                <a href="tel:01000000000">
-                    <li class="ico5">신랑에게 전화하기</li>
-                </a><a href="sms:01000000000">
-                    <li class="ico6">신랑에게 문자하기</li>
-                </a><a href="http://facebook.com/dalpeng" target="_blank">
-                    <li class="ico7">페이스북 바로가기</li>
-                </a><a href="http://instagram.com/dalpeng2com" target="_blank">
-                    <li class="ico_insta">인스타그램 바로가기</li>
-                </a></ul>
-            <p class="btn_go_snsbbs">축하글 남기기</p></div>
+                <a href="tel:{{ data['groom_phone'] }}">
+                    <li class="ico5">Gọi điện</li>
+                </a>
+                <a href="sms:{{ data['groom_phone'] }}">
+                    <li class="ico6">Nhắn tin</li>
+                </a>
+                {% if 'groom_facebook' in data|keys %}
+                    <a href="{{ data['groom_facebook'] }}" target="_blank" title="Facebook">
+                        <li class="ico7">Facebook</li>
+                    </a>
+                {% else %}
+                    <a href="http://facebook.com/thiepdodigital" target="_blank" title="Facebook">
+                        <li class="ico7">Facebook</li>
+                    </a>
+                {% endif %}
+                {% if 'groom_instagram' in data|keys %}
+                    <a href="{{ data['groom_instagram'] }}" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% else %}
+                    <a href="http://instagram.com/thiepdodigital" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% endif %}
+            </ul>
+            <p class="btn_go_snsbbs">Chúc mừng</p></div>
     </div>
     <!--// panel-groom -->
     <!-- panel-bride -->
@@ -340,29 +356,46 @@
          style="background:#eee url('/bundles/viettutweb/img/templates/fallinlove/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999;">
         <div class="bride-wrap">
             <ul>
-                <a href="tel:01000000000">
-                    <li class="ico1">신부에게 전화하기</li>
-                </a><a href="sms:01000000000">
-                    <li class="ico2">신부에게 문자하기</li>
-                </a><a href='http://facebook.com/dalpeng' target='_blank'>
-                    <li class='ico3'>페이스북 바로가기</li>
-                </a><a href="http://instagram.com/dalpeng2com" target="_blank">
-                    <li class="ico_insta">인스타그램 바로가기</li>
-                </a></ul>
-            <p class="btn_go_snsbbs">축하글 남기기</p></div>
+                <a href="tel:{{ data['bride_phone'] }}" title="Gọi điện">
+                    <li class="ico1">Gọi điện</li>
+                </a>
+                <a href="sms:{{ data['bride_phone'] }}" title="Nhắn tin">
+                    <li class="ico2">Nhắn tin</li>
+                </a>
+                {% if 'bride_facebook' in data|keys %}
+                    <a href="{{ data['bride_facebook'] }}" target="_blank" title="Facebook">
+                        <li class="ico3">Facebook</li>
+                    </a>
+                {% else %}
+                    <a href="http://facebook.com/thiepdodigital" target="_blank" title="Facebook">
+                        <li class="ico3">Facebook</li>
+                    </a>
+                {% endif %}
+                {% if 'bride_instagram' in data|keys %}
+                    <a href="{{ data['bride_instagram'] }}" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% else %}
+                    <a href="http://instagram.com/thiepdodigital" target="_blank" title="Instagram">
+                        <li class="ico_insta">Instagram</li>
+                    </a>
+                {% endif %}
+            </ul>
+            <p class="btn_go_snsbbs">Chúc mừng</p></div>
     </div>
     <!--// panel-bride -->
     <!-- panel-menu -->
     <div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;">
         <div class="menu-wrap ui-panel-inner">
             <ul data-role="listview" data-icon="false">
-                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider">결혼식에 초대합니다♥</li>
-                <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>GREETINGS</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>GALLERY</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_media"><span>MOVIE</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>GUESTBOOK</span></li>
-                <li class="menu_scrolls" data-rel="close" id="p_map"><span>LOCATION</span></li>
+                <li data-icon="delete"><a href="#" data-rel="close">Đóng</a></li>
+                <li data-role="list-divider">Space</li>
+                <li class="menu_scrolls" data-rel="close"><span>TRANG CHỦ</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>THÔNG TIN</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>ALBUM ẢNH</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_media"><span>VIDEO</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>LƯU BÚT</span></li>
+                <li class="menu_scrolls" data-rel="close" id="p_map"><span>ĐỊA ĐIỂM</span></li>
             </ul>
         </div>
     </div>
@@ -370,14 +403,14 @@
 
     <div class="lnb">
         <ul>
-            <li class="menu1 menu_scrolls on" id="m_topinfo"><span>Greetings</span></li>
-            <li class="menu2 menu_scrolls" id="m_gallery"><span>Gallery</span></li>
-            <li class="menu3 menu_scrolls" id="m_media"><span>Movie</span></li>
-            <li class="menu4 menu_scrolls" id="m_snsbbs"><span>Guestbook</span></li>
-            <li class="menu5 menu_scrolls" id="m_map"><span>Location</span></li>
+            <li class="menu1 menu_scrolls on" id="m_topinfo"><span>Thông tin</span></li>
+            <li class="menu2 menu_scrolls" id="m_gallery"><span>Album ảnh</span></li>
+            <li class="menu3 menu_scrolls" id="m_media"><span>Video</span></li>
+            <li class="menu4 menu_scrolls" id="m_snsbbs"><span>Lưu bút</span></li>
+            <li class="menu5 menu_scrolls" id="m_map"><span>Địa điểm</span></li>
         </ul>
     </div>
-    <div class="lnb_mobile"><a href="#right-panel"><img src="/bundles/viettutweb/img/templates/fallinlove/lnb_mobile.png" alt=""></a>
+    <div class="lnb_mobile"><a href="#right-panel"><img src="/bundles/viettutweb/img/templates/fallinlove/lnb_mobile.png" alt="menu"></a>
     </div>
 
 
@@ -387,10 +420,12 @@
              style="background:url('/bundles/viettutweb/img/templates/fallinlove/00f585a694b8533423d75e21a851af23.jpg') CENTER CENTER no-repeat; background-size:cover;"></div>
         <div class="header_box">
             <h1 class="header_title wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.5s">
-                <p class="title"><span class="fl">SAVE</span><span class="italic">the</span><span class="fr">DATE</span>
+                <p class="title">
+                    <span class="fl">SAVE</span><span class="italic">the</span><span class="fr">DATE</span>
                 </p>
-                <p><span class="fl date">2018.10.06</span><span class="fr time">11:00am</span></p></h1>
-            <div class="scrolldown wow fadeInDown" data-wow-duration="0.2s" data-wow-delay="1s"><span>아래로</span></div>
+                <p><span class="fl date">{{ date | date('d.m.Y') }}</span><span class="fr time">{{ date | date('H:i A') }}</span></p>
+            </h1>
+            <div class="scrolldown wow fadeInDown" data-wow-duration="0.2s" data-wow-delay="1s"><span>Kéo xuống</span></div>
         </div>
         <!--// header -->
 
@@ -400,60 +435,61 @@
                 <div class="greeting_photo"
                      style="background:url('/bundles/viettutweb/img/templates/fallinlove/00f585a694b8533423d75e21a851af23.jpg') CENTER CENTER no-repeat; background-size:cover;"></div>
                 <div class="greeting_textbox">
-                    <h2 class="title">Wedding Invitation</h2>
-                    <p class="greeting_text">
-                        우연히 시작된 작은 인연이<br/>
-                        다시는 없을 큰 인연으로 되기까지<br/>
-                        그리 길지 않은 시간이 걸렸습니다.<br/>
-                        <br/>
-                        우연을 운명으로 만드는<br/>
-                        그 시작의 자리에 <br/>
-                        소중한 분들을 모시고 싶습니다.<br/>
-                        <br/>
-                        부디 오셔서 저희의 뜻깊은 출발을<br/>
-                        축복해 주시기 바랍니다. </p>
+                    <h2 class="title">Trân trọng kính mời</h2>
+                    <p class="greeting_text">{{ data['greeting'] | raw }}</p>
 
                     <ul class="greeting_name">
                         <li class="gn_groom">
-                            <p><span class="gn4">신랑<strong>김동명</strong></span></p>
-                            <p><span class="gn1">김우진</span><span class="gn_and">,</span><span
-                                        class="gn2">최현미</span><span class="gn3">의 장남</span></p>
-                            <p class="panel"><a href="#panel_groom"><span class="icon"></span>신랑에게 연락하기</a></p>
+                            <p>
+                                <span class="gn4">Chú Rể<strong>{{ data['groom_name'] }}</strong></span>
+                            </p>
+                            <p>
+                                <span class="gn1">{{ data['groom_fa_name'] }}</span>
+                                <span class="gn_and">,</span>
+                                <span class="gn2">{{ data['groom_mo_name'] }}</span>
+                                {#<span class="gn3">의 장남</span>#}
+                            </p>
+                            <p class="panel"><a href="#panel_groom"><span class="icon"></span>Liên hệ chú rể</a></p>
                         </li>
                         <li class="gn_bride">
-                            <p><span class="gn4">신부<strong>이은</strong></span></p>
-                            <p><span class="gn1">이찬혁</span><span class="gn_and">,</span><span
-                                        class="gn2">윤지은</span><span class="gn3">의 차녀</span></p>
-                            <p class="panel"><a href="#panel_bride"><span class="icon"></span>신부에게 연락하기</a></p>
+                            <p>
+                                <span class="gn4">Cô Dâu<strong>{{ data['bride_name'] }}</strong></span>
+                            </p>
+                            <p>
+                                <span class="gn1">{{ data['bride_fa_name'] }}</span>
+                                <span class="gn_and">,</span>
+                                <span class="gn2">{{ data['bride_mo_name'] }}</span>
+                                {#<span class="gn3">의 차녀</span>#}
+                            </p>
+                            <p class="panel"><a href="#panel_bride"><span class="icon"></span>Liên hệ cô dâu</a></p>
                         </li>
                     </ul>
                     <div class="greeting_loca">
-                        <p>2018.10.06 (토요일) 오전 11시</p>
-                        <p>수아비스 아모르홀</p></div>
+                        <p>{{ date | long_date }}, hồi {{ date | date('H:i') }}</p>
+                        <p>{{ data['place'] }}</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="header_panel">
-            <a href="#panel_groom"><p class="groom">Groom</p></a>
-            <a href="#panel_bride"><p class="bride">Bride</p></a>
+            <a href="#panel_groom"><p class="groom">Chú rể</p></a>
+            <a href="#panel_bride"><p class="bride">Cô dâu</p></a>
         </div>
         <!--// greeting -->
     </div>
 
-    <!-- 혼주연락처 -->
     <div class="parents_wrap">
         <h2 class="pa-tit">
-            신랑·신부 혼주 연락처
+            Liên Hệ
         </h2>
         <ul class="pa-list" data-count="2">
-            <li class="pa-groom"><span class="ico-arrow">신랑 혼주 연락하기</span></li>
-            <li class="pa-bride"><span class="ico-arrow">신부 혼주 연락하기</span></li>
+            <li class="pa-groom"><span class="ico-arrow">Chú rể</span></li>
+            <li class="pa-bride"><span class="ico-arrow">Cô dâu</span></li>
         </ul>
     </div>
-    <!--// 혼주연락처 -->
 
     <div class="gallery_wrap ui-cont-b" id="sk_gallery">
-        <h2 class="title hidden">Wedding Gallery</h2>
+        <h2 class="title hidden">ALBUM ẢNH</h2>
 
         <div class="gal_list2">
             <div class="gal_size"></div>
@@ -488,7 +524,7 @@
 
     {% if isTemplate %}
     <div class="movie_wrap ui-cont-b" id="sk_media">
-        <h2 class="title hidden">Wedding Movie</h2>
+        <h2 class="title hidden">VIDEO</h2>
         <div class="ul-body">
             <div class="message"></div>
             <div class="movie_container movie1">
@@ -506,7 +542,7 @@
     {% else %}
         {% if embed | length > 0 %}
             <div class="movie_wrap ui-cont-b" id="sk_media">
-                <h2 class="title hidden">Wedding Movie</h2>
+                <h2 class="title hidden">VIDEO</h2>
                 <div class="ul-body">
                     <div class="message"></div>
                     <div class="movie_container movie1">
@@ -522,7 +558,7 @@
     {% endif %}
 
     <div class="guestbook_wrap ui-cont-b" id="sk_snsbbs">
-        <h2 class="title btn_go_snsbbs"><img src="/bundles/viettutweb/img/templates/fallinlove/guestbook_title.png" alt=""></h2>
+        <h2 class="title btn_go_snsbbs"><img src="/bundles/viettutweb/img/templates/fallinlove/guestbook_title.png" alt="guestbook title"></h2>
 
         <div class="ul-body col-3">
             <div id="div_snsbbs">
@@ -738,18 +774,18 @@
     </div>
 
     <div class="location_wrap ui-cont-b" id="sk_map">
-        <h2 class="title hidden"><span>LOCATION</span></h2>
+        <h2 class="title hidden"><span>ĐỊA ĐIỂM</span></h2>
 
         <div class="ul-body">
             <ul class="lo_tab_wrap">
-                <li class="tab_btn wh locationtabs on" id="tabs_wedding">Wedding Ceremony</li>
-                <li class="tab_btn rh locationtabs" id="tabs_party">Wedding Reception</li>
+                <li class="tab_btn wh locationtabs on" id="tabs_wedding">Lễ Thành Hôn</li>
+                <li class="tab_btn rh locationtabs" id="tabs_party">Tiệc Cưới</li>
             </ul>
         </div>
         <div class="ul-body lo_contents locationdivs" id="div_wedding">
 
             <div class="lo_box">
-                <h3 class="lo_title"><span class="icon"></span>수아비스 아모르홀</h3>
+                <h3 class="lo_title"><span class="icon"></span>{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3>
                 <div class="lo_map">
                     <div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
                 </div>
@@ -763,7 +799,7 @@
                                 <input type='hidden' name='daddr' value='{{ data["home"] }}'/>
                             </form>
                             <div class="nav-1">
-                                <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                <div class="ui-btn-nav wedding_kimnavi">
                                     <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff"
                                           onclick="getHomePath()">CHỈ ĐƯỜNG</span>
                                 </div>
@@ -775,31 +811,24 @@
                 <div class="ui-block-b">
                     <table class="lo_container">
                         <tr>
-                            <th class="lo_date"><span>Date</span></th>
-                            <td class="txt">2018년 10월 6일 토요일 오전 11시</td>
+                            <th class="lo_date"><span>Thời gian</span></th>
+                            <td class="txt">{{ weddingDate | long_date }}, {{ weddingDate | date('H:i A') }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_loca"><span>Location</span></th>
-                            <td class="txt">강남구 신사동 504-11</td>
+                            <th class="lo_loca"><span>Địa chỉ</span></th>
+                            <td class="txt">{{ data['home'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_tel"><span>Tel</span></th>
-                            <td class="txt">02-543-9500</td>
+                            <th class="lo_tel"><span>Liên hệ</span></th>
+                            <td class="txt">{{ data['home_contact'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_info"><span>Information</span></th>
-                            <td>한남대교 방향 도보 5분거리내</td>
+                            <th class="lo_info"><span>Hướng dẫn</span></th>
+                            <td>{{ data['home_info'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_bus"><span>Bus Info</span></th>
-                            <td>지선버스(초록) ; 4212, 4412, 4431<br/>
-                                간선버스(파랑) : 140, 142, 144, 145, 148, 240<br/>
-                                광역버스(빨강) : 1500, 3030, 3100, 6800, 9404
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="lo_subway"><span>Subway Info</span></th>
-                            <td>3호선 신사역 6번 출구</td>
+                            <th class="lo_bus"><span>Xe khách</span></th>
+                            <td>{{ data['bus_info'] }}</td>
                         </tr>
                     </table>
                 </div>
@@ -808,7 +837,7 @@
 
         <div class="ul-body lo_contents locationdivs hide" id="div_party">
             <div class="lo_box">
-                <h3 class="lo_title"><span class="icon"></span>달팽 웨딩홀</h3>
+                <h3 class="lo_title"><span class="icon"></span>{{ data['place'] }}</h3>
                 <div class="lo_map">
                     <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
                 </div>
@@ -822,7 +851,7 @@
                                 <input type='hidden' name='daddr' value='{{ data["place_addr"] }}'/>
                             </form>
                             <div class="nav-1">
-                                <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                <div class="ui-btn-nav wedding_kimnavi">
                                     <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff"
                                           onclick="getPath()">CHỈ ĐƯỜNG</span>
                                 </div>
@@ -834,33 +863,24 @@
                 <div class="ui-block-b">
                     <table class="lo_container">
                         <tr>
-                            <th class="lo_date"><span>Date</span></th>
-                            <td class="txt">2018.10.05 오후 7시 ~ 오후 10시</td>
+                            <th class="lo_date"><span>Thời gian</span></th>
+                            <td class="txt">{{ date | long_date }}, {{ date | date('H:i A') }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_loca"><span>Location</span></th>
-                            <td class="txt">서울시 송파구 중대로 135</td>
+                            <th class="lo_loca"><span>Địa chỉ</span></th>
+                            <td class="txt">{{ data['place_addr'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_tel"><span>Tel</span></th>
-                            <td class="txt">(02) 559-1004</td>
+                            <th class="lo_tel"><span>Liên hệ</span></th>
+                            <td class="txt">{{ data['place_phone'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_info"><span>Information</span></th>
-                            <td>주차가능</td>
+                            <th class="lo_info"><span>Hướng dẫn</span></th>
+                            <td>{{ data['place_info'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_bus"><span>Bus Info</span></th>
-                            <td>지선버스(초록) ; 4212, 4412, 4431<br/>
-                                간선버스(파랑) : 140, 142, 144, 145, 148, 240<br/>
-                                광역버스(빨강) : 1500, 3030, 3100, 6800, 9404<br/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="lo_subway"><span>Subway Info</span></th>
-                            <td>3호선 경찰병원역 1번출구<br/>
-                                8호선 가락시장역 4번출구<br/>
-                            </td>
+                            <th class="lo_bus"><span>Xe khách</span></th>
+                            <td>{{ data['bus_info'] }}</td>
                         </tr>
                     </table>
                 </div>

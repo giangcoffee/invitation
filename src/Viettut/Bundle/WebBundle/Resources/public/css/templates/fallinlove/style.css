@@ -346,6 +346,7 @@ background-color: #fde8de; }
 */
 .nav-m .nav-1,
 .nav-m .nav-2 {float:none; width:100%;}
+.nav-m form input {margin-bottom: 0 !important;font-size:16px !important;}
 .ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 5px center no-repeat; background-size:50px}
 .ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 5px center no-repeat; background-size:50px}
 .ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
