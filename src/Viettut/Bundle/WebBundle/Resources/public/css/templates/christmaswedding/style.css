@@ -1,0 +1,475 @@
+@charset "utf-8";
+/* 임시css */
+.snsbbs_sections {float:left; width:25%;}
+
+
+.ui-page-theme-a {text-shadow:none!important}
+
+/* Global */
+.ul-body   {position:relative; max-width: 980px; margin: 0 auto; padding:0 10px}
+.ul-body:after {display:block; content:''; clear:both}
+.ui-cont-a {padding: 0    1em}
+.ui-cont-b {padding: 2em  0}
+.ui-cont-c {padding-top: 2em}
+.ui-cont-d {padding-bottom: 2em}
+.btn_wrap {cursor:pointer;}
+.p-r {position:relative}
+
+/* Layout */
+body {font-size: 100%; background-color:#fff;}
+/*img  {max-width:100%;}*/
+.greeting_wrap {position:relative; margin-top:70px; background: url('/bundles/viettutweb/img/templates/christmaswedding/greeting_bg.gif') repeat;}
+.parents_wrap {background:#f0f0f0 url('/bundles/viettutweb/img/templates/christmaswedding/movie_bg.gif') 0 0 repeat;padding: 50px 0 25px;}
+.guestbook_wrap {background:#fff url('/bundles/viettutweb/img/templates/christmaswedding/guestbook_tree.png') no-repeat 50% 100px; min-height:450px}
+.contact_wrap {background-color:#fff}
+.gallery_wrap {min-height:150px; background-color:#fff;}
+.movie_wrap {background:#f0f0f0 url('/bundles/viettutweb/img/templates/christmaswedding/movie_bg.gif') 0 0 repeat; box-shadow: inset 0px 6px 6px -6px rgba(0, 0, 0, 0.5);}
+.location_wrap {background:#f0f0f0 url('/bundles/viettutweb/img/templates/christmaswedding/location_bg.png') 0 0 repeat; box-shadow: inset 0px 6px 6px -6px rgba(0, 0, 0, 0.5);}
+.location_wrap:after {display:block; content:''; clear:both;}
+.footer {background-color:#ccc;}
+
+h1 img, h2 img {height:120px; padding:30px 0}
+.gallery_wrap h2 {background-size:auto 120px;font-size:30px; line-height:30px; margin:30px 0; padding:0 0 0 30px;}
+
+.parents_wrap .pa-tit {color:#222}
+.parents_wrap .pa-list li {background-color:#222}
+
+
+
+/* Font */
+.info_txt {font-size:90%; color:#848484;}
+
+/* Main */
+/*.header {position:fixed;font-family: 'Oswald', sans-serif; font-size:0.8em; text-transform:uppercase; width: 100%; z-index:999; background-color:#000; }
+.header:after {clear:both; content:''; display:block}
+.header .lnb {overflow: hidden; width:100%; height: 70px; box-sizing: border-box; -webkit-box-sizing: border-box;}
+.header .lnb li {float: left; width:20%; height:100%; padding-top:25px; border-right: 1px solid #333; box-sizing: border-box; -webkit-box-sizing: border-box; 
+   text-shadow:none; color:#fff; text-align:center; cursor:pointer;}
+.header .lnb li:last-child {border-right:none}
+.header .lnb li:hover {background-color:#da2128}
+.header .lnb li.on {padding-top:35px; background:#da2128 url('../img/lnb_icon.png') no-repeat 50% 30%; background-size:34px;}
+*/
+.header {position:fixed;font-family: 'Oswald', sans-serif; font-size:0.8em; text-transform:uppercase; width: 100%; z-index:999; background-color:#000; }
+.header:after {clear:both; content:''; display:block}
+.header .lnb {overflow: hidden; width:100%; height: 70px; box-sizing: border-box; -webkit-box-sizing: border-box;} /* 70px */
+.header .lnb li {float: left; width:20%; height:100%; padding-top:25px; border-right: 1px solid #333; box-sizing: border-box; -webkit-box-sizing: border-box; 
+   text-shadow:none; color:#fff; text-align:center; cursor:pointer;}
+.header .lnb li:last-child {border-right:none}
+.header .lnb li:hover {background-color:#da2128}
+.header .lnb li.on {padding-top:14px; background:#da2128}
+.header .lnb li.on .icon {display:block;width:50px; height:20px; margin:0 auto; background:url('/bundles/viettutweb/img/templates/christmaswedding/lnb_icons.png') no-repeat 0 50%; background-size:250px;}
+.header .lnb li.menu1 .icon {background-position:0 0}
+.header .lnb li.menu2 .icon {background-position:-50px 0}
+.header .lnb li.menu3 .icon {background-position:-100px 0}
+.header .lnb li.menu4 .icon {background-position:-150px 0}
+.header .lnb li.menu5 .icon {background-position:-200px 0}
+
+
+.header .lnb_title {display:none; float:left; padding-left:20px; font:normal 1em/50px 'Times New Roman','Nanum Gothic'; color:#fff; max-width:250px; height:50px; overflow:hidden; box-sizing: border-box;}
+.header .lnb_mobile {display:none; float:right; width:50px; height:50px}
+.header .lnb_mobile img {width:50px; height:50px;}
+
+.bar_title {border-bottom:2px solid #000}
+.bar_title span {display:block; font-size:0.9em; font-weight:bold; text-align:right; padding:0 0 5px 0}
+.redbar_title {border-bottom:2px solid #da2128}
+.redbar_title span {display:block; font:italic 0.9em 'Times New Roman', sans-serif; text-align:right; padding:0 0 5px 0; color:#da2128}
+.redbar_title span strong {font-size:1.1em; font-weight:bold}
+
+/* panel */
+.panel_btn {position:absolute; bottom:15%; left:50%; width:98%; height:60px; margin:0 0 0 -49%; z-index:2}
+.panel_btn a {display:block; width:60px; height:60px; background:url('/bundles/viettutweb/img/templates/christmaswedding/panel_btn.png') no-repeat 0 0; background-size:120px; font-size:0; line-height:0; text-indent:-9999px}
+.panel_btn .pb_groom {float:left; background-position:0 0}
+.panel_btn .pb_bride {float:right; background-position:-60px 0}
+
+.groom-wrap,
+.bride-wrap {width:200px; margin:480px 0 0 25px;}
+.groom-wrap p,
+.groom-wrap ul li,
+.bride-wrap p,
+.bride-wrap ul li {cursor:pointer;}
+
+.groom-wrap p, 
+.bride-wrap p {width:190px; margin-top:15px; border-radius:40px; background-color:#da1215;
+ font-size:1em; line-height:40px; font-weight:bold; text-align:center; color:#fff; text-shadow:none!important}
+
+.groom-wrap ul,
+.bride-wrap ul {overflow:hidden; text-indent:-9999px}
+.groom-wrap ul li,
+.bride-wrap ul li {float:left; width:40px; height:40px; margin:0 10px 0 0;border-radius:40px; background:#da1215 url('/bundles/viettutweb/img/templates/christmaswedding/panel_icon.png') 0 0 no-repeat; background-size:160px;}
+
+.groom-wrap ul li.ico5,
+.bride-wrap ul li.ico1 {background-position:0 0px}
+.groom-wrap ul li.ico6,
+.bride-wrap ul li.ico2 {background-position:-40px 0}
+.groom-wrap ul li.ico7,
+.bride-wrap ul li.ico3 {background-position:-80px 0}
+.groom-wrap ul li.ico8,
+.bride-wrap ul li.ico4 {background-position:-120px 0}
+
+/* Greeting */
+.greeting_bg {position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.3; z-index:0;}
+.greeting_photo {position:relative; width:95%; margin:1em auto; text-align:center; overflow:visible;}
+.greeting_photo::after {background-color:#000;
+  opacity: 0.5;
+  top: 0;
+  left: 4%;
+  right: 4%;
+  bottom: 2%;
+  position: absolute;
+  z-index: 0;
+  content: ""; 
+  transform: rotate(2deg); -webkit-transform: rotate(2deg)}
+
+.greeting_photo img {position:relative; width:90%; border:8px solid #fff; z-index:1}
+
+.greeting_textbox {margin:1em 40px 2em 0; font-size:1em; line-height:1.5em; color:#000}
+
+.greeting_name {margin:0 0 80px 0; border-collapse: collapse; table-layout:fixed}
+.greeting_name thead {display:none}
+.gn1 span {padding:0 0.3em; float:right}
+.gn1 {padding:0.5em 0; font-size:0.9em; line-height:1; color:#000;}
+.gn2 {padding:0.5em 0.2em 0.5em 0; font-size:0.9em; line-height:1; color:#000}
+.gn3 {min-width:60px; padding:0.5em 0.5em 0.5em 0; font-size:0.9em; line-height:1; color:#000}
+.gn4 {min-width:70px; padding:0.5em 0; font-size:1.1em; font-weight:bold; line-height:1; color:#000}
+.gn3 span {display:block; text-align:right; padding-right:0.5em; color:#666; font-size:0.9em;}
+
+.greeting_info {position:absolute; bottom:3%; left:49%; width:46%; background:url('/bundles/viettutweb/img/templates/christmaswedding/bar_bg2.png') no-repeat 0 50%; background-size:auto 100px;
+  padding:5px 10px 5px 40px; font-size:0.85em; color:#fff}
+.greeting_date {float:left; display:block; margin:0 10px 0 0}
+.greeting_loca {float:left; display:block; margin:0; padding:0 40px 0 0}
+
+/* gallery */
+.gallery_wrap h2 {background:url('/bundles/viettutweb/img/templates/christmaswedding/title_02.png') no-repeat 0 50%; background-size:auto 120px;
+font-size:50px; line-height:50px; margin:30px 0; padding:0 0 0 30px; font-family:'Times New Roman', sans-serif; font-weight:bold;}
+
+.gal_list > div {overflow:hidden;}
+.gal_list > div > a > div {float:left; width:30%; height:280px; border:1px solid #f00; box-sizing:border-box;}
+.gallery_textbox {height:60px; margin:0 0 2% 0; padding:22px 0 0 80px; line-height:1; background:#000 url('/bundles/viettutweb/img/templates/christmaswedding/gallery_icon2.png') no-repeat 0 0; background-size:60px; color:#fff; font-size:0.9em;}
+.gallery_snowbox {width:60px; height:60px; background:url('/bundles/viettutweb/img/templates/christmaswedding/gallery_icon1.png') no-repeat; background-size:60px; }
+
+.gal_more {float: right; width: 120px; height: 40px; margin: 10px 0px 0px; padding: 0 0 0 15px; border-radius: 0px; box-sizing: border-box; cursor: pointer; 
+background-color:#da1218;background:#da1218 url("/bundles/viettutweb/img/templates/christmaswedding/gal_more_w.png") no-repeat scroll 85% 50%;background-size:13px auto; border: 0px solid #fff;
+color: #fff; text-align: left; line-height: 36px; font-size: 1.1em; font-weight: bold; font-style: italic; font-family: 'Times New Roman', serif;}
+
+.gal_list2 {}
+.gal_list2 .gal_frame img {border: 1px solid #f00}
+.gal_list2 .gal_more {bottom:0;right:0.5%;margin: 0;}
+@media (max-width: 768px){
+  .gal_list2 .gal_more {right:1%;}
+}
+@media (max-width: 480px){
+  .gal_list2 .gal_more {right:1.5%;width:97%;background-position:95% 50%}
+}
+
+/* Movie */
+.movie_wrap .ul-body {background:url('/bundles/viettutweb/img/templates/christmaswedding/movie_img.png') 4% 0 no-repeat; background-size:220px;}
+.movie_url {text-align:right; padding:50px 10px 10px 0; font:italic bold 24px 'Times New Roman',sans-serif; text-decoration:;}
+.movie_url span {color:#da2128}
+.movie_container {}
+.movie_container ul {width:75%; margin:0 0 0 25%}
+.movie_textbox {width:75%; margin:2% 0 0 25%; font-family:'Times New Roman', sans-serif; font-style:italic; font-size:1.1em; line-height:1.5em; text-align: justify; letter-spacing:-0.3px;}
+.movie_textbox span {color:#da2128}
+.movie_container:after {display:block; content:''; clear:both}
+.movie1 ul li,
+.movie2 ul li,
+.movie3 ul li,
+.movie4 ul li {position:relative; overflow:hidden}
+.movie1 ul li img,
+.movie2 ul li img,
+.movie3 ul li img,
+.movie4 ul li img {position:absolute; top:50%; left:0; width:100%; height:auto; margin:-38% 0 0 0;z-index:0}
+.android_play {position:absolute; display:block; top:50%; left:50%; cursor:pointer;z-index:1;
+  background:url('/dalpeng/skin/_common/img/android_play.png') no-repeat 0 0; background-size:100%; font-size:0; line-height:0; text-indent:-9999;
+  width:80px; height:54px;margin:-27px 0 0 -40px}
+
+.movie1 ul li { width:100%; height:480px; margin:0;}
+
+.movie2 ul li { width:100%; height:480px; margin:0 0 2% 0;}
+
+.movie3 ul li {float:left; width:49%; height:250px; margin:0;}
+.movie3 ul li:first-child { width:100%; height:480px; margin:0 0 2% 0;}
+.movie3 ul li:nth-child(2) {margin-right:2%}
+
+.movie4 ul li {float:left; width:49%; height:250px; margin:0 0 2% 0;}
+.movie4 ul li:first-child {margin-right:2%}
+.movie4 ul li:nth-child(3) {margin-right:2%}
+
+.nomovie {background-color:#ccc}
+.nomovie span {position:absolute; top:50%; left:50%; margin:0 0 0 -100px; display:block; width:200px; text-align:center; color:#fff}
+
+@media all and (max-width: 640px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {position:relative; float:none; width:100%; height:240px; margin:0 0 2% 0}
+  .android_play {width:60px; height:40px;margin:-20px 0 0 -30px}
+}
+@media all and (max-width: 480px) {
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {height:220px}
+}
+
+/* Guestbook */
+.gb_btn {position:absolute; bottom:45px; right:2%; width:19%; background:url('/bundles/viettutweb/img/templates/christmaswedding/bar_bg2.png') no-repeat 0 50%;
+background-size:auto 100px; line-height:40px; padding-left:40px; font-size:0.85em; color:#fff;}
+
+
+#div_snsbbs {padding-top:25px;}
+.gb_cont_box {width:100%; padding:1em 0; font-size:0.85em; color:#656565; background:rgba(255,255,255,0.7); border:2px solid #da2128; border-radius:10px; box-sizing:border-box;}
+.snsbbs_sections:first-child {margin-top:-18px; background:url('/bundles/viettutweb/img/templates/christmaswedding/guestbook_first.png') no-repeat 50% 0; background-size:40px}
+.snsbbs_sections:first-child .gb_cont_box {margin-top:25px; background:rgba(218,33,40,0.9); color:#fff!important}
+
+.pro_info {padding:0 1em;}
+.pro_img {position:relative; float:left;}
+.pro_img img {width:50px; height:50px; border-radius:50px}
+.pro-sns {position:absolute; top:65%; left:-5px; width:20px; height:20px; background:url('/dalpeng/skin/_common/img/ico_spr_sns24.png') -20px 0 no-repeat; background-size:200%;}
+.pro-sns span   {display:block; text-indent:-9999px; overflow:hidden;}
+.pro-sns.facebook {background-position:   -20px   0px;}
+.pro-sns.twitter  {background-position:   -20px   -20px;}
+.pro-sns.kakao    {background-position:   -20px   -40px;}
+.pro-sns.naver    {background-position:   -20px   -60px;}
+.pro-sns.dalpeng  {background-position:   -20px   -80px;}
+.pro-sns.google   {background-position:   -20px   -100px;}
+.pro-sns.notmember  {background-position:   -20px   -120px;}
+.pro-sns.instagram  {background-position:   -20px   -140px}
+.pro_txt {float:left; padding:0.3em 0 0 1em; max-width:60%}
+.pro_txt .date {font-size:0.8em; letter-spacing:-0.5px}
+
+.gb_cont {clear:both; padding:1em;}
+.gb_cont li {margin-bottom:1em;}
+.gb_cont li img {max-width:100%;}
+
+.gb_skip {overflow:hidden; padding:0 1em;}
+.snsbbs_sections:first-child .gb_comm {background-color:#fff; color:#da1218}
+.gb_skip .gb_comm {width:30px; height:30px; border-radius:30px; background-color:#da1218; color:#fff; font-size:0.95em; font-weight:bold }
+.gb_skip .gb_comm span {display:block; text-align:center; line-height:30px}
+
+/* Guestbook :: 글없을때 */
+.gb_default_box {width:100%; height:auto;}
+.gb_default_box .comm-cont {padding:5em 0; text-align:center;}
+.gb_default_box .comm-cont p {margin-bottom:2em; font-size:1em; color:#666; text-shadow:none; text-shadow:0 1px 1px rgba(255,255,255,.5);}
+.gb_default_box .comm-cont span {display:block;}
+.btn_write {max-width:350px; padding:.5em 1em; margin:0 auto; text-align:center; cursor:pointer; background-color:#000; background:rgba(0,0,0,0.7)}
+.btn_write span {color:#fff;}
+.btn_write span em {}
+.btn_write span:hover em {}
+
+.btn-snsbbs {max-width:1024px; margin:0 auto;}
+.btn-snsbbs .btn_go_snsbbs { margin:0 15px; float:right; display:inline-block; padding:10px 0; background:#66afb5 url('/bundles/viettutweb/img/templates/christmaswedding/btn_arrow_w.png') no-repeat 98% 50%;
+background-size:22px 22px; border-radius:5px; color:#fff;text-shadow:none; font-weight:bold; text-align:center}
+.btn-snsbbs .btn_go_snsbbs span {padding:0 60px}
+
+/* Location */
+.location_wrap .col-2 .ui-block-b {float:right;}
+#div_wedding.col-2,#div_party.col-2 {overflow:visible!important; margin-top:-52px}
+#div_wedding.col-2 .ui-block-b,
+#div_party.col-2 .ui-block-b{margin-top:50px}
+
+.lo_tab_wrap {width:100%; height:50px; overflow:hidden; border-bottom:2px solid #da1218;}
+.lo_tab_wrap li {float:left; width:50%; margin:5px 1% 0 0; line-height:45px;
+font-family:"Times New Roman", sans-serif; color:#fff; text-align:center; font-size:1.3em; letter-spacing:-0.5px; font-style: italic; background-color:#aaa}
+.lo_tab_wrap li.on {width:49%; line-height:50px; margin-top:0; background-color:#da1218}
+.lo_tab_wrap li:last-child {margin-right:0}
+
+.lo_map {margin-top:52px; margin-bottom:1em;}
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas {height:400px!important;}
+.lo_map .ui-link img {height:100%;}
+
+.lo_pin {position:absolute; width:100%; height:52px; top:0; background-color:#000; background:rgba(0,0,0,0.8); color:#fff; box-sizing: border-box; -webkit-box-sizing: border-box;}
+.lo_pin span {display:block; padding:14px 0 14px 40px; background:url('/bundles/viettutweb/img/templates/christmaswedding/location_pin.png') 10px 10px no-repeat;
+font-size:1.1em; background-size:24px}
+
+.nav-wrap {}
+.nav-wrap ul {overflow:hidden; margin-top:10px;}
+.nav-wrap ul li {float:left; margin-right:30px;}
+.nav-m {margin-top:5px;}
+.nav-m .nav-1 {float:left; width:50%;}
+.nav-m .nav-2 {float:left; width:50%;}
+.ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 5px center no-repeat; background-size:44px}
+.ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 5px center no-repeat; background-size:44px}
+
+.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-icon-nav1 {display:block;color: #333!important;border: 1px solid #bbb!important;text-shadow: 0 0 0 transparent!important;background-color:#fae100!important;padding:12px 0;}
+.ui-btn-nav .ui-icon-nav2 {display:block;border:1px solid #bebebe!important;background-color:#fff!important;padding: 12px 0;}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none;}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.8em}
+
+.lo_container {position:relative; margin:1em 0; width:100%; border-collapse: collapse;}
+.lo_container th {width:12%; min-width:50px; height:45px; position:relative; border-bottom:1px solid #da1218;}
+.lo_container th .icon{display:block; width:25px; height:25px; margin:0 auto; background:url('/bundles/viettutweb/img/templates/christmaswedding/location_icon.png') no-repeat 0 0; background-size:25px; font-size:0; line-height:0; text-indent:-9999px; }
+.lo_container th .txt {display:block; height:15px; font:italic bold 0.65em/15px 'Times New Roman',Sans-serif; letter-spacing:-0.5px; text-indent:0; color:#da1218}
+.lo_container td {width:88%; min-height:35px; border-bottom:1px solid #ccc; margin:0 0 0 10%; padding:10px 0 10px 5px; font-size:0.8em; line-height:1.6em; color:#000;}
+
+th.lo_info, th.lo_bus, th.lo_subway {height:55px}
+
+th.lo_date .icon {background-position:0 0}
+th.lo_loca .icon {background-position:0 -25px}
+th.lo_tel .icon {background-position:0 -50px}
+th.lo_info .icon {background-position:0 -75px}
+th.lo_bus .icon {background-position:0 -100px}
+th.lo_subway .icon {background-position:0 -125px}
+
+.col-2,
+.col-3,
+.col-4 {position:relative; overflow:hidden;}
+
+.col-2 .ui-block-a {float:left; width:49%;margin-right:2%}
+.col-2 .ui-block-b {float:left; width:49%;}
+
+.greeting_wrap .col-2 .ui-block-a {float:left; width:49%;margin-right:0}
+.greeting_wrap .col-2 .ui-block-b {float:left; width:51%;}
+
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0 }
+.col-3 .ui-block-c {width:32%;}
+
+.gallery_wrap .col-3 .ui-block-a,
+.gallery_wrap .col-3 .ui-block-b {margin:0 2% 2% 0}
+.gallery_wrap .col-3 .ui-block-c {margin:0 0 2% 0}
+
+.col-2g {position:relative;}
+.col-2g .ui-block-a {float:left; width:49%; margin:0 0 2% 0;}
+.col-2g .ui-block-b {float:right; width:49%; margin:0 0 15px 0;}
+.col-2g .gallery_snowbox {position:absolute;bottom:0;left:49%;margin: 0 0 2% -60px}
+.col-2g .gallery_snowbox.gallery4_snowbox{margin-bottom:15px}
+
+.col-3g {margin:-75px 0 0 0}
+.col-3g .ui-block-a {width:40.8%; height:360px; margin:0 2% 2% 0}
+.col-3g .ui-block-b {width:28.2%; margin:80px 0 2% 0}
+.col-3g .ui-block-c {float:right; width:27%; margin:80px 0 2% 0}
+
+.ui-body-d {margin:2%;}
+#div_snsbbs .ui-body-d {margin:7px;}
+
+/* 980 이하 */
+@media all and (max-width: 980px) {
+  .col-2g .ui-block-a {height:355px}
+  .col-3g {margin:0}
+  .col-3g .ui-block-a,
+  .col-3g .ui-block-b {width:32%; height:280px; margin:0 2% 0 0 }
+  .col-3g .ui-block-c {width:32%; margin:0}
+  .col-2g .gallery_snowbox {display:none;}
+  .gallery_textbox {margin:2% 0 20px; padding:14px 0 0 80px; font-size:0.9em}
+  .gallery_textbox strong {display:block;margin:0 0 5px 0}
+  .nav-m .nav-1,
+  .nav-m .nav-2 {float:none; width:100%;}
+}
+
+/* 800 이하 */
+@media all and (max-width: 800px) {
+  h1 img, h2 img {height:100px; padding:10px 0}
+  .panel_btn a {display:block; width:50px; height:50px; background-size:100px;}
+  .panel_btn .pb_groom {background-position:0 0}
+  .panel_btn .pb_bride {background-position:-50px 0}
+  .greeting_textbox {font-size:0.95em;}
+  .gallery_wrap h2 {background-size:auto 100px;font-size:35px; line-height:40px; margin:20px 0; padding:0 0 0 20px;}
+  .guestbook_wrap {background-position: 50% 250px}
+  .gb_btn {bottom:30px; right:2%; width:25%}
+  .movie_url {font-size:20px}
+  .lo_tab_wrap li { font-size:1.2em;}
+  .nav_info {font-size:0.7em; text-align:center; margin:0 0 4% 0}
+}
+
+@media all and (max-width: 640px) {
+  .col-2 .ui-block-a, .greeting_wrap .col-2 .ui-block-a,
+  .col-2 .ui-block-b, .greeting_wrap .col-2 .ui-block-b {float:left; width:100%;}
+
+  .gal_list .col-3 .ui-block-a {float:left; width:49%; margin:0 2% 2% 0;}  
+  .gal_list .col-3 .ui-block-b {float:left; width:49%; margin:0 0 2% 0;} 
+  .gal_list .col-3 .ui-block-c {float:left; width:100%; margin:0 0 2% 0;}
+
+  .col-2g .ui-block-a {height:345px}
+
+  .col-3g .ui-block-a {float:left; width:100%; margin:0 0 2% 0;}
+  .col-3g .ui-block-b {float:left; width:49%; margin:0 2% 2% 0;}  
+  .col-3g .ui-block-c {float:left; width:49%; margin:0 0 2% 0;} 
+  .panel_btn {top:40%}
+
+  h1 img, h2 img {height:90px; padding:10px 0}
+  .greeting_textbox {width:98%; margin:10px auto; font-size:0.9em; text-align:center}
+  .greeting_name {margin:0 auto 40px}
+  .gn1 {padding:0.5em 0; font-size:0.8em; line-height:1}
+  .gn2 {padding:0.5em 0.1em 0.5em 0; font-size:0.8em; line-height:1}
+  .gn3 {min-width:45px; padding:0.5em 0.1em 0.5em 0; font-size:0.8em; line-height:1}
+  .gn4 {min-width:50px; font-size:1em; font-weight:bold; line-height:1}
+
+  .gallery_textbox {height:50px; padding:9px 0px 0px 20px; background-image:none; background-size:50px; color:#fff; font-size:0.85em;}
+  
+  .greeting_info {position:absolute; bottom:0; left:0; right:0; width:100%; margin:0 auto}
+
+  .guestbook_wrap {background-image:none; background-color:#fff;}
+  .guestbook_wrap {min-height:300px}
+  .gb_btn {position:relative; bottom:0; right:0; width:80%; margin:0 auto; line-height:50px; }
+  .btn_write {max-width:90%; background:transparent;}
+  .btn_write span {color:#000;}
+
+  .movie_url {font-size:18px; padding-top:30px}
+  .movie_container ul {width:100%; margin:0}
+  .movie_textbox {width:100%; margin:0; font-size:0.9em; line-height:1.2em}
+  .movie_wrap .ul-body {background-image:none;}
+
+  #div_wedding.col-2,#div_party.col-2 {overflow:visible!important; margin-top:0}
+  #div_wedding.col-2 .ui-block-b,
+  #div_party.col-2 .ui-block-b{margin-top:0}
+  .location_wrap .col-2 .ui-block-a, 
+  .location_wrap .col-2 .ui-block-b {float:left; width:100%;}
+  .lo_tab_wrap li { font-size:1.1em;}
+
+}
+
+
+/* grid 모바일용 */
+@media all and (max-width: 480px) {
+  .col-2 .ui-block-a, 
+  .col-2 .ui-block-b {float:left; width:100%;}
+  .col-2g .ui-block-a, 
+  .col-2g .ui-block-b {float:left; width:100%; margin:0 0 2% 0;}
+  /*.col-2g .ui-block-a {height:280px}*/
+  .gal_list .col-3 .ui-block-a, .col-3 .ui-block-a, 
+  .gal_list .col-3 .ui-block-b, .col-3 .ui-block-b, 
+  .gal_list .col-3 .ui-block-c, .col-3 .ui-block-c {float:left; width:100%; margin:0 0 2% 0;}
+  .col-3g .ui-block-a, 
+  .col-3g .ui-block-b, 
+  .col-3g .ui-block-c {float:left; width:100%; margin:0 0 2% 0;}
+
+  .col-4 .ui-block-a,
+  .col-4 .ui-block-b,
+  .col-4 .ui-block-c, 
+  .col-4 .ui-block-d  {width:100%;}
+
+  .groom-wrap,
+  .bride-wrap {width:200px; position:absolute; bottom:20px; left:50%; margin:0 0 0 -95px;}
+
+  h1 img {height:80px; padding:0}
+  h2 img {height:80px; padding:10px 0}
+  .header .ul-body,
+  .greeting_wrap .bar_title {display:none}
+  .header .lnb_mobile,
+  .header .lnb_title {display:block}
+  .greeting_wrap {margin-top:50px}
+  .greeting_wrap.ui-cont-b {padding:1em 0;}
+  
+  .greeting_info {position:relative; bottom:0; left:0; width:100%; margin:0}
+  .greeting_date {float:none; display:block; margin:0;}
+  .greeting_loca {float:none; display:block; }
+
+  .gallery_wrap h2 {background-size:auto 80px; font-size:30px; line-height:30px; margin:15px 0; padding:0 0 0 15px;}
+  .gallery_textbox {background:#000 url('/bundles/viettutweb/img/templates/christmaswedding/gallery_icon2.png') no-repeat 0 0; background-size: 50px; padding:9px 0px 0px 60px;}
+  .gal_list > div > a > div {height:220px!important}
+  .gal_more {width:100%; background-position:95% 50%}
+  .movie_url {padding-top:20px}
+  .movie_textbox {font-size:0.8em}
+
+  .lo_map {height:auto;}
+  .lo_map #wedding_pmap_canvas,
+  .lo_map #party_pmap_canvas {height:300px!important;}
+  .lo_map .ui-link img {height:100%;}
+
+  .lo_pin span {font-size:0.9em;}
+  .lo_tab_wrap li { font-size:1em;}
+}

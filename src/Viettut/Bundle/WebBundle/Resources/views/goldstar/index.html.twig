@@ -1174,6 +1174,20 @@
         }).css('cursor', 'pointer');
     });
 
+    (function($) {
+        $.fn.onScrollTo = function(focusInFn, focusOutFn) {
+            var $this = this;
+            $(document).scroll(function() {
+                var y = $(this).scrollTop();
+                if (y >= $this.position().top) {
+                    if (focusInFn) focusInFn();
+                } else {
+                    if (focusOutFn) focusOutFn();
+                }
+            });
+        }
+    })(jQuery);
+
     $( window ).load(function() {
         $('.gal_list2').masonry({
             itemSelector: '.gal_frame',
@@ -1183,36 +1197,21 @@
         });
 
         $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
-        $('.movie_wrap').onScrollTo(function() {
-            $('#signup').addClass('show');
-        }, function() {
-            $('#signup').removeClass('show');
-        });
 
-        $('#signup').on('click', '.close', function(e) {
-            e.preventDefault();
-            $('#signup').removeClass('show');
-        });
+        {% if isTemplate == false %}
+            $('.movie_wrap').onScrollTo(function() {
+                $('#signup').addClass('show');
+            }, function() {
+                $('#signup').removeClass('show');
+            });
+
+            $('#signup').on('click', '.close', function(e) {
+                e.preventDefault();
+                $('#signup').removeClass('show');
+            });
+        {% endif %}
     });
 </script>
-
-{% if isTemplate == false %}
-    <script type="text/javascript">
-        (function($) {
-            $.fn.onScrollTo = function(focusInFn, focusOutFn) {
-                var $this = this;
-                $(document).scroll(function() {
-                    var y = $(this).scrollTop();
-                    if (y >= $this.position().top) {
-                        if (focusInFn) focusInFn();
-                    } else {
-                        if (focusOutFn) focusOutFn();
-                    }
-                });
-            }
-        })(jQuery);
-    </script>
-{% endif %}
 <script>
     WebFontConfig = {
         google: {
