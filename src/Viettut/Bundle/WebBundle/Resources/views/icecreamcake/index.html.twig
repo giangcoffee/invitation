@@ -307,13 +307,16 @@
 
 </head>
 <body>
-<input type="hidden" id="now_lon"/>
-<input type="hidden" id="now_lat"/>
+<h1 class="hide">Ice Cream Cake - Khu vườn bí mật</h1>
+<h2 class="hide">Là sự pha trộn giữa màu hồng đáng yêu và đen sang trọng, thể hiện sự trang trọng đồng thời tôn vẻ trẻ trung nhí nhảnh.</h2>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
+     data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
 <div data-role="page" id="skin_page">
     <!-- panel-groom -->
     <div data-role="panel" id="panel_groom" class="righttpanel" data-position="left" data-display="push"
          data-position-fixed="true" data-swipe-close="true" data-theme="b"
-         style="background:#fff url('/dalpeng/skin/icecream_cake/img/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
+         style="background:#fff url('/bundles/viettutweb/img/templates/icecreamcake/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;">
         <div class="groom-wrap">
             <ul>
                 <a href="tel:01000000000">
@@ -333,7 +336,7 @@
     <!-- panel-bride -->
     <div data-role="panel" id="panel_bride" class="righttpanel" data-position="right" data-display="push"
          data-position-fixed="true" data-swipe-close="true" data-theme="a"
-         style="background:#fff url('/dalpeng/skin/icecream_cake/img/bg_bride.jpg') center top no-repeat; background-size:100%; z-index:9999;">
+         style="background:#fff url('/bundles/viettutweb/img/templates/icecreamcake/bg_bride.jpg') center top no-repeat; background-size:100%; z-index:9999;">
         <div class="bride-wrap">
             <ul>
                 <a href="tel:01000000000">
@@ -369,22 +372,25 @@
     <!--// panel-menu -->
 
     <div class="lnb">
-        <div class="lnb_icon"><img src="/bundles/viettutweb/img/templates/icecreamcake/header_ring.png" alt=""></div>
-        <div class="lnb_mobile"><a href="#right-panel"><img src="/bundles/viettutweb/img/templates/icecreamcake/header_menu.png"
-                                                            alt=""></a></div>
+        <div class="lnb_icon"><img src="/bundles/viettutweb/img/templates/icecreamcake/header_ring.png" alt="header ring"></div>
+        <div class="lnb_mobile">
+            <a href="#right-panel">
+                <img src="/bundles/viettutweb/img/templates/icecreamcake/header_menu.png" alt="header menue">
+            </a>
+        </div>
         <ul class="leftside">
-            <li class="menu1 menu_scrolls on" id="m_topinfo"><span>intro</span></li>
-            <li class="menu2 menu_scrolls" id="m_greeting"><span>greetings</span></li>
-            <li class="menu3 menu_scrolls" id="m_gallery"><span>gallery</span></li>
+            <li class="menu1 menu_scrolls on" id="m_topinfo"><span>Thông tin</span></li>
+            <li class="menu2 menu_scrolls" id="m_greeting"><span>Lời tựa</span></li>
+            <li class="menu3 menu_scrolls" id="m_gallery"><span>Album</span></li>
         </ul>
         <ul class="rightside">
-            <li class="menu5 menu_scrolls" id="m_snsbbs"><span>guestbook</span></li>
-            <li class="menu4 menu_scrolls" id="m_media"><span>movie</span></li>
-            <li class="menu6 menu_scrolls" id="m_map"><span>location</span></li>
+            <li class="menu5 menu_scrolls" id="m_snsbbs"><span>Lưu bút</span></li>
+            <li class="menu4 menu_scrolls" id="m_media"><span>Video</span></li>
+            <li class="menu6 menu_scrolls" id="m_map"><span>Địa điểm</span></li>
         </ul>
         <div class="panel_mobile">
-            <a href="#panel_groom" class="ico_groom">Groom</a>
-            <a href="#panel_bride" class="ico_bride">Bride</a>
+            <a href="#panel_groom" class="ico_groom">Chú rể</a>
+            <a href="#panel_bride" class="ico_bride">Cô dâu</a>
         </div>
     </div>
 
@@ -397,14 +403,15 @@
                 <p class="tit2">Wedding Day</p>
                 <p class="tit3">
                     <span>save the date</span>
-                    <a href="#panel_groom" class="ico_groom">Groom</a>
-                    <a href="#panel_bride" class="ico_bride">Bride</a>
+                    <a href="#panel_groom" class="ico_groom">Chú rể</a>
+                    <a href="#panel_bride" class="ico_bride">Cô dâu</a>
                 </p>
             </h1>
 
-            <p class="hd_date">2018.07.14 Sat. 12:30 pm</p>
-            <p class="hd_loca">수아비스 아모르홀</p></div>
-        <div class="scrolldown"><img src="/bundles/viettutweb/img/templates/icecreamcake/ico_scrolldown.png" alt="아래로 스크롤"></div>
+            <p class="hd_date">{{ date | long_date }}, {{ date | date('H:i A') }}</p>
+            <p class="hd_loca">{{ data['place'] }}</p>
+        </div>
+        <div class="scrolldown"><img src="/bundles/viettutweb/img/templates/icecreamcake/ico_scrolldown.png" alt="kéo xuống"></div>
     </div>
     <!--// header -->
 
@@ -413,49 +420,41 @@
         <div class="ul-body">
             <div class="col-2 greeting_img">
                 <div class="ui-block-a">
-                    <h2 class="title"><span>greetings</span></h2>
+                    <h2 class="title"><span>LỜI TỰA</span></h2>
                 </div>
                 <div class="ui-block-b">
                     <ul class="couple">
                         <a href="#panel_groom">
-                            <li class="groom"><span>Groom</span><strong>김희철</strong></li>
+                            <li class="groom"><span>Chú rể</span><strong>{{ data['groom_name'] }}</strong></li>
                         </a>
                         <a href="#panel_bride">
-                            <li class="bride"><span>Bride</span><strong>조현영</strong></li>
+                            <li class="bride"><span>Cô dâu</span><strong>{{ data['bride_name'] }}</strong></li>
                         </a>
                     </ul>
                     <div class="greeting_textbox">
-                        <p> 우연히 시작된 작은 인연이<br/>
-                            다시는 없을 큰 인연으로 되기까지<br/>
-                            그리 길지 않은 시간이 걸렸습니다.<br/>
-                            <br/>
-                            우연을 운명으로 만드는 시작의 자리에 <br/>
-                            소중한 분들을 모시고 싶습니다.<br/>
-                            <br/>
-                            부디 오셔서 저희의 뜻깊은 출발을<br/>
-                            축복해 주시기 바랍니다.</p>
+                        <p>{{ data['greeting'] }}</p>
                         <p class="thanks">Thank you love all</p>
                         <table class="greeting_name">
                             <thead>
                             <tr>
-                                <th>아버님</th>
-                                <th>어머님</th>
-                                <th>관계</th>
-                                <th>이름</th>
+                                <th>Cha</th>
+                                <th>Mẹ</th>
+                                <th>Space</th>
+                                <th>Tên</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td class="gn1">김선구<span>·</span></td>
-                                <td class="gn2">조양자</td>
-                                <td class="gn3">의 장남</td>
-                                <td class="gn4">김희철</td>
+                                <td class="gn1">{{ data['groom_fa_name'] }}<span>·</span></td>
+                                <td class="gn2">{{ data['groom_mo_name'] }}</td>
+                                <td class="gn3">&nbsp;</td>
+                                <td class="gn4">{{ data['groom_name'] }}</td>
                             </tr>
                             <tr>
-                                <td class="gn1">조철환<span>·</span></td>
-                                <td class="gn2">윤지현</td>
-                                <td class="gn3">의 삼녀</td>
-                                <td class="gn4">조현영</td>
+                                <td class="gn1">{{ data['bride_fa_name'] }}<span>·</span></td>
+                                <td class="gn2">{{ data['bride_mo_name'] }}</td>
+                                <td class="gn3">&nbsp;</td>
+                                <td class="gn4">{{ data['bride_name'] }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -470,86 +469,40 @@
     <!-- 혼주연락처 -->
     <div class="parents_wrap">
         <h2 class="pa-tit">
-            신랑·신부 혼주 연락처
+            Liên hệ
         </h2>
         <ul class="pa-list" data-count="2">
-            <li class="pa-groom"><span class="ico-arrow">신랑 혼주 연락하기</span></li>
-            <li class="pa-bride"><span class="ico-arrow">신부 혼주 연락하기</span></li>
+            <li class="pa-groom"><span class="ico-arrow">Chú rể</span></li>
+            <li class="pa-bride"><span class="ico-arrow">Cô dâu</span></li>
         </ul>
     </div>
     <!--// 혼주연락처 -->
 
     <!-- gallery -->
     <div class="gallery_wrap" id="sk_gallery">
-        <h2 class="title2"><span>gallery</span></h2>
+        <h2 class="title2"><span>ALBUM ẢNH</span></h2>
         <div class="ul-body">
             <div class="gal_list2">
                 <div class="gal_size"></div>
-                <a href="/user/IceCreamCake/img/972205c86c7c5cb062eea49518d21b3e.jpg" class="swipebox" data-ajax="false"
-                   data-size="1024X675"
-                   alt="<div class='swipebox-comment' id='gcomment_2315820' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315820'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/972205c86c7c5cb062eea49518d21b3e.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/3ebe738af250ed35c6b895538b8f74b0.jpg" class="swipebox" data-ajax="false"
-                   data-size="1024X683"
-                   alt="<div class='swipebox-comment' id='gcomment_2315821' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315821'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/3ebe738af250ed35c6b895538b8f74b0.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/8758155ed726539998cb8c15db69cd74.jpg" class="swipebox" data-ajax="false"
-                   data-size="512X768"
-                   alt="<div class='swipebox-comment' id='gcomment_2315822' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315822'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/8758155ed726539998cb8c15db69cd74.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/2147a0a8fcca7c0e7fa82453159ac25d.jpg" class="swipebox" data-ajax="false"
-                   data-size="1024X647"
-                   alt="<div class='swipebox-comment' id='gcomment_2315823' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315823'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/2147a0a8fcca7c0e7fa82453159ac25d.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/da3402614ac4b87e216f0b1918376787.jpg" class="swipebox" data-ajax="false"
-                   data-size="1024X753"
-                   alt="<div class='swipebox-comment' id='gcomment_2315824' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315824'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/da3402614ac4b87e216f0b1918376787.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/7c4df27e7c6c1ceb98e253c6956a6c71.jpg" class="swipebox" data-ajax="false"
-                   data-size="889X768"
-                   alt="<div class='swipebox-comment' id='gcomment_2315825' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315825'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/7c4df27e7c6c1ceb98e253c6956a6c71.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/de01993f675b4653618b2f2a64abdb03.jpg" class="swipebox" data-ajax="false"
-                   data-size="1024X681"
-                   alt="<div class='swipebox-comment' id='gcomment_2315826' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315826'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/de01993f675b4653618b2f2a64abdb03.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/503ec379619bf4493705e0ba3a9cb358.jpg" class="swipebox" data-ajax="false"
-                   data-size="512X768"
-                   alt="<div class='swipebox-comment' id='gcomment_2315827' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315827'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/503ec379619bf4493705e0ba3a9cb358.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/c13fabcbb0f72ddfef32160d83dc6ba0.jpg" class="swipebox" data-ajax="false"
-                   data-size="512X768"
-                   alt="<div class='swipebox-comment' id='gcomment_2315828' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315828'></div>">
-                    <div class="gal_frame "><img src="/user/IceCreamCake/img/c13fabcbb0f72ddfef32160d83dc6ba0.jpg">
-                    </div>
-                </a>
-                <a href="/user/IceCreamCake/img/fcb389f3787439f66921ce82452fc89e.jpg" class="swipebox" data-ajax="false"
-                   data-size="767X768"
-                   alt="<div class='swipebox-comment' id='gcomment_2315829' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315829'></div>">
-                    <div class="gal_more"><span>more</span></div>
-                </a>
-                <a href="/user/IceCreamCake/img/3f7ce0ed6b7002e15527a62fc54956e3.jpg" class="swipebox" data-ajax="false"
-                   data-size="512X768"
-                   alt="<div class='swipebox-comment' id='gcomment_2315830' title='방명록 글쓰기'></div><div class='swipebox-write' id='gwrite_2315830'></div>">
-                    <div class="gal_frame hide"><img src="/user/IceCreamCake/img/3f7ce0ed6b7002e15527a62fc54956e3.jpg">
-                    </div>
-                </a>
+                {% for img in gallery[0:10] %}
+                    <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index }}">
+                        <div class="gal_frame ">
+                            <img src="{{ img['src'] }}" alt="gallery photo"/>
+                        </div>
+                    </a>
+                {% endfor %}
+                {% if gallery | length > 10 %}
+                    <a href="{{ gallery[10]['src'] }}" class="swipebox" data-ajax="false" data-size="{{ gallery[10]['size'] }}" imgId="10">
+                        <div class="gal_more"><span>more</span></div>
+                    </a>
+                {% endif %}
+                {% for img in gallery[10:] %}
+                    <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgId="{{ loop.index + 11 }}">
+                        <div class="gal_frame hide">
+                            <img src="{{ img['src'] }}">
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -557,160 +510,204 @@
 
     <!-- guestbook -->
     <div class="guestbook_wrap" id="sk_snsbbs">
-        <h2 class="title2"><span>guestbook</span></h2>
-        <p class="message"><img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_message.png"
-                                alt="Please leave a congratulatory message"></p>
+        <h2 class="title2"><span>LƯU BÚT</span></h2>
+        <p class="message">
+            <img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_message.png" alt="Chúc mừng cô dâu chú rể">
+        </p>
 
         <div class="ul-body col-3">
             <div id="div_snsbbs">
-                <div class="snsbbs_sections ">
-                    <div class="ui-body-d">
-                        <div class="gb_cont_box btn_go_snsbbs">
-                            <div class="gb_content">
+                {% if isTemplate %}
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
                                 <div class="pro_info">
                                     <div class="pro_img">
-                                        <img src="/bundles/viettutweb/img/templates/icecreamcake/img_profile.png" alt="프로필사진">
-                                        <div class="pro-sns dalpeng"><span></span></div>
+                                        <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                     </div>
                                     <div class="pro_txt">
-                                        <p><strong>이정현</strong></p>
-                                        <p class="date">2017-01-19 14:56</p>
+                                        <p><strong>Sunny</strong></p>
+                                        <p class="date">2015-08-12 09:25</p>
                                     </div>
                                 </div>
                                 <ul class="gb_cont btn_go_snsbbs">
                                     <li class="comm_txt">
-                                        <p>축하합니다!! 신랑 신부 너무 예쁘다 ㅠㅠ<br/>
-                                            두 사람 많이 싸우지 말고!!<br/>
-                                            싸워도 금방 화해하고!!<br/>
-                                            항상 서로를 위하면서 살아갈 수 있도록 기도할께<br/>
-                                            축복하고 축하한다.</p>
+                                        <p>Chúc mừng đám cưới của bạn !!!! Sống hạnh phúc mãi mãi nha!</p>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_more fl">
-                                    더보기
-                                </p>
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="snsbbs_sections ">
-                    <div class="ui-body-d">
-                        <div class="gb_cont_box btn_go_snsbbs">
-                            <div class="gb_content">
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
                                 <div class="pro_info">
                                     <div class="pro_img">
-                                        <img src="/bundles/viettutweb/img/templates/icecreamcake/img_profile.png" alt="프로필사진">
-                                        <div class="pro-sns notmember"><span></span></div>
+                                        <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                     </div>
                                     <div class="pro_txt">
-                                        <p><strong>김태희</strong></p>
-                                        <p class="date">2017-01-19 14:55</p>
+                                        <p><strong>Yến Hoàng</strong></p>
+                                        <p class="date">2015-08-07 13:35</p>
                                     </div>
                                 </div>
                                 <ul class="gb_cont btn_go_snsbbs">
                                     <li class="comm_txt">
-                                        <p>두 사람의 결혼을 진심으로 축하해요~<br/>
-                                            행복하세요~~</p>
+                                        <p>Chúc mừng hai bạn !</p>
                                         <div class="emo-type-a emo02"></div>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_more fl">
-                                    더보기
-                                </p>
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="snsbbs_sections mobile_hide">
-                    <div class="ui-body-d">
-                        <div class="gb_cont_box btn_go_snsbbs">
-                            <div class="gb_content">
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
                                 <div class="pro_info">
                                     <div class="pro_img">
-                                        <img src="http://mud-kage.kakao.co.kr/14/dn/btqdCKdl6mu/DxKlcY8OPmv8eKQ3nhnyI0/o.jpg"
-                                             alt="프로필사진">
-                                        <div class="pro-sns kakao"><span></span></div>
+                                        <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                     </div>
                                     <div class="pro_txt">
-                                        <p><strong>달팽</strong></p>
-                                        <p class="date">2016-10-05 15:45</p>
+                                        <p><strong>Giang Giang</strong></p>
+                                        <p class="date">2015-01-15 17:35</p>
                                     </div>
                                 </div>
                                 <ul class="gb_cont btn_go_snsbbs">
                                     <li class="comm_txt">
-                                        <p>웨딩사진 진짜 잘 나왔다-!! 이게 누구야 싶네 ㅋㅋㅋㅋㅋㅋㅋ<br/>
-                                            결혼식날 보자~~</p>
+                                        <p>Đây là điều tuyệt vời nhất tôi từng biết.
+                                        </p>
+                                        <div class="emo-type-a emo17"></div>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_more fl">
-                                    더보기
-                                </p>
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="snsbbs_sections mobile_hide">
-                    <div class="ui-body-d">
-                        <div class="gb_cont_box btn_go_snsbbs">
-                            <div class="gb_content">
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
                                 <div class="pro_info">
                                     <div class="pro_img">
-                                        <img src="https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-19/s150x150/11375134_799616980151358_191488437_a.jpg"
-                                             alt="프로필사진">
-                                        <div class="pro-sns instagram"><span></span></div>
+                                        <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
                                     </div>
                                     <div class="pro_txt">
-                                        <p><strong>달팽</strong></p>
-                                        <p class="date">2015-08-12 09:26</p>
+                                        <p><strong>Nam Vũ</strong></p>
+                                        <p class="date">2015-01-15 17:33</p>
                                     </div>
                                 </div>
                                 <ul class="gb_cont btn_go_snsbbs">
                                     <li class="comm_txt">
-                                        <p>드디어 결혼을 하네 드디어!! <br/>
-                                            그렇게 싸우더니 결국은...........ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
-                                        <div class="emo-type-c emo07"></div>
+                                        <p>Thật hạnh phúc quá</p>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="gb_skip btn_go_snsbbs">
-                                <p class="gb_more fl">
-                                    더보기
-                                </p>
-                                <p class="gb_comm fr">
-                                    <span class="btn_wrap">0</span>
-                                </p>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Liên Hương</strong></p>
+                                        <p class="date">2015-01-15 17:33</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Nhất định tôi sẽ đến sớm</p>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Phương Phạm</strong></p>
+                                        <p class="date">2015-01-15 17:32</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Cứ tưởng là mày ế rồi cơ :)</p>
+                                        <div class="emo-type-a emo04"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snsbbs_sections">
+                        <div class="ui-body-d">
+                            <div class="gb_cont_box btn_go_snsbbs">
+                                <div class="pro_info">
+                                    <div class="pro_img">
+                                        <img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="profile picture">
+                                    </div>
+                                    <div class="pro_txt">
+                                        <p><strong>Trường Sơn</strong></p>
+                                        <p class="date">2015-01-15 17:30</p>
+                                    </div>
+                                </div>
+                                <ul class="gb_cont btn_go_snsbbs">
+                                    <li class="comm_txt">
+                                        <p>Cuối cùng thì ngày này cũng đến ^^</p>
+                                        <div class="emo-type-a emo06"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {% for comment in comments %}
+                        <div class="snsbbs_sections">
+                            <div class="ui-body-d">
+                                <div class="gb_cont_box btn_go_snsbbs">
+                                    <div class="pro_info">
+                                        <div class="pro_img">
+                                            <img src="{{ comment.author.avatar }}" alt="profile picture">
+                                        </div>
+                                        <div class="pro_txt">
+                                            <p><strong>{{ comment.author.name }}</strong></p>
+                                            <p class="date">{{ comment.createdAt | date('d-m-Y H:i') }}</p>
+                                        </div>
+                                    </div>
+                                    <ul class="gb_cont btn_go_snsbbs">
+                                        <li class="comm_txt">
+                                            <p>{{ comment.content }}</p>
+                                            <div class="emo-type-a emo06"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
 
-        <div class="gb_btn btn_go_snsbbs">
-            <img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_write.png" alt="write">
-        </div>
+        {% if isTemplate %}
+            <div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()">
+                <img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_write.png" alt="write">
+            </div>
+        {% else %}
+            <div class="gb_btn btn_go_snsbbs" onclick="gotoGuestBook('{{ hash }}')">
+                <img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_write.png" alt="write">
+            </div>
+        {% endif %}
 
     </div>
     <!--// guestbook -->
 
+    {% if isTemplate %}
     <!-- movie -->
     <div class="movie_wrap" id="sk_media">
-        <h2 class="title"><span>movie play</span></h2>
+        <h2 class="title"><span>VIDEO</span></h2>
         <div class="ul-body">
             <div class="col-2">
                 <div class="ui-block-a movie_message">
@@ -723,11 +720,9 @@
                         <ul>
                             <li>
                                 <iframe id="movie" width="100%"
-                                        data-src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
-                                        height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen
-                                        allowfullscreen></iframe>
+                                        src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080"
+                                        height="100%" frameborder="0" allowfullscreen></iframe>
                             </li>
-                            <!--<li><iframe width="100%" height="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
                         </ul>
                     </div>
                 </div>
@@ -735,80 +730,92 @@
         </div>
     </div>
     <!--// movie -->
-
+    {% else %}
+        {% if embed %}
+        <!-- movie -->
+        <div class="movie_wrap" id="sk_media">
+            <h2 class="title"><span>VIDEO</span></h2>
+            <div class="ul-body">
+                <div class="col-2">
+                    <div class="ui-block-a movie_message">
+                        <p class="tit"><span class="pc">love story</span><span class="mobile">everything</span>Wedding movie
+                        </p>
+                        <p class="txt"><span>everything</span>
+                    </div>
+                    <div class="ui-block-b movie_box">
+                        <div class="movie_container movie1">
+                            <ul>
+                                <li>
+                                    {{ embed | raw }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// movie -->
+        {% endif %}
+    {% endif %}
 
     <!-- location -->
     <div class="location_wrap" id="sk_map">
-        <h2 class="title2"><span>location</span></h2>
+        <h2 class="title2"><span>ĐỊA ĐIỂM</span></h2>
         <div class="ul-body">
             <div class="col-2">
                 <div class="ui-block-a">
                     <ul class="lo_tab_wrap">
-                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">WEDDING
-                            CEREMONY
-                        </li>
-                        <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">WEDDING RECEPTION
-                        </li>
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding">LỄ THÀNH HÔN</li>
+                        <li class="tab_btn rh locationtabs" id="tabs_party">TIỆC CƯỚI</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="ul-body locationdivs" id="div_wedding">
-            <input type="hidden" id="wedding_pmap_lat" value="37.5194478"/>
-            <input type="hidden" id="wedding_pmap_lon" value="127.01922209999998"/>
-            <input type="hidden" id="wedding_paddr" value="강남구 신사동 504-11"/>
-            <input type="hidden" id="wedding_pname" value="수아비스 아모르홀"/>
             <div class="col-2 lo_box">
                 <div class="ui-block-a">
-                    <h3 class="lo_title">수아비스 아모르홀</h3>
+                    <h3 class="lo_title">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3>
                     <div class="lo_map">
                         <div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
                     </div>
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
+                            <form action='https://maps.google.com/maps' method='get' target='_blank' id="getHomePath">
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
+                                <input type='hidden' name='daddr' value='{{ data["home"] }}' />
+                            </form>
                             <div class="nav-1">
                                 <div class="ui-body-d ui-btn-nav wedding_kimnavi">
-                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                                </div>
-                            </div>
-                            <div class="nav-2">
-                                <div class="ui-body-d ui-btn-nav wedding_ollehnavi">
-                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getHomePath()">CHỈ ĐƯỜNG</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                    <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
                 </div>
                 <div class="ui-block-b">
                     <table class="lo_container">
                         <tr>
-                            <th class="lo_date">Date</th>
-                            <td class="txt">2018년 7월 14일 토요일 낮 12시 30분</td>
+                            <th class="lo_date">Thời gian</th>
+                            <td class="txt">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_loca">Location</th>
-                            <td class="txt">강남구 신사동 504-11</td>
+                            <th class="lo_loca">Địa chỉ</th>
+                            <td class="txt">{{ data['home'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_tel">Tel</th>
-                            <td class="txt">02-543-9500</td>
+                            <th class="lo_tel">Liên hệ</th>
+                            <td class="txt">{{ data['home_contact'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_info">Information</th>
-                            <td>한남대교 방향 도보 5분거리내</td>
+                            <th class="lo_info">Hướng dẫn</th>
+                            <td>{{ data['home_info'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_bus">Bus Info</th>
-                            <td>지선버스(초록) ; 4212, 4412, 4431<br/>
-                                간선버스(파랑) : 140, 142, 144, 145, 148, 240<br/>
-                                광역버스(빨강) : 1500, 3030, 3100, 6800, 9404
+                            <th class="lo_bus">Xe khách</th>
+                            <td>{{ data['bus_info'] }}
                             </td>
-                        </tr>
-                        <tr>
-                            <th class="lo_subway">Subway Info</th>
-                            <td>3호선 신사역 6번 출구</td>
                         </tr>
                     </table>
                 </div>
@@ -816,60 +823,49 @@
         </div>
 
         <div class="ul-body locationdivs hide" id="div_party">
-            <input type="hidden" id="party_pmap_lat" value="37.4950598"/>
-            <input type="hidden" id="party_pmap_lon" value="127.12241160000008"/>
-            <input type="hidden" id="party_paddr" value="서울시 송파구 중대로 135"/>
-            <input type="hidden" id="party_pname" value="러브탑"/>
             <div class="col-2 lo_box">
                 <div class="ui-block-a">
-                    <h3 class="lo_title">러브탑</h3>
+                    <h3 class="lo_title">{{ data['place'] }}</h3>
                     <div class="lo_map">
                         <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
                     </div>
                     <div class="nav-wrap">
                         <div class="ui-grid-a nav-m">
+                            <form action='https://maps.google.com/maps' method='get' target='_blank' id="getPath">
+                                <input type='text' name='saddr' placeholder="địa chỉ của bạn"/>
+                                <input type='hidden' name='daddr' value='{{ data["place_addr"] }}' />
+                            </form>
                             <div class="nav-1">
-                                <div class="ui-body-d ui-btn-nav party_kimnavi">
-                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
-                                </div>
-                            </div>
-                            <div class="nav-2">
-                                <div class="ui-body-d ui-btn-nav party_ollehnavi">
-                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
+                                <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                    <div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div>
                 </div>
                 <div class="ui-block-b">
                     <table class="lo_container">
                         <tr>
-                            <th class="lo_date">Date</th>
-                            <td class="txt">2018.07.07 오전 11시 40분 ~ 오후 2시</td>
+                            <th class="lo_date">Thời gian</th>
+                            <td class="txt">{{ date | long_date }}, hồi {{ date | date('H:i') }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_loca">Location</th>
-                            <td class="txt">서울시 송파구 중대로 135</td>
+                            <th class="lo_loca">Địa chỉ</th>
+                            <td class="txt">{{ data['place_addr'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_tel">Tel</th>
-                            <td class="txt">02-5402-5599</td>
+                            <th class="lo_tel">Liên hệ</th>
+                            <td class="txt">{{ data['place_phone'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_info">Information</th>
-                            <td>주차 가능</td>
+                            <th class="lo_info">Hướng dẫn</th>
+                            <td>{{ data['place_info'] }}</td>
                         </tr>
                         <tr>
-                            <th class="lo_bus">Bus Info</th>
-                            <td>지선버스(초록) ; 4212, 4412, 4431<br/>
-                                간선버스(파랑) : 140, 142, 144, 145, 148, 240<br/>
-                                광역버스(빨강) : 1500, 3030, 3100, 6800, 9404
+                            <th class="lo_bus">Xe khách</th>
+                            <td>{{ data['bus_info'] }}
                             </td>
-                        </tr>
-                        <tr>
-                            <th class="lo_subway">Subway Info</th>
-                            <td>3호선 경찰병원역 4번출구</td>
                         </tr>
                     </table>
                 </div>
@@ -882,48 +878,15 @@
     <!-- footer -->
     <div class="footer" id="sk_snslink">
         <div class="contents">
-            <h4><a href="http://dalpeng.com" target="_blank"><img src="/bundles/viettutweb/img/templates/icecreamcake/footer_logo.png"
-                                                                  alt="로고"
-                                                                  title="달팽 초대장 :: dalpeng.com"/></a><span></span></h4>
+            <h4>
+                <a href="{{ path('home_page') }}" target="_blank">
+                    <img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"/>
+                </a>
+                <span></span>
+            </h4>
             <ul>
-                <li>
-                    <a target="_blank"
-                       href="http://www.facebook.com/sharer/sharer.php?u=http://dalpeng.com/IceCreamCake">
-                        <div class="ft_sns_wrap1 fasebook"><span>facebook logo</span></div>
-                    </a>
-                    <em>facebook</em>
-                </li>
-                <!-- 네이버 밴드 추가용 by echos(2014-12-08) -->
-                <li>
-                    <a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/IceCreamCake">
-                        <div class="ft_sns_wrap1 band"><span>band logo</span></div>
-                    </a>
-                    <em>naver band</em>
-                </li>
-                <!--
-                <li>
-                    <a target="_blank" href="http://twitter.com/share?text=달팽초대장::김희철♥조현영&url=http://dalpeng.com/IceCreamCake"><div class="ft_sns_wrap1 twitter"><span>twitter logo</span></div></a>
-                    <em>twitter</em>
-                </li>-->
-                <li id="sk_kakao">
-                    <div class="ft_sns_wrap1 kakao btn_send_kakao" id="btn_kakao_talk"><span>KAKAOTALK</span></div>
-                    <em>KAKAOTALK</em>
-                </li>
-                <!-- https://story.kakao.com/share?url=http%3A%2F%2Fdalpeng.com%2FIceCreamCake -->
-                <li>
-                    <a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/IceCreamCake">
-                        <div class="ft_sns_wrap1 story" id="btn_kakao_story"><span>KAKAOSTORY</span></div>
-                    </a>
-                    <em>KAKAOSTORY</em>
-                </li>
-                <!-- <li>
-                    <div class="ft_sns_wrap1 band" id="btn_line"><span>LINE</span></div>
-                    <em>LINE</em>
-                </li> -->
+                <div class="addthis_inline_share_toolbox"></div>
             </ul>
-        </div>
-        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
-            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
         </div>
     </div>
     <!--// footer -->
