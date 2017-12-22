@@ -1,0 +1,636 @@
+<!DOCTYPE html><html lang="vi"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#"><meta property="og:type" content="website"><meta property="og:url" content="http://thiepdo.com/ice-cream-cake"><meta property="og:description" content="{{ description }}"><meta property="og:title" content="{{ name }}"><meta property="og:image" content="/bundles/viettutweb/img/icecreamcake/1536423a2014f1d866d971a77c7a631b.jpg"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="format-detection" content="telephone=no"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon"><link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png"><link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png"><title>{{ name }}</title><link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}"><link rel="stylesheet" type="text/css" href="{{ asset('css/icecreamcake/app.css') }}"></head><body><h1 class="hide">Ice Cream Cake - Khu vườn bí mật</h1><h2 class="hide">Là sự pha trộn giữa màu hồng đáng yêu và đen sang trọng, thể hiện sự trang trọng đồng thời tôn vẻ trẻ trung nhí nhảnh.</h2><div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}" data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div><div id="card_id" data-id="{{ id }}"></div><div data-role="page" id="skin_page"><div data-role="panel" id="panel_groom" class="righttpanel" data-position="left" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="b" style="background:#fff url('/bundles/viettutweb/img/templates/icecreamcake/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999;"><div class="groom-wrap"><ul><a href="tel:{{ data['groom_phone'] }}" class="ui-link"><li class="ico1">Gọi điện</li></a><a href="sms:{{ data['groom_phone'] }}" class="ui-link"><li class="ico2">Nhắn tin</li></a>{% if data['groom_facebook'] is empty %} <a href="http://facebook.com/thiepdodigital" target="_blank" class="ui-link"><li class="ico3">Facebook</li></a>{% else %} <a href="{{ data['groom_facebook'] }}" target="_blank" class="ui-link"><li class="ico3">Facebook</li></a>{% endif %} {% if data['groom_instagram'] is empty %} <a href="http://instagram.com/thiepdodigital" target="_blank" class="ui-link"><li class="ico_insta">Instagram</li></a>{% else %} <a href="{{ data['groom_instagram'] }}" target="_blank" class="ui-link"><li class="ico_insta">Instagram</li></a>{% endif %}<li class="ico5 btn_go_snsbbs">Chúc mừng</li></ul></div></div><div data-role="panel" id="panel_bride" class="righttpanel" data-position="right" data-display="push" data-position-fixed="true" data-swipe-close="true" data-theme="a" style="background:#fff url('/bundles/viettutweb/img/templates/icecreamcake/bg_bride.jpg') center top no-repeat; background-size:100%; z-index:9999;"><div class="bride-wrap"><ul><a href="tel:{{ data['bride_phone'] }}" class="ui-link"><li class="ico1">Gọi điện</li></a><a href="sms:{{ data['bride_phone'] }}" class="ui-link"><li class="ico2">Nhắn tin</li></a>{% if data['bride_facebook'] is empty %} <a href="http://facebook.com/thiepdodigital" target="_blank" class="ui-link"><li class="ico3">Facebook</li></a>{% else %} <a href="{{ data['bride_facebook'] }}" target="_blank" class="ui-link"><li class="ico3">Facebook</li></a>{% endif %} {% if data['bride_instagram'] is empty %} <a href="http://instagram.com/thiepdodigital" target="_blank" class="ui-link"><li class="ico_insta">Instagram</li></a>{% else %} <a href="{{ data['bride_instagram'] }}" target="_blank" class="ui-link"><li class="ico_insta">Instagram</li></a>{% endif %}<li class="ico5 btn_go_snsbbs">Chúc mừng</li></ul></div></div><div data-role="panel" id="right-panel" data-position="right" data-display="push" style="z-index:9999;"><div class="menu-wrap ui-panel-inner"><ul data-role="listview" data-icon="false"><li data-icon="delete"><a href="#" data-rel="close">Đóng</a></li><li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>Thông tin</span></li><li class="menu_scrolls" data-rel="close" id="p_greeting"><span>Lời tựa</span></li><li class="menu_scrolls" data-rel="close" id="p_gallery"><span>Album ảnh</span></li><li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>Lưu bút</span></li><li class="menu_scrolls" data-rel="close" id="p_media"><span>Video</span></li><li class="menu_scrolls" data-rel="close" id="p_map"><span>Địa điểm</span></li></ul></div></div><div class="lnb"><div class="lnb_icon"><img src="/bundles/viettutweb/img/templates/icecreamcake/header_ring.png" alt="header ring"></div><div class="lnb_mobile"><a href="#right-panel"><img src="/bundles/viettutweb/img/templates/icecreamcake/header_menu.png" alt="header menue"></a></div><ul class="leftside"><li class="menu1 menu_scrolls on" id="m_topinfo"><span>Thông tin</span></li><li class="menu2 menu_scrolls" id="m_greeting"><span>Lời tựa</span></li><li class="menu3 menu_scrolls" id="m_gallery"><span>Album</span></li></ul><ul class="rightside"><li class="menu5 menu_scrolls" id="m_snsbbs"><span>Lưu bút</span></li><li class="menu4 menu_scrolls" id="m_media"><span>Video</span></li><li class="menu6 menu_scrolls" id="m_map"><span>Địa điểm</span></li></ul><div class="panel_mobile"><a href="#panel_groom" class="ico_groom">Chú rể</a> <a href="#panel_bride" class="ico_bride">Cô dâu</a></div></div><div id="sk_topinfo" class="header" style="background:url('/bundles/viettutweb/img/templates/icecreamcake/1536423a2014f1d866d971a77c7a631b.jpg') LEFT CENTER no-repeat; background-size:cover;"><div class="header_info"><h1><p class="tit1">Trân trọng</p><p class="tit2">Kính mời</p><p class="tit3"><span>save the date</span> <a href="#panel_groom" class="ico_groom">Chú rể</a> <a href="#panel_bride" class="ico_bride">Cô dâu</a></p></h1><p class="hd_date">{{ date | long_date }}, {{ date | date('H:i A') }}</p><p class="hd_loca">{{ data['place'] }}</p></div><div class="scrolldown"><img src="/bundles/viettutweb/img/templates/icecreamcake/ico_scrolldown.png" alt="kéo xuống"></div></div><div id="sk_greeting" class="greeting_wrap"><div class="ul-body"><div class="col-2 greeting_img"><div class="ui-block-a"><h2 class="title"><span>LỜI TỰA</span></h2></div><div class="ui-block-b"><ul class="couple"><a href="#panel_groom"><li class="groom"><span>Chú rể</span><strong>{{ data['groom_name'] }}</strong></li></a><a href="#panel_bride"><li class="bride"><span>Cô dâu</span><strong>{{ data['bride_name'] }}</strong></li></a></ul><div class="greeting_textbox"><p>{{ data['greeting'] }}</p><p class="thanks">Thank you love all</p><table class="greeting_name"><thead><tr><th>Cha</th><th>Mẹ</th><th>Tên</th></tr></thead><tbody><tr><td class="gn1">{{ data['groom_fa_name'] }}</td><td class="gn2">{{ data['groom_mo_name'] }}</td><td class="gn4">{{ data['groom_name'] }}</td></tr><tr><td class="gn1">{{ data['bride_fa_name'] }}</td><td class="gn2">{{ data['bride_mo_name'] }}</td><td class="gn4">{{ data['bride_name'] }}</td></tr></tbody></table></div></div></div></div></div>{#<div class="parents_wrap">#} {#<h2 class="pa-tit">#} {#Liên hệ#} {#</h2>#} {#<ul class="pa-list" data-count="2">#} {#<li class="pa-groom"><span class="ico-arrow">Chú rể</span></li>#} {#<li class="pa-bride"><span class="ico-arrow">Cô dâu</span></li>#} {#</ul>#} {#</div>#}<div class="gallery_wrap" id="sk_gallery"><h2 class="title2"><span>ALBUM</span></h2><div class="ul-body"><div class="gal_list2"><div class="gal_size"></div>{% for img in gallery[0:10] %} <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgid="{{ loop.index }}"><div class="gal_frame"><img src="{{ img['src'] }}" alt="gallery photo"></div></a>{% endfor %} {% if gallery | length > 10 %} <a href="{{ gallery[10]['src'] }}" class="swipebox" data-ajax="false" data-size="{{ gallery[10]['size'] }}" imgid="10"><div class="gal_more"><span>more</span></div></a>{% endif %} {% for img in gallery[10:] %} <a href="{{ img['src'] }}" class="swipebox" data-ajax="false" data-size="{{ img['size'] }}" imgid="{{ loop.index + 11 }}"><div class="gal_frame hide"><img src="{{ img['src'] }}"></div></a>{% endfor %}</div></div></div><div class="guestbook_wrap" id="sk_snsbbs"><h2 class="title2"><span>LƯU BÚT</span></h2><p class="message"><img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_message.png" alt="Chúc mừng cô dâu chú rể"></p><div class="ul-body col-3"><div id="div_snsbbs">{% if isTemplate %}<div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>Sunny</strong></p><p class="date">2017-01-19 14:55</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Chúc mừng đám cưới của bạn !!!! Sống hạnh phúc mãi mãi nha!</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>Yến Hoàng</strong></p><p class="date">2017-01-19 14:55</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Chúc mừng hai bạn !</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>Giang Giang</strong></p><p class="date">2017-01-19 14:55</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Đây là điều tuyệt vời nhất tôi từng biết.</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>Nam Vũ</strong></p><p class="date">2017-01-19 14:55</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Thật hạnh phúc quá.</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>Liên Hương</strong></p><p class="date">2017-01-19 14:55</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Nhất định tôi sẽ đến sớm.</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>Phương Phạm</strong></p><p class="date">2017-01-19 14:55</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Cứ tưởng là mày ế rồi cơ :)</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div><div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ asset('bundles/viettutweb/img/templates/winterwonderland/img_profile.png') }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>Trường Sơn</strong></p><p class="date">2017-01-19 14:55</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>Cuối cùng thì ngày này cũng đến ^^</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div>{% else %} {% for comment in comments %}<div class="snsbbs_sections"><div class="ui-body-d"><div class="gb_cont_box btn_go_snsbbs"><div class="gb_content"><div class="pro_info"><div class="pro_img"><img src="{{ comment.author.avatar }}" alt="user avatar"><div class="pro-sns"><span></span></div></div><div class="pro_txt"><p><strong>{{ comment.author.name }}</strong></p><p class="date">{{ comment.createdAt | date('d-m-Y H:i') }}</p></div></div><ul class="gb_cont btn_go_snsbbs"><li class="comm_txt"><p>{{ comment.content }}</p><div class="emo-type-a emo02"></div></li></ul></div><div class="gb_skip btn_go_snsbbs"><p class="gb_more fl">&nbsp;</p><p class="gb_comm fr"><span class="btn_wrap">&nbsp;</span></p></div></div></div></div>{% endfor %} {% endif %}</div></div>{% if isTemplate %}<div class="gb_btn btn_go_snsbbs" onclick="guestBookAlert()"><img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_write.png" alt="write"></div>{% else %}<div class="gb_btn btn_go_snsbbs" onclick='gotoGuestBook("{{ hash }}")'><img src="/bundles/viettutweb/img/templates/icecreamcake/guestbook_write.png" alt="write"></div>{% endif %}</div>{% if isTemplate %}<div class="movie_wrap" id="sk_media"><h2 class="title"><span>VIDEO</span></h2><div class="ul-body"><div class="col-2"><div class="ui-block-a movie_message"><p class="tit"><span class="pc">love story</span><span class="mobile">everything</span>Wedding movie</p><p class="txt"><span>everything</span></p></div><div class="ui-block-b movie_box"><div class="movie_container movie1"><ul><li><iframe id="movie" width="100%" src="http://www.youtube.com/embed/Q9aUb6FJdhk?showinfo=0&autohide=1&rel=0&vq=hd1080" height="100%" frameborder="0" allowfullscreen></iframe></li></ul></div></div></div></div></div>{% else %} {% if embed %}<div class="movie_wrap" id="sk_media"><h2 class="title"><span>VIDEO</span></h2><div class="ul-body"><div class="col-2"><div class="ui-block-a movie_message"><p class="tit"><span class="pc">love story</span><span class="mobile">everything</span>Wedding movie</p><p class="txt"><span>everything</span></p></div><div class="ui-block-b movie_box"><div class="movie_container movie1"><ul><li>{{ embed | raw }}</li></ul></div></div></div></div></div>{% endif %} {% endif %}<div class="location_wrap" id="sk_map"><h2 class="title2"><span>ĐỊA ĐIỂM</span></h2><div class="ul-body"><div class="col-2"><div class="ui-block-a"><ul class="lo_tab_wrap"><li class="tab_btn wh locationtabs on" id="tabs_wedding">LỄ THÀNH HÔN</li><li class="tab_btn rh locationtabs" id="tabs_party">TIỆC CƯỚI</li></ul></div></div></div><div class="ul-body locationdivs" id="div_wedding"><div class="col-2 lo_box"><div class="ui-block-a"><h3 class="lo_title">{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}</h3><div class="lo_map"><div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div></div><div class="nav-wrap"><div class="ui-grid-a nav-m"><form action="https://maps.google.com/maps" method="get" target="_blank" id="getHomePath"><input type="text" name="saddr" placeholder="địa chỉ của bạn"> <input type="hidden" name="daddr" value='{{ data["home"] }}'></form><div class="nav-1"><div class="ui-btn-nav wedding_kimnavi"><span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getHomePath()">CHỈ ĐƯỜNG</span></div></div></div></div><div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div></div><div class="ui-block-b"><table class="lo_container"><tr><th class="lo_date">Thời gian</th><td class="txt">{{ weddingDate | long_date }}, hồi {{ weddingDate | date('H:i') }}</td></tr><tr><th class="lo_loca">Địa chỉ</th><td class="txt">{{ data['home'] }}</td></tr><tr><th class="lo_tel">Liên hệ</th><td class="txt">{{ data['home_contact'] }}</td></tr><tr><th class="lo_info">Hướng dẫn</th><td>{{ data['home_info'] }}</td></tr><tr><th class="lo_bus">Xe khách</th><td>{{ data['bus_info'] }}</td></tr></table></div></div></div><div class="ul-body locationdivs hide" id="div_party"><div class="col-2 lo_box"><div class="ui-block-a"><h3 class="lo_title">{{ data['place'] }}</h3><div class="lo_map"><div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div></div><div class="nav-wrap"><div class="ui-grid-a nav-m"><form action="https://maps.google.com/maps" method="get" target="_blank" id="getPath"><input type="text" name="saddr" placeholder="địa chỉ của bạn"> <input type="hidden" name="daddr" value='{{ data["place_addr"] }}'></form><div class="nav-1"><div class="ui-btn-nav wedding_kimnavi"><span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff" onclick="getPath()">CHỈ ĐƯỜNG</span></div></div></div></div><div class="nav_info">※ Gõ chính xác địa chỉ của bạn vào ô ở trên.</div></div><div class="ui-block-b"><table class="lo_container"><tr><th class="lo_date">Thời gian</th><td class="txt">{{ date | long_date }}, hồi {{ date | date('H:i') }}</td></tr><tr><th class="lo_loca">Địa chỉ</th><td class="txt">{{ data['place_addr'] }}</td></tr><tr><th class="lo_tel">Liên hệ</th><td class="txt">{{ data['place_phone'] }}</td></tr><tr><th class="lo_info">Hướng dẫn</th><td>{{ data['place_info'] }}</td></tr><tr><th class="lo_bus">Xe khách</th><td>{{ data['bus_info'] }}</td></tr></table></div></div></div></div><div class="footer" id="sk_snslink"><div class="contents"><h4><a href="{{ path('home_page') }}" target="_blank"><img src="/bundles/viettutweb/img/templates/gardenwedding/lowercase-t-64-269636.png" alt="logo" title="thiepdo.com"> </a><span></span></h4><ul><div class="addthis_inline_share_toolbox"></div></ul></div></div></div><script>!function(e,a,t,n,g,c,s){e.GoogleAnalyticsObject="ga",e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement("script"),s=a.getElementsByTagName("script")[0],c.async=1,c.src="//www.google-analytics.com/analytics.js",s.parentNode.insertBefore(c,s)}(window,document),ga("create","UA-55160879-1","auto"),ga("require","displayfeatures"),ga("send","pageview")</script><div class="popup_wrap popup_parents" style="display:none"><div class="popup_pabox"><ul class="pabox_tabs"><li data-tab="tabs_groom" class="tabs_groom active"><span>신랑 혼주</span></li><li data-tab="tabs_bride" class="tabs_bride"><span>신부 혼주</span></li></ul><div class="pabox_content pabox_groom" id="tabs_groom"><h1 class="pabox_tit"><span>신랑 김희철</span> <strong>신랑 혼주 연락하기</strong></h1><ul class="pabox_contact"><li><div class="name">김선구 님</div><div class="number"><p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p><p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p></div></li><li><div class="name">조양자 님</div><div class="number"><p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p><p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p></div></li></ul></div><div class="pabox_content pabox_bride" id="tabs_bride"><h1 class="pabox_tit"><span>신부 조현영</span> <strong>신부 혼주 연락하기</strong></h1><ul class="pabox_contact"><li><div class="name">조철환 님</div><div class="number"><p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p><p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p></div></li><li><div class="name">윤지현 님</div><div class="number"><p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p><p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p></div></li></ul></div><div class="popup_back"><span id="">닫기</span></div></div></div><div class="pswp" tabindex="-1" role="dialog" aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--fit pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter" data-role="none"></div><button class="pswp__button pswp__button--close" title="Close (Esc)" data-role="none"></button> <button class="pswp__button pswp__button--image" title="Include Image" data-role="none"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen" data-role="none"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out" data-role="none"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)" data-role="none"></button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)" data-role="none"></button><div class="pswp__caption"><div class="pswp__caption__center">Image caption 1</div></div></div></div></div>{% if voted == false %}<div id="signup" class="signup"><div class="container"><div class="row"><i>Vui lòng cho biết dự định của bạn !</i></div><div class="row"><button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button> &nbsp; <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button> &nbsp; <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button></div>{#<p class="text-center">#} {#</p>#} <a href="#" class="close"><i class="fa fa-times text-white"></i></a></div></div>{% endif %}<script src="{{ asset('js/libraries.min.js') }}"></script><script type="text/javascript"><!--
+    $(function () {
+
+        function fixScrollEvent() {
+            $("html,body").on("mousewheel", function () {
+                event.preventDefault();
+
+                var wheelDelta = event.wheelDelta;
+                var currentScrollPosition = window.pageYOffset;
+
+                window.scrollTo(0, currentScrollPosition - wheelDelta);
+            });
+
+            $("html,body").on("keydown", function (e) {
+                e.preventDefault();
+
+                var currentScrollPosition = window.pageYOffset;
+
+                switch (e.which) {
+                    case 38: // up
+                        window.scrollTo(0, currentScrollPosition - 120);
+                        break;
+
+                    case 40: // down
+                        window.scrollTo(0, currentScrollPosition + 120);
+                        break;
+
+                    default:
+                        return;
+                }
+            });
+        }
+
+        $(window).on("orientationchange", function () {
+            callMapInitializeAfterResize();
+        });
+
+        function callMapInitializeAfterResize() {
+            if ($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
+            else initialize('party');
+        }
+
+
+        // -- map -- //
+        function initialize(md) {
+
+        }
+
+        $('#div_snsbbs').masonry({
+            //columnWidth: .snsbbs_sections,
+            //isFitWidth : true,
+            itemSelector: '.snsbbs_sections',
+            transitionDuration: 0
+        }).on('layoutComplete', function () {
+            return true;
+        });
+
+        var closest = function closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        };
+
+        var photoswipeParseHash = function () {
+            var hash = window.location.hash.substring(1),
+                    params = {};
+
+            if (hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        function getGallery($el) {
+            var el = [];
+            var aTag = Array.prototype.slice.call($el.find("a"));
+
+            $.merge(el, aTag);
+
+            return el;
+        }
+
+        function onThumbnailsClick(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+            var clickedListItem = closest(eTarget, function (el) {
+                var tagName = el.tagName.toUpperCase();
+                return (tagName && tagName === 'A');
+            });
+
+            if (!clickedListItem) {
+                return;
+            }
+
+            if (clickedListItem.className.indexOf("swipebox") == -1) {
+                return false;
+            }
+
+            var childNodes = el,
+                    numChildNodes = el.length,
+                    nodeIndex = 0,
+                    index = 0;
+
+            var no_image_count = 0;
+            for (var i = 0; i < numChildNodes; i++) {
+                if (el[i].className.indexOf("swipebox") == -1) {
+                    no_image_count++;
+                }
+
+                if (el[i] == clickedListItem) {
+                    index = i - no_image_count;
+
+                    break;
+                }
+            }
+
+            if (index >= 0) {
+                openPhotoSwipe(index, el);
+            }
+
+            return false;
+        }
+
+        var gallery;
+
+        function getPrefix(prop) {
+            var style = document.body.style;
+            var prefix = ['Webkit', 'ms', 'moz', 'o'];
+            var prefix_len = prefix.length;
+
+            if (style[prop] == '') {
+                return prop;
+            }
+
+            prop = prop[0].toUpperCase() + prop.slice(1);
+
+            for (var i = 0; i < prefix_len; i++) {
+                if (style[prefix[i] + prop] == '') {
+                    return prefix[i] + prop;
+                }
+            }
+        }
+
+        function getTranslate(transform) {
+            var regex;
+
+            if (transform.indexOf('translate3d') == -1) {
+                regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
+            } else {
+                regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
+            }
+
+            var matched = transform.match(regex);
+            var coordinate = {};
+
+            coordinate.x = matched[1];
+            coordinate.y = matched[2];
+
+            if (matched[3]) {
+                coordinate.z = matched[3];
+            }
+
+            return coordinate;
+        }
+
+        function getScale(transform) {
+            var regex = /scale\(([0-9.]+)\)/;
+            var matched = transform.match(regex);
+
+            return matched[1];
+        }
+
+        function psBeforeInitAddEvent() {
+            gallery.listen('gettingData', function (index, item) {
+                var size = item.el.getAttribute("data-size").split("X");
+
+                item.w = size[0];
+                item.h = size[1];
+            });
+
+            gallery.listen('arrowUpdate', function () {
+                var $nextBtn = $('.pswp__button--arrow--right');
+                var $prevBtn = $('.pswp__button--arrow--left');
+                var loop = this.options.loop;
+                var index = this.getCurrentIndex();
+
+                $nextBtn.toggle(loop || index < this.items.length - 1);
+                $prevBtn.toggle(loop || index > 0);
+            });
+
+            gallery.listen('initialZoomIn', function () {
+
+            });
+        }
+
+        function psAfterInitAddEvent() {
+            gallery.listen('initialZoomOut', function () {
+                var item = this.currItem;
+                var container_style = item.container.style;
+                var transform = getPrefix('transform');
+                var transition = getPrefix('transition');
+
+                if (!transform || !transition) {
+                    return;
+                }
+
+                var container_transform = container_style[getPrefix('transform')];
+                var scale = getScale(container_transform);
+                var coordinate = getTranslate(container_transform);
+                var initTransY = item.initialPosition.y;
+                var currTransY = coordinate.y;
+                var size = item.el.getAttribute("data-size").split("X");
+                var transX = item.initialPosition.x;
+                var transY;
+
+                if (initTransY > currTransY) {
+                    transY = -(size[1]);
+                } else {
+                    transY = window.screen.availHeight;
+                }
+
+                container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
+
+                if (!this.isGestureClose() && this.isVerticalDrag()) {
+                    container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
+                }
+            });
+
+            gallery.listen('close', function () {
+                this.framework.bind(window, 'scroll', function () {
+                    if (typeof headerAnimate == "function") {
+                        headerAnimate();
+                    }
+                });
+            });
+        }
+
+        var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelector('.pswp'),
+                    options, items, kakaoInApp;
+
+            items = parseThumbnailElements(galleryElement);
+
+            if (/KAKAOTALK/.test(navigator.userAgent)) {
+                kakaoInApp = true;
+            }
+
+            options = {
+                useZoom: true,
+                arrowKeys: false,
+                hideAnimationDuration: 200,
+                showAnimationDuration: 100,
+                loop: false,
+                imageEl: true,
+                galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
+                showHideOpacity: true,
+                getThumbBoundsFn: false,
+                closeOnScroll: false,
+                kakaoInApp: kakaoInApp,
+            };
+
+            if (fromURL) {
+                if (options.galleryPIDs) {
+
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            if (isNaN(options.index)) {
+                return;
+            }
+
+            if (disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+            gallery.useAniNum = false;
+
+            psBeforeInitAddEvent();
+            gallery.init();
+            psAfterInitAddEvent();
+        };
+
+        var parseThumbnailElements = function (el) {
+            var imageElements = el,
+                    numNodes = imageElements.length,
+                    items = [],
+                    size,
+                    item;
+            var wrapper = document.createElement('div');
+            var imageEl,
+                    thumbEl;
+
+            for (var i = 0; i < numNodes; i++) {
+                imageEl = imageElements[i];
+
+                if (imageEl.nodeType !== 1) {
+                    continue;
+                }
+
+                var img_el = imageEl.getElementsByTagName("img");
+                var exist_img = img_el.length > 0 ? true : false;
+                var src = imageEl.href;
+                var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
+                var msrc;
+                var $imageEl = $(imageEl);
+
+                if (!is_swipe_image) {
+                    continue;
+                }
+
+                if (!exist_img) {
+                    thumbEl = imageEl.getElementsByTagName("div")[0];
+
+                    if (thumbEl) {
+                        msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                    } else {
+                        var piece = src.split("/");
+                        var pieceCount = piece.length;
+                        var file = piece[pieceCount - 1]
+
+                        piece[pieceCount - 1] = "S_" + file;
+
+                        msrc = piece.join("/");
+                    }
+                } else {
+                    if ($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
+                        msrc = img_el[0].parentNode.href;
+                    } else {
+                        thumbEl = img_el[0];
+                        msrc = thumbEl.src;
+                    }
+                }
+
+                item = {
+                    src: src,
+                    msrc: msrc,
+                    el: imageEl,
+                };
+
+                item.id = imageEl.getAttribute("imgId");
+                items.push(item);
+            }
+            return items;
+        };
+
+        var $my_gallery = $("#sk_gallery");
+        var my_gallery_count = $my_gallery.length;
+        var el = getGallery($my_gallery);
+        var $el = $(el);
+        var hashData = photoswipeParseHash();
+
+        $el.on("click", onThumbnailsClick);
+
+        for (var i = 0; i < my_gallery_count; i++) {
+            $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
+        }
+
+        if (hashData.pid && hashData.gid) {
+            openPhotoSwipe(hashData.pid - 1, el, true, true);
+        }
+
+        $(document).on("keydown keyup", function (e) {
+            var hidden = $(".pswp").attr("aria-hidden") == "true";
+
+            if (hidden) {
+                return;
+            }
+
+            var keydownAction = '';
+            var index = gallery.getCurrentIndex();
+            var gallery_len = gallery.items.length;
+
+            if (e.type == "keydown") {
+                if (e.keyCode === 37 && index != 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index != (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            } else if (e.type == "keyup") {
+                if (e.keyCode === 37 && index == 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index == (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            }
+
+            if (keydownAction) {
+                if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    gallery[keydownAction]();
+                }
+            }
+        });
+
+
+        $('.locationtabs').click(function () {
+            var id = $(this).attr('id').replace('tabs_', '');
+            $('.locationtabs').removeClass('on');
+            $(this).addClass('on');
+            $('.locationdivs').removeClass('hide');
+            $('.locationdivs').addClass('hide');
+            $('#div_' + id).removeClass('hide');
+
+            setLocationInfoHeight();
+
+            initialize(id);
+        }).css('cursor', 'pointer');
+
+
+        $('#div_snsbbs').masonry('bindResize');
+
+        $('.btn_go_snsbbs').click(function () {
+            location.href = "/IceCreamCake/snsbbs";
+        }).css('cursor', 'pointer');
+
+
+        function setLocationInfoHeight() {
+        }
+
+        function setPosition(id) {
+            var $obj = $('#sk_' + id);
+            // console.log(id);
+
+            $('body').scrollTo($obj, 500);
+        }
+
+        $('.menu_scrolls').click(function () {
+            try {
+                if ($(this).attr('id')) {
+
+
+                    var id = $(this).attr('id').replace('p_', '').replace('m_', '');
+
+                    //console.log(id);
+
+                    setPosition(id);
+                }
+            } catch (e) {
+                //console.log(e);
+            }
+        }).css('cursor', 'pointer');
+
+
+        $('.pa-groom').click(function () {
+            $('.tabs_bride, #tabs_bride').removeClass('active');
+            $('.tabs_groom, #tabs_groom').addClass('active');
+            showParentPopup();
+        });
+
+        $('.pa-bride').click(function () {
+            $('.tabs_groom, #tabs_groom').removeClass('active');
+            $('.tabs_bride, #tabs_bride').addClass('active');
+
+            showParentPopup();
+        });
+
+        $('.popup_back span').click(function () {
+            $('body').css('overflow-y', '');
+            $('.popup_parents').hide();
+        });
+
+        $('.pabox_tabs li').click(function () {
+            var tab_id = $(this).attr('data-tab');
+
+            $('ul.pabox_tabs li').removeClass('active');
+            $('.pabox_content').removeClass('active');
+
+            $(this).addClass('active');
+            $("#" + tab_id).addClass('active');
+        });
+
+        $('.call, .sms').on('click', function (e) {
+            var agent = window.navigator.userAgent;
+            var is_mobile = /iphone|ipod|ipad|android|windows ce|blackberry|symbian|windows phone|webos|opera mini|opera mobi|polaris|iemobile|lgtelecom|nokia|sonyericsson/i.test(agent);
+
+            if (!is_mobile) {
+                alert('해당 기능은 모바일에서만 가능합니다.');
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        function showParentPopup() {
+            var parent_count = $('.pa-list').attr('data-count');
+
+            if (parent_count > 1) {
+                $('.pabox_tabs').show();
+            } else {
+                $('.pabox_tabs').hide();
+            }
+
+            $('body').css('overflow-y', 'hidden');
+            $('.popup_parents').show();
+        }
+
+    });
+
+    $(window).load(function () {
+        $('.gal_list2').masonry({
+            itemSelector: '.gal_frame',
+            columnWidth: '.gal_size',
+            transitionDuration: '0.2s',
+            percentPosition: true
+        });
+
+        $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+
+        {% if isTemplate == false %}
+        $('.movie_wrap').onScrollTo(function () {
+            $('#signup').addClass('show');
+        }, function () {
+            $('#signup').removeClass('show');
+        });
+
+        $('#signup').on('click', '.close', function (e) {
+            e.preventDefault();
+            $('#signup').removeClass('show');
+        });
+        {% endif %}
+    });
+
+    (function ($) {
+        $.fn.onScrollTo = function (focusInFn, focusOutFn) {
+            var $this = this;
+            $(document).scroll(function () {
+                var y = $(this).scrollTop();
+                if (y >= $this.position().top) {
+                    if (focusInFn) focusInFn();
+                } else {
+                    if (focusOutFn) focusOutFn();
+                }
+            });
+        }
+    })(jQuery);
+
+    function initMap() {
+        var lat = $('#coordinates').data('lat');
+        var lon = $('#coordinates').data('lon');
+        var title = $('#coordinates').data('title');
+
+        var homeLat = $('#coordinates').data('home-lat');
+        var homeLon = $('#coordinates').data('home-lon');
+        var homeTitle = $('#coordinates').data('home-title');
+
+        var location = {lat: lat, lng: lon};
+        var homeLocation = {lat: homeLat, lng: homeLon};
+
+        var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
+            zoom: 16,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        var info = new google.maps.InfoWindow({
+            content: '<h4>' + title + '</h4>'
+        });
+        info.open(map, marker);
+
+        var homeMap = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+            zoom: 16,
+            center: homeLocation
+        });
+        var homeMarker = new google.maps.Marker({
+            position: homeLocation,
+            map: homeMap
+        });
+
+        var homeInfo = new google.maps.InfoWindow({
+            content: '<h4>' + homeTitle + '</h4>'
+        });
+        homeInfo.open(homeMap, homeMarker);
+    }
+
+    function getPath() {
+        var addr = $('#getPath input[name=saddr]').val();
+
+        if (addr.length < 3) {
+            $('#getPath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getPath").submit();
+    }
+
+
+    function getHomePath() {
+        var addr = $('#getHomePath input[name=saddr]').val();
+
+        if (addr.length < 3) {
+            $('#getHomePath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getHomePath").submit();
+    }
+
+    //--></script><script>WebFontConfig={google:{families:["Lora|Pacifico:400,700i&amp;subset=vietnamese"]}},function(e){var o=e.createElement("script"),t=e.scripts[0];o.src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js",o.async=!0,t.parentNode.insertBefore(o,t)}(document)</script><script async defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap"></script><script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-109753132-1")</script></body></html>
