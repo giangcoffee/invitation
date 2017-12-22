@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
+gulp.task('default', ['styles', 'scripts', 'fallinlove','christmaswedding', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
     console.log('i am GULP');
 });
 
@@ -116,6 +116,21 @@ gulp.task('goldstar', function(){
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/goldstar'))
 });
 
+gulp.task('christmaswedding', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/christmaswedding/style.css',
+        'web/bundles/viettutweb/css/templates/christmaswedding/app.css',
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/christmaswedding'))
+});
+
+gulp.task('fallinlove', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/fallinlove/style.css',
+        'web/bundles/viettutweb/css/templates/fallinlove/app.css',
+        'web/bundles/viettutweb/css/templates/fallinlove/animate.css',
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/fallinlove'))
+});
+
 gulp.task('angelcar', function(){
     gulp.src([
         'web/bundles/viettutweb/css/templates/angelcar/style.css',
@@ -187,7 +202,7 @@ gulp.task('gardenwedding-html-minify', function() {
 });
 
 
-gulp.task('html-minify', ['angelcar-html-minify','beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify', 'welcome-html-minify'], function() {
+gulp.task('html-minify', ['fallinlove-html-minify','christmaswedding-html-minify', 'angelcar-html-minify','beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify', 'welcome-html-minify'], function() {
 });
 
 gulp.task('angelcar-html-minify', function() {
@@ -223,4 +238,18 @@ gulp.task('welcome-html-minify', function() {
         .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
         .pipe(rename('welcome.min.twig'))
         .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/welcome/'));
+});
+
+gulp.task('christmaswedding-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/christmaswedding/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('christmaswedding.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/christmaswedding/'));
+});
+
+gulp.task('fallinlove-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/fallinlove/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('fallinlove.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/fallinlove/'));
 });

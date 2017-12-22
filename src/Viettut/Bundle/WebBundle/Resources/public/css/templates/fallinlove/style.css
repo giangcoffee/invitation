@@ -363,7 +363,7 @@ background-color: #fde8de; }
 .lo_container td {width: 80%; background-color: #fde8de;border-bottom: 1px solid #fff; color:#666; padding:12px 15px; font-size:0.8em; line-height:1.6 }
 .lo_container td.txt {color:#000; font-weight:bold}
 
-.lo_container th span {display:inline-block;height:25px; padding:0 0 0 30px;background:url(/bundles/viettutweb/img/templates/fallinlove/location_icon.png) no-repeat 0 0;background-size:25px}
+.lo_container th span {display:block;height:25px; padding:0 0 0 30px;background:url(/bundles/viettutweb/img/templates/fallinlove/location_icon.png) no-repeat 0 0;background-size:25px}
 .lo_container th.lo_date span   {background-position:0 0}
 .lo_container th.lo_loca span   {background-position:0 -25px}
 .lo_container th.lo_tel span    {background-position:0 -50px}
@@ -473,7 +473,7 @@ background-color: #fde8de; }
   .lo_map .ui-link img {height:100%}
 
   .lo_container th {float:left;width:100%;box-sizing: border-box;border-bottom:0;font-size: 1em;padding:10px 10px 5px 10px}
-  .lo_container td {float:left;width:100%;box-sizing: border-box;font-size: 0.9em;border-bottom:2px solid #fff;padding:0 10px 10px 40px;}
+  .lo_container td {float:left;width:100%;box-sizing: border-box;font-size: 0.9em;border-bottom:2px solid #fff;padding:0 10px 10px 15px;}
 
   .nav_info {font-size:0.7em;}
 }
