@@ -234,7 +234,6 @@ class AuthenController extends Controller
                 ->setEmail($user['email'])
                 ->setName($user['name'])
                 ->setGoogleId($user['id'])
-                ->setActive(true)
                 ->setGender($gender)
                 ->setAvatar($user['picture'])
             ;

@@ -36,7 +36,7 @@ class RegistrationType extends AbstractType
                     $form->get('username')->addError(new FormError('Tên đăng nhập quá ngắn, ít nhất 6 ký tự!'));
                 }
 
-                if (!preg_match('/^[A-Za-z][A-Za-z0-9_]$/', $user->getUsername())) {
+                if (!preg_match('/^[A-Za-z][A-Za-z0-9_]+$/', $user->getUsername())) {
                     $form->get('username')->addError(new FormError('Tên đăng nhập không bắt đầu bằng số và chỉ gồm chữ cái, số, dâu gạch chân!'));
                 }
 
