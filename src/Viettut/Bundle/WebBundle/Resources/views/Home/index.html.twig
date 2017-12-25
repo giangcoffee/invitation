@@ -186,7 +186,11 @@
                 </div>
                 <div class="col-md-4">
                     <div class="get-started">
-                        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-lg btn-primary">Đăng Ký Ngay</a>
+                        {% if app.user %}
+                            <a href="{{ path('my_card_page') }}" class="btn btn-lg btn-primary">Thiệp Của Tôi</a>
+                        {% else %}
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-lg btn-primary">Đăng Ký Ngay</a>
+                        {% endif %}
                         <div class="learn-more"> hoặc <a href="{{ path('services_page') }}">tìm hiểu thêm</a></div>
                     </div>
                 </div>

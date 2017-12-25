@@ -242,7 +242,7 @@ $(document).ready(function(){
         acceptFiles: 'image/',
         dragDrop: true,
         multiple: true,
-        maxFileCount: 5,
+        maxFileCount: 10,
         showProgress: true,
         onSuccess:function(files,data,xhr,pd) {
             data.forEach(function(element) {
