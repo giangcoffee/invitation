@@ -104,7 +104,7 @@ function updateAlbum() {
                 '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                 'Thông tin cập nhật thành công !'
                 + '</div>';
-            $('div.form-horizontal').before(html);
+            $('div#edit_album').before(html);
             $('button#updateAlbumButton').html('Cập Nhật Album');
             $('body').scrollTop(0);
         },
@@ -131,7 +131,7 @@ function updateVideo() {
                 '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                 'Thông tin cập nhật thành công !'
                 + '</div>';
-            $('div#videoForm').before(html);
+            $('div#edit_video').before(html);
             $('button#updateVideoButton').html('Cập Nhật');
         },
         error : function(jqXHR, textStatus, errorThrown) {
