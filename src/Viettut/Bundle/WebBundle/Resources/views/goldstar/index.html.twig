@@ -222,7 +222,7 @@
 
     {% if isTemplate %}
         <!-- movie -->
-        <div class="movie_wrap ui-cont-b">
+        <div class="movie_wrap ui-cont-b" id="sk_media">
             <h2 class="title hidden">VIDEO</h2>
             <div class="ul-body">
                 <div class="movie_container movie1">
@@ -253,7 +253,7 @@
     {% else %}
         {% if embed | length > 0 %}
             <!-- movie -->
-            <div class="movie_wrap ui-cont-b">
+            <div class="movie_wrap ui-cont-b" id="sk_media">
                 <h2 class="title hidden">VIDEO</h2>
                 <div class="ul-body">
                     <div class="movie_container movie1">
@@ -1141,13 +1141,13 @@
 
         function setPosition(id){
             var $obj = $('#sk_'+id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
         $('.menu_scrolls').click(function(){
             try {
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if($(this).attr('id')){
                     var id = $(this).attr('id').replace('p_','').replace('m_','');
                     setPosition(id);

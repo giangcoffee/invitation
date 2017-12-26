@@ -1183,14 +1183,6 @@
 
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/retrocity/snsbbs";
-        }).css('cursor', 'pointer');
-
-        $('#btn_line').click(function () {
-            location.href = "http://line.me/R/msg/text/?" + encodeURIComponent("우리 결혼합니다.") + " " + encodeURIComponent("http://dalpeng.com/retrocity");
-        });
-
         function setLocationInfoHeight() {
         }
 
@@ -1201,6 +1193,8 @@
 
         $('.menu_scrolls').click(function () {
             try {
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if ($(this).attr('id')) {
                     var id = $(this).attr('id').replace('p_', '').replace('m_', '');
                     setPosition(id);

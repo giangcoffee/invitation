@@ -1162,6 +1162,8 @@
 
         $('.menu_scrolls').click(function () {
             try {
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if ($(this).attr('id')) {
                     var id = $(this).attr('id').replace('p_', '').replace('m_', '');
                     setPosition(id);

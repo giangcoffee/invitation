@@ -1289,30 +1289,18 @@
 
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/FallInLove/snsbbs";
-        }).css('cursor', 'pointer');
-
-        $('#btn_line').click(function () {
-            alert('모바일 기기에서만 사용 가능한 기능입니다.');
-        });
-
-        $('.btn_send_kakao').click(function () {
-            alert('모바일 기기에서만 사용 가능한 기능입니다.');
-        });
-
         function setLocationInfoHeight() {
         }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
         $('.menu_scrolls').click(function () {
             try {
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if ($(this).attr('id')) {
                     var id = $(this).attr('id').replace('p_', '').replace('m_', '');
                     setPosition(id);

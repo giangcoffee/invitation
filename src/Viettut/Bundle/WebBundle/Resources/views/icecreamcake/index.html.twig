@@ -1300,31 +1300,24 @@
 
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/IceCreamCake/snsbbs";
-        }).css('cursor', 'pointer');
-
 
         function setLocationInfoHeight() {
         }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
         $('.menu_scrolls').click(function () {
             try {
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if ($(this).attr('id')) {
-
-
                     var id = $(this).attr('id').replace('p_', '').replace('m_', '');
-
-                    //console.log(id);
-
                     setPosition(id);
+                } else {
+                    window.location.href = '/';
                 }
             } catch (e) {
                 //console.log(e);
