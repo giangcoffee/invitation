@@ -490,6 +490,7 @@ h2.title_gold span {
 	text-align: center;
 	width: 85%;
 	margin: 0px auto;
+	word-break:break-word;
 }
 .greeting_name {
 	margin: 30px auto 0;

@@ -8,7 +8,7 @@ var cardId = $('.card-info').data('id');
 
 Array.prototype.remByVal = function(val) {
     for (var i = 0; i < this.length; i++) {
-        if (this[i] === val) {
+        if (this[i]['src'] === val) {
             this.splice(i, 1);
             i--;
         }
