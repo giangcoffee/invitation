@@ -7,7 +7,7 @@
     <meta property="og:description" content="{{ description }}"/>
 
     <meta property="og:title" content="{{ name }}"/>
-    <meta property="og:image" content="http://dalpeng.com/user/retrocity/img/b0d7322accf7597230e71f2864b7c32b.jpg"/>
+    <meta property="og:image" content="/bundles/viettutweb/img/templates/retrocity/b0d7322accf7597230e71f2864b7c32b.jpg"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -27,7 +27,7 @@
 
 </head>
 <body>
-<h1 class="hide">Beautiful Day - Những ngày đẹp trời</h1>
+<h1 class="hide">Retro City - Thành phố mờ ảo</h1>
 <h2 class="hide">Mẫu mới với phong cách nhẹ nhàng trong sáng với tông màu nhẹ, thích hợp với những bộ ảnh giản dị.</h2>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}"
@@ -778,44 +778,7 @@
 {% endif %}
 <script src="{{ asset('js/libraries.min.js') }}"></script>
 <script type="text/javascript">
-    <!--
-
-
-    var swipe_exception = false;
-
-
     $(function () {
-
-        function fixScrollEvent() {
-            $("html,body").on("mousewheel", function () {
-                event.preventDefault();
-
-                var wheelDelta = event.wheelDelta;
-                var currentScrollPosition = window.pageYOffset;
-
-                window.scrollTo(0, currentScrollPosition - wheelDelta);
-            });
-
-            $("html,body").on("keydown", function (e) {
-                e.preventDefault();
-
-                var currentScrollPosition = window.pageYOffset;
-
-                switch (e.which) {
-                    case 38: // up
-                        window.scrollTo(0, currentScrollPosition - 120);
-                        break;
-
-                    case 40: // down
-                        window.scrollTo(0, currentScrollPosition + 120);
-                        break;
-
-                    default:
-                        return;
-                }
-            });
-        }
-
         $(window).on("orientationchange", function () {
             callMapInitializeAfterResize();
         });
@@ -828,172 +791,6 @@
 
         // -- map -- //
         function initialize(md) {
-        }
-
-        function callKimNavi(md) {
-            if (md == 'party') {
-                var $map_addr = $('#party_paddr').val();
-                var $map_lat = $('#party_pmap_lat').val();
-                var $map_lon = $('#party_pmap_lon').val();
-            } else if (md == 'wedding') {
-                var $map_addr = $('#wedding_paddr').val();
-                var $map_lat = $('#wedding_pmap_lat').val();
-                var $map_lon = $('#wedding_pmap_lon').val();
-            } else if (md == 'fbirthday') {
-                var $map_addr = $('#fbirthday_addr').val();
-                var $map_lat = $('#fbirthday_map_lat').val();
-                var $map_lon = $('#fbirthday_map_lon').val();
-            } else if (md == 'ceremony') {
-                var $map_addr = $('#ceremony_addr').val();
-                var $map_lat = $('#ceremony_map_lat').val();
-                var $map_lon = $('#ceremony_map_lon').val();
-            }
-
-            //console.log(md);
-
-            var ua = window.navigator.userAgent.toLowerCase();
-            if (/android/.test(ua)) {
-                //window.open("http://openapi.kimgisa.co.kr/addpoi?name="+$map_addr+"&coord_type=wgs84&pos_x="+$map_lon+"&pos_y="+$map_lat+"&key=aaeaf33444f34380a402889bb84ec024&dwflag=Y");
-                location.href = "http://openapi.kimgisa.co.kr/addpoi?key=aaeaf33444f34380a402889bb84ec024&name=" + encodeURIComponent($map_addr) + "&coordinate=wgs84&pos_x=" + $map_lon + "&pos_y=" + $map_lat + "&download=true";
-
-            } else {
-                var url = "http://openapi.kimgisa.co.kr/addpoi?key=aaeaf33444f34380a402889bb84ec024&name=" + encodeURIComponent($map_addr) + "&coordinate=wgs84&pos_x=" + $map_lon + "&pos_y=" + $map_lat + "&download=true";
-
-                //console.log (url);
-
-
-                window.open(url, "callApp");
-                /*
-                 window.open(url,'callApp');
-                 var nwin = window.open("","callApp");
-                 setTimeout(function(){
-                 nwin.location.href = url;
-                 },500);
-                 */
-                //location.href = ;
-
-                //$('#ifmChkApp').attr('src',"http://openapi.kimgisa.co.kr/addpoi?key=aaeaf33444f34380a402889bb84ec024&name="+encodeURIComponent($map_addr)+"&pos_x="+$map_lon+"&pos_y="+$map_lat+"&download=true");;
-
-                //?name="+encodeURIComponent($map_addr)+"&coord_type=wgs84&pos_x="+$map_lon+"&pos_y="+$map_lat+"&key=aaeaf33444f34380a402889bb84ec024&dwflag=Y");
-            }
-        }
-
-        function callKakaoNavi(md) {
-            var $map_addr, $map_lat, $map_lon
-
-            if (md == 'party') {
-                $map_addr = $('#party_paddr').val();
-                $map_lat = $('#party_pmap_lat').val();
-                $map_lon = $('#party_pmap_lon').val();
-            } else if (md == 'wedding') {
-                $map_addr = $('#wedding_paddr').val();
-                $map_lat = $('#wedding_pmap_lat').val();
-                $map_lon = $('#wedding_pmap_lon').val();
-            } else if (md == 'fbirthday') {
-                $map_addr = $('#fbirthday_addr').val();
-                $map_lat = $('#fbirthday_map_lat').val();
-                $map_lon = $('#fbirthday_map_lon').val();
-            } else if (md == 'ceremony') {
-                $map_addr = $('#ceremony_addr').val();
-                $map_lat = $('#ceremony_map_lat').val();
-                $map_lon = $('#ceremony_map_lon').val();
-            }
-
-            Kakao.Navi.start({
-                name: $map_addr,
-                x: parseFloat($map_lon),
-                y: parseFloat($map_lat),
-                coordType: 'wgs84'
-            });
-        }
-
-
-        var $map_addr = ''
-        var $map_lat = ''
-        var $map_lon = '';
-
-        function callOllehNavi(md) {
-            if (md == 'party') {
-                $map_addr = $('#party_paddr').val();
-                $map_lat = $('#party_pmap_lat').val();
-                $map_lon = $('#party_pmap_lon').val();
-            } else if (md == 'wedding') {
-                $map_addr = $('#wedding_paddr').val();
-                $map_lat = $('#wedding_pmap_lat').val();
-                $map_lon = $('#wedding_pmap_lon').val();
-            } else if (md == 'fbirthday') {
-                $map_addr = $('#fbirthday_addr').val();
-                $map_lat = $('#fbirthday_map_lat').val();
-                $map_lon = $('#fbirthday_map_lon').val();
-            } else if (md == 'ceremony') {
-                $map_addr = $('#ceremony_addr').val();
-                $map_lat = $('#ceremony_map_lat').val();
-                $map_lon = $('#ceremony_map_lon').val();
-            }
-
-            //console.log(md);
-            /*
-             var ua = window.navigator.userAgent.toLowerCase();
-             if(/android/.test(ua)){
-             var start_position='';
-             //alert(lat_now+"/"+lon_now);
-             // if($('#now_lat').val() && $('#now_lon').val()) start_position = $('#now_lat').val()+"/"+$('#now_lon').val();
-             window.open("/dalpeng/ollehnavi/"+$map_lat +"/"+$map_lon+"/"+encodeURIComponent($map_addr)+"/"+start_position);
-             }else{
-             */
-            //$('#ifmChkApp').attr('src',"http://dalpeng.com/dalpeng/ollehnavi/"+$map_lat +"/"+$map_lon+"/"+encodeURIComponent($map_addr)+"/");
-            location.href = "/dalpeng/ollehnavi/" + $map_lat + "/" + $map_lon + "/" + encodeURIComponent($map_addr) + "/";
-            /*
-             var nwin = window.open("","callApp");
-             setTimeout(function(){
-             nwin.location.href = "http://dalpeng.com/dalpeng/ollehnavi/"+$map_lat +"/"+$map_lon+"/"+encodeURIComponent($map_addr)+"/";
-             },500);
-             */
-
-        }
-
-
-        function callTmapNavi(md) {
-            //console.log(md);
-
-            if (md == 'party') {
-                var $map_addr = $('#party_paddr').val();
-                var $map_lat = $('#party_pmap_lat').val();
-                var $map_lon = $('#party_pmap_lon').val();
-            } else if (md == 'wedding') {
-                var $map_addr = $('#wedding_paddr').val();
-                var $map_lat = $('#wedding_pmap_lat').val();
-                var $map_lon = $('#wedding_pmap_lon').val();
-            } else if (md == 'fbirthday') {
-                var $map_addr = $('#fbirthday_addr').val();
-                var $map_lat = $('#fbirthday_map_lat').val();
-                var $map_lon = $('#fbirthday_map_lon').val();
-            } else if (md == 'ceremony') {
-                var $map_addr = $('#ceremony_addr').val();
-                var $map_lat = $('#ceremony_map_lat').val();
-                var $map_lon = $('#ceremony_map_lon').val();
-            }
-
-            /*
-             var ua = window.navigator.userAgent.toLowerCase();
-             if(/android/.test(ua)){
-             var start_position='';
-             //alert(lat_now+"/"+lon_now);
-             // if($('#now_lat').val() && $('#now_lon').val()) start_position = $('#now_lat').val()+"/"+$('#now_lon').val();
-             window.open("/dalpeng/ollehnavi/"+$map_lat +"/"+$map_lon+"/"+encodeURIComponent($map_addr)+"/"+start_position);
-             }else{
-             */
-            //$('#ifmChkApp').attr('src',"/dalpeng/ollehnavi/"+$map_lat +"/"+$map_lon+"/"+encodeURIComponent($map_addr)+"/");
-            var nwin = window.open("", "callApp");
-            setTimeout(function () {
-                nwin.location.href = "/dalpeng/tmapnavi/" + $map_lat + "/" + $map_lon + "/" + encodeURIComponent($map_addr) + "/";
-            }, 600);
-
-
-            /*
-             }//if
-             */
-            //window.open("/dalpeng/ollehnavi/"+$map_lat +"/"+$map_lon+"/"+$map_addr+"/");
         }
 
         $('#div_snsbbs').masonry({
@@ -1254,21 +1051,6 @@
 
             gallery.useAniNum = false;
 
-            // 방명록 글쓰기에 이미지 첨부
-            gallery.includeImage = function () {
-                var id = gallery.currItem.id
-                var url = "retrocity/snsbbs/w/" + id;
-                var kakaoInApp = gallery.options.kakaoInApp;
-
-                /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
-                 (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
-                if (!kakaoInApp) {
-                    window.location = url;
-                } else {
-                    window.open(url);
-                }
-            }
-
             psBeforeInitAddEvent();
             gallery.init();
             psAfterInitAddEvent();
@@ -1400,23 +1182,6 @@
             $('#div_' + id).removeClass('hide');
         }).css('cursor', 'pointer');
 
-        $('.wedding_kimnavi,.party_kimnavi,.fbirthday_kimnavi,.ceremony_kimnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_kimnavi ', '').replace('_kimnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-a cont_box3 ', '');
-
-            callKakaoNavi(id);
-        });
-
-        $('.wedding_ollehnavi,.party_ollehnavi,.fbirthday_ollehnavi,.ceremony_ollehnavi').click(function () {
-            var id = $(this).attr('class').replace('nav_btn nav_ollehnavi ', '').replace('_ollehnavi', '').replace('btn_', '').replace('ui-body-d ui-btn-nav ', '').replace('ui-block-b cont_box4 ', '');
-
-            callOllehNavi(id);
-        });
-
-        $('.ceremony_tmapnavi').click(function () {
-            callTmapNavi('ceremony');
-        });
-
-
         $('#div_snsbbs').masonry('bindResize');
 
         $('.btn_go_snsbbs').click(function () {
@@ -1427,65 +1192,11 @@
             location.href = "http://line.me/R/msg/text/?" + encodeURIComponent("우리 결혼합니다.") + " " + encodeURIComponent("http://dalpeng.com/retrocity");
         });
 
-
-        function htmlspecialchars_decode(string, quoteStyle) {
-            var optTemp = 0
-            var i = 0
-            var noquotes = false
-
-            if (typeof quoteStyle === 'undefined') {
-                quoteStyle = 2
-            }
-            string = string.toString()
-                    .replace(/&lt;/g, '<')
-                    .replace(/&gt;/g, '>')
-            var OPTS = {
-                'ENT_NOQUOTES': 0,
-                'ENT_HTML_QUOTE_SINGLE': 1,
-                'ENT_HTML_QUOTE_DOUBLE': 2,
-                'ENT_COMPAT': 2,
-                'ENT_QUOTES': 3,
-                'ENT_IGNORE': 4
-            }
-            if (quoteStyle === 0) {
-                noquotes = true
-            }
-            if (typeof quoteStyle !== 'number') {
-                // Allow for a single string or an array of string flags
-                quoteStyle = [].concat(quoteStyle)
-                for (i = 0; i < quoteStyle.length; i++) {
-                    // Resolve string input to bitwise e.g. 'PATHINFO_EXTENSION' becomes 4
-                    if (OPTS[quoteStyle[i]] === 0) {
-                        noquotes = true
-                    } else if (OPTS[quoteStyle[i]]) {
-                        optTemp = optTemp | OPTS[quoteStyle[i]]
-                    }
-                }
-                quoteStyle = optTemp
-            }
-            if (quoteStyle & OPTS.ENT_HTML_QUOTE_SINGLE) {
-                // PHP doesn't currently escape if more than one 0, but it should:
-                string = string.replace(/&#0*39;/g, "'")
-                // This would also be useful here, but not a part of PHP:
-                // string = string.replace(/&apos;|&#x0*27;/g, "'");
-            }
-            if (!noquotes) {
-                string = string.replace(/&quot;/g, '"')
-            }
-            // Put this in last place to avoid escape being double-decoded
-            string = string.replace(/&amp;/g, '&')
-
-            return string;
-        }
-
-
         function setLocationInfoHeight() {
         }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
@@ -1501,12 +1212,6 @@
             }
         }).css('cursor', 'pointer');
 
-
-        initialize('wedding');
-        setLocationInfoHeight();
-
-
-        // 혼주 연락처 팝업 처리
         $('.pa-groom').click(function () {
             $('.tabs_bride, #tabs_bride').removeClass('active');
             $('.tabs_groom, #tabs_groom').addClass('active');
@@ -1585,8 +1290,6 @@
         });
         {% endif %}
     });
-
-    //-->
 
     (function ($) {
         $.fn.onScrollTo = function (focusInFn, focusOutFn) {

@@ -146,15 +146,15 @@ label { cursor:pointer; }
 }
 
 @media all and (max-width: 640px) {
-	.footer h4 {right:5px;top:-5px;}
+	.footer h4 {right:5px;top:-18px;}
 }
 
 @media all and (max-width: 480px) {
-	.footer h4 {right:5px;top:-5px;}
+	.footer h4 {right:5px;top:-18px;}
 }
 
 @media all and (max-width: 320px) {
-    .footer h4 {right:5px;top:-5px;}
+    .footer h4 {right:5px;top:-18px;}
 }
 
 .hide {display:none;}

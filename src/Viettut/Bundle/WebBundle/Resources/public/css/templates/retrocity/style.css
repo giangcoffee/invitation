@@ -1580,7 +1580,7 @@ overflow:hidden;
 .header_front {
 	width: 100%;
 }
-.header_panel {top:50%; margin:0px 0 0 0}
+.header_panel {top:47%; margin:0px 0 0 0}
 .header_photo {
 	max-width: 320px;
 	width: 200px;
@@ -1612,6 +1612,12 @@ overflow:hidden;
 	line-height: 500;
 	padding: 0;
  font-size: 3em overflow: hidden;
+}
+.gn1, .gn2 {
+	font-size:0.8em;
+}
+.gn4 {
+	font-size: 1em;
 }
 .hd_name span {
 	display: inline-block;
@@ -1746,3 +1752,6 @@ opacity: 1;
 .parents_wrap .pa-tit {color:#555}
 .parents_wrap .pa-list li {background-color:#555}
 
+.comm_txt p {
+	word-break:break-word;
+}

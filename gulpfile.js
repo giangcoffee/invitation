@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'icecreamcake','fallinlove','christmaswedding', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
+gulp.task('default', ['styles', 'scripts', 'retrocity', 'icecreamcake','fallinlove','christmaswedding', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
     console.log('i am GULP');
 });
 
@@ -138,6 +138,13 @@ gulp.task('icecreamcake', function(){
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/icecreamcake'))
 });
 
+gulp.task('retrocity', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/retrocity/style.css',
+        'web/bundles/viettutweb/css/templates/retrocity/app.css',
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/retrocity'))
+});
+
 gulp.task('angelcar', function(){
     gulp.src([
         'web/bundles/viettutweb/css/templates/angelcar/style.css',
@@ -209,7 +216,7 @@ gulp.task('gardenwedding-html-minify', function() {
 });
 
 
-gulp.task('html-minify', ['icecreamcake-html-minify','fallinlove-html-minify','christmaswedding-html-minify', 'angelcar-html-minify','beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify', 'welcome-html-minify'], function() {
+gulp.task('html-minify', ['retrocity-html-minify', 'icecreamcake-html-minify','fallinlove-html-minify','christmaswedding-html-minify', 'angelcar-html-minify','beautifulday-html-minify', 'gardenwedding-html-minify', 'goldstar-html-minify', 'winterwonderland-html-minify', 'welcome-html-minify'], function() {
 });
 
 gulp.task('angelcar-html-minify', function() {
@@ -266,4 +273,11 @@ gulp.task('icecreamcake-html-minify', function() {
         .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
         .pipe(rename('icecreamcake.min.twig'))
         .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/icecreamcake/'));
+});
+
+gulp.task('retrocity-html-minify', function() {
+    return gulp.src('src/Viettut/Bundle/WebBundle/Resources/views/retrocity/index.html.twig')
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+        .pipe(rename('retrocity.min.twig'))
+        .pipe(gulp.dest('src/Viettut/Bundle/WebBundle/Resources/views/retrocity/'));
 });
