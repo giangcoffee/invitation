@@ -243,13 +243,13 @@ div.header_img {height: 1024px; background: url('/bundles/viettutweb/img/templat
 }
 @media(max-width:414px){
 	.couple_list div.name p strong,
-	.couple_list div.and p strong{font-size: 60px;}
+	.couple_list div.and p strong{font-size: 50px;}
 	.home_loca .date{font-size:16px}
 	.home_loca .place{font-size:18px}
 }
 @media(max-width:320px){
 	.couple_list div.name p strong,
-	.couple_list div.and p strong{font-size:45px}
+	.couple_list div.and p strong{font-size:40px}
 	.header_txt .title .tit_txt2 {
 		font-size:0.6em;
 	}

@@ -55,7 +55,7 @@ div.header_bg {background:url('/bundles/viettutweb/img/templates/winterwonderlan
 .hd_title strong {font-weight:bold; margin:0 5px}
 .hd_date {position:absolute; bottom:10px; left:0; width:100%; text-align:center;}
 .hd_date img {width:35px; margin-top:10px;}
-.hd_date p {font-size:1.1em; margin:0 0 5px 0; color:#e0c387;}
+.hd_date p {font-size:1.1em; margin:0 0 5px 0; color:#e0c387;word-break:break-word;}
 .hd_date p:first-child {font-family: 'Lora', serif; color:#fff;}
 
 
