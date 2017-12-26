@@ -19,6 +19,26 @@ class SetDefaultCardDataListener
     const DEFAULT_EXHIBITION_VIDEO_ID = 'JIRrGBnwBek';
     use StringFactory;
 
+    private $adminId;
+    private $weddingComment;
+    private $exhibitionComment;
+    private $birthdayComment;
+
+    /**
+     * SetDefaultCardDataListener constructor.
+     * @param $adminId
+     * @param $weddingComment
+     * @param $exhibitionComment
+     * @param $birthdayComment
+     */
+    public function __construct($adminId, $weddingComment, $exhibitionComment, $birthdayComment)
+    {
+        $this->adminId = $adminId;
+        $this->weddingComment = $weddingComment;
+        $this->exhibitionComment = $exhibitionComment;
+        $this->birthdayComment = $birthdayComment;
+    }
+
     /**
      * @param LifecycleEventArgs $args
      */
@@ -36,7 +56,7 @@ class SetDefaultCardDataListener
 
         $name = '';
         $userRepository = $args->getEntityManager()->getRepository(User::class);
-        $thiepdo = $userRepository->find(18);
+        $thiepdo = $userRepository->find($this->adminId);
         switch ($entity->getTemplate()->getType()) {
             case 1:
                 $templateData['bride_name'] = $data['bride_name'];
@@ -61,7 +81,7 @@ class SetDefaultCardDataListener
                     );
                 }
                 $comment = new Comment();
-                $comment->setAuthor($thiepdo)->setCard($entity)->setContent('Thiệp Đỏ xin chúc hai bạn một đám cưới hạnh phúc và viên mãn !');
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent($this->weddingComment);
                 $entity->addComment($comment);
 
                 break;
@@ -75,7 +95,7 @@ class SetDefaultCardDataListener
                     uniqid(''));
 
                 $comment = new Comment();
-                $comment->setAuthor($thiepdo)->setCard($entity)->setContent('Thiệp Đỏ chúc quý vị một ngày thành công rực rỡ !');
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent($this->exhibitionComment);
                 $entity->addComment($comment);
                 break;
             case 3:
@@ -90,7 +110,7 @@ class SetDefaultCardDataListener
                     uniqid(''));
 
                 $comment = new Comment();
-                $comment->setAuthor($thiepdo)->setCard($entity)->setContent('Thiệp Đỏ chúc con một sinh nhật vui vẻ và hạnh phúc !');
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent($this->birthdayComment);
                 $entity->addComment($comment);
                 break;
         }

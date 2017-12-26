@@ -59,5 +59,10 @@ services:
     viettut.event_listener.set_default_card_data_listener:
         class: Viettut\Bundle\ApiBundle\EventListener\SetDefaultCardDataListener
         arguments:
+            - '%admin_id%'
+            - '%wedding_comment%'
+            - '%exhibition_comment%'
+            - '%birthday_comment%'
+
         tags:
             - { name: doctrine.event_listener, event: prePersist }

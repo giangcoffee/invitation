@@ -36,3 +36,7 @@ parameters:
     image_quality: 50
     cookie_path: /
     cookie_lifetime: 3600
+    admin_id: 20
+    wedding_comment: 'Thiệp Đỏ xin chúc hai bạn một đám cưới hạnh phúc và viên mãn !'
+    exhibition_comment: 'Thiệp Đỏ chúc quý vị một ngày thành công rực rỡ !'
+    birthday_comment: 'Thiệp Đỏ chúc con một sinh nhật vui vẻ và hạnh phúc !'
