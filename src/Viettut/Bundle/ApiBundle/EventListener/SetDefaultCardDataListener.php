@@ -5,6 +5,8 @@ namespace Viettut\Bundle\ApiBundle\EventListener;
 
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Viettut\Bundle\UserBundle\Entity\User;
+use Viettut\Entity\Core\Comment;
 use Viettut\Exception\InvalidArgumentException;
 use Viettut\Model\Core\CardInterface;
 use Viettut\Utilities\StringFactory;
@@ -33,6 +35,8 @@ class SetDefaultCardDataListener
         $templateData = $template->getData();
 
         $name = '';
+        $userRepository = $args->getEntityManager()->getRepository(User::class);
+        $thiepdo = $userRepository->find(18);
         switch ($entity->getTemplate()->getType()) {
             case 1:
                 $templateData['bride_name'] = $data['bride_name'];
@@ -56,6 +60,10 @@ class SetDefaultCardDataListener
                         uniqid('')
                     );
                 }
+                $comment = new Comment();
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent('Thiệp Đỏ xin chúc hai bạn một đám cưới hạnh phúc và viên mãn !');
+                $entity->addComment($comment);
+
                 break;
             case 2:
                 $templateData['event'] = $data['event'];
@@ -65,6 +73,10 @@ class SetDefaultCardDataListener
                     $entity->getWeddingDate()->format('m'),
                     $entity->getWeddingDate()->format('Y'),
                     uniqid(''));
+
+                $comment = new Comment();
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent('Thiệp Đỏ chúc quý vị một ngày thành công rực rỡ !');
+                $entity->addComment($comment);
                 break;
             case 3:
                 $templateData['title'] = $data['title'];
@@ -76,6 +88,10 @@ class SetDefaultCardDataListener
                     $entity->getWeddingDate()->format('m'),
                     $entity->getWeddingDate()->format('Y'),
                     uniqid(''));
+
+                $comment = new Comment();
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent('Thiệp Đỏ chúc con một sinh nhật vui vẻ và hạnh phúc !');
+                $entity->addComment($comment);
                 break;
         }
 

@@ -689,7 +689,7 @@
                 headers : {
                     'Content-Type' : 'application/json; charset=utf-8'
                 },
-                url : '/api/v1/cards',
+                url : '/app_dev.php/api/v1/cards?XDEBUG_SESSION_START=1',
                 type : 'POST',
                 data : JSON.stringify(data),
                 success : function(response, textStatus, jqXhr) {

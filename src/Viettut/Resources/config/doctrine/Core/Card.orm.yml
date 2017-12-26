@@ -81,6 +81,7 @@ Viettut\Entity\Core\Card:
     oneToMany:
         comments:
             targetEntity: Viettut\Entity\Core\Comment
+            cascade: ['persist', 'detach', 'remove']
             mappedBy: card
         statuses:
             targetEntity: Viettut\Entity\Core\Status

@@ -87,6 +87,8 @@ interface CardInterface extends ModelInterface
      */
     public function setComments($comments);
 
+    public function addComment($comment);
+
     /**
      * @return array
      */
