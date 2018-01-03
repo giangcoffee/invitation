@@ -166,6 +166,8 @@ class BuilderController extends Controller
 
         if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
             $description = $data['greeting'];
+            $description = strip_tags(html_entity_decode($description));
+
         }
 
         return $this->render($template->getPath(), array(
@@ -217,6 +219,7 @@ class BuilderController extends Controller
 
         if (array_key_exists('greeting', $data) && !empty($data['greeting'])) {
             $description = $data['greeting'];
+            $description = strip_tags(html_entity_decode($description));
         }
 
         $name = sprintf('%s-%s', $card->getName(), $card->getWeddingDate()->format('d-m-Y'));
