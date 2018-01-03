@@ -155,7 +155,7 @@
     <div class="greeting_wrap">
         <div class="greeting_textbox">
             <h2 class="title"><img src="/bundles/viettutweb/img/templates/goldstar/greeting_title.png" alt="WEDDING INVITATION"></h2>
-            <p>{{ data['greeting'] }}</p>
+            <p>{{ data['greeting'] | raw }}</p>
             {% if forGroom %}
                 <table class="greeting_name">
                     <thead>

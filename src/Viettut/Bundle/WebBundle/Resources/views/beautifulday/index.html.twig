@@ -196,7 +196,7 @@
                     <h2 class="title"><span>LỜI CẢM ƠN</span></h2>
                     <div class="invite_img"><span>Destined to love you !</span></div>
 
-                    <div class="invite_text">{{ data['greeting'] }}</div>
+                    <div class="invite_text">{{ data['greeting'] | raw }}</div>
                     <ul class="invite_name">
                         <li class="in_groom">
                             <p class="parents"><span class="in1">{{ data['groom_fa_name'] }}</span><span class="in_and">,</span><span class="in2">{{ data['groom_mo_name'] }}</span><span class="in3"></span></p>

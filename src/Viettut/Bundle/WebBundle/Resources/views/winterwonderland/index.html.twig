@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="ui-block-b">
-                    <div class="greeting_textbox">{{ data['greeting'] }}</div>
+                    <div class="greeting_textbox">{{ data['greeting'] | raw}}</div>
                     {% if forGroom %}
                         <table class="greeting_name">
                             <thead>
