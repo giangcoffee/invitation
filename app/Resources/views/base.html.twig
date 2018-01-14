@@ -69,14 +69,14 @@
                 </a>
             </div>
             {#<div class="search">#}
-                {#<form id="searchForm">#}
-                    {#<div class="input-group">#}
-                        {#<input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>#}
-                        {#<span class="input-group-btn">#}
-                            {#<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>#}
-                        {#</span>#}
-                    {#</div>#}
-                {#</form>#}
+            {#<form id="searchForm">#}
+            {#<div class="input-group">#}
+            {#<input type="text" class="form-control search" name="q" id="q" placeholder="Tìm kiếm..." required>#}
+            {#<span class="input-group-btn">#}
+            {#<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>#}
+            {#</span>#}
+            {#</div>#}
+            {#</form>#}
             {#</div>#}
             <div class="search">
                 <form id="searchForm" method="get" action="{{ path('public_search') }}">
@@ -105,9 +105,9 @@
         <div class="navbar-collapse nav-main-collapse collapse">
             <div class="container">
                 <ul class="social-icons">
-                    <li class="facebook"><a href="http://www.facebook.com/thiepdodigital" target="_blank" title="Facebook">Facebook</a></li>
-                    <li class="twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter">Twitter</a></li>
-                    <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin">Linkedin</a></li>
+                    <li class="facebook"><a href="https://www.facebook.com/thiepdodigital" target="_blank" title="Facebook">Facebook</a></li>
+                    <li class="instagram"><a href="https://instagram.com/thiepdodigital" target="_blank" title="Instagram">Instagram</a></li>
+                    <li class="youtube"><a href="https://www.youtube.com/" target="_blank" title="Youtube">Youtube</a></li>
                 </ul>
                 <nav class="nav-main mega-menu">
                     <ul class="nav nav-pills nav-main" id="mainMenu">
@@ -150,7 +150,7 @@
                                     <li>
                                         <div class="mega-menu-content">
                                             <div class="row">
-                                                <div class="col-md-8">
+                                                <div class="col-md-6">
                                                     <div class="user-avatar">
                                                         <div class="img-thumbnail">
                                                             <img alt="avatar" src="{{ app.user.avatar }}">
@@ -161,14 +161,19 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <ul class="list-account-options">
                                                         <li>
-                                                            <a href="#">Profile</a>
+                                                            <a href="{{ path('fos_user_profile_show') }}">Profile</a>
                                                         </li>
                                                         <li>
                                                             <a class="dropdown-toggle" href="{{ path('my_card_page') }}">
                                                                 Thiệp của tôi
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-toggle" href="{{ path('fos_user_change_password') }}">
+                                                                Đổi mật khẩu
                                                             </a>
                                                         </li>
                                                         <li>
@@ -239,9 +244,9 @@
                     <h4>Follow Us</h4>
                     <div class="social-icons">
                         <ul class="social-icons">
-                            <li class="facebook"><a href="http://www.facebook.com/thiepdodigital" target="_blank" data-placement="bottom" data-tooltip title="Facebook">Facebook</a></li>
-                            <li class="twitter"><a href="http://www.twitter.com/" target="_blank" data-placement="bottom" data-tooltip title="Twitter">Twitter</a></li>
-                            <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" data-placement="bottom" data-tooltip title="Linkedin">Linkedin</a></li>
+                            <li class="facebook"><a href="https://www.facebook.com/thiepdodigital" target="_blank" data-placement="bottom" data-tooltip title="Facebook">Facebook</a></li>
+                            <li class="instagram"><a href="https://instagram.com/thiepdodigital" target="_blank" data-placement="bottom" data-tooltip title="Instagram">Instagram</a></li>
+                            <li class="youtube"><a href="https://www.youtube.com/" target="_blank" data-placement="bottom" data-tooltip title="Youtube">Youtube</a></li>
                         </ul>
                     </div>
                 </div>
@@ -322,5 +327,18 @@
 </script>
 {% block javascript %}
 {% endblock %}
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5a4db059d7591465c7067dea/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 </html>

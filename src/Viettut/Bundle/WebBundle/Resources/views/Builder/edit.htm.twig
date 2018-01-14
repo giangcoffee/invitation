@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     {% elseif type == 2 %}
-                                        <div class="row">
+                    <div class="row">
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="wedding_date">Ngày tổ chức</label>
                             <div class="col-md-6">
@@ -140,10 +140,19 @@
                     {% endif %}
                     <div class="row">
                         <div class="form-group">
+                            <label class="col-md-3 control-label" for="wedding_date">Link Thiệp</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-rounded" id="card_link" value="{{ app.request.uri | trim('/edit', 'right') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-6">
                                 <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="submit()" id="updateButton">Cập Nhật</button>
                                 <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
+                                <button class="btn btn-primary btn-lg push-top push-bottom" id="copy_link" data-clipboard-target="#card_link">Copy Link</button>
                             </div>
                         </div>
                     </div>
@@ -242,5 +251,7 @@
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.uploadfile.min.js') }}"></script>
     <script src="//cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
+    <script src="{{ asset('bundles/viettutweb/js/lib/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('bundles/viettutweb/js/lib/clipboard.min.js') }}"></script>
     <script src="{{ asset('bundles/viettutweb/js/builder.js') }}"></script>
 {% endblock %}

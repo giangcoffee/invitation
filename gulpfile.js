@@ -20,6 +20,7 @@ gulp.task('scripts', function(){
     gulp.src([
         'web/bundles/viettutweb/js/lib/jquery-1.11.1.min.js',
         'web/bundles/viettutweb/js/lib/bootstrap.min.js',
+        'web/bundles/viettutweb/js/lib/clipboard.min.js',
         'web/bundles/viettutweb/js/lib/jquery.mobile-1.4.3.min.js',
         'web/bundles/viettutweb/js/templates/common/jquery.mobile.init.js',
         'web/bundles/viettutweb/js/lib/masonry.pkgd.min.js',

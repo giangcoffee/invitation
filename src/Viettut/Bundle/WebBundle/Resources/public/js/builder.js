@@ -52,12 +52,18 @@ function submit() {
         type : 'POST',
         data : JSON.stringify(columns),
         success : function(response, textStatus, jqXhr) {
-            var html = '<div class="alert alert-success alert-dismissable">' +
-                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                'Thông tin cập nhật thành công !'
-                + '</div>';
-            $('div.form-horizontal').before(html);
-            $('body').scrollTop(0);
+            $.notify({
+                message: 'Thông tin cập nhật thành công !',
+                icon: 'glyphicon glyphicon-star'
+            },{
+                type: 'info',
+                allow_dismiss: true,
+                newest_on_top: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                }
+            });
         },
         error : function(jqXHR, textStatus, errorThrown) {
         },
@@ -259,6 +265,38 @@ $(document).ready(function(){
             $('div#fileuploader').before(html);
         },
         uploadStr:"Thêm Ảnh"
+    });
+
+    var clipboard = new Clipboard('#copy_link');
+
+    clipboard.on('success', function(e) {
+        $.notify({
+            message: 'Đã copy link thiệp',
+            icon: 'glyphicon glyphicon-star'
+        },{
+            type: 'info',
+            allow_dismiss: true,
+            newest_on_top: false,
+            placement: {
+                from: "top",
+                align: "right"
+            }
+        });
+    });
+
+    clipboard.on('error', function(e) {
+        $.notify({
+            message: 'Không thể copy link thiệp',
+            icon: 'glyphicon glyphicon-star'
+        },{
+            type: 'danger',
+            allow_dismiss: true,
+            newest_on_top: false,
+            placement: {
+                from: "top",
+                align: "right"
+            }
+        });
     });
 });
 
