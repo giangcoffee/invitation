@@ -1,0 +1,859 @@
+@charset "utf-8";
+
+/* 임시css */
+.ui-panel-wrapper {min-height:80px}
+.ui-page-theme-a {text-shadow:none!important}
+.spacer.s0 {min-height:1px}
+
+
+/* Global */
+.ul-body   {position:relative;max-width:1137px;margin:0 auto;padding: 0 10px;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.ui-cont-a {padding:0 1em}
+.ui-cont-b {padding:3em 0}
+.ui-cont-c {padding-top:2em}
+.ui-cont-d {padding-bottom:2em}
+.btn_wrap {cursor:pointer}
+.p-r {position:relative}
+.fl {float:left!important}
+.fr {float:right!important}
+
+
+/* Layout */
+html,body {font-family:'맑은고딕','malgun gothic';width:100%; height:100%}
+body {font-size:100%}
+#skin_page {z-index:10; background-color:#eee}
+.header {position:relative; min-height:100%; z-index:-1}
+
+.greeting_wrap,
+.gallery_wrap,
+.movie_wrap,
+.guestbook_wrap,
+.location_wrap {position:relative; overflow:hidden; z-index:10}
+
+.greeting_wrap  {padding:120px 0 85px 0}
+.parents_wrap   {padding:80px 0 60px;background-color:#f4f4f4}
+.gallery_wrap   {padding:60px 0 80px; background:#fff; z-index: 20}
+.guestbook_wrap {padding:80px 0}
+.movie_wrap     {padding:50px 0; background:#feecec url(/bundles/viettutweb/img/templates/onefineday/movie_bg.png) no-repeat center top}
+.location_wrap  {padding: 50px 0 100px 0;background:#feecec url(/bundles/viettutweb/img/templates/onefineday/movie_bg.png) no-repeat center top;}
+.footer         {background-color:#fddad8!important}
+
+.guestbook_wrap h2.title {text-align:center;margin:0 0 40px 0; cursor:pointer}
+.guestbook_wrap h2.title img {width:290px}
+
+.parents_wrap .pa-tit {color:#013648}
+.parents_wrap .pa-list li {background-color:#013648}
+
+/* lnb */
+.lnb {position:fixed;top:0;right:50px;z-index: 999;}
+.lnb_mobile {width:50px; height:50px; background-color:#fff}
+.lnb_mobile img {width:50px; height:50px}
+
+
+/* Header */
+.header_skin_tlt {position:absolute;top: 0;right: 110px;left:50px;z-index:999;font-weight:700;font-family: 'Maven Pro', sans-serif;font-size:28px;color:#013648;line-height: 50px;overflow: hidden;height: 50px;}
+.header_bg {position:fixed; width:100%; z-index:-1}
+.header_bg:after {position:fixed; width:100%; top:0; left:0; right:0; bottom:0; content:''}
+.header_box {position:relative; border:50px solid #fff; background-color: rgba(0,0,0,0.5); z-index: 990;box-sizing:border-box}
+.scrolldown {position:absolute;bottom: -45px;left:50%;width:35px;height:30px;margin: 0 0 0 -17.5px;background:url(/bundles/viettutweb/img/templates/onefineday/header_scrolldown.png) no-repeat 0 0;background-size:35px;font-size:0;line-height:0;text-indent:-9999px;z-index:999;}
+
+h1.header_title {position:absolute;top:50%;left:50%;width:520px;height: 380px;margin: -240px 0 0 -260px;z-index:999;box-sizing:border-box;color:#fff;font-family:'맑은고딕','malgun gothic';text-align:center;}
+h1.header_title .label_img {width:100%; height:120px; background:url(/bundles/viettutweb/img/templates/onefineday/header_titlebg.png) no-repeat center top;}
+h1.header_title .label_box {position:relative; width:100%; height:240px; margin-top:12px; padding:30px 0; border:1px solid #fff; border-radius:5px; box-sizing:border-box}
+h1.header_title .label_box:after {
+    content:'';
+    position: absolute;
+    left:6px;
+    top:-7px;
+	right:6px;
+	bottom:-7px;
+    z-index:2;
+	display:block;
+    border:1px solid #fff;
+    border-radius:5px;
+}
+
+h1.header_title .label_box span {display:block}
+h1.header_title .label_box span:after {display:block; content: ''; clear:both}
+h1.header_title .label_box span.hd_ttl {height:30px; margin-bottom:30px; font-family: 'Maven Pro', sans-serif; font-size:30px}
+h1.header_title .label_box span.hd_name {height:40px; margin-bottom:20px; font-family:'맑은고딕','malgun gothic'; font-size:38px; font-weight:bold}
+h1.header_title .label_box span.hd_date {height:30px; padding:0 20px 20px 20px; font-family:'맑은고딕','malgun gothic'; font-size:26px; font-weight:bold; line-height:1.2}
+
+
+@media all and (max-width: 900px) {
+	.header_box {border:none}	
+	.header_skin_tlt {color:#fff;left:20px;right: 60px;}
+	.lnb {right:0}
+}
+
+@media all and (max-width: 700px) {
+	h1.header_title {width:480px;height: 380px;margin: -260px 0 0 -240px;}
+}
+
+@media all and (max-width: 570px) {
+	h1.header_title {width:400px;height:370px;margin: -260px 0 0 -200px;}
+	h1.header_title .label_box span.hd_ttl {height:30px; margin-bottom:30px; font-size:30px}
+	h1.header_title .label_box span.hd_name {height:40px; margin-bottom:20px; font-size:30px}
+	h1.header_title .label_box span.hd_date {height:30px; padding:0 20px 20px 20px; font-size:22px}
+}
+
+
+/* Panel */
+.header_panel {position: fixed;top: 50%!important;left:0;width:100%;margin-top: -40px;padding:0 5px;box-sizing:border-box;z-index:999;}
+.header_panel a {display:block; font-size:0; text-indent:-9999px}
+.header_panel p {visibility: hidden;width:80px; height:80px; background:url(/bundles/viettutweb/img/templates/onefineday/panel_btn.png) no-repeat 0 0; background-size:160px}
+.header_panel .groom {float:left; background-position:0 0}
+.header_panel .bride {float:right; background-position:-80px 0}
+
+div#panel_groom,div#panel_groom .ui-panel-inner,
+div#panel_bride,div#panel_bride .ui-panel-inner {padding:0}
+.ui-panel-open.ui-panel-position-right.ui-panel-display-push {border-color:#555}
+
+.groom-wrap,
+.bride-wrap {position:relative; width:273px; font-size:0; line-height:0; text-indent:-9999px; box-sizing:border-box}
+.groom-wrap p,
+.groom-wrap ul li,
+.bride-wrap p,
+.bride-wrap ul li {cursor:pointer}
+.groom-wrap p, 
+.bride-wrap p {position:absolute; top:488px; right:0; width:50px; height:50px; text-shadow:none!important; background:url(/bundles/viettutweb/img/templates/onefineday/panel_icon.png) 100% 0 no-repeat; background-size:250px; font-size:0; line-height:0; text-indent:-9999px}
+.groom-wrap p {right:1px}
+
+.groom-wrap .panel_line_bg,
+.bride-wrap .panel_line_bg {position:absolute; top:443px; left:0; width:100%; height:105px; overflow:hidden; background:rgba(255,255,255,0.4)}
+
+@media all and (max-height:538px) {
+	.groom-wrap .panel_line_bg,
+	.bride-wrap .panel_line_bg {position:fixed;top:auto;bottom:0}
+}
+
+.groom-wrap .panel_line_bg ul,
+.bride-wrap .panel_line_bg ul {position:absolute; width:255px; height:60px; margin:20px 10px 0; padding:5px 0 0; border:1px solid #fff; border-radius:5px; box-sizing:border-box}
+
+.groom-wrap .panel_line_bg ul:after,
+.bride-wrap .panel_line_bg ul:after {
+    content:'';
+    position: absolute;
+    left:4px;
+    top:-5px;
+	right:4px;
+	bottom:-5px;
+    z-index:-1;
+	display:block;
+    border:1px solid #fff;
+    border-radius:5px;
+}
+
+.groom-wrap .panel_line_bg ul li,
+.bride-wrap .panel_line_bg ul li {float:left; width:50px; height:50px; margin:0; background: url(/bundles/viettutweb/img/templates/onefineday/panel_icon.png) 0 0 no-repeat; background-size:250px;
+  font-size:0; line-height:0; text-indent:-9999px}
+.groom-wrap .panel_line_bg ul li.ico5,
+.bride-wrap .panel_line_bg ul li.ico1 {background-position:0 0px}
+.groom-wrap .panel_line_bg ul li.ico6,
+.bride-wrap .panel_line_bg ul li.ico2 {background-position:-50px 0}
+.groom-wrap .panel_line_bg ul li.ico7,
+.bride-wrap .panel_line_bg ul li.ico3 {background-position:-100px 0}
+.groom-wrap .panel_line_bg ul li.ico8,
+.bride-wrap .panel_line_bg ul li.ico4 {background-position:-150px 0}
+.groom-wrap .panel_line_bg ul li.ico9,
+.bride-wrap .panel_line_bg ul li.ico9 {background-position:-200px 0}
+
+
+/* Greeting */
+.greeting_textbox h2.title {position:absolute;z-index:10;width:280px;text-align:center;font-size: 1.875em;line-height: 1;font-family: 'Maven Pro', sans-serif;font-weight:700;background:#fff;padding:8px 0;top:15px;left: 50%;margin-left: -140px;}
+.greeting_text {position:relative;width: 90%;min-height: 160px;margin: 40px auto 30px;padding:0;color:#013648;font-size: 1em;line-height: 1.8;text-align:center;word-break: break-word;box-sizing: border-box;}
+
+  .greeting_box {position:relative; padding:0}
+  .greeting_box:after {clear:both;content:'';display:block}
+  .greeting_photo {position:absolute;top:0; right:0; bottom:0;width:45%; background:url('/bundles/viettutweb/img/templates/onefineday/greeting_img.png') no-repeat}
+  .greeting_textbox {position:relative; float:left; width:45%; min-height:620px; background-color:#fff; border-radius:8px; color:#013648; padding:20px}
+  .greeting_textbox .box_line {position:relative; border:1px solid #bdbdbd; border-radius:6px; width:100%; height:100%; box-sizing:border-box; margin-top:20px}
+  .greeting_textbox .box_line:before {
+    content:'';
+    position: absolute;
+    left:6px;
+    top:-7px;
+    right:6px;
+    bottom:-7px;
+    z-index: 0;
+    display:block;
+    border:1px solid #bdbdbd;
+    border-radius:6px;
+}
+
+
+@media all and (min-width:1000px) and (max-width:1136px) {
+	.greeting_wrap  {padding:120px 20px 85px 20px}
+	.greeting_textbox h2.title {/* left:22% */}
+	.greeting_photo {width:45%; background-size:430px}
+	.greeting_textbox {width:43%}
+}
+
+@media all and (min-width:888px) and (max-width:999px) {
+	.greeting_wrap  {padding:120px 20px 85px 20px}
+	.greeting_textbox h2.title {font-size:1.500em;width:240px;margin-left: -120px;}
+	.greeting_photo {width:45%; right:0; background-size:380px}
+	.greeting_textbox {width:43%}
+	.greeting_loca {font-size:14px}
+}
+
+@media all and (min-width:769px) and (max-width:887px) {
+	.greeting_wrap  {padding:120px 0 85px 0}
+	.greeting_textbox h2.title {font-size:1.500em;width:220px;margin-left: -110px;}
+	.greeting_photo {width:45%; right:0; background-size:345px}
+	.greeting_textbox {width:45%}
+	.greeting_loca {font-size:14px}
+}
+
+
+/* .greeting_name {margin:30px auto; max-width:480px; border-collapse: collapse; table-layout:fixed; color:#013648}
+.greeting_name thead {display:none}
+.gn1 {font-size:1em; padding:0 10px 0 0; line-height:1.5}
+.gn2 {font-size:1em; padding:0 10px 0 0; line-height:1.5}
+.gn3 {font-size:1em; line-height:1.5}
+.gn3 span {float:right; font-weight:bold; margin-left:10px}
+.gn4 {font-size:1.250em; padding:0 10px 0 10px; line-height:1.5}
+.gn5 {font-size:1.250em; line-height:1.5;font-weight:bold}
+ */
+.greeting_name {margin: 30px auto;color:#444;width:90%;max-width:480px;min-width: 300px;box-sizing: border-box;color:#013648;z-index: 10;position: relative;}
+.greeting_name:after {display:block; content:''; clear:both}
+.greeting_name li {text-align:center;width: 50%;}
+.greeting_name li p {display:block;padding: 4px 0;letter-spacing: -1px;}
+.greeting_name li p.panel {padding:0;letter-spacing: 0;}
+.gn_groom {float:left;}
+.gn_bride {float:right;}
+.gn4 {display:block;font-size: 1em;}
+.gn4 strong {padding:0 0 0 5px;font-size: 1.2em}
+.gn1,.gn2,.gn3 {font-size:0.85em}
+.greeting_name .gn_and {display:inline-block;padding:0 2px}
+
+.greeting_loca {width: 80%;max-width: 450px;min-width: 290px;margin: 30px auto;padding: 5px 10px;box-sizing: border-box;}
+.greeting_loca p {margin:10px 0;text-align:center;color:#013648;line-height: 1.5;font-size: 1em;word-break: break-word;letter-spacing:-0.5px;}
+
+.greeting_name .gn_groom .panel,
+.greeting_name .gn_bride .panel {display:none;margin: 10px 0 0 0;color:#fff;font-size: 0.9em;background-color: #013648;border-radius:15px;}
+.greeting_name .gn_groom .panel a,
+.greeting_name .gn_bride .panel a {display:block;color:#fff;padding: 3px 10px;height: 26px;box-sizing: border-box;}
+
+
+/* gallery */
+.gallery_wrap h2.title {position:relative; height:60px; width:400px; margin:0 auto 30px}
+.gallery_wrap h2.title .box_line {position:relative; border:1px solid #013648; border-radius:6px; width:100%; height:100%; padding:20px 0; text-align:center; box-sizing:border-box; color:#013648; font-size:1.875em; font-weight:bold; font-family: 'Maven Pro', sans-serif}
+.gallery_wrap h2.title .box_line:after {
+    content:'';
+    position:absolute;
+    left:4px;
+    top:-5px;
+	right:4px;
+	bottom:-5px;
+    z-index:2;
+	display:block;
+    border:1px solid #013648;
+    border-radius:6px
+	}
+.gallery_wrap h2.title .box_line span {display:inline-block; float:left}
+.gallery_wrap h2.title .box_line span:after {display:block; content:''; clear:both}
+.gallery_wrap h2.title .box_line span.txt01,
+.gallery_wrap h2.title .box_line span.txt03 {width:45%; text-align:center}
+.gallery_wrap h2.title .box_line span.txt02 {width:10%; font-size:1.563em; font-weight:500}
+
+.gal_list {max-width:1137px; width:100%; margin:0 auto; padding-bottom:50px!important}
+.gal_list > div > a > div {float:left; height:600px;  box-sizing:border-box}  
+.gal_list .col-2 .ui-block-a,
+.gal_list .col-2 .ui-block-b {float:left; width:49%; height:600px; margin:0 0 20px 0}
+.gal_list .col-2 .ui-block-b {float:right}
+
+.gal_list .label_frame_box {float:right; width:100%; height:600px; background:rgba(255, 255, 255, 0.5)}
+.gal_list .label_frame_box .label_img {display:block; float:right; width:60%; height:190px; margin:36px 0; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img01.png) no-repeat 50% 50%; background-size:316px}
+.gal_list .label_frame_box .gal_frame_box {float:right; width:60%; height:338px; background-size:cover}
+
+.label_frame_box02 {float:left; width:100%; height:600px}
+.label_frame_box02 .label_frame01,
+.label_frame_box02 .label_frame02 {display:block; width:100%; height:300px}
+
+.label_frame_box02 .label_frame01 .label_img02 {float:left; width:49%; height:190px; margin:50px 0 0 1%; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img02.png) no-repeat 50% 50%; background-size:235px}
+.label_frame_box02 .label_frame01 .gal_frame03 {float:right; width:50%; height:300px}
+
+.gal_list .label_frame_box02 .savethedate {float:left; width:45%; height:210px; margin-top:30px; padding:50px 15px 0 0; border:5px solid #013648; text-align:right; color:#013648; font-family: 'Maven Pro', sans-serif; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 15px 40px; background-size:135px;}
+.gal_list .label_frame_box02 .savethedate span {display:block; font-family:'맑은고딕','malgun gothic'; font-size:68px; font-weight:normal}
+.gal_list .label_frame_box02 .savethedate span.date_m,
+.gal_list .label_frame_box02 .savethedate span.date_d {margin-bottom:51px}
+.gal_list .label_frame_box02 .savethedate span.date_y {font-size:34px}
+
+.gal_list2 {max-width:1137px; width:98%; margin:0 auto; padding-bottom:30px!important}
+.gal_list2 .gal_frame .savethedate {height:195px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img01.png) no-repeat 50% 0;background-size:250px}
+.gal_list2 .gal_frame .savethedate02 {height:200px; padding:40px 15px 0 0; border:5px solid #013648; text-align:right; color:#013648; font-family: 'Maven Pro', sans-serif; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 15px 30px; background-size:135px;}
+.gal_list2 .gal_frame .savethedate02 span {display:block; font-family:'맑은고딕','malgun gothic'; font-size:68px; font-weight:normal}
+.gal_list2 .gal_frame .savethedate02 span.date_m,
+.gal_list2 .gal_frame .savethedate02 span.date_d {margin-bottom:51px}
+.gal_list2 .gal_frame .savethedate02 span.date_y {font-size:34px}
+.gal_list2 .gal_frame .savethedate03 {height:195px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img02.png) no-repeat 50% 0;background-size:230px}
+.gal_list2 .gal_frame img {}
+.gal_list2 .gal_frame {float:left; padding:1%; box-sizing:border-box}
+
+.gal_more {width:260px; height:66px; background:url(/bundles/viettutweb/img/templates/onefineday/write_btn.png) no-repeat; margin:0 auto 0; padding:20px 0; text-align:center; color:#fff; font-size:1.750em; font-weight:bold;line-height:1;box-sizing:border-box;}
+.gal_more a {display:block; cursor:pointer; width:260px; height:66px; color:#fff}
+.gal_more a:hover {color:#fff}
+
+
+@media all and (min-width:976px) and (max-width:1136px) {
+  .gal_list2 .gal_frame .savethedate {height:180px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img01.png) no-repeat 50% 20px;background-size:220px}	
+  .gal_list2 .gal_frame .savethedate02 {height:180px; padding:35px 15px 0 0; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 15px 30px; background-size:110px}
+  .gal_list2 .gal_frame .savethedate02 span {font-size:54px}
+  .gal_list2 .gal_frame .savethedate02 span.date_m,
+  .gal_list2 .gal_frame .savethedate02 span.date_d {margin-bottom:38px}
+  .gal_list2 .gal_frame .savethedate02 span.date_y {font-size:28px}
+  .gal_list2 .gal_frame .savethedate03 {height:195px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img02.png) no-repeat 50% 0;background-size:210px}
+  
+  .gal_list .label_frame_box .label_img {background-size:260px}
+  .label_frame_box02 .label_frame01 .label_img02 {background-size:200px}
+  .gal_list .label_frame_box02 .savethedate {float:left; width:45%; height:180px; margin-top:50px; padding:50px 10px 0 0; border:5px solid #013648; text-align:right; color:#013648; font-family: 'Maven Pro', sans-serif; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 10px 40px; background-size:120px}
+  .gal_list .label_frame_box02 .savethedate span {font-size:60px}
+  .gal_list .label_frame_box02 .savethedate span.date_m,
+  .gal_list .label_frame_box02 .savethedate span.date_d {margin-bottom:40px}
+  .gal_list .label_frame_box02 .savethedate span.date_y {font-size:30px}
+  
+}
+
+@media all and (min-width:769px) and (max-width:975px) {
+  .gal_list2 .gal_frame .savethedate {height:140px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img01.png) no-repeat 50% 20px;background-size:160px}	
+  .gal_list2 .gal_frame .savethedate02 {height:140px; padding:30px 10px 0 0; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 10px 30px; background-size:80px}
+  .gal_list2 .gal_frame .savethedate02 span {font-size:42px}
+  .gal_list2 .gal_frame .savethedate02 span.date_m,
+  .gal_list2 .gal_frame .savethedate02 span.date_d {margin-bottom:20px}
+  .gal_list2 .gal_frame .savethedate02 span.date_y {font-size:23px}
+  .gal_list2 .gal_frame .savethedate03 {height:195px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img02.png) no-repeat 50% 0;background-size:160px}
+
+  .gal_list > div > a > div {height:400px}  
+  .gal_list .col-2 .ui-block-a,
+  .gal_list .col-2 .ui-block-b {width:49%; height:400px}   
+  
+  .gal_list .label_frame_box .label_img {height:150px; margin:20px 0;; background-size:200px}
+  .gal_list .label_frame_box .gal_frame_box {height:210px; background-size:cover}  
+  .label_frame_box02 .label_frame01 {height:200px}
+  .label_frame_box02 .label_frame01 .label_img02 {width:49%; height:150px; margin:0 0 0 1%; background-size:150px}
+  .label_frame_box02 .label_frame01 .gal_frame03 {height:210px}  
+  
+  .gal_list .label_frame_box02 .savethedate {height:180px; margin-top:20px; padding:42px 10px 0 0; border:5px solid #013648; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 6px 40px; background-size:70px; box-sizing:border-box}
+  .gal_list .label_frame_box02 .savethedate span {font-size:45px}
+  .gal_list .label_frame_box02 .savethedate span.date_m,
+  .gal_list .label_frame_box02 .savethedate span.date_d {margin-bottom:15px}
+  .gal_list .label_frame_box02 .savethedate span.date_y {font-size:21px}
+}
+
+@media all and (min-width:620px) and (max-width:768px) {
+  .gal_list2 {padding-bottom:30px!important}	
+  .gal_list2 .gal_frame .savethedate {height:140px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img01.png) no-repeat 50% 20px;background-size:160px}	
+  .gal_list2 .gal_frame .savethedate02 {height:130px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 50% 50%; background-size:110px}
+  .gal_list2 .gal_frame .savethedate02 span {display:none}
+  .gal_list2 .gal_frame .savethedate03 {height:195px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img02.png) no-repeat 50% 0;background-size:160px}   
+}
+
+@media all and (min-width:481px) and (max-width:619px) {
+  .gal_list2 .gal_frame .savethedate {height:140px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img01.png) no-repeat 50% 20px;background-size:140px}	
+  .gal_list2 .gal_frame .savethedate02 {height:130px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 50% 50%; background-size:120px}
+  .gal_list2 .gal_frame .savethedate02 span {display:none}
+  .gal_list2 .gal_frame .savethedate03 {height:195px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img02.png) no-repeat 50% 0;background-size:140px}
+}
+
+@media all and (min-width:601px) and (max-width: 768px) {
+  .gal_list > div > a > div {height:300px}  
+  .gal_list .col-2 .ui-block-a,
+  .gal_list .col-2 .ui-block-b {width:49%; height:300px}   
+  
+  .gal_list .label_frame_box .label_img {width:100%; height:110px; margin:20px 0;; background-size:190px}
+  .gal_list .label_frame_box .gal_frame_box {width:100%; height:150px; background-size:cover}  
+  .label_frame_box02 .label_frame01 {height:150px}
+  .label_frame_box02 .label_frame01 .label_img02 {width:49%; height:150px; margin:0 0 0 0; background-size:120px}
+  .label_frame_box02 .label_frame01 .gal_frame03 {height:150px}  
+  
+  .gal_list .label_frame_box02 .savethedate {height:150px; margin-top:0; padding:0 0 0 0; border:5px solid #013648; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 10px 10px; background-size:90px; box-sizing:border-box}
+  .gal_list .label_frame_box02 .savethedate span {display:none}
+}
+
+@media all and (min-width:481px) and (max-width: 600px) {
+  .gal_list > div > a > div {height:300px}  
+  .gal_list .col-2 .ui-block-a,
+  .gal_list .col-2 .ui-block-b {width:49%; height:300px}     
+  
+  .gal_list .label_frame_box .label_img {width:100%; height:110px; margin:20px 0;; background-size:190px}
+  .gal_list .label_frame_box .gal_frame_box {width:100%; height:150px; background-size:cover}  
+  .label_frame_box02 .label_frame01 {height:150px}
+  .label_frame_box02 .label_frame01 .label_img02 {width:49%; height:150px; margin:0 0 0 0; background-size:100px}
+  .label_frame_box02 .label_frame01 .gal_frame03 {height:150px}  
+
+  .gal_list .label_frame_box02 {height:150px; margin-top:0}
+  .gal_list .label_frame_box02 .savethedate {width:100%; height:140px; margin-top:10px; padding:15px 10px 0 0; border:5px solid #013648; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 6px 10px; background-size:85px; box-sizing:border-box}
+  .gal_list .label_frame_box02 .savethedate span {font-size:49px}
+  .gal_list .label_frame_box02 .savethedate span.date_m,
+  .gal_list .label_frame_box02 .savethedate span.date_d {margin-bottom:22px}
+  .gal_list .label_frame_box02 .savethedate span.date_y {font-size:24px}
+}
+
+
+@media all and (max-width: 480px) {
+  .gallery_wrap h2.title {width:300px}
+  
+  .gal_list2 .gal_frame .savethedate {height:140px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img01.png) no-repeat 50% 20px;background-size:140px}	
+  .gal_list2 .gal_frame .savethedate02 {height:130px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 50% 50%; background-size:120px}
+  .gal_list2 .gal_frame .savethedate02 span {display:none}
+  .gal_list2 .gal_frame .savethedate03 {height:120px; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img02.png) no-repeat 50% 0;background-size:140px}	       
+  
+  .gal_list > div > a > div {height:200px}  
+  .gal_list .col-2 .ui-block-a,
+  .gal_list .col-2 .ui-block-b {width:49%; height:200px; margin-bottom:10px}       
+  
+  .gal_list .label_frame_box .label_img {width:100%; height:100px; margin:0; background-size:120px}
+  .gal_list .label_frame_box .gal_frame_box {width:100%; height:100px; background-size:cover}  
+  .label_frame_box02 .label_frame01 {height:100px}
+  .label_frame_box02 .label_frame01 .label_img02 {width:49%; height:100px; margin:0 0 0 0; background-size:60px}
+  .label_frame_box02 .label_frame01 .gal_frame03 {height:100px}  
+
+  .gal_list .label_frame_box02 {height:100px; margin-top:0}
+  .gal_list .label_frame_box02 .savethedate {width:100%; height:90px; margin-top:10px; padding:0; border:5px solid #013648; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 50% 50%; background-size:50px; box-sizing:border-box}
+  .gal_list .label_frame_box02 .savethedate span {display:none; font-size:49px}
+  .gal_list .label_frame_box02 .savethedate span.date_m,
+  .gal_list .label_frame_box02 .savethedate span.date_d {margin-bottom:22px}
+  .gal_list .label_frame_box02 .savethedate span.date_y {font-size:24px}  
+  
+}
+
+
+@media all and (max-width: 320px) {  
+  .gal_list > div > a > div {height:200px}  
+  .gal_list .col-2 .ui-block-a,
+  .gal_list .col-2 .ui-block-b {float:none; width:100%; height:200px}     
+  
+  .gal_list .label_frame_box {height:200px}
+  
+  .gal_list .label_frame_box .label_img {display:none}
+  .gal_list .label_frame_box .gal_frame_box {width:100%; height:200px; background-size:cover}  
+  .label_frame_box02 .label_frame01 {height:200px}
+  .label_frame_box02 .label_frame01 .label_img02 {width:49%; height:150px; margin:0 0 0 0; background-size:130px}
+  .label_frame_box02 .label_frame01 .gal_frame03 {height:200px}  
+
+  .gal_list .label_frame_box02 {height:200px; margin-top:0}
+  .gal_list .label_frame_box02 .savethedate {display:none; width:100%; height:140px; margin-top:10px; padding:15px 10px 0 0; border:5px solid #013648; background:url(/bundles/viettutweb/img/templates/onefineday/gallery_img03.png) no-repeat 6px 10px; background-size:85px; box-sizing:border-box}
+  .gal_list .label_frame_box02 .savethedate span {font-size:49px}
+  .gal_list .label_frame_box02 .savethedate span.date_m,
+  .gal_list .label_frame_box02 .savethedate span.date_d {margin-bottom:22px}
+  .gal_list .label_frame_box02 .savethedate span.date_y {font-size:24px}
+}
+
+.gal_more {width:260px; height:66px; background:url(/bundles/viettutweb/img/templates/onefineday/write_btn.png) no-repeat; margin:30px auto 0; padding:20px 0; text-align:center; color:#fff; font-size:1.750em; font-weight:bold;line-height:1;box-sizing:border-box;}
+
+
+/* Movie */
+/*.movie_wrap .message {float:left;width:30%; height:350px;text-align:center;background: url(../img/movie_quote.png) no-repeat 50% 50%;background-size: auto 95%;}*/
+
+.movie_container {position:relative; width:100%; z-index:1}
+.movie_container ul {width:95%; margin:0 auto}
+.movie_container:after {display:block; content:''; clear:both}
+
+.movie1 ul li,
+.movie2 ul li,
+.movie3 ul li,
+.movie4 ul li {position:relative; overflow:hidden}
+
+.movie1 ul li img,
+.movie2 ul li img,
+.movie3 ul li img,
+.movie4 ul li img {position:absolute; top:50%; left:0; width:100%; height:auto; margin:-38% 0 0 0;z-index:0}
+.android_play {position:absolute; display:block; top:50%; left:50%; cursor:pointer;z-index:1; background:url('/dalpeng/skin/_common/img/android_play.png') no-repeat 0 0; background-size:100%; font-size:0; line-height:0; text-indent:-9999px;
+  width:80px; height:54px;margin:-27px 0 0 -40px}
+
+.movie1 ul li { width:100%; height:500px}
+
+.movie2 ul li, .movie3 ul li, .movie4 ul li { width:100%; height:500px; margin:0 0 1% 0;}
+
+/*.movie3 ul li {float:left; width:49%; height:200px; margin:0;}
+.movie3 ul li:first-child { width:100%; height:350px; margin:0 0 1% 0;}
+.movie3 ul li:nth-child(2) {margin-right:2%}
+
+.movie4 ul li {float:left; width:49%; height: 200px; margin: 0 0 2% 0;}
+.movie4 ul li:first-child {margin-right:2%}
+.movie4 ul li:nth-child(3) {margin-right:2%}*/
+
+.nomovie {background-color: #000;}
+.nomovie span {position:absolute; top:50%; left:50%; margin:-8px 0 0 -100px; display:block; width:200px; text-align:center; color:#fff}
+
+
+@media all and (max-width: 768px) {
+  .movie_wrap .message {width: 100%;height:300px}
+  .movie_container {width:100%;}
+  .movie_container ul {/* height:300px */}
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {position:relative; float:none; width:100%; height:300px; margin:0 0 1% 0}
+  .android_play {width:60px; height:40px;margin:-20px 0 0 -30px}
+}
+
+
+@media all and (max-width: 480px) {
+  .movie_wrap .message {display:none;}
+  .movie_container {float:none;width:100%;}
+  .movie_container ul {/* height:200px */}  
+  .movie1 ul li,.movie1 ul li:first-child,
+  .movie2 ul li,.movie2 ul li:first-child,
+  .movie3 ul li,.movie3 ul li:first-child,
+  .movie4 ul li,.movie4 ul li:first-child {height:200px}
+}
+  
+
+/* Guestbook */
+.guestbook_wrap {background:url(/bundles/viettutweb/img/templates/onefineday/guestbook_bg1600.jpg) repeat 50% 0; background-size:cover}
+
+.snsbbs_sections {float:left; width:33.3%; margin-bottom:20px}
+
+#div_snsbbs {margin:0 -10px}
+.ui-body-d {margin:0 10px}
+.nav-wrap .ui-body-d {margin:0 5px}
+.snsbbs_nopost {width:50%;min-width: 290px;background:#ffbbbb url(../img/icon_nopost.png) no-repeat 50% 20px;background-size:32px;color:#fff;font-weight:bold;text-align:center;margin:0 auto 50px;padding: 20px 0;border-radius:5px;font-size: 1em;}
+
+.gb_btn {display:block; width:260px; height:66px; background:url(/bundles/viettutweb/img/templates/onefineday/write_btn.png) no-repeat; margin:50px auto 0; padding:20px 0; text-align:center; color:#fff; font-size:1.750em; font-weight:bold;line-height:1;box-sizing:border-box;}
+
+#div_snsbbs:after,
+/*.pro_info:after {clear:both; content:''; display:block;}*/
+.gb_cont_box {width:100%; padding:0; font-family:'맑은고딕','malgun gothic'; font-size: 0.9em; color:#666; background-color: #fff; border-radius:8px; box-sizing:border-box; box-shadow: 0 3px 5px rgba(0,0,0,0.2);}
+/*.pro_info {padding:0 1em;}*/
+
+.pro_info {margin:1.250em; background:#f7f6f6; padding:0.625em}
+.pro_info:after {clear:both; content:''; display:block;}
+
+
+/*.pro_img {position:relative}
+.pro_img img {width: 60px; height: 60px; border-radius: 60px;}*/
+/*.pro-sns {position:absolute;top: 0px;left:40px;width:42px;height:42px;background:url('/bundles/viettutweb/img/templates/onefineday/ico_spr_sns24.png') no-repeat;}*/
+.pro-sns {float:left;width:50px;height:42px;background:url('/bundles/viettutweb/img/templates/onefineday/ico_spr_sns24.png') no-repeat}
+.pro-sns span   {display:block; text-indent:-9999px; overflow:hidden;}
+.pro-sns.facebook {background-position:   -52px   -3px;}
+.pro-sns.twitter  {background-position:   -52px   -51px;}
+.pro-sns.kakao    {background-position:   -52px   -100px;}
+.pro-sns.naver    {background-position:   -52px   -147px;}
+.pro-sns.dalpeng  {background-position:   -52px   -195px;}
+.pro-sns.google   {background-position:   -52px   -243px;}
+.pro-sns.notmember  {background-position:   -52px   -291px;}
+.pro-sns.instagram  {background-position:   -52px   -340px;}
+.pro_txt {float:left; font-family:'맑은고딕','malgun gothic'; font-size:1.125em; color:#013648; /* max-width:60% */}
+.pro_txt .date {font-size:0.875em; letter-spacing:-0.5px}
+
+.gb_cont {clear:both; margin:1.250em; color:#6e7172; font-size:14px; line-height:150%}
+
+.gb_skip {overflow:hidden; padding:10px 20px}
+.gb_skip .gb_comm {background:url(/bundles/viettutweb/img/templates/onefineday/guestbook_reply.png) no-repeat; height:22px; color:#013648; font-size:1.125em; line-height:1; font-weight:bold; padding:0 0 0 25px;font-family: tahoma}
+.gb_skip .gb_more {color:#013648; font-size:1.000em; font-weight:bold;}
+
+.prfl_bg {position:relative;width:100%;height:170px;background:#fff;border-radius:8px 8px 0 0}
+.prfl_bg .prfl_bg_imgfltr {position:relative;width:100%;height:170px;-webkit-filter: grayscale(100%);filter: grayscale(100%);border-radius:8px 8px 0 0;}
+.prfl_bg .prfl_bg_imgfltr:after {content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-color: rgba(0,0,0,0.5);border-radius:8px 8px 0 0;}
+.prfl_bg .pro_img img {position:absolute; z-index:10; width: 100px; height: 100px; background:center center; background-size:cover; border-radius:60px; top:50%; left:50%; margin:-50px 0 0 -50px;}
+.prfl_bg02 {position:relative;width:100%;height:4px;background:#fff;border-radius:10px 10px 0 0; opacity:0}
+
+/* 방명록 프로필 이미지 블러효과 */
+/*.prfl_bg02 {position:relative; width:100%; height:178px}
+.prfl_bg02 .prfl_bg_imgfltr {position:relative; width:100%; height:178px; border-radius:1px 1px 1px 1px;
+	filter: blur(8px);
+	-webkit-filter: blur(8px);
+	-moz-filter: blur(8px);
+	-o-filter: blur(8px);
+	-ms-filter: blur(8px);}
+.prfl_bg02 .pro_img {position:absolute; z-index:20; width: 100px; height: 100px; border-radius:60px; top:50%; left:50%; margin:-50px 0 0 -50px}
+.prfl_bg02 .pro_img img {width: 100px; height: 100px; border-radius:60px;}
+
+.prfl_bg02  .pro_info {margin:1.250em; background:#f7f6f6; padding:0.625em}
+.prfl_bg02  .pro_info:after {clear:both; content:''; display:block;}
+
+.prfl_bg02  .pro_txt {float:left; margin-left:50px; font-family:'맑은고딕','malgun gothic'; font-size:1.125em; color:#013648; max-width:60%}
+.prfl_bg02  .pro_txt .date {font-size:0.875em; letter-spacing:-0.5px}*/
+
+
+/* Location */
+.lo_tab_wrap {position:relative; overflow:hidden; margin:30px 0 20px 0; font-size:0; text-align:center}
+.lo_tab_wrap li {position:relative;display:inline-block;width:50%;margin:0;padding:0;line-height: 40px;height:40px;color:#ffbab6;font-family:'Maven Pro', sans-serif;font-weight:700;background-color:#fddad8;cursor:pointer;box-sizing:border-box;font-size:28px;}
+.lo_tab_wrap .on {background-color: #f66e82; color:#fff}
+.lo_tab_wrap .on:after {width:20px;height:10px;position:absolute;bottom:-9px;left:50%;margin:0 0 0 -10px;background:url(../img/location_tabon.png) no-repeat;background-size:20px;content:''}
+
+.lo_box {background-color:#fff; padding:0; border-radius:0}
+
+.lo_map {position:relative;background-color:#ccc;margin-bottom: 0.5em;text-align:center;box-sizing:border-box;line-height:1;}
+
+.lo_map #wedding_pmap_canvas,
+.lo_map #party_pmap_canvas {height:400px!important}
+.lo_map .ui-link img {height:100%}
+
+.lo_title {margin:0;padding:12px 10px 16px 10px;overflow:hidden;color: #f66e82;font-size:1.375em;font-family:'맑은고딕','malgun gothic';font-weight:bold;line-height:18px;text-align:left;background-color:#feecec;}
+.lo_title .icon {display:inline-block;width:20px;height:24px;margin: 0 10px 0 0;background:url(/bundles/viettutweb/img/templates/onefineday/location_icon.png) no-repeat 0 0; vertical-align:baseline}
+
+.nav-wrap {}
+.nav-wrap ul {overflow:hidden; margin-top:10px}
+.nav-wrap ul li {float:left}
+.nav-m {}
+.nav-m .nav-1 {float:left; width:50%}
+.nav-m .nav-2 {float:left; width:50%}
+
+.nav-m .nav-1,
+.nav-m .nav-2 {float:left; width:50%}
+.ui-icon-nav1 {background:url('/dalpeng/skin/_common/img/ico_nav_kakao.png') 2px center no-repeat; background-size:44px}
+.ui-icon-nav2 {background:url('/dalpeng/skin/_common/img/ico_nav_ai.png') 2px center no-repeat; background-size:44px}
+.ui-btn-nav .ui-btn {font-family:'Nanum Gothic'; font-weight:400!important}
+.ui-btn-nav .ui-icon-nav1 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fae100!important;color: #333!important;text-shadow: 0 0 0 transparent!important;padding:12px 0;}
+.ui-btn-nav .ui-icon-nav2 {display:block;border: 1px solid rgba(0,0,0,0.3)!important;background-color:#fcfcfc!important;padding: 12px 0;}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {display:none;}
+.ui-page-theme-a .ui-btn {}
+.nav_info {font-size:0.8em;padding: 10px 0 10px 3px;font-family:'맑은고딕','malgun gothic';color:#013648;text-align: center;}
+
+.lo_container {position:relative; margin:0; width:100%; border-collapse: collapse; font-family:'맑은고딕','malgun gothic'; border-top: 2px solid #f66e82; border-bottom: 2px solid #f66e82}
+.lo_container th {width: 20%;min-width:120px;border-bottom: 1px solid #f66e82;color: #f66e82;background-color: #fff;font-size:1.125em;line-height: 23px;font-family:'맑은고딕','malgun gothic';vertical-align:top;text-align: left;padding: 12px 0 12px 20px;}
+.lo_container td {width: 80%;background-color: #fff;border-top: 1px solid #f66e82;border-bottom: 1px solid #f66e82;color:#013648;padding:12px 15px;font-size:1.000em;line-height:1.6;}
+.lo_container td.txt {color:#000; font-weight:bold}
+.lo_container th:last-child, .lo_container td:last-child {/* border-bottom:none; */}
+
+.lo_container th span {display:inline-block;height:25px; padding:0 0 0 30px;background:url(/bundles/viettutweb/img/templates/onefineday/location_icon.png) no-repeat 0 0;background-size:25px}
+.lo_container th.lo_date span   {background-position:0 0}
+.lo_container th.lo_loca span   {background-position:0 -25px}
+.lo_container th.lo_tel span    {background-position:0 -50px}
+.lo_container th.lo_info span   {background-position:0 -75px}
+.lo_container th.lo_bus span    {background-position:0 -100px}
+.lo_container th.lo_subway span {background-position:0 -125px}
+
+.col-2,
+.col-3,
+.col-4 {position:relative; overflow:hidden}
+
+.col-2 {margin:0 15px}
+.col-2.lo_box {/* margin:0 5px */}
+.col-2 .ui-block-a {float:left;width:49%;margin-right:2%;}
+.col-2 .ui-block-b {float:left; width:49%}
+
+.col-3 .ui-block-a,
+.col-3 .ui-block-b {width:32%; margin:0 2% 0 0 }
+.col-3 .ui-block-c {width:32%}
+
+.locationdivs {background:#fff; padding-bottom:50px}
+
+
+/* 768이상 (for pc) */
+@media all and (min-width: 769px) {  
+.content-box-container .content-box h2{position:absolute;top:0;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);padding:0 .8em;background:#fff;white-space:nowrap}
+}
+
+
+@media all and (min-width: 769px) and (max-width: 900px) {  
+	.header_panel p {background-size: 120px;width: 60px;height: 60px;}
+	.header_panel .groom {float:left; background-position:0 0}
+	.header_panel .bride {float:right;background-position: -60px 0;}
+}
+
+@media all and (min-width: 481px) {
+	.header_box,.header_bg {min-height: 600px;}
+}
+
+
+@media all and (min-width: 1140px) {
+  .header_box,.header_bg {min-height:680px;}
+}
+
+/* 768 이하 (for tablet) */
+@media all and (max-width: 768px) {	
+  .lnb_mobile {display:block}
+  .header_bg {position: absolute;top: 0;}
+  .header_bg:after {display:none}
+  .greeting_wrap  {padding:0}
+  .greeting_box {position:relative; max-width:960px; padding: 0;}
+  .greeting_box:after {clear:both;content:'';display:block}
+  .greeting_photo {display:none}
+  .greeting_textbox {width:100%; min-height:320px; margin:0 auto; background-color:#fff; color:#666; padding:40px 0 50px; box-sizing:border-box;border-radius:0}
+  .greeting_textbox .box_line {width:90%;min-width: 310px;margin:0 auto;}
+  .greeting_textbox h2.title {position:relative; z-index:10; width:300px; text-align:center;font-size: 1.875em;line-height: 1; color:#013648; background:#fff; padding:8px 0;top:15px; left:0; margin:0 auto}
+  
+	.header_panel p {background-size: 120px;width: 60px;height: 60px;}
+	.header_panel .groom {float:left; background-position:0 0}
+	.header_panel .bride {float:right; background-position:-60px 0}
+
+  .gallery_wrap {padding:40px 0 40px;}
+  .guestbook_wrap {background:url(/bundles/viettutweb/img/templates/onefineday/guestbook_bg768.jpg) repeat 50% 0;background-size:auto;}
+
+  .snsbbs_sections {width:50%;}
+
+  .lo_contents {padding: 0!important;}
+  .lo_contents .col-2 .ui-block-b {padding: 10px 10px 0;}
+  .lo_tab_wrap li {font-size: 20px;}
+  
+  .col-2 .ui-block-a,
+  .col-2 .ui-block-b {float:left; width:100%;}  
+}
+@media all and (max-width: 520px) {	
+  .nav-m .nav-1,
+  .nav-m .nav-2 {float:none; width:100%}
+}
+
+
+@media all and (max-width: 35em) {
+  .snsbbs_sections {width:100%;margin-bottom:10px;}
+  
+  .prfl_bg {width:20%;position:absolute;margin: 0 10px 20px 20px;height:80px;background:#feecec;border-radius:8px;}
+  .prfl_bg .prfl_bg_imgfltr {width:100%; height:80px; background-color:rgba(0,0,0,0.5); border-radius:8px 8px 8px 8px}  
+  .prfl_bg .prfl_bg_imgfltr:after {border-radius:8px}
+  .prfl_bg .pro_img img {width:60px; height:60px; background:center center; background:#feecec; background-size:cover; border-radius:100%; top:50%; left:50%; margin:-30px 0 0 -30px}
+  
+  .prfl_bg02 {display:none}    
+  
+  .gb_cont_box {padding-top:20px;}
+  .pro_info {height:80px;margin-top: 0;background:#feecec;border-radius:8px;padding:0.625em;padding-top: 20px;box-sizing:border-box;}
+  .prfl_bg + .pro_info {margin-left:28%;}
+  
+  .pro-sns {float:left; position:relative; top:0; left:0; width:42px; height:42px; background:url('/bundles/viettutweb/img/templates/onefineday/ico_spr_sns24.png') no-repeat}
+  .pro_txt {float:left;max-width: 100%;margin-left:10px;}
+
+}
+
+@media all and (max-height: 420px) {
+  .scrolldown {display:none}
+}
+
+/* 480 이하 */
+@media all and (max-width: 480px) {
+    .guestbook_wrap {background:url(/bundles/viettutweb/img/templates/onefineday/guestbook_bg480.jpg) repeat 50% 0;background-size:auto;}
+	
+	.header_skin_tlt {font-size:18px}
+	
+	h1.header_title {width:300px;height: 330px;margin: -110px 0 0 -150px;top:250px;}
+	h1.header_title .label_box {position:relative; width:100%; height:220px; margin-top:0}
+	h1.header_title .label_box span.hd_ttl {height:20px; margin-bottom:30px; font-size:30px}
+	h1.header_title .label_box span.hd_name {height:30px; margin-bottom:10px; font-size:20px}
+	h1.header_title .label_box span.hd_date {height:30px; padding:0 20px; font-size:20px}    
+    h1.header_title .label_img {background-size:280px; margin-bottom:0; height:100px}  
+
+	.header_panel {display:none}
+/* 	.header_panel {position:absolute;top: 550px!important;left:0;width:100%;margin:0;padding:0 20px;box-sizing:border-box;z-index:999;}
+	.header_panel a {display:block; font-size:0; text-indent:-9999px}
+	.header_panel p {width:100px; height:40px; background:url(/bundles/viettutweb/img/templates/onefineday/panel_button03.png) no-repeat 0 0; background-size:100px}
+	.header_panel .groom {float:left; background-position:0 -70px}
+	.header_panel .bride {float:right; background-position:0 0} */
+
+.greeting_name .gn_groom .panel,
+.greeting_name .gn_bride .panel {display: inline-block;}
+	
+  .scrolldown {bottom: -50px;width: 30px;height: 44px;margin: 0 0 0 -15px;background-size: 30px;}
+  
+  .header_box,.header_bg {min-height: 640px;max-height: 736px;}
+  
+  .greeting_text {min-height:50px}
+
+  .greeting_textbox {width:100%;margin:0 auto; background-color:#fff; color:#666; padding:40px 0 50px; font-size:14px; box-sizing:border-box}
+  .greeting_textbox h2.title {position:relative; z-index:10; width:240px; text-align:center;font-size:24px;padding:8px 0;top:15px; left:0; margin:0 auto}
+/*   .greeting_loca p{font-size:0.9em} */
+
+  .col-2 .ui-block-a, 
+  .col-2 .ui-block-b {float:left; width:100%;}
+  .col-3 .ui-block-a, 
+  .col-3 .ui-block-b, 
+  .col-3 .ui-block-c {float:left; width:100%;}
+  .col-4 .ui-block-a,
+  .col-4 .ui-block-b,
+  .col-4 .ui-block-c, 
+  .col-4 .ui-block-d {width:100%;}
+
+  .lo_tab_wrap li {font-size: 15px;height: 40px;line-height: 40px;}
+  .lo_title {text-align:left;padding:15px 10px 15px 45px;line-height:20px;font-size: 1.1em;}
+  .lo_title span {position:absolute;top:12px;left:15px}
+  .lo_map #wedding_pmap_canvas,
+  .lo_map #party_pmap_canvas {height:300px!important;}
+  .lo_map .ui-link img {height:100%}
+
+	.location_wrap {padding:40px 0}
+  .lo_container th {float:left;width:100%;box-sizing: border-box;border-bottom:0;font-size: 1em;padding: 10px 10px 4px 10px;}
+  .lo_container td {float:left;width:100%;box-sizing: border-box;font-size: 0.9em;border-top: 0;/* border-bottom:2px solid #fff; */padding: 2px 10px 10px 10px;}
+
+
+  .nav_info {font-size:0.8em;}
+}
+
+
+@media all and (max-width: 360px) {
+	.gb_cont_box {padding-top:12px}
+	.prfl_bg,
+	.prfl_bg .prfl_bg_imgfltr {height:60px}
+	.pro_info {margin: 0 0.8em;padding-top: 10px;height: 60px;}
+	.prfl_bg {margin-left:10px}
+	.prfl_bg + .pro_info {margin-left:27%}
+	.prfl_bg .pro_img img {width:50px;height:50px;margin:-25px 0 0 -25px}
+	.pro_txt {margin-left:5px}
+	.pro_txt .date {font-size:0.8em}
+
+	.greeting_textbox .box_line:after {left:4px;top:-5px;right:3px;bottom:-5px;border-radius:4px;}
+
+}
+
+/* 320 이하 */
+@media all and (max-width: 320px) {
+  h1.header_title {width:300px;height: 320px;margin: -130px 0 0 -150px;top:220px;}
+  h1.header_title p.title {font-size: 41px;line-height: 52px;padding: 0;margin: 0 0 8px 0;} 
+  .header_box,.header_bg {height:568px!important}
+  .guestbook_wrap h2.title img {width: 240px;}
+  .header_panel {top:420px!important}
+
+	.header_skin_tlt {font-size:16px}
+  .col-2 {margin:0 5px}
+  .snsbbs_nopost {font-size:0.9em}
+}
+
+/* HEADER ANIMATION */
+.fadeOut{
+  animation: fadeOut 1s ease forwards;
+  -webkit-animatio:n fadeOut 1s ease forwards;
+}
+@keyframes fadeOut {
+  0% {transform: translateY(0%); opacity: 1}
+  100% {transform: translateY(-100%); opacity: 0}
+  
+}
+@-webkit-keyframes fadeOut {
+  0% {-webkit-transform: translateY(0%); opacity: 1}
+  100% {-webkit-transform: translateY(-100%); opacity: 0}
+}
+
+/*.slideDown{
+  animation: slideDown 1.5s ease-out;   
+  -webkit-animation: slideDown 1.5s ease-out;
+  visibility: visible !important;
+}
+
+@keyframes slideDown {
+  0%,50% {transform: translateY(-10%); opacity: 0}
+  100% {transform: translateY(0%); opacity: 1}
+}
+@-webkit-keyframes slideDown {
+  0%,50% {transform: translateY(-10%); opacity: 0}
+  100% {transform: translateY(0%); opacity: 1}
+}*/
+
+.slideLeft{
+  animation: slideLeft 1s ease;   
+  -webkit-animation: slideLeft 1s ease;
+  visibility: visible !important;
+}
+@keyframes slideLeft {
+  0%,80% {transform: translateX(-15%); opacity: 0}
+  100% {transform: translateX(0%); opacity: 1}
+}
+@-webkit-keyframes slideLeft {
+  0%,80% {-webkit-transform: translateX(-15%); opacity: 0}
+  100% {-webkit-transform: translateX(0%); opacity: 1}
+}
+
+.slideRight{
+  animation: slideRight 1s ease;   
+  -webkit-animation: slideRight 1s ease;
+  visibility: visible !important;
+}
+@keyframes slideRight {
+  0%,80% {transform: translateX(15%); opacity: 0}
+  100% {transform: translateX(0%); opacity: 1}
+}
+@-webkit-keyframes slideRight {
+  0%,80% {-webkit-transform: translateX(15%); opacity: 0}
+  100% {-webkit-transform: translateX(0%); opacity: 1}
+}

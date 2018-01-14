@@ -12,7 +12,7 @@ var config = {
     SCRIPT_DEST : 'web/js/',
     SCRIPT_FILE : 'app.min.js'
 };
-gulp.task('default', ['styles', 'scripts', 'icecreamcake','fallinlove','christmaswedding', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
+gulp.task('default', ['styles', 'scripts', 'retrocity', 'icecreamcake','fallinlove','christmaswedding', 'angelcar', 'welcome','gardenwedding', 'goldstar', 'beautifulday', 'winterwonderland', 'luxuryblack-styles', 'guestbook', 'html-minify'], function(){
     console.log('i am GULP');
 });
 
@@ -137,6 +137,13 @@ gulp.task('icecreamcake', function(){
         'web/bundles/viettutweb/css/templates/icecreamcake/style.css',
         'web/bundles/viettutweb/css/templates/icecreamcake/app.css',
     ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/icecreamcake'))
+});
+
+gulp.task('retrocity', function(){
+    gulp.src([
+        'web/bundles/viettutweb/css/templates/retrocity/style.css',
+        'web/bundles/viettutweb/css/templates/retrocity/app.css',
+    ]).pipe(concat('app.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/retrocity'))
 });
 
 gulp.task('angelcar', function(){

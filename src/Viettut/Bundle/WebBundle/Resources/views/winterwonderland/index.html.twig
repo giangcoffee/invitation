@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="ui-block-b">
-                    <div class="greeting_textbox">{{ data['greeting'] }}</div>
+                    <div class="greeting_textbox">{{ data['greeting'] | raw}}</div>
                     {% if forGroom %}
                         <table class="greeting_name">
                             <thead>
@@ -1042,6 +1042,8 @@
 
         $('.menu_scrolls').click(function(){
             try{
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if($(this).attr('id')){
                     var id = $(this).attr('id').replace('p_','').replace('m_','');
                     setPosition(id);

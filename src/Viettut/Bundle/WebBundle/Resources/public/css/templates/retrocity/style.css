@@ -326,6 +326,7 @@ body {
 	color: #6d514e;
 	padding: 30px 0px 00px 0px;
 	font-weight: bold;
+	word-break:break-word;
 }
 .hd_loca span {display:block; font-size:0.75em;}
 
@@ -489,6 +490,7 @@ h2.title_gold span {
 	text-align: center;
 	width: 85%;
 	margin: 0px auto;
+	word-break:break-word;
 }
 .greeting_name {
 	margin: 30px auto 0;
@@ -507,12 +509,16 @@ h2.title_gold span {
 .gn1 {
 	padding: 0.5em 0;
 	font-size: 0.9em;
-	line-height: 1
+	line-height: 1;
+	text-align:right;
+	word-break:break-word;
 }
 .gn2 {
-	padding: 0.5em 0;
+	padding: 0.5em 0 0.5em 5px;
 	font-size: 0.9em;
-	line-height: 1
+	line-height: 1;
+	text-align: left;
+	word-break:break-word;
 }
 .gn3 {
 	padding: 0.5em 0.8em 0.5em 0;
@@ -520,9 +526,11 @@ h2.title_gold span {
 	line-height: 1
 }
 .gn4 {
-	padding: 0.5em 0;
+	padding: 0.5em 0 10px 0.5em;
 	font-size: 1.1em;
 	line-height: 1;
+	font-weight: bold;
+	word-break:break-word;
 }
 .gn3 span {
 	display: block;
@@ -1529,7 +1537,7 @@ overflow:hidden;
 }
 .hd_date {
 	margin-top:-60px;
-	font-size: 1.5em;
+	font-size: 1.4em;
 	line-height: 40px;
 	height: 100px;
 	color: #f7ebd8;
@@ -1573,7 +1581,7 @@ overflow:hidden;
 .header_front {
 	width: 100%;
 }
-.header_panel {top:50%; margin:0px 0 0 0}
+.header_panel {top:47%; margin:0px 0 0 0}
 .header_photo {
 	max-width: 320px;
 	width: 200px;
@@ -1605,6 +1613,12 @@ overflow:hidden;
 	line-height: 500;
 	padding: 0;
  font-size: 3em overflow: hidden;
+}
+.gn1, .gn2 {
+	font-size:0.8em;
+}
+.gn4 {
+	font-size: 1em;
 }
 .hd_name span {
 	display: inline-block;
@@ -1739,3 +1753,6 @@ opacity: 1;
 .parents_wrap .pa-tit {color:#555}
 .parents_wrap .pa-list li {background-color:#555}
 
+.comm_txt p {
+	word-break:break-word;
+}

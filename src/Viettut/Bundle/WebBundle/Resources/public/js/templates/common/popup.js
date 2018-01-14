@@ -32,7 +32,7 @@ function updateStatus(status) {
             'Content-Type' : 'application/json; charset=utf-8'
         },
         xhrFields: { withCredentials:true },
-        url : '/app_dev.php/api/v1/statuses?XDEBUG_SESSION_START=1',
+        url : '/api/v1/statuses',
         type : 'POST',
         data : JSON.stringify({card: cardId, status: status, uniqueUser: uniqueUser}),
         success : function(response, textStatus, jqXhr) {

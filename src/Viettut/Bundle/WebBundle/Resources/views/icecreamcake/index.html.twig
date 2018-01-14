@@ -23,7 +23,7 @@
 
 </head>
 <body>
-<h1 class="hide">Ice Cream Cake - Khu vườn bí mật</h1>
+<h1 class="hide">Ice Cream Cake - Bánh cưới</h1>
 <h2 class="hide">Là sự pha trộn giữa màu hồng đáng yêu và đen sang trọng, thể hiện sự trang trọng đồng thời tôn vẻ trẻ trung nhí nhảnh.</h2>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
@@ -177,7 +177,7 @@
                         </a>
                     </ul>
                     <div class="greeting_textbox">
-                        <p>{{ data['greeting'] }}</p>
+                        <p>{{ data['greeting'] | raw}}</p>
                         <p class="thanks">Thank you love all</p>
                         <table class="greeting_name">
                             <thead>
@@ -1300,31 +1300,24 @@
 
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/IceCreamCake/snsbbs";
-        }).css('cursor', 'pointer');
-
 
         function setLocationInfoHeight() {
         }
 
         function setPosition(id) {
             var $obj = $('#sk_' + id);
-            // console.log(id);
-
             $('body').scrollTo($obj, 500);
         }
 
         $('.menu_scrolls').click(function () {
             try {
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if ($(this).attr('id')) {
-
-
                     var id = $(this).attr('id').replace('p_', '').replace('m_', '');
-
-                    //console.log(id);
-
                     setPosition(id);
+                } else {
+                    window.location.href = '/';
                 }
             } catch (e) {
                 //console.log(e);

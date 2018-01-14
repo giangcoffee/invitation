@@ -9,6 +9,7 @@
 namespace Viettut\Bundle\UserBundle\Form;
 
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormError;
@@ -24,6 +25,7 @@ class RegistrationType extends AbstractType
         $builder
             ->add('name')
             ->add('professional')
+            ->add('phone')
         ;
 
         $builder->addEventListener(
@@ -32,12 +34,25 @@ class RegistrationType extends AbstractType
                 /** @var UserEntityInterface $user */
                 $user = $event->getData();
                 $form = $event->getForm();
-                if (strlen($user->getUsername()) < 6) {
-                    $form->get('username')->addError(new FormError('Tên đăng nhập quá ngắn, ít nhất 6 ký tự!'));
+
+                if(strlen($user->getUsername()) < 6) {
+                    $form->get('username')->addError(new FormError('Tên đăng nhập gồm ít nhất 6 ký tự!'));
+                    return;
+                }
+
+                if(strlen($user->getUsername()) > 32) {
+                    $form->get('username')->addError(new FormError('Tên đăng nhập không dài quá 32 ký tự!'));
+                    return;
+                }
+
+                if (is_numeric(substr($user->getUsername(), 0, 1))) {
+                    $form->get('username')->addError(new FormError('Tên đăng nhập không bắt đầu bằng chữ số!'));
+                    return;
                 }
 
                 if (!preg_match('/^[A-Za-z][A-Za-z0-9_]+$/', $user->getUsername())) {
                     $form->get('username')->addError(new FormError('Tên đăng nhập không bắt đầu bằng số và chỉ gồm chữ cái, số, dâu gạch chân!'));
+                    return;
                 }
 
                 if ($user->getId() === null) {

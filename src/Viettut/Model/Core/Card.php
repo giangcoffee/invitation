@@ -10,6 +10,9 @@ namespace Viettut\Model\Core;
 
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\PersistentCollection;
 use Viettut\Model\User\UserEntityInterface;
 use Viettut\Utilities\DateUtil;
 
@@ -226,6 +229,16 @@ class Card implements CardInterface
     public function setComments($comments)
     {
         $this->comments = $comments;
+        return $this;
+    }
+
+    public function addComment($comment)
+    {
+        if ($this->comments === null) {
+            $this->comments = new ArrayCollection();
+        }
+
+        $this->comments->add($comment);
         return $this;
     }
 

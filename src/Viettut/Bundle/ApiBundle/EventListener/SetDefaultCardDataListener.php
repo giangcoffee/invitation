@@ -5,6 +5,8 @@ namespace Viettut\Bundle\ApiBundle\EventListener;
 
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Viettut\Bundle\UserBundle\Entity\User;
+use Viettut\Entity\Core\Comment;
 use Viettut\Exception\InvalidArgumentException;
 use Viettut\Model\Core\CardInterface;
 use Viettut\Utilities\StringFactory;
@@ -16,6 +18,26 @@ class SetDefaultCardDataListener
     const DEFAULT_BIRTHDAY_VIDEO_ID = 'aSjy4h9GHS0';
     const DEFAULT_EXHIBITION_VIDEO_ID = 'JIRrGBnwBek';
     use StringFactory;
+
+    private $adminId;
+    private $weddingComment;
+    private $exhibitionComment;
+    private $birthdayComment;
+
+    /**
+     * SetDefaultCardDataListener constructor.
+     * @param $adminId
+     * @param $weddingComment
+     * @param $exhibitionComment
+     * @param $birthdayComment
+     */
+    public function __construct($adminId, $weddingComment, $exhibitionComment, $birthdayComment)
+    {
+        $this->adminId = $adminId;
+        $this->weddingComment = $weddingComment;
+        $this->exhibitionComment = $exhibitionComment;
+        $this->birthdayComment = $birthdayComment;
+    }
 
     /**
      * @param LifecycleEventArgs $args
@@ -33,6 +55,8 @@ class SetDefaultCardDataListener
         $templateData = $template->getData();
 
         $name = '';
+        $userRepository = $args->getEntityManager()->getRepository(User::class);
+        $thiepdo = $userRepository->find($this->adminId);
         switch ($entity->getTemplate()->getType()) {
             case 1:
                 $templateData['bride_name'] = $data['bride_name'];
@@ -56,6 +80,10 @@ class SetDefaultCardDataListener
                         uniqid('')
                     );
                 }
+                $comment = new Comment();
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent($this->weddingComment);
+                $entity->addComment($comment);
+
                 break;
             case 2:
                 $templateData['event'] = $data['event'];
@@ -65,6 +93,10 @@ class SetDefaultCardDataListener
                     $entity->getWeddingDate()->format('m'),
                     $entity->getWeddingDate()->format('Y'),
                     uniqid(''));
+
+                $comment = new Comment();
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent($this->exhibitionComment);
+                $entity->addComment($comment);
                 break;
             case 3:
                 $templateData['title'] = $data['title'];
@@ -76,6 +108,10 @@ class SetDefaultCardDataListener
                     $entity->getWeddingDate()->format('m'),
                     $entity->getWeddingDate()->format('Y'),
                     uniqid(''));
+
+                $comment = new Comment();
+                $comment->setAuthor($thiepdo)->setCard($entity)->setContent($this->birthdayComment);
+                $entity->addComment($comment);
                 break;
         }
 

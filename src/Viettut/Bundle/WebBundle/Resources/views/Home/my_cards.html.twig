@@ -331,6 +331,23 @@
     <script type="text/javascript">
         var id = '', name = '', type = '';
         function createCard() {
+            var columns = ['groom_name', 'bride_name', 'wedding_date', 'party_date'];
+
+            for (var column in columns) {
+                var value = $('#' + columns[column]).val();
+                if (value.length < 1) {
+                    var html = '<div class="alert alert-danger alert-dismissable">' +
+                            '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            'Điền vào các ô còn thiếu'
+                            + '</div>';
+                    $('form.form-horizontal').before(html);
+                    $('#' + columns[column]).parent().parent().addClass('has-error');
+                    $('#' + columns[column]).focus();
+                    return;
+                } else {
+                    $('#' + columns[column]).parent().parent().removeClass('has-error');
+                }
+            }
             var data = {};
             data['template'] = id;
             data['weddingDate'] = $('#wedding_date').val();
@@ -366,6 +383,24 @@
         }
 
         function createExhibitionCard() {
+            var columns = ['event_title', 'event_date'];
+
+            for (var column in columns) {
+                var value = $('#' + columns[column]).val();
+                if (value.length < 1) {
+                    var html = '<div class="alert alert-danger alert-dismissable">' +
+                            '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            'Điền vào các ô còn thiếu'
+                            + '</div>';
+                    $('form.form-horizontal').before(html);
+                    $('#' + columns[column]).parent().parent().addClass('has-error');
+                    $('#' + columns[column]).focus();
+                    return;
+                } else {
+                    $('#' + columns[column]).parent().parent().removeClass('has-error');
+                }
+            }
+
             var data = {};
             data['template'] = id;
             data['weddingDate'] = $('#event_date').val();
@@ -394,6 +429,24 @@
         }
 
         function createBirthdayCard() {
+            var columns = ['party_title', 'baby_name', 'birthday_date'];
+
+            for (var column in columns) {
+                var value = $('#' + columns[column]).val();
+                if (value.length < 1) {
+                    var html = '<div class="alert alert-danger alert-dismissable">' +
+                            '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            'Điền vào các ô còn thiếu'
+                            + '</div>';
+                    $('form.form-horizontal').before(html);
+                    $('#' + columns[column]).parent().parent().addClass('has-error');
+                    $('#' + columns[column]).focus();
+                    return;
+                } else {
+                    $('#' + columns[column]).parent().parent().removeClass('has-error');
+                }
+            }
+
             var data = {};
             data['template'] = id;
             data['weddingDate'] = $('#birthday_date').val();
@@ -509,7 +562,7 @@
             }
 
             function setPreview(sn) {
-                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', 'app_dev.php/templates/' + sn);
+                $('#div_pview_pc > iframe , #div_pview_tablet > iframe, #div_pview_mobile > iframe').attr('src', '/templates/' + sn);
             }
 
 
@@ -759,7 +812,7 @@
         data['data'] = {};
         data['data']['groom_name'] = groom;
         data['data']['bride_name'] = bride;
-        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy Thiệp');
+        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy');
         $.ajax({
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
@@ -768,15 +821,15 @@
             type : 'POST',
             data : JSON.stringify(data),
             success : function(response, textStatus, jqXhr) {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
                 var url = '/cards/' + response.hash + '/edit';
                 window.location.href = url;
             },
             error : function(jqXHR, textStatus, errorThrown) {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
             },
             complete : function() {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
             }
         });
     }
@@ -789,7 +842,7 @@
 
         data['data'] = {};
         data['data']['event'] = title;
-        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy Thiệp');
+        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy');
         $.ajax({
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
@@ -798,15 +851,15 @@
             type : 'POST',
             data : JSON.stringify(data),
             success : function(response, textStatus, jqXhr) {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
                 var url = '/cards/' + response.hash + '/edit';
                 window.location.href = url;
             },
             error : function(jqXHR, textStatus, errorThrown) {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
             },
             complete : function() {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
             }
         });
     }
@@ -820,7 +873,7 @@
         data['data'] = {};
         data['data']['title'] = title;
         data['data']['name'] = name;
-        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy Thiệp');
+        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy');
         $.ajax({
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
@@ -829,15 +882,15 @@
             type : 'POST',
             data : JSON.stringify(data),
             success : function(response, textStatus, jqXhr) {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
                 var url = '/cards/' + response.hash + '/edit';
                 window.location.href = url;
             },
             error : function(jqXHR, textStatus, errorThrown) {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
             },
             complete : function() {
-                $('button#copy_button-button').html('Copy Thiệp');
+                $('button#copy_button-button').html('Copy');
             }
         });
     }

@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://thiepdo.com/onefineday"/>
+    <meta property="og:description" content="{{ description }}"/>
+
+    <meta property="og:title" content="{{ name }}"/>
+    <meta property="og:image" content="http://dalpeng.com/user/onefineday/img/b997e76df118afb5e9ff91b577afb75e.jpg"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link href="/bundles/viettutweb/img/thiepdo_120x120.png" sizes="120x120" rel="apple-touch-icon">
+    <link rel="icon" sizes="144x144" href="/bundles/viettutweb/img/thiepdo_144x144.png">
+    <link rel="icon" sizes="64x64" href="/bundles/viettutweb/img/thiepdo_64x64.png">
+
+    <title>{{ name }}</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/libraries.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/viettutweb/css/templates/onefineday/style.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/viettutweb/css/templates/onefineday/animate.css') }}"/>
+
+    <style type="text/css">
+        #main-page * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        .ui-custom-btn.ui-btn-icon-left:after {
+            display: none;
+        }
+
+        #skin_page :not(INPUT):not(TEXTAREA), #panel_groom, #panel_bride, #panel_father, #panel_mother {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        .ui-panel.ui-panel-open {
+            position: fixed;
+        }
+
+        .ui-panel-inner {
+            position: absolute;
+            top: 1px;
+            left: 0;
+            right: 0;
+            bottom: 0px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .ui-page-active.ui-page-panel {
+            height: 70%;
+        }
+
+        .ui-custom-btn.ui-btn-icon-left:after {
+            display: none;
+        }
+
+        .snsbbs_sections {
+            width: 25%;
+        }
+
+        .gallery_sections {
+            border: 1px solid #999999;
+            margin: 5px;
+        }
+
+        .mobile_hide {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .gallery_sections {
+            width: 25%;
+        }
+
+        .sub-cont {
+            overflow: hidden;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .gallery ul {
+            overflow: hidden;
+        }
+
+        .gallery ul li {
+            margin: 5px;
+            border: 1px solid #999;
+            box-sizing: border-box;
+        }
+
+        .sgal-1 {
+            width: 31.5%;
+            height: 230px;
+            background-size: cover;
+        }
+
+        .sgal-2 {
+            width: 31.5%;
+            height: 470px;
+            background-size: cover;
+        }
+
+        .sgal-3 {
+            width: 31.5%;
+            height: 230px;
+        }
+
+        .sgal-3 div {
+            width: 60%;
+            height: 100%;
+        }
+
+        .sgal-4 {
+            width: 31.5%;
+            height: 230px;
+            background-size: cover;
+        }
+
+        .sgal-5 {
+            width: 31.5%;
+            height: 230px;
+            background-size: cover;
+            box-sizing: border-box;
+        }
+
+        .sgal-6 {
+            width: 31.5%;
+            height: 230px;
+            background-size: cover;
+        }
+
+        .sgal-7 {
+            width: 64%;
+            height: 230px;
+            background-size: cover;
+        }
+
+        .sgal-3 ul {
+            padding: 35px 0;
+        }
+
+        .sgal-3 ul li {
+            width: 100%;
+            color: #f0f0f0;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 25px;
+            border: 0;
+        }
+
+        .sgal-3 ul li.time {
+            font-size: 3.4em;
+        }
+
+        .sgal-3 ul li.month {
+            font-size: 1.3em;
+            margin-top: 25px;
+            padding-right: 30px;
+        }
+
+        .sgal-3 ul li.day {
+            font-size: 0.8em;
+            margin-top: -5px;
+            padding-right: 30px;
+        }
+
+        @media screen and (max-width: 1010px) {
+
+            .snsbbs_sections {
+                width: 33%;
+            }
+
+            .sgal-3 div {
+                width: 100%
+            }
+
+            .mobile_hide {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 820px) {
+            .snsbbs_sections {
+                width: 50%;
+            }
+
+            .sgal-1 {
+                width: 48%
+            }
+
+            .sgal-2 {
+                width: 48%
+            }
+
+            .sgal-3 {
+                width: 48%
+            }
+
+            .sgal-4 {
+                width: 48%;
+                height: 470px;
+            }
+
+            .sgal-5 {
+                width: 48%
+            }
+
+            .sgal-6 {
+                width: 48%
+            }
+
+            .sgal-7 {
+                width: 97%
+            }
+
+            .mobile_hide {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 624px) {
+            .sgal-1 {
+                width: 98%;
+                height: 150px;
+            }
+
+            .sgal-2 {
+                width: 98%;
+                height: 150px;
+            }
+
+            .sgal-3 {
+                width: 98%;
+                height: 130px;
+            }
+
+            .sgal-4 {
+                width: 98%;
+                height: 150px;
+            }
+
+            .sgal-5 {
+                width: 98%;
+                height: 150px;
+            }
+
+            .sgal-6 {
+                width: 98%;
+                height: 150px;
+            }
+
+            .sgal-7 {
+                width: 98%;
+                height: 150px;
+            }
+
+            .mobile_hide {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 560px) {
+            .snsbbs_sections {
+                width: 100%;
+            }
+
+            .mobile_hide {
+                display: none;
+            }
+
+        }
+
+        .previewLine {
+            border: 2px solid red;
+        }
+
+        .div_inspector {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border: 3px solid #5CCEB7;
+            z-index: 1000000000;
+            display: none;
+        }
+
+        .absolute {
+            position: absolute !important;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<h1 class="hide">Retro City - Thành phố mờ ảo</h1>
+<h2 class="hide">Mẫu mới với phong cách nhẹ nhàng trong sáng với tông màu nhẹ, thích hợp với những bộ ảnh giản dị.</h2>
+<div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
+     data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}"
+     data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
+<div id="card_id" data-id="{{ id }}"></div>
+<div data-role="page" id="skin_page">
+    <!-- panel-groom -->
+    <div data-role="panel" id="panel_groom" class="leftpanel" data-position="left" data-display="push"
+         data-position-fixed="true" data-swipe-close="true" data-theme="b"
+         style="background:#eee url('/bundles/viettutweb/img/templates/onefineday/bg_groom.jpg') center top no-repeat; background-size:100%; z-index:9999">
+        <div class="groom-wrap">
+            <div class="panel_line_bg">
+                <ul>
+                    <a href="tel:01000000000" class="ul-link" target="_blank">
+                        <li class="ico5">신랑에게 전화하기</li>
+                    </a><a href="sms:01000000000" class="ul-link" target="_blank">
+                        <li class="ico6">신랑에게 문자하기</li>
+                    </a><a href="http://facebook.com/dalpeng" target="_blank">
+                        <li class="ico7">페이스북 바로가기</li>
+                    </a><a href="http://instagram.com/dalpeng2com" target="_blank">
+                        <li class="ico_insta">인스타그램 바로가기</li>
+                    </a>
+                    <li class="ico9 btn_go_snsbbs">방명록 글쓰기</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--// panel-groom -->
+
+    <!-- panel-bride -->
+    <div data-role="panel" id="panel_bride" class="righttpanel" data-position="right" data-display="push"
+         data-position-fixed="true" data-swipe-close="true" data-theme="a"
+         style="background:#eee url('/bundles/viettutweb/img/templates/onefineday/bg_bride.jpg') center top no-repeat; background-size:100% auto; z-index:9999">
+        <div class="bride-wrap">
+            <div class="panel_line_bg">
+                <ul>
+                    <a href="tel:01000000000" class="ul-link" target="_blank">
+                        <li class="ico1">페이스북 바로가기</li>
+                    </a><a href="sms:01000000000" class="ul-link" target="_blank">
+                        <li class="ico2">페이스북 바로가기</li>
+                    </a><a href='http://facebook.com/dalpeng' target='_blank'>
+                        <li class='ico3'>페이스북 바로가기</li>
+                    </a><a href="http://instagram.com/dalpeng2com" target="_blank">
+                        <li class="ico_insta">인스타그램 바로가기</li>
+                    </a>
+                    <li class="ico9 btn_go_snsbbs">방명록 글쓰기</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--// panel-bride -->
+
+
+    <!-- panel-menu -->
+    <div class="lnb">
+        <div class="lnb_mobile"><a href="#right-panel"><img src="/bundles/viettutweb/img/templates/onefineday/lnb_mobile.png"
+                                                            alt=""></a></div>
+        <div data-role="panel" id="right-panel" data-position="right" data-display="push">
+            <div class="menu-wrap ui-panel-inner">
+                <ul data-role="listview" data-icon="false">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                    <!-- <li data-role="list-divider">우리결혼합니다.</li> -->
+                    <li class="menu_scrolls" data-rel="close" id="p_topinfo"><span>멋진 날, 함께 해주실래요?</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_gallery"><span>웨딩 갤러리</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_media"><span>웨딩 영상</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_snsbbs"><span>방명록</span></li>
+                    <li class="menu_scrolls" data-rel="close" id="p_map"><span>오시는 길</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--// panel-menu -->
+
+
+    <div id="sk_topinfo" class="header">
+        <!-- header -->
+        <div class="header_skin_tlt">멋진 날, 함께 해주실래요?</div>
+
+        <div class="header_panel">
+            <a href="#panel_groom"><p class="groom">Groom</p></a>
+            <a href="#panel_bride"><p class="bride">Bride</p></a>
+        </div>
+
+        <div class="header_bg"
+             style="background:url('/bundles/viettutweb/img/templates/onefineday/b997e76df118afb5e9ff91b577afb75e.jpg') RIGHT CENTER no-repeat; background-size:cover;"></div>
+        <div class="header_box">
+            <h1 class="header_title wow fadeIn">
+                <div class="label_img"></div>
+                <p class="label_box">
+                    <span class="hd_ttl">save the date</span>
+                    <span class="hd_name">한희승 &amp; 홍선희</span>
+                    <span class="hd_date">달팽 웨딩빌리지<br>2018.08.11 6:00pm</span>
+                </p>
+            </h1>
+            <div class="scrolldown wow fadeInDown" data-wow-duration="0.2s" data-wow-delay="1s"><span>아래로</span></div>
+        </div>
+        <!--// header -->
+
+        <!-- greeting -->
+        <div class="greeting_wrap">
+            <div class="ul-body greeting_box">
+                <div class="greeting_textbox">
+                    <h2 class="title">Wedding Invitation</h2>
+                    <div class="box_line">
+                        <p class="greeting_text">
+                            처음 어색하게 만난 날을<br/>
+                            또렷이 기억합니다. <br/>
+                            <br/>
+                            웃는 모습이 유난히 예쁜 신부,<br/>
+                            그 웃는 모습을 유난히도 좋아하던 신랑<br/>
+                            <br/>
+                            십여년의 시간이 흘러 언제나 함께<br/>
+                            웃을 수 있는 하나가 되려 합니다.<br/>
+                            <br/>
+                            소중한 분들과 함께라면<br/>
+                            저희에겐 더없는 기쁨이 될 것입니다. </p>
+
+                        <ul class="greeting_name">
+                            <li class="gn_groom">
+                                <p><span class="gn4">신랑<strong>한희승</strong></span></p>
+                                <p><span class="gn1">한길동</span><span class="gn_and">,</span><span class="gn2">최임당</span><span
+                                            class="gn3">의 아들</span></p>
+                                <p class="panel"><a href="#panel_groom"><span class="icon"></span>신랑에게 연락하기</a></p>
+                            </li>
+                            <li class="gn_bride">
+                                <p><span class="gn4">신부<strong>홍선희</strong></span></p>
+                                <p><span class="gn1">홍바다</span><span class="gn_and">,</span><span class="gn2">이다은</span><span
+                                            class="gn3">의 딸</span></p>
+                                <p class="panel"><a href="#panel_bride"><span class="icon"></span>신부에게 연락하기</a></p>
+                            </li>
+                        </ul>
+
+                        <div class="greeting_loca">
+                            <p>2018.08.11 (토요일) 오후 6시</p>
+                            <p>달팽 웨딩빌리지</p></div>
+                    </div>
+                </div>
+
+                <div class="greeting_photo"></div>
+            </div>
+        </div>
+        <!--// greeting -->
+    </div>
+
+    <!-- 혼주연락처 -->
+    <div class="parents_wrap">
+        <h2 class="pa-tit">
+            신랑·신부 혼주 연락처
+        </h2>
+        <ul class="pa-list" data-count="2">
+            <li class="pa-groom"><span class="ico-arrow">신랑 혼주 연락하기</span></li>
+            <li class="pa-bride"><span class="ico-arrow">신부 혼주 연락하기</span></li>
+        </ul>
+    </div>
+    <!--// 혼주연락처 -->
+
+    <div class="gallery_wrap ui-cont-b" id="sk_gallery">
+        <h2 class="title">
+            <div class="box_line">
+                <span class="txt01">Gallery</span>
+                <span class="txt02">/</span>
+                <span class="txt03">D - 218</span>
+            </div>
+        </h2>
+
+        <div class="gal_list">
+            {% if gallery | length > 1 %}
+            <div class="col-2">
+                <a href="{{ gallery[0]['src'] }}" class="swipebox ui-link" data-size="{{ gallery[0]['size'] }}" imgId="1">
+                    <div class="ui-block-a" style="background:url('{{ gallery[0]["src"] }}') center center no-repeat;background-size:cover">
+                    </div>
+                </a>
+                <a href="{{ gallery[1]['src'] }}" class="swipebox ui-link" data-size="{{ gallery[1]['size'] }}" imgId="2">
+                    <div class="ui-block-b"
+                         style="background:url('{{ gallery[1]["src"] }}') center center no-repeat; background-size:cover">
+                        <div class="label_frame_box">
+                            <div class="label_img"></div>
+                            <div class="gal_frame_box"
+                                 style="background:url('{{ gallery[1]["src"] }}') center center no-repeat; background-size:cover"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% if gallery | length > 3 %}
+            <div class="col-2">
+                <a href="{{ gallery[2]['src'] }}" class="swipebox" data-size="{{ gallery[2]['size'] }}" imgId="3">
+                    <div class="ui-block-a">
+                        <div class="label_frame_box02">
+                            <div class="label_frame01">
+                                <div class="label_img02"></div>
+                                <div class="gal_frame03"
+                                     style="background:url('{{ gallery[2]["src"] }}') center center no-repeat; background-size:cover"></div>
+                            </div>
+                            <div class="label_frame02">
+                                <div class="savethedate">
+                                    <div class="label_img03"></div>
+                                    <div class="date">
+                                        <span class="date_m">{{ date | date('d') }}</span>
+                                        <span class="date_d">{{ date | date('m') }}</span>
+                                        <span class="date_y">{{ date | date('Y') }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ gallery[3]['src'] }}" class="swipebox" data-size="{{ gallery[3]['size'] }}" imgId="4">
+                    <div class="ui-block-b"
+                         style="background:url('{{ gallery[3]["src"] }}') center center no-repeat;background-size:cover;"></div>
+                </a>
+            </div>
+            {% endif %}
+
+            {% if gallery | length > 4 %}
+                <a href="{{ gallery[4]['src'] }}" class="swipebox" data-ajax="false" data-size="{{ gallery[4]['size'] }}" imgId="5"></a>
+            {% endif %}
+
+            {% if gallery | length > 5 %}
+                <a href="{{ gallery[5]['src'] }}" class="swipebox" data-ajax="false" data-size="{{ gallery[5]['size'] }}" imgId="5">
+                    <p class="gal_more"><span>XEM THÊM</span></p>
+                </a>
+            {% endif %}
+            {% if gallery | length > 6 %}
+                {% for img in gallery[6:] %}
+                    <a href="{{ img['src'] }}" class="swipebox" data-size="{{ img['size'] }}" imgId="{{ loop.index + 6}}">
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+    <!--// gallery -->
+
+    <!-- movie -->
+    <div class="movie_wrap ui-cont-b" id="sk_media">
+        <h2 class="title hidden">WEDDING MOVIE</h2>
+        <div class="ul-body">
+            <div class="movie_container movie1">
+                <ul>
+                    <li>
+                        <iframe id="movie" width="100%"
+                                data-src="https://player.vimeo.com/video/139678374?potrait=0&badge=0&byline=0&title=0"
+                                height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                                allowfullscreen></iframe>
+                    </li>
+                    <!--<li><iframe width="100%" height="100%" src="https://player.vimeo.com/video/139678374?potrait=0&badge=0&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--// movie -->
+
+    <!-- guestbook -->
+    <div class="guestbook_wrap ui-cont-b" id="sk_snsbbs">
+        <div class="ul-body col-3">
+            <div id="div_snsbbs">
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg btn_go_snsbbs">
+                                <div class="prfl_bg_imgfltr"
+                                     style="background:url('https://scontent.cdninstagram.com/t51.2885-19/s150x150/11375134_799616980151358_191488437_a.jpg') center center no-repeat; background-size:cover"></div>
+                                <div class="pro_img">
+                                    <img src="https://scontent.cdninstagram.com/t51.2885-19/s150x150/11375134_799616980151358_191488437_a.jpg"
+                                         alt="프로필사진">
+                                </div>
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns instagram"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>달팽</strong></p>
+                                    <p class="date">2017-11-08 18:00</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>선남선녀가 따로 없네~~~~~행복한 가정 이루시게~~~</p>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg02 btn_go_snsbbs">
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns notmember"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>원영엄마</strong></p>
+                                    <p class="date">2017-11-08 17:59</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>요즘 늘 너의 행복한 미소보면서 나도 덩달아 기분이 좋아지고 있다~~~즐겁게 결혼식 준비하고 행복하게 살아라~훈남 훈녀네!!!!</p>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg btn_go_snsbbs">
+                                <div class="prfl_bg_imgfltr"
+                                     style="background:url('https://phinf.pstatic.net/contact/22/2015/4/20/dalpengcom_1429496656026.jpg?type=m100') center center no-repeat; background-size:cover"></div>
+                                <div class="pro_img">
+                                    <img src="https://phinf.pstatic.net/contact/22/2015/4/20/dalpengcom_1429496656026.jpg?type=m100"
+                                         alt="프로필사진">
+                                </div>
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns naver"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>달팽</strong></p>
+                                    <p class="date">2017-11-08 17:58</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>안녕~마이시스터!!!!<br/>
+                                        우리 중에 첫번째로 품절녀가 된 널 축하해♥<br/>
+                                        결혼한다고 신랑님 보여준게 엊그제 같은데..시간 빠르다 ♥<br/>
+                                        건강관리 잘하고 결혼식날 보자♥</p>
+                                    <div class="emo-type-a emo08"></div>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections ">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg btn_go_snsbbs">
+                                <div class="prfl_bg_imgfltr"
+                                     style="background:url('http://pbs.twimg.com/profile_images/613231098017902592/oePKO9m5_bigger.jpg') center center no-repeat; background-size:cover"></div>
+                                <div class="pro_img">
+                                    <img src="http://pbs.twimg.com/profile_images/613231098017902592/oePKO9m5_bigger.jpg"
+                                         alt="프로필사진">
+                                </div>
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns twitter"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>달팽</strong></p>
+                                    <p class="date">2016-06-16 09:47</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>너무너무 부러울 정도로 좋아 보여요!<br/>
+                                        드뎌 하는건가~<br/>
+                                        추카하고 이쁘게 알콩달콩 잘 살아아아아요~</p>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">1</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg02 btn_go_snsbbs">
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns notmember"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>비인찡</strong></p>
+                                    <p class="date">2016-06-16 09:45</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>결혼 축하한다. 완전 축하한다. 백번 축하한다!<br/>
+                                        신랑신부 둘 다 행복했으면-!!!!!!!!!!!!!!!</p>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">1</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg02 btn_go_snsbbs">
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns notmember"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>김수현</strong></p>
+                                    <p class="date">2016-06-16 09:41</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>결혼을 축하드립니다.<br/>
+                                        결혼식 준비 잘하시고.<br/>
+                                        어서 아기도! 네? 어? 아기도 막! _ </p>
+                                    <div class="emo-type-b emo20"></div>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">1</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg02 btn_go_snsbbs">
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns dalpeng"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>조현숙</strong></p>
+                                    <p class="date">2016-06-16 09:40</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>결혼 축하해, 어느새 벌써 가정을 꾸리게 되는구나.<br/>
+                                        행복하게 예쁘게 잘 살아~유부녀의 세계로 들어온 걸 환영해♡</p>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">1</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="snsbbs_sections mobile_hide">
+                    <div class="ui-body-d">
+                        <div class="gb_cont_box btn_go_snsbbs">
+                            <div class="prfl_bg02 btn_go_snsbbs">
+                            </div>
+
+                            <div class="pro_info btn_go_snsbbs">
+                                <div class="pro-sns notmember"><span></span></div>
+                                <div class="pro_txt">
+                                    <p><strong>인감영감</strong></p>
+                                    <p class="date">2016-06-16 09:39</p>
+                                </div>
+                            </div>
+
+                            <ul class="gb_cont btn_go_snsbbs">
+                                <li class="comm_txt">
+                                    <p>두 사람의 결혼을 축하드립니다!<br/>
+                                        항상 행복하시길 바라겠습니다~!</p>
+                                    <div class="emo-type-a emo05"></div>
+                                </li>
+                            </ul>
+
+                            <div class="gb_skip btn_go_snsbbs">
+                                <p class="gb_more fl">
+                                    더보기
+                                </p>
+                                <p class="gb_comm fr">
+                                    <span class="btn_wrap">1</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gb_btn btn_go_snsbbs"><span>축하글 쓰기</span></div>
+    </div>
+    <!--// guestbook -->
+
+    <div class="location_wrap" id="sk_map">
+        <!--<h2 class="title2"><span>location</span></h2>-->
+        <div class="ul-body" style="background:#fff">
+            <div class="col-2">
+                <div class="ui-block-a">
+                    <ul class="lo_tab_wrap">
+                        <li class="tab_btn wh locationtabs on" id="tabs_wedding" style="cursor: pointer;">Ceremony</li>
+                        <li class="tab_btn rh locationtabs" id="tabs_party" style="cursor: pointer;">Reception</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="ul-body locationdivs" id="div_wedding">
+            <input type="hidden" id="wedding_pmap_lat" value="37.57975938807761"/>
+            <input type="hidden" id="wedding_pmap_lon" value="126.9760406698365"/>
+            <input type="hidden" id="wedding_paddr" value="서울특별시 종로구 사직로 161"/>
+            <input type="hidden" id="wedding_pname" value="달팽 웨딩빌리지"/>
+            <div class="col-2 lo_box">
+                <div class="ui-block-a">
+                    <h3 class="lo_title"><span class="icon"></span>달팽 웨딩빌리지</h3>
+                    <div class="lo_map">
+                        <div id="wedding_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
+                    </div>
+                    <div class="nav-wrap">
+                        <div class="ui-grid-a nav-m">
+                            <div class="nav-1">
+                                <div class="ui-body-d ui-btn-nav wedding_kimnavi">
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
+                                </div>
+                            </div>
+                            <div class="nav-2">
+                                <div class="ui-body-d ui-btn-nav wedding_ollehnavi">
+                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                </div>
+                <div class="ui-block-b">
+                    <table class="lo_container">
+                        <tr>
+                            <th class="lo_date">Date</th>
+                            <td class="txt">2018년 8월 11일 토요일 오후 6시</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_loca">Location</th>
+                            <td class="txt">서울특별시 종로구 사직로 161</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_tel">Tel</th>
+                            <td class="txt">02-500-0000</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_info">Information</th>
+                            <td>ㅁ 분당선 달팽역(3번출구) 셔틀버스가 10분마다 운행됩니다.</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_bus">Bus Info</th>
+                            <td>ㅁ직행 3500, 6602<br/>
+                                ㅁ지선 2013, 2015<br/>
+                                ㅁ간선 321,567,645,N62
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="lo_subway">Subway Info</th>
+                            <td>ㅁ 2호선 달팽역(1번출구), 도보 1분<br/>
+                                ㅁ 5호선 달팽역(5번 출구), 도보 5분<br/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="ul-body locationdivs hide" id="div_party">
+            <input type="hidden" id="party_pmap_lat" value="37.4950598"/>
+            <input type="hidden" id="party_pmap_lon" value="127.12241160000008"/>
+            <input type="hidden" id="party_paddr" value="서울시 송파구 중대로 135"/>
+            <input type="hidden" id="party_pname" value="달팽 웨지홀"/>
+            <div class="col-2 lo_box">
+                <div class="ui-block-a">
+                    <h3 class="lo_title"><span class="icon"></span>달팽 웨지홀</h3>
+                    <div class="lo_map">
+                        <div id="party_pmap_canvas" class="not_view_panel" style="width:100%;height:500px;"></div>
+                    </div>
+                    <div class="nav-wrap">
+                        <div class="ui-grid-a nav-m">
+                            <div class="nav-1">
+                                <div class="ui-body-d ui-btn-nav party_kimnavi">
+                                    <span class="ui-btn ui-icon-nav1 ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow ui-custom-btn fc-fff">카카오내비</span>
+                                </div>
+                            </div>
+                            <div class="nav-2">
+                                <div class="ui-body-d ui-btn-nav party_ollehnavi">
+                                    <span class="ui-btn ui-icon-nav2 ui-btn-icon-left ui-corner-all ui-shadow ui-custom-btn">원내비</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav_info">※ 모바일에서 앱아이콘을 누르면 해당 위치로 자동 연결됩니다.</div>
+                </div>
+                <div class="ui-block-b">
+                    <table class="lo_container">
+                        <tr>
+                            <th class="lo_date">Date</th>
+                            <td class="txt">2018.08.11 오후 8시</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_loca">Location</th>
+                            <td class="txt">서울시 송파구 중대로 135</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_tel">Tel</th>
+                            <td class="txt">02-1000-0000</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_info">Information</th>
+                            <td>ㅁ 결혼식장에서 단체 버스 이용</td>
+                        </tr>
+                        <tr>
+                            <th class="lo_subway">Subway Info</th>
+                            <td>ㅁ 3호선 경찰병원역 1번 출구, 도보 1분<br/>
+                                ㅁ 8호선 가락시장역 4번 출구, 도보 7분
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // location -->
+    <!--// sub_contents -->
+    <!-- footer -->
+    <div class="footer" id="sk_snslink">
+        <div class="contents">
+            <h4><a href="http://dalpeng.com" target="_blank"><img src="/bundles/viettutweb/img/templates/onefineday/footer_logo.png"
+                                                                  alt="로고"
+                                                                  title="달팽 초대장 :: dalpeng.com"/></a><span></span></h4>
+            <ul>
+                <li>
+                    <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://dalpeng.com/onefineday">
+                        <div class="ft_sns_wrap1 fasebook"><span>facebook logo</span></div>
+                    </a>
+                    <em>facebook</em>
+                </li>
+                <!-- 네이버 밴드 추가용 by echos(2014-12-08) -->
+                <li>
+                    <a target="_blank" href="http://www.band.us/plugin/share?body=http://dalpeng.com/onefineday">
+                        <div class="ft_sns_wrap1 band"><span>band logo</span></div>
+                    </a>
+                    <em>naver band</em>
+                </li>
+                <!--
+                <li>
+                    <a target="_blank" href="http://twitter.com/share?text=달팽초대장::한희승♥홍선희&url=http://dalpeng.com/onefineday"><div class="ft_sns_wrap1 twitter"><span>twitter logo</span></div></a>
+                    <em>twitter</em>
+                </li>-->
+                <li id="sk_kakao">
+                    <div class="ft_sns_wrap1 kakao btn_send_kakao" id="btn_kakao_talk"><span>KAKAOTALK</span></div>
+                    <em>KAKAOTALK</em>
+                </li>
+                <!-- https://story.kakao.com/share?url=http%3A%2F%2Fdalpeng.com%2Fonefineday -->
+                <li>
+                    <a target="_blank" href="https://story.kakao.com/share?url=http://dalpeng.com/onefineday">
+                        <div class="ft_sns_wrap1 story" id="btn_kakao_story"><span>KAKAOSTORY</span></div>
+                    </a>
+                    <em>KAKAOSTORY</em>
+                </li>
+                <!-- <li>
+                    <div class="ft_sns_wrap1 band" id="btn_line"><span>LINE</span></div>
+                    <em>LINE</em>
+                </li> -->
+            </ul>
+        </div>
+        <div style="position:relative;top:0px;left:0px;width:0px;height:0px;z-index:-999;">
+            <iframe id="ifmChkApp" width="0" height="0" border="0" style="border:0px;"></iframe>
+        </div>
+    </div>
+    <!--// footer -->
+</div><!--//skin_page-->
+
+<div class="popup_wrap popup_olleh" style="display:none;">
+    <div class="popup_navibox">
+        <div class="olleh_btnbox">
+            <div class="olleh_btn btn1" id="android_go_olleh">
+                <p class="title">이미 원내비앱을<br><strong>사용 중이신 경우</strong></p>
+                <p class="link"><span>바로 길안내</span></p>
+            </div>
+            <div class="olleh_btn btn2" id="android_install_olleh">
+                <p class="title">원내비앱이<br><strong>없으신 경우</strong></p>
+                <p class="link"><span>앱 설치하기</span></p>
+            </div>
+        </div>
+        <div class="popup_back olleh_back">
+            <span id="popOllehClose">닫기</span>
+        </div>
+    </div>
+</div>
+
+<div class="popup_wrap popup_parents" style="display:none">
+    <div class="popup_pabox">
+        <ul class="pabox_tabs">
+            <li data-tab="tabs_groom" class="tabs_groom active"><span>신랑 혼주</span></li>
+            <li data-tab="tabs_bride" class="tabs_bride"><span>신부 혼주</span></li>
+        </ul>
+        <div class="pabox_content pabox_groom" id="tabs_groom">
+            <h1 class="pabox_tit">
+                <span>신랑 한희승</span>
+                <strong>신랑 혼주 연락하기</strong>
+            </h1>
+            <!-- <h1 class="pabox_tit"><strong>신랑 혼주 연락하기</strong></h1> 신랑이름 없을때 -->
+            <ul class="pabox_contact">
+                <!--신랑 아버님-->
+                <li>
+                    <div class="name"> 한길동 님</div>
+                    <div class="number">
+                        <p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p>
+                        <p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p>
+                    </div>
+                </li>
+                <!--신랑 어머님-->
+                <li>
+                    <div class="name"> 최임당 님</div>
+                    <div class="number">
+                        <p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p>
+                        <p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="pabox_content pabox_bride" id="tabs_bride">
+            <h1 class="pabox_tit">
+                <span>신부 홍선희</span>
+                <strong>신부 혼주 연락하기</strong>
+            </h1>
+            <ul class="pabox_contact">
+                <!--신부 아버님-->
+                <li>
+                    <div class="name"> 홍바다 님</div>
+                    <div class="number">
+                        <p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p>
+                        <p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p>
+                    </div>
+                </li>
+                <!--신부 어머님-->
+                <li>
+                    <div class="name"> 이다은 님</div>
+                    <div class="number">
+                        <p><a class="call" href="tel:01020000000"><span class="ico-phone">전화</span></a></p>
+                        <p><a class="sms" href="sms:01020000000"><span class="ico-msg">문자</span></a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="popup_back">
+            <span id="">닫기</span>
+        </div>
+    </div>
+</div>
+
+<!-- photoswipe -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--fit pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter" data-role="none"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)" data-role="none"></button>
+                <button class="pswp__button pswp__button--image" title="Include Image" data-role="none"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen" data-role="none"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out" data-role="none"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"
+                    data-role="none"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"
+                    data-role="none"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center">Image caption 1</div>
+            </div>
+
+            <!-- 슬라이드
+            <div class="pswp__slide">
+                <label for="slide-show">자동 슬라이드</label>
+                <input type="checkbox" name="slideShow" id="slide-show" data-role="none">
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+{% if voted == false %}
+    <div id="signup" class="signup">
+        <div class="container">
+            <div class="row">
+                <i>Vui lòng cho biết dự định của bạn !</i>
+            </div>
+            <div class="row">
+                <button class="btn btn-success" id="btn_going" onclick="updateStatus(1)">Sẽ đến</button>
+                &nbsp;
+                <button class="btn btn-warning" id="btn_notsure" onclick="updateStatus(2)">Cân nhắc</button>
+                &nbsp;
+                <button class="btn btn-danger" id="btn_notgoing" onclick="updateStatus(3)">Không đến</button>
+            </div>
+            <a href="#" class="close"><i class="fa fa-times text-white"></i></a>
+        </div>
+    </div>
+{% endif %}
+<script src="{{ asset('js/libraries.min.js') }}"></script>
+<script src="{{ asset('bundles/viettutweb/js/lib/wow.min.js') }}"></script>
+<script type="text/javascript">
+    <!--
+    $(function () {
+
+        $(".header_bg,.header_box").css("height", $(window).height());
+        //$(window).bind("orientationchange, resize", function(e) {$(".header_bg,.header_box").css("height",$(window).height());});
+
+        var headerTitle = $('.header_box').offset().top;
+        var headerAnimate = function () {
+            var scrollTop = $(window).scrollTop();
+
+            if (scrollTop > headerTitle + 10) {
+                $('.header_box').addClass('fadeOut');
+                $('.lnb').addClass('slideDown');
+
+                $('.header_panel .groom').addClass('slideLeft');
+                $('.header_panel .bride').addClass('slideRight');
+            } else {
+                $('.header_box').removeClass('fadeOut');
+                $('.lnb').removeClass('slideDown');
+                $('.header_panel .groom').removeClass('slideLeft');
+                $('.header_panel .bride').removeClass('slideRight');
+            }
+        };
+
+        $(window).scroll(function () {
+            headerAnimate();
+        });
+
+        $("body").on("mousewheel", function () {
+            event.preventDefault();
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+
+        $(".header_panel").css("top", $('.header_box').outerHeight(true) * 0.5);	// 패널 버튼 위치
+        try {
+            var galleryTitle = $('.gallery_wrap').offset().top;
+            var galleryAnimate = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > galleryTitle - 100) {
+                    $('.lnb').addClass('moveUp');
+                } else {
+                    $('.lnb').removeClass('moveUp');
+                }
+            };
+
+            $(window).scroll(function () {
+                galleryAnimate();
+            });
+        } catch (e) {
+        }
+
+        wow = new WOW(
+                {
+                    boxClass: 'wow',      // animated element css class (default is wow)
+                    animateClass: 'animated', // animation css class (default is animated)
+                    offset: 0,          // distance to the element when triggering the animation (default is 0)
+                    mobile: false,       // trigger animations on mobile devices (default is true)
+                    live: true,       // act on asynchronously loaded content (default is true)
+                    callback: function (box) {
+                        // the callback is fired every time an animation is started
+                        // the argument that is passed in is the DOM node being animated
+                    },
+                    scrollContainer: null // optional scroll container selector, otherwise use window
+                }
+        );
+        wow.init();
+
+        // 네이버 지도시 스마트폰 회전 감지하여 지도 초기화(마커 위치 센터)
+        $(window).on("orientationchange", function () {
+            callMapInitializeAfterResize();
+        });
+
+        function callMapInitializeAfterResize() {
+            if ($('#tabs_wedding').hasClass('on') !== false) initialize('wedding');
+            else initialize('party');
+        }
+
+
+        function initialize(md) {
+        }
+
+        $('#div_snsbbs').masonry({
+            //columnWidth: .snsbbs_sections,
+            //isFitWidth : true,
+            itemSelector: '.snsbbs_sections',
+            transitionDuration: 0
+        }).on('layoutComplete', function () {
+            return true;
+        });
+
+        var closest = function closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        };
+
+        var photoswipeParseHash = function () {
+            var hash = window.location.hash.substring(1),
+                    params = {};
+
+            if (hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        function getGallery($el) {
+            var el = [];
+            var aTag = Array.prototype.slice.call($el.find("a"));
+
+            $.merge(el, aTag);
+
+            return el;
+        }
+
+        function onThumbnailsClick(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+            var clickedListItem = closest(eTarget, function (el) {
+                var tagName = el.tagName.toUpperCase();
+                return (tagName && tagName === 'A');
+            });
+
+            if (!clickedListItem) {
+                return;
+            }
+
+            if (clickedListItem.className.indexOf("swipebox") == -1) {
+                return false;
+            }
+
+            var childNodes = el,
+                    numChildNodes = el.length,
+                    nodeIndex = 0,
+                    index = 0;
+
+            var no_image_count = 0;
+            for (var i = 0; i < numChildNodes; i++) {
+                if (el[i].className.indexOf("swipebox") == -1) {
+                    no_image_count++;
+                }
+
+                if (el[i] == clickedListItem) {
+                    index = i - no_image_count;
+
+                    break;
+                }
+            }
+
+            if (index >= 0) {
+                openPhotoSwipe(index, el);
+            }
+
+            return false;
+        }
+
+        var gallery;
+
+        function getPrefix(prop) {
+            var style = document.body.style;
+            var prefix = ['Webkit', 'ms', 'moz', 'o'];
+            var prefix_len = prefix.length;
+
+            if (style[prop] == '') {
+                return prop;
+            }
+
+            prop = prop[0].toUpperCase() + prop.slice(1);
+
+            for (var i = 0; i < prefix_len; i++) {
+                if (style[prefix[i] + prop] == '') {
+                    return prefix[i] + prop;
+                }
+            }
+        }
+
+        function getTranslate(transform) {
+            var regex;
+
+            if (transform.indexOf('translate3d') == -1) {
+                regex = /translate\(([-0-9.]+)px, ([-0-9.]+)px\)/;
+            } else {
+                regex = /translate3d\(([-0-9.]+)px, ([-0-9.]+)px, ([-0-9.]+)px\)/;
+            }
+
+            var matched = transform.match(regex);
+            var coordinate = {};
+
+            coordinate.x = matched[1];
+            coordinate.y = matched[2];
+
+            if (matched[3]) {
+                coordinate.z = matched[3];
+            }
+
+            return coordinate;
+        }
+
+        function getScale(transform) {
+            var regex = /scale\(([0-9.]+)\)/;
+            var matched = transform.match(regex);
+
+            return matched[1];
+        }
+
+        function psBeforeInitAddEvent() {
+            gallery.listen('gettingData', function (index, item) {
+                var size = item.el.getAttribute("data-size").split("X");
+
+                item.w = size[0];
+                item.h = size[1];
+            });
+
+            gallery.listen('arrowUpdate', function () {
+                var $nextBtn = $('.pswp__button--arrow--right');
+                var $prevBtn = $('.pswp__button--arrow--left');
+                var loop = this.options.loop;
+                var index = this.getCurrentIndex();
+
+                $nextBtn.toggle(loop || index < this.items.length - 1);
+                $prevBtn.toggle(loop || index > 0);
+            });
+
+            gallery.listen('initialZoomIn', function () {
+
+            });
+        }
+
+        function psAfterInitAddEvent() {
+            gallery.listen('initialZoomOut', function () {
+                var item = this.currItem;
+                var container_style = item.container.style;
+                var transform = getPrefix('transform');
+                var transition = getPrefix('transition');
+
+                if (!transform || !transition) {
+                    return;
+                }
+
+                var container_transform = container_style[getPrefix('transform')];
+                var scale = getScale(container_transform);
+                var coordinate = getTranslate(container_transform);
+                var initTransY = item.initialPosition.y;
+                var currTransY = coordinate.y;
+                var size = item.el.getAttribute("data-size").split("X");
+                var transX = item.initialPosition.x;
+                var transY;
+
+                if (initTransY > currTransY) {
+                    transY = -(size[1]);
+                } else {
+                    transY = window.screen.availHeight;
+                }
+
+                container_style[transition] = "transform " + gallery.options.hideAnimationDuration + "ms";
+
+                if (!this.isGestureClose() && this.isVerticalDrag()) {
+                    container_style[getPrefix('transform')] = "translate3d(" + transX + "px, " + transY + "px, 0px) scale(" + scale + ")";
+                }
+            });
+
+            gallery.listen('close', function () {
+                // pswp 플러그인에서 스크롤 이벤트를 unbind 시키는 문제로 scroll 이벤트가 재바인드
+                this.framework.bind(window, 'scroll', function () {
+                    if (typeof headerAnimate == "function") {
+                        headerAnimate();
+                    }
+                });
+
+
+            });
+        }
+
+        var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelector('.pswp'),
+                    options, items, kakaoInApp;
+
+            items = parseThumbnailElements(galleryElement);
+
+            if (/KAKAOTALK/.test(navigator.userAgent)) {
+                kakaoInApp = true;
+            }
+
+            options = {
+                useZoom: true,
+                arrowKeys: false,
+                hideAnimationDuration: 200,
+                showAnimationDuration: 100,
+                loop: false,
+                imageEl: true,
+                galleryUID: $my_gallery[0].getAttribute('data-pswp-uid'),
+                showHideOpacity: true,
+                getThumbBoundsFn: false,
+                closeOnScroll: false,
+                kakaoInApp: kakaoInApp,
+            };
+
+            if (fromURL) {
+                if (options.galleryPIDs) {
+
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            if (isNaN(options.index)) {
+                return;
+            }
+
+            if (disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+            gallery.useAniNum = false;
+
+            // 방명록 글쓰기에 이미지 첨부
+            gallery.includeImage = function () {
+                var id = gallery.currItem.id
+                var url = "onefineday/snsbbs/w/" + id;
+                var kakaoInApp = gallery.options.kakaoInApp;
+
+                /* KAKAO 인앱 브라우저의 경우 특정 기기에서 전체화면 기능을 키고 방명록 글쓰기 버튼을 눌렀을 때 키보드가 나오지 않는 문제가 있어서 추가
+                 (스마트폰 브라우저 창에 특정 작동을 시켜주면 풀리는 이유로 window.open 사용) */
+                if (!kakaoInApp) {
+                    window.location = url;
+                } else {
+                    window.open(url);
+                }
+            }
+
+            psBeforeInitAddEvent();
+            gallery.init();
+            psAfterInitAddEvent();
+        };
+
+        var parseThumbnailElements = function (el) {
+            var imageElements = el,
+                    numNodes = imageElements.length,
+                    items = [],
+                    size,
+                    item;
+            var wrapper = document.createElement('div');
+            var imageEl,
+                    thumbEl;
+
+            for (var i = 0; i < numNodes; i++) {
+                imageEl = imageElements[i];
+
+                if (imageEl.nodeType !== 1) {
+                    continue;
+                }
+
+                var img_el = imageEl.getElementsByTagName("img");
+                var exist_img = img_el.length > 0 ? true : false;
+                var src = imageEl.href;
+                var is_swipe_image = imageEl.className.indexOf("swipebox") > -1 ? true : false;
+                var msrc;
+                var $imageEl = $(imageEl);
+
+                if (!is_swipe_image) {
+                    continue;
+                }
+
+                if (!exist_img) {
+                    thumbEl = imageEl.getElementsByTagName("div")[0];
+
+                    if (thumbEl) {
+                        msrc = thumbEl.style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                    } else {
+                        var piece = src.split("/");
+                        var pieceCount = piece.length;
+                        var file = piece[pieceCount - 1]
+
+                        piece[pieceCount - 1] = "S_" + file;
+
+                        msrc = piece.join("/");
+                    }
+                } else {
+                    if ($imageEl.parent(".gal_more").length > 0 || $imageEl.children(".gal_more").length > 0) {
+                        msrc = img_el[0].parentNode.href;
+                    } else {
+                        thumbEl = img_el[0];
+                        msrc = thumbEl.src;
+                    }
+                }
+
+                item = {
+                    src: src,
+                    msrc: msrc,
+                    el: imageEl,
+                };
+
+                item.id = imageEl.getAttribute("imgId");
+                items.push(item);
+            }
+            return items;
+        };
+
+        var $my_gallery = $("#sk_gallery");
+        var my_gallery_count = $my_gallery.length;
+        var el = getGallery($my_gallery);
+        var $el = $(el);
+        var hashData = photoswipeParseHash();
+
+        $el.on("click", onThumbnailsClick);
+
+        for (var i = 0; i < my_gallery_count; i++) {
+            $my_gallery[i].setAttribute("data-pswp-uid", i + 1);
+        }
+
+        if (hashData.pid && hashData.gid) {
+            openPhotoSwipe(hashData.pid - 1, el, true, true);
+        }
+
+        $(document).on("keydown keyup", function (e) {
+            var hidden = $(".pswp").attr("aria-hidden") == "true";
+
+            if (hidden) {
+                return;
+            }
+
+            var keydownAction = '';
+            var index = gallery.getCurrentIndex();
+            var gallery_len = gallery.items.length;
+
+            if (e.type == "keydown") {
+                if (e.keyCode === 37 && index != 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index != (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            } else if (e.type == "keyup") {
+                if (e.keyCode === 37 && index == 0) {
+                    keydownAction = 'prev';
+                } else if (e.keyCode === 39 && index == (gallery_len - 1)) {
+                    keydownAction = 'next';
+                }
+            }
+
+            if (keydownAction) {
+                if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    gallery[keydownAction]();
+                }
+            }
+        });
+
+        $('.locationtabs').click(function () {
+            var id = $(this).attr('id').replace('tabs_', '');
+            $('.locationtabs').removeClass('on');
+            $(this).addClass('on');
+            $('.locationdivs').removeClass('hide');
+            $('.locationdivs').addClass('hide');
+            $('#div_' + id).removeClass('hide');
+
+            setLocationInfoHeight();
+
+            initialize(id);
+        }).css('cursor', 'pointer');
+
+        $('#div_snsbbs').masonry('bindResize');
+
+        function setLocationInfoHeight() {
+        }
+
+        function setPosition(id) {
+            var $obj = $('#sk_' + id);
+            $('body').scrollTo($obj, 500);
+        }
+
+        $('.menu_scrolls').click(function () {
+            try {
+                if ($(this).attr('id')) {
+                    var id = $(this).attr('id').replace('p_', '').replace('m_', '');
+                    setPosition(id);
+                }
+            } catch (e) {
+            }
+        }).css('cursor', 'pointer');
+
+
+        initialize('wedding');
+        setLocationInfoHeight();
+
+
+        // 혼주 연락처 팝업 처리
+        $('.pa-groom').click(function () {
+            $('.tabs_bride, #tabs_bride').removeClass('active');
+            $('.tabs_groom, #tabs_groom').addClass('active');
+
+            showParentPopup();
+        });
+
+        $('.pa-bride').click(function () {
+            $('.tabs_groom, #tabs_groom').removeClass('active');
+            $('.tabs_bride, #tabs_bride').addClass('active');
+
+            showParentPopup();
+        });
+
+        $('.popup_back span').click(function () {
+            $('body').css('overflow-y', '');
+            $('.popup_parents').hide();
+        });
+
+        $('.pabox_tabs li').click(function () {
+            var tab_id = $(this).attr('data-tab');
+
+            $('ul.pabox_tabs li').removeClass('active');
+            $('.pabox_content').removeClass('active');
+
+            $(this).addClass('active');
+            $("#" + tab_id).addClass('active');
+        });
+
+        $('.call, .sms').on('click', function (e) {
+            var agent = window.navigator.userAgent;
+            var is_mobile = /iphone|ipod|ipad|android|windows ce|blackberry|symbian|windows phone|webos|opera mini|opera mobi|polaris|iemobile|lgtelecom|nokia|sonyericsson/i.test(agent);
+
+            if (!is_mobile) {
+                alert('해당 기능은 모바일에서만 가능합니다.');
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        function showParentPopup() {
+            var parent_count = $('.pa-list').attr('data-count');
+
+            if (parent_count > 1) {
+                $('.pabox_tabs').show();
+            } else {
+                $('.pabox_tabs').hide();
+            }
+
+            $('body').css('overflow-y', 'hidden');
+            $('.popup_parents').show();
+        }
+
+    });
+
+    $(window).load(function () {
+        $('.gal_list2').masonry({
+            itemSelector: '.gal_frame',
+            columnWidth: '.gal_size',
+            transitionDuration: '0.2s',
+            percentPosition: true
+        });
+
+        $('#div_gallery').masonry({itemSelector: '.gallery_sections'});
+
+        {% if isTemplate == false %}
+        $('.movie_wrap').onScrollTo(function () {
+            $('#signup').addClass('show');
+        }, function () {
+            $('#signup').removeClass('show');
+        });
+
+        $('#signup').on('click', '.close', function (e) {
+            e.preventDefault();
+            $('#signup').removeClass('show');
+        });
+        {% endif %}
+    });
+
+    (function ($) {
+        $.fn.onScrollTo = function (focusInFn, focusOutFn) {
+            var $this = this;
+            $(document).scroll(function () {
+                var y = $(this).scrollTop();
+                if (y >= $this.position().top) {
+                    if (focusInFn) focusInFn();
+                } else {
+                    if (focusOutFn) focusOutFn();
+                }
+            });
+        }
+    })(jQuery);
+
+    function initMap() {
+        var lat = $('#coordinates').data('lat');
+        var lon = $('#coordinates').data('lon');
+        var title = $('#coordinates').data('title');
+
+        var homeLat = $('#coordinates').data('home-lat');
+        var homeLon = $('#coordinates').data('home-lon');
+        var homeTitle = $('#coordinates').data('home-title');
+
+        var location = new google.maps.LatLng(lat, lon);
+        var homeLocation = new google.maps.LatLng(homeLat, homeLon);
+
+        var map = new google.maps.Map(document.getElementById('party_pmap_canvas'), {
+            zoom: 16,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        var info = new google.maps.InfoWindow({
+            content: '<h4>' + title + '</h4>'
+        });
+        info.open(map, marker);
+
+        var homeMap = new google.maps.Map(document.getElementById('wedding_pmap_canvas'), {
+            zoom: 16,
+            center: homeLocation
+        });
+        var homeMarker = new google.maps.Marker({
+            position: homeLocation,
+            map: homeMap
+        });
+
+        var homeInfo = new google.maps.InfoWindow({
+            content: '<h4>' + homeTitle + '</h4>'
+        });
+        homeInfo.open(homeMap, homeMarker);
+
+        $('#wedding_pmap_canvas').css('width', '100%');
+        $('#party_pmap_canvas').css('width', '100%');
+    }
+
+    function getPath() {
+        var addr = $('#getPath input[name=saddr]').val();
+        if (addr.length < 3) {
+            $('#getPath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getPath").submit();
+    }
+
+    function getHomePath() {
+        var addr = $('#getHomePath input[name=saddr]').val();
+
+        if (addr.length < 3) {
+            $('#getHomePath input[name=saddr]').focus();
+            alert('Nhập địa chỉ của bạn một cách chính xác!');
+            return;
+        }
+
+        document.getElementById("getHomePath").submit();
+    }
+
+    //-->
+</script>
+<script>
+    WebFontConfig = {
+        google: {
+            families: ['Lora:400,700i&amp;subset=vietnamese']
+        }
+    };
+
+    (function (d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFP7Gn3MRg3XxdnxZ33dKlgHQa7SanZE&callback=initMap">
+</script>
+<script async defer type="text/javascript"
+        src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52672eec5ea620cd"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109753132-1"></script>
+<script async>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109753132-1');
+</script>
+</body>
+</html>

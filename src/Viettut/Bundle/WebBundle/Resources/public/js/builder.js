@@ -8,7 +8,7 @@ var cardId = $('.card-info').data('id');
 
 Array.prototype.remByVal = function(val) {
     for (var i = 0; i < this.length; i++) {
-        if (this[i] === val) {
+        if (this[i]['src'] === val) {
             this.splice(i, 1);
             i--;
         }
@@ -110,7 +110,7 @@ function updateAlbum() {
                 '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                 'Thông tin cập nhật thành công !'
                 + '</div>';
-            $('div.form-horizontal').before(html);
+            $('div#edit_album').before(html);
             $('button#updateAlbumButton').html('Cập Nhật Album');
             $('body').scrollTop(0);
         },
@@ -137,7 +137,7 @@ function updateVideo() {
                 '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                 'Thông tin cập nhật thành công !'
                 + '</div>';
-            $('div#videoForm').before(html);
+            $('div#edit_video').before(html);
             $('button#updateVideoButton').html('Cập Nhật');
         },
         error : function(jqXHR, textStatus, errorThrown) {
@@ -248,7 +248,7 @@ $(document).ready(function(){
         acceptFiles: 'image/',
         dragDrop: true,
         multiple: true,
-        maxFileCount: 5,
+        maxFileCount: 10,
         showProgress: true,
         onSuccess:function(files,data,xhr,pd) {
             data.forEach(function(element) {

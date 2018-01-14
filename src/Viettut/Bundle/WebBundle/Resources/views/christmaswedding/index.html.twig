@@ -25,7 +25,7 @@
 
 </head>
 <body>
-<h1 class="hide">Christmas Wedding- Dải ngân hà</h1>
+<h1 class="hide">Christmas Wedding - Hạnh phúc đêm Giáng Sinh</h1>
 <h2 class="hide">Trắng tinh khôi điểm xuyết sao vàng lấp lánh mang đến cảm giác lung linh huyền diệu như một giấc mơ.</h2>
 <div id="coordinates" data-lon="{{ lon }}" data-lat="{{ lat }}" data-title="{{ data['place'] }}"
      data-home-lon="{{ homeLon }}" data-home-lat="{{ homeLat }}" data-home-title="{% if forGroom %}Nhà Trai{% else %}Nhà Gái{% endif %}"></div>
@@ -164,7 +164,6 @@
                         <tr>
                             <th>Cha</th>
                             <th>Mẹ</th>
-                            <th>&nbsp;</th>
                             <th>Con</th>
                         </tr>
                         </thead>
@@ -172,13 +171,11 @@
                         <tr>
                             <td class="gn1">{{ data['groom_fa_name'] }}<span>-</span></td>
                             <td class="gn2">{{ data['groom_mo_name'] }}</td>
-                            <td class="gn3"></td>
                             <td class="gn4">{{ data['groom_name'] }}</td>
                         </tr>
                         <tr>
                             <td class="gn1">{{ data['bride_fa_name'] }}<span>-</span></td>
                             <td class="gn2">{{ data['bride_mo_name'] }}</td>
-                            <td class="gn3"></td>
                             <td class="gn4">{{ data['bride_name'] }}</td>
                         </tr>
                         </tbody>
@@ -1300,10 +1297,6 @@
 
         $('#div_snsbbs').masonry('bindResize');
 
-        $('.btn_go_snsbbs').click(function () {
-            location.href = "/christmaswedding/snsbbs";
-        }).css('cursor', 'pointer');
-
         function setPosition(id) {
             var $obj = $('#sk_' + id);
             $('body').scrollTo($obj, 500);
@@ -1311,6 +1304,8 @@
 
         $('.menu_scrolls').click(function () {
             try {
+                $('.menu_scrolls').removeClass('on');
+                $(this).addClass('on');
                 if ($(this).attr('id')) {
                     bool_click_menu = true;
                     setMenu(this);
