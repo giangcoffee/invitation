@@ -292,33 +292,11 @@ $(document).ready(function(){
     var clipboard = new Clipboard('#copy_link');
 
     clipboard.on('success', function(e) {
-        $.notify({
-            message: 'Đã copy link thiệp',
-            icon: 'glyphicon glyphicon-star'
-        },{
-            type: 'info',
-            allow_dismiss: true,
-            newest_on_top: false,
-            placement: {
-                from: "top",
-                align: "right"
-            }
-        });
+        infoNotify('Đã copy link thiệp');
     });
 
     clipboard.on('error', function(e) {
-        $.notify({
-            message: 'Không thể copy link thiệp',
-            icon: 'glyphicon glyphicon-star'
-        },{
-            type: 'danger',
-            allow_dismiss: true,
-            newest_on_top: false,
-            placement: {
-                from: "top",
-                align: "right"
-            }
-        });
+        dangerNotify('Không thể copy link thiệp');
     });
 });
 
