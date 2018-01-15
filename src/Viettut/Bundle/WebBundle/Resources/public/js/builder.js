@@ -91,7 +91,7 @@ function infoNotify(message) {
         message: message,
         icon: 'glyphicon glyphicon-ok'
     },{
-        type: 'info',
+        type: 'success',
         allow_dismiss: true,
         newest_on_top: false,
         placement: {
