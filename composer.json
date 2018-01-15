@@ -35,7 +35,8 @@
         "geocoder-php/google-maps-provider": "^4.1",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message": "^1.6",
-        "zaloplatform/zalo-php-sdk": "^1.0"
+        "zaloplatform/zalo-php-sdk": "^1.0",
+        "codeception/codeception": "^2.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

@@ -557,7 +557,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary" onclick="createCard()" id="create-button">Gửi</button>
+                        <button type="button" class="btn btn-primary" onclick="createCard()" id="create-button">Tạo Thiệp</button>
                     </div>
                 </div>
             </div>
@@ -595,7 +595,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary" onclick="createExhibitionCard()" id="create-button">Gửi</button>
+                        <button type="button" class="btn btn-primary" onclick="createExhibitionCard()" id="create-button">Tạo Thiệp</button>
                     </div>
                 </div>
             </div>
@@ -639,7 +639,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary" onclick="createBirthdayCard()" id="create-button">Gửi</button>
+                        <button type="button" class="btn btn-primary" onclick="createBirthdayCard()" id="create-button">Tạo Thiệp</button>
                     </div>
                 </div>
             </div>
@@ -649,6 +649,7 @@
 
 {% block javascript %}
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
+    <script src="{{ asset('bundles/viettutweb/js/lib/bootstrap-notify.min.js') }}"></script>
     <script type="text/javascript">
         var id = '', name = '', type = '';
         function createCard() {
@@ -684,7 +685,7 @@
             data['data'] = {};
             data['data']['groom_name'] = $('#groom_name').val();
             data['data']['bride_name'] = $('#bride_name').val();
-            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Tạo Thiệp');
             $.ajax({
                 headers : {
                     'Content-Type' : 'application/json; charset=utf-8'
@@ -693,11 +694,14 @@
                 type : 'POST',
                 data : JSON.stringify(data),
                 success : function(response, textStatus, jqXhr) {
-                    $('button#create-button').html('Gửi');
+                    infoNotify(' Tạo thiệp thành công !');
+                    infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
+                    $('button#create-button').html('Tạo Thiệp');
                     var url = '/cards/' + response.hash + '/edit';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
+                    dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
                 },
                 complete : function() {
                 }
@@ -730,7 +734,7 @@
 
             data['data'] = {};
             data['data']['event'] = $('#event_title').val();
-            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Tạo Thiệp');
             $.ajax({
                 headers : {
                     'Content-Type' : 'application/json; charset=utf-8'
@@ -739,11 +743,14 @@
                 type : 'POST',
                 data : JSON.stringify(data),
                 success : function(response, textStatus, jqXhr) {
-                    $('button#create-button').html('Gửi');
+                    infoNotify(' Tạo thiệp thành công !');
+                    infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
+                    $('button#create-button').html('Tạo Thiệp');
                     var url = '/cards/' + response.hash + '/edit';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
+                    dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
                 },
                 complete : function() {
                 }
@@ -777,7 +784,7 @@
             data['data'] = {};
             data['data']['title'] = $('#party_title').val();
             data['data']['name'] = $('#baby_name').val();
-            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Gửi');
+            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Tạo Thiệp');
             $.ajax({
                 headers : {
                     'Content-Type' : 'application/json; charset=utf-8'
@@ -786,11 +793,14 @@
                 type : 'POST',
                 data : JSON.stringify(data),
                 success : function(response, textStatus, jqXhr) {
-                    $('button#create-button').html('Gửi');
+                    infoNotify(' Tạo thiệp thành công !');
+                    infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
+                    $('button#create-button').html('Tạo Thiệp');
                     var url = '/cards/' + response.hash + '/edit';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
+                    dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
                 },
                 complete : function() {
                 }
@@ -818,6 +828,35 @@
             }
         }
 
+        function infoNotify(message) {
+            $.notify({
+                message: message,
+                icon: 'glyphicon glyphicon-ok'
+            },{
+                type: 'info',
+                allow_dismiss: true,
+                newest_on_top: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                }
+            });
+        }
+
+        function dangerNotify(message) {
+            $.notify({
+                message: message,
+                icon: 'glyphicon glyphicon-remove'
+            },{
+                type: 'danger',
+                allow_dismiss: true,
+                newest_on_top: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                }
+            });
+        }
 
         $(document).ready(function(){
             jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});

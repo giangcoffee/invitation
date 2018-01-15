@@ -52,20 +52,10 @@ function submit() {
         type : 'POST',
         data : JSON.stringify(columns),
         success : function(response, textStatus, jqXhr) {
-            $.notify({
-                message: 'Thông tin cập nhật thành công !',
-                icon: 'glyphicon glyphicon-star'
-            },{
-                type: 'info',
-                allow_dismiss: true,
-                newest_on_top: false,
-                placement: {
-                    from: "top",
-                    align: "right"
-                }
-            });
+            infoNotify('Thông tin cập nhật thành công !');
         },
         error : function(jqXHR, textStatus, errorThrown) {
+            dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
         },
         complete : function() {
         }
@@ -89,12 +79,42 @@ function submit() {
         },
         error : function(jqXHR, textStatus, errorThrown) {
             $('button#updateButton').html('Cập Nhật');
+            dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
         },
         complete : function() {
         }
     });
 }
 
+function infoNotify(message) {
+    $.notify({
+        message: message,
+        icon: 'glyphicon glyphicon-ok'
+    },{
+        type: 'info',
+        allow_dismiss: true,
+        newest_on_top: false,
+        placement: {
+            from: "top",
+            align: "right"
+        }
+    });
+}
+
+function dangerNotify(message) {
+    $.notify({
+        message: message,
+        icon: 'glyphicon glyphicon-remove'
+    },{
+        type: 'danger',
+        allow_dismiss: true,
+        newest_on_top: false,
+        placement: {
+            from: "top",
+            align: "right"
+        }
+    });
+}
 
 function updateAlbum() {
     $('button#updateAlbumButton').html('<i class="fa fa-spinner fa-spin"></i> Cập Nhật Album');
@@ -106,15 +126,12 @@ function updateAlbum() {
         type : 'PATCH',
         data : JSON.stringify({libraryCard: {gallery: gallery}}),
         success : function(response, textStatus, jqXhr) {
-            var html = '<div class="alert alert-success alert-dismissable">' +
-                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                'Thông tin cập nhật thành công !'
-                + '</div>';
-            $('div#edit_album').before(html);
+            infoNotify('Thông tin cập nhật thành công !');
             $('button#updateAlbumButton').html('Cập Nhật Album');
             $('body').scrollTop(0);
         },
         error : function(jqXHR, textStatus, errorThrown) {
+            dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
         },
         complete : function() {
         }
@@ -133,14 +150,11 @@ function updateVideo() {
         type : 'PATCH',
         data : JSON.stringify({libraryCard: {video: video, embedded: embedded}}),
         success : function(response, textStatus, jqXhr) {
-            var html = '<div class="alert alert-success alert-dismissable">' +
-                '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                'Thông tin cập nhật thành công !'
-                + '</div>';
-            $('div#edit_video').before(html);
+            infoNotify('Thông tin cập nhật thành công !');
             $('button#updateVideoButton').html('Cập Nhật');
         },
         error : function(jqXHR, textStatus, errorThrown) {
+            dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
         },
         complete : function() {
         }
