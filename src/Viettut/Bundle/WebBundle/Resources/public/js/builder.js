@@ -188,6 +188,7 @@ function facebookVideos() {
 }
 
 function getVideos() {
+    infoNotify('Tải danh sách Video ...');
     FB.api('/me/videos?fields=created_time,embed_html,description&type=uploaded', function(response) {
         var data = response.data;
         data.forEach(function(video){
@@ -201,10 +202,13 @@ function getVideos() {
             videos[id] = video['embed_html'];
         });
         $('div#selectVideos').css('display', 'block');
+        $('#videos').click();
+        infoNotify('Danh sách Video tải xong !');
     });
 }
 
 function getAlbums() {
+    infoNotify('Tải danh sách Album ...');
     FB.api('/me/albums', function(response) {
         var data = response.data;
         data.forEach(function(album){
@@ -212,6 +216,8 @@ function getAlbums() {
             $('select#albums').append(option);
         });
         $('div#selectAlbums').css('display', 'block');
+        $('#albums').click();
+        infoNotify('Danh sách Album tải xong !');
     });
 }
 
@@ -237,6 +243,7 @@ function downloadAlbum() {
     $('ul.gallery').html('');
     gallery = [];
     $('button#downloadAlbum').html('<i class="fa fa-spinner fa-spin"></i> Download');
+    infoNotify('Tải Album !');
     FB.api('/' + selected + '/photos?fields=images', function(response) {
         var data = response.data;
         data.forEach(function(chunk){
@@ -248,6 +255,7 @@ function downloadAlbum() {
             gallery.push({"src": src, "size": image['width'] + 'X' + image['height']})
         });
         $('button#downloadAlbum').html('Download');
+        infoNotify('Album tải xong !');
     });
 }
 
