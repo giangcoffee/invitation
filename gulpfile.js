@@ -192,6 +192,20 @@ gulp.task('guestbook-styles', function () {
     ]).pipe(concat('guestbook.css')).pipe(minifyCss()).pipe(gulp.dest('web/css/guestbook'))
 });
 
+gulp.task('magnific-popup-css', function() {
+    gulp.src(['web/bundles/viettutweb/vendor/magnific-popup/magnific-popup.css']).
+    pipe(minifyCss()).pipe(rename('magnific-popup.min.css')).pipe(gulp.dest('web/bundles/viettutweb/vendor/magnific-popup'))
+});
+
+gulp.task('theme-css', function() {
+    gulp.src([
+        'web/bundles/viettutweb/css/theme.css',
+        'web/bundles/viettutweb/css/theme-elements.css',
+        'web/bundles/viettutweb/css/theme-blog.css',
+    ]).pipe(concat('theme.min.css')).
+    pipe(minifyCss()).pipe(gulp.dest('web/bundles/viettutweb/css'))
+});
+
 gulp.task('guestbook-libraries', function () {
     gulp.src([
         'web/bundles/viettutweb/js/lib/jquery-1.11.1.min.js',
