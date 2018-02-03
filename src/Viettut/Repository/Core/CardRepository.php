@@ -96,4 +96,9 @@ class CardRepository extends EntityRepository implements CardRepositoryInterface
 
         return $cards;
     }
+
+    public function getAllCardQuery()
+    {
+        return $this->createQueryBuilder('c')->getQuery();
+    }
 }

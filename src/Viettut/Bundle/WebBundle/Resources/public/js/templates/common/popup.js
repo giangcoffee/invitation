@@ -50,5 +50,5 @@ function guestBookAlert() {
 }
 
 function gotoGuestBook(hash) {
-    window.location.href = '/cards/' + hash + '/guest-book';
+    window.location.href = '/thiep/' + hash + '/luu-but';
 }

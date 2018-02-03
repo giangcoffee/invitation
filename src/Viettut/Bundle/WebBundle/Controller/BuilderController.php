@@ -31,7 +31,7 @@ class BuilderController extends Controller
 {
     use DateUtil;
     /**
-     * @Route("/cards/{hash}/edit", name="edit_card_page")
+     * @Route("/thiep/{hash}/sua", name="edit_card_page")
      * @param $request
      * @return Response
      */
@@ -72,7 +72,7 @@ class BuilderController extends Controller
     }
 
     /**
-     * @Route("/cards/{hash}/guest-book", name="guest_book_page")
+     * @Route("/thiep/{hash}/luu-but", name="guest_book_page")
      * @param $request
      * @return Response
      */
@@ -143,7 +143,7 @@ class BuilderController extends Controller
     }
 
     /**
-     * @Route("/templates/{hash}", name="template_page")
+     * @Route("/mau-thiep/{hash}", name="template_page")
      * @param $request
      * @param $hash
      * @return Response
@@ -191,7 +191,7 @@ class BuilderController extends Controller
     }
 
     /**
-     * @Route("/cards/{hash}", name="card_page")
+     * @Route("/thiep/{hash}", name="card_page")
      * @param $request
      * @param $hash
      * @return Response

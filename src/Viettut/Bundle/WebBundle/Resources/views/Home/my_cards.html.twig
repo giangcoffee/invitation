@@ -99,11 +99,11 @@
                                 <a href="{{ path('edit_card_page', {hash: card.hash}) }}" class="btn btn-primary pull-left">Sửa</a>
                                 <button class="btn btn-danger pull-left btn-remove" data-id="{{ card.id }}">Xóa</button>
                                 {% if card.template.type == 1 %}
-                                    <button class="btn btn-primary pull-right" onclick="copyCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['groom_name'] }}', '{{ card.data['bride_name'] }}', {% if card.forGroom %}false{% else %}true{% endif %})" id="copy_button">Copy</button>
+                                    <button class="btn btn-primary pull-right" onclick="copyCard({{ card.id }}, {{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['groom_name'] }}', '{{ card.data['bride_name'] }}', {% if card.forGroom %}false{% else %}true{% endif %})" id="copy_button_{{ card.id }}">Copy</button>
                                 {% elseif card.template.type == 2 %}
-                                    <button class="btn btn-primary pull-right" onclick="copyExhibitionCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['event'] }}')" id="copy_button">Copy</button>
+                                    <button class="btn btn-primary pull-right" onclick="copyExhibitionCard({{ card.id }}, {{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['event'] }}')" id="copy_button_{{ card.id }}">Copy</button>
                                 {% elseif card.template.type == 3 %}
-                                    <button class="btn btn-primary pull-right" onclick="copyBirthdayCard({{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['title'] }}', '{{ card.data['name'] }}')" id="copy_button">Copy</button>
+                                    <button class="btn btn-primary pull-right" onclick="copyBirthdayCard({{ card.id }}, {{ card.libraryCard.id }}, {{ card.template.id }}, '{{ card.weddingDate | date('Y-m-d H:i') }}', '{{ card.data['title'] }}', '{{ card.data['name'] }}')" id="copy_button_{{ card.id }}">Copy</button>
                                 {% endif %}
                             </div>
                         </div>
@@ -404,7 +404,7 @@
                     infoNotify(' Tạo thiệp thành công !');
                     infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
                     $('button#create-button').html('Tạo Thiệp');
-                    var url = '/cards/' + response.hash + '/edit';
+                    var url = '/thiep/' + response.hash + '/sua';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
@@ -453,7 +453,7 @@
                     infoNotify(' Tạo thiệp thành công !');
                     infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
                     $('button#create-button').html('Tạo Thiệp');
-                    var url = '/cards/' + response.hash + '/edit';
+                    var url = '/thiep/' + response.hash + '/sua';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
@@ -503,7 +503,7 @@
                     infoNotify(' Tạo thiệp thành công !');
                     infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
                     $('button#create-button').html('Tạo Thiệp');
-                    var url = '/cards/' + response.hash + '/edit';
+                    var url = '/thiep/' + response.hash + '/sua';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
@@ -840,7 +840,7 @@
     </script>
 <script type="text/javascript">
 
-    function copyCard(libCard, template, date, groom, bride, forGroom) {
+    function copyCard(id,libCard, template, date, groom, bride, forGroom) {
         var data = {};
         data['template'] = template;
         data['weddingDate'] = date;
@@ -851,7 +851,7 @@
         data['data'] = {};
         data['data']['groom_name'] = groom;
         data['data']['bride_name'] = bride;
-        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy');
+        $('button#copy_button_' + id).html('<i class="fa fa-spinner fa-spin"></i> Copy');
         $.ajax({
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
@@ -860,20 +860,20 @@
             type : 'POST',
             data : JSON.stringify(data),
             success : function(response, textStatus, jqXhr) {
-                $('button#copy_button-button').html('Copy');
-                var url = '/cards/' + response.hash + '/edit';
+                $('button#copy_button_' + id).html('Copy');
+                var url = '/thiep/' + response.hash + '/sua';
                 window.location.href = url;
             },
             error : function(jqXHR, textStatus, errorThrown) {
-                $('button#copy_button-button').html('Copy');
+                $('button#copy_button_' + id).html('Copy');
             },
             complete : function() {
-                $('button#copy_button-button').html('Copy');
+                $('button#copy_button_' + id).html('Copy');
             }
         });
     }
 
-    function copyExhibitionCard(libCard, template, date, title) {
+    function copyExhibitionCard(id, libCard, template, date, title) {
         var data = {};
         data['template'] = template;
         data['weddingDate'] = date;
@@ -881,7 +881,7 @@
 
         data['data'] = {};
         data['data']['event'] = title;
-        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy');
+        $('button#copy_button_' + id).html('<i class="fa fa-spinner fa-spin"></i> Copy');
         $.ajax({
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
@@ -890,15 +890,15 @@
             type : 'POST',
             data : JSON.stringify(data),
             success : function(response, textStatus, jqXhr) {
-                $('button#copy_button-button').html('Copy');
-                var url = '/cards/' + response.hash + '/edit';
+                $('button#copy_button_' + id).html('Copy');
+                var url = '/thiep/' + response.hash + '/sua';
                 window.location.href = url;
             },
             error : function(jqXHR, textStatus, errorThrown) {
-                $('button#copy_button-button').html('Copy');
+                $('button#copy_button_' + id).html('Copy');
             },
             complete : function() {
-                $('button#copy_button-button').html('Copy');
+                $('button#copy_button_' + id).html('Copy');
             }
         });
     }
@@ -912,7 +912,7 @@
         data['data'] = {};
         data['data']['title'] = title;
         data['data']['name'] = name;
-        $('button#copy_button').html('<i class="fa fa-spinner fa-spin"></i> Copy');
+        $('button#copy_button_' + id).html('<i class="fa fa-spinner fa-spin"></i> Copy');
         $.ajax({
             headers : {
                 'Content-Type' : 'application/json; charset=utf-8'
@@ -921,15 +921,15 @@
             type : 'POST',
             data : JSON.stringify(data),
             success : function(response, textStatus, jqXhr) {
-                $('button#copy_button-button').html('Copy');
-                var url = '/cards/' + response.hash + '/edit';
+                $('button#copy_button_' + id).html('Copy');
+                var url = '/thiep/' + response.hash + '/sua';
                 window.location.href = url;
             },
             error : function(jqXHR, textStatus, errorThrown) {
-                $('button#copy_button-button').html('Copy');
+                $('button#copy_button_' + id).html('Copy');
             },
             complete : function() {
-                $('button#copy_button-button').html('Copy');
+                $('button#copy_button_' + id).html('Copy');
             }
         });
     }

@@ -40,7 +40,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/services", name="services_page")
+     * @Route("/dich-vu", name="services_page")
      * @param $request
      * @return Response
      */
@@ -50,7 +50,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/about", name="about_page")
+     * @Route("/gioi-thieu", name="about_page")
      * @param $request
      * @return Response
      */
@@ -60,7 +60,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/contact", name="contact_page")
+     * @Route("/lien-he", name="contact_page")
      * @Method({"GET"})
      * @param $request
      * @return Response
@@ -71,7 +71,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/my-cards", name="my_card_page")
+     * @Route("/thiep-cua-toi", name="my_card_page")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
@@ -89,7 +89,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/contact")
+     * @Route("/lien-he")
      * @Method({"POST"})
      * @param $request
      * @return Response
@@ -115,7 +115,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/templates", name="templates_page")
+     * @Route("/mau-thiep", name="templates_page")
      * @param $request
      * @return Response
      */
@@ -126,14 +126,23 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/cards", name="cards_page")
+     * @Route("/san-pham", name="cards_page")
      * @param $request
      * @return Response
      */
     public function cardsAction(Request $request)
     {
-        $cards = $this->get('viettut.repository.card')->findAll();
-        return $this->render('ViettutWebBundle:Home:cards.html.twig', array('cards' => $cards));
+        $pageSize = $this->getParameter('page_size');
+
+        $pagination = $this->get('knp_paginator')->paginate(
+            $this->get('viettut.repository.card')->getAllCardQuery(),
+            $request->query->getInt('page', 1)/*page number*/,
+            $pageSize
+        );
+
+        return $this->render('ViettutWebBundle:Home:cards.html.twig', array(
+            "pagination" => $pagination
+        ));
     }
 
     /**
@@ -147,7 +156,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/faq", name="faq_page")
+     * @Route("/cau-hoi-thuong-gap", name="faq_page")
      * @param $request
      * @return Response
      */
@@ -199,7 +208,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/coming-soon", name="coming_soon_page")
+     * @Route("/chua-hoan-thanh", name="coming_soon_page")
      *
      * @param Request $request
      * @return Response

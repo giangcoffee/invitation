@@ -86,7 +86,7 @@ gulp.task('base-styles', function(){
         .pipe(gulp.dest(config.SCRIPT_DEST));
 });
 
-gulp.task('styles', function(){
+gulp.task('styles', ['magnific-popup-css', 'theme-css'], function(){
     gulp.src([
         'web/bundles/viettutweb/css/lib/jquery.mobile-1.4.3.min.css',
         'web/bundles/viettutweb/css/templates/common/common.css',

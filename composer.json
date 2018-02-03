@@ -30,7 +30,7 @@
         "twig/extensions": "^1.5",
         "nelmio/cors-bundle": "^1.5",
         "nelmio/api-doc-bundle": "~2.4",
-        "knplabs/knp-paginator-bundle": "^2.5",
+        "knplabs/knp-paginator-bundle": "^2.7",
         "jowy/rest-client": "^0.1.3",
         "geocoder-php/google-maps-provider": "^4.1",
         "php-http/guzzle6-adapter": "^1.1",

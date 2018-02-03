@@ -53,7 +53,7 @@
                                 {% if app.user %}
                                     <button class="btn btn-primary pull-right" onclick="showModal({{ temp.id }}, '{{ temp.name }}', {{ temp.type }})">Tạo thiệp</button>
                                 {% else %}
-                                    <a class="btn btn-primary pull-right" href="{{ path('fos_user_security_login', {'_target_url': '/templates'}) }}">Tạo thiệp</a>
+                                    <a class="btn btn-primary pull-right" href="{{ path('fos_user_security_login', {'_target_url': '/mau-thiep'}) }}">Tạo thiệp</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -697,7 +697,7 @@
                     infoNotify(' Tạo thiệp thành công !');
                     infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
                     $('button#create-button').html('Tạo Thiệp');
-                    var url = '/cards/' + response.hash + '/edit';
+                    var url = '/thiep/' + response.hash + '/sua';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
@@ -746,7 +746,7 @@
                     infoNotify(' Tạo thiệp thành công !');
                     infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
                     $('button#create-button').html('Tạo Thiệp');
-                    var url = '/cards/' + response.hash + '/edit';
+                    var url = '/thiep/' + response.hash + '/sua';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
@@ -796,7 +796,7 @@
                     infoNotify(' Tạo thiệp thành công !');
                     infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
                     $('button#create-button').html('Tạo Thiệp');
-                    var url = '/cards/' + response.hash + '/edit';
+                    var url = '/thiep/' + response.hash + '/sua';
                     window.location.href = url;
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
