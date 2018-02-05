@@ -557,7 +557,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary" onclick="createCard()" id="create-button">Tạo Thiệp</button>
+                        <button type="button" class="btn btn-primary" onclick="createWeddingCard()" id="create-button">Tạo Thiệp</button>
                     </div>
                 </div>
             </div>
@@ -650,163 +650,9 @@
 {% block javascript %}
     <script src="{{ asset('bundles/viettutweb/js/lib/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('bundles/viettutweb/js/lib/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('bundles/viettutweb/js/library.js') }}"></script>
     <script type="text/javascript">
         var id = '', name = '', type = '';
-        function createCard() {
-            var columns = ['groom_name', 'bride_name', 'wedding_date', 'party_date'];
-
-            for (var column in columns) {
-                var value = $('#' + columns[column]).val();
-                if (value.length < 1) {
-                    var html = '<div class="alert alert-danger alert-dismissable">' +
-                            '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                            'Điền vào các ô còn thiếu'
-                            + '</div>';
-                    $('form.form-horizontal').before(html);
-                    $('#' + columns[column]).parent().parent().addClass('has-error');
-                    $('#' + columns[column]).focus();
-                    return;
-                } else {
-                    $('#' + columns[column]).parent().parent().removeClass('has-error');
-                }
-            }
-
-            var data = {};
-            data['template'] = id;
-            data['weddingDate'] = $('#wedding_date').val();
-            data['partyDate'] = $('#party_date').val();
-            data['forGroom'] = false;
-            data['libraryCard'] = {'gallery': [], 'video': ''};
-
-            if ($('#for_groom').is(":checked")) {
-                data['forGroom'] = true;
-            }
-
-            data['data'] = {};
-            data['data']['groom_name'] = $('#groom_name').val();
-            data['data']['bride_name'] = $('#bride_name').val();
-            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Tạo Thiệp');
-            $.ajax({
-                headers : {
-                    'Content-Type' : 'application/json; charset=utf-8'
-                },
-                url : '/api/v1/cards',
-                type : 'POST',
-                data : JSON.stringify(data),
-                success : function(response, textStatus, jqXhr) {
-                    infoNotify(' Tạo thiệp thành công !');
-                    infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
-                    $('button#create-button').html('Tạo Thiệp');
-                    var url = '/thiep/' + response.hash + '/sua';
-                    window.location.href = url;
-                },
-                error : function(jqXHR, textStatus, errorThrown) {
-                    dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
-                },
-                complete : function() {
-                }
-            });
-        }
-
-        function createExhibitionCard() {
-            var columns = ['event_title', 'event_date'];
-
-            for (var column in columns) {
-                var value = $('#' + columns[column]).val();
-                if (value.length < 1) {
-                    var html = '<div class="alert alert-danger alert-dismissable">' +
-                            '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                            'Điền vào các ô còn thiếu'
-                            + '</div>';
-                    $('form.form-horizontal').before(html);
-                    $('#' + columns[column]).parent().parent().addClass('has-error');
-                    $('#' + columns[column]).focus();
-                    return;
-                } else {
-                    $('#' + columns[column]).parent().parent().removeClass('has-error');
-                }
-            }
-
-            var data = {};
-            data['template'] = id;
-            data['weddingDate'] = $('#event_date').val();
-            data['libraryCard'] = {'gallery': [], 'video': ''};
-
-            data['data'] = {};
-            data['data']['event'] = $('#event_title').val();
-            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Tạo Thiệp');
-            $.ajax({
-                headers : {
-                    'Content-Type' : 'application/json; charset=utf-8'
-                },
-                url : '/api/v1/cards',
-                type : 'POST',
-                data : JSON.stringify(data),
-                success : function(response, textStatus, jqXhr) {
-                    infoNotify(' Tạo thiệp thành công !');
-                    infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
-                    $('button#create-button').html('Tạo Thiệp');
-                    var url = '/thiep/' + response.hash + '/sua';
-                    window.location.href = url;
-                },
-                error : function(jqXHR, textStatus, errorThrown) {
-                    dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
-                },
-                complete : function() {
-                }
-            });
-        }
-
-        function createBirthdayCard() {
-            var columns = ['party_title', 'baby_name', 'birthday_date'];
-
-            for (var column in columns) {
-                var value = $('#' + columns[column]).val();
-                if (value.length < 1) {
-                    var html = '<div class="alert alert-danger alert-dismissable">' +
-                            '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                            'Điền vào các ô còn thiếu'
-                            + '</div>';
-                    $('form.form-horizontal').before(html);
-                    $('#' + columns[column]).parent().parent().addClass('has-error');
-                    $('#' + columns[column]).focus();
-                    return;
-                } else {
-                    $('#' + columns[column]).parent().parent().removeClass('has-error');
-                }
-            }
-
-            var data = {};
-            data['template'] = id;
-            data['weddingDate'] = $('#birthday_date').val();
-            data['libraryCard'] = {'gallery': [], 'video': ''};
-
-            data['data'] = {};
-            data['data']['title'] = $('#party_title').val();
-            data['data']['name'] = $('#baby_name').val();
-            $('button#create-button').html('<i class="fa fa-spinner fa-spin"></i> Tạo Thiệp');
-            $.ajax({
-                headers : {
-                    'Content-Type' : 'application/json; charset=utf-8'
-                },
-                url : '/api/v1/cards',
-                type : 'POST',
-                data : JSON.stringify(data),
-                success : function(response, textStatus, jqXhr) {
-                    infoNotify(' Tạo thiệp thành công !');
-                    infoNotify(' Bạn sẽ được chuyển đến trang chỉnh sửa trong giây lát !');
-                    $('button#create-button').html('Tạo Thiệp');
-                    var url = '/thiep/' + response.hash + '/sua';
-                    window.location.href = url;
-                },
-                error : function(jqXHR, textStatus, errorThrown) {
-                    dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
-                },
-                complete : function() {
-                }
-            });
-        }
-
         function showModal(i, n, t) {
             name = n;
             id = i;
@@ -826,36 +672,6 @@
                     $('#birthday_type_name').val(n);
                     break;
             }
-        }
-
-        function infoNotify(message) {
-            $.notify({
-                message: message,
-                icon: 'glyphicon glyphicon-ok'
-            },{
-                type: 'info',
-                allow_dismiss: true,
-                newest_on_top: false,
-                placement: {
-                    from: "top",
-                    align: "right"
-                }
-            });
-        }
-
-        function dangerNotify(message) {
-            $.notify({
-                message: message,
-                icon: 'glyphicon glyphicon-remove'
-            },{
-                type: 'danger',
-                allow_dismiss: true,
-                newest_on_top: false,
-                placement: {
-                    from: "top",
-                    align: "right"
-                }
-            });
         }
 
         $(document).ready(function(){
@@ -1044,8 +860,6 @@
 
 
             function setSkillOption() {
-
-
                 if ($('#stype_wedding').hasClass('on')) var setSkin = 'wedding';
                 else if ($('#stype_fbirthday').hasClass('on')) var setSkin = 'fbirthday';
                 else var setSkin = 'ceremony';

@@ -150,7 +150,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-6">
-                                <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="submit()" id="updateButton">Cập Nhật</button>
+                                <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="updateCard()" id="updateButton">Cập Nhật</button>
                                 <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
                                 <button class="btn btn-primary btn-lg push-top push-bottom" id="copy_link" data-clipboard-target="#card_link">Copy Link</button>
                             </div>
@@ -254,5 +254,55 @@
     <script src="//cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
     <script src="{{ asset('bundles/viettutweb/js/lib/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('bundles/viettutweb/js/lib/clipboard.min.js') }}"></script>
-    <script src="{{ asset('bundles/viettutweb/js/builder.js') }}"></script>
+    <script src="{{ asset('bundles/viettutweb/js/library.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang:   'vi'});
+            var cardId = $('.card-info').data('id');
+            $("#fileuploader").uploadFile({
+                url:"/api/v1/cards/"+cardId+"/uploads",
+                fileName:"myfile",
+                maxFileSize: 5242880,
+                allowedTypes: 'jpg,png,gif',
+                acceptFiles: 'image/',
+                dragDrop: true,
+                multiple: true,
+                maxFileCount: 10,
+                showProgress: true,
+                onSuccess:function(files,data,xhr,pd) {
+                    data.forEach(function(element) {
+                        var src = element['src'];
+                        $('<li data-url="'+src+'" style="background-image: url('+src+');background-size: contain;" class="aimg"><span><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></span></li>').hide().prependTo('ul.gallery').fadeIn(300);
+                        gallery.unshift(element);
+                    });
+                },
+                onError: function(files,status,errMsg,pd) {
+                    var html = '<div class="alert alert-danger alert-dismissable">' +
+                        '    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                        errMsg
+                        + '</div>';
+                    $('div#fileuploader').before(html);
+                },
+                uploadStr:"Thêm Ảnh"
+            });
+
+            var clipboard = new Clipboard('#copy_link');
+
+            clipboard.on('success', function(e) {
+                infoNotify('Đã copy link thiệp');
+            });
+
+            clipboard.on('error', function(e) {
+                dangerNotify('Không thể copy link thiệp');
+            });
+        });
+
+        $('ul.gallery').on('click', 'li span:first-child', function() {
+            $(this).parent().fadeOut(300, function() {
+                var url = $(this).data('url');
+                $(this).remove();
+                gallery = gallery.remByVal(url);
+            });
+        });
+    </script>
 {% endblock %}
