@@ -36,7 +36,7 @@ if (!String.prototype.format) {
     };
 }
 
-if (!Array.prototype.remByVal()) {
+if (!Array.prototype.remByVal) {
     Array.prototype.remByVal = function(val) {
         for (var i = 0; i < this.length; i++) {
             if (this[i]['src'] === val) {
