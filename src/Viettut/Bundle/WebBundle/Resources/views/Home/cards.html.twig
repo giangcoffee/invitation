@@ -45,3 +45,14 @@
         </div>
     </div>
 {% endblock %}
+{% block javascript %}
+    <script>
+        $(document).ready(function(){
+            $('.portfolio-list').isotope({
+                // options
+                itemSelector: '.isotope-item',
+                layoutMode: 'fitRows'
+            });
+        });
+    </script>
+{% endblock %}
