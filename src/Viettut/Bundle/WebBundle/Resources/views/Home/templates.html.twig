@@ -675,6 +675,11 @@
         }
 
         $(document).ready(function(){
+            $('.portfolio-list').isotope({
+                // options
+                itemSelector: '.isotope-item',
+                layoutMode: 'fitRows'
+            });
             jQuery('#wedding_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
             jQuery('#party_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});
             jQuery('#event_date').datetimepicker({format: 'Y-m-d H:i',lang: 'vi'});

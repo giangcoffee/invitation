@@ -141,6 +141,12 @@
                                 Liên Hệ
                             </a>
                         </li>
+
+                        <li {{ (app.request.attributes.get('_route') == 'posts_page') ? ' class="active"' }}>
+                            <a class="dropdown-toggle" href="{{ path('posts_page') }}">
+                                Blog
+                            </a>
+                        </li>
                         {% if app.user %}
                             <li class="dropdown mega-menu-item mega-menu-signin signin logged" id="headerAccount">
                                 <a class="dropdown-toggle" href="#">
