@@ -34,6 +34,7 @@ class PostFormType extends AbstractRoleSpecificFormType
             ->add('hash')
             ->add('hasVideo')
             ->add('published')
+            ->add('thumbnail')
         ;
 
         $builder->addEventListener(

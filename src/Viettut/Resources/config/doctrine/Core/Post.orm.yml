@@ -40,6 +40,12 @@ Viettut\Entity\Core\Post:
             type: string
             nullable: true
             length: 256
+
+        thumbnail:
+            type: string
+            nullable: true
+            length: 256
+
         hasVideo:
             type: boolean
             nullable: false

@@ -23,7 +23,7 @@
                          <article class="post post-large">
                              <div class="post-image">
                                  <div class="img-thumbnail">
-                                     <img class="img-responsive" src="{{ asset('bundles/viettutweb/img/blog/blog-image-3.jpg') }}" alt="">
+                                     <img class="img-responsive" src="{{ post.thumbnail }}" alt="">
                                  </div>
                              </div>
 
@@ -41,7 +41,7 @@
                                      <span><i class="fa fa-user"></i> By <a href="#">{{ post.author.username }}</a> </span>
                                      <span><i class="fa fa-tag"></i> <a href="#">Duis</a>, <a href="#">News</a> </span>
                                      <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-                                     <a href="{{ path('single_post_page', {hash: post.hash}) }}" class="btn btn-xs btn-primary pull-right">Đọc thêm...</a>
+                                     <a href="blog-post.html" class="btn btn-xs btn-primary pull-right">Read more...</a>
                                  </div>
 
                              </div>
@@ -55,6 +55,122 @@
                 </div>
             </div>
 
+            <div class="col-md-3">
+                <aside class="sidebar">
+                    <div class="tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#popularPosts" data-toggle="tab"><i class="fa fa-star"></i> Popular</a></li>
+                            <li><a href="#recentPosts" data-toggle="tab">Recent</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="popularPosts">
+                                <ul class="simple-post-list">
+                                    <li>
+                                        <div class="post-image">
+                                            <div class="img-thumbnail">
+                                                <a href="blog-post.html">
+                                                    <img src="img/blog/blog-thumb-1.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-info">
+                                            <a href="blog-post.html">Nullam Vitae Nibh Un Odiosters</a>
+                                            <div class="post-meta">
+                                                Jan 10, 2013
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="post-image">
+                                            <div class="img-thumbnail">
+                                                <a href="blog-post.html">
+                                                    <img src="img/blog/blog-thumb-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-info">
+                                            <a href="blog-post.html">Vitae Nibh Un Odiosters</a>
+                                            <div class="post-meta">
+                                                Jan 10, 2013
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="post-image">
+                                            <div class="img-thumbnail">
+                                                <a href="blog-post.html">
+                                                    <img src="img/blog/blog-thumb-3.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-info">
+                                            <a href="blog-post.html">Odiosters Nullam Vitae</a>
+                                            <div class="post-meta">
+                                                Jan 10, 2013
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" id="recentPosts">
+                                <ul class="simple-post-list">
+                                    <li>
+                                        <div class="post-image">
+                                            <div class="img-thumbnail">
+                                                <a href="blog-post.html">
+                                                    <img src="img/blog/blog-thumb-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-info">
+                                            <a href="blog-post.html">Vitae Nibh Un Odiosters</a>
+                                            <div class="post-meta">
+                                                Jan 10, 2013
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="post-image">
+                                            <div class="img-thumbnail">
+                                                <a href="blog-post.html">
+                                                    <img src="img/blog/blog-thumb-3.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-info">
+                                            <a href="blog-post.html">Odiosters Nullam Vitae</a>
+                                            <div class="post-meta">
+                                                Jan 10, 2013
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="post-image">
+                                            <div class="img-thumbnail">
+                                                <a href="blog-post.html">
+                                                    <img src="img/blog/blog-thumb-1.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-info">
+                                            <a href="blog-post.html">Nullam Vitae Nibh Un Odiosters</a>
+                                            <div class="post-meta">
+                                                Jan 10, 2013
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <h4>About Us</h4>
+                    <p>Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Nulla nunc dui, tristique in semper vel. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. </p>
+
+                </aside>
+            </div>
         </div>
 
     </div>

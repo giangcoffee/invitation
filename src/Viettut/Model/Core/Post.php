@@ -62,6 +62,11 @@ class Post implements PostInterface
     protected $author;
 
     /**
+     * @var string
+     */
+    protected $thumbnail;
+
+    /**
      * @var \DateTime
      */
     protected $deletedAt;
@@ -286,5 +291,23 @@ class Post implements PostInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumbnail(): string
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * @param string $thumbnail
+     * @return self
+     */
+    public function setThumbnail($thumbnail)
+    {
+        $this->thumbnail = $thumbnail;
+        return $this;
     }
 }
