@@ -50,15 +50,15 @@ if (!Array.prototype.remByVal) {
 }
 
 function createWeddingCard() {
-    for (var column in WEDDING_REQUIRE_FIELDS) {
-        var value = $('#' + WEDDING_REQUIRE_FIELDS[column]).val();
+    for (var i = 0; i <  WEDDING_REQUIRE_FIELDS.length; i++) {
+        var value = $('#' + WEDDING_REQUIRE_FIELDS[i]).val();
         if (value.length < 1) {
             dangerNotify('Điền vào các ô còn thiếu');
-            $('#' + WEDDING_REQUIRE_FIELDS[column]).parent().parent().addClass('has-error');
-            $('#' + WEDDING_REQUIRE_FIELDS[column]).focus();
+            $('#' + WEDDING_REQUIRE_FIELDS[i]).parent().parent().addClass('has-error');
+            $('#' + WEDDING_REQUIRE_FIELDS[i]).focus();
             return;
         } else {
-            $('#' + WEDDING_REQUIRE_FIELDS[column]).parent().parent().removeClass('has-error');
+            $('#' + WEDDING_REQUIRE_FIELDS[i]).parent().parent().removeClass('has-error');
         }
     }
 
@@ -131,15 +131,15 @@ function copyWeddingCard(id,libCard, template, date, groom, bride, forGroom) {
 }
 
 function createExhibitionCard() {
-    for (var column in EXHIBITION_REQUIRE_FIELDS) {
-        var value = $('#' + EXHIBITION_REQUIRE_FIELDS[column]).val();
+    for (var i=0; i< EXHIBITION_REQUIRE_FIELDS.length; i++) {
+        var value = $('#' + EXHIBITION_REQUIRE_FIELDS[i]).val();
         if (value.length < 1) {
             dangerNotify('Điền vào các ô còn thiếu');
-            $('#' + EXHIBITION_REQUIRE_FIELDS[column]).parent().parent().addClass('has-error');
-            $('#' + EXHIBITION_REQUIRE_FIELDS[column]).focus();
+            $('#' + EXHIBITION_REQUIRE_FIELDS[i]).parent().parent().addClass('has-error');
+            $('#' + EXHIBITION_REQUIRE_FIELDS[i]).focus();
             return;
         } else {
-            $('#' + EXHIBITION_REQUIRE_FIELDS[column]).parent().parent().removeClass('has-error');
+            $('#' + EXHIBITION_REQUIRE_FIELDS[i]).parent().parent().removeClass('has-error');
         }
     }
 
@@ -202,15 +202,15 @@ function copyExhibitionCard(id, libCard, template, date, title) {
 }
 
 function createBirthdayCard() {
-    for (var column in BIRTHDAY_REQUIRE_FIELDS) {
-        var value = $('#' + BIRTHDAY_REQUIRE_FIELDS[column]).val();
+    for (var i=0; i < BIRTHDAY_REQUIRE_FIELDS.length; i++) {
+        var value = $('#' + BIRTHDAY_REQUIRE_FIELDS[i]).val();
         if (value.length < 1) {
             dangerNotify('Điền vào các ô còn thiếu');
-            $('#' + BIRTHDAY_REQUIRE_FIELDS[column]).parent().parent().addClass('has-error');
-            $('#' + BIRTHDAY_REQUIRE_FIELDS[column]).focus();
+            $('#' + BIRTHDAY_REQUIRE_FIELDS[i]).parent().parent().addClass('has-error');
+            $('#' + BIRTHDAY_REQUIRE_FIELDS[i]).focus();
             return;
         } else {
-            $('#' + BIRTHDAY_REQUIRE_FIELDS[column]).parent().parent().removeClass('has-error');
+            $('#' + BIRTHDAY_REQUIRE_FIELDS[i]).parent().parent().removeClass('has-error');
         }
     }
 
