@@ -72,6 +72,9 @@ class Card implements CardInterface
     /** @var  DateTime */
     protected $partyDate;
 
+    /** @var bool */
+    protected $public;
+
     protected $statuses;
 
     function __construct()
@@ -554,6 +557,22 @@ class Card implements CardInterface
     {
         $this->name = $name;
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublic()
+    {
+        return $this->public;
+    }
+
+    /**
+     * @param bool $public
+     */
+    public function setPublic($public)
+    {
+        $this->public = $public;
     }
 
     function __toString()

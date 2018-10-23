@@ -33,6 +33,7 @@ class CardFormType extends AbstractRoleSpecificFormType
             ->add('template')
             ->add('data')
             ->add('forGroom')
+            ->add('public')
             ->add('libraryCard', 'entity', array(
                 'class' => LibraryCard::class,
                 'query_builder' => function (EntityRepository $er) {

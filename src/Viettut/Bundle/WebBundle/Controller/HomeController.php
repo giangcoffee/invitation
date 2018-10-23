@@ -135,7 +135,7 @@ class HomeController extends Controller
         $pageSize = $this->getParameter('page_size');
 
         $pagination = $this->get('knp_paginator')->paginate(
-            $this->get('viettut.repository.card')->getAllCardQuery(),
+            $this->get('viettut.repository.card')->getAllPublicCardQuery(),
             $request->query->getInt('page', 1)/*page number*/,
             $pageSize
         );

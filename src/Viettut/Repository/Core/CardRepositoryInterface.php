@@ -31,4 +31,6 @@ interface CardRepositoryInterface extends ObjectRepository
     public function search($keyword);
 
     public function getAllCardQuery();
+
+    public function getAllPublicCardQuery();
 }
