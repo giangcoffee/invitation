@@ -374,7 +374,7 @@ function updateLocation() {
         },
         url : CARD_PATCH_RESOURCE.format(cardId),
         type : 'PATCH',
-        data : JSON.stringify({place_longitude: $('#place_longitude').val(), place_latitude: $('#place_latitude').val(), home_longitude: $('#home_longitude').val(), home_latitude: $('#home_latitude').val()}),
+        data : JSON.stringify({longitude: $('#place_longitude').val(), latitude: $('#place_latitude').val(), homeLongitude: $('#home_longitude').val(), homeLatitude: $('#home_latitude').val()}),
         success : function(response, textStatus, jqXhr) {
             $('button#updateButton').html('Cập Nhật');
         },
