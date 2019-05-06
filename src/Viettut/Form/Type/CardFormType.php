@@ -46,6 +46,10 @@ class CardFormType extends AbstractRoleSpecificFormType
             ->add('partyDate', DateTimeType::class, [
                 'widget' => 'single_text'
             ])
+            ->add('longitude')
+            ->add('latitude')
+            ->add('homeLatitude')
+            ->add('homeLongitude')
         ;
 
         $builder->addEventListener(

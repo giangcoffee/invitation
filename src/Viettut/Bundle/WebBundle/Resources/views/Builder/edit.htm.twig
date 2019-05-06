@@ -62,6 +62,9 @@
             <li>
                 <a href="#video" data-toggle="tab">Video</a>
             </li>
+            <li>
+                <a href="#location" data-toggle="tab">Hiệu chỉnh tọa độ</a>
+            </li>
         </ul>
         <div class="tab-content">
             <div id="general" class="tab-pane active">
@@ -242,6 +245,53 @@
                 <div class="row">
                     <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="updateVideo()" id="updateVideoButton">Cập Nhật Video</button>
                     <a class="btn btn-primary btn-lg push-top push-bottom" href="{{ path('card_page', {'hash': hash}) }}" target="_blank">Xem trước</a>
+                </div>
+            </div>
+            <div id="location" class="tab-pane">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-9 control-label">Lưu ý: phần này chỉ nên sử dụng khi tọa độ trên bản đồ chưa chính xác so với thực tế địa điểm của bạn!</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="place_longitude">Kinh độ tiệc cưới</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control input-rounded" id="place_longitude" name="place_longitude" value="{{ place_longitude }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="place_latitude">Vĩ độ tiệc cưới</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control input-rounded" id="place_latitude" name="place_latitude" value="{{ place_latitude }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="home_longitude">Kinh độ nhà</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control input-rounded" id="home_longitude" name="home_longitude" value="{{ home_longitude }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="home_latitude">Vĩ độ nhà</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control input-rounded" id="home_latitude" name="home_latitude" value="{{ home_latitude }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-lg push-top push-bottom" data-loading-text="Loading..." onclick="updateLocation()" id="updateLocation">Cập Nhật</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

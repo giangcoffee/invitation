@@ -367,6 +367,26 @@ function updateCard() {
     });
 }
 
+function updateLocation() {
+    $.ajax({
+        headers : {
+            'Content-Type' : 'application/json; charset=utf-8'
+        },
+        url : CARD_PATCH_RESOURCE.format(cardId),
+        type : 'PATCH',
+        data : JSON.stringify({place_longitude: $('#place_longitude').val(), place_latitude: $('#place_latitude').val(), home_longitude: $('#home_longitude').val(), home_latitude: $('#home_latitude').val()}),
+        success : function(response, textStatus, jqXhr) {
+            $('button#updateButton').html('Cập Nhật');
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+            $('button#updateButton').html('Cập Nhật');
+            dangerNotify('Có lỗi xảy ra, vui lòng thử lại sau !');
+        },
+        complete : function() {
+        }
+    });
+}
+
 function updateAlbum() {
     $('button#updateAlbumButton').html('<i class="fa fa-spinner fa-spin"></i> {0}'.format(UPDATE_ALBUM_BUTTON));
     $.ajax({

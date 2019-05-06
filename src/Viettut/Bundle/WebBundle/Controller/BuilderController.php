@@ -68,7 +68,11 @@ class BuilderController extends Controller
             'type' => $card->getTemplate()->getType(),
             'forGroom' => $card->isForGroom(),
             'video' => $card->getVideo(),
-            'embed' => $card->getEmbedded()
+            'embed' => $card->getEmbedded(),
+            'place_longitude' => $card->getLongitude(),
+            'place_latitude' => $card->getLatitude(),
+            'home_longitude' => $card->getHomeLongitude(),
+            'home_latitude' => $card->getHomeLatitude()
         ));
     }
 
