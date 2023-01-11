@@ -11,6 +11,10 @@ jobs:
     docker:
       # Specify the version you desire here
       - image: cimg/php:7.4.2
+      - image: cimg/mysql:8.0
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
