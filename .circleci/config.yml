@@ -27,7 +27,7 @@ jobs:
       - checkout
 
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo apt install php-mysql
+      - run: sudo apt install -y php7.4-mysql
       #- run: sudo docker-php-ext-enable mysqli
 
       # Download and cache dependencies
